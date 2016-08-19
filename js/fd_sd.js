@@ -151,56 +151,82 @@ $(function(){
 
 	//单机行，选中复选框
 	$('#dataTables-example tbody').on( 'click', 'tr', function (event) {
-	$(this).toggleClass('selected');
-	var p = this;
-	  $($(p).children()[0]).children().each(function(){
-	    if(this.type=="checkbox"){
-	      if(!this.checked){
-	        this.checked = true;
-	      }else{
-	        this.checked = false;
-	      }
-	    }
-	  });
+		$(this).toggleClass('selected');
+		var p = this;
+		$($(p).children()[0]).children().each(function(){
+		if(this.type=="checkbox"){
+		  	if(!this.checked){
+		    	this.checked = true;
+		  	}else{
+		   	 	this.checked = false;
+		  }
+		}
+		});
 	});
 
 	//单机行，选中复选框
 	$('#dataTables-example tbody').on( 'click', 'input', function (event) {
-	if($(this).prop("checked")){
-	  $(this).closest("tr").addClass('selected');
-	}else
-	{
-	  $(this).closest("tr").removeClass('selected');
-	}
+		if($(this).prop("checked")){
+		  $(this).closest("tr").addClass('selected');
+		}else
+		{
+		  $(this).closest("tr").removeClass('selected');
+		}
 
-	event.stopImmediatePropagation();
+		event.stopImmediatePropagation();
 	});
 
 	//单机行，中修改按钮
 	$('#dataTables-example tbody').on( 'click', 'img', function (event) {
-	var imgId = $(this).prop("id");
-	var obj_data = _table.row($(this).parents('tr')).data();
-	// alert(obj_data.CLINIC_NAME);
-	var data = {
-	      CLINIC_NAME: obj_data.CLINIC_NAME,
-	      CLINIC_ADDR: obj_data.CLINIC_ADDR,
-	      DOCTOR_NAME: obj_data.DOCTOR_NAME,
-	      DOCTOR_TYPE: obj_data.DOCTOR_TYPE,
-	      APPOINTMENT_TIME: obj_data.APPOINTMENT_TIME,
-	      DOCTOR_PHOTO: obj_data.DOCTOR_PHOTO,
-	      DOCTOR_INFO: obj_data.DOCTOR_INFO
-	    };
-	var str = JSON.stringify(data);
+		var imgId = $(this).prop("id");
+		var obj_data = _table.row($(this).parents('tr')).data();
+		// alert(obj_data.CLINIC_NAME);
+		var data = {
+		      CLINIC_NAME: obj_data.CLINIC_NAME,
+		      CLINIC_ADDR: obj_data.CLINIC_ADDR,
+		      DOCTOR_NAME: obj_data.DOCTOR_NAME,
+		      DOCTOR_TYPE: obj_data.DOCTOR_TYPE,
+		      APPOINTMENT_TIME: obj_data.APPOINTMENT_TIME,
+		      DOCTOR_PHOTO: obj_data.DOCTOR_PHOTO,
+		      DOCTOR_INFO: obj_data.DOCTOR_INFO
+		    };
+		var str = JSON.stringify(data);
 
-	$.cookie("goto_data", str);
-	window.location.href="searchDoctorDetails.html"; 
+		$.cookie("goto_data", str);
+		window.location.href="searchDoctorDetails.html"; 
 
-	event.stopImmediatePropagation();
+		event.stopImmediatePropagation();
 	});
 
-	// $('#myModal').on('shown.bs.modal', function () {
-	//   $('#myInput').focus()
-	// })
+	$('#btn_searchdoctor').on('click', function (){
 
+		
+		alert($("#modal_form").serialize());
+		$.ajax({
+	        type:"post",
+	        url:"class.searchDoctor.php",
+	        ceach: false,
+	        data:"",
+	        success:function(html){
+	          // alert("跳转成功");
+	          $("#page-wrapper").empty();
+	          $("#page-wrapper").html(html);
+	          $(".panel-heading").html("修改权限");
+	          $("#func_code").val(func_code);
+	          $('#func_code').attr("readonly",true);
+	          $("#func_name").val(func_name);
+	          $("#note").val(note);
+	          $("#func_add_reset").attr("readonly",true);
+	          $("#action_type").val("update");
+	          // $("#page-wrapper").on("click","#func_add_cancel",function(event){
+	          //   event.preventDefault(); 
+	          // });  
+	        },
+	        error: function(result){
+	            //请求失败之后的操作
+	            console.log("修改跳转失败" + result);
+	         }
+      	});
+	});
 
 });

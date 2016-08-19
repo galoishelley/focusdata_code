@@ -49,41 +49,6 @@ form fieldset .checkbox label{
   background-size: cover;
 }
 
-/**************index.html***************/
-.demo-bg{
-    /*position: absolute;*/
-/*    left: 10px;
-    top: 10px;*/
-    /* margin-top: 20px;
-    margin-bottom: 20px */; 
-    z-index: 0;
-    width: 100%;
-    background-color:#FFFF00;
-    filter:Alpha(opacity=60);
-    background-color: rgba(255,255,255,0.6);
-    text-align: left;
-    border-radius:4px;
-}
-.demo-txt{
-    position: relative;
-    z-index: 1;
-    color: #FFFFFF;
-    padding: 20px;
-    /*padding-left: 20px;*/
-}
-
-.demo-txt h2{
-  color:#000000;
-  margin:0 0 30px 0;
-}
-
-/*.form-inline .form-group{
-    margin-bottom: 10px;
-} */
-
-.demo-txt .form-inline .form-group{
-    margin:5px;
-}
 
 /**************search_doctor.html***************/
 
@@ -783,5 +748,9 @@ table thead .sorting:after {
   white-space:nowrap;
 }
 
+
+#myModal form{
+	padding:0px 0px;
+}
 
 
