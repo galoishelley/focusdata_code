@@ -21,7 +21,26 @@ body { font-size: 140%; }
 	 word-break:break-all;
 }*/
 
-th, td { white-space: nowrap; }
+th, td {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	vertical-align: middle;
+ }
+
+/* 单元格连续纯字母数字强制换行显示 */
+.wordwrap{
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+}
+/* 超长文字单元格省略号显示 */
+.ellipsis{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * bootstrapValidator
@@ -173,4 +192,15 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination{
 
 .index-form-txt .form-inline .form-group{
     margin:5px;
+}
+
+.fd_index{
+	margin-bottom: 200px;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * modal
+ */
+.modal-title{
+	color:#9fdbf3;
 }

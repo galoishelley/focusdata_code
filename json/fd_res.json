@@ -1,0 +1,53 @@
+{
+    "draw": "2",
+    "recordsTotal": "2",
+    "recordsFiltered": "2",
+    "data": [
+        {
+            "DT_RowId": "searchdoc_3",
+            "DOCTOR_ID": "2",
+            "DOCTOR_TYPE": "内科",
+            "DOCTOR_NAME": "苗亚柳",
+            "DOCTOR_GENDER": "女",
+            "ACTIVE_STATUS": "1",
+            "DOCTOR_PHOTO": "img/miaoyl.jpg",
+            "DOCTOR_INFO": "good doctor",
+            "NOTE": null,
+            "CREATE_USER": "shelleymyl",
+            "CREATE_DATE": "2016-08-13 12:11:39",
+            "UPDATE_USER": "shelleymyl",
+            "UPDATE_DATE": "2016-08-13 12:11:39",
+            "CLINIC_DOCTOR_ID": "2",
+            "CLINIC_USER_ID": "2",
+            "CLINIC_USER_NAME": "shelleymyle",
+            "CLINIC_USER_PWD": "myl1102",
+            "CLINIC_USER_MAIL": "shelleymyl@gmail.com",
+            "CLINIC_NAME": "1",
+            "CLINIC_ADDR": "1",
+            "APPOINTMENT_TIME": "08:00"
+        },
+        {
+            "DT_RowId": "searchdoc_15",
+            "DOCTOR_ID": "1",
+            "DOCTOR_TYPE": "牙科",
+            "DOCTOR_NAME": "尹鑫",
+            "DOCTOR_GENDER": "男",
+            "ACTIVE_STATUS": "1",
+            "DOCTOR_PHOTO": "img/yinxin.jpg",
+            "DOCTOR_INFO": "如果尽早治疗，根本不需要麻醉，补牙过程也异常简单，因为没有腐蚀到牙神经；而如果牙齿腐蚀的比较厉害接触要牙神经再来就诊，首先在治疗之前疼痛感比较强烈而且会伴随牙周炎等口腔炎症，麻醉过程中不会疼痛只会有肿胀感，麻醉后还是有一些不适。",
+            "NOTE": null,
+            "CREATE_USER": "shelleymyl",
+            "CREATE_DATE": "2016-08-13 12:11:10",
+            "UPDATE_USER": "shelleymyl",
+            "UPDATE_DATE": "2016-08-13 12:11:10",
+            "CLINIC_DOCTOR_ID": "1",
+            "CLINIC_USER_ID": "1",
+            "CLINIC_USER_NAME": "shelleymyl",
+            "CLINIC_USER_PWD": "myl1102",
+            "CLINIC_USER_MAIL": "shelleymyl@gmail.com",
+            "CLINIC_NAME": "省人民诊所",
+            "CLINIC_ADDR": "吉林省长春市前进大街881号",
+            "APPOINTMENT_TIME": "08:00,08:30,09:00,09:30,10:00,10:30,11:00,11:30,12:00,12:30,13:00,13:30,14:00,14:30,15:00,15:30,16:00,16:30,17:00"
+        }
+    ]
+}

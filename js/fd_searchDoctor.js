@@ -15,10 +15,15 @@ $(function(){
     // "sPaginationType": "full_numbers", //用于指定分页器风格
     "sPaginationType": "full_numbers",
     //"aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-    "iDisplayLength": 12,  //确定选择每页展示个数列表和默认每页展示个数设置
-    scrollY:        200,
-    deferRender:    true,
-    scroller:       true,
+    "iDisplayLength": 10,  //确定选择每页展示个数列表和默认每页展示个数设置
+    "iDisplayStart" : 0,
+    "bProcessing" : true,
+    "bServerSide" : true,
+    "scrollY":200,
+    "deferRender":true,
+    "scroller":true,
+    "cache" : false,  //禁用缓存
+    // "stripeClasses": ["odd", "even"],
     // "sScrollXInner": "110%",
     // "bScrollCollapse": true,
     // "pagingType": "scrolling",
@@ -38,17 +43,17 @@ $(function(){
     // },
     "ajax": {
       //url: "../ajax/data/role_demo.json",
-      type: "POST",
-      url: "classes/class.searchDoctor.php",
-      //dataType: "json",
-      // data:{},
-      // data: function ( d ) {
-      //     d.begin_time = $('#begin_time').val();
-      //     d.end_time =  $('#end_time').val();
-      //     // d.begin_time:$('#begin_time').val(),
-      //     // d.end_time:$('#end_time').val()
-
-      // }
+      "type": "POST",
+      "url": "classes/class.searchDoctor.php",
+      "dataType": "json",
+      "data": function ( d ) {
+          d.CLINIC_ADDR = $('#CLINIC_ADDR').val();
+          d.CLINIC_USER_NAME =  $('#CLINIC_USER_NAME').val();
+          d.DOCTOR_TYPE =  $('#DOCTOR_TYPE').val();
+          d.DOCTOR_NAME =  $('#DOCTOR_NAME').val();
+          d.APPOINTMENT_TIME =  $('#APPOINTMENT_TIME').val();
+          d.DISTANCE =  $('#DISTANCE').val();
+      }
     },
     // "ajax": "../classes/class.b_roles.php", 
     // "order": "",
@@ -185,7 +190,7 @@ $(function(){
     "dom": '<"top">rt<"table_bottom"ip<"#goon">><"clear">'
   });
 
-  $("div#goon").html('<input type="text" name="jumpgo" id="jumpgo"/><button class="btn btn-default" id="btn_jumpgo">确认</button>');
+  $("div#goon").html('<input type="number" min=1 max=9 name=""><input type="number" min=1 max=9 name="jumpgo" id="jumpgo"/><button class="btn btn-default" id="btn_jumpgo">确认</button>');
   $("div.table_bottom").addClass('col-sm-12 col-md-12');
   $("div#dataTables-example_info").addClass('col-sm-12 col-md-3 pull-left');
   $("div#dataTables-example_paginate").addClass('col-sm-6 col-md-7 pull-left');

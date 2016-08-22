@@ -103,28 +103,7 @@
 <div class="content"> 
     <div class="thumb-box1">
         <div class="container">
-            <div class="fd_index">
-
-                <div class="thumb-box2 clearfix">
-                    <div class="wow fadeInLeft" data-wow-delay="0.2s">
-                        <div class="index-form-bg">
-                            <div class="index-form-txt">
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="input-group">
-                                        <!-- 搜索 诊所区域|诊所名称|医生类别|医生姓名|预约时间 -->
-                                            <input type="text" class="form-control" placeholder="Search..." id="txt_search">
-                                            <span class="input-group-btn">
-                                                <button class="btn btn-default" type="button" id="btn_search">Go!</button>
-                                            </span>
-                                        </div><!-- /input-group -->
-                                    </div><!-- /.col-lg-6 -->
-                                </div><!-- /.row -->    
-                            </div><!--不透明文字 -->
-                        </div><!-- 透明背景 -->
-                    </div>
-                </div><!-- thumb-box2 -->
-
+            <div class="row">
                 <div class="col-lg-12">
                     <p class="title wow fadeInUp">We specialize in helping patients with symptomatic rapid appointment to doctor.</p>
                 </div>
@@ -132,12 +111,90 @@
                     <p class="description wow fadeInUp" data-wow-delay="0.1s">Nos especializamos en ayudar a los pacientes con cita rápida sintomática en médico.</p>
                     <a href="index-2.html" class="btn-default btn1 wow fadeInUp" data-wow-delay="0.2s">read more</a>
                 </div>
-
-                
-
+                <div class="clearfix"></div>
+                <div class="thumb-box2 clearfix">
+                    <div class="wow fadeInLeft" data-wow-delay="0.2s">
+                        <div class="index-form-bg">
+                            <div class="index-form-txt">
+                                <form class="form-inline col-md-12" role="form">
+                                    <div class="form-group col-md-5">
+                                      <label for="clinicarea">诊所区域</label>
+                                      <select class="form-control" id="clinicarea" name="clinicarea">
+                                            <option>朝阳区</option>
+                                            <option>绿园区</option>
+                                      </select>
+                                      <!-- <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com"> -->
+                                    </div>
+                                    <div class="form-group col-md-5">
+                                        <label for="clinicname col-md-2">诊所名称</label>
+                                        <input type="text" class="form-control" id="clinicname" >
+                                    </div>
+                                    
+                                    <div class="form-group col-md-5">
+                                        <label for="doctortype col-md-2">医生类别</label>
+                                        <input type="text" class="form-control" id="doctortype" >
+                                    </div>
+                                    <div class="form-group col-md-5">
+                                        <label for="doctorname col-md-2">医生姓名</label>
+                                        <input type="text" class="form-control" id="doctorname">
+                                    </div>
+                                    <div class="form-group col-md-5">
+                                        <label for="apptime col-md-2">预约时间</label>
+                                        <input type="text" class="form-control form_datetime" id="apptime" >
+                                    </div>
+                                    <div class="form-group col-md-5">
+                                      <label for="distance col-md-2" class="label-control">医生距离</label>
+                                      <select class="form-control" id="distance" name="distance">
+                                            <option>50m</option>
+                                            <option>100m</option>
+                                      </select>
+                                    </div>
+                                    <div class="form-group col-md-12 pull-right">
+                                        <a type="button" class="btn btn-info btn-md" href="#" id="search_doc">
+                                          <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search Doctor
+                                        </a>
+                                    </div>
+                                </form>        
+                            </div><!--不透明文字 -->
+                        </div><!-- 透明背景 -->
+                    </div>
+                </div>
+                <!-- <div class="thumb-box2 clearfix">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 wow fadeInLeft" data-wow-delay="0.2s">
+                        <div class="thumb-pad1 maxheight">
+                            <div class="thumbnail">
+                                <figure><img src="img/page1_pic1.jpg" alt=""></figure>
+                                <div class="caption">
+                                    <hr class="hr1"> 
+                                    <strong>Doctor's appointment</strong>
+                                    <p>We specialize in helping patients with symptomatic rapid appointment to doctor.We specialize in helping patients with symptomatic rapid appointment to doctor. </p>
+                                    <hr class="hr2">
+                                    <a href="search_doctor.html" class="btn-default btn2"> click me </a>
+                                </div>  
+                            </div>
+                            <em></em>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 wow fadeInLeft">
+                        <div class="thumb-pad1 maxheight">
+                            <div class="thumbnail">
+                                <figure><img src="img/page1_pic2.jpg" alt=""></figure>
+                                <div class="caption indent">
+                                    <hr class="hr1"> 
+                                    <strong><a id="sign_in" href="#">Sign in</a></strong>
+                                    <p>We specialize in helping patients with symptomatic rapid appointment to doctor.We specialize in helping patients with symptomatic rapid appointment to doctor. </p>
+                                    <hr class="hr2">
+                                    <a href="sign_in.html" class="btn-default btn2"> click me </a>
+                                </div>  
+                            </div>
+                            <em></em>
+                        </div>
+                    </div>
+                </div> -->
             </div>
         </div>
     </div>
+		
 </div>
 <!--footer-->
 <footer>

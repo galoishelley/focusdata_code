@@ -4,8 +4,10 @@ include_once('class.database.php');
 class SearchDoctor_DB{
     private $db;
     // public $lastid;
+    private $_dbug;
     public function __construct(){  
 
+    $this->_dbug = false;
     $this->db = new Database();
 	/**
     if(isset($_POST['json'])){
@@ -73,21 +75,195 @@ class SearchDoctor_DB{
         return $ret;
     }
    
-    public function viewAll($arr_values){
-        $sql = "SELECT concat('searchdoc_', @rownum:=@rownum+1) AS DT_RowId, fd_doctor.*, fd_clinic_user.*, GROUP_CONCAT(DATE_FORMAT(fd_rel_doctor_appointment_time.APPOINTMENT_TIME,'%H:%i') order by APPOINTMENT_TIME) as APPOINTMENT_TIME  FROM (SELECT @rownum:=0) r, fd_doctor, fd_rel_clinic_doctor, fd_clinic_user, fd_rel_doctor_appointment_time
-            where 
-            fd_doctor.ACTIVE_STATUS = 1 
-            and 
-            fd_rel_doctor_appointment_time.ACTIVE_STATUS = 1
-            and
-            fd_doctor.doctor_id = fd_rel_clinic_doctor.doctor_id
-            and 
-            fd_rel_clinic_doctor.clinic_user_id = fd_clinic_user.clinic_user_id
-            and
-            fd_rel_doctor_appointment_time.doctor_id = fd_doctor.doctor_id
-            group by fd_doctor.doctor_id
-            order by fd_rel_doctor_appointment_time.APPOINTMENT_TIME";
+    public function col_exists_sql($arr_values,$requesttype){
+        if($this->_dbug){
+            echo "[---col_exists_sql---arr_values]";
+            print_r($arr_values);
+        }
+        if($this->_dbug){
+            echo "[---col_exists_sql2---requesttype]";
+            print_r($arr_values);
+        }
 
+        $keys = array();
+        $keys_where =array();
+        if($requesttype==0){
+            $where = " and ( ";
+        }else{
+            $where = "";
+        }
+        if(count($arr_values)>0){
+            $keys = array_keys($arr_values); 
+            $keys_where = array();
+           
+            // array_splice($keys,count($keys)-1,1);
+        }
+        for($i = 0; $i < count($keys); $i++){
+            if($keys[$i]=="DISTANCE"){
+                array_splice($keys,$i,1);
+            }
+        }
+
+        if($this->_dbug){
+            echo "[---col_exists_sql---keys]";
+            print_r($keys);
+        }
+
+        for($i = 0; $i < count($keys); $i++){
+
+            if($keys[$i] == "CLINIC_ADDR" || $keys[$i] == "CLINIC_NAME"){
+                $keys_where[$i] = "t3.".$keys[$i];
+            }else if($keys[$i] == "DOCTOR_TYPE" || $keys[$i] == "DOCTOR_NAME"){
+                $keys_where[$i] = "t1.".$keys[$i];
+            }else if($keys[$i] == "APPOINTMENT_TIME" ){
+                $keys_where[$i] = "t4.".$keys[$i];
+            }else{
+                // $keys_where[$i] = $keys[$i];
+            }
+            // echo  $keys_where[$i]."---------";
+
+            if($requesttype==0){
+                if($arr_values[$keys[$i]] != ""){
+                    $arr_values[$keys[$i]] = '%'.$arr_values[$keys[$i]].'%';
+                }else{
+                    $arr_values[$keys[$i]] = '%';
+                }
+
+                if($this->_dbug){
+                    echo "[---col_exists_sql---arr_values111]";
+                    print_r($arr_values[$keys[$i]]);
+                }
+
+                $where .= $keys_where[$i] ." like '".$arr_values[$keys[$i]]."'";
+
+                if($i != count($keys)-1 ){
+                    $where .= " or ";
+                }
+            }else{
+                if($arr_values[$keys[$i]] != ""){
+                    $where .= " and " .$keys_where[$i] ." like '%".$arr_values[$keys[$i]]."%'";
+                }
+            }
+        }
+
+        if($requesttype==0){
+            $where .= " )";
+        }
+
+        if($this->_dbug){
+            echo "[---col_exists_sql---where]";
+            print_r($where);
+        }
+        $sql = "select count(*) as COUNT from (
+                select 
+                GROUP_CONCAT(DATE_FORMAT(t4.APPOINTMENT_TIME,'%H:%i') order by APPOINTMENT_TIME) as APPOINTMENT_TIME
+                from fd_doctor as t1
+                left join (fd_rel_clinic_doctor as t2 left join fd_clinic_user as t3 on t2.clinic_user_id = t3.clinic_user_id )
+                on
+                t1.doctor_id = t2.doctor_id
+                left join fd_rel_doctor_appointment_time t4 on t4.doctor_id = t1.doctor_id
+                where
+                t1.ACTIVE_STATUS = 1
+                and 
+                t4.ACTIVE_STATUS = 1 ".$where.
+                " group by t1.doctor_id
+                order by t4.APPOINTMENT_TIME
+                ) r";
+        if($this->_dbug){
+            echo "[---col_exists_sql---sql]";
+            print_r($sql);
+        }
+        $ret = $this->db->col_exists_sql($sql);
+
+        return $ret[0]["COUNT"];
+    }
+
+    public function viewAll($arr_values,$requesttype=0,$start=0,$lenght=10){
+        if($this->_dbug){
+            echo "[---viewAll---arr_values]";
+            print_r($arr_values);
+        }
+
+        $keys = array();
+        $keys_where =array();
+        if($requesttype==0){
+            $where = " and ( ";
+        }else{
+            $where = "";
+        }
+        if(count($arr_values)>0){
+            $keys = array_keys($arr_values); 
+            $keys_where = array();
+           
+            // array_splice($keys,count($keys)-1,1);
+        }
+        for($i = 0; $i < count($keys); $i++){
+            if($keys[$i]=="DISTANCE"){
+                array_splice($keys,$i,1);
+            }
+        }
+
+        if($this->_dbug){
+            echo "[---viewAll---keys]";
+            print_r($keys);
+        }
+
+        for($i = 0; $i < count($keys); $i++){
+
+            if($keys[$i] == "CLINIC_ADDR" || $keys[$i] == "CLINIC_NAME"){
+                $keys_where[$i] = "t3.".$keys[$i];
+            }else if($keys[$i] == "DOCTOR_TYPE" || $keys[$i] == "DOCTOR_NAME"){
+                $keys_where[$i] = "t1.".$keys[$i];
+            }else if($keys[$i] == "APPOINTMENT_TIME" ){
+                $keys_where[$i] = "t4.".$keys[$i];
+            }else{
+                // $keys_where[$i] = $keys[$i];
+            }
+            // echo  $keys_where[$i]."---------";
+
+            if($requesttype==0){
+                if($arr_values[$keys[$i]] != ""){
+                    $arr_values[$keys[$i]] = '%'.$arr_values[$keys[$i]].'%';
+                }else{
+                    $arr_values[$keys[$i]] = '%';
+                }
+
+                $where .= $keys_where[$i] ." like '".$arr_values[$keys[$i]]."'";
+
+                if($i != count($keys)-1 ){
+                    $where .= " or ";
+                }
+            }else{
+                if($arr_values[$keys[$i]] != ""){
+                    $where .= " and " .$keys_where[$i] ." like '%".$arr_values[$keys[$i]]."%'";
+                }
+            }
+        }
+
+        if($requesttype==0){
+            $where .= " )";
+        }
+
+        // echo "[---viewAll---where]";
+        // print_r($where);
+
+        $limit = " limit ".$start.",".$lenght;
+        
+        $sql = "select 
+                concat('searchdoc_', @rownum:=@rownum+1) AS DT_RowId, t1.*, t2.*,t3.*, GROUP_CONCAT(DATE_FORMAT(t4.APPOINTMENT_TIME,'%H:%i') order by APPOINTMENT_TIME) as APPOINTMENT_TIME
+                from (SELECT @rownum:=0) t0, fd_doctor as t1
+                left join (fd_rel_clinic_doctor as t2 left join fd_clinic_user as t3 on t2.clinic_user_id = t3.clinic_user_id )
+                on
+                t1.doctor_id = t2.doctor_id
+                left join fd_rel_doctor_appointment_time t4 on t4.doctor_id = t1.doctor_id
+                where
+                t1.ACTIVE_STATUS = 1
+                and 
+                t4.ACTIVE_STATUS = 1 "
+                .$where.
+                " group by t1.doctor_id
+                order by t4.APPOINTMENT_TIME".$limit;
+        // echo "[-----viewAll:".$sql."-----]";
         $ret = $this->db->fetchAll_sql($sql,null);
         
         return $ret;

@@ -18,7 +18,7 @@ var str = $.cookie("goto_data");
     var json_value = JSON.parse(str);
     // alert(json_value.APPOINTMENT_TIME);
     doctor_basic_info = json_value.CLINIC_NAME +" "+json_value.CLINIC_ADDR+" "+json_value.DOCTOR_TYPE;
-    $('#doctor_img').attr("src",json_value.DOCTOR_PHOTO);
+    $('#doctor_img').attr("src","img/"+json_value.DOCTOR_PHOTO);
     $('#doctor_name').text(json_value.DOCTOR_NAME);
     $('#doctor_basic_info').text(doctor_basic_info);
     $('#doctor_details').text(json_value.DOCTOR_INFO);

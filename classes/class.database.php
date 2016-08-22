@@ -89,6 +89,13 @@ class Database {
         
         return $iCount;
     }
+
+    public function col_exists_sql($sql){
+        $select = $sql;
+        $data = $this->db->execute($select)->fetchAll(PDO::FETCH_ASSOC);
+
+        return $data;
+    }
     
     function insertData($table, $rows){
 
