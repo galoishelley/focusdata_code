@@ -89,76 +89,8 @@
 	 	<div class="thumb-box9" data-stellar-background-ratio="0.1">
 			<div class="container">
 				<h2 class="wow fadeInRight">搜索医生结果</h2>
-				<!-- <div class="row">
-					<div class="wow fadeInLeft" data-wow-delay="0.4s">
-                        <form class="form-inline">
-                        	<div class="form-group">
-                              <label for="clinicarea">诊所区域</label>
-                              <select class="form-control" id="clinicarea" name="clinicarea">
-                                    <option>朝阳区</option>
-                                    <option>绿园区</option>
-                              </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="clinicname">诊所名称</label>
-                                <input type="text" class="form-control" id="clinicname" placeholder="诊所名称">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="doctortype">医生类别</label>
-                                <input type="text" class="form-control" id="doctortype" placeholder="医生类别">
-                            </div>
-                            <div class="form-group">
-                                <label for="doctorname">医生姓名</label>
-                                <input type="text" class="form-control" id="doctorname" placeholder="医生姓名">
-                            </div>
-                            <div class="form-group">
-                                <label for="apptime">预约时间</label>
-                                <input type="text" class="form-control form_datetime" id="apptime">
-                            </div>
-                            <div class="form-group">
-                              <label for="distance">距离</label>
-                              <select class="form-control" id="distance" name="distance">
-                                    <option>50m</option>
-                                    <option>100m</option>
-                              </select>
-                            </div>
-                            <! <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Clinic name">
-                            </div>
-                                <div class="form-group">
-                                <input type="text" class="form-control" placeholder="诊所区域">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="医生类别">
-                            </div>          
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="医生姓名">
-                            </div>
-                                <div class="form-group">
-                                <input type="text" class="form-control" placeholder="预约时间">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="距离">
-                            </div>  
-                            <div class="form-group">
-                                <button type="button" class="btn btn-info btn-md">
-                                 	<span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search Doctor
-                                </button>
-                                <button class="btn btn-success">
-                            		<span class="glyphicon" aria-hidden="true"></span> 使用常用搜索条件
-                            	</button>
-                            	<button class="btn btn-primary">
-                            		<span class="glyphicon glyphicon-book" aria-hidden="true"></span> 收藏搜索条件
-                            	</button>
-                            </div> 
-                        </form>        
-                    </div>
-                </div> -->
                 <div class="row">
                     <div class="row-1">
-                        <!-- <a href="index.html" class="btn btn-default">返回</a> -->
-                        <!-- Button trigger modal -->
                         <a class="btn btn-primary" href="index.html">
                           <span class="glyphicon  glyphicon-arrow-left"> 主页</span>
                         </a>
@@ -170,7 +102,7 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                        <h2 class="modal-title" id="gridSystemModalLabel">搜索医生</h4>
+                                        <h2 class="modal-title" id="gridSystemModalLabel">搜索医生</h2>
                                     </div>
                                     <div class="modal-body">
                                         <div class="container-fluid">
@@ -226,7 +158,7 @@
                 </div>
     
 				<div class="row">
-                    <input type="hidden" id="json_str1" value="123"/>
+                    <input type="hidden" id="json_str1"/>
                     <table id="dataTables-example" class="table table-hover  table-bordered" cellspacing="0" width="100%">
                         <thead class="table_title">
                             <tr>
@@ -236,7 +168,7 @@
                                 <th>诊所区域</th>
                                 <th>医生类别</th>
                                 <th>医生名称</th>
-                                <th style="width:200px;">医生可预约日程</th>
+                                <th>医生可预约日程</th>
                                 <th>详细</th>
                             </tr>
                         </thead>

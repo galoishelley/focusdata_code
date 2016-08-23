@@ -412,7 +412,8 @@ nav.tm_navbar .sub-menu > ul li > ul li a:hover {
   margin-bottom: 36px;
 }
 .thumb-box2 {
-  padding: 100px 0 200px 0;
+  padding: 100px 0 100px 0;
+  margin-bottom: 100px;
 }
 .thumb-box3 {
   margin: 34px 0 0 0;

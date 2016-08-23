@@ -101,6 +101,10 @@ $(function(){
       { 
         "visible": false,
         "data": "DOCTOR_INFO" 
+      },
+      { 
+        "visible": false,
+        "data": "DOCTOR_ID" 
       }
     ],
 
@@ -243,15 +247,16 @@ $(function(){
   $('#dataTables-example tbody').on( 'click', 'img', function (event) {
     var imgId = $(this).prop("id");
     var obj_data = _table.row($(this).parents('tr')).data();
-    // alert(obj_data.CLINIC_NAME);
+    console.log(obj_data.DOCTOR_ID);
     var data = {
-          CLINIC_NAME: obj_data.CLINIC_NAME,
+          CLINIC_NAME: obj_data.CLINIC_NAME,,
+
           CLINIC_ADDR: obj_data.CLINIC_ADDR,
+          DOCTOR_ID: obj_data.DOCTOR_ID,
           DOCTOR_NAME: obj_data.DOCTOR_NAME,
           DOCTOR_TYPE: obj_data.DOCTOR_TYPE,
           APPOINTMENT_TIME: obj_data.APPOINTMENT_TIME,
-          DOCTOR_PHOTO: obj_data.DOCTOR_PHOTO,
-          DOCTOR_INFO: obj_data.DOCTOR_INFO
+          DOCTOR_PHOTO: obj_data.DOCTOR_PHOTO          DOCTOR_INFO: obj_data.DOCTOR_INFO
         };
     var str = JSON.stringify(data);
 

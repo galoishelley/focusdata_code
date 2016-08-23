@@ -148,7 +148,7 @@ class Database {
         
         $insert .= ' VALUES ('.$values.')';
         
-        // echo $insert;
+        echo $insert;
         $data = $this->db->execute($insert); 
         $lastid = $this->db->lastInsertId();
         if($data){

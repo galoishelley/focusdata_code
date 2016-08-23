@@ -78,12 +78,14 @@
     </nav>
     <h1 class="navbar-brand navbar-brand_"><a href="index.html"><img src="img/logo_en.png" alt="logo"></a></h1>
 </header>
+
     <!--content-->
+    <!-- <div class="content searchDoctorDetail"> -->
     <div class="content searchDoctorDetail">
         <div class="stellar-section">
             <div class="thumb-box9" data-stellar-background-ratio="0.1">
                 <div class="container">
-                    <div class="row col-md-8 col-md-offset-2">
+                    <div class="row col-md-10 col-md-offset-1">
                         <h2 class="wow fadeInRight">我们的医生</h2>
                         <div class="wow fadeIn maxheight">
                             <div class="thumb-pad2-1">
@@ -96,46 +98,86 @@
                                     </div>
                                     <div class="app_time" id="app_time">
                                     </div>
-                                    <div class="bottom_btn pull-right">
-                                        <button class="btn btn-default" id="btn_return">返回</button>
-                                        <button class="btn btn-primary">预约医生</button>
-                                    </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="bottom_btn">
+                            <a class="btn btn-primary" href="searchDoctor.html">
+                              <span class="glyphicon  glyphicon-arrow-left"> 搜索医生</span>
+                            </a>
+                            <!-- <button class="btn btn-default" id="btn_return">返回</button> -->
+                            <button class="btn btn-primary" id="app_doctor"  data-toggle="modal" data-target="#myModalAppDoctor">预约医生</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-        <!-- <div class="thumb-box7">
-            <div class="container">
-                <h2 class="indent">Our Doctors</h2>
-                <div class="row  col-md-8 col-md-offset-2">
-                    <div class="wow fadeIn maxheight">
-                        <div class="thumb-pad2-1">
-                            <div class="thumbnail">
-                                <figure><img src="" alt="" id="doctor_img"></figure>
-                                <div class="caption">
-                                    <!-- <label id="doctor_name">1</label> 
-                                    <a id="doctor_name"></a>
-                                    <p id="doctor_basic_info"></p>
-                                    <p id="doctor_details"></p>
-                                </div>
-                                <div class="app_time" id="app_time">
 
-                                </div>
-                                <div class="bottom_btn pull-right">
-                                    <button class="btn btn-default" id="btn_return">返回</button>
-                                    <button class="btn btn-primary">预约医生</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
+    <input type="hidden" id="CUSTOMER_USER_ID"/>
+    <input type="hidden" id="DOCTOR_ID"/>
+    <div class="modal fade bs-example-modal-lg" role="dialog" aria-labelledby="gridSystemModalLabel" id="myModalAppDoctor">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h2 class="modal-title" id="gridSystemModalLabel">个人信息</h2>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <form class="form-inline form_add" role="form" id="modal_form_detail">
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <label for="username">用户名<span class="span-red">*</span></label>
+                                                            <input type="text" class="form-control" id="CUSTOMER_USER_NAME" name="CUSTOMER_USER_NAME">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="pwd">密码<span class="span-red">*</span></label>
+                                                            <input type="password" class="form-control" name="CUSTOMER_USER_PWD" id="CUSTOMER_USER_PWD">
+                                                        </div>
+                                                        
+                                                        <div class="form-group">
+                                                            <label for="pwd">手机验证码<span class="span-red">*</span></label>
+                                                            <input type="text" class="form-control" name="verifyCode" id="verifyCode">
+                                                        </div>
+                                                        <div class="form-group">
+                                                          <label for="user_mal">性别<span class="span-red">*</span></label>
+                                                          <select class="form-control" id="CUSTOMER_GENDER" name="CUSTOMER_GENDER">
+                                                                <option>男</option>
+                                                                <option>女</option>
+                                                          </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="birthday">生日<span class="span-red">*</span></label>
+                                                            <input type="text" class="form-control" name="CUSTOMER_BIRTHDAY" id="CUSTOMER_BIRTHDAY">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="Addr">家庭住址<span class="span-red">*</span></label>
+                                                            <input type="text" class="form-control" name="CUSTOMER_ADDR" id="CUSTOMER_ADDR">
+                                                        </div>  
+                                                        <div class="form-group">
+                                                            <label for="PhoneNumber">电话号码<span class="span-red">*</span></label>
+                                                            <input type="text" class="form-control" name="CUSTOMER_PHONE_NO" id="CUSTOMER_PHONE_NO">
+                                                        </div>  
+                                                        <div class="form-group">
+                                                            <label for="MedicalNo">医疗卡号<span class="span-red">*</span></label>
+                                                            <input type="text" class="form-control" name="MEDICAL_CARD_NO" id="MEDICAL_CARD_NO">
+                                                        </div>
+                                                    </fieldset>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary" id="btn_upd">修改用户信息</button>
+                                        <button type="button" class="btn btn-primary" id="btn_reset">重置</button>
+                                        <button type="button" class="btn btn-primary" id="btn_submit" autofocus>确认</button>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
 <!--footer-->
 <footer>
     <div class="container">
@@ -162,6 +204,7 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/tm-scripts.js"></script>
 <script src="js/jquery.cookie.js"></script>
+<script src="js/fd_pub.js"></script>
 <script src="js/fd_searchDoctorDetails.js"></script>
 </body>
 </html>

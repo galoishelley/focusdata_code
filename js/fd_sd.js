@@ -70,7 +70,7 @@ $(function(){
 		"bPaginate": true,//分页按钮
 	    "bLengthChange": false,//每页显示记录数
 	    "bFilter": false,//搜索栏
-	    "scrollX": false,
+	    "scrollX": true,
 	    "sPaginationType": "full_numbers",
 	    "serverSide": true,
 	    "processing": true,
@@ -265,7 +265,7 @@ $(function(){
 	      {
 	      	"orderable": false,
 	        "targets": 6,
-	        "sWidth": "500px"
+	        // "sWidth": "500px"
 	      },
 	      {
 	      	"orderable": false,
@@ -357,6 +357,7 @@ $(function(){
 		var data = {
 		      CLINIC_NAME: obj_data.CLINIC_NAME,
 		      CLINIC_ADDR: obj_data.CLINIC_ADDR,
+		      DOCTOR_ID: obj_data.DOCTOR_ID,
 		      DOCTOR_NAME: obj_data.DOCTOR_NAME,
 		      DOCTOR_TYPE: obj_data.DOCTOR_TYPE,
 		      APPOINTMENT_TIME: obj_data.APPOINTMENT_TIME,
