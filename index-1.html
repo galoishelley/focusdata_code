@@ -53,12 +53,12 @@
         <div class="container">
             <ul class="nav sf-menu clearfix">
                 <li><a href="index.html">home</a></li>
-                <li class="active sub-menu"><a href="index-1.html">our services</a><span></span>
+                <li class="sub-menu"><a href="index-1.html">our services</a><span></span>
                     <ul class="submenu">
-                        <li><a href="#">个人用户管理</a><span class="fa fa-angle-right"></span>
+                        <li class="active"><a href="userAppointmentRecoder.html">个人用户管理</a><span class="fa fa-angle-right"></span>
                              <ul class="submenu">
-                                <li><a href="#">预约记录</a></li>
-                                <li><a href="#">修改个人用户信息</a><span class="fa fa-angle-right"></span>
+                                <li><a href="userAppointmentRecoder.html">预约记录</a></li>
+                                <li><a href="userManagement.html?iflag=userUpdPersonInfo">修改个人用户信息</a><span class="fa fa-angle-right"></span>
                                      <ul class="submenu">
                                         <li><a href="#">修改用户信息</a></li>
                                         <li><a href="#">修改密码</a></li>
@@ -69,22 +69,30 @@
                                 
                             </ul> 
                         </li>
-                        <li><a href="search_doctor.html">搜索|预约医生</a></li>
-        				<li><a href="#">Clinic Management</a><span class="fa fa-angle-right"></span>
+                        <li><a href="searchDoctor.html">搜索|预约医生</a></li>
+                        <li><a href="clinicManagement.html">Clinic Management</a><span class="fa fa-angle-right"></span>
                             <ul class="submenu">
                                 <li><a href="#">Update Clinic user info</a></li>
                                 <li><a href="#">Update Doctor info</a></li>
                                 <li><a href="#">Update Pwd</a></li>
                             </ul> 
                         </li>
-        				
-						<li><a href="#">Admin Management</a></li>
-        			</ul>
+                        
+                        <li><a href="adminManagement.html">Admin Management</a></li>
+                    </ul>
                 </li>
                 <li><a href="index-2.html">about us</a></li>
                 <li><a href="index-3.html">staff</a></li>
                 <li><a href="index-4.html">Contacts</a></li>
                 <li><a href="sign_in.html">Sign in</a></li>
+                <li><a href="sign_up_person.html">Sign up</a></li>
+                <li class="sub-menu tourist"><a href="#" id="userinfo">游客</a><span></span>
+                    <ul class="submenu">
+                        <li><a href="#" id="usertype">用户类型:游客</a></li>
+                        <li><a href="#">账户管理</a></li>
+                        <li><button class="btn btn-danger" id="btn_out">安全退出</button></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </nav>

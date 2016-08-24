@@ -1,16 +1,15 @@
 $(function(){
 	
-  var serviceid = "UI01";
-
   if($.cookie("ilogin") == 1)
   {
     $('#userinfo').html($("#USER_NAME").val());
   }
 
+  //选择Remember Me记录cookie
 	if ($.cookie("fd_rmbUser") == "true") {
-        $("#ck_rmbUser").attr("checked", true);
-        $("#USER_NAME").val($.cookie("fd_username"));
-        $("#USER_PWD").val($.cookie("fd_password"));
+    $("#ck_rmbUser").attr("checked", true);
+    $("#USER_NAME").val($.cookie("fd_username"));
+    $("#USER_PWD").val($.cookie("fd_password"));
   }
 
   //记住用户名密码
@@ -31,6 +30,7 @@ $(function(){
     $.cookie("fd_username", str_username, { expires: 7 });
     $.cookie("fd_password", str_password, { expires: 7 });
 
+    //记录user type
     if(str_usertype==0){
       str_usertype = "诊所用户";
     }else if(str_usertype==1){
@@ -41,86 +41,85 @@ $(function(){
 
     $.cookie("fd_usertype", str_usertype, { expires: 7 });
  
-    // alert($('input[name="usertype"]:checked').val());
-    // alert($('#usertype:checked').val());
-
-    // $.cookie("username_tmp", "", { expires: -1 });
-    // $.cookie("username_tmp", str_username, { expires: 5 });
   };
 
 
   //解决表单验证
   $("#signup_form").submit(function(ev){ev.preventDefault();});
 
+
   $('#signin_ok').click( function () {
-     var bootstrapValidator = $("#signin_form").data('bootstrapValidator');
-     bootstrapValidator.validate();
-     if(bootstrapValidator.isValid()){
-       $("#signin_form").submit();
-
-       //form序列化成json
-       var json_func_form = $("#signin_form").serializeObject();
-       // var action_type='"action_type":"create"';
-       // json_func_form.push(JSON.parse(action_type));
-       // var newJson='{"name":"liubei","sex":"男"}';
-       // json_func_form.push(JSON.parse(newJson));
-
-      //var j =[{"name":"caocao","sex":"男"}];
-      // var newJson='{"name":"liubei","sex":"男"}';
-
-      // j.push(JSON.parse(newJson));
-
-      // alert(JSON.stringify(j));
-
-      //生成输入参数
-      var json_str = request_const(json_func_form,serviceid,0);
-      // alert(JSON.stringify(json_str));
+    var bootstrapValidator = $("#signin_form").data('bootstrapValidator');
+    bootstrapValidator.validate();
+    if(bootstrapValidator.isValid()){
+      $("#signin_form").submit();
 
 
-      // alert(JSON.stringify(json_str));
-      var sequ = json_str.sequ;
-      $.ajax({
+
+    // var action_type='"action_type":"create"';
+    // json_func_form.push(JSON.parse(action_type));
+    // var newJson='{"name":"liubei","sex":"男"}';
+    // json_func_form.push(JSON.parse(newJson));
+
+    //var j =[{"name":"caocao","sex":"男"}];
+    // var newJson='{"name":"liubei","sex":"男"}';
+
+    //j.push(JSON.parse(newJson));
+
+    //alert(JSON.stringify(j));
+
+    ///////////////////////////////////组织ajax 请求参数 begin///////////////////////////////
+    //form序列化成json
+    var json_form = $("#signin_form").serializeObject();
+    // serviceid = UI01
+    //生成输入参数,函数参数说明
+    // 1- json格式 项目实际需要的参数data
+    // 2- serviceid = UI01 在[二维码服务API接口文档.xlsx]文档中 服务(serviceid)列表 查找
+    // 3- 默认0 请求类型 一般情况无用
+    var json_str = request_const(json_form,"UI01",0);
+    //alert(JSON.stringify(json_str));
+
+    // console.log(json_str);
+
+    ///////////////////////////////////组织ajax 请求参数 end///////////////////////////////
+
+    $.ajax({
           type: "POST",
-          url: "classes/class.signin.php",
+          url: "classes/class.sign_in.php",
           dataType: "json",
           data:  {
             request:json_str
           },
           success: function (msg) {
-              var ret = msg.response;
-              // alert("js:"+ ret.msg);
-              if(sequ != ret.sequ){
-                alert("时序号错误请联系管理员ret. sequ=" + ret.sequ +",sequ="+ sequ);
+            // console.log(msg);
+            var ret = msg.response;
+            if(ret.success){
+              if(json_str.sequ != ret.sequ){
+                alert("时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
+                return false;
               }
-              if(ret.state=="1"){
-                //登录标志
-                $.cookie("ilogin", 1);
-                Save();
-                window.location.href="index.html";
-                
-              }else{
-                alert("登录失败!" + ret.msg);
-              }
-              
+
+              //登录标志
+              $.cookie("ilogin", 1);
+              //记录cookie
+              Save();
+              window.location.href="index.html";
+
+            }else{
+              alert(ret.status.ret_code + " " + ret.status.ret_msg);
+              $('#signin_ok').attr('disabled',false); 
+            }
+            
           },
           error: function(XMLHttpRequest, textStatus, errorThrown){
             //请求失败之后的操作
-            alert("ajax登录失败!" + textStatus);
-            // alert(XMLHttpRequest.status);
-            // alert(XMLHttpRequest.readyState);
-         }
+            alert("SP01:999999:请联系管理员" + textStatus);
+          }
       });
     }
     return false;
   });
 
-  // $("#addCancel").click(function(){
-  //   $.cookie("func_data", null);
-  //   window.location.href="func.html"; 
-  // });
-
-
-  
 	$('#signin_form').bootstrapValidator({
 　　　message: 'This value is not valid',
     　feedbackIcons: {

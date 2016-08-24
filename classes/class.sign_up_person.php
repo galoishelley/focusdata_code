@@ -1,8 +1,8 @@
 <?php
-include_once ('class.signup_clinic_db.php');
-class Sign_up_clinic
+include_once ('class.sign_up_person_db.php');
+class Sign_up_person
 {
-	private $Sign_up_clinic;
+	private $sign_up_person;
 	private $arr_values = array();
 	private $request;
 	private $_dbug;
@@ -10,7 +10,7 @@ class Sign_up_clinic
 	public function __construct()
 	{
 		session_start ();
-		$this->Sign_up_clinic = new Sign_up_clinic_DB();
+		$this->sign_up_person = new Sign_up_person_DB();
 		$this->_dbug = false;
 
 		// $this->user_name = $_SESSION ['user_name'];
@@ -20,12 +20,11 @@ class Sign_up_clinic
 		if (isset ( $_POST ['request'] )){
 			$this->request = $_POST ['request'];
 		}
-		
+
 		if($this->_dbug){
-            echo "[---Sign_up_clinic---request]";
+            echo "[---sign_up---request]";
             print_r($this->request);
         }
-
 
 		$this->arr_values = $this->request["para"];
 		if (isset ( $this->arr_values["action_type"] )){
@@ -38,8 +37,10 @@ class Sign_up_clinic
 		
 		$this->action = $action_type;
 
-		$this->user_name = $this->arr_values["CLINIC_USER_NAME"];
-		$this->user_pwd = $this->arr_values["CLINIC_USER_PWD"];
+		unset($this->arr_values["action_type"]);
+		unset($this->arr_values["verifyCode"]);
+		$this->user_name = $this->arr_values["CUSTOMER_USER_NAME"];
+		$this->user_pwd = $this->arr_values["CUSTOMER_USER_PWD"];
 		$this->arr_values["CREATE_USER"] = $this->user_name;
 		$this->arr_values["UPDATE_USER"] = $this->user_name;
 		$this->arr_values["CREATE_DATE"] = $this->date;
@@ -86,7 +87,7 @@ class Sign_up_clinic
 		$ret_msg = "注册成功";
 		$ret_code = "UP0000"; 
 
-		$ret = $this->Sign_up_clinic->create($this->arr_values);
+		$ret = $this->sign_up_person->create($this->arr_values);
 		
 		if($ret == 2){
 			$success = false;
@@ -153,8 +154,7 @@ class Sign_up_clinic
 		$ret = $this->func->update ($this->arr_values);
 		echo $ret;
 	}
-
 }
 
-$Sign_up_clinic = new Sign_up_clinic();
+$sign_up_person = new Sign_up_person();
 ?>

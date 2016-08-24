@@ -169,8 +169,7 @@ $(function(){
           request:json_str
         },
         success: function (msg) {
-            console.log("msg begin");
-            console.log(msg);
+            // console.log(msg);
             var ret = msg.response;
             if(ret.success){
               if(json_str.sequ != ret.sequ){
@@ -178,9 +177,7 @@ $(function(){
                 return;
               }
               var data_1 = ret.data[0];
-              console.log(data_1);
               time_id = data_1.DOCTOR_APPOINTMENT_TIME_ID;
-              console.log(time_id);
             }else{
               alert("获取用户信息失败!" + ret.status.ret_code + " " + ret.status.ret_msg);
               return;
@@ -194,7 +191,6 @@ $(function(){
        }
     });
 
-    alert(time_id);
     if(time_id == ""){
       alert("获取医生预约时间ID错误!");
       return;
@@ -207,15 +203,15 @@ $(function(){
     }
     var para_1={
       action_type: "create",
-      CUSTOMER_USER_ID: parseInt($('#CUSTOMER_USER_ID').val()),
-      DOCTOR_ID: parseInt($('#DOCTOR_ID').val()),
-      DOCTOR_APPOINTMENT_TIME_ID:parseInt(time_id),
-      APPOINTMENT_STATUS_ID:parseInt("1")
+      CUSTOMER_USER_ID: $('#CUSTOMER_USER_ID').val(),
+      DOCTOR_ID: $('#DOCTOR_ID').val(),
+      DOCTOR_APPOINTMENT_TIME_ID:time_id,
+      APPOINTMENT_STATUS_ID:1
     };
 
     json_str_1 = request_const(para_1,"AD01",0);
 
-    console.log(json_str_1);
+    // console.log(json_str_1);
 
     //请求
     $.ajax({
@@ -227,34 +223,18 @@ $(function(){
           request:json_str_1
         },
         success: function (msg) {
-            console.log(msg);
+            // console.log(msg);
             var ret_1 = msg.response;
             if(ret_1.success){
               if(json_str_1.sequ != ret_1.sequ){
                 alert("AD01 时序号错误,请联系管理员ret.sequ"+ret_1.sequ+" json_str.sequ:"+json_str_1.sequ);
                 return;
               }
-            //   var data = ret.data[0];
-            //   console.log(data);
-            //   $('#CUSTOMER_USER_NAME').val(data.CUSTOMER_USER_NAME);
-            //   $('#CUSTOMER_USER_PWD').val(data.CUSTOMER_USER_PWD);
-            //   $('#CUSTOMER_GENDER').val(data.CUSTOMER_GENDER);
-            //   $('#CUSTOMER_BIRTHDAY').val(data.CUSTOMER_BIRTHDAY);
-            //   $('#CUSTOMER_ADDR').val(data.CUSTOMER_ADDR);
-            //   $('#CUSTOMER_PHONE_NO').val(data.CUSTOMER_PHONE_NO);
-            //   $('#MEDICAL_CARD_NO').val(data.MEDICAL_CARD_NO);
-
-            //   $('#CUSTOMER_USER_NAME').attr("disabled","disabled");
-            //   $('#CUSTOMER_USER_PWD').attr("disabled","disabled");
-            //   $('#CUSTOMER_GENDER').attr("disabled","disabled");
-            //   $('#CUSTOMER_BIRTHDAY').attr("disabled","disabled");
-            //   $('#CUSTOMER_ADDR').attr("disabled","disabled");
-            //   $('#CUSTOMER_PHONE_NO').attr("disabled","disabled");
-            //   $('#MEDICAL_CARD_NO').attr("disabled","disabled");
-            // }else{
-              alert("预约医生失败!" + ret_1.status.ret_code + " " + ret_1.status.ret_msg);
+              window.location.href="userManagement.html"; 
+              
+            }else{
+              alert(ret_1.status.ret_code + ":" + ret_1.status.ret_msg);
             }
-            
         },
         error: function(XMLHttpRequest, textStatus, errorThrown){
           //请求失败之后的操作
@@ -262,6 +242,4 @@ $(function(){
        }
     });
   });
-
-
 });

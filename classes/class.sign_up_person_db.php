@@ -1,33 +1,26 @@
 <?php 
 include_once('class.database.php');
 
-class SignUp_DB{
+class Sign_up_person_DB{
     private $db;
-    // public $lastid;
+    private $_dbug;
     public function __construct(){  
 
-    $this->db = new Database();
-	/**
-    if(isset($_POST['json'])){
-        $json = $_POST['json'];
-        $_SESSION['jsonData'] = $json;
-        $json = json_decode($_SESSION["jsonData"],true);
-        $this->data = $json;
-        $this->action = $json['request'];
-         $this->lastid = $this->db->lastInsertId();
+        $this->db = new Database();
+        $this->_dbug = false;
+    }
 
-         
-    }else{
-        $this->lastid = $this->db->lastInsertId();
-    }
-    **/
-    }
     public function col_exists($where){
         $ret = $this->db->col_exists('fd_customer_user','CUSTOMER_USER_NAME="'.$where.'"');
         return $ret;
     }
 
     public function create($arr_values){
+
+        if($this->_dbug){
+            echo "[---create---arr_values]";
+            print_r($arr_values);
+        }
 
         if($this->col_exists($arr_values["CUSTOMER_USER_NAME"])){
             return 2;
@@ -37,23 +30,6 @@ class SignUp_DB{
         return $ret;
     }
 
-    /**
-    public function save(){
-        
-        $this->logFile($this->data);
-        $sFname = $this->data['sFname'];
-        $sMname= $this->data['sMname'];
-        $sLname = $this->data['sLname'];
-        $sAddress = $this->data['sAddress'];
-        $sNotes =$this->data['sNotes'];
-    
-        
-        $this->lastid = $this->db->insertData('students',
-                               array('sFname','sMname','sLname','sAddress','sNotes'),
-                               array($sFname,$sMname,$sLname,$sAddress,$sNotes));
-       
-    }
-    **/
     public function update($arr_values){
         $func_code = $arr_values['func_code'];
         unset($arr_values['func_code']);  
@@ -88,19 +64,5 @@ class SignUp_DB{
         $ret = $this->db->deleteData('qr_func',"func_code='".$arr_values[$i]."'");
         return $ret;
     }
-    /**
-    private function logFile($msg)
-    {
-        $myFile = "visibility.txt";
-        $fh = fopen($myFile, 'a') or die("can't open file");
-            if(is_array($msg)){
-            fwrite($fh, print_r($msg, TRUE));
-            
-        } else {
-            fwrite($fh, $msg . PHP_EOL);
-        }
-        fclose($fh);
-    }
-    **/
 }
 ?>

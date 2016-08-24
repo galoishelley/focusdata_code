@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>sign up</title>
+<title>appointment doctor</title>
 <meta charset="utf-8">    
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="img/favicon.ico" type="image/x-icon">
@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="fonts/font-awesome.css">
 <!--User CSS-->
 <link rel="stylesheet" href="css/user.css">
+<link rel="stylesheet" href="css/focusdata.css">
 <!--JS-->
 <script src="js/jquery.js"></script>
 <script src="js/jquery-migrate-1.2.1.min.js"></script>
@@ -60,23 +61,46 @@
         <div class="container">
             <ul class="nav sf-menu clearfix">
                 <li><a href="index.html">home</a></li>
-                <li class="sub-menu"><a href="index-1.html">our services</a><span></span>
+                <li class="sub-menu active"><a href="index-1.html">our services</a><span></span>
                     <ul class="submenu">
-        				<li><a href="#">history</a></li>
-        				<li><a href="#">staff</a><span class="fa fa-angle-right"></span>
-                            <ul class="submenu">
-                                <li><a href="#">fresh</a></li>
-                                <li><a href="#">archive</a></li>
+                        <li><a href="userAppointmentRecoder.html">个人用户管理</a><span class="fa fa-angle-right"></span>
+                             <ul class="submenu">
+                                <li><a href="userAppointmentRecoder.html">预约记录</a></li>
+                                <li><a href="userManagement.html?iflag=userUpdPersonInfo">修改个人用户信息</a><span class="fa fa-angle-right"></span>
+                                     <ul class="submenu">
+                                        <li><a href="#">修改用户信息</a></li>
+                                        <li><a href="#">修改密码</a></li>
+                                    </ul> 
+                                </li>
+                                <li><a href="#">收藏医生管理</a></li>
+                                <li><a href="#">常用搜索条件管理</a></li>
+                                
                             </ul> 
                         </li>
-        				<li><a href="#">news</a></li>
-        			</ul>
+                        <li><a href="searchDoctor.html">搜索|预约医生</a></li>
+                        <li><a href="clinicManagement.html">Clinic Management</a><span class="fa fa-angle-right"></span>
+                            <ul class="submenu">
+                                <li><a href="#">Update Clinic user info</a></li>
+                                <li><a href="#">Update Doctor info</a></li>
+                                <li><a href="#">Update Pwd</a></li>
+                            </ul> 
+                        </li>
+                        
+                        <li><a href="adminManagement.html">Admin Management</a></li>
+                    </ul>
                 </li>
                 <li><a href="index-2.html">about us</a></li>
                 <li><a href="index-3.html">staff</a></li>
                 <li><a href="index-4.html">Contacts</a></li>
                 <li><a href="sign_in.html">Sign in</a></li>
-                <li class="active"><a href="sign_up.html">Sign up</a></li>
+                <li><a href="sign_up_person.html">Sign up</a></li>
+                <li class="sub-menu tourist"><a href="#" id="userinfo">游客</a><span></span>
+                    <ul class="submenu">
+                        <li><a href="#" id="usertype">用户类型:游客</a></li>
+                        <li><a href="#">账户管理</a></li>
+                        <li><button class="btn btn-danger" id="btn_out">安全退出</button></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </nav>
@@ -84,27 +108,35 @@
 </header>
 
 <!--content-->
-<div class="content">
+<div class="content appointmentDoctor">
 	<div class="stellar-section">
 		<div class="thumb-box9" data-stellar-background-ratio="0.1">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-3 col-md-3 col-sm-3 wow fadeInUp" data-wow-delay="0.1s">
-	                    <h2>Doctor Info</h2>
-	                    <ul class="list4">
-	                        <li>
-	                            <strong>尹鑫</strong>
-	                            <div class="extra-wrap">
-	                                <p>牙科 人民诊所 朝阳区</p>
-	                            </div>
-	                        </li>
-	                        <li>
-	                        	<appointment>预约时间</appointment>
-	                            <appointment>2016-7-13 9:30</appointment>
-	                        </li>
-	                    </ul>
+					<div class="col-lg-3 col-md-3 col-sm-12 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="doctor-info">
+    	                    <h2>Doctor Info</h2>
+    	                    <ul class="list4">
+                                <li>
+                                    <figure><img src="img/page2_pic10.jpg" class="img-responsive img-thumbnail" alt="" id="doctor_img"></figure>
+                                </li>
+    	                        <li>
+    	                            <strong id="doctor_name"></strong>
+    	                            <div class="extra-wrap">
+    	                                <p id="clinic_name"></p>
+                                        <p id="clinic_addr"></p>
+                                        <p id="doctor_type"></p>
+    	                            </div>
+    	                        </li>
+    	                        <li>
+    	                        	<appointment>预约时间 2016-8-20</appointment>
+                                    <div class="app_time" id="app_time">
+    	                            <!-- <appointment id="app_time">2016-7-13 9:30</appointment> -->
+    	                        </li>
+    	                    </ul>
+                        </div>
 	                </div>
-	                <div class="col-lg-9 col-md-9 col-sm-9 wow fadeInUp" data-wow-delay="0.1s">
+	                <div class="col-lg-9 col-md-9 col-sm-12 wow fadeInUp person-info" data-wow-delay="0.1s">
 	                    <div class="thumb-box5_1">
 				        	<div class="row">
 					            <div class="box">
@@ -114,17 +146,28 @@
 					        </div>
 				            
 				            <div class="row">
+
 					            <form id="PersonalInfo">
 					            <div class="success" style="display: none;">Your subscribe request<br> has been sent!</div>
 					              	<fieldset>
-					                	<input type="text" class="form-control" placeholder="UserName">
-					                	<input type="text" class="form-control" placeholder="PassWord">
-					                	<input type="text" class="form-control" placeholder="PhoneCodes">
-					                	<input type="text" class="form-control" placeholder="Birthday">
-					                	<input type="text" class="form-control" placeholder="Home Address">
-					                	<input type="text" class="form-control" placeholder="Phone Number">
-					                	<input type="text" class="form-control" placeholder="Medical Card">
-					                	<button class="btn-default btn6">Appointment Doctor</button>
+					                	<input type="text" class="form-control" placeholder="UserName"  name="CUSTOMER_USER_NAME" id="CUSTOMER_USER_NAME" >
+					                	<input type="text" class="form-control" placeholder="PassWord" name="CUSTOMER_USER_PWD" id="CUSTOMER_USER_PWD" >
+					                	<input type="text" class="form-control" placeholder="PhoneCodes" name="verifyCode" id="verifyCode">
+                                        <select class="form-control"  name="CUSTOMER_GENDER" id="CUSTOMER_GENDER">
+                                            <option>男</option>
+                                            <option>女</option>
+                                        </select>
+					                	<input type="text" class="form-control" placeholder="Birthday" name="CUSTOMER_BIRTHDAY" id="CUSTOMER_BIRTHDAY">
+					                	<input type="text" class="form-control" placeholder="Home Address"  name="CUSTOMER_ADDR" id="CUSTOMER_ADDR">
+					                	<input type="text" class="form-control" placeholder="Phone Number"  name="CUSTOMER_PHONE_NO" id="CUSTOMER_PHONE_NO">
+					                	<input type="text" class="form-control" placeholder="Medical Card"  name="MEDICAL_CARD_NO" id="MEDICAL_CARD_NO">
+
+                                        
+                                        <a class="btn btn-default btn6" href="searchDoctor.html" style="padding:15px 33px 25px 33px;">
+                                          <span class="glyphicon  glyphicon-arrow-left"> 搜索医生</span>
+                                        </a>
+                                        <button class="btn btn-default btn6" id="btn_submit">Appointment Doctor</button>
+					                	<!-- <button class="btn-default btn6" id="btn_submit">Appointment Doctor</button> -->
 					            	</fieldset>
 					          	</form>
 				        	</div>
@@ -135,6 +178,8 @@
 		</div>
 	</div>
 </div>
+<input type="hidden" id="CUSTOMER_USER_ID"/>
+<input type="hidden" id="DOCTOR_ID"/>
 <!--footer-->
 <footer>
     <div class="container">
@@ -160,6 +205,9 @@
 </footer>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/tm-scripts.js"></script>
-<script src="js/appointment.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/fd_pub.js"></script>
+<script src="js/fd_appointmentDoctor.js"></script>
+
 </body>
 </html>

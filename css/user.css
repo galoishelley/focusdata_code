@@ -189,7 +189,7 @@ form{
 
 .thumb-box5_1 {
   background: url(../img/bg_pic1.jpg) center center no-repeat;
-  padding: 26px, 10px;
+  /*padding: 26px 15px;*/
   background-size: cover;
 }
 .thumb-box5_1 .row {
@@ -242,6 +242,36 @@ form{
   -o-transition: all 0.25s;
   transition: all 0.25s;
 }
+
+#PersonalInfo select {
+  box-shadow: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0 13px 0 0;
+  /*width: 515px;*/
+  width:100%;
+  outline: none;
+  background: none;
+  border-radius: 0;
+  border: 1px solid #8db3c3 !important;
+  font: italic 18px/18px 'Georgia', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #ffffff;
+  padding: 10px 15px;
+  height: 55px;
+  resize: none;
+  float: left;
+  -webkit-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  transition: all 0.25s;
+}
+
+
+#PersonalInfo select:focus {
+  outline: none;
+  border: none;
+}
+
 #PersonalInfo input:focus {
   outline: none;
   border: none;
@@ -295,9 +325,8 @@ form{
 }
 
 .left_con {
-  background: url(../img/bg_pic1.jpg) center center no-repeat;
+  background: url(../img/bg_pic1.jpg) no-repeat fixed top;
   margin-top:62px;
-  background:;
   margin: 1px 1px;
   box-shadow: .5px .5px 6px 1px #ccc;
   /*box-shadow: 5px 5px 6px #ccc;*/
@@ -503,52 +532,6 @@ a.list-group-item-danger.active:focus {
   line-height: 1.3;
 }
 
-/*************userRecoder***************/
-.userRecoder .demo-txt{
-  margin:10px 0px;
-  /*padding: 10px 0px;*/
-  color:#000;
-}
-
-.userRecoder .demo-txt h2{
-  margin-bottom: 30px;
-}
-
-.userRecoder .demo-txt form{
-  padding: 0 0;
-}
-
-.userRecoder .demo-txt .form-inline .form-group{
-    margin:0px;
-    margin-right:5px;
-    margin-bottom: 10px;
-}
-
-.userRecoder .col-lg-4 {
-  padding-left:5px;
-  padding-right:5px;
-}
-
-.userRecoder .col-md-8 {
-  padding-left:5px;
-  padding-right:5px;
-}
-
-.userRecoder .table{
-
-}
-.userRecoder .pagination{
-  margin:0px;
-}
-
-.userRecoder .table{
-  margin-bottom: 10px;
-}
-
-.userRecoder nav{
-  float:right;
-  /*margin-bottom: 20px;*/
-}
 
 /*************user managerment***************/
 .userUpd .demo-txt{
@@ -721,18 +704,18 @@ table thead .sorting:after {
   margin:6px 15px;
 }*/
 
-.dataTables_wrapper{
+/*.dataTables_wrapper{
   margin:6px 15px;
-}
+}*/
 
 /*.table > tbody > tr > td{
  line-height: 10px;
 }*/
 
-.form-inline .form-control{
+/*.form-inline .form-control{
   margin-bottom: 10px;
 }
-
+*/
 .col_0_class{
   text-align: center;
 }
@@ -752,5 +735,4 @@ table thead .sorting:after {
 #myModal form{
 	padding:0px 0px;
 }
-
 

@@ -61,6 +61,20 @@ th, td {
 .radio-inline{
   width: 15%;
 }
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * searchDoctor
+ */
+.searchDoctor .form-inline .form-control{
+	margin-bottom: 10px;
+}
+
+.searchDoctor .row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * searchDoctorDetails
  */
@@ -153,11 +167,19 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination{
  * col
  */
 .col-sm-6,.col-sm-12,
-.col-md-2,.col-md-3{
+.col-md-2,.col-md-3
+{
 	padding-right: 0px;
 	padding-left: 0px;
 }
 
+
+.col-sm-10,
+.col-md-10,
+.col-lg-10{
+	padding-right: 0px;
+	padding-left: 2px;
+}
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * index.html
  */
@@ -166,12 +188,13 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination{
 /*    left: 10px;
     top: 10px;*/
     /* margin-top: 20px;
-    margin-bottom: 20px */; 
+    margin-bottom: 20px */;
+    background: url(../img/bg_pic1.jpg ) no-repeat fixed top;
     z-index: 0;
     width: 100%;
-    background-color:#FFFF00;
+    /*background-color:#FFFF00;*/
     filter:Alpha(opacity=60);
-    background-color: rgba(255,255,255,0.6);
+    /*background-color: rgba(255,255,255,0.6);*/
     text-align: left;
     border-radius:4px;
 }
@@ -216,5 +239,115 @@ nav.tm_navbar .tourist > ul{
 
 #btn_out{
 	width:100%;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * menu
+ */
+/*.appointmentDoctor p{
+	/*text-align: center;
+	font: italic 18px/18px 'Georgia', "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #ffffff;
+}*/
+
+.appointmentDoctor .list4 li strong{
+	/*text-align: center;*/
+	font: bold 36px/1em 'Georgia', "Helvetica Neue", Helvetica, Arial, sans-serif;
+	/*font: bold 18px/18px 'Georgia', "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+	color: #ffffff;
+}
+
+/*.appointmentDoctor .list4 li p{
+	/*text-align: center;
+	font: bold 36px/1em 'Georgia', "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font: italic 18px/18px 'Georgia', "Helvetica Neue", Helvetica, Arial, sans-serif;
+	/*color: #ffffff;
+}*/
+
+
+/*.doctor-info{
+	padding: 0px 15px;
+}
+
+.person-info{
+	margin:0px 15px;
+}
+*/
+
+.appointmentDoctor .row{
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+.doctor-info{
+	margin-right: 15px;
+}
+
+.appointmentDoctor .radio-inline{
+	width: 40%;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * userAppointmentRecoder
+ */
+
+.userAppointmentRecoder{
+  /*margin:10px 0px;*/
+  padding: 10px 10px;
+  color:#000000;
+  background-color: #FFFFFF;
+}
+
+.userAppointmentRecoder h2{
+  margin-bottom: 30px;
+   color:#000000;
+}
+
+.userAppointmentRecoder form{
+  padding: 0 0;
+}
+
+.userAppointmentRecoder .form-inline .form-group{
+    margin:0px;
+    margin-right:5px;
+    margin-bottom: 10px;
+}
+
+.userAppointmentRecoder .col-lg-4 {
+  padding-left:5px;
+  padding-right:5px;
+}
+
+.userAppointmentRecoder .col-md-8 {
+  padding-left:5px;
+  padding-right:5px;
+}
+
+.userAppointmentRecoder .table{
+
+}
+.userAppointmentRecoder .pagination{
+  margin:0px;
+}
+
+.userAppointmentRecoder .table{
+  margin-bottom: 10px;
+}
+
+.userAppointmentRecoder nav{
+  float:right;
+  /*margin-bottom: 20px;*/
+}
+
+.userAppointmentRecoder .form-inline .input-group{
+	margin-bottom: 10px;
+}
+
+.userAppointmentRecoder .form-inline button{
+	margin-bottom: 10px;
+}
+.userAppointmentRecoder .row{
+	margin-right: 0px;
+	margin-left: 0px;
 }
 

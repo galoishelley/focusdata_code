@@ -121,7 +121,7 @@ class Database {
                 $values .= '"'.$rows[$keys[$i]].'"';
             }
             else{
-                $values .= '='.$rows[$keys[$i]];
+                $values .= $rows[$keys[$i]];
             }
 
             if($i != count($rows)-1){
@@ -148,7 +148,7 @@ class Database {
         
         $insert .= ' VALUES ('.$values.')';
         
-        echo $insert;
+        // echo $insert;
         $data = $this->db->execute($insert); 
         $lastid = $this->db->lastInsertId();
         if($data){

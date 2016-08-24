@@ -1,26 +1,11 @@
 <?php 
 include_once('class.database.php');
 
-class SignUpClinic_DB{
+class Sign_up_clinic_DB{
     private $db;
-    // public $lastid;
     public function __construct(){  
 
     $this->db = new Database();
-	/**
-    if(isset($_POST['json'])){
-        $json = $_POST['json'];
-        $_SESSION['jsonData'] = $json;
-        $json = json_decode($_SESSION["jsonData"],true);
-        $this->data = $json;
-        $this->action = $json['request'];
-         $this->lastid = $this->db->lastInsertId();
-
-         
-    }else{
-        $this->lastid = $this->db->lastInsertId();
-    }
-    **/
     }
     public function col_exists($where){
         $ret = $this->db->col_exists('fd_clinic_user','CLINIC_USER_NAME="'.$where.'"');
@@ -37,23 +22,6 @@ class SignUpClinic_DB{
         return $ret;
     }
 
-    /**
-    public function save(){
-        
-        $this->logFile($this->data);
-        $sFname = $this->data['sFname'];
-        $sMname= $this->data['sMname'];
-        $sLname = $this->data['sLname'];
-        $sAddress = $this->data['sAddress'];
-        $sNotes =$this->data['sNotes'];
-    
-        
-        $this->lastid = $this->db->insertData('students',
-                               array('sFname','sMname','sLname','sAddress','sNotes'),
-                               array($sFname,$sMname,$sLname,$sAddress,$sNotes));
-       
-    }
-    **/
     public function update($arr_values){
         $func_code = $arr_values['func_code'];
         unset($arr_values['func_code']);  
@@ -88,19 +56,5 @@ class SignUpClinic_DB{
         $ret = $this->db->deleteData('qr_func',"func_code='".$arr_values[$i]."'");
         return $ret;
     }
-    /**
-    private function logFile($msg)
-    {
-        $myFile = "visibility.txt";
-        $fh = fopen($myFile, 'a') or die("can't open file");
-            if(is_array($msg)){
-            fwrite($fh, print_r($msg, TRUE));
-            
-        } else {
-            fwrite($fh, $msg . PHP_EOL);
-        }
-        fclose($fh);
-    }
-    **/
 }
 ?>

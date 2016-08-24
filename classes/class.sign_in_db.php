@@ -1,7 +1,7 @@
 <?php 
 include_once('class.database.php');
 
-class Signin_DB{
+class sign_in_DB{
     private $db;
     public function __construct(){  
 

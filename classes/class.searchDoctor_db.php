@@ -82,12 +82,12 @@ class SearchDoctor_DB{
         }
         if($this->_dbug){
             echo "[---col_exists_sql2---requesttype]";
-            print_r($arr_values);
+            print_r($requesttype);
         }
 
         $keys = array();
         $keys_where =array();
-        if($requesttype==0){
+        if($requesttype==0){ //全体模糊查询
             $where = " and ( ";
         }else{
             $where = "";
