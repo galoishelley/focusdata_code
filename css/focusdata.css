@@ -288,65 +288,70 @@ nav.tm_navbar .tourist > ul{
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * userAppointmentRecoder
+ * PersonUser
  */
 
-.userAppointmentRecoder{
+.PersonUser{
   /*margin:10px 0px;*/
   padding: 10px 10px;
   color:#000000;
   background-color: #FFFFFF;
 }
 
-.userAppointmentRecoder h2{
+.PersonUser h2{
   margin-bottom: 30px;
    color:#000000;
 }
 
-.userAppointmentRecoder form{
+.PersonUser form{
   padding: 0 0;
 }
 
-.userAppointmentRecoder .form-inline .form-group{
+.PersonUser .form-inline .form-group{
     margin:0px;
-    margin-right:5px;
+    /*margin-right:5px;*/
     margin-bottom: 10px;
 }
 
-.userAppointmentRecoder .col-lg-4 {
+.PersonUser .col-lg-4 {
   padding-left:5px;
   padding-right:5px;
 }
 
-.userAppointmentRecoder .col-md-8 {
+.PersonUser .col-md-8 {
   padding-left:5px;
   padding-right:5px;
 }
 
-.userAppointmentRecoder .table{
+.PersonUser .col-md-6, .col-lg-4 {
+  padding-left:0px;
+  padding-right:0px;
+}
+
+.PersonUser .table{
 
 }
-.userAppointmentRecoder .pagination{
+.PersonUser .pagination{
   margin:0px;
 }
 
-.userAppointmentRecoder .table{
+.PersonUser .table{
   margin-bottom: 10px;
 }
 
-.userAppointmentRecoder nav{
+.PersonUser nav{
   float:right;
   /*margin-bottom: 20px;*/
 }
 
-.userAppointmentRecoder .form-inline .input-group{
+.PersonUser .form-inline .input-group{
 	margin-bottom: 10px;
 }
 
-.userAppointmentRecoder .form-inline button{
+.PersonUser .form-inline button{
 	margin-bottom: 10px;
 }
-.userAppointmentRecoder .row{
+.PersonUser .row{
 	margin-right: 0px;
 	margin-left: 0px;
 }

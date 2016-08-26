@@ -2,33 +2,47 @@
 var json_form;
 var requesttype = 0;
 var json_str;
+
 $(function(){
+	
+	var ilogin = $.cookie("ilogin");
 
-	var serviceid = "SD01";
+	$('#btn_out').click(function(){
+		$.cookie("ilogin", "");
+		// $('#userinfo').html();
+		window.location.href="index.html"; 
 
+		if ($.cookie("fd_rmbUser") == "false") {
+		  $.cookie("fd_userid", "");
+		  $.cookie("fd_username", "");
+		  $.cookie("fd_password", "");
+		  $.cookie("fd_usertype", "");
+		}
+
+	});
+
+	if(ilogin == 1)
+	{
+		var username = $.cookie("fd_username");
+
+		$('#userinfo').html(username);
+		$('#usertype').html("用户类型: "+$.cookie("fd_usertype"));
+	}
 
 ///////////////////////////////////组织ajax 请求参数 begin///////////////////////////////
 
 	var search_con = $.cookie("search_con");
+	// console.log($.cookie("search_con"));
 
-    // $.cookie("func_data", "");
-    if(search_con != ""){
-    	requesttype = 0;
-    	json_form = {
-    		CLINIC_ADDR: search_con,
-    		CLINIC_NAME:search_con,
-    		DOCTOR_TYPE:search_con,
-    		DOCTOR_NAME:search_con,
-    		APPOINTMENT_TIME:search_con
-    	}
+	requesttype = 0;
 
-    }
-    else
-    {
-    	requesttype = 1;
-    	//form序列化成json
-    	json_form = $("#modal_form").serializeObject();
-    }
+	json_form = {
+		CLINIC_ADDR: search_con,
+		CLINIC_NAME: search_con,
+		DOCTOR_TYPE: search_con,
+		DOCTOR_NAME: search_con,
+		APPOINTMENT_TIME: search_con
+	};
 
     var json_stringify=JSON.stringify(json_form);
     json_form = json_stringify.replace(/[ ]/g,"");
@@ -36,31 +50,9 @@ $(function(){
     //生成输入参数
     json_str = request_const(JSON.parse(json_form),"SD01",requesttype);
 
-
-
-    //alert(JSON.stringify(json_str));
-
     console.log(json_str);
 
 ///////////////////////////////////组织ajax 请求参数 end///////////////////////////////
-/*
-	//form序列化成json
-   	var json_form = $("#modal_form").serializeObject();
-	//生成输入参数
-	var json_str = request_const(json_form);
-
-	json_str.para.CLINIC_ADDR=search_con;
-	json_str.para.CLINIC_NAME=search_con;
-	json_str.para.DOCTOR_TYPE=search_con;
-	json_str.para.DOCTOR_NAME=search_con;
-	json_str.para.APPOINTMENT_TIME=search_con;
-
-	console.log(json_str);
-	json_stringify=JSON.stringify(json_str);
-	console.log("123");
-	console.log(json_stringify);
-	$('#json_str1').val();
-	$('#json_str1').val(json_stringify.replace(/[ ]/g,""));*/
 
    	var _table = $('#dataTables-example').DataTable({
 	   	// "responsive": true,
@@ -85,18 +77,7 @@ $(function(){
 			"dataType": "json",
 			"data":  function ( d ){
 				d.request = json_str;
-				// d.request = JSON.parse($('#json_str1').val());
-		 		// request:json_str
 		 	},
-			// "data": function ( d ) {
-			// 	d.CLINIC_ADDR = $('#CLINIC_ADDR').val();
-			// 	d.CLINIC_USER_NAME =  $('#CLINIC_USER_NAME').val();
-			// 	d.DOCTOR_TYPE =  $('#DOCTOR_TYPE').val();
-			// 	d.DOCTOR_NAME =  $('#DOCTOR_NAME').val();
-			// 	d.APPOINTMENT_TIME =  $('#APPOINTMENT_TIME').val();
-			// 	d.DISTANCE =  $('#DISTANCE').val();
-			// },
-			// "data":"",
 			dataSrc: function(json){
 				   json.draw = json.response.data.draw;
 				   json.recordsTotal = json.response.data.recordsTotal;

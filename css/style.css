@@ -1588,7 +1588,7 @@ nav.tm_navbar .sub-menu > ul li > ul li a:hover {
   width: 730px;
   margin-top: 12px;
 }
-#newsletter input {
+#newsletter input{
   box-shadow: none;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -1601,6 +1601,28 @@ nav.tm_navbar .sub-menu > ul li > ul li a:hover {
   border: 1px solid #8db3c3 !important;
   font: italic 18px/18px 'Georgia', "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #ffffff;
+  padding: 22px 27px;
+  height: 67px;
+  resize: none;
+  float: left;
+  -webkit-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  transition: all 0.25s;
+}
+/*miaoyl update*/
+#newsletter select{
+  box-shadow: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0 13px 0 0;
+  width: 100%;
+  outline: none;
+  background: none;
+  border-radius: 0;
+  border: 1px solid #8db3c3 !important;
+  font: italic 18px/18px 'Georgia', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #FFFFFF;
   padding: 22px 27px;
   height: 67px;
   resize: none;
@@ -1823,10 +1845,10 @@ footer i {
     width: 100%;
     float: none;
   }
-  #newsletter input,
+  #newsletter input, select,
   #newsletter .success {
     width: 100%;
-    margin: 0 0 30px 0;
+    margin: 0 0 0px 0;
     float: none;
     font-size: 13px;
   }
@@ -2043,7 +2065,7 @@ footer i {
   #newsletter input,
   #newsletter .success {
     width: 100%;
-    margin: 0 0 30px 0;
+    margin: 0 0 0 0;
     float: none;
     font-size: 13px;
   }

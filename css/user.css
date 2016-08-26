@@ -736,3 +736,20 @@ table thead .sorting:after {
 	padding:0px 0px;
 }
 
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * appointmentDoctor
+ */
+
+.sele_gender{
+  /*background-color: #FF0000;*/
+  color: #1E90FF;
+}
+
+.sele_gender:hover{
+  background-color: #FFFFFF;
+}
+
+.btn-default.btn6{
+  margin-top: 20px;
+}

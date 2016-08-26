@@ -1,9 +1,9 @@
 <?php
-include_once ('class.SearchUserDetail_db.php');
+include_once ('class.UserDetail_db.php');
 // define _DBUG_LOG 1;
-class SearchUser
+class UserDetail
 {
-	private $SearchUser;
+	private $UserDetail;
 	private $arr_values = array();
 	private $request;
 	private $_dbug;
@@ -11,7 +11,7 @@ class SearchUser
 	public function __construct()
 	{
 		session_start ();
-		$this->SearchUser = new SearchUser_DB();
+		$this->UserDetail = new UserDetail_DB();
 		$this->_dbug = false;
 
 		// $this->user_name = $_SESSION ['fd_user_name'];
@@ -24,18 +24,26 @@ class SearchUser
 		}
 
         if($this->_dbug){
-            echo "[---SearchUser---request]";
+            echo "[---UserDetail---request]";
             print_r($this->request);
         }
 
 		$this->arr_values = $this->request["para"];
 
 		if($this->_dbug){
-	        echo "[---SearchUser---arr_values]";
+	        echo "[---UserDetail---arr_values]";
 	        print_r($this->arr_values);
 	    }
 
-		$this->action = "";
+	    if (isset ( $this->arr_values["action_type"] )){
+			$action_type = $this->arr_values["action_type"];
+			unset($this->arr_values["action_type"]);
+		}else
+		{
+			$action_type = "";
+		}
+		
+		$this->action = $action_type;
 		$this->action_type ();
 	}
 	private function action_type()
@@ -77,7 +85,7 @@ class SearchUser
 		$ret_msg = "";
 		$ret_code = "S00000"; //成功
 
-		$ret = $this->SearchUser->viewAll ($this->arr_values);
+		$ret = $this->UserDetail->viewAll ($this->arr_values);
 		
 		if($ret!=""){
 			$success = true;
@@ -108,7 +116,53 @@ class SearchUser
 
 		echo json_encode ( $response );
 	}
+
+	public function update(){
+		$response["response"]  = array();
+		$success = true;
+		$ret_msg = "";
+		$ret_code = "S00000"; //成功
+
+		// echo "-------start:".$this->start;
+		// echo "-------length:".$this->length;
+
+		$ret = $this->UserDetail->update ($this->arr_values);
+		
+		if($ret==1){
+			$success = true;
+			$ret_msg="修改成功";
+			$ret_code = "U00000";
+		}else if($ret==0){
+			$success = false;
+			$ret_msg="修改失败";
+			$ret_code = "U99999";
+		}else{
+			$success = false;
+			$ret_msg="失败,请联系管理员";
+			$ret_code = "999999";
+		}
+
+		$status  = array();
+		$status["ret_msg"] = $ret_msg;	
+		$status["ret_code"] = $ret_code;
+		// print_r($status);
+
+		// //服务器模式data
+		// $data  = array();
+		// $data["draw"] = $this->draw;
+		// $data["recordsTotal"] = $records;
+		// $data["recordsFiltered"] = $records;
+		// $data["data"]=$ret["data"];
+		
+		// echo $ret;
+		$response["response"] = $this->response_const();  //固定参数返回
+		$response["response"]["success"] = $success;  //固定参数返回	
+		$response["response"]["status"] = $status;  //固定参数返回	
+		$response["response"]["data"] = $ret;
+
+		echo json_encode ( $response );
+	}
 }
 
-$SearchUser = new SearchUser();
+$UserDetail = new UserDetail();
 ?>

@@ -103,7 +103,8 @@ $(function(){
               $.cookie("ilogin", 1);
               //记录cookie
               Save();
-              window.location.href="index.html";
+              history.go(-1);
+              // window.location.href="index.html";
 
             }else{
               alert(ret.status.ret_code + " " + ret.status.ret_msg);
@@ -113,7 +114,9 @@ $(function(){
           },
           error: function(XMLHttpRequest, textStatus, errorThrown){
             //请求失败之后的操作
-            alert("SP01:999999:请联系管理员" + textStatus);
+            var ret_code = "999999";
+            var ret_msg = "失败,请联系管理员!";
+            alert("UI01 "+ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
           }
       });
     }

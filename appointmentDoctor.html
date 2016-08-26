@@ -18,6 +18,7 @@
 <!--User CSS-->
 <link rel="stylesheet" href="css/user.css">
 <link rel="stylesheet" href="css/focusdata.css">
+<link rel="stylesheet" href="../css/bootstrapValidator.css"/>
 <!--JS-->
 <script src="js/jquery.js"></script>
 <script src="js/jquery-migrate-1.2.1.min.js"></script>
@@ -50,10 +51,6 @@
   <![endif]-->
 </head>
 <body>
-	<?php
-	$getabc = $_POST["name"];
-	print_r($_POST);
-	?>
 <!--header-->
 <div class="container bars"><em class="bars_"></em></div>
 <header>
@@ -147,15 +144,18 @@
 				            
 				            <div class="row">
 
-					            <form id="PersonalInfo">
-					            <div class="success" style="display: none;">Your subscribe request<br> has been sent!</div>
+					            <!-- <form  id="appointmentDoctor_form"  role="form"> -->
+					        <!--     <div class="success" style="display: none;">Your subscribe request<br> has been sent!</div> -->
+                                <form id="newsletter">
+                                     <div class="success" style="display: none;">Your subscribe request<br> has been sent!</div>
 					              	<fieldset>
-					                	<input type="text" class="form-control" placeholder="UserName"  name="CUSTOMER_USER_NAME" id="CUSTOMER_USER_NAME" >
-					                	<input type="text" class="form-control" placeholder="PassWord" name="CUSTOMER_USER_PWD" id="CUSTOMER_USER_PWD" >
+                                        <input type="hidden" class="form-control" name="action_type" id="action_type" value="create">
+					                	<input type="text" class="form-control" placeholder="UserName"  name="CUSTOMER_USER_NAME" id="CUSTOMER_USER_NAME" autofocus="true">
+					                	<input type="password" class="form-control" placeholder="PassWord" name="CUSTOMER_USER_PWD" id="CUSTOMER_USER_PWD" >
 					                	<input type="text" class="form-control" placeholder="PhoneCodes" name="verifyCode" id="verifyCode">
                                         <select class="form-control"  name="CUSTOMER_GENDER" id="CUSTOMER_GENDER">
-                                            <option>男</option>
-                                            <option>女</option>
+                                            <option class="sele_gender">男</option>
+                                            <option class="sele_gender">女</option>
                                         </select>
 					                	<input type="text" class="form-control" placeholder="Birthday" name="CUSTOMER_BIRTHDAY" id="CUSTOMER_BIRTHDAY">
 					                	<input type="text" class="form-control" placeholder="Home Address"  name="CUSTOMER_ADDR" id="CUSTOMER_ADDR">
@@ -206,6 +206,7 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/tm-scripts.js"></script>
 <script src="js/jquery.cookie.js"></script>
+<script src="js/bootstrapValidator.js"></script>
 <script src="js/fd_pub.js"></script>
 <script src="js/fd_appointmentDoctor.js"></script>
 

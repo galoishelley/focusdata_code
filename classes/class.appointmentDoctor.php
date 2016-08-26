@@ -6,6 +6,7 @@ class appointmentDoctor
 	private $appointmentDoctor;
 	private $arr_values = array();
 	private $request;
+	private $requesttype;
 	private $_dbug;
 
 	public function __construct()
@@ -13,9 +14,6 @@ class appointmentDoctor
 		session_start ();
 		$this->appointmentDoctor = new appointmentDoctor_DB();
 		$this->_dbug = false;
-
-		$this->user_name = $_SESSION ['fd_user_name'];
-		$this->user_pwd = $_SESSION ['fd_user_pwd'];
 
 		$this->date = date("Y-m-d H:i:s",time());
 
@@ -41,21 +39,17 @@ class appointmentDoctor
 	    	// echo 'key='.$k.',value='.$v;
 	    	$this->arr_values[$k]=intval($v);
 	    }
-	    // echo "2222";
-	    // print_r($this->arr_values);
-	 //    $array[]=$this->arr_values;
-		// foreach($array as $v)
-		// {
-		//     $array_1[]=(int)$v;
 
-		// }
-
-		// for($i=0;$i<count($array_1);$i++)
-		// {
-
-		// 	$this->arr_values["action_type"] = intval($arr[$i]);
-
-		// }
+	    $this->requesttype = $this->request["requesttype"];
+        if($this->requesttype==0){
+        	$this->user_name = $this->arr_values['CUSTOMER_USER_NAME'];
+			$this->user_pwd = $this->arr_values['CUSTOMER_USER_PWD'];
+			unset($this->arr_values["CUSTOMER_USER_NAME"]);
+			unset($this->arr_values["CUSTOMER_USER_PWD"]);
+        }else if($this->requesttype==1){
+        	$this->user_name = $_SESSION ['fd_user_name'];
+			$this->user_pwd = $_SESSION ['fd_user_pwd'];
+        }
 
 	    $action_type = $this->request["para"]["action_type"];
 		if($action_type == "create"){
@@ -67,8 +61,6 @@ class appointmentDoctor
 			$this->arr_values["UPDATE_USER"] = $this->user_name;
 			$this->arr_values["UPDATE_DATE"] = $this->date;
 		}
-
-		
 
 		if($this->_dbug){
 	        echo "[---appointmentDoctor---arr_values]";

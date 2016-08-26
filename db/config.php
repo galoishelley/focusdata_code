@@ -14,7 +14,7 @@ define('DATABASE_NAME', 'focusdata');
 
 define('DATABASE_USER', 'root');
 
-define('DATABASE_PASS', '');
+define('DATABASE_PASS', 'lishiLISHI2015');
 
 define('DATABASE_HOST', 'localhost');
 
