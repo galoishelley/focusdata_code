@@ -19,10 +19,11 @@ $(document).ready(function() {
 
   });
 
-  var username;
+  var username,fd_userid;
   if(ilogin == 1)
   {
       username = $.cookie("fd_username");
+      fd_userid = $.cookie("fd_userid");
 
       $('#userinfo').html(username);
       $('#usertype').html("用户类型: "+$.cookie("fd_usertype"));
@@ -36,12 +37,12 @@ $(document).ready(function() {
     // $('#a_userAppointmentRecoder').attr("color","#FF0000");
   }
 
-
   para={
-            username: username
-        };
+        action_type: "view",
+        CUSTOMER_USER_ID: fd_userid
+      };
 
-  json_str = request_const(para,"UI02",0);
+  json_str = request_const(para,"UI03",0);
 
   // console.log(json_str);
   //请求
@@ -106,6 +107,7 @@ $(document).ready(function() {
         type: "POST",
         url: "classes/class.UserDetail.php",
         dataType: "json",
+        async:false,
         data: {
             request:json_str
         },
@@ -119,6 +121,13 @@ $(document).ready(function() {
               }
               
               alert("UU03 "+ret.status.ret_code + " " + ret.status.ret_msg);
+
+              $.cookie("fd_username", $('#CUSTOMER_USER_NAME').val());
+
+              var username = $.cookie("fd_username");
+
+              $('#userinfo').html(username);
+              // $('#usertype').html("用户类型: "+$.cookie("fd_usertype"));
 
             }else{
                 alert("UU03 "+ret.status.ret_code + " " + ret.status.ret_msg);

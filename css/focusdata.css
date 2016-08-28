@@ -287,6 +287,11 @@ nav.tm_navbar .tourist > ul{
 	width: 40%;
 }
 
+.appointmentDoctor .btn{
+	margin-top:10px;
+}
+
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * PersonUser
  */
@@ -356,3 +361,30 @@ nav.tm_navbar .tourist > ul{
 	margin-left: 0px;
 }
 
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * userUpdPersonPwd
+ */
+
+#userUpdPersonPwd{
+	text-align: center;
+}
+
+.form-horizontal .form-group{
+	margin-left: 0px; 
+    margin-right: 0px;
+}
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * savedoctor
+ */
+
+.savedoctor label{
+	font-weight: normal;
+	/*color:#FF0000;*/
+}
+
+.savedoctor .form-inline .form-group{
+    margin-right:5px;
+    margin-left:5px;
+}

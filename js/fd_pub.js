@@ -37,3 +37,37 @@
      });    
      return o;    
   };  
+
+    //导航条退出
+  $('#btn_out').click(function(){
+    $.cookie("ilogin", "");
+    // $('#userinfo').html();
+    window.location.href="index.html"; 
+
+    if ($.cookie("fd_rmbUser") == "false") {
+      $.cookie("fd_userid", "");
+      $.cookie("fd_username", "");
+      $.cookie("fd_password", "");
+      $.cookie("fd_usertype", "");
+    }
+
+  });
+
+  function setUserinfo(){
+    var ilogin = $.cookie("ilogin");
+    if(ilogin == 1)
+    {
+        var username = $.cookie("fd_username");
+
+        $('#userinfo').html(username);
+        $('#usertype').html("用户类型: "+$.cookie("fd_usertype"));
+    }
+
+    if(ilogin == 0){
+      alert("您未登陆,无法使用此功能");
+      history.go(-1);
+      return false;
+      // $('#a_userAppointmentRecoder').attr("href","#");
+      // $('#a_userAppointmentRecoder').attr("color","#FF0000");
+    }
+  }

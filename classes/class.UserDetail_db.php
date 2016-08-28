@@ -10,6 +10,25 @@ class UserDetail_DB{
         $this->db = new Database();
     }
 
+    public function view($arr_values,$requesttype=0,$start=0,$lenght=10){
+        if($this->_dbug){
+            echo "[---view---arr_values]";
+            print_r($arr_values);
+        }
+
+        $sql = "SELECT * FROM `fd_customer_user` WHERE `CUSTOMER_USER_ID` = '".$arr_values["CUSTOMER_USER_ID"]."'";
+
+        // echo $sql;
+        if($this->_dbug){
+            echo "[---viewAll---sql]";
+            print_r($sql);
+        }
+
+        $ret = $this->db->fetchAll_sql($sql,null);
+        
+        return $ret;
+    }
+
     public function viewAll($arr_values,$requesttype=0,$start=0,$lenght=10){
         if($this->_dbug){
             echo "[---viewAll---arr_values]";

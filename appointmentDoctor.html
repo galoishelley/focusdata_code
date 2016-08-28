@@ -110,7 +110,7 @@
 		<div class="thumb-box9" data-stellar-background-ratio="0.1">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-3 col-md-3 col-sm-12 wow fadeInUp" data-wow-delay="0.1s">
+					<div class="col-lg-8 col-md-8 col-sm-12 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="doctor-info">
     	                    <h2>Doctor Info</h2>
     	                    <ul class="list4">
@@ -123,6 +123,7 @@
     	                                <p id="clinic_name"></p>
                                         <p id="clinic_addr"></p>
                                         <p id="doctor_type"></p>
+                                        <p id="doctor_details"></p>
     	                            </div>
     	                        </li>
     	                        <li>
@@ -133,7 +134,7 @@
     	                    </ul>
                         </div>
 	                </div>
-	                <div class="col-lg-9 col-md-9 col-sm-12 wow fadeInUp person-info" data-wow-delay="0.1s">
+	                <div class="col-lg-4 col-md-4 col-sm-12 wow fadeInUp person-info" data-wow-delay="0.1s">
 	                    <div class="thumb-box5_1">
 				        	<div class="row">
 					            <div class="box">
@@ -162,16 +163,28 @@
 					                	<input type="text" class="form-control" placeholder="Phone Number"  name="CUSTOMER_PHONE_NO" id="CUSTOMER_PHONE_NO">
 					                	<input type="text" class="form-control" placeholder="Medical Card"  name="MEDICAL_CARD_NO" id="MEDICAL_CARD_NO">
 
-                                        
-                                        <a class="btn btn-default btn6" href="searchDoctor.html" style="padding:15px 33px 25px 33px;">
+                                        <!-- <a class="btn btn-default btn6" href="searchDoctor.html" style="padding:15px 33px 25px 33px;">
                                           <span class="glyphicon  glyphicon-arrow-left"> 搜索医生</span>
                                         </a>
-                                        <button class="btn btn-default btn6" id="btn_submit">Appointment Doctor</button>
+                                        <button class="btn btn-default btn6" id="btn_submit">Appointment Doctor</button> -->
 					                	<!-- <button class="btn-default btn6" id="btn_submit">Appointment Doctor</button> -->
 					            	</fieldset>
 					          	</form>
 				        	</div>
+				        
 					    </div>
+				    	
+			        	<div class="row">
+			        		<button class="btn btn-danger btn-block" id="btn_submit">Appointment Doctor</button>
+			        	</div>
+			        	<div class="row">
+			        		<button class="btn btn-primary btn-block" id="btn_savedoctor">收藏医生</button>
+			        	</div>
+						<div class="row">
+			        		<a class="btn btn-warning btn-block" href="searchDoctor.html">
+                              <span class="glyphicon  glyphicon-arrow-left"> 搜索医生</span>
+                            </a>
+			        	</div>
 	                </div>
 				</div>
 			</div>
