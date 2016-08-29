@@ -49,12 +49,19 @@ class UserDetail_DB{
     }
 
     public function update($arr_values){
+        // echo $sql;
+        if($this->_dbug){
+            echo "[---viewAll---$arr_values]";
+            print_r($arr_values);
+        }
+
+// print_r($arr_values);
 
         $where =" CUSTOMER_USER_ID = ".$arr_values['CUSTOMER_USER_ID'];
         unset($arr_values["CUSTOMER_USER_ID"]);
 
         $ret = $this->db->updateData('fd_customer_user', $arr_values, $where);
-
+        // echo $ret;
         return $ret;
         // $this->db->updateData('qr_role',array('role_name'=>$role_name,
         //                                         'funcion_id'=>$funcion_id,

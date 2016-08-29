@@ -129,6 +129,8 @@
                                     <div class="container-fluid">
                                         <div class="row">
                                             <form class="form-inline" role="form" id="modal_form">
+                                                <input type="hidden" class="form-control" name="action_type" id="action_type" value="create">
+                                                <input type="hidden" class="form-control" name="CUSTOMER_USER_ID" id="CUSTOMER_USER_ID">
                                                 <div class="form-group col-md-6">
                                                   <label for="clinicarea col-md-2">诊所区域</label>
                                                   <select class="form-control" id="CLINIC_ADDR" name="CLINIC_ADDR" autofocus="true">
@@ -169,7 +171,8 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary" id="btn_reset">重置</button>
+                                    <button type="button" class="btn btn-danger" id="btn_reset">重置</button>
+                                    <button type="button" class="btn btn-warning" id="btn_save">保存为常用搜索条件</button>
                                     <button type="button" class="btn btn-primary" id="btn_search" >搜索</button>
                                 </div>
                             </div><!-- /.modal-content -->

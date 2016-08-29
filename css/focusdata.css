@@ -219,6 +219,11 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination{
     margin:5px;
 }
 
+.form-inline label{
+	font-weight: normal;
+}
+
+
 .fd_index{
 	margin-bottom: 200px;
 }
@@ -365,8 +370,16 @@ nav.tm_navbar .tourist > ul{
  * userUpdPersonPwd
  */
 
-#userUpdPersonPwd{
+#userUpdPersonPwd label{
+	text-align: right;
+}
+
+/*#userUpdPersonPwd{
 	text-align: center;
+}*/
+
+#userUpdPersonPwd .form-group{
+	padding:1px 60px;
 }
 
 .form-horizontal .form-group{

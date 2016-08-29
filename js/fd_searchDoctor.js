@@ -24,9 +24,10 @@ $(function(){
 	if(ilogin == 1)
 	{
 		var username = $.cookie("fd_username");
-
+		var fd_userid = $.cookie("fd_userid");
 		$('#userinfo').html(username);
 		$('#usertype').html("用户类型: "+$.cookie("fd_usertype"));
+		$('#CUSTOMER_USER_ID').val(fd_userid);
 	}
 
 ///////////////////////////////////组织ajax 请求参数 begin///////////////////////////////
@@ -471,6 +472,7 @@ $(function(){
 	});
 
 	$('#btn_search').click(function (){
+		$('#action_type').val("");
 
 ///////////////////////////////////组织ajax 请求参数 begin///////////////////////////////
 		requesttype = 1;
@@ -557,6 +559,76 @@ $(function(){
 	});
 	$('#btn_reset').on('click', function (){
 		$('#modal_form')[0].reset();
+	});
+
+	$('#btn_save').click(function(){
+      //收藏医生
+///////////////////////////////////组织ajax 请求参数 begin///////////////////////////////
+	func_code = "SS01";
+	//form序列化成json
+///////////////////////////////////组织ajax 请求参数 begin///////////////////////////////
+	requesttype = 1;
+	//form序列化成json
+	json_form = $("#modal_form").serializeObject();
+
+	var json_stringify=JSON.stringify(json_form);
+	json_form = json_stringify.replace(/[ ]/g,"");
+
+	//生成输入参数
+	json_str = request_const(JSON.parse(json_form),func_code,requesttype);
+
+	//alert(JSON.stringify(json_str));
+
+	console.log(json_str);
+
+///////////////////////////////////组织ajax 请求参数 end///////////////////////////////
+    //生成输入参数
+
+	result = true;
+	$.ajax({
+	        type: "POST",
+	        url: "classes/class.saveSearch.php",
+	        dataType: "json",
+	        async: false,
+	        data:  {
+	          request:json_str
+	        },
+	        success: function (msg) {
+	          var ret = msg.response;
+	          if(ret.success){
+	            if(json_str.sequ != ret.sequ){
+	              alert(func_code + ":" + "时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
+	              result=false;
+	            }
+
+	            // //登录标志
+	            // $.cookie("ilogin", 1);
+	            // //记录cookie
+	            // Save();
+	            // history.go(-1);
+	            // // window.location.href="index.html";
+	            alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
+	          }else{
+	            alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
+	            // $('#signin_ok').attr('disabled',false); 
+	            result=false;
+	          }
+	          
+	        },
+	        error: function(XMLHttpRequest, textStatus, errorThrown){
+	          //请求失败之后的操作
+	          var ret_code = "999999";
+	          var ret_msg = "失败,请联系管理员!";
+	          alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+	          result=false;
+	        }
+	    });
+	    if(!result){
+	      return result;
+	    }
+
+	  return false;
+
 	});
 
 });

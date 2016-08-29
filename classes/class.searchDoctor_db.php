@@ -150,6 +150,7 @@ class SearchDoctor_DB{
             $where .= " )";
         }
 
+        // echo $where;
         if($this->_dbug){
             echo "[---col_exists_sql---where]";
             print_r($where);

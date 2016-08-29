@@ -94,7 +94,7 @@ $(document).ready(function() {
     //form序列化成json
     json_form = $("#userUpdPersonInfo").serializeObject();
     //生成输入参数
-    json_str = request_const(json_form,"UU03",0);
+    json_str = request_const(json_form,"UU03",1);
     //alert(JSON.stringify(json_str));
 
     console.log(json_str);

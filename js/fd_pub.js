@@ -52,22 +52,3 @@
     }
 
   });
-
-  function setUserinfo(){
-    var ilogin = $.cookie("ilogin");
-    if(ilogin == 1)
-    {
-        var username = $.cookie("fd_username");
-
-        $('#userinfo').html(username);
-        $('#usertype').html("用户类型: "+$.cookie("fd_usertype"));
-    }
-
-    if(ilogin == 0){
-      alert("您未登陆,无法使用此功能");
-      history.go(-1);
-      return false;
-      // $('#a_userAppointmentRecoder').attr("href","#");
-      // $('#a_userAppointmentRecoder').attr("color","#FF0000");
-    }
-  }

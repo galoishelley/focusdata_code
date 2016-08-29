@@ -53,7 +53,17 @@ class SearchDoctor
 	        echo "[---searchDoctor.php---__construct---arr_values]";
 	        print_r($this->arr_values);
 	    }
-		$this->action = "";
+	    if (isset ( $this->arr_values["action_type"] )){
+			$action_type = $this->arr_values["action_type"];
+			unset($this->arr_values["action_type"]);
+		}else
+		{
+			$action_type = "";
+		}
+
+		unset($this->arr_values["CUSTOMER_USER_ID"]);
+
+		$this->action = $action_type;
 		$this->action_type ();
 	}
 	private function action_type()

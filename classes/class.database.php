@@ -183,8 +183,8 @@ class Database {
             $update .= ' WHERE '.$where;
         }
         
+        // echo $update;
         $data =$this->db->execute($update);
-        
         if($data){   
             return 1; 
         }

@@ -72,13 +72,8 @@ $(document).ready(function() {
   // });
 
 
-  para={
-    CUSTOMER_USER_ID: fd_userid,
-    CLINIC_ADDR: $('#CLINIC_ADDR').val(),
-    CLINIC_USER_NAME: $('#CLINIC_USER_NAME').val(),
-    DOCTOR_NAME: $('#DOCTOR_NAME').val()
-  };
-  func_code = "S002";
+  para="";
+  func_code = "SS02";
   json_str = request_const(para, func_code, request_type);
 
   var _table = $('#dataTables-example').DataTable({
@@ -102,7 +97,7 @@ $(document).ready(function() {
 
       "ajax": {
       "type": "POST",
-      "url": "classes/class.saveDoctor.php",
+      "url": "classes/class.saveSearch.php",
       "dataType": "json",
       "async":false,
       "data":  function ( d ){
@@ -124,7 +119,7 @@ $(document).ready(function() {
           "defaultContent": "<input type='checkbox' id='chk_list' name='chk_list'>"
         },
         { 
-          "data": "CLINIC_USER_NAME",
+          "data": "CLINIC_ADDR",
           render: function(data, type, row, meta) {
               //type 的值  dispaly sort filter
               //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
@@ -142,7 +137,7 @@ $(document).ready(function() {
           }
         },
         { 
-          "data": "CLINIC_ADDR",
+          "data": "CLINIC_NAME",
           render: function(data, type, row, meta) {
               //type 的值  dispaly sort filter
               //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
@@ -181,7 +176,7 @@ $(document).ready(function() {
           "data": "DOCTOR_NAME" 
         },
         { 
-          "data": "ACTIVE_STATUS",
+          "data": "APPOINTMENT_TIME",
           render: function(data, type, row, meta) {
               //type 的值  dispaly sort filter
               //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
@@ -198,8 +193,12 @@ $(document).ready(function() {
           }
         },
         {
+          "data": "DISTANCE"
+        }
+        ,
+        {
           "visible": false,
-          "data": "DOCTOR_ID"
+          "data": "CUSTOMER_SEARCH_ID"
         }
       ],
 
@@ -364,21 +363,21 @@ $(document).ready(function() {
     }
 
     var CUSTOMER_USER_ID = [];
-    var DOCTOR_ID = [];
+    var CUSTOMER_SEARCH_ID = [];
 
     $.each(rowData,function(key,value){
       CUSTOMER_USER_ID.push(fd_userid); 
-      DOCTOR_ID.push(value.DOCTOR_ID); 
+      CUSTOMER_SEARCH_ID.push(value.CUSTOMER_SEARCH_ID); 
     });
 
 
     para={
       action_type: "remove",
       CUSTOMER_USER_ID: CUSTOMER_USER_ID,
-      DOCTOR_ID: DOCTOR_ID
+      CUSTOMER_SEARCH_ID: CUSTOMER_SEARCH_ID
     }
 
-    func_code = "S003";
+    func_code = "SS03";
     json_str = request_const(para, func_code, request_type);
 
     console.log(json_str);
@@ -387,7 +386,7 @@ $(document).ready(function() {
     result=true;
     $.ajax({
       type: "POST",
-      url: "classes/class.saveDoctor.php",
+      url: "classes/class.saveSearch.php",
       dataType: "json",
       async:false,
       data: {
@@ -417,13 +416,8 @@ $(document).ready(function() {
 
             // json_str = request_const(para,"SP02",0);
 
-            para={
-              CUSTOMER_USER_ID: fd_userid,
-              CLINIC_ADDR: $('#CLINIC_ADDR').val(),
-              CLINIC_USER_NAME: $('#CLINIC_USER_NAME').val(),
-              DOCTOR_NAME: $('#DOCTOR_NAME').val()
-            };
-            func_code = "S002";
+            para="";
+            func_code = "SS02";
             json_str = request_const(para, func_code, request_type);
   
             _table.ajax.reload();
