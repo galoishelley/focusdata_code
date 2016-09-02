@@ -63,31 +63,12 @@
                 <li class="active"><a href="index.html">home</a></li>
                 <li class="sub-menu"><a href="index-1.html">our services</a><span></span>
                     <ul class="submenu">
-                        <li><a href="userAppointmentRecoder.html">个人用户管理</a>
-                             <!-- <ul class="submenu">
-                                <li><a href="userAppointmentRecoder.html">预约记录</a></li>
-                                <li><a href="userManagement.html?iflag=userUpdPersonInfo">修改个人用户信息</a><span class="fa fa-angle-right"></span>
-                                     <ul class="submenu">
-                                        <li><a href="#">修改用户信息</a></li>
-                                        <li><a href="#">修改密码</a></li>
-                                    </ul> 
-                                </li>
-                                <li><a href="#">收藏医生管理</a></li>
-                                <li><a href="#">常用搜索条件管理</a></li>
-                                
-                            </ul>  -->
-                        </li>
                         <li><a href="searchDoctor.html">搜索|预约医生</a></li>
-                        <li><a href="clinicManagement.html">诊所用户管理</a>
-                        <!-- <span class="fa fa-angle-right"></span> -->
-                       <!--      <ul class="submenu">
-                                <li><a href="#">Update Clinic user info</a></li>
-                                <li><a href="#">Update Doctor info</a></li>
-                                <li><a href="#">Update Pwd</a></li>
-                            </ul>  -->
+                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.html">个人用户管理</a>
                         </li>
-                        
-                        <li><a href="adminManagement.html">管理员管理</a></li>
+                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.html">诊所用户管理</a>
+                        </li>
+                        <li id="li_Admin" class="hidden"><a href="adminQryClinic.html">管理员管理</a></li>
                     </ul>
                 </li>
                 <li><a href="index-2.html">about us</a></li>
@@ -96,8 +77,8 @@
                 <li><a href="sign_in.html">Sign in</a></li>
                 <li><a href="sign_up_person.html">Sign up</a></li>
                 <li class="sub-menu tourist"><a href="#" id="userinfo">游客</a><span></span>
-                    <ul class="submenu">
-                        <li><a href="#" id="usertype">用户类型: 游客</a></li>
+                    <ul class="submenu hidden" id="sub_userinfo">
+                        <li><a href="#" id="usertype"></a></li>
                         <li><a href="#">账户管理</a></li>
                         <li><button class="btn btn-danger" id="btn_out">安全退出</button></li>
                     </ul>
@@ -115,21 +96,24 @@
 
                 <div class="thumb-box2 clearfix">
                     <div class="wow fadeInLeft" data-wow-delay="0.2s">
-                        <div class="index-form-bg">
-                            <div class="index-form-txt">
-                                <div class="row">
-                                    <div class="col-lg-6">
+                        <div class="row" style="text-align:left; font-size:10px;">
+                            <p class="help-block"><span class="span-red">*</span>可以按照 诊所区域,诊所名称,医生类别,医生姓名,预约时间任意一个条件,进行搜索.</p>
+                        </div>
+                        <div class="row">
+                            <div class="index-form-bg">
+                                <div class="index-form-txt">
+                                    <div class="col-lg-12">
                                         <div class="input-group">
                                         <!-- 搜索 诊所区域|诊所名称|医生类别|医生姓名|预约时间 -->
                                             <input type="text" class="form-control" placeholder="Search..." id="txt_search">
                                             <span class="input-group-btn">
-                                                <button class="btn btn-default" type="button" id="btn_search">Go!</button>
+                                                <button class="btn btn-default" type="button" id="btn_search"><span class="glyphicon glyphicon-search"></span></button>
                                             </span>
                                         </div><!-- /input-group -->
                                     </div><!-- /.col-lg-6 -->
-                                </div><!-- /.row -->    
-                            </div><!--不透明文字 -->
-                        </div><!-- 透明背景 -->
+                                </div><!--不透明文字 -->
+                            </div><!-- 透明背景 -->
+                        </div><!-- /.row --> 
                     </div>
                 </div><!-- thumb-box2 -->
 

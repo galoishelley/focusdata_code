@@ -27,9 +27,7 @@ form fieldset .checkbox label{
 }
 */
 
-.span-red{
-  color:red;
-}
+
 #inputError2{
 	font: 1em 'Georgia';
 	color: #a94442;
@@ -168,9 +166,9 @@ form fieldset .checkbox label{
 	color:#9fdbf3;
 }
 
-form{
+/*form{
 	padding:20px 15px;
-}
+}*/
 
 /**************appointment.html***************/
 .list4 li strong {
@@ -557,39 +555,6 @@ a.list-group-item-danger.active:focus {
 }
 
 
-/*************clinic update doctor***************/
-.clinicUpdDoc .doctor_info{
-  float:left;
-}
-
-.clinicUpdDoc .doctor_info div{
-  /*margin: 20px 0px;*/
-  margin-top:20px;
-  margin-bottom: 10px;
-}
-
-.clinicUpdDoc .btn_file{
-  margin-top: 10px;
-  margin-left: 30px;
-} 
-
-.clinicUpdDoc textarea{
-  margin-top: 30px;
-} 
-
-.clinicUpdDoc .image_right{
-  float:right;
-}
-
-.clinicUpdDoc .image_right label{
-  margin: 20px 0px;
-}
-
-
-
-/*.clinicUpdDoc .image_right form-group{
-  margin-bottom: 30px;
-}*/
 
 .btn_two{
   float:right;

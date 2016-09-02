@@ -28,6 +28,7 @@ $(function(){
 		$('#userinfo').html(username);
 		$('#usertype').html("用户类型: "+$.cookie("fd_usertype"));
 		$('#CUSTOMER_USER_ID').val(fd_userid);
+		$('#btn_save').show();
 	}
 
 ///////////////////////////////////组织ajax 请求参数 begin///////////////////////////////
@@ -103,7 +104,7 @@ $(function(){
                  //这里是主题  把url变成超链接、把图片路径显示为图片
                 //return "<a href='" + data + "'>" + data + "</a>";
                 // console.log(row.DOCTOR_PHOTO);
-                return "<img style='width:50px; hegith:50px' src='img/" + data.DOCTOR_PHOTO + "' />";
+                return "<img style='width:50px; hegith:50px' src='img/doctors/" + data.DOCTOR_PHOTO + "' />";
 
             }
 

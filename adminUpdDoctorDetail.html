@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="fonts/font-awesome.css">
 <!--User CSS-->
 <link rel="stylesheet" href="css/user.css">
+<link rel="stylesheet" href="css/focusdata.css">
 <!--JS-->
 <script src="js/jquery.js"></script>
 <script src="js/jquery-migrate-1.2.1.min.js"></script>
@@ -86,54 +87,70 @@
 			<div class="clinicUpdDoc">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
 							<h2 class="wow fadeInRight">修改医生信息</h2>
-							<form class="form-horizontal wow fadeInLeft" role="form">
+							<form class="form-horizontal wow fadeInLeft" role="form" id="clinicUpdDoctorDetail">
 								<fieldset>
-									<div class="form-group has-error has-feedback">
-										<!--<label class="control-label" for="inputError2">Input with error</label>-->
-										<input type="text" class="form-control" id="inputError2" aria-describedby="inputError2Status" readonly value="Info: Please update doctor info">
-										<span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
-										<span id="inputError2Status" class="sr-only">(error)</span>
+									<input type="hidden" class="form-control" name="action_type" id="action_type" value="update_doctor_info">
+									<input type="hidden" class="form-control" name="DOCTOR_ID" id="DOCTOR_ID">
+									<div class="form-group col-md-3 col-sm-12">
+										<img alt="..." class="img-rounded" id="DOCTOR_PHOTO">
+
+										<div class="form-group">
+											<input type="file" id="exampleInputFile" class="btn_file"> 
+											<p class="help-block">Example block-level help text here.</p>
+    									</div>
 									</div>
-									<div class="col-md-12 doctor_info">
-										<div class="form-group col-md-6">
-											<img src="img/page2_pic10.jpg" alt="..." class="img-rounded">
+									<div class="form-group col-md-9 col-sm-12">
+									 	<div class="form-group" id="clinic_info">
+										    <div class="col-sm-10 col-sm-offset-2">
+										    	<label class="control-label" id="CLINIC_NAME">省诊所</label>
+										      	<label class="control-label" id="CLINIC_ADDR">朝阳区</label>
+										    </div>
 										</div>
-										
-										<div class="form-group col-md-6 image_right">
-										 	<label for="">省诊所</label>
-										 	<label for="">朝阳区</label>
-										 	<div class="form-group">
-												<input type="text" class="form-control" placeholder="医生类别" autofocus>
-											</div>
-											<div class="form-group">
-												<input type="text" class="form-control" placeholder="医生姓名" >
-											</div>
-											<div class="form-group">
-												<select class="form-control">
+									 	<div class="form-group">
+										    <label for="DOCTOR_TYPE" class="col-sm-2 control-label">医生类别<span class="span-red">*</span></label>
+										    <div class="col-sm-10">
+										      <input type="text" class="form-control" name="DOCTOR_TYPE" id="DOCTOR_TYPE">
+										    </div>
+										</div>
+										<div class="form-group">
+										    <label for="DOCTOR_NAME" class="col-sm-2 control-label">医生姓名<span class="span-red">*</span></label>
+										    <div class="col-sm-10">
+										      <input type="text" class="form-control" name="DOCTOR_NAME" id="DOCTOR_NAME">
+										    </div>
+										</div>	
+										<div class="form-group">
+										    <label for="DOCTOR_GENDER" class="col-sm-2 control-label">性别<span class="span-red">*</span></label>
+										    <div class="col-sm-10">
+										      	<select class="form-control" name="DOCTOR_GENDER" id="DOCTOR_GENDER">
+													<option>男</option>
+													<option>女</option>
+												</select>
+										    </div>
+										</div>
+										<div class="form-group">
+										    <label for="ACTIVE_STATUS" class="col-sm-2 control-label">状态<span class="span-red">*</span></label>
+										    <div class="col-sm-10">
+										      	<select class="form-control" name="ACTIVE_STATUS" id="ACTIVE_STATUS">
 													<option>active</option>
 													<option>inactive</option>
 												</select>
-											</div>
+										    </div>
 										</div>
 									</div>
+
 									<div class="form-group">
-										<input type="file" id="exampleInputFile" class="btn_file"> 
-									<!-- 	<p class="help-block">Example block-level help text here.</p> -->
-    								</div>
-									<div class="form-group">
-										<textarea class="form-control" rows="8" placeholder="医生信息"></textarea>
+									   <!--  <label for="NOTE" class="col-sm-2 control-label">备注<span class="span-red">*</span></label> -->
+									    <textarea class="form-control" rows="3" name="DOCTOR_INFO" id="DOCTOR_INFO"  placeholder="医生详细信息"></textarea>
 									</div>
-									<div class="btn_two">
-										<div class="form-group">
-											<button type="submit" class="btn btn-lg btn-primary">Confirm</button>
-											<a href="clinicManagement.html" class="btn btn-lg btn-primary">Cancel</a>
-									 	</div>
-									 </div>
+
+									<div class="form-group pull-right">
+										<a href="adminQryDoctor.html" class="btn btn-primary">Cancel</a>
+										<button type="submit" class="btn btn-warning" id="btn_submit">Confirm</button>
+										
+								 	</div>
 								</fieldset>
 							</form>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -165,6 +182,7 @@
 </footer>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/tm-scripts.js"></script>
-<script src="js/sign_up.js"></script>
+<script src="js/fd_pub.js"></script>
+<script src="js/fd_adminUpdDoctorDetail.js"></script>
 </body>
 </html>

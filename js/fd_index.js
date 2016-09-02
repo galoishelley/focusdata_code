@@ -1,8 +1,9 @@
+var fd_usertype,fd_usertypename;
 $(function(){
   
  	$.cookie("search_con", "");
 
-
+ 	//退出登录
 	$('#btn_out').click(function(){
 		$.cookie("ilogin", "");
 		// $('#userinfo').html();
@@ -14,16 +15,39 @@ $(function(){
 			$.cookie("fd_password", "");
 			$.cookie("fd_usertype", "");
 		}
-
 	});
 
+
+	//登录用户
 	if($.cookie("ilogin") == 1)
   	{
+		var fd_usertype = $.cookie("fd_usertype");
+		var fd_usertypename = $.cookie("fd_usertypename");
 
 	    var username = $.cookie("fd_username");
 
+	    // alert(fd_usertypename);
 	    $('#userinfo').html(username);
-	    $('#usertype').html("用户类型: "+$.cookie("fd_usertype"));
+	    $('#usertype').html("用户类型: "+ fd_usertypename);
+
+		$('#sub_userinfo').removeClass("hidden");
+
+		var url, str_data;
+		if(fd_usertype == 0){
+	    	$('#li_ClinicUser').removeClass("hidden");
+	    	url="classes/class.ClinicDetail.php";
+			str_data="CLINIC_USER_ID";
+  		}else if(fd_usertype == 1){
+  			$('#li_AppRecoder').removeClass("hidden");
+  			url="classes/class.UserDetail.php";
+  			str_data="CUSTOMER_USER_ID";
+  		}else if(fd_usertype == 2){
+  			$('#li_Admin').removeClass("hidden");
+  			url="classes/class.AdminDetail.php";
+  			str_data="ADMIN_ID";
+  		}else{
+
+  		}
 
 	    //获取用户基本信息
 	    var para={
@@ -36,7 +60,7 @@ $(function(){
 	    //请求
 	    $.ajax({
 	        type: "POST",
-	        url: "classes/class.UserDetail.php",
+	        url: url,
 	        dataType: "json",
 	        data: {
 	          	request:json_str
@@ -50,7 +74,17 @@ $(function(){
 		                return;
 		            }
 	              	var data = ret.data[0];
-	              	$.cookie("fd_userid", data.CUSTOMER_USER_ID);
+
+	              	console.log(data);
+	              	if(fd_usertype == 0){
+	              		$.cookie("fd_userid", data.CLINIC_USER_ID);
+			  		}else if(fd_usertype == 1){
+			  			$.cookie("fd_userid", data.CUSTOMER_USER_ID);
+			  		}else if(fd_usertype == 2){
+			  			$.cookie("fd_userid", data.ADMIN_ID);
+			  		}else{
+
+			  		}
 	            }else{
 	              	alert(ret.status.ret_code + " " + ret.status.ret_msg);
 	            }
@@ -65,9 +99,8 @@ $(function(){
     	});
 
 	}else{
+		//游客
 	    $.cookie("ilogin", 0);
-	    // $('#userinfo').html("游客");
-	    // $('#usertype').html("用户类型: 游客");
 	}
 
 	$('#btn_search').click(function(){

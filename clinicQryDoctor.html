@@ -1,107 +1,220 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <link rel="stylesheet" href="css/user.css">
+<title>our services</title>
+<meta charset="utf-8">    
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+<meta name="description" content="Your description">
+<meta name="keywords" content="Your keywords">
+<meta name="author" content="Your name">
+<!--CSS-->
+<link rel="stylesheet" href="css/bootstrap.css" >
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="fonts/font-awesome.css">
+<!--user css-->
+<link rel="stylesheet" href="css/user.css">
+<link rel="stylesheet" href="css/focusdata.css">
+<!--datetables css-->
+<link rel="stylesheet" href="js/datatables/dataTables.bootstrap.min.css">
+<!-- datetime -->
+<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+
+<!--JS-->
+<script src="js/jquery.js"></script>
+<script src="js/jquery-migrate-1.2.1.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.mobilemenu.js"></script>
+<script src="js/jquery.equalheights.js"></script> 
+<script src="js/jquery.ui.totop.js"></script>
+<script src="js/jquery.cookie.js"></script>
+
+
+
+<!--[if (gt IE 9)|!(IE)]><!-->
+<script src="js/wow/wow.js"></script>
+<script src="js/wow/device.min.js"></script>
+<script>
+    $(document).ready(function () {       
+      if ($('html').hasClass('desktop')) {
+        new WOW().init();
+      }   
+    });
+</script>
+<!--<![endif]-->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+
+    <div id="ie6-alert" style="width: 100%; text-align:center;">
+    <img src="http://beatie6.frontcube.com/images/ie6.jpg" alt="Upgrade IE 6" width="640" height="344" border="0" usemap="#Map" longdesc="http://die6.frontcube.com" />
+      <map name="Map" id="Map"><area shape="rect" coords="496,201,604,329" href="http://www.microsoft.com/windows/internet-explorer/default.aspx" target="_blank" alt="Download Interent Explorer" /><area shape="rect" coords="380,201,488,329" href="http://www.apple.com/safari/download/" target="_blank" alt="Download Apple Safari" /><area shape="rect" coords="268,202,376,330" href="http://www.opera.com/download/" target="_blank" alt="Download Opera" /><area shape="rect" coords="155,202,263,330" href="http://www.mozilla.com/" target="_blank" alt="Download Firefox" />
+        <area shape="rect" coords="35,201,143,329" href="http://www.google.com/chrome" target="_blank" alt="Download Google Chrome" />
+      </map>
+  </div>
+  <![endif]-->
 </head>
-<body> -->
+<body>
+<!--header-->
+<div class="container bars"><em class="bars_"></em></div>
+<header>
+    <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
+        <div class="container">
+            <ul class="nav sf-menu clearfix">
+                <li><a href="index.html">home</a></li>
+                <li class="sub-menu active"><a href="index-1.html">our services</a><span></span>
+                    <ul class="submenu">
+                        <li><a href="userAppointmentRecoder.html">个人用户管理</a><span class="fa fa-angle-right"></span>
+                             <ul class="submenu">
+                                <li><a href="userAppointmentRecoder.html">预约记录</a></li>
+                                <li><a href="userManagement.html?iflag=userUpdPersonInfo">修改个人用户信息</a><span class="fa fa-angle-right"></span>
+                                     <ul class="submenu">
+                                        <li><a href="#">修改用户信息</a></li>
+                                        <li><a href="#">修改密码</a></li>
+                                    </ul> 
+                                </li>
+                                <li><a href="#">收藏医生管理</a></li>
+                                <li><a href="#">常用搜索条件管理</a></li>
+                                
+                            </ul> 
+                        </li>
+                        <li><a href="searchDoctor.html">搜索|预约医生</a></li>
+                        <li><a href="clinicManagement.html">Clinic Management</a><span class="fa fa-angle-right"></span>
+                            <ul class="submenu">
+                                <li><a href="#">Update Clinic user info</a></li>
+                                <li><a href="#">Update Doctor info</a></li>
+                                <li><a href="#">Update Pwd</a></li>
+                            </ul> 
+                        </li>
+                        
+                        <li><a href="adminManagement.html">Admin Management</a></li>
+                    </ul>
+                </li>
+                <li><a href="index-2.html">about us</a></li>
+                <li><a href="index-3.html">staff</a></li>
+                <li><a href="index-4.html">Contacts</a></li>
+                <li  class="active"><a href="sign_in.html">Sign in</a></li>
+                <li><a href="sign_up_person.html">Sign up</a></li>
+                <li class="sub-menu tourist"><a href="#" id="userinfo">游客</a><span></span>
+                    <ul class="submenu">
+                        <li><a href="#" id="usertype">用户类型:游客</a></li>
+                        <li><a href="#">账户管理</a></li>
+                        <li><button class="btn btn-danger" id="btn_out">安全退出</button></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <h1 class="navbar-brand navbar-brand_"><a href="index.html"><img src="img/logo_en.png" alt="logo"></a></h1>
+</header>
+
 <!--content--> 
 <div class="content">
-  <div class="container">
-    <div class="row">
-        <div class="userRecoder">
-           <div class="col-lg-8 col-md-8 col-sm-8">
-                <div class="demo-txt">
-                    <h2>搜索医生</h2>
-                    <form class="form-inline">
-                        <div class="form-group">
-                          <input type="text" class="form-control" placeholder="诊所名称">
-                        </div> 
-                        <div class="form-group">
-                          <input type="text" class="form-control" placeholder="诊所区域">
-                        </div>
-                        <div class="form-group">
-                          <select class="form-control" id="sele_user">
-                            <option>active</option>
-                            <option>inactive</option>
-                          </select>
-                        </div>
-                        <div class="form-group">
-                          <input type="text" class="form-control" placeholder="医生类别">
-                        </div> 
-                        <div class="form-group">
-                          <input type="text" class="form-control" placeholder="医生姓名">
-                        </div>                        
-                      <div class="form-group">
-                          <button type="button" class="btn btn-info btn-md">
-                            <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search Doctor
-                          </button>
-                      </div> 
-                    </form> 
-                    <table class="table table-bordered table-hover table-striped">
-                        <thead>
-                          <th>诊所名称</th>
-                          <th>诊所区域</th>
-                          <th>医生类别</th>
-                          <th>医生名称</th>
-                          <th>医生状态</th>
-                          <th>...</th>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>省诊所</td>
-                            <td>朝阳区</td>
-                            <td>牙科</td>
-                            <td>尹鑫</td>
-                            <td>active</td>
-                            <td><a href="clinicUpdDoctor.html">...</a></td>
-                          </tr>
-                          <tr>
-                            <td>省诊所</td>
-                            <td>朝阳区</td>
-                            <td>牙科</td>
-                            <td>尹鑫</td>
-                            <td>active</td>
-                            <td><a href="clinicUpdDoctor.html">...</a></td>
-                          </tr>
-                           <tr>
-                            <td>省诊所</td>
-                            <td>朝阳区</td>
-                            <td>牙科</td>
-                            <td>尹鑫</td>
-                            <td>active</td>
-                            <td><a href="clinicUpdDoctor.html">...</a></td>
-                          </tr>
-                        </tbody>
-                    </table>
-                    <nav>
-                      <ul class="pagination">
-                        <li>
-                          <a href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                          </a>
-                        </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li>
-                          <a href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                          </a>
-                        </li>
-                      </ul>
-                    </nav>
-                </div>
+  <div class="stellar-section">
+    <div class="thumb-box9" data-stellar-background-ratio="0.1">
+      <div class="container">
+        <div class="row left_con">
+          <div class="col-lg-3 col-md-3 col-sm-3 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="list-group">
+                <a href="clinicUpdUserInfo.html" class="list-group-item" id="user_appointment_recoder" >修改诊所用户信息</a>
+                <a href="clinicQryDoctor.html" class="list-group-item active" id="user_upd_person_info">搜索|修改医生信息</a>
+                <a href="clinicUpdUserPwd.html" class="list-group-item" id="user_upd_person_pwd">修改诊所用户密码</a>
+              </div>
             </div>
+
+          <div class="col-lg-9 col-md-9 col-sm-9 wow fadeInUp" data-wow-delay="0.1s">
+              <div class="PersonUser">
+                <div class="savedoctor">
+
+                  <h2>搜索|修改医生信息</h2>
+                  <div class="row">
+                      <form class="form-inline" role="form">
+                          <div class="form-group">
+                            <label for="DOCTOR_TYPE" class="control-label">医生类别</label>
+                            <select class="form-control" id="DOCTOR_TYPE">
+                              <option value="%">全部</option>
+                            </select>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="DOCTOR_NAME" class="control-label">医生名称</label>
+                            <input type="text" class="form-control" id="DOCTOR_NAME">
+                          </div>
+
+                           <button class="btn btn-primary search_ok" id="search_ok"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>  
+
+                           <button class="btn btn-danger" id="btn_inactive">inactive</button>
+                           <button class="btn btn-warning" id="btn_active">active</button>
+                       </form>
+                  </div>
+
+                  <div class="row">
+                    <table id="dataTables-example" class="table table-hover  table-bordered" >
+                      <thead class="table_title">
+                          <tr>
+                            <th><input type="checkbox" name="chk_all" id="chk_all"></th>
+                            <th>诊所名称</th>
+                            <th>诊所区域</th>
+                            <th>医生类别</th>
+                            <th>医生名称</th>
+                            <th>性别</th>
+                            <th>状态</th>
+                            <th>修改</th>
+                          </tr>
+                      </thead>
+                    </table>
+                  </div>
+
+              </div>
+              <!-- savedoctor -->
+            </div>
+            <!-- PersonUser -->
+          </div>
+          <!-- wow -->
         </div>
-    </div> 
+        <!-- row -->
+      </div>
+      <!-- container -->
+    </div>
   </div>
 </div>
-<!-- <script src="js/jquery.js"></script>
+
+<!--footer-->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 center">
+                <ul class="follow_icon">
+                    <li><a href="#" class="fa fa-twitter"></a></li>
+                    <li><a href="#" class="fa fa-facebook"></a></li>
+                    <li><a href="#" class="fa fa-google-plus"></a></li>
+                    <li><a href="#" class="fa fa-rss"></a></li>
+                    <li><a href="#" class="fa fa-pinterest"></a></li>
+                    <li><a href="#" class="fa fa-linkedin"></a></li>
+                </ul>
+            </div>
+            <div class="col-lg-12 center">
+                <p>84, Charing Cross Road,London<br>JL 851213-2340</p>
+            </div>
+            <div class="col-lg-12 center">
+                <p class="privacy">&copy; <em id="copyright-year"></em> <i>|</i> <a href="index-5.html">Privacy Policy</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- DataTables JavaScript -->
+<script src="bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+<script src="bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+
+<!-- datetime -->
+<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/tm-scripts.js"></script>
+<script src="js/fd_pub.js"></script>
+<script src="js/fd_clinicQryDoctor.js"></script>
 </body>
-</html> -->
+</html>

@@ -32,15 +32,16 @@ $(function(){
 
     //记录user type
     if(str_usertype==0){
-      str_usertype = "诊所用户";
+      str_usertypename = "诊所用户";
     }else if(str_usertype==1){
-      str_usertype = "个人用户";
+      str_usertypename = "个人用户";
     }else if(str_usertype==2){
-      str_usertype = "管理员";
+      str_usertypename = "管理员";
     }
 
     $.cookie("fd_usertype", str_usertype, { expires: 7 });
- 
+    $.cookie("fd_usertypename", str_usertypename, { expires: 7 });
+  
   };
 
 

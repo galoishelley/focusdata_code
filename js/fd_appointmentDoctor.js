@@ -44,6 +44,9 @@ $(function(){
 
 	if(ilogin == 1){
 
+      //显示收藏医生
+      $('#btn_savedoctor').show();
+
       //组织request para
       var username = $.cookie("fd_username");
 
