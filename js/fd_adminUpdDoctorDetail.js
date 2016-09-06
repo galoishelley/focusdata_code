@@ -6,7 +6,7 @@ $(function(){
     var json_value = JSON.parse(str);
     console.log(json_value);
 
-    $('#DOCTOR_PHOTO').attr('src','img/doctors/'+json_value.DOCTOR_PHOTO);
+    // $('#DOCTOR_PHOTO').attr('src','img/doctors/'+json_value.DOCTOR_PHOTO);
     $('#CLINIC_NAME').text(json_value.CLINIC_NAME);
     $('#CLINIC_ADDR').text(json_value.CLINIC_ADDR);
     $('#DOCTOR_TYPE').val(json_value.DOCTOR_TYPE);
@@ -14,7 +14,9 @@ $(function(){
     $('#DOCTOR_GENDER').val(json_value.DOCTOR_GENDER);
     $('#DOCTOR_INFO').val(json_value.DOCTOR_INFO);
     $('#DOCTOR_ID').val(json_value.DOCTOR_ID);
-
+    // $('#upload_file').val('123');
+    $('#feedback').html("<img src='img/doctors/"+json_value.DOCTOR_PHOTO+"'/>");
+    
     var doc_status = json_value.ACTIVE_STATUS;
     // var doc_status;
     if(doc_status == "0"){
@@ -56,27 +58,41 @@ $(function(){
             var ret = msg.response;
             if(ret.success){
               if(json_str.sequ != ret.sequ){
-                alert("ST01 时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
+                alert(func_code+":时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
                 result = false;
               }
               // var data = ret.data[0];
               window.location.href="clinicQryDoctor.html"; 
             }else{
-              alert("获取用户信息失败!" + ret.status.ret_code + " " + ret.status.ret_msg);
+              alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
               result = false;
             }
             
         },
         error: function(XMLHttpRequest, textStatus, errorThrown){
           //请求失败之后的操作
-          alert("error:获取用户信息失败!" + textStatus);
-          result = false;
+          var ret_code = "999999";
+          var ret_msg = "失败,请联系管理员!";
+          alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+          result=false;
        }
     });
     if(!result){
       return result;
     }
     return false;
+  });
+
+  $("#upload_file").change(function(){
+    if($("#upload_file").val() != '')  $("#submit_form").submit();
+  });
+
+  $("#exec_target").load(function(){
+    var data = $(window.frames['exec_target'].document.body).find("textarea").html();
+    if(data != null){
+      $("#feedback").append(data.replace(/&lt;/g,'<').replace(/&gt;/g,'>'));
+      // $("#upload_file").val('');
+    }
   });
 
 });

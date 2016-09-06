@@ -36,7 +36,7 @@ class ClinicDetail_DB{
             print_r($arr_values);
         }
 
-        $sql = "SELECT * FROM `fd_clinic_user` WHERE `CLINIC_USER_ID` = '".$arr_values["CLINIC_USER_ID"]."'";
+        $sql = "SELECT * FROM `fd_clinic_user` WHERE `CLINIC_USER_ID` = ".intval($arr_values["CLINIC_USER_ID"]);
 
         // echo $sql;
         if($this->_dbug){

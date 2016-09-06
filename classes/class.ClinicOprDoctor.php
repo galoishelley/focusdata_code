@@ -6,6 +6,9 @@ class ClinicOprDoctor
 	private $ClinicOprDoctor;
 	private $arr_values = array();
 	private $request;
+	private $draw;
+	private $start;
+	private $length;
 	private $_dbug;
 	private $user_name,$user_pwd;
 
@@ -25,6 +28,16 @@ class ClinicOprDoctor
             echo "[---ClinicOprDoctor---request]";
             print_r($this->request);
         }
+
+        if (isset ( $_POST ['draw'] )){
+			$this->draw = $_POST ['draw'];
+		}
+		if (isset ( $_POST ['start'])){
+			$this->start = $_POST ['start'];
+		}
+		if (isset ( $_POST ['length'])){
+			$this->length = $_POST ['length'];
+		}
 
 		$this->arr_values = $this->request["para"];
 
@@ -82,6 +95,9 @@ class ClinicOprDoctor
 			case 'view' :
 				$this->view ();
 				break;	
+			case 'viewAll_admin' :
+				$this->viewAll_admin ();
+				break;	
 			default :
 				$this->viewAll ();
 				//$this->getDataTime();
@@ -133,6 +149,47 @@ class ClinicOprDoctor
 		$response["response"]["success"] = $success;  //固定参数返回	
 		$response["response"]["status"] = $status;  //固定参数返回	
 		$response["response"]["data"] = $ret;
+
+		echo json_encode ( $response );
+	}
+
+	public function viewAll_admin()
+	{
+		$response["response"]  = array();
+		$success = true;
+		$ret_msg = "";
+		$ret_code = "S00000"; //成功
+
+		$records = $this->ClinicOprDoctor->viewAll_admin_count ($this->arr_values,$this->requesttype);
+
+		$ret["data"] = $this->ClinicOprDoctor->viewAll_admin ($this->arr_values,$this->requesttype,$this->start,$this->length);
+		
+		if($ret!=""){
+			$success = true;
+			$ret_msg="查询成功";
+			$ret_code = "S00000";
+		}else{
+			$success = true;
+			$ret_msg="无符合条件数据";
+			$ret_code = "S00001";
+		}
+
+		$status  = array();
+		$status["ret_msg"] = $ret_msg;	
+		$status["ret_code"] = $ret_code;
+
+		//服务器模式data
+		$data  = array();
+		$data["draw"] = $this->draw;
+		$data["recordsTotal"] = $records;
+		$data["recordsFiltered"] = $records;
+		$data["data"]=$ret["data"];
+		
+		// echo $ret;
+		$response["response"] = $this->response_const();  //固定参数返回
+		$response["response"]["success"] = $success;  //固定参数返回	
+		$response["response"]["status"] = $status;  //固定参数返回	
+		$response["response"]["data"] = $data;
 
 		echo json_encode ( $response );
 	}

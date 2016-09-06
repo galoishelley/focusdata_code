@@ -125,16 +125,16 @@ class saveSearch
 
 		if($ret>0){
 			$success = true;
-			$ret_msg="收藏成功";
+			$ret_msg="保存常用搜索条件成功";
 			$ret_code = "S00101";
-			if($ret == 2){
-				$success = true;
-				$ret_msg="医生已经被收藏";
-				$ret_code = "S00102";
-			}
+			// if($ret == 2){
+			// 	$success = true;
+			// 	$ret_msg="医生已经被收藏";
+			// 	$ret_code = "S00102";
+			// }
 		}else{
 			$success = false;
-			$ret_msg="收藏医生失败,请联系管理员";
+			$ret_msg="保存常用搜索条件失败,请联系管理员";
 			$ret_code = "S00199";
 		}
 

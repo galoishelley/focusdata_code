@@ -170,7 +170,7 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination{
  * col
  */
 .col-sm-6,.col-sm-12,
-.col-md-2,.col-md-3,
+.col-md-2,.col-md-3,.col-md-12,
 .col-lg-6,.col-lg-12
 {
 	padding-right: 0px;
@@ -333,6 +333,10 @@ nav.tm_navbar .tourist > ul{
 
 .appointmentDoctor #btn_savedoctor{
 	display: none;
+}
+
+.appointmentDoctor form{
+  padding:10px;
 }
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * PersonUser
@@ -520,7 +524,11 @@ nav.tm_navbar .tourist > ul{
   cursor: not-allowed;
 }
 
-/*************clinic update doctor***************/
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * clinic update doctor
+ */
+
 .clinicUpdDoc .doctor_info{
   float:left;
 }
@@ -559,7 +567,7 @@ nav.tm_navbar .tourist > ul{
   margin-bottom: 30px;
 }*/
 
-#clinic_info{
+.clinicUpdDoc #clinic_info{
 	font-size: 20px;
 	/*color:#f0ad4e;*/
 	font-weight: bold;
@@ -567,4 +575,96 @@ nav.tm_navbar .tourist > ul{
 
 label{
 	font-weight: normal;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * admin update doctor
+ */
+.adminUpdDoc .doctor_info{
+  float:left;
+}
+
+.adminUpdDoc img{
+  width:100%; 
+  height:100%;
+}
+
+.adminUpdDoc .doctor_info div{
+  /*margin: 20px 0px;*/
+  margin-top:20px;
+  margin-bottom: 10px;
+}
+
+.adminUpdDoc .btn_file{
+  margin-top: 10px;
+  /*margin-left: 30px;*/
+} 
+
+.adminUpdDoc .image_right{
+  float:right;
+}
+
+.adminUpdDoc .image_right label{
+  margin: 20px 0px;
+}
+
+.adminUpdDoc #clinic_info{
+  font-size: 20px;
+  /*color:#f0ad4e;*/
+  font-weight: bold;
+}
+
+.adminUpdDoc #exec_target{
+  display:none;
+  width:0;
+  height:0;
+}
+
+.adminUpdDoc #feedback{
+  padding-top: 20px;
+  width:1200px;
+  margin:0 
+  auto;
+}
+
+.adminUpdDoc #feedback img{
+  float:left;
+  width:300px;
+  height:300px;
+}
+
+.adminUpdDoc #doctor_img{
+  margin-top: 20px;
+  width:300px;
+  height:300px;
+}
+
+.adminUpdDoc .doctor_photo label{
+  text-align: right;
+}
+
+.doctor-info p{
+  margin: 5px 0px;
+}
+
+.person-info {
+  margin-top: 77px;
+}
+
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * forgot password
+ */
+
+/*.send_email{
+  padding-right: 10px;
+}*/
+
+.forgotpwd .radio_admin{
+  margin-bottom:15px;
 }

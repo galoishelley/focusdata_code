@@ -66,40 +66,22 @@
                 <li><a href="index.html">home</a></li>
                 <li class="sub-menu active"><a href="index-1.html">our services</a><span></span>
                     <ul class="submenu">
-                        <li><a href="userAppointmentRecoder.html">个人用户管理</a><span class="fa fa-angle-right"></span>
-                             <ul class="submenu">
-                                <li><a href="userAppointmentRecoder.html">预约记录</a></li>
-                                <li><a href="userManagement.html?iflag=userUpdPersonInfo">修改个人用户信息</a><span class="fa fa-angle-right"></span>
-                                     <ul class="submenu">
-                                        <li><a href="#">修改用户信息</a></li>
-                                        <li><a href="#">修改密码</a></li>
-                                    </ul> 
-                                </li>
-                                <li><a href="#">收藏医生管理</a></li>
-                                <li><a href="#">常用搜索条件管理</a></li>
-                                
-                            </ul> 
-                        </li>
                         <li><a href="searchDoctor.html">搜索|预约医生</a></li>
-                        <li><a href="clinicManagement.html">Clinic Management</a><span class="fa fa-angle-right"></span>
-                            <ul class="submenu">
-                                <li><a href="#">Update Clinic user info</a></li>
-                                <li><a href="#">Update Doctor info</a></li>
-                                <li><a href="#">Update Pwd</a></li>
-                            </ul> 
+                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.html">个人用户管理</a>
                         </li>
-                        
-                        <li><a href="adminManagement.html">Admin Management</a></li>
+                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.html">诊所用户管理</a>
+                        </li>
+                        <li id="li_Admin" class="hidden"><a href="adminQryClinic.html">管理员管理</a></li>
                     </ul>
                 </li>
                 <li><a href="index-2.html">about us</a></li>
                 <li><a href="index-3.html">staff</a></li>
                 <li><a href="index-4.html">Contacts</a></li>
-                <li  class="active"><a href="sign_in.html">Sign in</a></li>
+                <li><a href="sign_in.html">Sign in</a></li>
                 <li><a href="sign_up_person.html">Sign up</a></li>
                 <li class="sub-menu tourist"><a href="#" id="userinfo">游客</a><span></span>
-                    <ul class="submenu">
-                        <li><a href="#" id="usertype">用户类型:游客</a></li>
+                    <ul class="submenu hidden" id="sub_userinfo">
+                        <li><a href="#" id="usertype"></a></li>
                         <li><a href="#">账户管理</a></li>
                         <li><button class="btn btn-danger" id="btn_out">安全退出</button></li>
                     </ul>
@@ -127,13 +109,13 @@
 						</div>
 					</div>
 
-					<!-- <div class="col-lg-9 col-md-9 col-sm-9 wow fadeInUp" data-wow-delay="0.1s"> -->
-          <div class="col-lg-9 col-md-9 col-sm-9">
+					<div class="col-lg-9 col-md-9 col-sm-9 wow fadeInUp" data-wow-delay="0.1s">
+          <!-- <div class="col-lg-9 col-md-9 col-sm-9"> -->
               <div class="PersonUser">
 
                 <h2>预约记录</h2>
                 <div class="row">
-                    <form class="form-inline" role="form">
+                    <form class="form-inline wow fadeInLeft" role="form">
                         <div class="input-group">
                           <span class="input-group-addon" id="basic-addon1">开始时间</span>
                           <input type="text" class="form-control form_datetime" id="begin_time" readonly>
@@ -217,7 +199,7 @@
 <script type="text/javascript" src="js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/tm-scripts.js"></script>
-<script src="js/fd_pub.js"></script>
-<script src="js/fd_userAppointmentRecoder.js"></script>
+<script src="js/main/pub.js"></script>
+<script src="js/main/userAppointmentRecoder.js"></script>
 </body>
 </html>

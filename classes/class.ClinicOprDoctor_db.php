@@ -29,14 +29,64 @@ class ClinicOprDoctor_DB{
         return $ret;
     }
 
+    public function viewAll_admin_count($arr_values,$requesttype=0,$start=0,$lenght=10){
+        if($this->_dbug){
+            echo "[---viewAll---arr_values]";
+            print_r($arr_values);
+        }
+
+        $sql = "SELECT count(*) as count FROM fd_doctor t1
+                left join (fd_rel_clinic_doctor as t2 left join fd_clinic_user as t3 on t2.clinic_user_id = t3.clinic_user_id )
+                ON t1.DOCTOR_ID = t2.DOCTOR_ID
+                 where 
+                 t1.DOCTOR_TYPE like '%".$arr_values['DOCTOR_TYPE']."%'
+                 and t1.DOCTOR_NAME like '%".$arr_values['DOCTOR_NAME']."%' order by t1.UPDATE_DATE DESC ";
+
+        // echo $sql;
+        if($this->_dbug){
+            echo "[---viewAll---sql]";
+            print_r($sql);
+        }
+
+        $ret = $this->db->fetchAll_sql($sql,null);
+        
+        return $ret[0]['count'];
+    }
+
+
+    public function viewAll_admin($arr_values,$requesttype=0,$start=0,$lenght=10){
+        if($this->_dbug){
+            echo "[---viewAll---arr_values]";
+            print_r($arr_values);
+        }
+
+        $limit = " limit ".$start.",".$lenght;
+        $sql = "SELECT t1.*, t3.CLINIC_NAME, t3.CLINIC_ADDR FROM fd_doctor t1
+                left join (fd_rel_clinic_doctor as t2 left join fd_clinic_user as t3 on t2.clinic_user_id = t3.clinic_user_id )
+                ON t1.DOCTOR_ID = t2.DOCTOR_ID
+                 where 
+                 t1.DOCTOR_TYPE like '%".$arr_values['DOCTOR_TYPE']."%'
+                 and t1.DOCTOR_NAME like '%".$arr_values['DOCTOR_NAME']."%' order by t1.UPDATE_DATE DESC ".$limit;
+
+        // echo $sql;
+        if($this->_dbug){
+            echo "[---viewAll---sql]";
+            print_r($sql);
+        }
+
+        $ret = $this->db->fetchAll_sql($sql,null);
+        
+        return $ret;
+    }
+
     public function viewAll($arr_values,$requesttype=0,$start=0,$lenght=10){
         if($this->_dbug){
             echo "[---viewAll---arr_values]";
             print_r($arr_values);
         }
 
-        $sql = "SELECT * FROM fd_doctor t1
-                right join (fd_rel_clinic_doctor as t2 right join fd_clinic_user as t3 on t2.clinic_user_id = t3.clinic_user_id )
+        $sql = "SELECT t1.*, t3.CLINIC_NAME, t3.CLINIC_ADDR FROM fd_doctor t1
+                left join (fd_rel_clinic_doctor as t2 left join fd_clinic_user as t3 on t2.clinic_user_id = t3.clinic_user_id )
                 ON t1.DOCTOR_ID = t2.DOCTOR_ID
                  where t3.clinic_user_id = ".$arr_values['CLINIC_USER_ID']."
                  and t1.DOCTOR_TYPE like '%".$arr_values['DOCTOR_TYPE']."%'
@@ -71,7 +121,6 @@ class ClinicOprDoctor_DB{
 
         $arrlength=count($arr_values['DOCTOR_ID']);
         for($i = 0; $i < $arrlength; $i++){
-            $where = "";
             $where =" DOCTOR_ID = ".intval($arr_values['DOCTOR_ID'][$i]);
             // unset($arr_values["DOCTOR_ID"]);
 

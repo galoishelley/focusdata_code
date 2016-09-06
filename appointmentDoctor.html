@@ -18,7 +18,7 @@
 <!--User CSS-->
 <link rel="stylesheet" href="css/user.css">
 <link rel="stylesheet" href="css/focusdata.css">
-<link rel="stylesheet" href="../css/bootstrapValidator.css"/>
+<link rel="stylesheet" href="css/bootstrapValidator.css"/>
 <!--JS-->
 <script src="js/jquery.js"></script>
 <script src="js/jquery-migrate-1.2.1.min.js"></script>
@@ -57,33 +57,15 @@
     <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
         <div class="container">
             <ul class="nav sf-menu clearfix">
-                <li><a href="index.html">home</a></li>
-                <li class="sub-menu active"><a href="index-1.html">our services</a><span></span>
+                <li class="active"><a href="index.html">home</a></li>
+                <li class="sub-menu"><a href="index-1.html">our services</a><span></span>
                     <ul class="submenu">
-                        <li><a href="userAppointmentRecoder.html">个人用户管理</a><span class="fa fa-angle-right"></span>
-                             <ul class="submenu">
-                                <li><a href="userAppointmentRecoder.html">预约记录</a></li>
-                                <li><a href="userManagement.html?iflag=userUpdPersonInfo">修改个人用户信息</a><span class="fa fa-angle-right"></span>
-                                     <ul class="submenu">
-                                        <li><a href="#">修改用户信息</a></li>
-                                        <li><a href="#">修改密码</a></li>
-                                    </ul> 
-                                </li>
-                                <li><a href="#">收藏医生管理</a></li>
-                                <li><a href="#">常用搜索条件管理</a></li>
-                                
-                            </ul> 
-                        </li>
                         <li><a href="searchDoctor.html">搜索|预约医生</a></li>
-                        <li><a href="clinicManagement.html">Clinic Management</a><span class="fa fa-angle-right"></span>
-                            <ul class="submenu">
-                                <li><a href="#">Update Clinic user info</a></li>
-                                <li><a href="#">Update Doctor info</a></li>
-                                <li><a href="#">Update Pwd</a></li>
-                            </ul> 
+                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.html">个人用户管理</a>
                         </li>
-                        
-                        <li><a href="adminManagement.html">Admin Management</a></li>
+                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.html">诊所用户管理</a>
+                        </li>
+                        <li id="li_Admin" class="hidden"><a href="adminQryClinic.html">管理员管理</a></li>
                     </ul>
                 </li>
                 <li><a href="index-2.html">about us</a></li>
@@ -92,8 +74,8 @@
                 <li><a href="sign_in.html">Sign in</a></li>
                 <li><a href="sign_up_person.html">Sign up</a></li>
                 <li class="sub-menu tourist"><a href="#" id="userinfo">游客</a><span></span>
-                    <ul class="submenu">
-                        <li><a href="#" id="usertype">用户类型:游客</a></li>
+                    <ul class="submenu hidden" id="sub_userinfo">
+                        <li><a href="#" id="usertype"></a></li>
                         <li><a href="#">账户管理</a></li>
                         <li><button class="btn btn-danger" id="btn_out">安全退出</button></li>
                     </ul>
@@ -120,14 +102,15 @@
     	                        <li>
     	                            <strong id="doctor_name"></strong>
     	                            <div class="extra-wrap">
+                                        <p id="doctor_type"></p>
     	                                <p id="clinic_name"></p>
                                         <p id="clinic_addr"></p>
-                                        <p id="doctor_type"></p>
                                         <p id="doctor_details"></p>
     	                            </div>
     	                        </li>
     	                        <li>
-    	                        	<appointment>预约时间 2016-8-20</appointment>
+    	                        	<appointment>预约时间</appointment>
+                                    <h3 id="appointment_date"></h3>
                                     <div class="app_time" id="app_time">
     	                            <!-- <appointment id="app_time">2016-7-13 9:30</appointment> -->
     	                        </li>
@@ -145,13 +128,65 @@
 				            
 				            <div class="row">
 
+                            <form class="form-inline wow fadeInLeft" role="form" id="appointmentDoctor">
+
+                                <input type="hidden" class="form-control" name="action_type" id="action_type" value="create">
+
+                                <div class="form-group col-md-12 col-lg-12">
+                                    <label for="CUSTOMER_USER_NAME" class="col-md-3 col-lg-3 control-label">用户名<span class="span-red">*</span></label>
+                                    <input type="text" class="form-control" id="CUSTOMER_USER_NAME" name="CUSTOMER_USER_NAME">
+                                </div>
+
+                                <div class="form-group col-md-12 col-lg-12">
+                                    <label for="CUSTOMER_USER_PWD" class="col-md-3 col-lg-3 control-label">密码<span class="span-red">*</span></label>
+                                    <input type="password" class="form-control" name="CUSTOMER_USER_PWD" id="CUSTOMER_USER_PWD">
+                                </div>
+
+                                <div class="form-group col-md-12 col-lg-12">
+                                    <label for="CUSTOMER_NAME" class="col-md-3 col-lg-3  control-label">姓名<span class="span-red">*</span></label>
+                                    <input type="text" class="form-control" name="CUSTOMER_NAME" id="CUSTOMER_NAME">
+                                </div>
+
+                                <div class="form-group col-md-12 col-lg-12">
+                                    <label for="CUSTOMER_GENDER" class="col-md-3 col-lg-3 control-label">性别<span class="span-red">*</span></label>
+                                    <select class="form-control"  name="CUSTOMER_GENDER" id="CUSTOMER_GENDER">
+                                        <option>男</option>
+                                        <option>女</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group col-md-12 col-lg-12">
+                                    <label for="CUSTOMER_BIRTHDAY" class="col-md-3 col-lg-3  control-label">生日<span class="span-red">*</span></label>
+                                    <input type="text" class="form-control" name="CUSTOMER_BIRTHDAY" id="CUSTOMER_BIRTHDAY">
+                                </div>
+
+                                <div class="form-group col-md-12 col-lg-12">
+                                    <label for="CUSTOMER_ADDR" class="col-md-3 col-lg-3  control-label">住址<span class="span-red">*</span></label>
+                                    <input type="text" class="form-control" name="CUSTOMER_ADDR" id="CUSTOMER_ADDR">
+                                </div>
+
+                                <div class="form-group col-md-12 col-lg-12">
+                                    <label for="CUSTOMER_PHONE_NO" class="col-md-3 col-lg-3  control-label">手机号<span class="span-red">*</span></label>
+                                    <input type="text" class="form-control" name="CUSTOMER_PHONE_NO" id="CUSTOMER_PHONE_NO">
+                                </div>
+
+                                <div class="form-group col-md-12 col-lg-12">
+                                    <label for="MEDICAL_CARD_NO" class="col-md-3 col-lg-3  control-label">医疗卡号<span class="span-red">*</span></label>
+                                    <input type="text" class="form-control" name="MEDICAL_CARD_NO" id="MEDICAL_CARD_NO">
+                                </div>
+
+                            </form>
+
 					            <!-- <form  id="appointmentDoctor_form"  role="form"> -->
 					        <!--     <div class="success" style="display: none;">Your subscribe request<br> has been sent!</div> -->
-                                <form id="newsletter">
-                                     <div class="success" style="display: none;">Your subscribe request<br> has been sent!</div>
+                                <!-- <form id="newsletter"> -->
+                                <!-- <form role="form">
+                                      <div class="success" style="display: none;">Your subscribe request<br> has been sent!</div> 
 					              	<fieldset>
-                                        <input type="hidden" class="form-control" name="action_type" id="action_type" value="create">
-					                	<input type="text" class="form-control" placeholder="UserName"  name="CUSTOMER_USER_NAME" id="CUSTOMER_USER_NAME" autofocus="true">
+
+
+                                       
+
 					                	<input type="password" class="form-control" placeholder="PassWord" name="CUSTOMER_USER_PWD" id="CUSTOMER_USER_PWD" >
 					                	<input type="text" class="form-control" placeholder="PhoneCodes" name="verifyCode" id="verifyCode">
                                         <select class="form-control"  name="CUSTOMER_GENDER" id="CUSTOMER_GENDER">
@@ -166,10 +201,10 @@
                                         <!-- <a class="btn btn-default btn6" href="searchDoctor.html" style="padding:15px 33px 25px 33px;">
                                           <span class="glyphicon  glyphicon-arrow-left"> 搜索医生</span>
                                         </a>
-                                        <button class="btn btn-default btn6" id="btn_submit">Appointment Doctor</button> -->
-					                	<!-- <button class="btn-default btn6" id="btn_submit">Appointment Doctor</button> -->
+                                        <button class="btn btn-default btn6" id="btn_submit">Appointment Doctor</button> 
+					                	<!-- <button class="btn-default btn6" id="btn_submit">Appointment Doctor</button> 
 					            	</fieldset>
-					          	</form>
+					          	</form> -->
 				        	</div>
 				        
 					    </div>
@@ -193,7 +228,7 @@
 </div>
 <input type="hidden" id="CUSTOMER_USER_ID"/>
 <input type="hidden" id="DOCTOR_ID"/>
-<!--footer-->
+<!--footer -->
 <footer>
     <div class="container">
         <div class="row">
@@ -220,8 +255,8 @@
 <script src="js/tm-scripts.js"></script>
 <script src="js/jquery.cookie.js"></script>
 <script src="js/bootstrapValidator.js"></script>
-<script src="js/fd_pub.js"></script>
-<script src="js/fd_appointmentDoctor.js"></script>
+<script src="js/main/pub.js"></script>
+<script src="js/main/appointmentDoctor.js"></script>
 
 </body>
 </html>

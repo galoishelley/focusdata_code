@@ -57,23 +57,28 @@
         <div class="container">
             <ul class="nav sf-menu clearfix">
                 <li><a href="index.html">home</a></li>
-                <li class="sub-menu"><a href="index-1.html">our services</a><span></span>
+                <li class="sub-menu active"><a href="index-1.html">our services</a><span></span>
                     <ul class="submenu">
-        				<li><a href="#">history</a></li>
-        				<li><a href="#">staff</a><span class="fa fa-angle-right"></span>
-                            <ul class="submenu">
-                                <li><a href="#">fresh</a></li>
-                                <li><a href="#">archive</a></li>
-                            </ul> 
+                        <li><a href="searchDoctor.html">搜索|预约医生</a></li>
+                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.html">个人用户管理</a>
                         </li>
-        				<li><a href="#">news</a></li>
-        			</ul>
+                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.html">诊所用户管理</a>
+                        </li>
+                        <li id="li_Admin" class="hidden"><a href="adminQryClinic.html">管理员管理</a></li>
+                    </ul>
                 </li>
                 <li><a href="index-2.html">about us</a></li>
                 <li><a href="index-3.html">staff</a></li>
                 <li><a href="index-4.html">Contacts</a></li>
                 <li><a href="sign_in.html">Sign in</a></li>
-                <li class="active"><a href="sign_up.html">Sign up</a></li>
+                <li><a href="sign_up_person.html">Sign up</a></li>
+                <li class="sub-menu tourist"><a href="#" id="userinfo">游客</a><span></span>
+                    <ul class="submenu hidden" id="sub_userinfo">
+                        <li><a href="#" id="usertype"></a></li>
+                        <li><a href="#">账户管理</a></li>
+                        <li><button class="btn btn-danger" id="btn_out">安全退出</button></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </nav>
@@ -84,23 +89,17 @@
 <div class="content">
 	<div class="stellar-section">
 		<div class="thumb-box9" data-stellar-background-ratio="0.1">
-			<div class="clinicUpdDoc">
+			<div class="adminUpdDoc">
 				<div class="container">
 					<div class="row">
 							<h2 class="wow fadeInRight">修改医生信息</h2>
-							<form class="form-horizontal wow fadeInLeft" role="form" id="clinicUpdDoctorDetail">
-								<fieldset>
-									<input type="hidden" class="form-control" name="action_type" id="action_type" value="update_doctor_info">
-									<input type="hidden" class="form-control" name="DOCTOR_ID" id="DOCTOR_ID">
-									<div class="form-group col-md-3 col-sm-12">
-										<img alt="..." class="img-rounded" id="DOCTOR_PHOTO">
-
-										<div class="form-group">
-											<input type="file" id="exampleInputFile" class="btn_file"> 
-											<p class="help-block">Example block-level help text here.</p>
-    									</div>
-									</div>
-									<div class="form-group col-md-9 col-sm-12">
+							
+							
+							<div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
+								<form class="form-horizontal wow fadeInLeft" role="form" id="clinicUpdDoctorDetail">
+									<fieldset>
+										<input type="hidden" class="form-control" name="action_type" id="action_type" value="update_doctor_info">
+										<input type="hidden" class="form-control" name="DOCTOR_ID" id="DOCTOR_ID">
 									 	<div class="form-group" id="clinic_info">
 										    <div class="col-sm-10 col-sm-offset-2">
 										    	<label class="control-label" id="CLINIC_NAME">省诊所</label>
@@ -132,25 +131,45 @@
 										    <label for="ACTIVE_STATUS" class="col-sm-2 control-label">状态<span class="span-red">*</span></label>
 										    <div class="col-sm-10">
 										      	<select class="form-control" name="ACTIVE_STATUS" id="ACTIVE_STATUS">
-													<option>active</option>
-													<option>inactive</option>
+													<option value="1">active</option>
+													<option value="0">inactive</option>
 												</select>
 										    </div>
 										</div>
-									</div>
+										<div class="form-group">
+										    <label for="DOCTOR_INFO" class="col-sm-2 control-label">医生详细信息<span class="span-red">*</span></label>
+										    <div class="col-sm-10">
+										    	<textarea class="form-control" rows="5" name="DOCTOR_INFO" id="DOCTOR_INFO"  placeholder="医生详细信息"></textarea>
+										    </div>	
+										</div>
 
-									<div class="form-group">
-									   <!--  <label for="NOTE" class="col-sm-2 control-label">备注<span class="span-red">*</span></label> -->
-									    <textarea class="form-control" rows="3" name="DOCTOR_INFO" id="DOCTOR_INFO"  placeholder="医生详细信息"></textarea>
-									</div>
+										<input type="hidden" class="form-control" name="DOCTOR_PHOTO" id="DOCTOR_PHOTO">
+									</fieldset>
+								</form>
 
+								<div class="row doctor_photo">
+									 <label for="DOCTOR_PHOTO" class="col-sm-2 control-label">医生照片<span class="span-red">*</span></label>
+									<div class="col-sm-offset-2">	
+										<form id="submit_form" method="post" action="./classes/class.upload.php" target="exec_target" enctype="multipart/form-data">
+											<input type="file" name="upload_file" id="upload_file">
+										</form>
+
+										<iframe id="exec_target" name="exec_target"></iframe>
+
+										<div id="feedback"></div>
+									</div>
+								</div>
+
+								<div class="row">
 									<div class="form-group pull-right">
 										<a href="adminQryDoctor.html" class="btn btn-primary">Cancel</a>
 										<button type="submit" class="btn btn-warning" id="btn_submit">Confirm</button>
 										
 								 	</div>
-								</fieldset>
-							</form>
+							 	</div>
+
+							</div>
+							<!-- col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 -->
 					</div>
 				</div>
 			</div>
@@ -182,7 +201,7 @@
 </footer>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/tm-scripts.js"></script>
-<script src="js/fd_pub.js"></script>
-<script src="js/fd_adminUpdDoctorDetail.js"></script>
+<script src="js/main/pub.js"></script>
+<script src="js/main/adminUpdDoctorDetail.js"></script>
 </body>
 </html>

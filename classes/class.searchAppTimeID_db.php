@@ -16,7 +16,7 @@ class SearchAppTimeID_DB{
             print_r($arr_values);
         }
 
-        $sql = "SELECT * FROM `fd_rel_doctor_appointment_time` WHERE `DOCTOR_ID` = '".$arr_values["DOCTOR_ID"]."' and `APPOINTMENT_TIME` = '".$arr_values["APPOINTMENT_TIME"]."'  and `ACTIVE_STATUS`=1";
+        $sql = "SELECT * FROM `fd_rel_doctor_appointment_time` WHERE `DOCTOR_ID` = '".$arr_values["DOCTOR_ID"]."' and `APPOINTMENT_DATE` = '".$arr_values["APPOINTMENT_DATE"]."' and `APPOINTMENT_TIME` = '".$arr_values["APPOINTMENT_TIME"]."'  and `ACTIVE_STATUS`=1";
 
         if($this->_dbug){
             echo "[---viewAll---sql]";

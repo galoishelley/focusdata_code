@@ -115,14 +115,17 @@ class SearchDoctor_DB{
                 $keys_where[$i] = "t3.".$keys[$i];
             }else if($keys[$i] == "DOCTOR_TYPE" || $keys[$i] == "DOCTOR_NAME"){
                 $keys_where[$i] = "t1.".$keys[$i];
-            }else if($keys[$i] == "APPOINTMENT_TIME" ){
+            }else if($keys[$i] == "APPOINTMENT_DATE_BEGIN" || $keys[$i] == "APPOINTMENT_DATE_END"){
                 $keys_where[$i] = "t4.".$keys[$i];
-            }else{
-                // $keys_where[$i] = $keys[$i];
-            }
-            // echo  $keys_where[$i]."---------";
+          	}else{}
+
+          	if($this->_dbug){
+	            echo "[---col_exists_sql---keys_where]";
+	            echo  $keys_where[$i];
+        	}
 
             if($requesttype==0){
+
                 if($arr_values[$keys[$i]] != ""){
                     $arr_values[$keys[$i]] = '%'.$arr_values[$keys[$i]].'%';
                 }else{
@@ -134,14 +137,23 @@ class SearchDoctor_DB{
                     print_r($arr_values[$keys[$i]]);
                 }
 
-                $where .= $keys_where[$i] ." like '".$arr_values[$keys[$i]]."'";
+                if($keys_where[$i] == "t4.APPOINTMENT_DATE_BEGIN" || $keys_where[$i] == "t4.APPOINTMENT_DATE_END"){
+                }else{
+                	$where .= $keys_where[$i] ." like '".$arr_values[$keys[$i]]."'";
+                }
 
                 if($i != count($keys)-1 ){
                     $where .= " or ";
                 }
-            }else{
+            }else{ 
                 if($arr_values[$keys[$i]] != ""){
-                    $where .= " and " .$keys_where[$i] ." like '%".$arr_values[$keys[$i]]."%'";
+                	if($keys[$i] == "APPOINTMENT_DATE_BEGIN"){
+                		$where .= "and t4.APPOINTMENT_DATE BETWEEN str_to_date('".$arr_values[$keys[$i]]."','%Y-%m-%d %H:%i:%s')";
+                	}else if($keys[$i] == "APPOINTMENT_DATE_END"){
+                		$where .= " AND str_to_date('".$arr_values[$keys[$i]]."','%Y-%m-%d %H:%i:%s')";
+                	}else{
+                		$where .= " and " .$keys_where[$i] ." like '%".$arr_values[$keys[$i]]."%'";
+                	}
                 }
             }
         }
@@ -150,7 +162,6 @@ class SearchDoctor_DB{
             $where .= " )";
         }
 
-        // echo $where;
         if($this->_dbug){
             echo "[---col_exists_sql---where]";
             print_r($where);
@@ -167,8 +178,8 @@ class SearchDoctor_DB{
                 t1.ACTIVE_STATUS = 1
                 and 
                 t4.ACTIVE_STATUS = 1 ".$where.
-                " group by t1.doctor_id
-                order by t4.APPOINTMENT_TIME
+                " group by t1.doctor_id,t4.APPOINTMENT_DATE
+                order by t1.DOCTOR_NAME
                 ) r";
         if($this->_dbug){
             echo "[---col_exists_sql---sql]";
@@ -215,11 +226,9 @@ class SearchDoctor_DB{
                 $keys_where[$i] = "t3.".$keys[$i];
             }else if($keys[$i] == "DOCTOR_TYPE" || $keys[$i] == "DOCTOR_NAME"){
                 $keys_where[$i] = "t1.".$keys[$i];
-            }else if($keys[$i] == "APPOINTMENT_TIME" ){
+            }else if($keys[$i] == "APPOINTMENT_DATE_BEGIN" || $keys[$i] == "APPOINTMENT_DATE_END"){
                 $keys_where[$i] = "t4.".$keys[$i];
-            }else{
-                // $keys_where[$i] = $keys[$i];
-            }
+          	}
             // echo  $keys_where[$i]."---------";
 
             if($requesttype==0){
@@ -235,9 +244,13 @@ class SearchDoctor_DB{
                     $where .= " or ";
                 }
             }else{
-                if($arr_values[$keys[$i]] != ""){
-                    $where .= " and " .$keys_where[$i] ." like '%".$arr_values[$keys[$i]]."%'";
-                }
+                if($keys[$i] == "APPOINTMENT_DATE_BEGIN"){
+            		$where .= "and t4.APPOINTMENT_DATE BETWEEN str_to_date('".$arr_values[$keys[$i]]."','%Y-%m-%d %H:%i:%s')";
+            	}else if($keys[$i] == "APPOINTMENT_DATE_END"){
+            		$where .= " AND str_to_date('".$arr_values[$keys[$i]]."','%Y-%m-%d %H:%i:%s')";
+            	}else{
+            		$where .= " and " .$keys_where[$i] ." like '%".$arr_values[$keys[$i]]."%'";
+            	}
             }
         }
 
@@ -251,7 +264,8 @@ class SearchDoctor_DB{
         $limit = " limit ".$start.",".$lenght;
         
         $sql = "select 
-                concat('searchdoc_', @rownum:=@rownum+1) AS DT_RowId, t1.*, t2.*,t3.*, GROUP_CONCAT(DATE_FORMAT(t4.APPOINTMENT_TIME,'%H:%i') order by APPOINTMENT_TIME) as APPOINTMENT_TIME
+                concat('searchdoc_', @rownum:=@rownum+1) AS DT_RowId, t1.*, t2.*,t3.*,t4.APPOINTMENT_DATE,  
+                GROUP_CONCAT(DATE_FORMAT(t4.APPOINTMENT_TIME,'%H:%i') order by APPOINTMENT_TIME) as APPOINTMENT_TIME
                 from (SELECT @rownum:=0) t0, fd_doctor as t1
                 left join (fd_rel_clinic_doctor as t2 left join fd_clinic_user as t3 on t2.clinic_user_id = t3.clinic_user_id )
                 on
@@ -262,8 +276,8 @@ class SearchDoctor_DB{
                 and 
                 t4.ACTIVE_STATUS = 1 "
                 .$where.
-                " group by t1.doctor_id
-                order by t4.APPOINTMENT_TIME".$limit;
+                " group by t1.doctor_id,t4.APPOINTMENT_DATE
+                order by t1.DOCTOR_NAME".$limit;
         // echo "[-----viewAll:".$sql."-----]";
         $ret = $this->db->fetchAll_sql($sql,null);
         

@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="fonts/font-awesome.css">
 <!--User CSS-->
 <link rel="stylesheet" href="css/user.css">
+<link rel="stylesheet" href="css/focusdata.css">
 <!--JS-->
 <script src="js/jquery.js"></script>
 <script src="js/jquery-migrate-1.2.1.min.js"></script>
@@ -79,40 +80,68 @@
 </header>
 
 <!--content-->
-<div class="content">
+<div class="content forgotpwd">
     <div class="stellar-section">
         <div class="thumb-box9" data-stellar-background-ratio="0.1">
 	       <div class="container">
 			     <div class="row">
-				    <div class="col-md-6 col-md-offset-3">
+				    <div class="col-md-8 col-md-offset-2">
     					<h2 class="wow fadeInRight">Forgot Password</h2>
     					<form class="form-horizontal wow fadeInRight" data-wow-delay="0.5s" role="form">
     						<fieldset>
-    							<div class="form-group has-error has-feedback">
-    								<!--<label class="control-label" for="inputError2">Input with error</label>-->
-    								<input type="text" class="form-control" id="inputError2" aria-describedby="inputError2Status" readonly value="Info: The new password will be sent to the E-mail">
-    								<span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
-    								<span id="inputError2Status" class="sr-only">(error)</span>
-    							</div>
+                                <div class="form-group">
+                                    <label for="USER_NAME" class="col-sm-2 control-label">用户名<span class="span-red">*</span></label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" id="USER_NAME" name="USER_NAME" placeholder="请输入用户名 ..." autofocus>
+                                    </div>
+                                </div>
+
+                                <div class="radio col-sm-10 col-sm-offset-2">
+                                  <label>
+                                    <input type="radio" name="usertype" id="usertype" value="0">
+                                    诊所用户
+                                  </label>
+                                </div>
+                                
+                                <div class="radio col-sm-10 col-sm-offset-2">
+                                  <label>
+                                    <input type="radio" name="usertype" id="usertype" value="1" checked>
+                                    个人用户
+                                  </label>
+                                </div>
+
+                                <div class="radio col-sm-10 col-sm-offset-2 radio_admin">
+                                  <label>
+                                    <input type="radio" name="usertype" id="usertype" value="2">
+                                   管理员
+                                  </label>
+                                </div> 
+
+                                <div class="form-group">
+                                    <label for="EMAIL" class="col-sm-2 control-label">E-mail<span class="span-red">*</span></label>
+                                    <div class="col-sm-10">
+                                      <input type="text" class="form-control" id="EMAIL" name="EMAIL" readonly="true">
+                                    </div>
+                                </div>
     							
-    							<div class="form-group">
-    									<input type="email" class="form-control" id="email" placeholder="E-mail" autofocus>
-    							</div>
-    							<div class="signIn3">
-    								<div class="form-group">
-    									<button type="submit" class="btn btn-lg btn-primary btn-block">Confirm</button>
-    									<div class="row">
-    										<div class="col-md-12" align="right"> 
-    											<a href="sign_in.html"><strong>sign in</strong></a>
-    										</div>
-    									</div>
-    								 </div>
-    							 </div>
+    							<div class="row">
+                                    <div class="form-group pull-right send_email">
+                                        <button type="submit" class="btn btn-lg btn-primary btn-block" id="send_email">发送密码到邮箱</button>
+                                     </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group pull-right">
+                                        <a href="sign_in.html"><strong>sign in</strong></a>
+                                        <!-- <div class="pull-right">sign in</div> -->
+                                    </div>
+                                </div>
     						</fieldset>
     					</form>
                     </div>
 				</div>
             </div>
+            <!-- container -->
 		</div>
 	</div>
 </div>

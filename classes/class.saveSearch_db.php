@@ -26,7 +26,7 @@ class saveSearch_DB{
         // };
         // print_r("DB");
         // print_r($arr_values);
-        $ret = $this->db->insertData('FD_SAVE_SEARCH', $arr_values);
+        $ret = $this->db->insertData('fd_save_search', $arr_values);
 
         return $ret;
     }
@@ -38,7 +38,7 @@ class saveSearch_DB{
         // }
 
 
-        $sql = "SELECT * FROM `fd_save_search` order by create_date desc";
+        $sql = "SELECT * FROM `fd_save_search` where CUSTOMER_USER_ID='".$arr_values['CUSTOMER_USER_ID']."' order by create_date desc";
 
         // if($this->_dbug){
         //     echo "[---viewAll---sql]";
@@ -58,7 +58,7 @@ class saveSearch_DB{
         
         $arrlength=count($arr_values["CUSTOMER_USER_ID"]);
         for($i = 0; $i < $arrlength; $i++)
-            $ret = $this->db->deleteData('fd_save_search',"CUSTOMER_USER_ID='".intval($arr_values["CUSTOMER_USER_ID"]["$i"])."' and CUSTOMER_SEARCH_ID='".intval($arr_values["CUSTOMER_SEARCH_ID"][$i])."'");
+            $ret = $this->db->deleteData('fd_save_search',"CUSTOMER_USER_ID=".intval($arr_values["CUSTOMER_USER_ID"]["$i"])." and CUSTOMER_SEARCH_ID=".intval($arr_values["CUSTOMER_SEARCH_ID"][$i]));
         return $ret;
     }
 }
