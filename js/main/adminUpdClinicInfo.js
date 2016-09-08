@@ -12,6 +12,12 @@ $(function(){
     $('#CLINIC_USER_MAIL').val(json_value.CLINIC_USER_MAIL);
     $('#CLINIC_USER_NAME').val(json_value.CLINIC_USER_NAME);
     $("#ACTIVE_STATUS option[value='"+ json_value.ACTIVE_STATUS +"']").attr("selected",true);
+
+    if(json_value.imgId == "opr_info"){
+      $("#adminUpdClinicInfo input").attr("disabled","disabled");
+      $("#adminUpdClinicInfo select").attr("disabled","disabled");   
+      $("#btn_submit").attr("disabled","disabled");
+    }
   }
 
   $('#btn_submit').click(function (){

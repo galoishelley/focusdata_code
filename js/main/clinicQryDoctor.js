@@ -6,7 +6,7 @@ var result;
 $(document).ready(function() {
 
   //登录cookie
-  var ilogin = $.cookie("ilogin");
+  ilogin = $.cookie("ilogin");
   if(ilogin == ""){
     request_type = 0;
   }else if(ilogin != ""){
@@ -14,7 +14,7 @@ $(document).ready(function() {
   }
 
   //校验用户是否登录
-  ilogin = $.cookie("ilogin");
+  // ilogin = $.cookie("ilogin");
   if(ilogin == 1)
   {
     fd_userid = $.cookie("fd_userid");
@@ -96,6 +96,8 @@ $(document).ready(function() {
   };
   
   json_str = request_const(para, func_code, request_type);
+
+  console.log(json_str);
 
   var _table = $('#dataTables-example').DataTable({
       // "responsive": true,

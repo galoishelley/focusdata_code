@@ -1,7 +1,7 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * table
  */
-body { font-size: 140%; }
+body { font-size: 130%; }
 
 .col_0_class{
 	text-align: center;
@@ -402,10 +402,16 @@ nav.tm_navbar .tourist > ul{
 .PersonUser .form-inline button{
 	margin-bottom: 10px;
 }
+
 .PersonUser .row{
 	margin-right: 0px;
 	margin-left: 0px;
 }
+
+
+/*.PersonUser .form-inline table td>button{
+  margin-bottom: 10px;
+}*/
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * AdminUser
@@ -667,4 +673,12 @@ label{
 
 .forgotpwd .radio_admin{
   margin-bottom:15px;
+}
+
+table button,img{
+  margin-left: 2px;
+}
+
+.table > tbody > tr > td{
+  padding:4px;
 }

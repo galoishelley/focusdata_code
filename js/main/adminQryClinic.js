@@ -122,6 +122,7 @@ $(document).ready(function() {
       "ordering": false,//全局禁用排序
       "deferRender":true,//延迟渲染
       "stateSave" : true, //在第三页刷新页面，会自动到第一页
+      "bAutoWidth": false,
 
       "ajax": {
       "type": "POST",
@@ -239,7 +240,15 @@ $(document).ready(function() {
         { 
           "class": "text-center",
           "data": null,
-          "defaultContent":"<img src='img/details.png'>"
+          // render: function(data, type, row, meta) {
+          //     var opr="";
+          //     opr="<img id='img_info' src='img/td_info.png'/><img id='img_upd' src='img/td_upd.png'/><img id='img_reset' src='img/td_reset.png'/>";
+          //     return opr;
+          // }
+          // "defaultContent":"1111111111111111111111111111111111111111111111111111111"
+          "defaultContent":"<button class='btn btn-primary btn-xs' id='opr_info'>详细</button><button class='btn btn-danger btn-xs' id='opr_upd'>修改</button><button class='btn btn-warning btn-xs' id='opr_reset_pwd'>密码重置</button>"
+          // "defaultContent":"<img id='img_info' src='img/td_info.png'/><img id='img_upd' src='img/td_upd.png'/>"
+          // "defaultContent":"<img id='img_info' src='img/td_info.png'><span class='glyphicon glyphicon-search'></span></img>     <img id='img_upd'><span class='glyphicon glyphicon-search'></span></img>     <img id='img_upd'><span class='glyphicon glyphicon-search'></span></img>    <img id='img_upd'><span class='glyphicon glyphicon-search'></span></img>"
         },
         {
           "visible": false,
@@ -300,7 +309,12 @@ $(document).ready(function() {
         {
           "orderable": false,
           "targets": 5,
-          "sWidth": "5%"
+          "sWidth": "5px"
+        },
+        {
+          "orderable": false,
+          "targets": 6,
+          "sWidth": "200px"
         }
        ],
       //第一列与第二列禁止排序
@@ -375,10 +389,12 @@ $(document).ready(function() {
   });
 
   //单机行，中修改按钮
-  $('#dataTables-example tbody').on( 'click', 'img', function (event) {
+  $('#dataTables-example tbody').on( 'click', 'button', function (event) {
     var imgId = $(this).prop("id");
     var obj_data = _table.row($(this).parents('tr')).data();
+    console.log(obj_data);
     var data = {
+          imgId:imgId,
           CLINIC_NAME: obj_data.CLINIC_NAME,
           CLINIC_ADDR: obj_data.CLINIC_ADDR,
           CLINIC_USER_ID: obj_data.CLINIC_USER_ID,
@@ -386,6 +402,17 @@ $(document).ready(function() {
           CLINIC_USER_NAME: obj_data.CLINIC_USER_NAME,
           ACTIVE_STATUS: obj_data.ACTIVE_STATUS,
         };
+
+    if(imgId == "opr_reset_pwd"){
+      //发送邮件到地址 
+      var reset_pwd = Math.floor(Math.random()*1000000);
+      var email_text = "您的新密码:" + reset_pwd;
+      alert(obj_data.CLINIC_USER_MAIL +" pwd:"+ reset_pwd);
+      //发送邮件
+
+      return false;
+    }
+
     var str = JSON.stringify(data);
 
     // console.log(str);

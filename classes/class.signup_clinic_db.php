@@ -18,6 +18,14 @@ class Sign_up_clinic_DB{
             return 2;
         };
 
+        foreach($arr_values as $k=>$v){
+            if($k == "CLINIC_USER_PWD"){
+                $arr_values[$k] = md5($v);
+                // base64_encode base64_decode
+                // $arr_values[$k] = base64_encode($v);
+            }
+        }
+
         $ret = $this->db->insertData('fd_clinic_user', $arr_values);
         return $ret;
     }

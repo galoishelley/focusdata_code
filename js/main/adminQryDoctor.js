@@ -17,11 +17,27 @@ $(document).ready(function() {
   ilogin = $.cookie("ilogin");
   if(ilogin == 1)
   {
-      username = $.cookie("fd_username");
-      fd_userid = $.cookie("fd_userid");
+     fd_userid = $.cookie("fd_userid");
+    //校验用户是否登录
+    var fd_usertype = $.cookie("fd_usertype");
+    var fd_usertypename = $.cookie("fd_usertypename");
 
-      $('#userinfo').html(username);
-      $('#usertype').html("用户类型: "+$.cookie("fd_usertype"));
+    var username = $.cookie("fd_username");
+
+    $('#userinfo').html(username);
+    $('#usertype').html("用户类型: "+ fd_usertypename);
+
+    $('#sub_userinfo').removeClass("hidden");
+
+    if(fd_usertype == 0){
+      $('#li_ClinicUser').removeClass("hidden");
+    }else if(fd_usertype == 1){
+      $('#li_AppRecoder').removeClass("hidden");
+    }else if(fd_usertype == 2){
+      $('#li_Admin').removeClass("hidden");
+    }else{
+
+    }
   }
 
   if(ilogin == 0){
