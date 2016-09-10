@@ -123,6 +123,7 @@
               <a href="adminQryUser.html" class="list-group-item" id="user_upd_person_pwd">个人用户管理</a>
               <a href="adminQryDoctor.html" class="list-group-item" id="user_upd_person_info">医生信息管理</a>
               <a href="adminUpdPwd.html" class="list-group-item" id="user_upd_person_pwd">修改管理员密码</a>
+              <a href="adminService.html" class="list-group-item">服务列表</a>
             </div>
 					</div>
 
@@ -167,10 +168,16 @@
                         </select>
                       </div>
 
-                      <div class="form-group col-md-6">
-                        <label for="CLINIC_ADDR" class="col-md-3">诊所地址<span class="span-red">*</span></label>
-                        <input type="text" class="form-control" name="CLINIC_ADDR" id="CLINIC_ADDR">
+                      <div class="form-group col-md-9">
+                        <label for="CLINIC_ADDR" class="col-md-2">诊所地址<span class="span-red">*</span></label>
+                        <input type="text" class="form-control" style="width:80%" name="CLINIC_ADDR" id="CLINIC_ADDR">
                       </div>
+
+                      <div class="form-group col-md-3">
+                        <label for="STATE_ID"  class="col-md-2 control-label">州<span class="span-red">*</span></label>
+                        <select class="form-control" id="STATE_ID" name="STATE_ID">
+                        </select>
+                      </div>  
 
                       <div class="form-group col-md-12">
                         <div class="pull-right">

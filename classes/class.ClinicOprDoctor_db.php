@@ -39,8 +39,12 @@ class ClinicOprDoctor_DB{
                 left join (fd_rel_clinic_doctor as t2 left join fd_clinic_user as t3 on t2.clinic_user_id = t3.clinic_user_id )
                 ON t1.DOCTOR_ID = t2.DOCTOR_ID
                  where 
-                 t1.DOCTOR_TYPE like '%".$arr_values['DOCTOR_TYPE']."%'
-                 and t1.DOCTOR_NAME like '%".$arr_values['DOCTOR_NAME']."%' order by t1.UPDATE_DATE DESC ";
+                 t3.CLINIC_NAME like '%".$arr_values['CLINIC_NAME']."%'
+                 and t3.CLINIC_ADDR like '%".$arr_values['CLINIC_ADDR']."%'
+                 and t3.STATE_ID like '%".$arr_values['STATE_ID']."%'
+                 and t1.DOCTOR_TYPE like '%".$arr_values['DOCTOR_TYPE']."%'
+                 and t1.DOCTOR_NAME like '%".$arr_values['DOCTOR_NAME']."%'
+                 and t1.ACTIVE_STATUS like '%".$arr_values['ACTIVE_STATUS']."%'";
 
         // echo $sql;
         if($this->_dbug){
@@ -61,12 +65,17 @@ class ClinicOprDoctor_DB{
         }
 
         $limit = " limit ".$start.",".$lenght;
-        $sql = "SELECT t1.*, t3.CLINIC_NAME, t3.CLINIC_ADDR FROM fd_doctor t1
+        $sql = "SELECT t1.*, t3.CLINIC_NAME, t3.CLINIC_ADDR,t4.STATE_NAME FROM fd_doctor t1
                 left join (fd_rel_clinic_doctor as t2 left join fd_clinic_user as t3 on t2.clinic_user_id = t3.clinic_user_id )
                 ON t1.DOCTOR_ID = t2.DOCTOR_ID
+                left join fd_dict_state t4 on t4.state_id = t3.state_id
                  where 
-                 t1.DOCTOR_TYPE like '%".$arr_values['DOCTOR_TYPE']."%'
-                 and t1.DOCTOR_NAME like '%".$arr_values['DOCTOR_NAME']."%' order by t1.UPDATE_DATE DESC ".$limit;
+                 t3.CLINIC_NAME like '%".$arr_values['CLINIC_NAME']."%'
+                 and t3.CLINIC_ADDR like '%".$arr_values['CLINIC_ADDR']."%'
+                 and t3.STATE_ID like '%".$arr_values['STATE_ID']."%'
+                 and t1.DOCTOR_TYPE like '%".$arr_values['DOCTOR_TYPE']."%'
+                 and t1.DOCTOR_NAME like '%".$arr_values['DOCTOR_NAME']."%'
+                 and t1.ACTIVE_STATUS like '%".$arr_values['ACTIVE_STATUS']."%' order by t1.CREATE_DATE DESC ".$limit;
 
         // echo $sql;
         if($this->_dbug){

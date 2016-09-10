@@ -103,6 +103,7 @@
               <a href="adminQryUser.html" class="list-group-item" id="user_upd_person_pwd">个人用户管理</a>
               <a href="adminQryDoctor.html" class="list-group-item" id="user_upd_person_info">医生信息管理</a>
               <a href="adminUpdPwd.html" class="list-group-item" id="user_upd_person_pwd">修改管理员密码</a>
+              <a href="adminService.html" class="list-group-item">服务列表</a>
             </div>
           </div>
 
@@ -114,15 +115,20 @@
                   <div class="row">
                       <form class="form-inline" role="form">
                           <div class="form-group">
-                            <label for="CLINIC_ADDR" class="control-label">诊所区域</label>
-                            <select class="form-control" id="CLINIC_ADDR">
-                              <option value="">全部</option>
-                            </select>
+                            <label for="CLINIC_NAME" class="control-label">诊所名称</label>
+                            <input type="text" class="form-control" id="CLINIC_NAME">
                           </div>
 
                           <div class="form-group">
-                            <label for="CLINIC_NAME" class="control-label">诊所名称</label>
-                            <input type="text" class="form-control" id="CLINIC_NAME">
+                            <label for="CLINIC_ADDR" class="control-label">诊所地址</label>
+                            <input type="text" class="form-control" id="CLINIC_ADDR">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="STATE_ID" class="control-label">州</label>
+                            <select class="form-control" id="STATE_ID">
+                              <option value="">全部</option>
+                            </select>
                           </div>
 
                           <div class="form-group">
@@ -144,8 +150,8 @@
 
 
                   <div class="row">
-                   <table id="dataTables-example" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                    <!-- <table id="dataTables-example" class="table table-hover  table-bordered" > -->
+                   <!-- <table id="dataTables-example" class="table table-striped table-bordered" cellspacing="0" width="100%"> -->
+                    <table id="dataTables-example" class="table table-hover  table-bordered" >
                       <thead class="table_title">
                           <tr>
                             <th><input type="checkbox" name="chk_all" id="chk_all"></th>
@@ -153,6 +159,7 @@
                             <th>邮箱</th>
                             <th>诊所名称</th>
                             <th>诊所地址</th>
+                            <th>州</th>
                             <th>状态</th>
                             <th>操作</th>
                           </tr>

@@ -7,8 +7,8 @@ $(function(){
     console.log(json_value);
 
     // $('#DOCTOR_PHOTO').attr('src','img/doctors/'+json_value.DOCTOR_PHOTO);
-    $('#CLINIC_NAME').text(json_value.CLINIC_NAME);
-    $('#CLINIC_ADDR').text(json_value.CLINIC_ADDR);
+    $('#CLINIC_NAME').val(json_value.CLINIC_NAME);
+    $('#CLINIC_ADDR').val(json_value.CLINIC_ADDR);
     $('#DOCTOR_TYPE').val(json_value.DOCTOR_TYPE);
     $('#DOCTOR_NAME').val(json_value.DOCTOR_NAME);
     $('#DOCTOR_GENDER').val(json_value.DOCTOR_GENDER);
@@ -17,6 +17,64 @@ $(function(){
     $('#DOCTOR_PHOTO').val(json_value.DOCTOR_PHOTO);
     $("#ACTIVE_STATUS").find("option[value='"+json_value.ACTIVE_STATUS+"']").attr("selected",true);
     $('#feedback').html("<img src='img/doctors/"+json_value.DOCTOR_PHOTO+"'/>");
+
+    if(json_value.imgId == "opr_info"){
+      $("#adminUpdDoctorDetail input").attr("disabled","disabled");
+      $("#adminUpdDoctorDetail select").attr("disabled","disabled");
+      $("#adminUpdDoctorDetail textarea").attr("disabled","disabled");
+      $("#submit_form input").attr("disabled","disabled");           
+      $("#btn_submit").attr("disabled","disabled");
+    }
+
+    //填充州
+    func_code = "SSTE";
+    para="";
+
+    json_str = request_const(para,func_code,0);
+
+    // console.log(json_str);
+    //请求
+    result=true;
+    $.ajax({
+      type: "POST",
+      url: "classes/class.getState.php",
+      dataType: "json",
+      async:false,
+      data: {
+        request:json_str
+      },
+      success: function (msg) {
+          // console.log(msg);
+          var ret = msg.response;
+          if(ret.success){
+            if(json_str.sequ != ret.sequ){
+              alert(func_code+":时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
+              result=false;
+            }
+            // var data = ret.data[0];
+            $.each(ret.data, function(i, item) {
+                $("#STATE_ID").append("<option value='"+ item.STATE_ID +"'>" + item.STATE_NAME + "</option>");
+            });
+            // console.log(data);
+          }else{
+            alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
+            result=false;
+          }
+          
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown){
+          //请求失败之后的操作
+          var ret_code = "999999";
+          var ret_msg = "失败,请联系管理员!";
+          alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+          result=false;
+      }
+    });
+    if(!result){
+      return result;
+    }
+
+    $("#STATE_ID option[value='"+ json_value.STATE_ID +"']").attr("selected",true);
   }
 
   $('#btn_submit').click(function (){

@@ -60,6 +60,12 @@ class AdminDetail_DB{
         $where =" ADMIN_ID = ".$arr_values['ADMIN_ID'];
         unset($arr_values["ADMIN_ID"]);
 
+        foreach($arr_values as $k=>$v){
+            if($k == "ADMIN_PWD"){
+                $arr_values['ADMIN_PWD']=md5($v);
+            }
+        }
+
         $ret = $this->db->updateData('fd_admin', $arr_values, $where);
         // echo $ret;
         return $ret;

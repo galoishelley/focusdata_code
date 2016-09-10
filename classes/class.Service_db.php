@@ -1,7 +1,7 @@
 <?php 
 include_once('class.database.php');
 
-class UserDetail_DB{
+class Service_DB{
     private $db;
     private $_dbug;
     public function __construct(){  
@@ -36,7 +36,7 @@ class UserDetail_DB{
             print_r($arr_values);
         }
 
-        $sql = "SELECT count(*) as count FROM `fd_customer_user` t1 WHERE t1.ACTIVE_STATUS  like '%".$arr_values['ACTIVE_STATUS']."%' and t1.CUSTOMER_NAME like '%".$arr_values['CUSTOMER_NAME']."%' and t1.CUSTOMER_ADDR like '%".$arr_values['CUSTOMER_ADDR']."%' and t1.STATE_ID like '%".$arr_values['STATE_ID']."%' and t1.CUSTOMER_USER_NAME like '%".$arr_values['CUSTOMER_USER_NAME']."%'";
+        $sql = "SELECT count(*) as count FROM `fd_customer_user` WHERE  ACTIVE_STATUS  like '%".$arr_values['ACTIVE_STATUS']."%' and  CUSTOMER_ADDR like '%".$arr_values['CUSTOMER_ADDR']."%' and CUSTOMER_USER_NAME like '%".$arr_values['CUSTOMER_USER_NAME']."%'";
 
         // echo $sql;
         if($this->_dbug){
@@ -57,11 +57,7 @@ class UserDetail_DB{
         }
 
         $limit = " limit ".$start.",".$lenght;
-        $sql = "SELECT t1.*, t2.STATE_NAME  FROM `fd_customer_user` t1
-            left join fd_dict_state t2 on t1.state_id = t2.state_id
-            WHERE  t1.ACTIVE_STATUS  like '%".$arr_values['ACTIVE_STATUS']."%' and t1.CUSTOMER_NAME like '%".$arr_values['CUSTOMER_NAME']."%' and t1.CUSTOMER_ADDR like '%".$arr_values['CUSTOMER_ADDR']."%' and
-                t1.STATE_ID like '%".$arr_values['STATE_ID']."%' and t1.CUSTOMER_USER_NAME
-                like '%".$arr_values['CUSTOMER_USER_NAME']."%' order by create_date desc". $limit;
+        $sql = "SELECT * FROM `fd_customer_user` WHERE  ACTIVE_STATUS  like '%".$arr_values['ACTIVE_STATUS']."%' and  CUSTOMER_ADDR like '%".$arr_values['CUSTOMER_ADDR']."%' and CUSTOMER_USER_NAME like '%".$arr_values['CUSTOMER_USER_NAME']."%' order by create_date desc". $limit;
 
 
         // echo $sql;
@@ -82,7 +78,7 @@ class UserDetail_DB{
             print_r($arr_values);
         }
 
-        $sql = "SELECT * FROM `fd_customer_user` WHERE `CUSTOMER_USER_ID` = '".$arr_values["CUSTOMER_USER_ID"]."'";
+        $sql = "SELECT * FROM `fd_service`";
 
         // echo $sql;
         if($this->_dbug){
@@ -121,20 +117,18 @@ class UserDetail_DB{
             print_r($arr_values);
         }
 
-        // print_r($arr_values);
+// print_r($arr_values);
 
         $where =" CUSTOMER_USER_ID = ".$arr_values['CUSTOMER_USER_ID'];
         unset($arr_values["CUSTOMER_USER_ID"]);
 
-        //md5
-        foreach($arr_values as $k=>$v){
-            if($k == "CUSTOMER_USER_PWD"){
-                $arr_values[$k] = md5($v);
-            }
-        }
-
         $ret = $this->db->updateData('fd_customer_user', $arr_values, $where);
+        // echo $ret;
         return $ret;
+        // $this->db->updateData('qr_role',array('role_name'=>$role_name,
+        //                                         'funcion_id'=>$funcion_id,
+        //                                         'note'=>$note,
+        //                                       ),'func_code='.$func_code);
     }
 }
 ?>

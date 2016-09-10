@@ -48,53 +48,115 @@ $(document).ready(function() {
     // $('#a_userAppointmentRecoder').attr("color","#FF0000");
   }
 
-  // 填充诊所区域
-  // para="";
+  //填充州
+  func_code = "SSTE";
+  para="";
 
-  // json_str = request_const(para,"SP01",0);
+  json_str = request_const(para,func_code,0);
 
-  // // console.log(json_str);
-  // //请求
-  // $.ajax({
-  //   type: "POST",
-  //   url: "classes/class.getAppointmentStatus.php",
-  //   dataType: "json",
-  //   async:false,
-  //   data: {
-  //     request:json_str
-  //   },
-  //   success: function (msg) {
-  //       // console.log(msg);
-  //       var ret = msg.response;
-  //       if(ret.success){
-  //         if(json_str.sequ != ret.sequ){
-  //           alert("时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
-  //           return;
-  //         }
-  //         // var data = ret.data[0];
-  //         $.each(ret.data, function(i, item) {
-  //             $("#app_status").append("<option value='"+ item.APPOINTMENT_STATUS_ID +"'>" + item.APPOINTMENT_STATUS + "</option>");
-  //         });
-  //         // console.log(data);
-  //       }else{
-  //         alert(ret.status.ret_code + " " + ret.status.ret_msg);
-  //       }
+  // console.log(json_str);
+  //请求
+  result=true;
+  $.ajax({
+    type: "POST",
+    url: "classes/class.getState.php",
+    dataType: "json",
+    async:false,
+    data: {
+      request:json_str
+    },
+    success: function (msg) {
+        // console.log(msg);
+        var ret = msg.response;
+        if(ret.success){
+          if(json_str.sequ != ret.sequ){
+            alert(func_code+":时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
+            result=false;
+          }
+          // var data = ret.data[0];
+          $.each(ret.data, function(i, item) {
+              $("#STATE_ID").append("<option value='"+ item.STATE_ID +"'>" + item.STATE_NAME + "</option>");
+          });
+          // console.log(data);
+        }else{
+          alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
+          result=false;
+        }
         
-  //   },
-  //   error: function(XMLHttpRequest, textStatus, errorThrown){
-  //       //请求失败之后的操作
-  //       alert("SP01:999999:请联系管理员" + textStatus);
-  //   }
-  // });
+    },
+    error: function(XMLHttpRequest, textStatus, errorThrown){
+        //请求失败之后的操作
+        var ret_code = "999999";
+        var ret_msg = "失败,请联系管理员!";
+        alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+        result=false;
+    }
+  });
+  if(!result){
+    return result;
+  }
 
+//填充医生类别
+  func_code = "SDTY";
+  para="";
 
+  json_str = request_const(para,func_code,0);
+
+  // console.log(json_str);
+  //请求
+  result=true;
+  $.ajax({
+    type: "POST",
+    url: "classes/class.getDoctorType.php",
+    dataType: "json",
+    async:false,
+    data: {
+      request:json_str
+    },
+    success: function (msg) {
+        // console.log(msg);
+        var ret = msg.response;
+        if(ret.success){
+          if(json_str.sequ != ret.sequ){
+            alert(func_code+":时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
+            result=false;
+          }
+          // var data = ret.data[0];
+          $.each(ret.data, function(i, item) {
+              $("#DOCTOR_TYPE").append("<option value='"+ item.DOCTOR_TYPE +"'>" + item.DOCTOR_TYPE + "</option>");
+          });
+          // console.log(data);
+        }else{
+          alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
+          result=false;
+        }
+        
+    },
+    error: function(XMLHttpRequest, textStatus, errorThrown){
+        //请求失败之后的操作
+        var ret_code = "999999";
+        var ret_msg = "失败,请联系管理员!";
+        alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+        result=false;
+    }
+  });
+  if(!result){
+    return result;
+  }
+
+  func_code = "CU05";
   para={
     action_type: "viewAll_admin",
+    CLINIC_NAME: $('#CLINIC_NAME').val(),
+    CLINIC_ADDR: $('#CLINIC_ADDR').val(),
+    STATE_ID: $('#STATE_ID').val(),
+    DOCTOR_NAME: $('#DOCTOR_NAME').val(),
     DOCTOR_TYPE: $('#DOCTOR_TYPE').val(),
-    DOCTOR_NAME: $('#DOCTOR_NAME').val()
+    ACTIVE_STATUS: $('#ACTIVE_STATUS').val()
   };
-  func_code = "CU05";
+  
   json_str = request_const(para, func_code, request_type);
+  console.log(json_str);
 
   var _table = $('#dataTables-example').DataTable({
       // "responsive": true,
@@ -175,6 +237,9 @@ $(document).ready(function() {
           }
         },
         { 
+          "data": "STATE_NAME"
+        },
+        { 
           "data": "DOCTOR_TYPE",
           render: function(data, type, row, meta) {
               //type 的值  dispaly sort filter
@@ -218,7 +283,7 @@ $(document).ready(function() {
         { 
           "class": "col_center_class",
           "data": null,
-          "defaultContent":"<img src='img/details.png'>"
+          "defaultContent":"<button class='btn btn-primary btn-xs' id='opr_info'>详细</button><button class='btn btn-danger btn-xs' id='opr_upd'>修改</button>"
         },
         {
           "visible": false,
@@ -354,11 +419,12 @@ $(document).ready(function() {
   });
 
   //单机行，中修改按钮
-  $('#dataTables-example tbody').on( 'click', 'img', function (event) {
+  $('#dataTables-example tbody').on( 'click', 'button', function (event) {
     var imgId = $(this).prop("id");
     var obj_data = _table.row($(this).parents('tr')).data();
     // alert(obj_data.CLINIC_NAME);
     var data = {
+          imgId:imgId,
           CLINIC_NAME: obj_data.CLINIC_NAME,
           CLINIC_ADDR: obj_data.CLINIC_ADDR,
           DOCTOR_ID: obj_data.DOCTOR_ID,
@@ -368,15 +434,13 @@ $(document).ready(function() {
           APPOINTMENT_TIME: obj_data.APPOINTMENT_TIME,
           ACTIVE_STATUS: obj_data.ACTIVE_STATUS,
           DOCTOR_PHOTO: obj_data.DOCTOR_PHOTO,
-          DOCTOR_INFO: obj_data.DOCTOR_INFO
+          DOCTOR_INFO: obj_data.DOCTOR_INFO,
+          STATE_ID: obj_data.STATE_ID
         };
     var str = JSON.stringify(data);
 
     sessionStorage.doctorinfo = str;
-    // $.cookie("appointmentdoctor", str);
-    
-    // console.log("appointmentdoctor");
-    // console.log($.cookie("appointmentdoctor"));
+
     window.location.href="adminUpdDoctorDetail.html"; 
 
     event.stopImmediatePropagation();
@@ -385,12 +449,17 @@ $(document).ready(function() {
 
   $('#search_ok').click(function(){
 
-    para={
-      CLINIC_USER_ID: fd_userid,
-      DOCTOR_TYPE: $('#DOCTOR_TYPE').val(),
-      DOCTOR_NAME: $('#DOCTOR_NAME').val(),
-    };
     func_code = "CU05";
+    para={
+      action_type: "viewAll_admin",
+      CLINIC_NAME: $('#CLINIC_NAME').val(),
+      CLINIC_ADDR: $('#CLINIC_ADDR').val(),
+      STATE_ID: $('#STATE_ID').val(),
+      DOCTOR_NAME: $('#DOCTOR_NAME').val(),
+      DOCTOR_TYPE: $('#DOCTOR_TYPE').val(),
+      ACTIVE_STATUS: $('#ACTIVE_STATUS').val()
+    };
+    
     json_str = request_const(para, func_code, request_type);
 
     // console.log(json_str);
@@ -452,12 +521,17 @@ $(document).ready(function() {
               result=false;
             }
 
+            func_code = "CU05";
             para={
               action_type: "viewAll_admin",
-              DOCTOR_TYPE: $('#DOCTOR_TYPE').val(),
+              CLINIC_NAME: $('#CLINIC_NAME').val(),
+              CLINIC_ADDR: $('#CLINIC_ADDR').val(),
+              STATE_ID: $('#STATE_ID').val(),
               DOCTOR_NAME: $('#DOCTOR_NAME').val(),
+              DOCTOR_TYPE: $('#DOCTOR_TYPE').val(),
+              ACTIVE_STATUS: $('#ACTIVE_STATUS').val()
             };
-            func_code = "CU05";
+            
             json_str = request_const(para, func_code, request_type);
 
             // console.log(json_str);
@@ -539,12 +613,16 @@ $(document).ready(function() {
               result=false;
             }
 
+            func_code = "CU05";
             para={
               action_type: "viewAll_admin",
-              DOCTOR_TYPE: $('#DOCTOR_TYPE').val(),
+              CLINIC_NAME: $('#CLINIC_NAME').val(),
+              CLINIC_ADDR: $('#CLINIC_ADDR').val(),
+              STATE_ID: $('#STATE_ID').val(),
               DOCTOR_NAME: $('#DOCTOR_NAME').val(),
+              DOCTOR_TYPE: $('#DOCTOR_TYPE').val(),
+              ACTIVE_STATUS: $('#ACTIVE_STATUS').val()
             };
-            func_code = "CU05";
             json_str = request_const(para, func_code, request_type);
 
             // console.log(json_str);

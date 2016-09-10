@@ -96,16 +96,33 @@
 							
 							
 							<div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
-								<form class="form-horizontal wow fadeInLeft" role="form" id="clinicUpdDoctorDetail">
+								<form class="form-horizontal wow fadeInLeft" role="form" id="adminUpdDoctorDetail">
 									<fieldset>
 										<input type="hidden" class="form-control" name="action_type" id="action_type" value="update_doctor_info">
 										<input type="hidden" class="form-control" name="DOCTOR_ID" id="DOCTOR_ID">
-									 	<div class="form-group" id="clinic_info">
-										    <div class="col-sm-10 col-sm-offset-2">
-										    	<label class="control-label" id="CLINIC_NAME">省诊所</label>
-										      	<label class="control-label" id="CLINIC_ADDR">朝阳区</label>
+
+										<div class="form-group">
+										    <label for="CLINIC_NAME" class="col-sm-2 control-label">诊所名称</label>
+										    <div class="col-sm-10">
+										      <input type="text" class="form-control" name="CLINIC_NAME" id="CLINIC_NAME" disabled>
 										    </div>
 										</div>
+
+										<div class="form-group">
+										    <label for="CLINIC_ADDR" class="col-sm-2 control-label">诊所地址</label>
+										    <div class="col-sm-10">
+										      <input type="text" class="form-control" name="CLINIC_ADDR" id="CLINIC_ADDR" disabled="true">
+										    </div>
+										</div>
+
+										<div class="form-group">
+										    <label for="STATE_ID" class="col-sm-2 control-label">州</label>
+										    <div class="col-sm-10">
+										      <select class="form-control" id="STATE_ID" name="STATE_ID" disabled="true">
+                        						</select>
+										    </div>
+										</div>
+
 									 	<div class="form-group">
 										    <label for="DOCTOR_TYPE" class="col-sm-2 control-label">医生类别<span class="span-red">*</span></label>
 										    <div class="col-sm-10">

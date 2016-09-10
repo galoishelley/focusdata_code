@@ -54,52 +54,61 @@ $(document).ready(function() {
     // $('#a_userAppointmentRecoder').attr("color","#FF0000");
   }
 
-  // 填充诊所区域
-  // para="";
+  //填充州
+  func_code = "SSTE";
+  para="";
 
-  // json_str = request_const(para,"SP01",0);
+  json_str = request_const(para,func_code,0);
 
-  // // console.log(json_str);
-  // //请求
-  // $.ajax({
-  //   type: "POST",
-  //   url: "classes/class.getAppointmentStatus.php",
-  //   dataType: "json",
-  //   async:false,
-  //   data: {
-  //     request:json_str
-  //   },
-  //   success: function (msg) {
-  //       // console.log(msg);
-  //       var ret = msg.response;
-  //       if(ret.success){
-  //         if(json_str.sequ != ret.sequ){
-  //           alert("时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
-  //           return;
-  //         }
-  //         // var data = ret.data[0];
-  //         $.each(ret.data, function(i, item) {
-  //             $("#app_status").append("<option value='"+ item.APPOINTMENT_STATUS_ID +"'>" + item.APPOINTMENT_STATUS + "</option>");
-  //         });
-  //         // console.log(data);
-  //       }else{
-  //         alert(ret.status.ret_code + " " + ret.status.ret_msg);
-  //       }
+  // console.log(json_str);
+  //请求
+  result=true;
+  $.ajax({
+    type: "POST",
+    url: "classes/class.getState.php",
+    dataType: "json",
+    async:false,
+    data: {
+      request:json_str
+    },
+    success: function (msg) {
+        // console.log(msg);
+        var ret = msg.response;
+        if(ret.success){
+          if(json_str.sequ != ret.sequ){
+            alert(func_code+":时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
+            result=false;
+          }
+          // var data = ret.data[0];
+          $.each(ret.data, function(i, item) {
+              $("#STATE_ID").append("<option value='"+ item.STATE_ID +"'>" + item.STATE_NAME + "</option>");
+          });
+          // console.log(data);
+        }else{
+          alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
+          result=false;
+        }
         
-  //   },
-  //   error: function(XMLHttpRequest, textStatus, errorThrown){
-  //       //请求失败之后的操作
-  //       alert("SP01:999999:请联系管理员" + textStatus);
-  //   }
-  // });
+    },
+    error: function(XMLHttpRequest, textStatus, errorThrown){
+        //请求失败之后的操作
+        var ret_code = "999999";
+        var ret_msg = "失败,请联系管理员!";
+        alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+        result=false;
+    }
+  });
+  if(!result){
+    return result;
+  }
 
   func_code = "AU02";
   para={
     action_type: "view_name_addr",
-    // CLINIC_USER_ID: fd_userid,
-    ACTIVE_STATUS: $('#ACTIVE_STATUS').val(),
-    CLINIC_ADDR: $('#CLINIC_ADDR').val(),
     CLINIC_NAME: $('#CLINIC_NAME').val(),
+    CLINIC_ADDR: $('#CLINIC_ADDR').val(),
+    STATE_ID: $('#STATE_ID').val(),
+    ACTIVE_STATUS: $('#ACTIVE_STATUS').val()
   };
   
   json_str = request_const(para, func_code, request_type);
@@ -220,6 +229,24 @@ $(document).ready(function() {
           }
         },
         { 
+          "data": "STATE_NAME",
+          render: function(data, type, row, meta) {
+              //type 的值  dispaly sort filter
+              //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
+              //这里只处理了类型是显示的，过滤和排序返回原始数据
+              if (type === 'display') {
+                  if (data.length > 15) {
+                      return '<span title="' + data + '">' + data.substr(0, 15) + '...</span>';
+                  } else {
+                    // console.log(data);
+                      // return '<span title="' + data + '>' + data + '</span>';
+                      return data;
+                  }
+              }
+              return data;
+          }
+        },
+        { 
           "class": "text-left",
           "data": "ACTIVE_STATUS",
           render: function(data, type, row, meta) {
@@ -245,7 +272,6 @@ $(document).ready(function() {
           //     opr="<img id='img_info' src='img/td_info.png'/><img id='img_upd' src='img/td_upd.png'/><img id='img_reset' src='img/td_reset.png'/>";
           //     return opr;
           // }
-          // "defaultContent":"1111111111111111111111111111111111111111111111111111111"
           "defaultContent":"<button class='btn btn-primary btn-xs' id='opr_info'>详细</button><button class='btn btn-danger btn-xs' id='opr_upd'>修改</button><button class='btn btn-warning btn-xs' id='opr_reset_pwd'>密码重置</button>"
           // "defaultContent":"<img id='img_info' src='img/td_info.png'/><img id='img_upd' src='img/td_upd.png'/>"
           // "defaultContent":"<img id='img_info' src='img/td_info.png'><span class='glyphicon glyphicon-search'></span></img>     <img id='img_upd'><span class='glyphicon glyphicon-search'></span></img>     <img id='img_upd'><span class='glyphicon glyphicon-search'></span></img>    <img id='img_upd'><span class='glyphicon glyphicon-search'></span></img>"
@@ -401,16 +427,81 @@ $(document).ready(function() {
           CLINIC_USER_MAIL: obj_data.CLINIC_USER_MAIL,
           CLINIC_USER_NAME: obj_data.CLINIC_USER_NAME,
           ACTIVE_STATUS: obj_data.ACTIVE_STATUS,
+          STATE_ID: obj_data.STATE_ID,
         };
 
     if(imgId == "opr_reset_pwd"){
       //发送邮件到地址 
-      var reset_pwd = Math.floor(Math.random()*1000000);
+      var reset_pwd=""; 
+      for(var i=0;i<6;i++) 
+      { 
+        reset_pwd+=Math.floor(Math.random()*10); 
+      } 
       var email_text = "您的新密码:" + reset_pwd;
+      
+      if(!obj_data.CLINIC_USER_MAIL){
+        alert("请修改个人信息，添加邮箱地址");
+        return false;
+      }
       alert(obj_data.CLINIC_USER_MAIL +" pwd:"+ reset_pwd);
-      //发送邮件
 
-      return false;
+      //发送邮件 begin
+
+      //发送邮件 end
+
+      //修改密码
+      //修改用户密码
+///////////////////////////////////组织ajax 请求参数 begin///////////////////////////////
+      func_code="CU04";
+      //form序列化成json
+      json_form = {
+        action_type:"update",
+        CLINIC_USER_ID:obj_data.CLINIC_USER_ID,
+        CLINIC_USER_PWD:reset_pwd
+      };
+      //生成输入参数
+      json_str = request_const(json_form,"CU04",1);
+      // alert(JSON.stringify(json_str));
+
+      console.log(json_str);
+
+      result = true;
+      $.ajax({
+            type: "POST",
+            url: "classes/class.ClinicDetail.php",
+            dataType: "json",
+            async: false,
+            data:  {
+              request:json_str
+            },
+            success: function (msg) {
+              var ret = msg.response;
+              if(ret.success){
+                if(json_str.sequ != ret.sequ){
+                  alert(func_code+":时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
+                  result=false;
+                }
+              }else{
+                alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
+                // $('#signin_ok').attr('disabled',false); 
+                result=false;
+              }
+              
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+              //请求失败之后的操作
+              var ret_code = "999999";
+              var ret_msg = "失败,请联系管理员!";
+              alert(func_code+":"+ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+              result=false;
+            }
+        });
+        if(!result){
+          return result;
+        }
+
+
+        return false;
     }
 
     var str = JSON.stringify(data);
@@ -429,10 +520,10 @@ $(document).ready(function() {
     func_code = "AU02";
     para={
       action_type: "view_name_addr",
-      // CLINIC_USER_ID: fd_userid,
-      ACTIVE_STATUS: $('#ACTIVE_STATUS').val(),
-      CLINIC_ADDR: $('#CLINIC_ADDR').val(),
       CLINIC_NAME: $('#CLINIC_NAME').val(),
+      CLINIC_ADDR: $('#CLINIC_ADDR').val(),
+      STATE_ID: $('#STATE_ID').val(),
+      ACTIVE_STATUS: $('#ACTIVE_STATUS').val()
     };
     
     json_str = request_const(para, func_code, request_type);
@@ -496,10 +587,10 @@ $(document).ready(function() {
             func_code = "AU02";
             para={
               action_type: "view_name_addr",
-              // CLINIC_USER_ID: fd_userid,
-              ACTIVE_STATUS: $('#ACTIVE_STATUS').val(),
-              CLINIC_ADDR: $('#CLINIC_ADDR').val(),
               CLINIC_NAME: $('#CLINIC_NAME').val(),
+              CLINIC_ADDR: $('#CLINIC_ADDR').val(),
+              STATE_ID: $('#STATE_ID').val(),
+              ACTIVE_STATUS: $('#ACTIVE_STATUS').val()
             };
             
             json_str = request_const(para, func_code, request_type);
@@ -581,12 +672,12 @@ $(document).ready(function() {
             func_code = "AU02";
             para={
               action_type: "view_name_addr",
-              // CLINIC_USER_ID: fd_userid,
-              ACTIVE_STATUS: $('#ACTIVE_STATUS').val(),
-              CLINIC_ADDR: $('#CLINIC_ADDR').val(),
               CLINIC_NAME: $('#CLINIC_NAME').val(),
+              CLINIC_ADDR: $('#CLINIC_ADDR').val(),
+              STATE_ID: $('#STATE_ID').val(),
+              ACTIVE_STATUS: $('#ACTIVE_STATUS').val()
             };
-            
+                      
             json_str = request_const(para, func_code, request_type);
 
             console.log(json_str);

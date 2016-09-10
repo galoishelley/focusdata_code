@@ -49,52 +49,63 @@ $(document).ready(function() {
     // $('#a_userAppointmentRecoder').attr("color","#FF0000");
   }
 
-  // 填充诊所区域
-  // para="";
 
-  // json_str = request_const(para,"SP01",0);
+  //填充州
+  func_code = "SSTE";
+  para="";
 
-  // // console.log(json_str);
-  // //请求
-  // $.ajax({
-  //   type: "POST",
-  //   url: "classes/class.getAppointmentStatus.php",
-  //   dataType: "json",
-  //   async:false,
-  //   data: {
-  //     request:json_str
-  //   },
-  //   success: function (msg) {
-  //       // console.log(msg);
-  //       var ret = msg.response;
-  //       if(ret.success){
-  //         if(json_str.sequ != ret.sequ){
-  //           alert("时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
-  //           return;
-  //         }
-  //         // var data = ret.data[0];
-  //         $.each(ret.data, function(i, item) {
-  //             $("#app_status").append("<option value='"+ item.APPOINTMENT_STATUS_ID +"'>" + item.APPOINTMENT_STATUS + "</option>");
-  //         });
-  //         // console.log(data);
-  //       }else{
-  //         alert(ret.status.ret_code + " " + ret.status.ret_msg);
-  //       }
+  json_str = request_const(para,func_code,0);
+
+  // console.log(json_str);
+  //请求
+  result=true;
+  $.ajax({
+    type: "POST",
+    url: "classes/class.getState.php",
+    dataType: "json",
+    async:false,
+    data: {
+      request:json_str
+    },
+    success: function (msg) {
+        // console.log(msg);
+        var ret = msg.response;
+        if(ret.success){
+          if(json_str.sequ != ret.sequ){
+            alert(func_code+":时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
+            result=false;
+          }
+          // var data = ret.data[0];
+          $.each(ret.data, function(i, item) {
+              $("#STATE_ID").append("<option value='"+ item.STATE_ID +"'>" + item.STATE_NAME + "</option>");
+          });
+          // console.log(data);
+        }else{
+          alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
+          result=false;
+        }
         
-  //   },
-  //   error: function(XMLHttpRequest, textStatus, errorThrown){
-  //       //请求失败之后的操作
-  //       alert("SP01:999999:请联系管理员" + textStatus);
-  //   }
-  // });
+    },
+    error: function(XMLHttpRequest, textStatus, errorThrown){
+        //请求失败之后的操作
+        var ret_code = "999999";
+        var ret_msg = "失败,请联系管理员!";
+        alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+        result=false;
+    }
+  });
+  if(!result){
+    return result;
+  }
 
   func_code = "AU03";
   para={
     action_type: "view_name_area",
-    // CLINIC_USER_ID: fd_userid,
-    ACTIVE_STATUS: $('#ACTIVE_STATUS').val(),
-    CUSTOMER_ADDR: $('#CUSTOMER_ADDR').val(),
     CUSTOMER_USER_NAME: $('#CUSTOMER_USER_NAME').val(),
+    CUSTOMER_NAME: $('#CUSTOMER_NAME').val(),
+    CUSTOMER_ADDR: $('#CUSTOMER_ADDR').val(),
+    ACTIVE_STATUS: $('#ACTIVE_STATUS').val(),
+    STATE_ID: $('#STATE_ID').val()
   };
   
   json_str = request_const(para, func_code, request_type);
@@ -143,6 +154,24 @@ $(document).ready(function() {
         },
         { 
           "data": "CUSTOMER_USER_NAME",
+          render: function(data, type, row, meta) {
+              //type 的值  dispaly sort filter
+              //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
+              //这里只处理了类型是显示的，过滤和排序返回原始数据
+              if (type === 'display') {
+                  if (data.length > 10) {
+                      return '<span title="' + data + '">' + data.substr(0, 8) + '...</span>';
+                  } else {
+                    // console.log(data);
+                      // return '<span title="' + data + '>' + data + '</span>';
+                      return data;
+                  }
+              }
+              return data;
+          }
+        },
+        { 
+          "data": "CUSTOMER_USER_MAIL",
           render: function(data, type, row, meta) {
               //type 的值  dispaly sort filter
               //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
@@ -232,6 +261,8 @@ $(document).ready(function() {
           }
         },
         { 
+          "data": "STATE_NAME"        },
+        { 
           "data": "CUSTOMER_PHONE_NO",
         },
         { 
@@ -257,7 +288,7 @@ $(document).ready(function() {
         { 
           "class": "text-center",
           "data": null,
-          "defaultContent":"<img src='img/details.png'>"
+          "defaultContent":"<button class='btn btn-primary btn-xs' id='opr_info'>详细</button><button class='btn btn-danger btn-xs' id='opr_upd'>修改</button><button class='btn btn-warning btn-xs' id='opr_reset_pwd'>密码重置</button>"
         },
         {
           "visible": false,
@@ -319,12 +350,12 @@ $(document).ready(function() {
         {
           "orderable": false,
           "targets": 5,
-          // "sWidth": "5%"
+          "sWidth": "10%"
         },
         {
           "orderable": false,
           "targets": 6,
-          "sWidth": "10%"
+          // "sWidth": "5%"
         },
         {
           "orderable": false,
@@ -335,6 +366,11 @@ $(document).ready(function() {
           "orderable": false,
           "targets": 8,
           "sWidth": "10%"
+        },
+        {
+          "orderable": false,
+          "targets": 9,
+          "sWidth": "10%"
         }
        ],
       //第一列与第二列禁止排序
@@ -343,7 +379,7 @@ $(document).ready(function() {
       //    // [1, "desc"]
       // ],
 
-      "dom": '<"top">rt<"table_bottom"ip<"#goon">><"clear">',
+      "dom": '<"#top">rt<"table_bottom"ip<"#goon">><"clear">',
 
 
     initComplete: function(data){
@@ -409,21 +445,95 @@ $(document).ready(function() {
   });
 
   //单机行，中修改按钮
-  $('#dataTables-example tbody').on( 'click', 'img', function (event) {
+  $('#dataTables-example tbody').on( 'click', 'button', function (event) {
     var imgId = $(this).prop("id");
     var obj_data = _table.row($(this).parents('tr')).data();
     console.log(obj_data);
     var data = {
+          imgId:imgId,
           CUSTOMER_USER_ID: obj_data.CUSTOMER_USER_ID,
           CUSTOMER_USER_NAME: obj_data.CUSTOMER_USER_NAME,
+          CUSTOMER_USER_MAIL: obj_data.CUSTOMER_USER_MAIL,
           CUSTOMER_NAME: obj_data.CUSTOMER_NAME,
           CUSTOMER_GENDER: obj_data.CUSTOMER_GENDER,
           CUSTOMER_BIRTHDAY: obj_data.CUSTOMER_BIRTHDAY,
           CUSTOMER_ADDR: obj_data.CUSTOMER_ADDR,
           CUSTOMER_PHONE_NO: obj_data.CUSTOMER_PHONE_NO,
           MEDICAL_CARD_NO: obj_data.MEDICAL_CARD_NO,
-          ACTIVE_STATUS: obj_data.ACTIVE_STATUS
+          ACTIVE_STATUS: obj_data.ACTIVE_STATUS,
+          STATE_ID: obj_data.STATE_ID
         };
+
+    if(imgId == "opr_reset_pwd"){
+      //发送邮件到地址 
+      var reset_pwd=""; 
+      for(var i=0;i<6;i++) 
+      { 
+        reset_pwd+=Math.floor(Math.random()*10); 
+      } 
+      // var reset_pwd = Math.floor(Math.random()*1000000);
+      var email_text = "您的新密码:" + reset_pwd;
+      if(!obj_data.CUSTOMER_USER_MAIL){
+        alert("请修改个人信息，添加邮箱地址");
+        return false;
+      }
+      alert(obj_data.CUSTOMER_USER_MAIL +" pwd:"+ reset_pwd);
+      //发送邮件
+
+      //修改密码
+///////////////////////////////////组织ajax 请求参数 begin///////////////////////////////
+      func_code="UU04";
+      //form序列化成json
+      json_form = {
+        action_type:"update",
+        CUSTOMER_USER_ID:obj_data.CUSTOMER_USER_ID,
+        CUSTOMER_USER_PWD:reset_pwd
+      };
+      //生成输入参数
+      json_str = request_const(json_form,func_code,1);
+      // alert(JSON.stringify(json_str));
+
+      console.log(json_str);
+
+      result = true;
+      $.ajax({
+            type: "POST",
+            url: "classes/class.UserDetail.php",
+            dataType: "json",
+            async: false,
+            data:  {
+              request:json_str
+            },
+            success: function (msg) {
+              var ret = msg.response;
+              if(ret.success){
+                if(json_str.sequ != ret.sequ){
+                  alert(func_code+":时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
+                  result=false;
+                }
+
+              }else{
+                alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
+                // $('#signin_ok').attr('disabled',false); 
+                result=false;
+              }
+              
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+              //请求失败之后的操作
+              var ret_code = "999999";
+              var ret_msg = "失败,请联系管理员!";
+              alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
+              result=false;
+            }
+        });
+        if(!result){
+          return result;
+        }
+
+      return false;
+    }
+
     var str = JSON.stringify(data);
 
     sessionStorage.userinfo = str;
@@ -442,10 +552,11 @@ $(document).ready(function() {
     func_code = "AU03";
     para={
       action_type: "view_name_area",
-      // CLINIC_USER_ID: fd_userid,
-      ACTIVE_STATUS: $('#ACTIVE_STATUS').val(),
-      CUSTOMER_ADDR: $('#CUSTOMER_ADDR').val(),
       CUSTOMER_USER_NAME: $('#CUSTOMER_USER_NAME').val(),
+      CUSTOMER_NAME: $('#CUSTOMER_NAME').val(),
+      CUSTOMER_ADDR: $('#CUSTOMER_ADDR').val(),
+      ACTIVE_STATUS: $('#ACTIVE_STATUS').val(),
+      STATE_ID: $('#STATE_ID').val()
     };
     
     json_str = request_const(para, func_code, request_type);
@@ -509,10 +620,11 @@ $(document).ready(function() {
             func_code = "AU03";
             para={
               action_type: "view_name_area",
-              // CLINIC_USER_ID: fd_userid,
-              ACTIVE_STATUS: $('#ACTIVE_STATUS').val(),
-              CUSTOMER_ADDR: $('#CUSTOMER_ADDR').val(),
               CUSTOMER_USER_NAME: $('#CUSTOMER_USER_NAME').val(),
+              CUSTOMER_NAME: $('#CUSTOMER_NAME').val(),
+              CUSTOMER_ADDR: $('#CUSTOMER_ADDR').val(),
+              ACTIVE_STATUS: $('#ACTIVE_STATUS').val(),
+              STATE_ID: $('#STATE_ID').val()
             };
             
             json_str = request_const(para, func_code, request_type);
@@ -594,10 +706,11 @@ $(document).ready(function() {
             func_code = "AU03";
             para={
               action_type: "view_name_area",
-              // CLINIC_USER_ID: fd_userid,
-              ACTIVE_STATUS: $('#ACTIVE_STATUS').val(),
-              CUSTOMER_ADDR: $('#CUSTOMER_ADDR').val(),
               CUSTOMER_USER_NAME: $('#CUSTOMER_USER_NAME').val(),
+              CUSTOMER_NAME: $('#CUSTOMER_NAME').val(),
+              CUSTOMER_ADDR: $('#CUSTOMER_ADDR').val(),
+              ACTIVE_STATUS: $('#ACTIVE_STATUS').val(),
+              STATE_ID: $('#STATE_ID').val()
             };
             
             json_str = request_const(para, func_code, request_type);

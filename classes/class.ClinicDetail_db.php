@@ -17,7 +17,10 @@ class ClinicDetail_DB{
         }
         // print_r($arr_values);
 
-        $sql = "SELECT * FROM `fd_clinic_user` WHERE  ACTIVE_STATUS  like '%".$arr_values['ACTIVE_STATUS']."%' and  CLINIC_NAME like '%".$arr_values['CLINIC_NAME']."%' and CLINIC_ADDR like '%".$arr_values['CLINIC_ADDR']."%' order by update_date desc";
+        $sql = "SELECT t1.*, t2.STATE_NAME FROM `fd_clinic_user` t1
+            left join fd_dict_state t2 on t1.state_id = t2.state_id
+            WHERE  t1.ACTIVE_STATUS  like '%".$arr_values['ACTIVE_STATUS']."%' and  
+            t1.CLINIC_ADDR like '%".$arr_values['CLINIC_ADDR']."%' and t1.CLINIC_NAME like '%".$arr_values['CLINIC_NAME']."%' and t1.STATE_ID like '%".$arr_values['STATE_ID']."%' order by create_date desc";
 
         // echo $sql;
         if($this->_dbug){
@@ -103,6 +106,12 @@ class ClinicDetail_DB{
             $arr_values['ACTIVE_STATUS'] = intval($arr_values['ACTIVE_STATUS']);
         }
         unset($arr_values["CLINIC_USER_ID"]);
+
+        foreach($arr_values as $k=>$v){
+            if($k=="CLINIC_USER_PWD"){
+                $arr_values[$k]=md5($v);
+            }
+        }
 
         $ret = $this->db->updateData('fd_clinic_user', $arr_values, $where);
         // echo $ret;
