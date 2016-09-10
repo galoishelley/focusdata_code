@@ -443,9 +443,42 @@ $(document).ready(function() {
         alert("请修改个人信息，添加邮箱地址");
         return false;
       }
-      alert(obj_data.CLINIC_USER_MAIL +" pwd:"+ reset_pwd);
+      //alert(obj_data.CLINIC_USER_MAIL +" pwd:"+ reset_pwd);
 
       //发送邮件 begin
+      $.ajax({
+          type: "POST",
+          url: "classes/PHPMailer/gmail.php",
+          dataType: "text",
+          async:false,
+          data: {
+        	  email: obj_data.CLINIC_USER_MAIL,
+              pwd: reset_pwd,
+              name:obj_data.CLINIC_USER_NAME
+          },
+          success: function (msg) {
+               
+              BootstrapDialog.show({
+            	  title: '恭喜',
+                  message: '密码重置成功！邮件已发送至用户邮箱！',
+                  buttons: [{
+                      label: '确定',
+                      action: function(dialogItself){
+                          dialogItself.close();
+                      }
+                  }]
+              });
+             
+              
+          },
+          error: function(XMLHttpRequest, textStatus, errorThrown){
+            //请求失败之后的操作
+            var ret_code = "999999";
+            var ret_msg = "失败,请联系管理员!";
+            alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+            result=false;
+          }
+        });
 
       //发送邮件 end
 
