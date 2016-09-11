@@ -2,9 +2,9 @@ var para,json_str;
 var func_code,request_type;
 var username,fd_userid,ilogin;
 var result;
-var miaoyl;
-
-$(document).ready(function() {
+var mao;
+var yinxin;
+var miaoyl;$(document).ready(function() {
 
   //登录cookie
   var ilogin = $.cookie("ilogin");
