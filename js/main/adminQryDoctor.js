@@ -3,6 +3,7 @@ var func_code,request_type;
 var username,fd_userid,ilogin;
 var result;
 
+var yinxin;
 $(document).ready(function() {
 
   //登录cookie
