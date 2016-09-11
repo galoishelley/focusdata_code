@@ -2,7 +2,7 @@ var para,json_str;
 var func_code,request_type;
 var username,fd_userid,ilogin;
 var result;
-var miaoyl;
+
 
 $(document).ready(function() {
 
