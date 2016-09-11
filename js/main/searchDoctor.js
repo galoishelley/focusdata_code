@@ -26,7 +26,7 @@ $(function(){
 	$('#btn_out').click(function(){
 		$.cookie("ilogin", "");
 		// $('#userinfo').html();
-		window.location.href="index.html"; 
+		window.location.href="index.php"; 
 
 		if ($.cookie("fd_rmbUser") == "false") {
 		  $.cookie("fd_userid", "");
@@ -611,7 +611,7 @@ $(function(){
 	            // //记录cookie
 	            // Save();
 	            // history.go(-1);
-	            // // window.location.href="index.html";
+	            // // window.location.href="index.php";
 	            alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
 	          }else{
 	            alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);

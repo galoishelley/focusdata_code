@@ -42,7 +42,7 @@
   $('#btn_out').click(function(){
     $.cookie("ilogin", "");
     // $('#userinfo').html();
-    window.location.href="index.html"; 
+    window.location.href="index.php"; 
 
     if ($.cookie("fd_rmbUser") == "false") {
       $.cookie("fd_userid", "");

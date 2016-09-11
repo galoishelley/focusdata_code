@@ -1,8 +1,11 @@
 <!--v1.3-->
+<?php
+include_once 'classes/Language/language.common.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>home</title>
+<title><?php echo $lang['PAGE_TITLE_HOME']; ?></title>
 <meta charset="utf-8">    
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="img/favicon.ico" type="image/x-icon">
@@ -60,33 +63,39 @@
     <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
         <div class="container">
             <ul class="nav sf-menu clearfix">
-                <li id="li_home" class="hidden active"><a href="index.html">home</a></li>
-                <li class="sub-menu"><a href="index-1.html">our services</a><span></span>
+                <li id="li_home" class="hidden active"><a href="index.php"><?php echo $lang['MENU_HOME']; ?></a></li>
+                <li class="sub-menu"><a href="index-1.html"><?php echo $lang['MENU_our_service']; ?></a><span></span>
                     <ul class="submenu">
-                        <li id="li_SearchDoctor" class="hidden"><a href="searchDoctor.html">搜索|预约医生</a></li>
-                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.html">个人用户管理</a>
+                        <li id="li_SearchDoctor" class="hidden"><a href="searchDoctor.html"><?php echo $lang['MENU_searchDoctor']; ?></a></li>
+                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.html"><?php echo $lang['MENU_userAppointmentRecoder']; ?></a>
                         </li>
-                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.html">诊所用户管理</a>
+                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.html"><?php echo $lang['MENU_clinicUpdUserInfo']; ?></a>
                         </li>
-                        <li id="li_Admin" class="hidden"><a href="adminQryClinic.html">管理员管理</a></li>
+                        <li id="li_Admin" class="hidden"><a href="adminQryClinic.html"><?php echo $lang['MENU_adminQryClinic']; ?></a></li>
                     </ul>
                 </li>
-                <li><a href="index-2.html">about us</a></li>
-                <li><a href="index-3.html">staff</a></li>
-                <li><a href="index-4.html">Contacts</a></li>
-                <li><a href="sign_in.html">Sign in</a></li>
-                <li><a href="sign_up_person.html">Sign up</a></li>
-                <li class="sub-menu tourist"><a href="#" id="userinfo">游客</a><span></span>
+                <li class="sub-menu"><a href="#"><?php echo $lang['MENU_Language']; ?></a><span></span>
+                    <ul class="submenu">
+                        <li><a href="?lang=en">English</a></li>
+                        <li><a href="?lang=ch">中文</a></li>     
+                    </ul>
+                </li>
+                <li><a href="index-2.html"><?php echo $lang['MENU_aboutus']; ?></a></li>
+                <li><a href="index-3.html"><?php echo $lang['MENU_staff']; ?></a></li>
+                <li><a href="index-4.html"><?php echo $lang['MENU_Contacts']; ?></a></li>
+                <li><a href="sign_in.php"><?php echo $lang['MENU_sign_in']; ?></a></li>
+                <li><a href="sign_up_person.html"><?php echo $lang['MENU_sign_up_person']; ?></a></li>
+                <li class="sub-menu tourist"><a href="#" id="userinfo"><?php echo $lang['MENU_guest']; ?></a><span></span>
                     <ul class="submenu hidden" id="sub_userinfo">
                         <li><a href="#" id="usertype"></a></li>
-                        <li><a href="#">账户管理</a></li>
-                        <li><button class="btn btn-danger" id="btn_out">安全退出</button></li>
+                        
+                        <li><button class="btn btn-danger" id="btn_out"><?php echo $lang['MENU_sign_out']; ?></button></li>
                     </ul>
                 </li>
             </ul>
         </div>
     </nav>
-    <h1 class="navbar-brand navbar-brand_"><a href="#"><img src="img/logo_en.png" alt="logo"></a></h1>
+    <h1 class="navbar-brand navbar-brand_"><a href="#"><img src="img/<?php echo $lang['HOME_LOGO']; ?>" alt="logo"></a></h1>
 </header>
 <!--content-->
 <div class="content"> 

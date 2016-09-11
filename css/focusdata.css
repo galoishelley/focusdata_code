@@ -32,13 +32,13 @@ th, td {
 	vertical-align: middle;
  }
 
-/* 单元格连续纯字母数字强制换行显示 */
+/* 鍗曞厓鏍艰繛缁函瀛楁瘝鏁板瓧寮哄埗鎹㈣鏄剧ず */
 .wordwrap{
     word-wrap: break-word;
     word-break: break-all;
     overflow: hidden;
 }
-/* 超长文字单元格省略号显示 */
+/* 瓒呴暱鏂囧瓧鍗曞厓鏍肩渷鐣ュ彿鏄剧ず */
 .ellipsis{
     white-space: nowrap;
     overflow: hidden;
@@ -217,7 +217,7 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination{
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * index.html
+ * index.php
  */
 .index-form-bg{
     /*position: absolute;*/

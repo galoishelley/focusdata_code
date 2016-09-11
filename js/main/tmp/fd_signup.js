@@ -100,7 +100,7 @@ $(function(){
                   return;
                 }
                 //alert(msg.response.msg);
-                window.location.href="sign_in.html";
+                window.location.href="sign_in.php";
                 //_table.ajax.reload();
                 //window.location.reload()
               }else{

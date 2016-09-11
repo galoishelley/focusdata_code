@@ -4,7 +4,7 @@
   "licence": "MIT",
   "ignore": [
     "assets",
-    "index.html",
+    "index.php",
     "LICENCE"
   ],
   "dependencies": {

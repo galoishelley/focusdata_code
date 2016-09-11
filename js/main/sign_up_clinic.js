@@ -47,7 +47,7 @@ $(function(){
                 result = false;
               }
 
-              window.location.href="sign_in.html";
+              window.location.href="sign_in.php";
 
             }else{
               alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);

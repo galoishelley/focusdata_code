@@ -8,7 +8,7 @@
 # This file contains a table with the following columns:
 # 1.  ISO 3166-1 alpha-2 country code, current as of
 #     ISO 3166-1 Newsletter VI-1 (2007-09-21).  See:
-#     <a href="http://www.iso.org/iso/en/prods-services/iso3166ma/index.html">
+#     <a href="http://www.iso.org/iso/en/prods-services/iso3166ma/index.php">
 #     ISO 3166 Maintenance agency (ISO 3166/MA)
 #     </a>.
 # 2.  The usual English name for the country,

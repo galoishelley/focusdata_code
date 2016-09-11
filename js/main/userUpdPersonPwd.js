@@ -8,7 +8,7 @@ $(document).ready(function() {
   $('#btn_out').click(function(){
     $.cookie("ilogin", "");
     // $('#userinfo').html();
-    window.location.href="index.html"; 
+    window.location.href="index.php"; 
 
     if ($.cookie("fd_rmbUser") == "false") {
       $.cookie("fd_userid", "");
@@ -158,7 +158,7 @@ $(document).ready(function() {
               // //记录cookie
               // Save();
               // history.go(-1);
-              // // window.location.href="index.html";
+              // // window.location.href="index.php";
               alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
               $('#CUSTOMER_USER_PWD').val('');
               $('#CUSTOMER_USER_NEWPWD').val('');

@@ -18,4 +18,4 @@ This repository holds the following plug-in types for DataTables:
 * Integration scripts
   * Twitter Bootstrap
 
-Each directory has an index.html file which is used to generate the plug-ins documentation on [DataTables.net](http://datatables.net/plug-ins) and describes how plug-ins can be used.
+Each directory has an index.php file which is used to generate the plug-ins documentation on [DataTables.net](http://datatables.net/plug-ins) and describes how plug-ins can be used.

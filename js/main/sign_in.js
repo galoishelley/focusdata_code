@@ -213,7 +213,7 @@ $(function(){
     if(str_usertype==0){
       window.location.href="clinicUpdUserInfo.html";
     }else if(str_usertype==1){
-      window.location.href="index.html";
+      window.location.href="index.php";
     }else if(str_usertype==2){
       window.location.href="adminQryClinic.html";
     }
@@ -232,14 +232,14 @@ $(function(){
           USER_NAME: {
               validators: {
                   notEmpty: {
-                      message: '用户名不能为空'
+                      message: 'User name can not be empty!'
                   }
               }
           },
           USER_PWD: {
               validators: {
                   notEmpty: {
-                      message: '密码不能为空'
+                      message: 'Password can not be empty!'
                   }
               }
           }

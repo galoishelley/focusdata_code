@@ -311,7 +311,7 @@ $(function(){
                 result=false;
               }
               alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
-              // window.location.href="sign_in.html";
+              // window.location.href="sign_in.php";
 
             }else{
               alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
@@ -507,7 +507,7 @@ $(function(){
               if($.cookie("ilogin") == 1){
                 window.location.href="userAppointmentRecoder.html"; 
               }else if($.cookie("ilogin") == 0){
-                window.location.href="sign_in.html"; 
+                window.location.href="sign_in.php"; 
               }
               
             }else{
@@ -568,7 +568,7 @@ $(function(){
                 // //记录cookie
                 // Save();
                 // history.go(-1);
-                // // window.location.href="index.html";
+                // // window.location.href="index.php";
                 alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
               }else{
                 alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);

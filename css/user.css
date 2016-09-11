@@ -1,5 +1,5 @@
 /*
-	sign_in.html
+	sign_in.php
 
 #pleaseSignIn{
 	/*
@@ -161,7 +161,7 @@ form fieldset .checkbox label{
 	line-height: 1.6;
 }
 
-/**************sign_in.html***************/
+/**************sign_in.php***************/
 .signIn3 a{
 	color:#9fdbf3;
 }
@@ -204,7 +204,7 @@ form fieldset .checkbox label{
   display: block;
 }
 .thumb-box5_1 .box p {
-  font: 17px/24px '微软雅黑', 'Georgia', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 17px/24px '寰蒋闆呴粦', 'Georgia', "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #9fdbf3;
   margin-top: 5px;
 }

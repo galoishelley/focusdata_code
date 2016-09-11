@@ -124,7 +124,7 @@
  * add support to pass through flags such as --debug-brk=1234. Closes #852
  * add test.only, test.skip to qunit interface
  * change to always use word-based diffs for now. Closes #733
- * change `mocha init` tests.html to index.html
+ * change `mocha init` tests.html to index.php
  * fix `process` global leak in the browser
  * fix: use resolve() instead of join() for --require
  * fix: filterLeaks() condition to not consider indices in global object as leaks

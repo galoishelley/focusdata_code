@@ -1,7 +1,10 @@
+<?php
+include_once 'classes/Language/language.common.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>sign in</title>
+<title><?php echo $lang['PAGE_TITLE_SIGN_IN']; ?></title>
 <meta charset="utf-8">    
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="img/favicon.ico" type="image/x-icon">
@@ -56,33 +59,39 @@
     <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
         <div class="container">
             <ul class="nav sf-menu clearfix">
-                <li><a href="index.html">home</a></li>
-                <li class="sub-menu"><a href="index-1.html">our services</a><span></span>
+                <li><a href="index.php"><?php echo $lang['MENU_HOME']; ?></a></li>
+                <li class="sub-menu"><a href="index-1.html"><?php echo $lang['MENU_our_service']; ?></a><span></span>
                     <ul class="submenu">
-                        <li><a href="searchDoctor.html">搜索|预约医生</a></li>
-                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.html">个人用户管理</a>
+                        <li><a href="searchDoctor.html"><?php echo $lang['MENU_searchDoctor']; ?></a></li>
+                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.html"><?php echo $lang['MENU_userAppointmentRecoder']; ?></a>
                         </li>
-                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.html">诊所用户管理</a>
+                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.html"><?php echo $lang['MENU_clinicUpdUserInfo']; ?></a>
                         </li>
-                        <li id="li_Admin" class="hidden"><a href="adminQryClinic.html">管理员管理</a></li>
+                        <li id="li_Admin" class="hidden"><a href="adminQryClinic.html"><?php echo $lang['MENU_adminQryClinic']; ?></a></li>
                     </ul>
                 </li>
-                <li><a href="index-2.html">about us</a></li>
-                <li><a href="index-3.html">staff</a></li>
-                <li><a href="index-4.html">Contacts</a></li>
-                <li class="active"><a href="sign_in.html">Sign in</a></li>
-                <li><a href="sign_up_person.html">Sign up</a></li>
-                <li class="sub-menu tourist"><a href="#" id="userinfo">游客</a><span></span>
+                <li class="sub-menu"><a href="#"><?php echo $lang['MENU_Language']; ?></a><span></span>
+                    <ul class="submenu">
+                        <li><a href="?lang=en">English</a></li>
+                        <li><a href="?lang=ch">中文</a></li>     
+                    </ul>
+                </li>
+                <li><a href="index-2.html"><?php echo $lang['MENU_aboutus']; ?></a></li>
+                <li><a href="index-3.html"><?php echo $lang['MENU_staff']; ?></a></li>
+                <li><a href="index-4.html"><?php echo $lang['MENU_Contacts']; ?></a></li>
+                <li class="active"><a href="sign_in.php"><?php echo $lang['MENU_sign_in']; ?></a></li>
+                <li><a href="sign_up_person.html"><?php echo $lang['MENU_sign_up_person']; ?></a></li>
+                <li class="sub-menu tourist"><a href="#" id="userinfo"><?php echo $lang['MENU_guest']; ?></a><span></span>
                     <ul class="submenu hidden" id="sub_userinfo">
                         <li><a href="#" id="usertype"></a></li>
-                        <li><a href="#">账户管理</a></li>
-                        <li><button class="btn btn-danger" id="btn_out">安全退出</button></li>
+
+                        <li><button class="btn btn-danger" id="btn_out"><?php echo $lang['MENU_sign_out']; ?></button></li>
                     </ul>
                 </li>
             </ul>
         </div>
     </nav>
-    <h1 class="navbar-brand navbar-brand_"><a href="index.html"><img src="img/logo_en.png" alt="logo"></a></h1>
+    <h1 class="navbar-brand navbar-brand_"><a href="index.php"><img src="img/<?php echo $lang['HOME_LOGO']; ?>" alt="logo"></a></h1>
 </header>
 
 <!--content-->
@@ -91,7 +100,7 @@
 		<div class="thumb-box9" data-stellar-background-ratio="0.1">
 			<div class="container">
 				<div class="row df_content col-md-8 col-md-offset-2">
-					<h2 class="wow fadeInRight">Sign In</h2>
+					<h2 class="wow fadeInRight"><?php echo $lang['PageSignInSignIn']; ?></h2>
 					<!-- <div>&nbsp;</div>
 					<h2 class="indent">Sign in</h2> -->
 					<form class="form-horizontal wow fadeInUp" role="form" id="signin_form">
@@ -103,52 +112,52 @@
 								<span id="inputError2Status" class="sr-only">(error)</span>
 							</div> -->
 							<div class="form-group">
-							    <label for="USER_NAME" class="col-sm-2 control-label">用户名<span class="span-red">*</span></label>
+							    <label for="USER_NAME" class="col-sm-2 control-label"><?php echo $lang['PageSignInUser']; ?><span class="span-red">*</span></label>
 							    <div class="col-sm-10">
-							      <input type="text" class="form-control" id="USER_NAME" name="USER_NAME" placeholder="请输入用户名 ...">
+							      <input type="text" class="form-control" id="USER_NAME" name="USER_NAME" placeholder="<?php echo $lang['PageSignInUserHint']; ?>">
 							    </div>
 							</div>
 							<div class="form-group">
-							    <label for="USER_PWD" class="col-sm-2 control-label">密码<span class="span-red">*</span></label>
+							    <label for="USER_PWD" class="col-sm-2 control-label"><?php echo $lang['PageSignInPWD']; ?><span class="span-red">*</span></label>
 							    <div class="col-sm-10">
-							      <input type="password" class="form-control" id="USER_PWD" name="USER_PWD" placeholder="请输入密码 ...">
+							      <input type="password" class="form-control" id="USER_PWD" name="USER_PWD" placeholder="<?php echo $lang['PageSignInPWDHint']; ?>">
 							    </div>
 							</div>
 
 							<div class="radio col-sm-10 col-sm-offset-2">
 							  <label>
 							    <input type="radio" name="usertype" id="usertype" value="0">
-							    诊所用户
+							    <?php echo $lang['PageSignInClinic']; ?>
 							  </label>
 							</div>
 							<div class="radio col-sm-10 col-sm-offset-2">
 							  <label>
 							    <input type="radio" name="usertype" id="usertype" value="1" checked>
-							   	个人用户
+							   	<?php echo $lang['PageSignInPerson']; ?>
 							  </label>
 							</div>
 							<div class="radio col-sm-10 col-sm-offset-2">
 							  <label>
 							    <input type="radio" name="usertype" id="usertype" value="2">
-							   管理员
+							   <?php echo $lang['PageSignInAdmin']; ?>
 							  </label>
 							</div>
 
 							<div class="checkbox col-sm-10 col-sm-offset-2">
 							  <label>
 							    <input type="checkbox" value="" id="ck_rmbUser">
-							   	Remember Me
+							   	<?php echo $lang['PageSignInRememberMe']; ?>
 							  </label>
 							</div>
 							
 							<div class="row">
 								<div class="form-group pull-right">
-									<button type="submit" class="btn btn-lg btn-primary btn-block" id="signin_ok">sign in</button>
+									<button type="submit" class="btn btn-lg btn-primary btn-block" id="signin_ok"><?php echo $lang['PageSignInBtnSignIn']; ?></button>
 								 </div>
 							</div>
 							<div class="row">
 								<div class="form-group pull-right">
-									<a href="forgotpwd.html"><strong>Forgot Password?</strong></a>
+									<a href="forgotpwd.html"><strong><?php echo $lang['PageSignInBtnForgetPWD']; ?></strong></a>
 									<!-- <div class="pull-right">sign in</div> -->
 								</div>
 							</div>

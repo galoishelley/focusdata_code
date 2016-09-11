@@ -3863,7 +3863,7 @@ if (typeof jQuery === 'undefined') {
          * - Valid: 756.1234.5678.95, 7561234567895
          *
          * @see http://en.wikipedia.org/wiki/National_identification_number#Switzerland
-         * @see http://www.bsv.admin.ch/themen/ahv/00011/02185/index.html?lang=de
+         * @see http://www.bsv.admin.ch/themen/ahv/00011/02185/index.php?lang=de
          * @param {String} value The ID
          * @returns {Boolean}
          */
