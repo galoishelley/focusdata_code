@@ -9,6 +9,7 @@ $(function(){
     $('#DOCTOR_PHOTO').attr('src','img/doctors/'+json_value.DOCTOR_PHOTO);
     $('#CLINIC_NAME').text(json_value.CLINIC_NAME);
     $('#CLINIC_ADDR').text(json_value.CLINIC_ADDR);
+    $('#STATE_NAME').text(json_value.STATE_NAME);
     $('#DOCTOR_TYPE').val(json_value.DOCTOR_TYPE);
     $('#DOCTOR_NAME').val(json_value.DOCTOR_NAME);
     $('#DOCTOR_GENDER').val(json_value.DOCTOR_GENDER);
@@ -16,7 +17,15 @@ $(function(){
     $('#DOCTOR_ID').val(json_value.DOCTOR_ID);
     $('#DOCTOR_PHOTO').val(json_value.DOCTOR_PHOTO);
     $('#feedback').html("<img src='img/doctors/"+json_value.DOCTOR_PHOTO+"'/>");
-    $("#ACTIVE_STATUS").find("option[value='"+json_value.ACTIVE_STATUS+"']").attr("selected",true);
+    $('#ACTIVE_STATUS').find("option[value='"+json_value.ACTIVE_STATUS+"']").attr("selected",true);
+
+    if(json_value.imgId == "opr_info"){
+      $("#clinicUpdDoctorDetail input").attr("disabled","disabled");
+      $("#clinicUpdDoctorDetail select").attr("disabled","disabled");
+      $("#clinicUpdDoctorDetail textarea").attr("disabled","disabled");
+      $("#submit_form input").attr("disabled","disabled");           
+      $("#btn_submit").attr("disabled","disabled");
+    }
   }
 
   $('#btn_submit').click(function (){

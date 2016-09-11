@@ -93,6 +93,7 @@ class AppointmentRecoder_DB{
                 on t3.APPOINTMENT_STATUS_ID = t1.APPOINTMENT_STATUS_ID
                 left join (fd_rel_clinic_doctor t4 left join fd_clinic_user as t5 on t4.clinic_user_id = t5.clinic_user_id )
                 on t4.DOCTOR_ID = t1.DOCTOR_ID
+                left join fd_dict_state t6 on t5.state_id = t6.state_id
                 where 
                 t1.CUSTOMER_USER_ID = ".(int)$arr_values['CUSTOMER_USER_ID']."
                 and                
@@ -112,7 +113,7 @@ class AppointmentRecoder_DB{
     }
 
     public function viewAll($arr_values,$requesttype=0,$start=0,$lenght=10){
-        $sql = "select t5.CLINIC_USER_NAME, t5.CLINIC_ADDR,t2.DOCTOR_TYPE, t2.DOCTOR_NAME, t1.CREATE_DATE,t3.APPOINTMENT_STATUS, t1.CUSTOMER_USER_ID, t1.DOCTOR_ID
+        $sql = "select t5.CLINIC_USER_NAME, t5.CLINIC_ADDR,t2.DOCTOR_TYPE, t2.DOCTOR_NAME, t1.CREATE_DATE,t3.APPOINTMENT_STATUS, t1.CUSTOMER_USER_ID, t1.DOCTOR_ID, T6.STATE_NAME
             from fd_rel_customer_appointment t1
             left join fd_doctor t2 
             on t2.DOCTOR_ID = t1.DOCTOR_ID
@@ -120,6 +121,7 @@ class AppointmentRecoder_DB{
             on t3.APPOINTMENT_STATUS_ID = t1.APPOINTMENT_STATUS_ID
             left join (fd_rel_clinic_doctor t4 left join fd_clinic_user as t5 on t4.clinic_user_id = t5.clinic_user_id )
             on t4.DOCTOR_ID = t1.DOCTOR_ID
+            left join fd_dict_state t6 on t5.state_id = t6.state_id
             where 
             t1.CUSTOMER_USER_ID = ".(int)$arr_values['CUSTOMER_USER_ID']."
             and                

@@ -238,6 +238,9 @@ $(document).ready(function() {
           }
         },
         { 
+          "data": "STATE_NAME"
+        },
+        { 
           "data": "DOCTOR_TYPE",
           render: function(data, type, row, meta) {
               //type 的值  dispaly sort filter

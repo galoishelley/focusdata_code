@@ -94,12 +94,13 @@ class ClinicOprDoctor_DB{
             print_r($arr_values);
         }
 
-        $sql = "SELECT t1.*, t3.CLINIC_NAME, t3.CLINIC_ADDR FROM fd_doctor t1
+        $sql = "SELECT t1.*, t3.CLINIC_NAME, t3.CLINIC_ADDR,t4.STATE_NAME FROM fd_doctor t1
                 left join (fd_rel_clinic_doctor as t2 left join fd_clinic_user as t3 on t2.clinic_user_id = t3.clinic_user_id )
                 ON t1.DOCTOR_ID = t2.DOCTOR_ID
+                left join fd_dict_state t4 on t4.state_id = t3.state_id
                  where t3.clinic_user_id = ".$arr_values['CLINIC_USER_ID']."
                  and t1.DOCTOR_TYPE like '%".$arr_values['DOCTOR_TYPE']."%'
-                 and t1.DOCTOR_NAME like '%".$arr_values['DOCTOR_NAME']."%' order by t1.UPDATE_DATE DESC";
+                 and t1.DOCTOR_NAME like '%".$arr_values['DOCTOR_NAME']."%' and t1.ACTIVE_STATUS like '%".$arr_values['ACTIVE_STATUS']."%' order by t1.CREATE_DATE DESC";
 
         // echo $sql;
         if($this->_dbug){

@@ -96,7 +96,7 @@ $(document).ready(function() {
     return result;
   }
 
-//填充医生类别
+  //填充医生类别
   func_code = "SDTY";
   para="";
 
@@ -435,7 +435,7 @@ $(document).ready(function() {
           ACTIVE_STATUS: obj_data.ACTIVE_STATUS,
           DOCTOR_PHOTO: obj_data.DOCTOR_PHOTO,
           DOCTOR_INFO: obj_data.DOCTOR_INFO,
-          STATE_ID: obj_data.STATE_ID
+          STATE_NAME: obj_data.STATE_NAME
         };
     var str = JSON.stringify(data);
 
