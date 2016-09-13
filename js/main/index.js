@@ -16,7 +16,6 @@ $(function(){
 		}
 	});
 
-
 	//登录用户
 	if($.cookie("ilogin") == 1)
   	{
@@ -119,6 +118,7 @@ $(function(){
 
 		var data = {
           		search: search,
+          		from_index: "1"
         };
         var str = JSON.stringify(data);
 		sessionStorage.setItem("search_con",str);
@@ -132,6 +132,7 @@ $(function(){
 
 			var data = {
           		search: search,
+          		from_index: "1"
         	};
     		var str = JSON.stringify(data);
 

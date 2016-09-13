@@ -40,7 +40,7 @@ class ClinicOprDoctor_DB{
                 ON t1.DOCTOR_ID = t2.DOCTOR_ID
                  where 
                  t3.CLINIC_NAME like '%".$arr_values['CLINIC_NAME']."%'
-                 and t3.CLINIC_ADDR like '%".$arr_values['CLINIC_ADDR']."%'
+                 and t3.CLINIC_SUBURB like '%".$arr_values['CLINIC_SUBURB']."%'
                  and t3.STATE_ID like '%".$arr_values['STATE_ID']."%'
                  and t1.DOCTOR_TYPE like '%".$arr_values['DOCTOR_TYPE']."%'
                  and t1.DOCTOR_NAME like '%".$arr_values['DOCTOR_NAME']."%'
@@ -65,13 +65,13 @@ class ClinicOprDoctor_DB{
         }
 
         $limit = " limit ".$start.",".$lenght;
-        $sql = "SELECT t1.*, t3.CLINIC_NAME, t3.CLINIC_ADDR,t4.STATE_NAME FROM fd_doctor t1
+        $sql = "SELECT t1.*, t3.CLINIC_NAME, t3.CLINIC_ADDR,t3.CLINIC_SUBURB, t3.CLINIC_POSTCODE,t4.STATE_NAME FROM fd_doctor t1
                 left join (fd_rel_clinic_doctor as t2 left join fd_clinic_user as t3 on t2.clinic_user_id = t3.clinic_user_id )
                 ON t1.DOCTOR_ID = t2.DOCTOR_ID
                 left join fd_dict_state t4 on t4.state_id = t3.state_id
                  where 
                  t3.CLINIC_NAME like '%".$arr_values['CLINIC_NAME']."%'
-                 and t3.CLINIC_ADDR like '%".$arr_values['CLINIC_ADDR']."%'
+                 and t3.CLINIC_SUBURB like '%".$arr_values['CLINIC_SUBURB']."%'
                  and t3.STATE_ID like '%".$arr_values['STATE_ID']."%'
                  and t1.DOCTOR_TYPE like '%".$arr_values['DOCTOR_TYPE']."%'
                  and t1.DOCTOR_NAME like '%".$arr_values['DOCTOR_NAME']."%'
@@ -94,7 +94,7 @@ class ClinicOprDoctor_DB{
             print_r($arr_values);
         }
 
-        $sql = "SELECT t1.*, t3.CLINIC_NAME, t3.CLINIC_ADDR,t4.STATE_NAME FROM fd_doctor t1
+        $sql = "SELECT t1.*, t3.CLINIC_NAME,t3.CLINIC_ADDR,t3.CLINIC_POSTCODE,t3.CLINIC_SUBURB,t4.STATE_NAME FROM fd_doctor t1
                 left join (fd_rel_clinic_doctor as t2 left join fd_clinic_user as t3 on t2.clinic_user_id = t3.clinic_user_id )
                 ON t1.DOCTOR_ID = t2.DOCTOR_ID
                 left join fd_dict_state t4 on t4.state_id = t3.state_id

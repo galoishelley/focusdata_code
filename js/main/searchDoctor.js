@@ -16,10 +16,8 @@ $(function(){
 	var vDate_T= vYear+'-'+(vMon<10 ? "0" + vMon : vMon)+'-'+(vDay<10 ? "0"+ vDay : vDay)+' 23:59';
 	var vDate_Today= vYear+'-'+(vMon<10 ? "0" + vMon : vMon)+'-'+(vDay<10 ? "0"+ vDay : vDay);
 
-	$("#APPOINTMENT_DATE_BEGIN").val(vDate_F);
+	$("#APPOINTMENT_DATE_BEGIN").val(date_time);
 	$("#APPOINTMENT_DATE_END").val(vDate_T);
-
-
 	
 	var ilogin = $.cookie("ilogin");
 
@@ -63,6 +61,164 @@ $(function(){
 		$('#btn_save').show();
 	}
 
+	//填充州
+	func_code = "SSTE";
+	para="";
+
+	json_str = request_const(para,func_code,0);
+
+	// console.log(json_str);
+	//请求
+	result=true;
+	$.ajax({
+	type: "POST",
+	url: "classes/class.getState.php",
+	dataType: "json",
+	async:false,
+	data: {
+	  request:json_str
+	},
+	success: function (msg) {
+	    // console.log(msg);
+	    var ret = msg.response;
+	    if(ret.success){
+	      if(json_str.sequ != ret.sequ){
+	        alert(func_code+":时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
+	        result=false;
+	      }
+	      // var data = ret.data[0];
+	      $.each(ret.data, function(i, item) {
+	          $("#STATE_ID").append("<option value='"+ item.STATE_NAME +"'>" + item.STATE_NAME + "</option>");
+	      });
+	      // console.log(data);
+	    }else{
+	      alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
+	      result=false;
+	    }
+	    
+	},
+	error: function(XMLHttpRequest, textStatus, errorThrown){
+	    //请求失败之后的操作
+	    var ret_code = "999999";
+	    var ret_msg = "失败,请联系管理员!";
+	    alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+	    result=false;
+	}
+	});
+	if(!result){
+	return result;
+	}
+
+	//填充区
+	func_code = "SSUB";
+	para="";
+
+	json_str = request_const(para,func_code,0);
+
+	// console.log(json_str);
+	//请求
+	result=true;
+	$.ajax({
+	type: "POST",
+	url: "classes/class.getSuburb.php",
+	dataType: "json",
+	async:false,
+	data: {
+	  request:json_str
+	},
+	success: function (msg) {
+	    // console.log(msg);
+	    var ret = msg.response;
+	    if(ret.success){
+	      if(json_str.sequ != ret.sequ){
+	        alert(func_code+":时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
+	        result=false;
+	      }
+	      // var data = ret.data[0];
+	      $.each(ret.data, function(i, item) {
+	          $("#CLINIC_SUBURB").append("<option value='"+ item.CLINIC_SUBURB +"'>" + item.CLINIC_SUBURB + "</option>");
+	      });
+	      // console.log(data);
+	    }else{
+	      alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
+	      result=false;
+	    }
+	    
+	},
+	error: function(XMLHttpRequest, textStatus, errorThrown){
+	    //请求失败之后的操作
+	    var ret_code = "999999";
+	    var ret_msg = "失败,请联系管理员!";
+	    alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+	    result=false;
+	}
+	});
+	if(!result){
+	return result;
+	}
+
+	//填充医生类别
+	func_code = "SDTY";
+	para="";
+
+	json_str = request_const(para,func_code,0);
+
+	// console.log(json_str);
+	//请求
+	result=true;
+	$.ajax({
+	type: "POST",
+	url: "classes/class.getDoctorType.php",
+	dataType: "json",
+	async:false,
+	data: {
+	  request:json_str
+	},
+	success: function (msg) {
+	    // console.log(msg);
+	    var ret = msg.response;
+	    if(ret.success){
+	      if(json_str.sequ != ret.sequ){
+	        alert(func_code+":时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
+	        result=false;
+	      }
+	      // var data = ret.data[0];
+	      $.each(ret.data, function(i, item) {
+	          $("#DOCTOR_TYPE").append("<option value='"+ item.DOCTOR_TYPE +"'>" + item.DOCTOR_TYPE + "</option>");
+	      });
+	      // console.log(data);
+	    }else{
+	      alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
+	      result=false;
+	    }
+	    
+	},
+	error: function(XMLHttpRequest, textStatus, errorThrown){
+	    //请求失败之后的操作
+	    var ret_code = "999999";
+	    var ret_msg = "失败,请联系管理员!";
+	    alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+	    result=false;
+	}
+	});
+	if(!result){
+		return result;
+	}
+
+	var str = sessionStorage.saveSearch;
+
+  	if(str){
+	    var json_value = JSON.parse(str);
+	    console.log(json_value);
+
+	    $('#CLINIC_SUBURB').val(json_value.CLINIC_SUBURB);
+	    $('#STATE_ID').val(json_value.STATE_NAME);
+	    $('#CLINIC_NAME').val(json_value.CLINIC_NAME);
+	    $('#DOCTOR_TYPE').val(json_value.DOCTOR_TYPE);
+	    $('#DOCTOR_NAME').val(json_value.DOCTOR_NAME);
+	    $('#DISTANCE').val(json_value.DISTANCE);
+	}
+
 ///////////////////////////////////组织ajax 请求参数 begin///////////////////////////////
 
 	var str = sessionStorage.getItem("search_con"); 
@@ -80,7 +236,16 @@ $(function(){
     	str = sessionStorage.getItem("search_con"); 
 	}
 	var json_value = JSON.parse(str);
-    // console.log(json_value);
+    var from_index=json_value.from_index;
+
+    if(from_index == "1"){
+    	$('#myModal').modal('hide');
+    	// console.log("hiden");
+    	// console.log(json_value.from_index);
+    }
+    else{
+    	$('#myModal').modal('show');
+    }
     // 处理输入%查询问题
     if(json_value.search == "%"){
     	json_value.search = "-";
@@ -142,7 +307,17 @@ $(function(){
 	      {
 	        "class": "col_0_class",
 	        "data": null,
-	        "defaultContent": "<input type='checkbox' id='chk_list' name='chk_list'>"
+	        // "defaultContent": "<input type='checkbox' id='chk_list' name='chk_list'>"
+	        render: function (data, type, row, meta) {
+                 //这里是主题  把url变成超链接、把图片路径显示为图片
+                //return "<a href='" + data + "'>" + data + "</a>";
+                // console.log(data);
+                // console.log(type);
+                // console.log(row);
+                // console.log(meta);
+                return meta.row+1;
+
+            }
 	      },
 	      { 
 	        "class": "col_1_class",
@@ -309,7 +484,8 @@ $(function(){
 
 	    "columnDefs": [
 	      {
-	         "orderable": false,
+	         // "searchable": false,
+             "orderable": false,
 	         "targets": 0,
 	         "sWidth": "5%"
 	         
@@ -354,12 +530,18 @@ $(function(){
 	      	"orderable": false,
 	        "targets": 7,
 	        "sWidth": "8%"
+	      },
+	      {
+	      	"orderable": false,
+	        "targets": 8,
+	        "sWidth": "5%"
 	      }
 	     ],//第一列与第二列禁止排序
 	    // "order": [
-	    //    [0, null]
-	    //    // [1, "desc"]
+	    //    [0, null],
+	    //    [1, "asc"]
 	    // ],
+
 
 	    // "dom": '<"top">rt<"table_bottom"ip<"#goon">><"clear">',
 	    "dom": '<"top">rt<"table_bottom"ip><"clear">',
@@ -375,7 +557,15 @@ $(function(){
 			// 	alert("click me");
 			// });
 			// console.log(data);
-			sessionStorage.setItem("search_con","");
+
+			var data = {
+          		search: "",
+          		form_index: ""
+        	};
+    		var str = JSON.stringify(data);
+
+    		sessionStorage.setItem("search_con", str);
+
 			// console.log("加载完毕");
 		}
 
@@ -389,24 +579,12 @@ $(function(){
 	// $("div#goon").addClass('col-sm-6 col-md-2');
 
 
- //   // 添加索引列
-	// _table.on('order.dt search.dt',
-	// 	function() {
-	// 	_table.column(1, {
-	// 		search: 'applied',
-	// 		order: 'applied'
-	// 	}).nodes().each(function(cell, i) {
-	// 		cell.innerHTML = i + 1;
-	// 	});
-	// }).draw();
-
-	//  // 添加索引列
-	// _table.on('',
-	// 	function() {
-	// 	_table.column(1).nodes().each(function(cell, i) {
-	// 		cell.innerHTML = i + 1;
-	// 	});
-	// }).draw();
+   // _table.on( 'order.dt search.dt', function () {
+   //      _table.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+   //          // console.log(i);
+   //          cell.innerHTML = i+1;
+   //      } );
+   //  } ).draw();
 
 	//单机行，选中复选框
 	$('#dataTables-example tbody').on( 'click', 'tr', function (event) {

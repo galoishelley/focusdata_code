@@ -58,7 +58,9 @@ $(function(){
     bootstrapValidator.validate();
     if(bootstrapValidator.isValid()){
       $("#signin_form").submit();
-
+    }else{
+      // $("USER_NAME").focus();
+      return false;
     }
 
     // var action_type='"action_type":"create"';
@@ -207,19 +209,30 @@ $(function(){
     }
 
     //登录成功实现跳转
-    var str_usertype = $('input[name="usertype"]:checked').val();
+    // var str_usertype = $('input[name="usertype"]:checked').val();
 
     //记录user type
-    if(str_usertype==0){
+    if(fd_usertype==0){
       window.location.href="clinicUpdUserInfo.html";
-    }else if(str_usertype==1){
+    }else if(fd_usertype==1){
       window.location.href="index.php";
-    }else if(str_usertype==2){
+    }else if(fd_usertype==2){
       window.location.href="adminQryClinic.html";
     }
 
     return false;
   });
+
+
+  $("body").keydown(function() {
+    if (event.keyCode == "13") {//keyCode=13是回车键
+      $('#signin_ok').click();
+    }
+  });
+
+  // $("form").submit(function(e){
+  //   return false;
+  // });
 
 	$('#signin_form').bootstrapValidator({
 　　　message: 'This value is not valid',

@@ -44,6 +44,8 @@ $(function(){
     $('#CUSTOMER_ADDR').val(json_value.CUSTOMER_ADDR);
     $('#CUSTOMER_PHONE_NO').val(json_value.CUSTOMER_PHONE_NO);
     $('#MEDICAL_CARD_NO').val(json_value.MEDICAL_CARD_NO);
+    $('#CUSTOMER_POSTCODE').val(json_value.CUSTOMER_POSTCODE);
+    $('#CUSTOMER_SUBURB').val(json_value.CUSTOMER_SUBURB);
     $("#ACTIVE_STATUS option[value='"+ json_value.ACTIVE_STATUS +"']").attr("selected",true)
 
     if(json_value.imgId == "opr_info"){

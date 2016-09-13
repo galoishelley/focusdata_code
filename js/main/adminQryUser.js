@@ -99,17 +99,64 @@ var miaoyl;$(document).ready(function() {
     return result;
   }
 
-  func_code = "AU03";
+  //填充区
+  func_code = "SSUB";
   para={
-    action_type: "view_name_area",
-    CUSTOMER_USER_NAME: $('#CUSTOMER_USER_NAME').val(),
-    CUSTOMER_NAME: $('#CUSTOMER_NAME').val(),
-    CUSTOMER_ADDR: $('#CUSTOMER_ADDR').val(),
-    ACTIVE_STATUS: $('#ACTIVE_STATUS').val(),
-    STATE_ID: $('#STATE_ID').val()
+    action_type:"viewAll_User"
   };
-  
-  json_str = request_const(para, func_code, request_type);
+
+  json_str = request_const(para,func_code,0);
+
+  console.log(json_str);
+  //请求
+  result=true;
+  $.ajax({
+    type: "POST",
+    url: "classes/class.getSuburb.php",
+    dataType: "json",
+    async:false,
+    data: {
+      request:json_str
+    },
+    success: function (msg) {
+        // console.log(msg);
+        var ret = msg.response;
+        if(ret.success){
+          if(json_str.sequ != ret.sequ){
+            alert(func_code+":时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
+            result=false;
+          }
+          // var data = ret.data[0];
+          $.each(ret.data, function(i, item) {
+              $("#CUSTOMER_SUBURB").append("<option value='"+ item.CUSTOMER_SUBURB +"'>" + item.CUSTOMER_SUBURB + "</option>");
+          });
+          // console.log(data);
+        }else{
+          alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
+          result=false;
+        }
+        
+    },
+    error: function(XMLHttpRequest, textStatus, errorThrown){
+        //请求失败之后的操作
+        var ret_code = "999999";
+        var ret_msg = "失败,请联系管理员!";
+        alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+        result=false;
+    }
+  });
+  if(!result){
+    return result;
+  }
+
+  func_code = "AU03";
+  //form序列化成json
+  json_form = $('#adminQryUser_form').serializeObject();
+
+  //生成输入参数
+  json_str = request_const(json_form,func_code,1);
+
+  console.log(json_str);
 
   var _table = $('#dataTables-example').DataTable({
       // "responsive": true,
@@ -249,20 +296,25 @@ var miaoyl;$(document).ready(function() {
               //type 的值  dispaly sort filter
               //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
               //这里只处理了类型是显示的，过滤和排序返回原始数据
+              var data_tmp = row.CUSTOMER_POSTCODE+','+row.CUSTOMER_ADDR;
               if (type === 'display') {
-                  if (data.length > 15) {
-                      return '<span title="' + data + '">' + data.substr(0, 15) + '...</span>';
+                  if (data_tmp.length > 15) {
+                      return '<span title="' + data_tmp + '">' + data_tmp.substr(0, 15) + '...</span>';
                   } else {
                     // console.log(data);
-                      // return '<span title="' + data + '>' + data + '</span>';
-                      return data;
+                    // return '<span title="' + data_tmp + '>' + data_tmp + '</span>';
+                    return data_tmp;
                   }
               }
-              return data;
+              return data_tmp;
           }
         },
         { 
-          "data": "STATE_NAME"        },
+          "data": "CUSTOMER_SUBURB"        
+        },
+        { 
+          "data": "STATE_NAME"        
+        },
         { 
           "data": "CUSTOMER_PHONE_NO",
         },
@@ -346,7 +398,7 @@ var miaoyl;$(document).ready(function() {
         {
           "orderable": false,
           "targets": 4,
-          "sWidth": "10%"
+          "sWidth": "5%"
         },
         {
           "orderable": false,
@@ -366,12 +418,22 @@ var miaoyl;$(document).ready(function() {
         {
           "orderable": false,
           "targets": 8,
-          "sWidth": "10%"
+          "sWidth": "5%"
         },
         {
           "orderable": false,
           "targets": 9,
           "sWidth": "10%"
+        },
+        {
+          "orderable": false,
+          "targets": 10,
+          "sWidth": "8%"
+        },
+        {
+          "orderable": false,
+          "targets": 11,
+          "sWidth": "5%"
         }
        ],
       //第一列与第二列禁止排序
@@ -459,6 +521,8 @@ var miaoyl;$(document).ready(function() {
           CUSTOMER_GENDER: obj_data.CUSTOMER_GENDER,
           CUSTOMER_BIRTHDAY: obj_data.CUSTOMER_BIRTHDAY,
           CUSTOMER_ADDR: obj_data.CUSTOMER_ADDR,
+          CUSTOMER_POSTCODE: obj_data.CUSTOMER_POSTCODE,
+          CUSTOMER_SUBURB: obj_data.CUSTOMER_SUBURB,
           CUSTOMER_PHONE_NO: obj_data.CUSTOMER_PHONE_NO,
           MEDICAL_CARD_NO: obj_data.MEDICAL_CARD_NO,
           ACTIVE_STATUS: obj_data.ACTIVE_STATUS,
@@ -551,16 +615,11 @@ var miaoyl;$(document).ready(function() {
   $('#search_ok').click(function(){
 
     func_code = "AU03";
-    para={
-      action_type: "view_name_area",
-      CUSTOMER_USER_NAME: $('#CUSTOMER_USER_NAME').val(),
-      CUSTOMER_NAME: $('#CUSTOMER_NAME').val(),
-      CUSTOMER_ADDR: $('#CUSTOMER_ADDR').val(),
-      ACTIVE_STATUS: $('#ACTIVE_STATUS').val(),
-      STATE_ID: $('#STATE_ID').val()
-    };
-    
-    json_str = request_const(para, func_code, request_type);
+    //form序列化成json
+    json_form = $('#adminQryUser_form').serializeObject();
+
+    //生成输入参数
+    json_str = request_const(json_form,func_code,1);
 
     console.log(json_str);
 
@@ -619,16 +678,11 @@ var miaoyl;$(document).ready(function() {
             }
 
             func_code = "AU03";
-            para={
-              action_type: "view_name_area",
-              CUSTOMER_USER_NAME: $('#CUSTOMER_USER_NAME').val(),
-              CUSTOMER_NAME: $('#CUSTOMER_NAME').val(),
-              CUSTOMER_ADDR: $('#CUSTOMER_ADDR').val(),
-              ACTIVE_STATUS: $('#ACTIVE_STATUS').val(),
-              STATE_ID: $('#STATE_ID').val()
-            };
-            
-            json_str = request_const(para, func_code, request_type);
+            //form序列化成json
+            json_form = $('#adminQryUser_form').serializeObject();
+
+            //生成输入参数
+            json_str = request_const(json_form,func_code,1);
 
             console.log(json_str);
 
@@ -705,16 +759,11 @@ var miaoyl;$(document).ready(function() {
             }
 
             func_code = "AU03";
-            para={
-              action_type: "view_name_area",
-              CUSTOMER_USER_NAME: $('#CUSTOMER_USER_NAME').val(),
-              CUSTOMER_NAME: $('#CUSTOMER_NAME').val(),
-              CUSTOMER_ADDR: $('#CUSTOMER_ADDR').val(),
-              ACTIVE_STATUS: $('#ACTIVE_STATUS').val(),
-              STATE_ID: $('#STATE_ID').val()
-            };
-            
-            json_str = request_const(para, func_code, request_type);
+            //form序列化成json
+            json_form = $('#adminQryUser_form').serializeObject();
+
+            //生成输入参数
+            json_str = request_const(json_form,func_code,1);
 
             console.log(json_str);
 

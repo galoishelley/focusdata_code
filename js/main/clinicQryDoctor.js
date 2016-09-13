@@ -174,17 +174,22 @@ $(document).ready(function() {
               //type 的值  dispaly sort filter
               //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
               //这里只处理了类型是显示的，过滤和排序返回原始数据
+              var data_tmp = row.CLINIC_POSTCODE+','+row.CLINIC_ADDR;
+              // console.log(data_tmp);
               if (type === 'display') {
-                  if (data.length > 15) {
-                      return '<span title="' + data + '">' + data.substr(0, 15) + '...</span>';
+                  if (data_tmp.length > 15) {
+                      return '<span title="' + data_tmp + '">' + data_tmp.substr(0, 15) + '...</span>';
                   } else {
                     // console.log(data);
-                      // return '<span title="' + data + '>' + data + '</span>';
-                      return data;
+                    // return '<span title="' + data_tmp + '>' + data_tmp + '</span>';
+                    return data_tmp;
                   }
               }
-              return data;
+              return data_tmp;
           }
+        },
+        { 
+          "data": "CLINIC_SUBURB"
         },
         { 
           "data": "STATE_NAME"
@@ -238,6 +243,10 @@ $(document).ready(function() {
         {
           "visible": false,
           "data": "DOCTOR_ID"
+        },
+        {
+          "visible": false,
+          "data": "CLINIC_POSTCODE"
         }
       ],
 
@@ -279,21 +288,41 @@ $(document).ready(function() {
         },
         {
           "orderable": false,
-          "targets": 2,
-          "sWidth": "15%"
+          "targets": 2
         },
         {
           "orderable": false,
           "targets": 3,
-          "sWidth": "15%"
+          "sWidth": "5%"
         },
         {
           "orderable": false,
           "targets": 4,
+          "sWidth": "5%"
         },
         {
           "orderable": false,
           "targets": 5,
+          "sWidth": "10%"
+        },
+        {
+          "orderable": false,
+          "targets": 6,
+          "sWidth": "10%"
+        },
+        {
+          "orderable": false,
+          "targets": 7,
+          "sWidth": "5%"
+        },
+        {
+          "orderable": false,
+          "targets": 8,
+          "sWidth": "5%"
+        },
+        {
+          "orderable": false,
+          "targets": 9,
           "sWidth": "5%"
         }
        ],
@@ -372,7 +401,7 @@ $(document).ready(function() {
   $('#dataTables-example tbody').on( 'click', 'button', function (event) {
     var imgId = $(this).prop("id");
     var obj_data = _table.row($(this).parents('tr')).data();
-    // alert(obj_data.CLINIC_NAME);
+    console.log(obj_data);
     var data = {
           imgId:imgId,
           CLINIC_NAME: obj_data.CLINIC_NAME,
@@ -385,7 +414,9 @@ $(document).ready(function() {
           ACTIVE_STATUS: obj_data.ACTIVE_STATUS,
           DOCTOR_PHOTO: obj_data.DOCTOR_PHOTO,
           DOCTOR_INFO: obj_data.DOCTOR_INFO,
-          STATE_NAME: obj_data.STATE_NAME
+          STATE_NAME: obj_data.STATE_NAME,
+          CLINIC_POSTCODE:obj_data.CLINIC_POSTCODE,
+          CLINIC_SUBURB:obj_data.CLINIC_SUBURB
         };
     var str = JSON.stringify(data);
 

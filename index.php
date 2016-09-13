@@ -66,12 +66,7 @@ include_once 'classes/Language/language.common.php';
                 <li id="li_home" class="hidden active"><a href="index.php"><?php echo $lang['MENU_HOME']; ?></a></li>
                 <li class="sub-menu"><a href="index-1.html"><?php echo $lang['MENU_our_service']; ?></a><span></span>
                     <ul class="submenu">
-                        <li id="li_SearchDoctor" class="hidden"><a href="searchDoctor.html"><?php echo $lang['MENU_searchDoctor']; ?></a></li>
-                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.html"><?php echo $lang['MENU_userAppointmentRecoder']; ?></a>
-                        </li>
-                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.html"><?php echo $lang['MENU_clinicUpdUserInfo']; ?></a>
-                        </li>
-                        <li id="li_Admin" class="hidden"><a href="adminQryClinic.html"><?php echo $lang['MENU_adminQryClinic']; ?></a></li>
+                        
                     </ul>
                 </li>
                 <li class="sub-menu"><a href="#"><?php echo $lang['MENU_Language']; ?></a><span></span>
@@ -83,11 +78,18 @@ include_once 'classes/Language/language.common.php';
                 <li><a href="index-2.html"><?php echo $lang['MENU_aboutus']; ?></a></li>
                 <li><a href="index-3.html"><?php echo $lang['MENU_staff']; ?></a></li>
                 <li><a href="index-4.html"><?php echo $lang['MENU_Contacts']; ?></a></li>
-                <li><a href="sign_in.php"><?php echo $lang['MENU_sign_in']; ?></a></li>
-                <li><a href="sign_up_person.html"><?php echo $lang['MENU_sign_up_person']; ?></a></li>
+                <li id="sign_in"><a href="sign_in.php"><?php echo $lang['MENU_sign_in']; ?></a></li>
+                <li id="sign_up"><a href="sign_up_person.html"><?php echo $lang['MENU_sign_up_person']; ?></a></li>
                 <li class="sub-menu tourist"><a href="#" id="userinfo"><?php echo $lang['MENU_guest']; ?></a><span></span>
                     <ul class="submenu hidden" id="sub_userinfo">
                         <li><a href="#" id="usertype"></a></li>
+
+                        <li id="li_SearchDoctor" class="hidden"><a href="searchDoctor.html"><?php echo $lang['MENU_searchDoctor']; ?></a></li>
+                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.html"><?php echo $lang['MENU_userAppointmentRecoder']; ?></a>
+                        </li>
+                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.html"><?php echo $lang['MENU_clinicUpdUserInfo']; ?></a>
+                        </li>
+                        <li id="li_Admin" class="hidden"><a href="adminQryClinic.html"><?php echo $lang['MENU_adminQryClinic']; ?></a></li>
                         
                         <li><button class="btn btn-danger" id="btn_out"><?php echo $lang['MENU_sign_out']; ?></button></li>
                     </ul>

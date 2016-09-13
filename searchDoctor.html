@@ -115,16 +115,19 @@
                                                 <input type="hidden" class="form-control" name="CUSTOMER_USER_ID" id="CUSTOMER_USER_ID">
                                                 
                                                 <div class="form-group col-md-6">
-                                                  <label for="CLINIC_ADDR" class="col-md-3">诊所区域</label>
-                                                  <div class="col-md-3">
-                                                      <select class="form-control" id="CLINIC_ADDR" name="CLINIC_ADDR" autofocus="true">
-                                                            <option></option>
-                                                            <option>朝阳区</option>
-                                                            <option>绿园区</option>
-                                                      </select>
-                                                  </div>
-                                                  <!-- <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com"> -->
+                                                    <label for="CLINIC_SUBURB" class="col-md-3">区</label>
+                                                    <select class="form-control" name="CLINIC_SUBURB" id="CLINIC_SUBURB">
+                                                      <option value="">全部</option>
+                                                    </select>
                                                 </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label for="STATE_ID" class="col-md-3">州</label>
+                                                    <select class="form-control" name="STATE_NAME" id="STATE_ID">
+                                                      <option value="">全部</option>
+                                                    </select>
+                                                </div>
+
                                                 <div class="form-group col-md-6">
                                                     <label for="CLINIC_NAME" class="col-md-3">诊所名称</label>
                                                     <div class="col-md-3">
@@ -132,18 +135,33 @@
                                                     </div>  
                                                 </div>
                                                 
+
                                                 <div class="form-group col-md-6">
                                                     <label for="DOCTOR_TYPE" class="col-md-3">医生类别</label>
-                                                    <div class="col-md-3">
-                                                        <input type="text" class="form-control" id="DOCTOR_TYPE" name="DOCTOR_TYPE" >
-                                                    </div>
+                                                    <select class="form-control" name="DOCTOR_TYPE" id="DOCTOR_TYPE">
+                                                      <option value="">全部</option>
+                                                    </select>
                                                 </div>
+
                                                 <div class="form-group col-md-6">
                                                     <label for="DOCTOR_NAME" class="col-md-3">医生姓名</label>
                                                     <div class="col-md-3">
                                                         <input type="text" class="form-control" id="DOCTOR_NAME" name="DOCTOR_NAME">
                                                     </div>
                                                 </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label for="distance" class="col-md-3">医生距离</label>
+                                                    <div class="col-md-3">
+                                                        <select class="form-control" id="DISTANCE" name="DISTANCE">
+                                                            <option>anay</option>
+                                                            <option value="5km">5km</option>
+                                                            <option value="10km">10km</option>
+                                                            <option value="20km">20km</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
                                                 <div class="form-group col-md-6">
                                                     <label for="APPOINTMENT_DATE_BEGIN" class="col-md-3">预约日期开始</label>
                                                     <div class="col-md-3">
@@ -156,23 +174,14 @@
                                                         <input type="text" class="form-control form_datetime" id="APPOINTMENT_DATE_END" name="APPOINTMENT_DATE_END">
                                                     </div>
                                                 </div>
-                                                <div class="form-group col-md-6">
-                                                    <label for="distance" class="col-md-3">医生距离</label>
-                                                    <div class="col-md-3">
-                                                        <select class="form-control" id="DISTANCE" name="DISTANCE">
-                                                            <option>ANAY</option>
-                                                            <option>50m</option>
-                                                            <option>100m</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
+                                                
                                             </form>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <!-- <button type="button" class="btn btn-danger" id="btn_reset">重置</button> -->
+                                    <a class="btn btn-danger" href="userSaveSearch.html">常用搜索条件管理</a>
                                     <button type="button" class="btn btn-warning" id="btn_save" >保存为常用搜索条件</button>
                                     <button type="button" class="btn btn-primary" id="btn_search" >搜索</button>
                                 </div>
@@ -186,15 +195,16 @@
                     <table id="dataTables-example" class="table table-hover  table-bordered" cellspacing="0" width="100%">
                         <thead class="table_title">
                             <tr>
-                            	<th><input type="checkbox" name="chk_all"></th>
+                            	<!-- <th><input type="checkbox" name="chk_all"></th> -->
                             	<th>序号</th>
+                            	<th></th>
                                 <th>诊所名称</th>
                                 <th>诊所区域</th>
                                 <th>医生类别</th>
                                 <th>医生名称</th>
                                 <th>预约日期</th>
                                 <th>预约时间</th>
-                                <th>详细</th>
+                                <th>操作</th>
                             </tr>
                         </thead>
                     </table> 

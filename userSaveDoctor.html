@@ -114,22 +114,31 @@
 
                   <h2>收藏医生管理</h2>
                   <div class="row">
-                      <form class="form-inline" role="form">
+                      <form class="form-inline" role="form" id="save_doctor_form">
+                          
+                          <input type="hidden" class="form-control" name="CUSTOMER_USER_ID" id="CUSTOMER_USER_ID">
                           <div class="form-group">
-                            <label for="CLINIC_ADDR" class="control-label">诊所区域</label>
-                            <select class="form-control" id="CLINIC_ADDR">
-                              <option value="%">全部</option>
+                            <label for="CLINIC_NAME" class="control-label">诊所名称</label>
+                            <input type="text" class="form-control" name="CLINIC_NAME" id="CLINIC_NAME">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="CLINIC_SUBURB" class="control-label">区</label>
+                            <select class="form-control" name="CLINIC_SUBURB" id="CLINIC_SUBURB">
+                              <option value="">全部</option>
                             </select>
                           </div>
 
                           <div class="form-group">
-                            <label for="CLINIC_USER_NAME" class="control-label">诊所名称</label>
-                            <input type="text" class="form-control" id="CLINIC_USER_NAME">
+                            <label for="STATE_ID" class="control-label">州</label>
+                            <select class="form-control" name="STATE_ID" id="STATE_ID">
+                              <option value="">全部</option>
+                            </select>
                           </div>
 
                           <div class="form-group">
                             <label for="DOCTOR_NAME" class="control-label">医生名称</label>
-                            <input type="text" class="form-control" id="DOCTOR_NAME">
+                            <input type="text" class="form-control" name="DOCTOR_NAME" id="DOCTOR_NAME">
                           </div>
 
                            <button class="btn btn-primary search_ok" id="search_ok"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>  
@@ -144,7 +153,9 @@
                           <tr>
                             <th><input type="checkbox" name="chk_all" id="chk_all"></th>
                             <th>诊所名称</th>
-                            <th>区域</th>
+                            <th>详细地址</th>
+                            <th>区</th>
+                            <th>州</th>
                             <th>医生类别</th>
                             <th>医生名称</th>
                             <th>状态</th>

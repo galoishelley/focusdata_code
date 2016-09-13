@@ -25,11 +25,16 @@ class Sign_up_person_DB{
         if($this->col_exists($arr_values["CUSTOMER_USER_NAME"])){
             return 2;
         };
+
+        unset($arr_values['CONFIME_PWD']);
         foreach($arr_values as $k=>$v){
             if($k == "CUSTOMER_USER_PWD"){
                 $arr_values[$k] = md5($v);
                 // base64_encode base64_decode
                 // $arr_values[$k] = base64_encode($v);
+            }
+            if($k == "STATE_ID"){
+                $arr_values[$k] = intval($v);
             }
         }
         

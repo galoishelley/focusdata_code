@@ -53,7 +53,7 @@ $(document).ready(function() {
   }  
 });
 /*-----menu btn-----*/
-var actMenu=true;
+var actMenu=false;
 $(".bars_").click(function(){
     if (actMenu==false) {
         $('.nav.sf-menu').stop().animate({'margin-top':'0'}, 500, 'easeOutExpo');
@@ -133,6 +133,4 @@ $(window).load(function(){
             }
         });
     }
-    //update date by miaoyl 2016-9-12
-    $('.nav.sf-menu').stop().animate({'margin-top':'0'}, 500, 'easeOutExpo');
 });

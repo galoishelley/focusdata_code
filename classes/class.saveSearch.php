@@ -33,6 +33,9 @@ class saveSearch
 	        print_r($this->arr_values);
 	    }
 
+	    unset($this->arr_values["APPOINTMENT_DATE_BEGIN"]);
+	    unset($this->arr_values["APPOINTMENT_DATE_END"]);
+
 	    if (isset ( $this->arr_values["action_type"] )){
 			$action_type = $this->arr_values["action_type"];
 			unset($this->arr_values["action_type"]);

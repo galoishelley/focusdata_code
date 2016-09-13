@@ -6,10 +6,11 @@ $(function(){
     var json_value = JSON.parse(str);
     console.log(json_value);
 
+    var clinic_addr = json_value.CLINIC_ADDR +","+ json_value.CLINIC_SUBURB +","+ json_value.STATE_NAME +","+ json_value.CLINIC_POSTCODE;
     // $('#DOCTOR_PHOTO').attr('src','img/doctors/'+json_value.DOCTOR_PHOTO);
     $('#CLINIC_NAME').text(json_value.CLINIC_NAME);
-    $('#CLINIC_ADDR').text(json_value.CLINIC_ADDR);
-    $('#STATE_NAME').text(json_value.STATE_NAME);
+    $('#CLINIC_ADDR').text(clinic_addr);
+    // $('#STATE_NAME').text(json_value.STATE_NAME);
     $('#DOCTOR_TYPE').val(json_value.DOCTOR_TYPE);
     $('#DOCTOR_NAME').val(json_value.DOCTOR_NAME);
     $('#DOCTOR_GENDER').val(json_value.DOCTOR_GENDER);
@@ -35,7 +36,7 @@ $(function(){
     requesttype = 1;
     func_code = "CU07";
     //form序列化成json
-    json_form = $("#clinicUpdDoctorDetail").serializeObject();
+    json_form = $("#adminUpdDoctorDetail").serializeObject();
 
     var json_stringify=JSON.stringify(json_form);
     json_form = json_stringify.replace(/[ ]/g,"");

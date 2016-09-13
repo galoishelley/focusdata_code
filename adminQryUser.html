@@ -114,32 +114,35 @@
 
                   <h2>个人用户管理</h2>
                   <div class="row">
-                      <form class="form-inline" role="form">
+                      <form class="form-inline" role="form" id="adminQryUser_form">
+                          <input type="hidden" class="form-control" name="action_type" id="action_type" value="view_name_area">
                           <div class="form-group">
-                            <label for="CUSTOMER_USER_NAME" class="control-label">登录名称</label>
-                            <input type="text" class="form-control" id="CUSTOMER_USER_NAME">
+                            <label for="CUSTOMER_USER_NAME" class="control-label">用户名</label>
+                            <input type="text" class="form-control" name="CUSTOMER_USER_NAME" id="CUSTOMER_USER_NAME">
                           </div>
 
                           <div class="form-group">
                             <label for="CUSTOMER_NAME" class="control-label">用户姓名</label>
-                            <input type="text" class="form-control" id="CUSTOMER_NAME">
+                            <input type="text" class="form-control" name="CUSTOMER_NAME" id="CUSTOMER_NAME">
                           </div>
 
                           <div class="form-group">
-                            <label for="CUSTOMER_ADDR" class="control-label">家庭住址</label>
-                            <input type="text" class="form-control" id="CUSTOMER_ADDR">
+                            <label for="CUSTOMER_SUBURB" class="control-label">区</label>
+                            <select class="form-control" name="CUSTOMER_SUBURB" id="CUSTOMER_SUBURB">
+                              <option value="">全部</option>
+                            </select>
                           </div>
 
                           <div class="form-group">
                             <label for="STATE_ID" class="control-label">州</label>
-                            <select class="form-control" id="STATE_ID">
+                            <select class="form-control" name="STATE_ID" id="STATE_ID">
                               <option value="">全部</option>
                             </select>
                           </div>
 
                           <div class="form-group">
                             <label for="ACTIVE_STATUS" class="control-label">状态</label>
-                            <select class="form-control" id="ACTIVE_STATUS">
+                            <select class="form-control" name="ACTIVE_STATUS" id="ACTIVE_STATUS">
                               <option value="">全部</option>
                               <option value="1">active</option>
                               <option value="0">inactive</option>
@@ -158,12 +161,13 @@
                       <thead class="table_title">
                           <tr>
                             <th><input type="checkbox" name="chk_all" id="chk_all"></th>
-                            <th>登录名</th>
+                            <th>用户名</th>
                             <th>邮箱</th>
                             <th>姓名</th>
                             <th>性别</th>
                             <th>生日</th>
-                            <th>家庭住址</th>
+                            <th>详细地址</th>
+                            <th>区</th>
                             <th>州</th>
                             <th>手机号</th>
                             <th>医疗卡号</th>

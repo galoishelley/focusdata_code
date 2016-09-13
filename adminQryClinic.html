@@ -115,27 +115,30 @@
 
                   <h2>诊所用户管理</h2>
                   <div class="row">
-                      <form class="form-inline" role="form">
+                      <form class="form-inline" role="form" id="adminQryClinic_form">
+                          <input type="hidden" class="form-control" name="action_type" id="action_type" value="view_name_addr">
                           <div class="form-group">
                             <label for="CLINIC_NAME" class="control-label">诊所名称</label>
-                            <input type="text" class="form-control" id="CLINIC_NAME">
+                            <input type="text" class="form-control" name="CLINIC_NAME" id="CLINIC_NAME">
                           </div>
 
                           <div class="form-group">
-                            <label for="CLINIC_ADDR" class="control-label">诊所地址</label>
-                            <input type="text" class="form-control" id="CLINIC_ADDR">
+                            <label for="CLINIC_SUBURB" class="control-label">区</label>
+                            <select class="form-control" name="CLINIC_SUBURB" id="CLINIC_SUBURB">
+                              <option value="">全部</option>
+                            </select>
                           </div>
 
                           <div class="form-group">
                             <label for="STATE_ID" class="control-label">州</label>
-                            <select class="form-control" id="STATE_ID">
+                            <select class="form-control" name="STATE_ID" id="STATE_ID">
                               <option value="">全部</option>
                             </select>
                           </div>
 
                           <div class="form-group">
                             <label for="ACTIVE_STATUS" class="control-label">状态</label>
-                            <select class="form-control" id="ACTIVE_STATUS">
+                            <select class="form-control" name="ACTIVE_STATUS" id="ACTIVE_STATUS">
                               <option value="">全部</option>
                               <option value="1">active</option>
                               <option value="0">inactive</option>
@@ -160,7 +163,8 @@
                             <th>用户名</th>
                             <th>邮箱</th>
                             <th>诊所名称</th>
-                            <th>诊所地址</th>
+                            <th>详细地址</th>
+                            <th>区</th>
                             <th>州</th>
                             <th>状态</th>
                             <th>操作</th>

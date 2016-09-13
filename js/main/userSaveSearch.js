@@ -137,7 +137,7 @@ $(document).ready(function() {
           "defaultContent": "<input type='checkbox' id='chk_list' name='chk_list'>"
         },
         { 
-          "data": "CLINIC_ADDR",
+          "data": "CLINIC_SUBURB",
           render: function(data, type, row, meta) {
               //type 的值  dispaly sort filter
               //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
@@ -153,6 +153,9 @@ $(document).ready(function() {
               }
               return data;
           }
+        },
+        {
+          "data": "STATE_NAME"
         },
         { 
           "data": "CLINIC_NAME",
@@ -193,42 +196,13 @@ $(document).ready(function() {
         { 
           "data": "DOCTOR_NAME" 
         },
-        { 
-          "data": "APPOINTMENT_DATE_BEGIN",
-          render: function(data, type, row, meta) {
-              //type 的值  dispaly sort filter
-              //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
-              //这里只处理了类型是显示的，过滤和排序返回原始数据
-              if (data === '0') {
-                // console.log("render11");
-                return '<span class="span-red">' + "inactive" + '</span>';
-              }
-              else if (data === '1') {
-                // console.log("render11");
-                return '<span>' + "active" + '</span>';
-              }
-              return data;
-          }
-        },
-        { 
-          "data": "APPOINTMENT_DATE_END",
-          render: function(data, type, row, meta) {
-              //type 的值  dispaly sort filter
-              //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
-              //这里只处理了类型是显示的，过滤和排序返回原始数据
-              if (data === '0') {
-                // console.log("render11");
-                return '<span class="span-red">' + "inactive" + '</span>';
-              }
-              else if (data === '1') {
-                // console.log("render11");
-                return '<span>' + "active" + '</span>';
-              }
-              return data;
-          }
-        },
         {
           "data": "DISTANCE"
+        },
+        { 
+          "class": "text-center",
+          "data": null,
+          "defaultContent":"<button class='btn btn-primary btn-xs' id='opr_user'>使用</button>"
         },
         {
           "visible": false,
@@ -270,17 +244,17 @@ $(document).ready(function() {
         {
            "orderable": false,
            "targets": 1,
-           "sWidth": "15%"
+           "sWidth": "20%"
         },
         {
           "orderable": false,
           "targets": 2,
-          "sWidth": "15%"
+          "sWidth": "20%"
         },
         {
           "orderable": false,
           "targets": 3,
-          "sWidth": "15%"
+          "sWidth": "10%"
         },
         {
           "orderable": false,
@@ -289,10 +263,6 @@ $(document).ready(function() {
         {
           "orderable": false,
           "targets": 5,
-        },
-        {
-          "orderable": false,
-          "targets": 6,
           "sWidth": "5%"
         }
        ],
@@ -352,6 +322,32 @@ $(document).ready(function() {
     }
 
     event.stopImmediatePropagation();
+  });
+
+//单机行，中修改按钮
+  $('#dataTables-example tbody').on( 'click', 'button', function (event) {
+    var imgId = $(this).prop("id");
+    var obj_data = _table.row($(this).parents('tr')).data();
+    console.log(obj_data);
+    var data = {
+          imgId:imgId,
+          CLINIC_SUBURB: obj_data.CLINIC_SUBURB,
+          STATE_NAME: obj_data.STATE_NAME,
+          CLINIC_NAME: obj_data.CLINIC_NAME,
+          DOCTOR_TYPE: obj_data.DOCTOR_TYPE,
+          DOCTOR_NAME: obj_data.DOCTOR_NAME,
+          DISTANCE:obj_data.DISTANCE
+        };
+
+    var str = JSON.stringify(data);
+
+    // console.log(str);
+    sessionStorage.saveSearch = str;
+
+    window.location.href="searchDoctor.html"; 
+
+    event.stopImmediatePropagation();
+
   });
 
   //全选

@@ -3,6 +3,13 @@
  */
 body { font-size: 130%; }
 
+.form-control{ font-size: 100%; }
+
+.form-control[readonly]{ 
+  font-size: 95%;
+  font-weight: bold; 
+}
+
 /*.btn{
 	font-size: 130%;
 }*/
@@ -174,8 +181,8 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination{
  * col
  */
 .col-sm-6,.col-sm-12,
-.col-md-2,.col-md-3,.col-md-12,
-.col-lg-6,.col-lg-12
+.col-md-2,.col-md-3,.col-md-9,.col-md-12,
+.col-lg-2,.col-lg-6,.col-lg-9,.col-lg-12
 {
 	padding-right: 0px;
 	padding-left: 0px;
@@ -195,8 +202,8 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination{
 }
 
 .span-red{
-  color:red;
-  margin-left: 5px;
+  color:red !important;
+  margin-left: 5px !important;
 }
 
 .td-span-red{
@@ -732,3 +739,5 @@ table button,img{
   background-color: #EDEDED;
   /*color: #FFFFFF;*/
 }
+
+

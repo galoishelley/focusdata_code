@@ -1,8 +1,7 @@
-var para,json_str;
+var para,json_str,json_form;
 var func_code,request_type;
 var username,fd_userid,ilogin;
 var result;
-
 
 $(document).ready(function() {
 
@@ -103,16 +102,62 @@ $(document).ready(function() {
     return result;
   }
 
+  //填充区
+  func_code = "SSUB";
+  para="";
+
+  json_str = request_const(para,func_code,0);
+
+  // console.log(json_str);
+  //请求
+  result=true;
+  $.ajax({
+    type: "POST",
+    url: "classes/class.getSuburb.php",
+    dataType: "json",
+    async:false,
+    data: {
+      request:json_str
+    },
+    success: function (msg) {
+        // console.log(msg);
+        var ret = msg.response;
+        if(ret.success){
+          if(json_str.sequ != ret.sequ){
+            alert(func_code+":时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
+            result=false;
+          }
+          // var data = ret.data[0];
+          $.each(ret.data, function(i, item) {
+              $("#CLINIC_SUBURB").append("<option value='"+ item.CLINIC_SUBURB +"'>" + item.CLINIC_SUBURB + "</option>");
+          });
+          // console.log(data);
+        }else{
+          alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
+          result=false;
+        }
+        
+    },
+    error: function(XMLHttpRequest, textStatus, errorThrown){
+        //请求失败之后的操作
+        var ret_code = "999999";
+        var ret_msg = "失败,请联系管理员!";
+        alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+        result=false;
+    }
+  });
+  if(!result){
+    return result;
+  }
+
   func_code = "AU02";
-  para={
-    action_type: "view_name_addr",
-    CLINIC_NAME: $('#CLINIC_NAME').val(),
-    CLINIC_ADDR: $('#CLINIC_ADDR').val(),
-    STATE_ID: $('#STATE_ID').val(),
-    ACTIVE_STATUS: $('#ACTIVE_STATUS').val()
-  };
-  
-  json_str = request_const(para, func_code, request_type);
+  //form序列化成json
+  json_form = $('#adminQryClinic_form').serializeObject();
+
+  //生成输入参数
+  json_str = request_const(json_form,func_code,1);
+
+  console.log(json_str);
 
   var _table = $('#dataTables-example').DataTable({
       // "responsive": true,
@@ -217,35 +262,25 @@ $(document).ready(function() {
               //type 的值  dispaly sort filter
               //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
               //这里只处理了类型是显示的，过滤和排序返回原始数据
+              var data_tmp = row.CLINIC_POSTCODE+','+row.CLINIC_ADDR;
+              console.log(data_tmp);
               if (type === 'display') {
-                  if (data.length > 15) {
-                      return '<span title="' + data + '">' + data.substr(0, 15) + '...</span>';
+                  if (data_tmp.length > 15) {
+                      return '<span title="' + data_tmp + '">' + data_tmp.substr(0, 15) + '...</span>';
                   } else {
                     // console.log(data);
-                      // return '<span title="' + data + '>' + data + '</span>';
-                      return data;
+                    // return '<span title="' + data_tmp + '>' + data_tmp + '</span>';
+                    return data_tmp;
                   }
               }
-              return data;
+              return data_tmp;
           }
         },
         { 
-          "data": "STATE_NAME",
-          render: function(data, type, row, meta) {
-              //type 的值  dispaly sort filter
-              //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
-              //这里只处理了类型是显示的，过滤和排序返回原始数据
-              if (type === 'display') {
-                  if (data.length > 15) {
-                      return '<span title="' + data + '">' + data.substr(0, 15) + '...</span>';
-                  } else {
-                    // console.log(data);
-                      // return '<span title="' + data + '>' + data + '</span>';
-                      return data;
-                  }
-              }
-              return data;
-          }
+          "data": "CLINIC_SUBURB"
+        },
+        { 
+          "data": "STATE_NAME"
         },
         { 
           "class": "text-left",
@@ -428,7 +463,9 @@ $(document).ready(function() {
           CLINIC_USER_MAIL: obj_data.CLINIC_USER_MAIL,
           CLINIC_USER_NAME: obj_data.CLINIC_USER_NAME,
           ACTIVE_STATUS: obj_data.ACTIVE_STATUS,
-          STATE_ID: obj_data.STATE_ID,
+          CLINIC_POSTCODE: obj_data.CLINIC_POSTCODE,
+          CLINIC_SUBURB: obj_data.CLINIC_SUBURB,
+          STATE_ID: obj_data.STATE_ID
         };
 
     if(imgId == "opr_reset_pwd"){
@@ -552,15 +589,11 @@ $(document).ready(function() {
   $('#search_ok').click(function(){
 
     func_code = "AU02";
-    para={
-      action_type: "view_name_addr",
-      CLINIC_NAME: $('#CLINIC_NAME').val(),
-      CLINIC_ADDR: $('#CLINIC_ADDR').val(),
-      STATE_ID: $('#STATE_ID').val(),
-      ACTIVE_STATUS: $('#ACTIVE_STATUS').val()
-    };
-    
-    json_str = request_const(para, func_code, request_type);
+    //form序列化成json
+    json_form = $('#adminQryClinic_form').serializeObject();
+
+    //生成输入参数
+    json_str = request_const(json_form,func_code,1);
 
     console.log(json_str);
 
@@ -619,15 +652,11 @@ $(document).ready(function() {
             }
 
             func_code = "AU02";
-            para={
-              action_type: "view_name_addr",
-              CLINIC_NAME: $('#CLINIC_NAME').val(),
-              CLINIC_ADDR: $('#CLINIC_ADDR').val(),
-              STATE_ID: $('#STATE_ID').val(),
-              ACTIVE_STATUS: $('#ACTIVE_STATUS').val()
-            };
-            
-            json_str = request_const(para, func_code, request_type);
+            //form序列化成json
+            json_form = $('#adminQryClinic_form').serializeObject();
+
+            //生成输入参数
+            json_str = request_const(json_form,func_code,1);
 
             console.log(json_str);
 
@@ -704,15 +733,11 @@ $(document).ready(function() {
             }
 
             func_code = "AU02";
-            para={
-              action_type: "view_name_addr",
-              CLINIC_NAME: $('#CLINIC_NAME').val(),
-              CLINIC_ADDR: $('#CLINIC_ADDR').val(),
-              STATE_ID: $('#STATE_ID').val(),
-              ACTIVE_STATUS: $('#ACTIVE_STATUS').val()
-            };
-                      
-            json_str = request_const(para, func_code, request_type);
+            //form序列化成json
+            json_form = $('#adminQryClinic_form').serializeObject();
+
+            //生成输入参数
+            json_str = request_const(json_form,func_code,1);
 
             console.log(json_str);
 

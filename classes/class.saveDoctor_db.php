@@ -59,20 +59,22 @@ class saveDoctor_DB{
         // }
 
 
-        $sql = "SELECT t3.CLINIC_USER_NAME, t3.CLINIC_ADDR, t4.DOCTOR_ID, t4.DOCTOR_TYPE, t4.DOCTOR_NAME, t4.ACTIVE_STATUS FROM `fd_rel_customer_doctor` t1
+        $sql = "SELECT t3.*,t4.*,t5.STATE_NAME FROM `fd_rel_customer_doctor` t1
                 left join (fd_rel_clinic_doctor t2 left join fd_clinic_user as t3 on t2.clinic_user_id = t3.clinic_user_id ) on t2.DOCTOR_ID = t1.DOCTOR_ID
                 left join fd_doctor t4 on t1.DOCTOR_ID = t4.DOCTOR_ID
+                left join fd_dict_state t5 on t5.STATE_ID = t3.STATE_ID
                 where 
                 t1.CUSTOMER_USER_ID = ".$arr_values['CUSTOMER_USER_ID']."
-                AND t3.CLINIC_USER_NAME LIKE '".$arr_values['CLINIC_USER_NAME']."'
-                AND t3.CLINIC_ADDR LIKE '".$arr_values['CLINIC_ADDR']."'
-                AND t4.DOCTOR_NAME LIKE '".$arr_values['DOCTOR_NAME']."'";
+                AND t3.CLINIC_NAME LIKE '".$arr_values['CLINIC_NAME']."'
+                AND t3.CLINIC_SUBURB LIKE '".$arr_values['CLINIC_SUBURB']."'
+                AND t3.STATE_ID like '".$arr_values['STATE_ID']."'
+                AND t4.DOCTOR_NAME LIKE '".$arr_values['DOCTOR_NAME']."' order by t1.create_date desc";
 
         // if($this->_dbug){
         //     echo "[---viewAll---sql]";
         //     print_r($sql);
         // }
-
+        // echo $sql;
         $ret = $this->db->fetchAll_sql($sql,null);
         
         return $ret;

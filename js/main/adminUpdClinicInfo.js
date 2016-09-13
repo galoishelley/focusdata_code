@@ -6,13 +6,15 @@ $(function(){
     var json_value = JSON.parse(str);
     console.log(json_value);
 
-    $('#CLINIC_NAME').val(json_value.CLINIC_NAME);
-    $('#CLINIC_ADDR').val(json_value.CLINIC_ADDR);
     $('#CLINIC_USER_ID').val(json_value.CLINIC_USER_ID);
-    $('#CLINIC_USER_MAIL').val(json_value.CLINIC_USER_MAIL);
     $('#CLINIC_USER_NAME').val(json_value.CLINIC_USER_NAME);
+    $('#CLINIC_USER_MAIL').val(json_value.CLINIC_USER_MAIL);
+    $('#CLINIC_NAME').val(json_value.CLINIC_NAME);
     $("#ACTIVE_STATUS option[value='"+ json_value.ACTIVE_STATUS +"']").attr("selected",true);
-
+    $('#CLINIC_ADDR').val(json_value.CLINIC_ADDR);
+    $('#CLINIC_POSTCODE').val(json_value.CLINIC_POSTCODE);
+    $('#CLINIC_SUBURB').val(json_value.CLINIC_SUBURB);
+    
     if(json_value.imgId == "opr_info"){
       $("#adminUpdClinicInfo input").attr("disabled","disabled");
       $("#adminUpdClinicInfo select").attr("disabled","disabled");   

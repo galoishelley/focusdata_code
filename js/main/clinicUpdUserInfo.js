@@ -86,9 +86,11 @@ $(document).ready(function() {
               console.log(data);
               $('#CLINIC_USER_ID').val(data.CLINIC_USER_ID);
               $('#CLINIC_USER_NAME').val(data.CLINIC_USER_NAME);
-              $('#CLINIC_NAME').val(data.CLINIC_NAME);
               $('#CLINIC_USER_MAIL').val(data.CLINIC_USER_MAIL);
+              $('#CLINIC_NAME').val(data.CLINIC_NAME);
+              $('#CLINIC_POSTCODE').val(data.CLINIC_POSTCODE);
               $('#CLINIC_ADDR').val(data.CLINIC_ADDR);
+              $('#CLINIC_SUBURB').val(data.CLINIC_SUBURB);
               state_id = data.STATE_ID;
           }else{
               alert(func_code + " " +  ret.status.ret_code + " " + ret.status.ret_msg);

@@ -6,10 +6,10 @@ $(function(){
     var json_value = JSON.parse(str);
     console.log(json_value);
 
+    var clinic_addr = json_value.CLINIC_ADDR +","+ json_value.CLINIC_SUBURB +","+ json_value.STATE_NAME +","+ json_value.CLINIC_POSTCODE;
     $('#DOCTOR_PHOTO').attr('src','img/doctors/'+json_value.DOCTOR_PHOTO);
     $('#CLINIC_NAME').text(json_value.CLINIC_NAME);
-    $('#CLINIC_ADDR').text(json_value.CLINIC_ADDR);
-    $('#STATE_NAME').text(json_value.STATE_NAME);
+    $('#CLINIC_ADDR').text(clinic_addr);
     $('#DOCTOR_TYPE').val(json_value.DOCTOR_TYPE);
     $('#DOCTOR_NAME').val(json_value.DOCTOR_NAME);
     $('#DOCTOR_GENDER').val(json_value.DOCTOR_GENDER);

@@ -88,6 +88,10 @@ $(document).ready(function() {
               $('#CUSTOMER_PHONE_NO').val(data.CUSTOMER_PHONE_NO);
               $('#MEDICAL_CARD_NO').val(data.MEDICAL_CARD_NO);
               $('#CUSTOMER_USER_ID').val(data.CUSTOMER_USER_ID);
+              $('#CUSTOMER_POSTCODE').val(data.CUSTOMER_POSTCODE);
+              $('#CUSTOMER_SUBURB').val(data.CUSTOMER_SUBURB);
+              $('#STATE_ID').val(data.STATE_ID);
+
               state_id = data.STATE_ID;
           }else{
               alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);

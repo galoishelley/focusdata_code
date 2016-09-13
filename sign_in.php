@@ -103,7 +103,8 @@ include_once 'classes/Language/language.common.php';
 					<h2 class="wow fadeInRight"><?php echo $lang['PageSignInSignIn']; ?></h2>
 					<!-- <div>&nbsp;</div>
 					<h2 class="indent">Sign in</h2> -->
-					<form class="form-horizontal wow fadeInUp" role="form" id="signin_form">
+					<form class="form-horizontal wow fadeInUp" role="form" id="signin_form" >
+					<!-- onsubmit="return false;" -->
 						<fieldset>
 							<!-- <div class="form-group has-error has-feedback">
 								<!--<label class="control-label" for="inputError2">Input with error</label>
@@ -114,7 +115,7 @@ include_once 'classes/Language/language.common.php';
 							<div class="form-group">
 							    <label for="USER_NAME" class="col-sm-2 control-label"><?php echo $lang['PageSignInUser']; ?><span class="span-red">*</span></label>
 							    <div class="col-sm-10">
-							      <input type="text" class="form-control" id="USER_NAME" name="USER_NAME" placeholder="<?php echo $lang['PageSignInUserHint']; ?>">
+							      <input type="text" class="form-control" id="USER_NAME" name="USER_NAME" placeholder="<?php echo $lang['PageSignInUserHint']; ?>" autofocus >
 							    </div>
 							</div>
 							<div class="form-group">
@@ -152,7 +153,7 @@ include_once 'classes/Language/language.common.php';
 							
 							<div class="row">
 								<div class="form-group pull-right">
-									<button type="submit" class="btn btn-lg btn-primary btn-block" id="signin_ok"><?php echo $lang['PageSignInBtnSignIn']; ?></button>
+									<button class="btn btn-lg btn-primary btn-block" id="signin_ok"><?php echo $lang['PageSignInBtnSignIn']; ?></button>
 								 </div>
 							</div>
 							<div class="row">
