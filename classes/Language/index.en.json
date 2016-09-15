@@ -1,0 +1,26 @@
+{
+	"index": {
+		"title":"Home",
+		"menu":{
+				"home": "home",
+				"language": "language",
+				"aboutus": "about us",
+				"staff": "staff",
+				"contacts": "contacts",
+				"signin": "sign in",
+				"signup": "sign up",
+				"tourist": "tourist",
+				"usertype": "USERTYPE: TOURIST",
+				"searchdoctor": "SEARCH DOCTOR",
+				"navbar_brand_img": "logo_en.png"
+		},
+		"body":{
+				"STATE_ID": "3",
+				"STATE_NAME": "ACT",
+				"STATE_POSTCODE": ""
+		},
+		"data":{
+			"name":"123"
+		}
+	}
+}

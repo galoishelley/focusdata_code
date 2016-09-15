@@ -1,0 +1,25 @@
+{
+	"index": {
+		"menu":{
+				"home": "首页",
+				"language": "语言",
+				"aboutus": "关于我们",
+				"staff": "团队",
+				"contacts": "联系我们",
+				"signin": "登录",
+				"signup": "注册",
+				"tourist": "游客",
+				"usertype": "用户类型: 游客",
+				"searchdoctor": "搜索医生",
+				"navbar_brand_img": "logo_cn.png"
+		},
+		"body":{
+				"STATE_ID": "3",
+				"STATE_NAME": "ACT",
+				"STATE_POSTCODE": ""
+		},
+		"data":{
+			"name":"123"
+		}
+	}
+}

@@ -46,7 +46,13 @@ $(function(){
 	    $('#userinfo').html(username);
 	    $('#usertype').html("用户类型: "+ fd_usertypename);
 
-	    $('#sub_userinfo').removeClass("hidden");
+	    // 用户名
+	    $('#userinfo').html(username);
+	    // 设置用户类型
+	    $('#usertype').html("用户类型: "+ fd_usertypename);
+
+		//显示安全退出
+		$('#login_out').removeClass("hidden");
 
 	    if(fd_usertype == 0){
 	      $('#li_ClinicUser').removeClass("hidden");
@@ -59,6 +65,18 @@ $(function(){
 	    }
 		$('#CUSTOMER_USER_ID').val(fd_userid);
 		$('#btn_save').show();
+	}else{
+		//游客
+	    $.cookie("ilogin", 0);
+	    //显示HOME
+	    $('#li_home').removeClass("hidden");
+	    //显示搜索医生
+  		$('#li_SearchDoctor').removeClass("hidden");
+  		//设置用户类型
+  		$('#usertype').html("用户类型: 游客");
+  		//显示登陆注册
+  		$('#sign_in').removeClass("hidden");
+  		$('#sign_up').removeClass("hidden");
 	}
 
 	//填充州

@@ -14,7 +14,7 @@ $lang['HOME_LOGO']='logo_cn.png';
 
 // Menu
 $lang['MENU_HOME'] = '首页';
-$lang['MENU_our_service'] = '我们的服务';
+// $lang['MENU_our_service'] = '我们的服务';
 $lang['MENU_searchDoctor'] = '搜索|预约医生';
 $lang['MENU_userAppointmentRecoder'] = '个人用户管理';
 $lang['MENU_clinicUpdUserInfo'] = '诊所用户管理';

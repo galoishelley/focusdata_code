@@ -16,7 +16,7 @@ $lang['HOME_LOGO']='logo_en.png';
 
 // Menu
 $lang['MENU_HOME'] = 'Home';
-$lang['MENU_our_service'] = 'Our Service';
+// $lang['MENU_our_service'] = 'Our Service';
 $lang['MENU_searchDoctor'] = 'Search Doctor';
 $lang['MENU_userAppointmentRecoder'] = 'Personal User Option';
 $lang['MENU_clinicUpdUserInfo'] = 'Clinic User Option';
