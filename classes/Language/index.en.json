@@ -9,8 +9,8 @@
 				"contacts": "contacts",
 				"signin": "sign in",
 				"signup": "sign up",
-				"tourist": "tourist",
-				"usertype": "USERTYPE: TOURIST",
+				"tourist": "guest",
+				"usertype": "USERTYPE: GUEST",
 				"searchdoctor": "SEARCH DOCTOR",
 				"navbar_brand_img": "logo_en.png"
 		},
