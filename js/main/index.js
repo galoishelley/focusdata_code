@@ -15,6 +15,8 @@ $(function(){
 	if(myurl !=null && myurl.toString().length>1)
 	{
 	   lang=GetQueryString("lang");
+	}else{
+		lang = "en";
 	}
 
 	if(lang == "cn"){
