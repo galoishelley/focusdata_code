@@ -14,7 +14,7 @@ include_once 'classes/Language/language.common.php';
 <meta name="author" content="Your name">
 <meta name = "format-detection" content = "telephone=no" />
 <!--CSS-->
-<link rel="stylesheet" href="css/bootstrap.css" >
+<link rel="stylesheet" href="css/bootstrap.css" ><!-- dialog --><link href="css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/animate.css">
 <link rel="stylesheet" href="fonts/font-awesome.css">
@@ -192,7 +192,7 @@ include_once 'classes/Language/language.common.php';
         </div>
     </div>
 </footer>
-<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap.min.js"></script><!-- dialog --><script src="js/bootstrap-dialog.min.js"></script>
 <script src="js/tm-scripts.js"></script>
 <script src="js/jquery.cookie.js"></script>
 <script src="js/bootstrapValidator.js"></script>

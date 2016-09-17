@@ -461,17 +461,19 @@ $(document).ready(function() {
               name:obj_data.CLINIC_USER_NAME
           },
           success: function (msg) {
+        	  
+        	  alert('Password reset successfully!');
                
-              BootstrapDialog.show({
-            	  title: '恭喜',
-                  message: '密码重置成功！邮件已发送至用户邮箱！',
-                  buttons: [{
-                      label: '确定',
-                      action: function(dialogItself){
-                          dialogItself.close();
-                      }
-                  }]
-              });
+//              BootstrapDialog.show({
+//            	  title: '恭喜',
+//                  message: '密码重置成功！邮件已发送至用户邮箱！',
+//                  buttons: [{
+//                      label: '确定',
+//                      action: function(dialogItself){
+//                          dialogItself.close();
+//                      }
+//                  }]
+//              });
              
               
           },
