@@ -168,12 +168,13 @@ class SearchDoctor_DB{
         }
         $sql = "select count(*) as COUNT from (
                 select 
-                GROUP_CONCAT(DATE_FORMAT(t4.APPOINTMENT_TIME,'%H:%i') order by APPOINTMENT_TIME) as APPOINTMENT_TIME
-                from fd_doctor as t1
+                min(t4.APPOINTMENT_DATE), min(t4.APPOINTMENT_TIME),t5.STATE_NAME
+                from (SELECT @rownum:=0) t0, fd_doctor as t1
                 left join (fd_rel_clinic_doctor as t2 left join fd_clinic_user as t3 on t2.clinic_user_id = t3.clinic_user_id )
                 on
                 t1.doctor_id = t2.doctor_id
                 left join fd_rel_doctor_appointment_time t4 on t4.doctor_id = t1.doctor_id
+                left join fd_dict_state t5 on t5.STATE_ID = t3.STATE_ID
                 where
                 t1.ACTIVE_STATUS = 1
                 and 
@@ -222,7 +223,7 @@ class SearchDoctor_DB{
 
         for($i = 0; $i < count($keys); $i++){
 
-            if($keys[$i] == "CLINIC_ADDR" || $keys[$i] == "CLINIC_NAME"){
+            if($keys[$i] == "CLINIC_SUBURB" || $keys[$i] == "CLINIC_NAME" || $keys[$i] == "STATE_ID"){
                 $keys_where[$i] = "t3.".$keys[$i];
             }else if($keys[$i] == "DOCTOR_TYPE" || $keys[$i] == "DOCTOR_NAME"){
                 $keys_where[$i] = "t1.".$keys[$i];
@@ -264,19 +265,19 @@ class SearchDoctor_DB{
         $limit = " limit ".$start.",".$lenght;
         
         $sql = "select 
-                concat('searchdoc_', @rownum:=@rownum+1) AS DT_RowId, t1.*, t2.*,t3.*,t4.APPOINTMENT_DATE,  
-                GROUP_CONCAT(DATE_FORMAT(t4.APPOINTMENT_TIME,'%H:%i') order by APPOINTMENT_TIME) as APPOINTMENT_TIME
+                concat('searchdoc_', @rownum:=@rownum+1) AS DT_RowId, t1.*, t2.*,t3.*,min(t4.APPOINTMENT_DATE) AS APPOINTMENT_DATE, min(t4.APPOINTMENT_TIME) AS APPOINTMENT_TIME,t5.STATE_NAME
                 from (SELECT @rownum:=0) t0, fd_doctor as t1
                 left join (fd_rel_clinic_doctor as t2 left join fd_clinic_user as t3 on t2.clinic_user_id = t3.clinic_user_id )
                 on
                 t1.doctor_id = t2.doctor_id
                 left join fd_rel_doctor_appointment_time t4 on t4.doctor_id = t1.doctor_id
+                left join fd_dict_state t5 on t5.STATE_ID = t3.STATE_ID
                 where
                 t1.ACTIVE_STATUS = 1
                 and 
                 t4.ACTIVE_STATUS = 1 "
                 .$where.
-                " group by t1.doctor_id,t4.APPOINTMENT_DATE
+                " group by t1.doctor_id
                 order by t1.DOCTOR_NAME".$limit;
         // echo "[-----viewAll:".$sql."-----]";
         $ret = $this->db->fetchAll_sql($sql,null);

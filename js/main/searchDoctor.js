@@ -14,10 +14,10 @@ $(function(){
 	var date_time=vYear+'-'+(vMon<10 ? "0" + vMon : vMon)+'-'+(vDay<10 ? "0"+ vDay : vDay)+' '+(h<10 ? "0"+ h : h)+':'+(m<10 ? "0" + m : m)+':'+(se<10 ? "0" +se : se);
 	var vDate_F= vYear+'-'+(vMon<10 ? "0" + vMon : vMon)+'-'+(vDay<10 ? "0"+ vDay : vDay)+' 00:00';
 	var vDate_T= vYear+'-'+(vMon<10 ? "0" + vMon : vMon)+'-'+(vDay<10 ? "0"+ vDay : vDay)+' 23:59';
-	var vDate_Today= vYear+'-'+(vMon<10 ? "0" + vMon : vMon)+'-'+(vDay<10 ? "0"+ vDay : vDay);
+	var vDate_Today= (vDay<10 ? "0"+ vDay : vDay)+'-'+(vMon<10 ? "0" + vMon : vMon)+'-'+vYear;
 
-	$("#APPOINTMENT_DATE_BEGIN").val(date_time);
-	$("#APPOINTMENT_DATE_END").val(vDate_T);
+	$("#APPOINTMENT_DATE_BEGIN").val(vDate_Today);
+	$("#APPOINTMENT_DATE_END").val(vDate_Today);
 	
 	var ilogin = $.cookie("ilogin");
 
@@ -106,7 +106,7 @@ $(function(){
 	      }
 	      // var data = ret.data[0];
 	      $.each(ret.data, function(i, item) {
-	          $("#STATE_ID").append("<option value='"+ item.STATE_NAME +"'>" + item.STATE_NAME + "</option>");
+	          $("#STATE_ID").append("<option value='"+ item.STATE_ID +"'>" + item.STATE_NAME + "</option>");
 	      });
 	      // console.log(data);
 	    }else{
@@ -127,53 +127,6 @@ $(function(){
 	return result;
 	}
 
-	//填充区
-	func_code = "SSUB";
-	para="";
-
-	json_str = request_const(para,func_code,0);
-
-	// console.log(json_str);
-	//请求
-	result=true;
-	$.ajax({
-	type: "POST",
-	url: "classes/class.getSuburb.php",
-	dataType: "json",
-	async:false,
-	data: {
-	  request:json_str
-	},
-	success: function (msg) {
-	    // console.log(msg);
-	    var ret = msg.response;
-	    if(ret.success){
-	      if(json_str.sequ != ret.sequ){
-	        alert(func_code+":时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
-	        result=false;
-	      }
-	      // var data = ret.data[0];
-	      $.each(ret.data, function(i, item) {
-	          $("#CLINIC_SUBURB").append("<option value='"+ item.CLINIC_SUBURB +"'>" + item.CLINIC_SUBURB + "</option>");
-	      });
-	      // console.log(data);
-	    }else{
-	      alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
-	      result=false;
-	    }
-	    
-	},
-	error: function(XMLHttpRequest, textStatus, errorThrown){
-	    //请求失败之后的操作
-	    var ret_code = "999999";
-	    var ret_msg = "失败,请联系管理员!";
-	    alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
-	    result=false;
-	}
-	});
-	if(!result){
-	return result;
-	}
 
 	//填充医生类别
 	func_code = "SDTY";
@@ -223,6 +176,27 @@ $(function(){
 		return result;
 	}
 
+	Date.prototype.Format = function (fmt) { //author: meizz
+		var o = {
+		  "M+": this.getMonth() + 1, //月份
+		  "d+": this.getDate(), //日
+		  "h+": this.getHours(), //小时
+		  "m+": this.getMinutes(), //分
+		  "s+": this.getSeconds(), //秒
+		  "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+		  "S": this.getMilliseconds() //毫秒
+		};
+		if (/(y+)/.test(fmt)) {
+		 fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+		}
+		for (var k in o) {
+		 if (new RegExp("(" + k + ")").test(fmt)) {
+		     fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+		 }
+		}
+		return fmt;
+  	}
+
 	var str = sessionStorage.saveSearch;
 
   	if(str){
@@ -271,10 +245,12 @@ $(function(){
 	requesttype = 0;
 	func_code = "SD01";
 	json_form = {
-		CLINIC_ADDR: json_value.search,
+		CLINIC_SUBURB: json_value.search,
+		STATE_ID: json_value.search,
 		CLINIC_NAME: json_value.search,
 		DOCTOR_TYPE: json_value.search,
 		DOCTOR_NAME: json_value.search
+		// DISTANCE: json_value.search
 		// APPOINTMENT_DATE: json_value.search
 	};
 
@@ -305,7 +281,7 @@ $(function(){
  		"destroy": false,
  		"ordering": false,//全局禁用排序
 
- 		"iDeferLoading": true, //禁止加载页面自动load数据
+ 		// "iDeferLoading": true, //禁止加载页面自动load数据
 
 	    "ajax": {
 			"type": "POST",
@@ -318,7 +294,7 @@ $(function(){
 				   json.draw = json.response.data.draw;
 				   json.recordsTotal = json.response.data.recordsTotal;
 				   json.recordsFiltered = json.response.data.recordsFiltered;
-
+				   console.log(json.response.data.data);
 				   return json.response.data.data;
 				}
 	    },
@@ -390,6 +366,15 @@ $(function(){
 	            return data;
 	        }
 	      },
+	      {
+	      	"data": "CLINIC_SUBURB"
+	      },
+	      {
+	      	"data": "STATE_NAME"
+	      },
+	      {
+	      	"data": "CLINIC_POSTCODE"
+	      },
 	      { 
 	        "data": "DOCTOR_TYPE",
 	        render: function(data, type, row, meta) {
@@ -432,35 +417,8 @@ $(function(){
 	            //type 的值  dispaly sort filter
 	            //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
 	            //这里只处理了类型是显示的，过滤和排序返回原始数据
-	            if (type === 'display') {
-	                if (data.length > 10) {
-	                    return '<span title="' + data + '">' + data.substr(0, 8) + '...</span>';
-	                } else {
-	                	// console.log(data);
-	                    // return '<span title="' + data + '>' + data + '</span>';
-	                    return data;
-	                }
-	            }
-	            return data;
-	        }
-	      }, 
-	      { 
-	      	"class": "wordwrap ellipsis",
-	       	"data": "APPOINTMENT_TIME" ,
-	       	render: function(data, type, row, meta) {
-	            //type 的值  dispaly sort filter
-	            //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
-	            //这里只处理了类型是显示的，过滤和排序返回原始数据
-	            if (type === 'display') {
-	                if (data.length > 30) {
-	                    return '<span title="' + data + '">' + data.substr(0, 28) + '...</span>';
-	                } else {
-	                	// console.log(data);
-	                    // return '<span title="' + data + '>' + data + '</span>';
-	                    return data;
-	                }
-	            }
-	            return data;
+	            var m_data = data + " " + row.APPOINTMENT_TIME
+            	return (new Date(m_data)).Format("dd-MM-yyyy hh:mm");
 	        }
 	      }, 
 	      { 
@@ -522,38 +480,41 @@ $(function(){
 	      },
 	      {
 	      	"orderable": false,
-	        "targets": 3,
-	        // "sWidth": "10px"
-	        "sWidth": "15%"
+	        "targets": 3
 	      },
 	      {
 	      	"orderable": false,
 	        "targets": 4,
-	        "sWidth": "10%"
+	        "sWidth": "5%"
 	      },
 	      {
 	      	"orderable": false,
 	        "targets": 5,
-	        "sWidth": "10%"
+	        "sWidth": "5%"
 	      },
 	      {
 	      	"orderable": false,
 	        "targets": 6,
-	        "sWidth": "8%"
-	      },
-	      {
-	      	"orderable": false,
-	        "targets": 6,
-	        // "sWidth": "500px"
+	        "sWidth": "5%"
 	      },
 	      {
 	      	"orderable": false,
 	        "targets": 7,
-	        "sWidth": "8%"
+	        "sWidth": "5%"
 	      },
 	      {
 	      	"orderable": false,
 	        "targets": 8,
+	        "sWidth": "5%"
+	      },
+	      {
+	      	"orderable": false,
+	        "targets": 9,
+	        "sWidth": "10%"
+	      },
+	      {
+	      	"orderable": false,
+	        "targets": 10,
 	        "sWidth": "5%"
 	      }
 	     ],//第一列与第二列禁止排序
@@ -836,7 +797,7 @@ $(function(){
 
 	$('.form_datetime').datetimepicker({
 	    language:  'zh-CN',
-	    format: "yyyy-mm-dd",
+	    format: "dd-mm-yyyy",
 	    todayBtn:  1,
 	    autoclose: 1,
 	    todayHighlight: 1,

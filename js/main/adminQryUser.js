@@ -99,56 +99,6 @@ var miaoyl;$(document).ready(function() {
     return result;
   }
 
-  //填充区
-  func_code = "SSUB";
-  para={
-    action_type:"viewAll_User"
-  };
-
-  json_str = request_const(para,func_code,0);
-
-  console.log(json_str);
-  //请求
-  result=true;
-  $.ajax({
-    type: "POST",
-    url: "classes/class.getSuburb.php",
-    dataType: "json",
-    async:false,
-    data: {
-      request:json_str
-    },
-    success: function (msg) {
-        // console.log(msg);
-        var ret = msg.response;
-        if(ret.success){
-          if(json_str.sequ != ret.sequ){
-            alert(func_code+":时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
-            result=false;
-          }
-          // var data = ret.data[0];
-          $.each(ret.data, function(i, item) {
-              $("#CUSTOMER_SUBURB").append("<option value='"+ item.CUSTOMER_SUBURB +"'>" + item.CUSTOMER_SUBURB + "</option>");
-          });
-          // console.log(data);
-        }else{
-          alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
-          result=false;
-        }
-        
-    },
-    error: function(XMLHttpRequest, textStatus, errorThrown){
-        //请求失败之后的操作
-        var ret_code = "999999";
-        var ret_msg = "失败,请联系管理员!";
-        alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
-        result=false;
-    }
-  });
-  if(!result){
-    return result;
-  }
-
   func_code = "AU03";
   //form序列化成json
   json_form = $('#adminQryUser_form').serializeObject();
@@ -296,7 +246,7 @@ var miaoyl;$(document).ready(function() {
               //type 的值  dispaly sort filter
               //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
               //这里只处理了类型是显示的，过滤和排序返回原始数据
-              var data_tmp = row.CUSTOMER_POSTCODE+','+row.CUSTOMER_ADDR;
+              var data_tmp = row.CUSTOMER_ADDR;
               if (type === 'display') {
                   if (data_tmp.length > 15) {
                       return '<span title="' + data_tmp + '">' + data_tmp.substr(0, 15) + '...</span>';
@@ -314,6 +264,9 @@ var miaoyl;$(document).ready(function() {
         },
         { 
           "data": "STATE_NAME"        
+        },
+        { 
+          "data": "CUSTOMER_POSTCODE"        
         },
         { 
           "data": "CUSTOMER_PHONE_NO",
@@ -423,16 +376,21 @@ var miaoyl;$(document).ready(function() {
         {
           "orderable": false,
           "targets": 9,
-          "sWidth": "10%"
+          "sWidth": "5%"
         },
         {
           "orderable": false,
           "targets": 10,
-          "sWidth": "8%"
+          "sWidth": "10%"
         },
         {
           "orderable": false,
           "targets": 11,
+          "sWidth": "8%"
+        },
+        {
+          "orderable": false,
+          "targets": 12,
           "sWidth": "5%"
         }
        ],

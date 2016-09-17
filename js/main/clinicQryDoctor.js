@@ -174,18 +174,17 @@ $(document).ready(function() {
               //type 的值  dispaly sort filter
               //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
               //这里只处理了类型是显示的，过滤和排序返回原始数据
-              var data_tmp = row.CLINIC_POSTCODE+','+row.CLINIC_ADDR;
-              // console.log(data_tmp);
+              // console.log(data);
               if (type === 'display') {
-                  if (data_tmp.length > 15) {
-                      return '<span title="' + data_tmp + '">' + data_tmp.substr(0, 15) + '...</span>';
+                  if (data.length > 15) {
+                      return '<span title="' + data + '">' + data.substr(0, 15) + '...</span>';
                   } else {
                     // console.log(data);
-                    // return '<span title="' + data_tmp + '>' + data_tmp + '</span>';
-                    return data_tmp;
+                    // return '<span title="' + data + '>' + data + '</span>';
+                    return data;
                   }
               }
-              return data_tmp;
+              return data;
           }
         },
         { 
@@ -193,6 +192,9 @@ $(document).ready(function() {
         },
         { 
           "data": "STATE_NAME"
+        },
+        { 
+          "data": "CLINIC_POSTCODE"
         },
         { 
           "data": "DOCTOR_TYPE",
@@ -303,7 +305,7 @@ $(document).ready(function() {
         {
           "orderable": false,
           "targets": 5,
-          "sWidth": "10%"
+          "sWidth": "5%"
         },
         {
           "orderable": false,
@@ -313,7 +315,7 @@ $(document).ready(function() {
         {
           "orderable": false,
           "targets": 7,
-          "sWidth": "5%"
+          "sWidth": "10%"
         },
         {
           "orderable": false,
@@ -323,6 +325,11 @@ $(document).ready(function() {
         {
           "orderable": false,
           "targets": 9,
+          "sWidth": "5%"
+        },
+        {
+          "orderable": false,
+          "targets": 10,
           "sWidth": "5%"
         }
        ],

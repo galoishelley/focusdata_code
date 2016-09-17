@@ -117,14 +117,14 @@
                                                 
                                                 <div class="form-group col-md-6">
                                                     <label for="CLINIC_SUBURB" class="col-md-3">区</label>
-                                                    <select class="form-control" name="CLINIC_SUBURB" id="CLINIC_SUBURB">
-                                                      <option value="">全部</option>
-                                                    </select>
+                                                    <div class="col-md-3">
+                                                        <input type="text" class="form-control" id="CLINIC_SUBURB" name="CLINIC_SUBURB" >
+                                                    </div>  
                                                 </div>
 
                                                 <div class="form-group col-md-6">
                                                     <label for="STATE_ID" class="col-md-3">州</label>
-                                                    <select class="form-control" name="STATE_NAME" id="STATE_ID">
+                                                    <select class="form-control" name="STATE_ID" id="STATE_ID">
                                                       <option value="">全部</option>
                                                     </select>
                                                 </div>
@@ -155,7 +155,7 @@
                                                     <label for="distance" class="col-md-3">医生距离</label>
                                                     <div class="col-md-3">
                                                         <select class="form-control" id="DISTANCE" name="DISTANCE">
-                                                            <option>anay</option>
+                                                            <option value="">any</option>
                                                             <option value="5km">5km</option>
                                                             <option value="10km">10km</option>
                                                             <option value="20km">20km</option>
@@ -200,11 +200,13 @@
                             	<th>序号</th>
                             	<th></th>
                                 <th>诊所名称</th>
-                                <th>诊所区域</th>
+                                <th>详细地址</th>
+                                <th>区</th>
+                                <th>州</th>
+                                <th>邮编</th>
                                 <th>医生类别</th>
                                 <th>医生名称</th>
-                                <th>预约日期</th>
-                                <th>预约时间</th>
+                                <th>最早预约时间</th>
                                 <th>操作</th>
                             </tr>
                         </thead>

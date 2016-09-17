@@ -64,7 +64,8 @@ class saveDoctor_DB{
                 left join fd_doctor t4 on t1.DOCTOR_ID = t4.DOCTOR_ID
                 left join fd_dict_state t5 on t5.STATE_ID = t3.STATE_ID
                 where 
-                t1.CUSTOMER_USER_ID = ".$arr_values['CUSTOMER_USER_ID']."
+                t4.ACTIVE_STATUS =1
+                AND t1.CUSTOMER_USER_ID = ".$arr_values['CUSTOMER_USER_ID']."
                 AND t3.CLINIC_NAME LIKE '".$arr_values['CLINIC_NAME']."'
                 AND t3.CLINIC_SUBURB LIKE '".$arr_values['CLINIC_SUBURB']."'
                 AND t3.STATE_ID like '".$arr_values['STATE_ID']."'

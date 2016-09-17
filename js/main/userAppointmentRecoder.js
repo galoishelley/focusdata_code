@@ -79,10 +79,10 @@ $(document).ready(function() {
   var date_time=vYear+'-'+(vMon<10 ? "0" + vMon : vMon)+'-'+(vDay<10 ? "0"+ vDay : vDay)+' '+(h<10 ? "0"+ h : h)+':'+(m<10 ? "0" + m : m)+':'+(se<10 ? "0" +se : se);
   var vDate_F= vYear+'-'+(vMon<10 ? "0" + vMon : vMon)+'-'+(vDay<10 ? "0"+ vDay : vDay)+' 00:00';
   var vDate_T= vYear+'-'+(vMon<10 ? "0" + vMon : vMon)+'-'+(vDay<10 ? "0"+ vDay : vDay)+' 23:59';
-  var vDate_Today= vYear+'-'+(vMon<10 ? "0" + vMon : vMon)+'-'+(vDay<10 ? "0"+ vDay : vDay);
+  var vDate_Today= (vDay<10 ? "0"+ vDay : vDay)+'-'+(vMon<10 ? "0" + vMon : vMon)+'-'+vYear;
 
-  $("#begin_time").val(vDate_F);
-  $("#end_time").val(vDate_T);
+  $("#begin_time").val(vDate_Today);
+  $("#end_time").val(vDate_Today);
 
   // appointment status loading pages
     func_code = "SP01";
@@ -148,6 +148,27 @@ $(document).ready(function() {
     return false;
   }
 
+  Date.prototype.Format = function (fmt) { //author: meizz
+      var o = {
+          "M+": this.getMonth() + 1, //月份
+          "d+": this.getDate(), //日
+          "h+": this.getHours(), //小时
+          "m+": this.getMinutes(), //分
+          "s+": this.getSeconds(), //秒
+          "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+          "S": this.getMilliseconds() //毫秒
+      };
+     if (/(y+)/.test(fmt)) {
+         fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+     }
+     for (var k in o) {
+         if (new RegExp("(" + k + ")").test(fmt)) {
+             fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+         }
+     }
+     return fmt;
+  }
+
   func_code = "SP02";
   para={
     CUSTOMER_USER_ID: userid,
@@ -191,7 +212,7 @@ $(document).ready(function() {
            json.draw = json.response.data.draw;
            json.recordsTotal = json.response.data.recordsTotal;
            json.recordsFiltered = json.response.data.recordsFiltered;
-
+           console.log(json.response.data.data);
            return json.response.data.data;
         }
       },
@@ -200,28 +221,11 @@ $(document).ready(function() {
         {
           "class": "col_0_class",
           "data": null,
-          "defaultContent": "<input type='checkbox' id='chk_list' name='chk_list'>",
-           render: function(data, type, row, meta) {
-              //type 的值  dispaly sort filter
-              //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
-              //这里只处理了类型是显示的，过滤和排序返回原始数据
-              // console.log("render");
-              // console.log(row);
-              if (type === 'display') {
-                  if (data.length > 10) {
-                      return '<span title="' + data + '">' + data.substr(0, 8) + '...</span>';
-                  } else {
-                    // console.log(data);
-                      // return '<span title="' + data + '>' + data + '</span>';
-                      return data;
-                  }
-              }
-              return data;
-          }
+          "defaultContent": "<input type='checkbox' id='chk_list' name='chk_list'>"
         },
         { 
           "class": "col_2_class",
-          "data": "CLINIC_USER_NAME",
+          "data": "CLINIC_NAME",
           render: function(data, type, row, meta) {
               //type 的值  dispaly sort filter
               //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
@@ -257,7 +261,13 @@ $(document).ready(function() {
           }
         },
         { 
+          "data": "CLINIC_SUBURB"
+        },
+        { 
           "data": "STATE_NAME"
+        },
+        { 
+          "data": "CLINIC_POSTCODE"
         },
         { 
           "data": "DOCTOR_TYPE",
@@ -281,23 +291,21 @@ $(document).ready(function() {
           "data": "DOCTOR_NAME" 
         },
         { 
-          "data": "CREATE_DATE" ,
-          // render: function(data, type, row, meta) {
-              //type 的值  dispaly sort filter
-              //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
-              //这里只处理了类型是显示的，过滤和排序返回原始数据
-          //     if (type === 'display') {
-          //         if (data.length > 30) {
-          //             return '<span title="' + data + '">' + data.substr(0, 28) + '...</span>';
-          //         } else {
-          //           // console.log(data);
-          //             // return '<span title="' + data + '>' + data + '</span>';
-          //             return data;
-          //         }
-          //     }
-          //     return data;
-          // }
+          "data": "APPOINTMENT_DATE",
+          render: function(data, type, row, meta) {
+            var m_data = data + " " + row.APPOINTMENT_TIME
+            return (new Date(m_data)).Format("dd-MM-yyyy hh:mm");
+            // return (new Date(data)).Format("yyyy-MM-dd hh:mm:ss"); 
+          }
         }, 
+ /*       { 
+          "data": "APPOINTMENT_TIME",
+          render: function(data, type, row, meta) {
+            // return (new Date(data)).Format("dd-MM-yyyy");
+            return (new Date(data)).Format("hh:mm"); 
+            // return data;
+          }
+        }, */
         { 
           // "class": "col_center_class",
           "data": "APPOINTMENT_STATUS",
@@ -369,22 +377,39 @@ $(document).ready(function() {
           "orderable": false,
           "targets": 3,
           // "sWidth": "10px"
-          "sWidth": "10%"
+          "sWidth": "5%"
         },
         {
           "orderable": false,
           "targets": 4,
-          "sWidth": "10%"
+          "sWidth": "5%"
         },
         {
           "orderable": false,
           "targets": 5,
-          "sWidth": "10%"
+          "sWidth": "5%"
         },
         {
           "orderable": false,
           "targets": 6,
-          "sWidth": "8%"
+          "sWidth": "10%"
+        },
+        {
+          "orderable": false,
+          "targets": 7,
+          "sWidth": "10%"
+          // "sWidth": "500px"
+        },
+        {
+          "orderable": false,
+          "targets": 8,
+          "sWidth": "10%"
+          // "sWidth": "500px"
+        },
+        {
+          "orderable": false,
+          "targets": 9,
+          "sWidth": "5%"
           // "sWidth": "500px"
         }
        ],//第一列与第二列禁止排序
@@ -407,7 +432,7 @@ $(document).ready(function() {
       // });
       // console.log(data);
       $.cookie("search_con", "");
-      console.log("加载完毕");
+      // console.log("加载完毕");
     }
 
   });
@@ -584,7 +609,7 @@ $(document).ready(function() {
   
   $('.form_datetime').datetimepicker({
     language:  'zh-CN',
-    format: "yyyy-mm-dd",
+    format: "dd-mm-yyyy",
     todayBtn:  1,
     autoclose: 1,
     todayHighlight: 1,
