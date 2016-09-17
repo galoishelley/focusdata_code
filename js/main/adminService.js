@@ -224,7 +224,7 @@ $(document).ready(function() {
     }
 
   });
-  $("div.top").html('<a class="btn btn-primary" href="adminQryClinic.html"><span class="glyphicon  glyphicon-arrow-left"> 主页</span></a>');
+  $("div.top").html('<a class="btn btn-primary" href="adminQryClinic.php"><span class="glyphicon  glyphicon-arrow-left"> 主页</span></a>');
   // $("div#goon").html('<input type="number" min=1 name="jumpgo" id="jumpgo"/><button class="btn btn-default" id="btn_jumpgo">确认</button>');
   $("div.table_bottom").addClass('col-sm-12 col-md-12 col-lg-12');
   $("div#dataTables-example_info").addClass('col-sm-12 col-md-4 col-lg-3 pull-left');

@@ -67,7 +67,7 @@ include_once 'classes/Language/language.common.php';
                         </li>
                         <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.html"><?php echo $lang['MENU_clinicUpdUserInfo']; ?></a>
                         </li>
-                        <li id="li_Admin" class="hidden"><a href="adminQryClinic.html"><?php echo $lang['MENU_adminQryClinic']; ?></a></li>
+                        <li id="li_Admin" class="hidden"><a href="adminQryClinic.php"><?php echo $lang['MENU_adminQryClinic']; ?></a></li>
                     </ul>
                 </li>
                 <li class="sub-menu"><a href="#"><?php echo $lang['MENU_Language']; ?></a><span></span>

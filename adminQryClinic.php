@@ -1,3 +1,6 @@
+<?php
+include_once 'classes/Language/language.common.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,16 +68,13 @@
         <div class="container">
             <ul class="nav sf-menu clearfix">
                 <li id="li_home" class="hidden"><a href="index.php">home</a></li>
-                <li class="sub-menu active"><a href="index-1.html">our services</a><span></span>
+                <li class="sub-menu"><a href="#"><?php echo $lang['MENU_Language']; ?></a><span></span>
                     <ul class="submenu">
-                        <li id="li_SearchDoctor" class="hidden"><a href="searchDoctor.html">搜索|预约医生</a></li>
-                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.html">个人用户管理</a>
-                        </li>
-                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.html">诊所用户管理</a>
-                        </li>
-                        <li id="li_Admin" class="hidden"><a href="adminQryClinic.html">管理员管理</a></li>
+                        <li><a href="?lang=en">English</a></li>
+                        <li><a href="?lang=ch">中文</a></li>     
                     </ul>
                 </li>
+
                 <li><a href="index-2.html">about us</a></li>
                 <li><a href="index-3.html">staff</a></li>
                 <li><a href="index-4.html">Contacts</a></li>
@@ -84,6 +84,12 @@
                     <ul class="submenu hidden" id="sub_userinfo">
                         <li><a href="#" id="usertype"></a></li>
                         <li><a href="#">账户管理</a></li>
+                        <li id="li_SearchDoctor" class="hidden"><a href="searchDoctor.html">搜索|预约医生</a></li>
+                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.html">个人用户管理</a>
+                        </li>
+                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.html">诊所用户管理</a>
+                        </li>
+                        <li id="li_Admin" class="hidden"><a href="adminQryClinic.php">管理员管理</a></li>
                         <li><button class="btn btn-danger" id="btn_out">安全退出</button></li>
                     </ul>
                 </li>
@@ -100,7 +106,7 @@
         <div class="row left_con">
           <div class="col-lg-3 col-md-3 col-sm-3 wow fadeInUp" data-wow-delay="0.1s">
             <div class="list-group">
-              <a href="adminQryClinic.html" class="list-group-item active" id="user_appointment_recoder" >诊所用户管理</a>
+              <a href="adminQryClinic.php" class="list-group-item active" id="user_appointment_recoder" >诊所用户管理</a>
               <a href="adminQryUser.html" class="list-group-item" id="user_upd_person_pwd">个人用户管理</a>
               <a href="adminQryDoctor.html" class="list-group-item" id="user_upd_person_info">医生信息管理</a>
               <a href="adminUpdPwd.html" class="list-group-item" id="user_upd_person_pwd">修改管理员密码</a>
@@ -208,6 +214,33 @@
         </div>
     </div>
 </footer>
+
+
+<!-- 为了实现js多语言 begin -->
+
+<!-- 总开关，为了设置第三方库的多语言而设置 -->
+<div id="which_lang" style="display: none;"><?php echo $_SESSION ['lang']; ?></div>
+
+<!-- 密码重置成功! -->
+<div id="PageAdminQryClinicAlert_Password_reset_OK" style="display: none;"><?php echo $lang['PageAdminQryClinicAlert_Password_reset_OK']; ?></div>
+
+<!-- 请选择需要修改的数据 -->
+<div id="PageAdminQryClinicAlert_Please_choose_data" style="display: none;"><?php echo $lang['PageAdminQryClinicAlert_Please_choose_data']; ?></div>
+
+<!-- 确定修改 -->
+<div id="confirmUpdate" style="display: none;"><?php echo $lang['confirmUpdate']; ?></div>
+
+<!-- 您未登陆,无法使用此功能 -->
+<div id="notLogin" style="display: none;"><?php echo $lang['notLogin']; ?></div>
+
+<!-- 请修改个人信息，添加邮箱地址 -->
+<div id="updateInfo" style="display: none;"><?php echo $lang['updateInfo']; ?></div>
+
+
+<!-- 为了实现js多语言 end -->
+
+
+
 
 <!-- DataTables JavaScript -->
 <script src="bower_components/datatables/media/js/jquery.dataTables.min.js"></script>

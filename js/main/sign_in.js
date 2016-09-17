@@ -217,7 +217,7 @@ $(function(){
     }else if(fd_usertype==1){
       window.location.href="index.php";
     }else if(fd_usertype==2){
-      window.location.href="adminQryClinic.html";
+      window.location.href="adminQryClinic.php";
     }
 
     return false;

@@ -106,7 +106,7 @@ $(function(){
                 result = false;
               }
               // var data = ret.data[0];
-              window.location.href="adminQryClinic.html"; 
+              window.location.href="adminQryClinic.php"; 
             }else{
               alert("获取用户信息失败!" + ret.status.ret_code + " " + ret.status.ret_msg);
               result = false;

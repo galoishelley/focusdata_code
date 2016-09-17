@@ -2,6 +2,7 @@ var fd_usertype,fd_usertypename;
 var func_code,result;
 var lang;
 $(function(){
+
 	
 //	setLang($.cookie("language"));
 //	getAllLangInfo($.cookie("language"));

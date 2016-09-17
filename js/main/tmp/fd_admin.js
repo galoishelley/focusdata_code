@@ -1,11 +1,11 @@
 $(function(){
 
-	$("#right_admin").load("adminQryClinic.html");
+	$("#right_admin").load("adminQryClinic.php");
 	$("#admin_qry_clinic").addClass("list-group-item active");
 
 
 	$("#admin_qry_clinic").click(function(){
-		$("#right_admin").load("adminQryClinic.html");
+		$("#right_admin").load("adminQryClinic.php");
 		return false;
 	});
 	

@@ -4,6 +4,31 @@ var username,fd_userid,ilogin;
 var result;
 
 $(document).ready(function() {
+	
+  //设置BootstrapDialog I18N 2006/09/17 updated by alex
+  if($("#which_lang").html()=="en"){
+	  BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_DEFAULT] = 'Information';
+      BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_INFO] = 'Information';
+      BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_PRIMARY] = 'Information';
+      BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_SUCCESS] = 'Success';
+      BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_WARNING] = 'Warning';
+      BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_DANGER] = 'Danger';
+      BootstrapDialog.DEFAULT_TEXTS['OK'] = 'OK';
+      BootstrapDialog.DEFAULT_TEXTS['CANCEL'] = 'Cancel';
+      BootstrapDialog.DEFAULT_TEXTS['CONFIRM'] = 'Confirmation';
+  }
+  else if($("#which_lang").html()=="ch"){
+	  BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_DEFAULT] = '消息';
+      BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_INFO] = '消息';
+      BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_PRIMARY] = '消息';
+      BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_SUCCESS] = '成功';
+      BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_WARNING] = '警告';
+      BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_DANGER] = '危险';
+      BootstrapDialog.DEFAULT_TEXTS['OK'] = '确定';
+      BootstrapDialog.DEFAULT_TEXTS['CANCEL'] = '取消';
+      BootstrapDialog.DEFAULT_TEXTS['CONFIRM'] = '请确认';
+  }
+  else{}
 
   //登录cookie
   var ilogin = $.cookie("ilogin");
@@ -47,7 +72,7 @@ $(document).ready(function() {
   }
 
   if(ilogin == 0){
-    alert("您未登陆,无法使用此功能");
+    alert($('#notLogin').html());//您未登陆,无法使用此功能!
     history.go(-1);
     return false;
     // $('#a_userAppointmentRecoder').attr("href","#");
@@ -444,7 +469,7 @@ $(document).ready(function() {
       var email_text = "您的新密码:" + reset_pwd;
       
       if(!obj_data.CLINIC_USER_MAIL){
-        alert("请修改个人信息，添加邮箱地址");
+        alert($("#updateInfo").html()); //请修改个人信息，添加邮箱地址
         return false;
       }
       //alert(obj_data.CLINIC_USER_MAIL +" pwd:"+ reset_pwd);
@@ -462,19 +487,9 @@ $(document).ready(function() {
           },
           success: function (msg) {
         	  
-        	  alert('Password reset successfully!');
-               
-//              BootstrapDialog.show({
-//            	  title: '恭喜',
-//                  message: '密码重置成功！邮件已发送至用户邮箱！',
-//                  buttons: [{
-//                      label: '确定',
-//                      action: function(dialogItself){
-//                          dialogItself.close();
-//                      }
-//                  }]
-//              });
-             
+        	  
+        	  alert($("#PageAdminQryClinicAlert_Password_reset_OK").html()); //密码重置成功!
+
               
           },
           error: function(XMLHttpRequest, textStatus, errorThrown){
@@ -576,78 +591,85 @@ $(document).ready(function() {
     
     var sel = rowData.length;
     if(!sel){
-      alert("请选择需要修改的数据");
+    	alert($("#PageAdminQryClinicAlert_Please_choose_data").html());  //请选择需要修改的数据
       return false;
     }else{
-      var r=confirm("确定修改");
-      if (!r) return false;
-    }
+      
+    	
+      BootstrapDialog.confirm($('#confirmUpdate').html(), function(result){
+          if(result){
+        	  var CLINIC_USER_ID = [];
 
-    var CLINIC_USER_ID = [];
+        	    $.each(rowData,function(key,value){
+        	      CLINIC_USER_ID.push(value.CLINIC_USER_ID)
+        	    });
 
-    $.each(rowData,function(key,value){
-      CLINIC_USER_ID.push(value.CLINIC_USER_ID)
-    });
+        	    func_code = "AU06";
+        	    para={
+        	      action_type: "update_active",
+        	      ACTIVE_STATUS: 0,
+        	      CLINIC_USER_ID: CLINIC_USER_ID
+        	    }
+        	    
+        	    json_str = request_const(para, func_code, request_type);
 
-    func_code = "AU06";
-    para={
-      action_type: "update_active",
-      ACTIVE_STATUS: 0,
-      CLINIC_USER_ID: CLINIC_USER_ID
-    }
-    
-    json_str = request_const(para, func_code, request_type);
+        	    console.log(json_str);
 
-    console.log(json_str);
+        	    //请求
+        	    result=true;
+        	    $.ajax({
+        	      type: "POST",
+        	      url: "classes/class.ClinicDetail.php",
+        	      dataType: "json",
+        	      async:false,
+        	      data: {
+        	        request:json_str
+        	      },
+        	      success: function (msg) {
+        	          // console.log(msg);
+        	          var ret = msg.response;
+        	          if(ret.success){
+        	            if(json_str.sequ != ret.sequ){
+        	              alert(func_code+":时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
+        	              result=false;
+        	            }
 
-    //请求
-    result=true;
-    $.ajax({
-      type: "POST",
-      url: "classes/class.ClinicDetail.php",
-      dataType: "json",
-      async:false,
-      data: {
-        request:json_str
-      },
-      success: function (msg) {
-          // console.log(msg);
-          var ret = msg.response;
-          if(ret.success){
-            if(json_str.sequ != ret.sequ){
-              alert(func_code+":时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
-              result=false;
-            }
+        	            func_code = "AU02";
+        	            //form序列化成json
+        	            json_form = $('#adminQryClinic_form').serializeObject();
 
-            func_code = "AU02";
-            //form序列化成json
-            json_form = $('#adminQryClinic_form').serializeObject();
+        	            //生成输入参数
+        	            json_str = request_const(json_form,func_code,1);
 
-            //生成输入参数
-            json_str = request_const(json_form,func_code,1);
+        	            console.log(json_str);
 
-            console.log(json_str);
+        	            _table.ajax.reload();
+        	            $("#chk_all").prop("checked",false);
 
-            _table.ajax.reload();
-            $("#chk_all").prop("checked",false);
-
-          }else{
-            alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
-            result=false;
+        	          }else{
+        	            alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
+        	            result=false;
+        	          }
+        	          
+        	      },
+        	      error: function(XMLHttpRequest, textStatus, errorThrown){
+        	        //请求失败之后的操作
+        	        var ret_code = "999999";
+        	        var ret_msg = "失败,请联系管理员!";
+        	        alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+        	        result=false;
+        	      }
+        	    });
           }
-          
-      },
-      error: function(XMLHttpRequest, textStatus, errorThrown){
-        //请求失败之后的操作
-        var ret_code = "999999";
-        var ret_msg = "失败,请联系管理员!";
-        alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
-        result=false;
-      }
-    });
-    if(!result){
-      return result;
+        	  
+        	  
+        	  
+      });
+      
+      
+      
     }
+
     return false;
   });
 
@@ -657,78 +679,87 @@ $(document).ready(function() {
     
     var sel = rowData.length;
     if(!sel){
-      alert("请选择需要修改的数据");
+    	alert($("#PageAdminQryClinicAlert_Please_choose_data").html());//请选择需要修改的数据
       return false;
     }else{
-      var r=confirm("确定修改");
-      if (!r) return false;
-    }
+    	
+    	
+      //改confirm方法为bootstrapDialog 2006/09/17 updated by alex
+      BootstrapDialog.confirm($('#confirmUpdate').html(), function(result){
+          if(result){
+        	  var CLINIC_USER_ID = [];
 
-    var CLINIC_USER_ID = [];
+        	    $.each(rowData,function(key,value){
+        	      CLINIC_USER_ID.push(value.CLINIC_USER_ID)
+        	    });
 
-    $.each(rowData,function(key,value){
-      CLINIC_USER_ID.push(value.CLINIC_USER_ID)
-    });
+        	    func_code = "AU06";
+        	    para={
+        	      action_type: "update_active",
+        	      ACTIVE_STATUS: 1,
+        	      CLINIC_USER_ID: CLINIC_USER_ID
+        	    }
 
-    func_code = "AU06";
-    para={
-      action_type: "update_active",
-      ACTIVE_STATUS: 1,
-      CLINIC_USER_ID: CLINIC_USER_ID
-    }
+        	    json_str = request_const(para, func_code, request_type);
 
-    json_str = request_const(para, func_code, request_type);
+        	    console.log(json_str);
 
-    console.log(json_str);
+        	    //请求
+        	    result=true;
+        	    $.ajax({
+        	      type: "POST",
+        	      url: "classes/class.ClinicDetail.php",
+        	      dataType: "json",
+        	      async:false,
+        	      data: {
+        	        request:json_str
+        	      },
+        	      success: function (msg) {
+        	          // console.log(msg);
+        	          var ret = msg.response;
+        	          if(ret.success){
+        	            if(json_str.sequ != ret.sequ){
+        	              alert(func_code+":时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
+        	              result=false;
+        	            }
 
-    //请求
-    result=true;
-    $.ajax({
-      type: "POST",
-      url: "classes/class.ClinicDetail.php",
-      dataType: "json",
-      async:false,
-      data: {
-        request:json_str
-      },
-      success: function (msg) {
-          // console.log(msg);
-          var ret = msg.response;
-          if(ret.success){
-            if(json_str.sequ != ret.sequ){
-              alert(func_code+":时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
-              result=false;
-            }
+        	            func_code = "AU02";
+        	            //form序列化成json
+        	            json_form = $('#adminQryClinic_form').serializeObject();
 
-            func_code = "AU02";
-            //form序列化成json
-            json_form = $('#adminQryClinic_form').serializeObject();
+        	            //生成输入参数
+        	            json_str = request_const(json_form,func_code,1);
 
-            //生成输入参数
-            json_str = request_const(json_form,func_code,1);
+        	            console.log(json_str);
 
-            console.log(json_str);
+        	            _table.ajax.reload();
+        	            $("#chk_all").prop("checked",false);
 
-            _table.ajax.reload();
-            $("#chk_all").prop("checked",false);
-
-          }else{
-            alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
-            result=false;
+        	          }else{
+        	            alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
+        	            result=false;
+        	          }
+        	          
+        	      },
+        	      error: function(XMLHttpRequest, textStatus, errorThrown){
+        	        //请求失败之后的操作
+        	        var ret_code = "999999";
+        	        var ret_msg = "失败,请联系管理员!";
+        	        alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+        	        result=false;
+        	      }
+        	    });
+        	  
           }
-          
-      },
-      error: function(XMLHttpRequest, textStatus, errorThrown){
-        //请求失败之后的操作
-        var ret_code = "999999";
-        var ret_msg = "失败,请联系管理员!";
-        alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
-        result=false;
-      }
-    });
-    if(!result){
-      return result;
+        	  
+        	  
+        	  
+      });
+      
+
+      
     }
+
     return false;
   });
 

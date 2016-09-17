@@ -14,7 +14,7 @@ $lang['HOME_LOGO']='logo_cn.png';
 
 // Menu
 $lang['MENU_HOME'] = '首页';
-// $lang['MENU_our_service'] = '我们的服务';
+
 $lang['MENU_searchDoctor'] = '搜索|预约医生';
 $lang['MENU_userAppointmentRecoder'] = '个人用户管理';
 $lang['MENU_clinicUpdUserInfo'] = '诊所用户管理';
@@ -27,6 +27,14 @@ $lang['MENU_sign_in'] = '登陆';
 $lang['MENU_sign_up_person'] = '注册';
 $lang['MENU_guest'] = '游客';
 $lang['MENU_sign_out'] = '安全退出';
+
+
+//Common
+$lang['confirmUpdate'] = '确认修改?';
+$lang['notLogin'] = '您未登陆,无法使用此功能';
+
+$lang['updateInfo']= '请修改个人信息，添加邮箱地址';
+
 
 // Page Sign In
 $lang['PageSignInSignIn'] = '登陆';
@@ -42,6 +50,11 @@ $lang['PageSignInAdmin'] = '管理员';
 $lang['PageSignInRememberMe'] = '记住我';
 $lang['PageSignInBtnSignIn'] = '登陆';
 $lang['PageSignInBtnForgetPWD'] = '忘记密码?';
+
+
+// Page AdminQryClinic
+$lang['PageAdminQryClinicAlert_Password_reset_OK'] = '密码重置成功!';
+$lang['PageAdminQryClinicAlert_Please_choose_data'] = '请选择需要修改的数据';
 
 
 ?>
