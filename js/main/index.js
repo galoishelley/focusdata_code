@@ -2,60 +2,97 @@ var fd_usertype,fd_usertypename;
 var func_code,result;
 var lang;
 $(function(){
-
-	// 解析地址栏
-	function GetQueryString(name)
-	{
-	     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-	     var r = window.location.search.substr(1).match(reg);
-	     if(r!=null)return  unescape(r[2]); return null;
-	}
-
-	var myurl=GetQueryString("lang");
-	if(myurl !=null && myurl.toString().length>1)
-	{
-	   lang=GetQueryString("lang");
-	}else{
-		lang = "en";
-	}
-
-	if(lang == "cn"){
-		 url = "classes/Language/index.cn.json";
-	}
-	if(lang == "en"){
-		 url = "classes/Language/index.en.json";
-	}
-
-	//设置语言 begin
-	//获取用户基本信息
-	func_code="0000";
-    result = true;
-    $.ajax({
-        type: "POST",
-        url: url,
-        dataType: "json",
-        data: "",
-        success: callbackFun,
-        // success: function (msg) {
-        //     console.log(msg.index);
-        //     var ret = msg.index;
-        //     lang_data = ret;
-        //     console.log(ret);
-        // },
-        error: function(XMLHttpRequest, textStatus, errorThrown){
-  			//请求失败之后的操作
-			var ret_code = "999999";
-			var ret_msg = "失败,请联系管理员!";
-			alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
-			result=false;
-       }
+//	setLang($.cookie("language"));
+//	getAllLangInfo($.cookie("language"));
+	
+//	$.ajax({
+//        type: "POST",
+//        url: "classes/Language/getLanguage.php",
+//        dataType: "text",
+//        async: "false",
+//        success: function (lang) {
+//        	getAllLangInfo(lang);
+//        },
+//        error: function(XMLHttpRequest, textStatus, errorThrown){
+//  			//请求失败之后的操作
+//			var ret_code = "999999";
+//			var ret_msg = "失败,请联系管理员!";
+//			alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+//			result=false;
+//       }
+//	});
+	
+	
+	
+	$( "#li_Chinese" ).click(function() {
+		
+		$.cookie("language", "ch"); 
+		setLang($.cookie("language"));
+		
+//		getAllLangInfo("ch");
+//		$.ajax({
+//	        type: "POST",
+//	        url: "classes/Language/setLanguage.php",
+//	        dataType: "text",
+//	        data: { language: "ch"},
+//	        success: function () {
+//	        	getAllLangInfo("ch");
+//	        },
+//	        error: function(XMLHttpRequest, textStatus, errorThrown){
+//	  			//请求失败之后的操作
+//				var ret_code = "999999";
+//				var ret_msg = "失败,请联系管理员!";
+//				alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+//				result=false;
+//	       }
+//		});
 	});
-	if(!result){
-      return result;
-    }
+	
+	$( "#li_English" ).click(function() {
+		$.cookie("language", "en"); 
+		setLang($.cookie("language"));
+//		getAllLangInfo("en");
+//		$.ajax({
+//	        type: "POST",
+//	        url: "classes/Language/setLanguage.php",
+//	        dataType: "text",
+//	        data: { language: "en"},
+//	        success: function () {
+//	        	getAllLangInfo("en");
+//	        },
+//	        error: function(XMLHttpRequest, textStatus, errorThrown){
+//	  			//请求失败之后的操作
+//				var ret_code = "999999";
+//				var ret_msg = "失败,请联系管理员!";
+//				alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+//				result=false;
+//	       }
+//		});
+	});
 
-    function callbackFun(msg){
-		var ret = msg.index;
+//	// 解析地址栏
+//	function GetQueryString(name)
+//	{
+//	     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+//	     var r = window.location.search.substr(1).match(reg);
+//	     if(r!=null)return  unescape(r[2]); return null;
+//	}
+//
+//	var myurl=GetQueryString("lang");
+//	if(myurl !=null && myurl.toString().length>1)
+//	{
+//	   lang=GetQueryString("lang");
+//	}else{
+//		lang = "en";
+//	}
+
+	function setLang(w)
+	{
+		if(w!="ch"){
+			w="en";
+		}
+		
+		var ret = arrLang[w];
 		$('title').text(ret.title);
 		$('#li_home>a').text(ret.menu.home);
 		$('#li_language>a').text(ret.menu.language);
@@ -65,16 +102,70 @@ $(function(){
 	    $('#sign_in>a').text(ret.menu.signin);
 	    $('#sign_up>a').text(ret.menu.signup);
 	    $('#li_tourist>a').text(ret.menu.tourist);
-	    	$('#usertype').text(ret.menu.usertype);
-	    	$('#li_SearchDoctor>a').text(ret.menu.searchdoctor);
+	    $('#usertype').text(ret.menu.usertype);
+	    $('#li_SearchDoctor>a').text(ret.menu.searchdoctor);
 	    	
 	    $('#navbar-brand-img>a>img').attr("src","img/"+ret.menu.navbar_brand_img);
-	    
-	};
+	}
+	function getAllLangInfo(lang)
+	{
+		if(lang == "ch"){
+			 url = "classes/Language/index.cn.json";
+		}
+		else{
+			 url = "classes/Language/index.en.json";
+		}
 
-    // console.log(lang_data);
+		func_code="0000";
+	    result = true;
+	    $.ajax({
+	        type: "POST",
+	        url: url,
+	        dataType: "json",
+	        async: "false",
+	        data: "",
+	        success: callbackFun,
+	        error: function(XMLHttpRequest, textStatus, errorThrown){
+	  			//请求失败之后的操作
+				var ret_code = "999999";
+				var ret_msg = "失败,请联系管理员!";
+				alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+				result=false;
+	       }
+		});
+		if(!result){
+	      return result;
+	    }
+
+	    function callbackFun(msg){
+			var ret = msg.index;
+			$('title').text(ret.title);
+			$('#li_home>a').text(ret.menu.home);
+			$('#li_language>a').text(ret.menu.language);
+		    $('#li_aboutus>a').text(ret.menu.aboutus);
+		    $('#li_staff>a').text(ret.menu.staff);
+		    $('#li_contacts>a').text(ret.menu.contacts);
+		    $('#sign_in>a').text(ret.menu.signin);
+		    $('#sign_up>a').text(ret.menu.signup);
+		    $('#li_tourist>a').text(ret.menu.tourist);
+		    	$('#usertype').text(ret.menu.usertype);
+		    	$('#li_SearchDoctor>a').text(ret.menu.searchdoctor);
+		    	
+		    $('#navbar-brand-img>a>img').attr("src","img/"+ret.menu.navbar_brand_img);
+		    
+		};
+	}
+	
+
+    console.log($.cookie("fd_usertype"));
 
 	// 设置语言 end
+	
+	//guest无需显示退出和用户类型
+	if($.cookie("fd_usertype") == undefined){
+		$('#btn_out').hide();
+		$('#usertype').hide();
+	}
 
  	//退出登录
 	$('#btn_out').click(function(){
@@ -86,7 +177,8 @@ $(function(){
 			$.cookie("fd_userid", "");
 			$.cookie("fd_username", "");
 			$.cookie("fd_password", "");
-			$.cookie("fd_usertype", "");
+			//$.cookie("fd_usertype", "");
+			$.removeCookie("fd_usertype");
 		}
 	});
 

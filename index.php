@@ -1,8 +1,11 @@
 <!--v1.3-->
+<?php
+include_once 'classes/Language/language.common.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Home</title>
+<title><?php echo $lang['PAGE_TITLE_HOME']; ?></title>
 <meta charset="utf-8">    
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="img/favicon.ico" type="image/x-icon">
@@ -60,36 +63,37 @@
     <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
         <div class="container">
             <ul class="nav sf-menu clearfix">
-                <li id="li_home" class="hidden active"><a href="index.php">home</a></li>
-                <li id="li_language" class="sub-menu"><a href="#">language</a><span></span>
+                <li id="li_home" class="hidden active"><a href="index.php"><?php echo $lang['MENU_HOME']; ?></a></li>
+                
+                <li class="sub-menu"><a href="#"><?php echo $lang['MENU_Language']; ?></a><span></span>
                     <ul class="submenu">
                         <li><a href="?lang=en">English</a></li>
-                        <li><a href="?lang=cn">中文</a></li>     
+                        <li><a href="?lang=ch">中文</a></li>     
                     </ul>
                 </li>
-                <li id="li_aboutus"><a href="index-2.html">about us</a></li>
-                <li id="li_staff"><a href="index-3.html">staff</a></li>
-                <li id="li_contacts"><a href="index-4.html">contacts</a></li>
-                <li id="sign_in" class="hidden"><a href="sign_in.php">sign in</a></li>
-                <li id="sign_up" class="hidden"><a href="sign_up_person.html">sign up</a></li>
-                <li id="li_tourist" class="sub-menu tourist"><a href="#" id="userinfo">tourist</a><span></span>
-                    <ul class="submenu">
+                <li><a href="index-2.html"><?php echo $lang['MENU_aboutus']; ?></a></li>
+                <li><a href="index-3.html"><?php echo $lang['MENU_staff']; ?></a></li>
+                <li><a href="index-4.html"><?php echo $lang['MENU_Contacts']; ?></a></li>
+                <li id="sign_in"><a href="sign_in.php"><?php echo $lang['MENU_sign_in']; ?></a></li>
+                <li id="sign_up"><a href="sign_up_person.html"><?php echo $lang['MENU_sign_up_person']; ?></a></li>
+                <li class="sub-menu tourist"><a href="#" id="userinfo"><?php echo $lang['MENU_guest']; ?></a><span></span>
+                    <ul class="submenu" id="sub_userinfo">
                         <li><a href="#" id="usertype"></a></li>
 
-                        <li id="li_SearchDoctor" class="hidden"><a href="searchDoctor.html">SEARCH DOCTOR</a></li>
-                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.html"></a>User Manage
+                        <li id="li_SearchDoctor" class="hidden"><a href="searchDoctor.html"><?php echo $lang['MENU_searchDoctor']; ?></a></li>
+                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.html"><?php echo $lang['MENU_userAppointmentRecoder']; ?></a>
                         </li>
-                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.html">Clinic User Manage</a>
+                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.html"><?php echo $lang['MENU_clinicUpdUserInfo']; ?></a>
                         </li>
-                        <li id="li_Admin" class="hidden"><a href="adminQryClinic.html">Admin Manage</a></li>
+                        <li id="li_Admin" class="hidden"><a href="adminQryClinic.html"><?php echo $lang['MENU_adminQryClinic']; ?></a></li>
                         
-                        <li id="login_out" class="hidden"><button class="btn btn-danger" id="btn_out">LOGIN OUT</button></li>
+                        <li><button class="btn btn-danger" id="btn_out"><?php echo $lang['MENU_sign_out']; ?></button></li>
                     </ul>
                 </li>
             </ul>
         </div>
     </nav>
-    <h1 id="navbar-brand-img" class="navbar-brand navbar-brand_"><a href="#"><img src="img/logo_en.png" alt="logo"></a></h1>
+    <h1 class="navbar-brand navbar-brand_"><a href="#"><img src="img/<?php echo $lang['HOME_LOGO']; ?>" alt="logo"></a></h1>
 </header>
 <!--content-->
 <div class="content"> 

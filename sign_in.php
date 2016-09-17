@@ -60,7 +60,7 @@ include_once 'classes/Language/language.common.php';
         <div class="container">
             <ul class="nav sf-menu clearfix">
                 <li><a href="index.php"><?php echo $lang['MENU_HOME']; ?></a></li>
-                <li class="sub-menu"><a href="index-1.html"><?php echo $lang['MENU_our_service']; ?></a><span></span>
+                <li class="sub-menu"><a href="index-1.html">xxxx</a><span></span>
                     <ul class="submenu">
                         <li><a href="searchDoctor.html"><?php echo $lang['MENU_searchDoctor']; ?></a></li>
                         <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.html"><?php echo $lang['MENU_userAppointmentRecoder']; ?></a>

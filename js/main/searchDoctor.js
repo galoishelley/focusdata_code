@@ -305,6 +305,8 @@ $(function(){
  		"destroy": false,
  		"ordering": false,//全局禁用排序
 
+ 		"iDeferLoading": true, //禁止加载页面自动load数据
+
 	    "ajax": {
 			"type": "POST",
 			"url": "classes/class.searchDoctor.php",
@@ -488,7 +490,7 @@ $(function(){
 	       "sInfo": "当前显示 _START_ 到 _END_ 条,共 _TOTAL_ 条记录",
 	       "sInfoEmpty": "当前显示0到0条，共0条记录",
 	       "sInfoFiltered": "（数据库中共为 _MAX_ 条记录）",
-	       "sProcessing": "<img src='../resources/user_share/row_details/select2-spinner.gif'/> 正在加载数据...",
+	       "sProcessing": "<img src='img/spinner.gif'/> 正在加载数据...",
 	       "sSearch": "模糊查询：",
 	       "sUrl": "",
 	       //多语言配置文件，可将oLanguage的设置放在一个txt文件中，例：Javascript/datatable/dtCH.txt
