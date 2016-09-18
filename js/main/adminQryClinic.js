@@ -3,9 +3,11 @@ var func_code,request_type;
 var username,fd_userid,ilogin;
 var result;
 
+var datatable_lang_url;
+
 $(document).ready(function() {
 	
-  //设置BootstrapDialog I18N 2006/09/17 updated by alex
+  //设置BootstrapDialog & Datatable I18N 2006/09/17 updated by alex
   if($("#which_lang").html()=="en"){
 	  BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_DEFAULT] = 'Information';
       BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_INFO] = 'Information';
@@ -16,6 +18,8 @@ $(document).ready(function() {
       BootstrapDialog.DEFAULT_TEXTS['OK'] = 'OK';
       BootstrapDialog.DEFAULT_TEXTS['CANCEL'] = 'Cancel';
       BootstrapDialog.DEFAULT_TEXTS['CONFIRM'] = 'Confirmation';
+      
+      datatable_lang_url="//cdn.datatables.net/plug-ins/1.10.12/i18n/English.json";
   }
   else if($("#which_lang").html()=="ch"){
 	  BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_DEFAULT] = '消息';
@@ -27,6 +31,8 @@ $(document).ready(function() {
       BootstrapDialog.DEFAULT_TEXTS['OK'] = '确定';
       BootstrapDialog.DEFAULT_TEXTS['CANCEL'] = '取消';
       BootstrapDialog.DEFAULT_TEXTS['CONFIRM'] = '请确认';
+      
+      datatable_lang_url="//cdn.datatables.net/plug-ins/1.10.12/i18n/Chinese.json";
   }
   else{}
 
@@ -72,7 +78,7 @@ $(document).ready(function() {
   }
 
   if(ilogin == 0){
-    alert($('#notLogin').html());//您未登陆,无法使用此功能!
+    alert($('#Lang0019').html());//您未登陆,无法使用此功能!
     history.go(-1);
     return false;
     // $('#a_userAppointmentRecoder').attr("href","#");
@@ -298,30 +304,33 @@ $(document).ready(function() {
           "data": "CLINIC_USER_ID"
         }
       ],
+      
+      
+      "oLanguage": { "sUrl": datatable_lang_url },
 
-      "oLanguage": {
-         "oAria": {
-             "sSortAscending": " - click/return to sort ascending",
-             "sSortDescending": " - click/return to sort descending"
-         },
-         "sLengthMenu": "显示 _MENU_ 记录",
-         "sZeroRecords": "对不起，查询不到任何相关数据",
-         "sEmptyTable": "未有相关数据",
-         "sLoadingRecords": "正在加载数据-请等待...",
-         "sInfo": "当前显示 _START_ 到 _END_ 条,共 _TOTAL_ 条记录",
-         "sInfoEmpty": "当前显示0到0条，共0条记录",
-         "sInfoFiltered": "（数据库中共为 _MAX_ 条记录）",
-         "sProcessing": "<img src='../resources/user_share/row_details/select2-spinner.gif'/> 正在加载数据...",
-         "sSearch": "模糊查询：",
-         "sUrl": "",
-         //多语言配置文件，可将oLanguage的设置放在一个txt文件中，例：Javascript/datatable/dtCH.txt
-         "oPaginate": {
-             "sFirst": "首页",
-             "sPrevious": " << ",
-             "sNext": " >> ",
-             "sLast": " 尾页 "
-        }
-      },
+//      "oLanguage": {
+//         "oAria": {
+//             "sSortAscending": " - click/return to sort ascending",
+//             "sSortDescending": " - click/return to sort descending"
+//         },
+//         "sLengthMenu": "显示 _MENU_ 记录",
+//         "sZeroRecords": "对不起，查询不到任何相关数据",
+//         "sEmptyTable": "未有相关数据",
+//         "sLoadingRecords": "正在加载数据-请等待...",
+//         "sInfo": "当前显示 _START_ 到 _END_ 条,共 _TOTAL_ 条记录",
+//         "sInfoEmpty": "当前显示0到0条，共0条记录",
+//         "sInfoFiltered": "（数据库中共为 _MAX_ 条记录）",
+//         "sProcessing": "<img src='../resources/user_share/row_details/select2-spinner.gif'/> 正在加载数据...",
+//         "sSearch": "模糊查询：",
+//         "sUrl": "",
+//         //多语言配置文件，可将oLanguage的设置放在一个txt文件中，例：Javascript/datatable/dtCH.txt
+//         "oPaginate": {
+//             "sFirst": "首页",
+//             "sPrevious": " << ",
+//             "sNext": " >> ",
+//             "sLast": " 尾页 "
+//        }
+//      },
 
       "columnDefs": [
         {
@@ -469,7 +478,7 @@ $(document).ready(function() {
       var email_text = "您的新密码:" + reset_pwd;
       
       if(!obj_data.CLINIC_USER_MAIL){
-        alert($("#updateInfo").html()); //请修改个人信息，添加邮箱地址
+        alert($("#Lang0020").html()); //请修改个人信息，添加邮箱地址
         return false;
       }
       //alert(obj_data.CLINIC_USER_MAIL +" pwd:"+ reset_pwd);
@@ -488,7 +497,7 @@ $(document).ready(function() {
           success: function (msg) {
         	  
         	  
-        	  alert($("#PageAdminQryClinicAlert_Password_reset_OK").html()); //密码重置成功!
+        	  alert($("#Lang0032").html()); //密码重置成功!
 
               
           },
@@ -591,12 +600,12 @@ $(document).ready(function() {
     
     var sel = rowData.length;
     if(!sel){
-    	alert($("#PageAdminQryClinicAlert_Please_choose_data").html());  //请选择需要修改的数据
+    	alert($("#Lang0033").html());  //请选择需要修改的数据
       return false;
     }else{
       
     	
-      BootstrapDialog.confirm($('#confirmUpdate').html(), function(result){
+      BootstrapDialog.confirm($('#Lang0018').html(), function(result){
           if(result){
         	  var CLINIC_USER_ID = [];
 
@@ -679,13 +688,13 @@ $(document).ready(function() {
     
     var sel = rowData.length;
     if(!sel){
-    	alert($("#PageAdminQryClinicAlert_Please_choose_data").html());//请选择需要修改的数据
+    	alert($("#Lang0033").html());//请选择需要修改的数据
       return false;
     }else{
     	
     	
       //改confirm方法为bootstrapDialog 2006/09/17 updated by alex
-      BootstrapDialog.confirm($('#confirmUpdate').html(), function(result){
+      BootstrapDialog.confirm($('#Lang0018').html(), function(result){
           if(result){
         	  var CLINIC_USER_ID = [];
 

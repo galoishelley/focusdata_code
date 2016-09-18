@@ -4,7 +4,7 @@ include_once 'classes/Language/language.common.php';
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title><?php echo $lang['PAGE_TITLE_SIGN_IN']; ?></title>
+<title><?php echo $lang['Lang0002']; ?></title>
 <meta charset="utf-8">    
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="img/favicon.ico" type="image/x-icon">
@@ -59,39 +59,39 @@ include_once 'classes/Language/language.common.php';
     <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
         <div class="container">
             <ul class="nav sf-menu clearfix">
-                <li><a href="index.php"><?php echo $lang['MENU_HOME']; ?></a></li>
+                <li><a href="index.php"><?php echo $lang['Lang0005']; ?></a></li>
                 <li class="sub-menu"><a href="index-1.html">xxxx</a><span></span>
                     <ul class="submenu">
-                        <li><a href="searchDoctor.html"><?php echo $lang['MENU_searchDoctor']; ?></a></li>
-                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.html"><?php echo $lang['MENU_userAppointmentRecoder']; ?></a>
+                        <li><a href="searchDoctor.html"><?php echo $lang['Lang0006']; ?></a></li>
+                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.html"><?php echo $lang['Lang0007']; ?></a>
                         </li>
-                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.html"><?php echo $lang['MENU_clinicUpdUserInfo']; ?></a>
+                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.html"><?php echo $lang['Lang0008']; ?></a>
                         </li>
-                        <li id="li_Admin" class="hidden"><a href="adminQryClinic.php"><?php echo $lang['MENU_adminQryClinic']; ?></a></li>
+                        <li id="li_Admin" class="hidden"><a href="adminQryClinic.php"><?php echo $lang['Lang0009']; ?></a></li>
                     </ul>
                 </li>
-                <li class="sub-menu"><a href="#"><?php echo $lang['MENU_Language']; ?></a><span></span>
+                <li class="sub-menu"><a href="#"><?php echo $lang['Lang0010']; ?></a><span></span>
                     <ul class="submenu">
                         <li><a href="?lang=en">English</a></li>
                         <li><a href="?lang=ch">中文</a></li>     
                     </ul>
                 </li>
-                <li><a href="index-2.html"><?php echo $lang['MENU_aboutus']; ?></a></li>
-                <li><a href="index-3.html"><?php echo $lang['MENU_staff']; ?></a></li>
-                <li><a href="index-4.html"><?php echo $lang['MENU_Contacts']; ?></a></li>
-                <li class="active"><a href="sign_in.php"><?php echo $lang['MENU_sign_in']; ?></a></li>
-                <li><a href="sign_up_person.html"><?php echo $lang['MENU_sign_up_person']; ?></a></li>
-                <li class="sub-menu tourist"><a href="#" id="userinfo"><?php echo $lang['MENU_guest']; ?></a><span></span>
+                <li><a href="index-2.html"><?php echo $lang['Lang0011']; ?></a></li>
+                <li><a href="index-3.html"><?php echo $lang['Lang0012']; ?></a></li>
+                <li><a href="index-4.html"><?php echo $lang['Lang0013']; ?></a></li>
+                <li class="active"><a href="sign_in.php"><?php echo $lang['Lang0014']; ?></a></li>
+                <li><a href="sign_up_person.html"><?php echo $lang['Lang0015']; ?></a></li>
+                <li class="sub-menu tourist"><a href="#" id="userinfo"><?php echo $lang['Lang0016']; ?></a><span></span>
                     <ul class="submenu hidden" id="sub_userinfo">
                         <li><a href="#" id="usertype"></a></li>
 
-                        <li><button class="btn btn-danger" id="btn_out"><?php echo $lang['MENU_sign_out']; ?></button></li>
+                        <li><button class="btn btn-danger" id="btn_out"><?php echo $lang['Lang0017']; ?></button></li>
                     </ul>
                 </li>
             </ul>
         </div>
     </nav>
-    <h1 class="navbar-brand navbar-brand_"><a href="index.php"><img src="img/<?php echo $lang['HOME_LOGO']; ?>" alt="logo"></a></h1>
+    <h1 class="navbar-brand navbar-brand_"><a href="index.php"><img src="img/<?php echo $lang['Lang0004']; ?>" alt="logo"></a></h1>
 </header>
 
 <!--content-->
@@ -100,7 +100,7 @@ include_once 'classes/Language/language.common.php';
 		<div class="thumb-box9" data-stellar-background-ratio="0.1">
 			<div class="container">
 				<div class="row df_content col-md-8 col-md-offset-2">
-					<h2 class="wow fadeInRight"><?php echo $lang['PageSignInSignIn']; ?></h2>
+					<h2 class="wow fadeInRight"><?php echo $lang['Lang0021']; ?></h2>
 					<!-- <div>&nbsp;</div>
 					<h2 class="indent">Sign in</h2> -->
 					<form class="form-horizontal wow fadeInUp" role="form" id="signin_form" >
@@ -113,52 +113,52 @@ include_once 'classes/Language/language.common.php';
 								<span id="inputError2Status" class="sr-only">(error)</span>
 							</div> -->
 							<div class="form-group">
-							    <label for="USER_NAME" class="col-sm-2 control-label"><?php echo $lang['PageSignInUser']; ?><span class="span-red">*</span></label>
+							    <label for="USER_NAME" class="col-sm-2 control-label"><?php echo $lang['Lang0022']; ?><span class="span-red">*</span></label>
 							    <div class="col-sm-10">
-							      <input type="text" class="form-control" id="USER_NAME" name="USER_NAME" placeholder="<?php echo $lang['PageSignInUserHint']; ?>" autofocus >
+							      <input type="text" class="form-control" id="USER_NAME" name="USER_NAME" placeholder="<?php echo $lang['Lang0023']; ?>" autofocus >
 							    </div>
 							</div>
 							<div class="form-group">
-							    <label for="USER_PWD" class="col-sm-2 control-label"><?php echo $lang['PageSignInPWD']; ?><span class="span-red">*</span></label>
+							    <label for="USER_PWD" class="col-sm-2 control-label"><?php echo $lang['Lang0024']; ?><span class="span-red">*</span></label>
 							    <div class="col-sm-10">
-							      <input type="password" class="form-control" id="USER_PWD" name="USER_PWD" placeholder="<?php echo $lang['PageSignInPWDHint']; ?>">
+							      <input type="password" class="form-control" id="USER_PWD" name="USER_PWD" placeholder="<?php echo $lang['Lang0025']; ?>">
 							    </div>
 							</div>
 
 							<div class="radio col-sm-10 col-sm-offset-2">
 							  <label>
 							    <input type="radio" name="usertype" id="usertype" value="0">
-							    <?php echo $lang['PageSignInClinic']; ?>
+							    <?php echo $lang['Lang0026']; ?>
 							  </label>
 							</div>
 							<div class="radio col-sm-10 col-sm-offset-2">
 							  <label>
 							    <input type="radio" name="usertype" id="usertype" value="1" checked>
-							   	<?php echo $lang['PageSignInPerson']; ?>
+							   	<?php echo $lang['Lang0027']; ?>
 							  </label>
 							</div>
 							<div class="radio col-sm-10 col-sm-offset-2">
 							  <label>
 							    <input type="radio" name="usertype" id="usertype" value="2">
-							   <?php echo $lang['PageSignInAdmin']; ?>
+							   <?php echo $lang['Lang0028']; ?>
 							  </label>
 							</div>
 
 							<div class="checkbox col-sm-10 col-sm-offset-2">
 							  <label>
 							    <input type="checkbox" value="" id="ck_rmbUser">
-							   	<?php echo $lang['PageSignInRememberMe']; ?>
+							   	<?php echo $lang['Lang0029']; ?>
 							  </label>
 							</div>
 							
 							<div class="row">
 								<div class="form-group pull-right">
-									<button class="btn btn-lg btn-primary btn-block" id="signin_ok"><?php echo $lang['PageSignInBtnSignIn']; ?></button>
+									<button class="btn btn-lg btn-primary btn-block" id="signin_ok"><?php echo $lang['Lang0030']; ?></button>
 								 </div>
 							</div>
 							<div class="row">
 								<div class="form-group pull-right">
-									<a href="forgotpwd.html"><strong><?php echo $lang['PageSignInBtnForgetPWD']; ?></strong></a>
+									<a href="forgotpwd.html"><strong><?php echo $lang['Lang0031']; ?></strong></a>
 									<!-- <div class="pull-right">sign in</div> -->
 								</div>
 							</div>
