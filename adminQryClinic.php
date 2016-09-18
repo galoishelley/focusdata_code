@@ -236,6 +236,15 @@ include_once 'classes/Language/language.common.php';
 <!-- 请修改个人信息，添加邮箱地址 -->
 <div id="Lang0020" style="display: none;"><?php echo $lang['Lang0020']; ?></div>
 
+<!-- 详细 -->
+<div id="Lang0056" style="display: none;"><?php echo $lang['Lang0056']; ?></div>
+
+<!-- 修改-->
+<div id="Lang0057" style="display: none;"><?php echo $lang['Lang0057']; ?></div>
+
+<!-- 密码重置 -->
+<div id="Lang0058" style="display: none;"><?php echo $lang['Lang0058']; ?></div>
+
 
 <!-- 为了实现js多语言 end -->
 

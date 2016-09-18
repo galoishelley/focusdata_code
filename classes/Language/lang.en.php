@@ -86,4 +86,8 @@ $lang['Lang0052'] = 'State';
 $lang['Lang0053'] = 'Postcode';
 $lang['Lang0054'] = 'Status';
 $lang['Lang0055'] = 'Action';
+
+$lang['Lang0056'] = 'Detail';
+$lang['Lang0057'] = 'Update';
+$lang['Lang0058'] = 'Pwd Reset';
 ?>

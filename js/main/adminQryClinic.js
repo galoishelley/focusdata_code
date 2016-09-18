@@ -295,7 +295,7 @@ $(document).ready(function() {
           //     opr="<img id='img_info' src='img/td_info.png'/><img id='img_upd' src='img/td_upd.png'/><img id='img_reset' src='img/td_reset.png'/>";
           //     return opr;
           // }
-          "defaultContent":"<button class='btn btn-primary btn-xs' id='opr_info'>详细</button><button class='btn btn-danger btn-xs' id='opr_upd'>修改</button><button class='btn btn-warning btn-xs' id='opr_reset_pwd'>密码重置</button>"
+          "defaultContent":"<button class='btn btn-primary btn-xs' id='opr_info'>"+$('#Lang0056').html() +"</button><button class='btn btn-danger btn-xs' id='opr_upd'>"+$('#Lang0057').html()+"</button><button class='btn btn-warning btn-xs' id='opr_reset_pwd'>"+$('#Lang0058').html()+"</button>"
           // "defaultContent":"<img id='img_info' src='img/td_info.png'/><img id='img_upd' src='img/td_upd.png'/>"
           // "defaultContent":"<img id='img_info' src='img/td_info.png'><span class='glyphicon glyphicon-search'></span></img>     <img id='img_upd'><span class='glyphicon glyphicon-search'></span></img>     <img id='img_upd'><span class='glyphicon glyphicon-search'></span></img>    <img id='img_upd'><span class='glyphicon glyphicon-search'></span></img>"
         },

@@ -81,4 +81,8 @@ $lang['Lang0052'] = '州';
 $lang['Lang0053'] = '邮编';
 $lang['Lang0054'] = '状态';
 $lang['Lang0055'] = '操作';
+
+$lang['Lang0056'] = '详细';
+$lang['Lang0057'] = '修改';
+$lang['Lang0058'] = '密码重置';
 ?>
