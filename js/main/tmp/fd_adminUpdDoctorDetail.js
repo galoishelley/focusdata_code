@@ -62,7 +62,7 @@ $(function(){
                 result = false;
               }
               // var data = ret.data[0];
-              window.location.href="clinicQryDoctor.html"; 
+              window.location.href="clinicQryDoctor.php"; 
             }else{
               alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
               result = false;

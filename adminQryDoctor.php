@@ -1,3 +1,7 @@
+<?php
+include_once 'classes/Language/language.common.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,22 +67,22 @@
     <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
         <div class="container">
             <ul class="nav sf-menu clearfix">
-                <li><a href="index.php">home</a></li>
-                <li class="sub-menu active"><a href="index-1.html">our services</a><span></span>
+                <li id="li_home" class="hidden active"><a href="index.php">home</a></li>
+                <li class="sub-menu"><a href="index-1.php">our services</a><span></span>
                     <ul class="submenu">
-                        <li><a href="searchDoctor.html">搜索|预约医生</a></li>
-                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.html">个人用户管理</a>
+                        <li id="li_SearchDoctor" class="hidden"><a href="searchDoctor.php">搜索|预约医生</a></li>
+                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.php">个人用户管理</a>
                         </li>
-                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.html">诊所用户管理</a>
+                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.php">诊所用户管理</a>
                         </li>
                         <li id="li_Admin" class="hidden"><a href="adminQryClinic.php">管理员管理</a></li>
                     </ul>
                 </li>
-                <li><a href="index-2.html">about us</a></li>
-                <li><a href="index-3.html">staff</a></li>
-                <li><a href="index-4.html">Contacts</a></li>
+                <li><a href="index-2.php">about us</a></li>
+                <li><a href="index-3.php">staff</a></li>
+                <li><a href="index-4.php">Contacts</a></li>
                 <li><a href="sign_in.php">Sign in</a></li>
-                <li><a href="sign_up_person.html">Sign up</a></li>
+                <li><a href="sign_up_person.php">Sign up</a></li>
                 <li class="sub-menu tourist"><a href="#" id="userinfo">游客</a><span></span>
                     <ul class="submenu hidden" id="sub_userinfo">
                         <li><a href="#" id="usertype"></a></li>
@@ -89,7 +93,7 @@
             </ul>
         </div>
     </nav>
-    <h1 class="navbar-brand navbar-brand_"><a href="index.php"><img src="img/logo_en.png" alt="logo"></a></h1>
+    <h1 class="navbar-brand navbar-brand_"><a href="#"><img src="img/<?php echo $lang['Lang0004']; ?>" alt="logo"></a></h1>
 </header>
 
 <!--content--> 
@@ -100,11 +104,11 @@
         <div class="row left_con">
           <div class="col-lg-3 col-md-3 col-sm-3 wow fadeInUp" data-wow-delay="0.1s">
             <div class="list-group">
-              <a href="userAppointmentRecoder.html" class="list-group-item" id="user_appointment_recoder" >预约记录</a>
-              <a href="userUpdPersonInfo.html" class="list-group-item" id="user_upd_person_info">修改个人用户信息</a>
-              <a href="userUpdPersonPwd.html" class="list-group-item" id="user_upd_person_pwd">修改个人用户密码</a>
-              <a href="userSaveDoctor.html" class="list-group-item" id="user_collect_doctor">收藏医生管理</a>
-              <a href="userSaveSearch.html" class="list-group-item active" id="user_search_terms">常用搜索条件管理</a>
+              <a href="adminQryClinic.php" class="list-group-item" id="user_appointment_recoder" >诊所用户管理</a>
+              <a href="adminQryUser.php" class="list-group-item" id="user_upd_person_pwd">个人用户管理</a>
+              <a href="adminQryDoctor.php" class="list-group-item active" id="user_upd_person_info">医生信息管理</a>
+              <a href="adminUpdPwd.php" class="list-group-item" id="user_upd_person_pwd">修改管理员密码</a>
+              <a href="adminService.php" class="list-group-item">服务列表</a>
             </div>
           </div>
 
@@ -112,20 +116,69 @@
               <div class="PersonUser">
                 <div class="savedoctor">
 
-                  <h2>常用搜索条件管理</h2>
+                  <h2>医生信息管理</h2>
                   <div class="row">
-                    <button class="btn btn-danger" id="btn_delete">删除常用搜索条件</button>
-                    <table id="dataTables-example" class="table table-hover table-bordered" >
+                      <form class="form-inline" role="form" id="adminQryDoctor_form">
+                          <input type="hidden" class="form-control" id="action_type" name="action_type" value="viewAll_admin">
+                          <div class="form-group">
+                            <label for="CLINIC_NAME" class="control-label">诊所名称</label>
+                            <input type="text" class="form-control" name="CLINIC_NAME" id="CLINIC_NAME">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="CLINIC_SUBURB" class="control-label">区</label>
+                            <input type="text" class="form-control" name="CLINIC_SUBURB" id="CLINIC_SUBURB">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="STATE_ID" class="control-label">州</label>
+                            <select class="form-control" name="STATE_ID" id="STATE_ID">
+                              <option value="">全部</option>
+                            </select>
+                          </div>
+                          
+                          <div class="form-group">
+                            <label for="DOCTOR_NAME" class="control-label">医生名称</label>
+                            <input type="text" class="form-control" name="DOCTOR_NAME" id="DOCTOR_NAME">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="DOCTOR_TYPE" class="control-label">医生类别</label>
+                            <select class="form-control" name="DOCTOR_TYPE" id="DOCTOR_TYPE">
+                              <option value="">全部</option>
+                            </select>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="ACTIVE_STATUS" class="control-label">状态</label>
+                            <select class="form-control" name="ACTIVE_STATUS" id="ACTIVE_STATUS">
+                              <option value="">全部</option>
+                              <option value="1">active</option>
+                              <option value="0">inactive</option>
+                            </select>
+                          </div>
+                           <button class="btn btn-primary search_ok" id="search_ok"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>  
+
+                           <button class="btn btn-danger" id="btn_inactive">inactive</button>
+                           <button class="btn btn-warning" id="btn_active">active</button>
+                       </form>
+                  </div>
+
+                  <div class="row">
+                    <table id="dataTables-example" class="table table-hover  table-bordered" >
                       <thead class="table_title">
                           <tr>
                             <th><input type="checkbox" name="chk_all" id="chk_all"></th>
-                            <th>诊所区</th>
-                            <th>诊所州</th>
                             <th>诊所名称</th>
+                            <th>详细地址</th>
+                            <th>区</th>
+                            <th>州</th>
+                            <th>邮编</th>
                             <th>医生类别</th>
                             <th>医生名称</th>
-                            <th>医生距离</th>
-                            <th>使用</th>
+                            <th>性别</th>
+                            <th>状态</th>
+                            <th>操作</th>
                           </tr>
                       </thead>
                     </table>
@@ -163,7 +216,7 @@
                 <p>84, Charing Cross Road,London<br>JL 851213-2340</p>
             </div>
             <div class="col-lg-12 center">
-                <p class="privacy">&copy; <em id="copyright-year"></em> <i>|</i> <a href="index-5.html">Privacy Policy</a></p>
+                <p class="privacy">&copy; <em id="copyright-year"></em> <i>|</i> <a href="index-5.php">Privacy Policy</a></p>
             </div>
         </div>
     </div>
@@ -179,6 +232,6 @@
 <script src="js/bootstrap.min.js"></script><!-- dialog --><script src="js/bootstrap-dialog.min.js"></script>
 <script src="js/tm-scripts.js"></script>
 <script src="js/main/pub.js"></script>
-<script src="js/main/userSaveSearch.js"></script>
+<script src="js/main/adminQryDoctor.js"></script>
 </body>
 </html>

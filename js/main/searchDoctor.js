@@ -615,7 +615,7 @@ $(function(){
 		console.log(str);
 		sessionStorage.setItem("appointmentdoctor",str);
 
-		window.location.href="appointmentDoctor.html"; 
+		window.location.href="appointmentDoctor.php"; 
 
 		event.stopImmediatePropagation();
 	});

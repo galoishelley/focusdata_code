@@ -78,7 +78,7 @@ $(function(){
 
 	$("#sele_user").change(function(){
     if($(this).val() == "1"){
-			window.location.href="sign_up_clinic.html";
+			window.location.href="sign_up_clinic.php";
 		}
 	});
 
@@ -238,7 +238,7 @@ $(function(){
 
     //登录成功实现跳转
     if(fd_usertype==0){
-      window.location.href="clinicUpdUserInfo.html";
+      window.location.href="clinicUpdUserInfo.php";
     }else if(fd_usertype==1){
       window.location.href="index.php";
     }else if(fd_usertype==2){

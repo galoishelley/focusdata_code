@@ -10,30 +10,30 @@ $(function(){
 	// }else{
 
 	// }
-	// $.get('userAppointmentRecoder.html',function(data){  
+	// $.get('userAppointmentRecoder.php',function(data){  
 	// 	data=data.slice(data.indexOf('<body>')+6,data.indexOf('</body>'));  
 	// 	$("#right_person").html(data);  
 	// });  
 
 	$('#right_person').empty();
-	$("#right_person").load("userAppointmentRecoder.html");
+	$("#right_person").load("userAppointmentRecoder.php");
 	$("#user_appointment_recoder").addClass("list-group-item active");
 
 
 	$("#user_appointment_recoder").click(function(){
-		$("#right_person").load("userAppointmentRecoder.html");
+		$("#right_person").load("userAppointmentRecoder.php");
 		return false;
 	});
 	
 	$("#user_upd_person_info").click(function(){
 		$("#user_appointment_recoder").removeClass("active");
-		$("#right_person").load("userUpdPersonInfo.html");
+		$("#right_person").load("userUpdPersonInfo.php");
 		return false;
 	});
 
 	$("#user_upd_person_pwd").click(function(){
 		$("#user_appointment_recoder").removeClass("active");
-		$("#right_person").load("userUpdPersonPwd.html");
+		$("#right_person").load("userUpdPersonPwd.php");
 		return false;
 	});
 	

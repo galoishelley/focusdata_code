@@ -432,7 +432,7 @@ $(document).ready(function() {
     
     // console.log("appointmentdoctor");
     // console.log($.cookie("appointmentdoctor"));
-    window.location.href="clinicUpdDoctorDetail.html"; 
+    window.location.href="clinicUpdDoctorDetail.php"; 
 
     event.stopImmediatePropagation();
   });

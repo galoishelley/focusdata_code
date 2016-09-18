@@ -1,3 +1,6 @@
+<?php
+include_once 'classes/Language/language.common.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,21 +67,21 @@
         <div class="container">
             <ul class="nav sf-menu clearfix">
                 <li id="li_home" class="hidden"><a href="index.php">home</a></li>
-                <li class="sub-menu active"><a href="index-1.html">our services</a><span></span>
+                <li class="sub-menu active"><a href="index-1.php">our services</a><span></span>
                     <ul class="submenu">
-                        <li id="li_SearchDoctor" class="hidden"><a href="searchDoctor.html">搜索|预约医生</a></li>
-                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.html">个人用户管理</a>
+                        <li id="li_SearchDoctor" class="hidden"><a href="searchDoctor.php">搜索|预约医生</a></li>
+                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.php">个人用户管理</a>
                         </li>
-                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.html">诊所用户管理</a>
+                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.php">诊所用户管理</a>
                         </li>
                         <li id="li_Admin" class="hidden"><a href="adminQryClinic.php">管理员管理</a></li>
                     </ul>
                 </li>
-                <li><a href="index-2.html">about us</a></li>
-                <li><a href="index-3.html">staff</a></li>
-                <li><a href="index-4.html">Contacts</a></li>
+                <li><a href="index-2.php">about us</a></li>
+                <li><a href="index-3.php">staff</a></li>
+                <li><a href="index-4.php">Contacts</a></li>
                 <li><a href="sign_in.php">Sign in</a></li>
-                <li><a href="sign_up_person.html">Sign up</a></li>
+                <li><a href="sign_up_person.php">Sign up</a></li>
                 <li class="sub-menu tourist"><a href="#" id="userinfo">游客</a><span></span>
                     <ul class="submenu hidden" id="sub_userinfo">
                         <li><a href="#" id="usertype"></a></li>
@@ -89,7 +92,7 @@
             </ul>
         </div>
     </nav>
-    <h1 class="navbar-brand navbar-brand_"><a href="#"><img src="img/logo_en.png" alt="logo"></a></h1>
+    <h1 class="navbar-brand navbar-brand_"><a href="#"><img src="img/<?php echo $lang['Lang0004']; ?>" alt="logo"></a></h1>
 </header>
 
 <!--content--> 
@@ -98,58 +101,107 @@
 		<div class="thumb-box9" data-stellar-background-ratio="0.1">
 			<div class="container">
 				<div class="row left_con">
-					<div class="col-lg-3 col-md-3 col-sm-3 wow fadeInUp" data-wow-delay="0.1s">
+					<!-- <div class="col-lg-3 col-md-3 col-sm-3 wow fadeInUp" data-wow-delay="0.1s"> -->
+          <div class="col-lg-3 col-md-3 col-sm-3">
 						<div class="list-group">
               <a href="adminQryClinic.php" class="list-group-item" id="user_appointment_recoder" >诊所用户管理</a>
-              <a href="adminQryUser.html" class="list-group-item" id="user_upd_person_pwd">个人用户管理</a>
-              <a href="adminQryDoctor.html" class="list-group-item" id="user_upd_person_info">医生信息管理</a>
-              <a href="adminUpdPwd.html" class="list-group-item active" id="user_upd_person_pwd">修改管理员密码</a>
-              <a href="adminService.html" class="list-group-item">服务列表</a>
+              <a href="adminQryUser.php" class="list-group-item active" id="user_upd_person_pwd">个人用户管理</a>
+              <a href="adminQryDoctor.php" class="list-group-item" id="user_upd_person_info">医生信息管理</a>
+              <a href="adminUpdPwd.php" class="list-group-item" id="user_upd_person_pwd">修改管理员密码</a>
             </div>
 					</div>
 
-					<div class="col-lg-9 col-md-9 col-sm-9 wow fadeInUp" data-wow-delay="0.1s">
-          <div class="PersonUser">
-                <h2>修改管理员密码</h2>
+					<!-- <div class="col-lg-9 col-md-9 col-sm-9 wow fadeInUp" data-wow-delay="0.1s"> -->
+          <div class="col-lg-9 col-md-9 col-sm-9">
+              <div class="AdminUser">
+                <h2>修改个人用户信息</h2>
                 <div class="row">
-
-                  <form class="form-inline wow fadeInLeft" role="form" id="userUpdPersonPwd">
+                  <form class="form-inline" role="form" id="adminUpdUserInfo">
 
                       <input type="hidden" class="form-control" name="action_type" id="action_type" value="update">
                       <input type="hidden" class="form-control" name="CUSTOMER_USER_ID" id="CUSTOMER_USER_ID">
 
-                      <div class="form-group col-md-10">
-                        <label for="CUSTOMER_USER_NAME" class="col-md-4 control-label">用户名<span class="span-red">*</span></label>
-                        <input type="text" class="form-control" id="CUSTOMER_USER_NAME" name="CUSTOMER_USER_NAME" readonly="true">
+                      <div class="form-group col-md-6">
+                        <label for="CUSTOMER_USER_NAME" class="col-md-3 control-label">用户名<span class="span-red">*</span></label>
+                        <input type="text" class="form-control" id="CUSTOMER_USER_NAME" name="CUSTOMER_USER_NAME" readonly="readonly">
                       </div>
 
-                      <div class="form-group col-md-10">
-                        <label for="CUSTOMER_USER_PWD" class="col-md-4 control-label">旧密码<span class="span-red">*</span></label>
-                        <input type="password" class="form-control" id="CUSTOMER_USER_PWD">
+                      <div class="form-group col-md-6">
+                        <label for="CUSTOMER_USER_MAIL" class="col-md-3 control-label">邮箱<span class="span-red">*</span></label>
+                        <input type="text" class="form-control" id="CUSTOMER_USER_MAIL" name="CUSTOMER_USER_MAIL">
                       </div>
 
-                      <div class="form-group col-md-10">
-                        <label for="CUSTOMER_USER_NEWPWD" class="col-md-4 control-label">新密码<span class="span-red">*</span></label>
-                        <input type="password" class="form-control" id="CUSTOMER_USER_NEWPWD">
+                      <div class="form-group col-md-6">
+                        <label for="CUSTOMER_NAME" class="col-md-3 control-label">姓名<span class="span-red">*</span></label>
+                        <input type="text" class="form-control" id="CUSTOMER_NAME" name="CUSTOMER_NAME">
+                      </div>
+                      
+                      <div class="form-group col-md-6">
+                        <label for="CUSTOMER_GENDER"  class="col-md-3 control-label">性别<span class="span-red">*</span></label>
+                        <select class="form-control" id="CUSTOMER_GENDER" name="CUSTOMER_GENDER">
+                              <option>男</option>
+                              <option>女</option>
+                        </select>
                       </div>
 
-                      <div class="form-group col-md-10">
-                        <label for="CUSTOMER_USER_C_NEWPWD" class="col-md-4 control-label">确认新密码<span class="span-red">*</span></label>
-                        <input type="password" class="form-control" id="CUSTOMER_USER_C_NEWPWD">
+                      <div class="form-group col-md-6">
+                        <label for="CUSTOMER_BIRTHDAY" class="col-md-3 control-label">生日<span class="span-red">*</span></label>
+                        <input type="text" class="form-control" name="CUSTOMER_BIRTHDAY" id="CUSTOMER_BIRTHDAY" value="1">
                       </div>
 
-                      <div class="form-group col-md-10">
-                        <!-- <div class="col-md-12"> -->
-                          <button class="btn btn-primary pull-right" id="btn_ok">确定</button>
-                        <!-- </div> -->
+                      <div class="form-group col-md-6">
+                        <label for="CUSTOMER_PHONE_NO" class="col-md-3">电话号码<span class="span-red">*</span></label>
+                        <input type="text" class="form-control" name="CUSTOMER_PHONE_NO" id="CUSTOMER_PHONE_NO" maxlength="10">
                       </div>
+
+                      <div class="form-group col-md-6">
+                        <label for="MEDICAL_CARD_NO" class="col-md-3">医疗卡号<span class="span-red">*</span></label>
+                        <input type="text" class="form-control" name="MEDICAL_CARD_NO" id="MEDICAL_CARD_NO" value="1">
+                      </div>
+
+                      <div class="form-group col-md-6">
+                        <label for="ACTIVE_STATUS" class="col-md-3">状态<span class="span-red">*</span></label>
+                        <select class="form-control" name="ACTIVE_STATUS" id="ACTIVE_STATUS">
+                          <option value="1">active</option>
+                          <option value="0">inactive</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group col-md-9 col-lg-9">
+                        <label for="CUSTOMER_ADDR" class="col-md-2">详细地址<span class="span-red">*</span></label>
+                        <input type="text" class="form-control"  style="width:81%" name="CUSTOMER_ADDR" id="CUSTOMER_ADDR" value="1">
+                      </div>
+
+                      <div class="form-group col-md-6">
+                        <label for="CUSTOMER_SUBURB" class="col-md-3">区<span class="span-red">*</span></label>
+                        <input type="text" class="form-control" name="CUSTOMER_SUBURB" id="CUSTOMER_SUBURB" value="1">
+                      </div>
+
+                      <div class="form-group col-md-6">
+                        <label for="STATE_ID" class="col-md-3">州<span class="span-red">*</span></label>
+                        <select class="form-control" id="STATE_ID" name="STATE_ID">
+                        </select>
+                      </div>
+
+                      <div class="form-group col-md-6">
+                        <label for="CUSTOMER_POSTCODE" class="col-md-3">邮编<span class="span-red">*</span></label>
+                        <input type="text" class="form-control" name="CUSTOMER_POSTCODE" id="CUSTOMER_POSTCODE" value="1">
+                      </div>
+
+                      <div class="form-group pull-right">
+                        <a href="adminQryUser.php" class="btn btn-warning">return</a>
+                        <button class="btn btn-primary" id="btn_submit">确定</button>
+                      </div>
+
                     </form>
 
                   </div> 
                 <!-- row -->
               </div>
+              <!-- PersonUser -->
           </div>
           <!-- wow -->
+
 				</div>
         <!-- row -->
 			</div>
@@ -176,7 +228,7 @@
                 <p>84, Charing Cross Road,London<br>JL 851213-2340</p>
             </div>
             <div class="col-lg-12 center">
-                <p class="privacy">&copy; <em id="copyright-year"></em> <i>|</i> <a href="index-5.html">Privacy Policy</a></p>
+                <p class="privacy">&copy; <em id="copyright-year"></em> <i>|</i> <a href="index-5.php">Privacy Policy</a></p>
             </div>
         </div>
     </div>
@@ -192,6 +244,6 @@
 <script src="js/bootstrap.min.js"></script><!-- dialog --><script src="js/bootstrap-dialog.min.js"></script>
 <script src="js/tm-scripts.js"></script>
 <script src="js/main/pub.js"></script>
-<script src="js/main/adminUpdPwd.js"></script>
+<script src="js/main/adminUpdUserInfo.js"></script>
 </body>
 </html>

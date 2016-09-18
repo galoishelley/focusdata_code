@@ -1,3 +1,6 @@
+<?php
+include_once 'classes/Language/language.common.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,18 +64,18 @@
                         <li><a href="?lang=ch">中文</a></li>     
                     </ul>
                 </li>
-                <li><a href="index-2.html">about us</a></li>
-                <li><a href="index-3.html">staff</a></li>
-                <li><a href="index-4.html">Contacts</a></li>
+                <li><a href="index-2.php">about us</a></li>
+                <li><a href="index-3.php">staff</a></li>
+                <li><a href="index-4.php">Contacts</a></li>
                 <li class="hidden"><a href="sign_in.php">Sign in</a></li>
-                <li class="hidden"><a href="sign_up_person.html">Sign up</a></li>
+                <li class="hidden"><a href="sign_up_person.php">Sign up</a></li>
                 <li class="sub-menu tourist"><a href="#" id="userinfo">游客</a><span></span>
                     <ul class="submenu hidden" id="sub_userinfo">
                         <li><a href="#" id="usertype"></a></li>
-                        <li id="li_SearchDoctor" class="hidden"><a href="searchDoctor.html">搜索|预约医生</a></li>
-                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.html">个人用户管理</a>
+                        <li id="li_SearchDoctor" class="hidden"><a href="searchDoctor.php">搜索|预约医生</a></li>
+                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.php">个人用户管理</a>
                         </li>
-                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.html">诊所用户管理</a>
+                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.php">诊所用户管理</a>
                         </li>
                         <li id="li_Admin" class="hidden"><a href="adminQryClinic.php">管理员管理</a></li>
                         <li id="login_out" class="hidden"><button class="btn btn-danger" id="btn_out">安全退出</button></li>
@@ -81,7 +84,7 @@
             </ul>
         </div>
     </nav>
-    <h1 class="navbar-brand navbar-brand_"><a href="#"><img src="img/logo_en.png" alt="logo"></a></h1>
+    <h1 class="navbar-brand navbar-brand_"><a href="#"><img src="img/<?php echo $lang['Lang0004']; ?>" alt="logo"></a></h1>
 </header>
 
     <!--content-->
@@ -271,7 +274,7 @@
                 <p>84, Charing Cross Road,London<br>JL 851213-2340</p>
             </div>
             <div class="col-lg-12 center">
-                <p class="privacy">&copy; <em id="copyright-year"></em> <i>|</i> <a href="index-5.html">Privacy Policy</a></p>
+                <p class="privacy">&copy; <em id="copyright-year"></em> <i>|</i> <a href="index-5.php">Privacy Policy</a></p>
             </div>
         </div>
     </div>

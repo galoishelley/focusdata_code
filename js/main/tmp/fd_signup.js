@@ -4,7 +4,7 @@ $(function(){
 
 	$("#sele_user").change(function(){
     if($(this).val() == "1"){
-			window.location.href="sign_up_clinic.html";
+			window.location.href="sign_up_clinic.php";
 		}
   //   else if($(this).val() == "1"){
 		// 	$("#personal").hide();

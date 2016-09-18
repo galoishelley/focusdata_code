@@ -300,7 +300,7 @@ $(function(){
         var str = JSON.stringify(data);
 		sessionStorage.setItem("search_con",str);
 
-		window.location.href="searchDoctor.html"; 
+		window.location.href="searchDoctor.php"; 
 	});
 
 	$('#txt_search').keypress(function(e){ 
@@ -315,7 +315,7 @@ $(function(){
 
     		sessionStorage.setItem("search_con",str);
 
-			window.location.href="searchDoctor.html"; 
+			window.location.href="searchDoctor.php"; 
 		} 
 	}); 
 

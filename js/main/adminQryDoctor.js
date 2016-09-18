@@ -451,7 +451,7 @@ $(document).ready(function() {
 
     sessionStorage.doctorinfo = str;
 
-    window.location.href="adminUpdDoctorDetail.html"; 
+    window.location.href="adminUpdDoctorDetail.php"; 
 
     event.stopImmediatePropagation();
   });

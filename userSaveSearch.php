@@ -1,3 +1,6 @@
+<?php
+include_once 'classes/Language/language.common.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,22 +66,22 @@
     <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
         <div class="container">
             <ul class="nav sf-menu clearfix">
-                <li id="li_home" class="hidden"><a href="index.php">home</a></li>
-                <li class="sub-menu active"><a href="index-1.html">our services</a><span></span>
+                <li><a href="index.php">home</a></li>
+                <li class="sub-menu active"><a href="index-1.php">our services</a><span></span>
                     <ul class="submenu">
-                        <li id="li_SearchDoctor" class="hidden"><a href="searchDoctor.html">搜索|预约医生</a></li>
-                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.html">个人用户管理</a>
+                        <li><a href="searchDoctor.php">搜索|预约医生</a></li>
+                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.php">个人用户管理</a>
                         </li>
-                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.html">诊所用户管理</a>
+                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.php">诊所用户管理</a>
                         </li>
                         <li id="li_Admin" class="hidden"><a href="adminQryClinic.php">管理员管理</a></li>
                     </ul>
                 </li>
-                <li><a href="index-2.html">about us</a></li>
-                <li><a href="index-3.html">staff</a></li>
-                <li><a href="index-4.html">Contacts</a></li>
+                <li><a href="index-2.php">about us</a></li>
+                <li><a href="index-3.php">staff</a></li>
+                <li><a href="index-4.php">Contacts</a></li>
                 <li><a href="sign_in.php">Sign in</a></li>
-                <li><a href="sign_up_person.html">Sign up</a></li>
+                <li><a href="sign_up_person.php">Sign up</a></li>
                 <li class="sub-menu tourist"><a href="#" id="userinfo">游客</a><span></span>
                     <ul class="submenu hidden" id="sub_userinfo">
                         <li><a href="#" id="usertype"></a></li>
@@ -89,7 +92,7 @@
             </ul>
         </div>
     </nav>
-    <h1 class="navbar-brand navbar-brand_"><a href="#"><img src="img/logo_en.png" alt="logo"></a></h1>
+    <h1 class="navbar-brand navbar-brand_"><a href="index.php"><img src="img/<?php echo $lang['Lang0004']; ?>" alt="logo"></a></h1>
 </header>
 
 <!--content--> 
@@ -98,35 +101,44 @@
     <div class="thumb-box9" data-stellar-background-ratio="0.1">
       <div class="container">
         <div class="row left_con">
-          <!-- <div class="col-lg-9 col-md-9 col-sm-9 wow fadeInUp" data-wow-delay="0.1s"> -->
+          <div class="col-lg-3 col-md-3 col-sm-3 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="list-group">
+              <a href="userAppointmentRecoder.php" class="list-group-item" id="user_appointment_recoder" >预约记录</a>
+              <a href="userUpdPersonInfo.php" class="list-group-item" id="user_upd_person_info">修改个人用户信息</a>
+              <a href="userUpdPersonPwd.php" class="list-group-item" id="user_upd_person_pwd">修改个人用户密码</a>
+              <a href="userSaveDoctor.php" class="list-group-item" id="user_collect_doctor">收藏医生管理</a>
+              <a href="userSaveSearch.php" class="list-group-item active" id="user_search_terms">常用搜索条件管理</a>
+            </div>
+          </div>
+
+          <div class="col-lg-9 col-md-9 col-sm-9 wow fadeInUp" data-wow-delay="0.1s">
               <div class="PersonUser">
                 <div class="savedoctor">
-                <div class="service">
-                  <h2>服务列表</h2>
+
+                  <h2>常用搜索条件管理</h2>
                   <div class="row">
-                    
-                    <table id="dataTables-example" class="table table-hover  table-bordered" >
+                    <button class="btn btn-danger" id="btn_delete">删除常用搜索条件</button>
+                    <table id="dataTables-example" class="table table-hover table-bordered" >
                       <thead class="table_title">
                           <tr>
                             <th><input type="checkbox" name="chk_all" id="chk_all"></th>
-                            <th>Service ID</th>
-                            <th>DES</th>
-                            <th>SERVICE_JS</th>
-                            <th>URL</th>
-                            <th>INPUT_PARA</th>
-                            <th>OUTPUT_PARA</th>
-                            <th>NOTE</th>
+                            <th>诊所区</th>
+                            <th>诊所州</th>
+                            <th>诊所名称</th>
+                            <th>医生类别</th>
+                            <th>医生名称</th>
+                            <th>医生距离</th>
+                            <th>使用</th>
                           </tr>
                       </thead>
                     </table>
                   </div>
-                </div>
-                <!-- service -->
+
               </div>
               <!-- savedoctor -->
             </div>
             <!-- PersonUser -->
-          <!-- </div> -->
+          </div>
           <!-- wow -->
         </div>
         <!-- row -->
@@ -154,7 +166,7 @@
                 <p>84, Charing Cross Road,London<br>JL 851213-2340</p>
             </div>
             <div class="col-lg-12 center">
-                <p class="privacy">&copy; <em id="copyright-year"></em> <i>|</i> <a href="index-5.html">Privacy Policy</a></p>
+                <p class="privacy">&copy; <em id="copyright-year"></em> <i>|</i> <a href="index-5.php">Privacy Policy</a></p>
             </div>
         </div>
     </div>
@@ -170,6 +182,6 @@
 <script src="js/bootstrap.min.js"></script><!-- dialog --><script src="js/bootstrap-dialog.min.js"></script>
 <script src="js/tm-scripts.js"></script>
 <script src="js/main/pub.js"></script>
-<script src="js/main/adminService.js"></script>
+<script src="js/main/userSaveSearch.js"></script>
 </body>
 </html>

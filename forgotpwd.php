@@ -1,3 +1,6 @@
+<?php
+include_once 'classes/Language/language.common.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +60,7 @@
         <div class="container">
             <ul class="nav sf-menu clearfix">
                 <li><a href="index.php">home</a></li>
-                <li class="sub-menu"><a href="index-1.html">our services</a><span></span>
+                <li class="sub-menu"><a href="index-1.php">our services</a><span></span>
                     <ul class="submenu">
         				<li><a href="#">history</a></li>
         				<li><a href="#">staff</a><span class="fa fa-angle-right"></span>
@@ -69,14 +72,14 @@
         				<li><a href="#">news</a></li>
         			</ul>
                 </li>
-                <li class="active"><a href="index-2.html">about us</a></li>
-                <li><a href="index-3.html">staff</a></li>
-                <li><a href="index-4.html">Contacts</a></li>
+                <li class="active"><a href="index-2.php">about us</a></li>
+                <li><a href="index-3.php">staff</a></li>
+                <li><a href="index-4.php">Contacts</a></li>
                 <li class="active"><a href="sign_in.php">Sign in</a></li>
             </ul>
         </div>
     </nav>
-    <h1 class="navbar-brand navbar-brand_"><a href="index.php"><img src="img/logo_en.png" alt="logo"></a></h1>
+    <h1 class="navbar-brand navbar-brand_"><a href="index.php"><img src="img/<?php echo $lang['Lang0004']; ?>" alt="logo"></a></h1>
 </header>
 
 <!--content-->
@@ -163,7 +166,7 @@
                 <p>84, Charing Cross Road,London<br>JL 851213-2340</p>
             </div>
             <div class="col-lg-12 center">
-                <p class="privacy">&copy; <em id="copyright-year"></em> <i>|</i> <a href="index-5.html">Privacy Policy</a></p>
+                <p class="privacy">&copy; <em id="copyright-year"></em> <i>|</i> <a href="index-5.php">Privacy Policy</a></p>
             </div>
         </div>
     </div>

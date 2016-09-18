@@ -344,7 +344,7 @@ $(document).ready(function() {
     // console.log(str);
     sessionStorage.saveSearch = str;
 
-    window.location.href="searchDoctor.html"; 
+    window.location.href="searchDoctor.php"; 
 
     event.stopImmediatePropagation();
 

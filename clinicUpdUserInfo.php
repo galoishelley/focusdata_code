@@ -1,3 +1,6 @@
+<?php
+include_once 'classes/Language/language.common.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,43 +66,25 @@
     <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
         <div class="container">
             <ul class="nav sf-menu clearfix">
-                <li><a href="index.php">home</a></li>
-                <li class="sub-menu active"><a href="index-1.html">our services</a><span></span>
+                <li id="li_home" class="hidden active"><a href="index.php">home</a></li>
+                <li class="sub-menu"><a href="index-1.php">our services</a><span></span>
                     <ul class="submenu">
-                        <li><a href="userAppointmentRecoder.html">个人用户管理</a><span class="fa fa-angle-right"></span>
-                             <ul class="submenu">
-                                <li><a href="userAppointmentRecoder.html">预约记录</a></li>
-                                <li><a href="userManagement.html?iflag=userUpdPersonInfo">修改个人用户信息</a><span class="fa fa-angle-right"></span>
-                                     <ul class="submenu">
-                                        <li><a href="#">修改用户信息</a></li>
-                                        <li><a href="#">修改密码</a></li>
-                                    </ul> 
-                                </li>
-                                <li><a href="#">收藏医生管理</a></li>
-                                <li><a href="#">常用搜索条件管理</a></li>
-                                
-                            </ul> 
+                        <li id="li_SearchDoctor" class="hidden"><a href="searchDoctor.php">搜索|预约医生</a></li>
+                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.php">个人用户管理</a>
                         </li>
-                        <li><a href="searchDoctor.html">搜索|预约医生</a></li>
-                        <li><a href="clinicManagement.html">Clinic Management</a><span class="fa fa-angle-right"></span>
-                            <ul class="submenu">
-                                <li><a href="#">Update Clinic user info</a></li>
-                                <li><a href="#">Update Doctor info</a></li>
-                                <li><a href="#">Update Pwd</a></li>
-                            </ul> 
+                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.php">诊所用户管理</a>
                         </li>
-                        
-                        <li><a href="adminManagement.html">Admin Management</a></li>
+                        <li id="li_Admin" class="hidden"><a href="adminQryClinic.php">管理员管理</a></li>
                     </ul>
                 </li>
-                <li><a href="index-2.html">about us</a></li>
-                <li><a href="index-3.html">staff</a></li>
-                <li><a href="index-4.html">Contacts</a></li>
-                <li  class="active"><a href="sign_in.php">Sign in</a></li>
-                <li><a href="sign_up_person.html">Sign up</a></li>
+                <li><a href="index-2.php">about us</a></li>
+                <li><a href="index-3.php">staff</a></li>
+                <li><a href="index-4.php">Contacts</a></li>
+                <li><a href="sign_in.php">Sign in</a></li>
+                <li><a href="sign_up_person.php">Sign up</a></li>
                 <li class="sub-menu tourist"><a href="#" id="userinfo">游客</a><span></span>
-                    <ul class="submenu">
-                        <li><a href="#" id="usertype">用户类型:游客</a></li>
+                    <ul class="submenu hidden" id="sub_userinfo">
+                        <li><a href="#" id="usertype"></a></li>
                         <li><a href="#">账户管理</a></li>
                         <li><button class="btn btn-danger" id="btn_out">安全退出</button></li>
                     </ul>
@@ -107,7 +92,7 @@
             </ul>
         </div>
     </nav>
-    <h1 class="navbar-brand navbar-brand_"><a href="index.php"><img src="img/logo_en.png" alt="logo"></a></h1>
+    <h1 class="navbar-brand navbar-brand_"><a href="#"><img src="img/<?php echo $lang['Lang0004']; ?>" alt="logo"></a></h1>
 </header>
 
 <!--content--> 
@@ -119,20 +104,18 @@
 					<!-- <div class="col-lg-3 col-md-3 col-sm-3 wow fadeInUp" data-wow-delay="0.1s"> -->
           <div class="col-lg-3 col-md-3 col-sm-3">
 						<div class="list-group">
-              <a href="adminQryClinic.php" class="list-group-item active" id="user_appointment_recoder" >诊所用户管理</a>
-              <a href="adminQryUser.html" class="list-group-item" id="user_upd_person_pwd">个人用户管理</a>
-              <a href="adminQryDoctor.html" class="list-group-item" id="user_upd_person_info">医生信息管理</a>
-              <a href="adminUpdPwd.html" class="list-group-item" id="user_upd_person_pwd">修改管理员密码</a>
-              <a href="adminService.html" class="list-group-item">服务列表</a>
-            </div>
+							<a href="clinicUpdUserInfo.php" class="list-group-item active" id="user_appointment_recoder" >修改诊所用户信息</a>
+							<a href="clinicQryDoctor.php" class="list-group-item" id="user_upd_person_info">医生信息管理</a>
+							<a href="clinicUpdUserPwd.php" class="list-group-item" id="user_upd_person_pwd">修改诊所用户密码</a>
+						</div>
 					</div>
 
-					<!-- <div class="col-lg-9 col-md-9 col-sm-9 wow fadeInUp" data-wow-delay="0.1s"> -->
-          <div class="col-lg-9 col-md-9 col-sm-9">
-              <div class="AdminUser">
+					<div class="col-lg-9 col-md-9 col-sm-9 wow fadeInUp" data-wow-delay="0.1s">
+          <!-- <div class="col-lg-9 col-md-9 col-sm-9"> -->
+              <div class="PersonUser">
                 <h2>修改诊所用户信息</h2>
                 <div class="row">
-                  <form class="form-inline" role="form" id="adminUpdClinicInfo">
+                  <form class="form-inline" role="form" id="clinicUpdUserInfo">
 
                       <input type="hidden" class="form-control" name="action_type" id="action_type" value="update">
                       <input type="hidden" class="form-control" name="CLINIC_USER_ID" id="CLINIC_USER_ID">
@@ -141,23 +124,18 @@
                         <label for="CUSTOMER_USER_NAME" class="col-md-3 control-label">用户名<span class="span-red">*</span></label>
                         <input type="text" class="form-control" id="CLINIC_USER_NAME" name="CLINIC_USER_NAME" readonly="readonly">
                       </div>
-
+                      
                       <div class="form-group col-md-6">
                         <label for="Addr" class="col-md-3 control-label">邮箱<span class="span-red">*</span></label>
                         <input type="text" class="form-control" name="CLINIC_USER_MAIL" id="CLINIC_USER_MAIL">
-                      </div>
-                      
+                      </div>  
+
                       <div class="form-group col-md-6">
                         <label for="birthday" class="col-md-3 control-label">诊所名称<span class="span-red">*</span></label>
                         <input type="text" class="form-control" name="CLINIC_NAME" id="CLINIC_NAME">
                       </div>
-
+                      
                       <div class="form-group col-md-6">
-                        <label for="ACTIVE_STATUS" class="col-md-3">状态<span class="span-red">*</span></label>
-                        <select class="form-control" name="ACTIVE_STATUS" id="ACTIVE_STATUS">
-                          <option value="1">active</option>
-                          <option value="0">inactive</option>
-                        </select>
                       </div>
 
                       <div class="form-group col-md-9 col-lg-9">
@@ -181,11 +159,8 @@
                         <input type="text" class="form-control" name="CLINIC_POSTCODE" id="CLINIC_POSTCODE" value="1">
                       </div>
 
-                      <div class="form-group col-md-12">
-                        <div class="pull-right">
-                          <a href="adminQryClinic.php" class="btn btn-warning">return</a>
-                          <button class="btn btn-primary" id="btn_submit">确定</button>
-                        </div>
+                      <div class="form-group pull-right">
+                        <button class="btn btn-primary" id="btn_ok">确定</button>
                       </div>
 
                     </form>
@@ -223,7 +198,7 @@
                 <p>84, Charing Cross Road,London<br>JL 851213-2340</p>
             </div>
             <div class="col-lg-12 center">
-                <p class="privacy">&copy; <em id="copyright-year"></em> <i>|</i> <a href="index-5.html">Privacy Policy</a></p>
+                <p class="privacy">&copy; <em id="copyright-year"></em> <i>|</i> <a href="index-5.php">Privacy Policy</a></p>
             </div>
         </div>
     </div>
@@ -239,6 +214,6 @@
 <script src="js/bootstrap.min.js"></script><!-- dialog --><script src="js/bootstrap-dialog.min.js"></script>
 <script src="js/tm-scripts.js"></script>
 <script src="js/main/pub.js"></script>/
-<script src="js/main/adminUpdClinicInfo.js"></script>
+<script src="js/main/clinicUpdUserInfo.js"></script>
 </body>
 </html>

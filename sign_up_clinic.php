@@ -1,3 +1,6 @@
+<?php
+include_once 'classes/Language/language.common.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,21 +61,21 @@
         <div class="container">
             <ul class="nav sf-menu clearfix">
                 <li><a href="index.php">home</a></li>
-                <li class="sub-menu"><a href="index-1.html">our services</a><span></span>
+                <li class="sub-menu"><a href="index-1.php">our services</a><span></span>
                     <ul class="submenu">
-                        <li><a href="searchDoctor.html">搜索|预约医生</a></li>
-                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.html">个人用户管理</a>
+                        <li><a href="searchDoctor.php">搜索|预约医生</a></li>
+                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.php">个人用户管理</a>
                         </li>
-                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.html">诊所用户管理</a>
+                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.php">诊所用户管理</a>
                         </li>
                         <li id="li_Admin" class="hidden"><a href="adminQryClinic.php">管理员管理</a></li>
                     </ul>
                 </li>
-                <li><a href="index-2.html">about us</a></li>
-                <li><a href="index-3.html">staff</a></li>
-                <li><a href="index-4.html">Contacts</a></li>
+                <li><a href="index-2.php">about us</a></li>
+                <li><a href="index-3.php">staff</a></li>
+                <li><a href="index-4.php">Contacts</a></li>
                 <li><a href="sign_in.php">Sign in</a></li>
-                <li  class="active"><a href="sign_up_person.html">Sign up</a></li>
+                <li class="active"><a href="sign_up_person.php">Sign up</a></li>
                 <li class="sub-menu tourist"><a href="#" id="userinfo">游客</a><span></span>
                     <ul class="submenu hidden" id="sub_userinfo">
                         <li><a href="#" id="usertype"></a></li>
@@ -83,7 +86,7 @@
             </ul>
         </div>
     </nav>
-    <h1 class="navbar-brand navbar-brand_"><a href="index.php"><img src="img/logo_en.png" alt="logo"></a></h1>
+    <h1 class="navbar-brand navbar-brand_"><a href="index.php"><img src="img/<?php echo $lang['Lang0004']; ?>" alt="logo"></a></h1>
 </header>
 
 <!--content-->
@@ -92,7 +95,7 @@
 		<div class="thumb-box9" data-stellar-background-ratio="0.1">
 			<div class="container">
 				<div class="row df_content">
-					<h2 class="wow fadeInRight">个人用户注册</h2>
+					<h2 class="wow fadeInRight">诊所用户注册</h2>
 					<form class="form-inline wow fadeInLeft form_add" role="form" id="signup_form">
 						<fieldset>
 					<!-- 		<div class="form-group has-error has-feedback">
@@ -103,28 +106,29 @@
 							</div> -->
 							<input type="hidden" class="form-control" name="action_type" id="action_type" value="create">
 
-							<div class="form-group col-md-12 col-lg-12">
-								<label for="sele_user">选择用户<span class="span-red">*</span></label>
+							<div class="form-group">
+								<label for="sele_user" class="control-label">选择用户<span class="span-red">*</span></label>
 									<select class="form-control" id="sele_user" autofocus>
-										<option value="0" selected>个人用户</option>
-										<option value="1" >诊所用户</option>
+										<!-- <option value="0">Please select user</option> -->
+										<option value="0">个人用户</option>
+										<option value="1" selected>诊所用户</option>
 									</select>
 							</div>
 							
 							<div id="personal">
 								<div class="form-group">
-									<label for="CUSTOMER_USER_NAME">用户名<span class="span-red">*</span></label>
-									<input type="text" class="form-control" id="CUSTOMER_USER_NAME" name="CUSTOMER_USER_NAME">
+									<label for="username">用户名<span class="span-red">*</span></label>
+									<input type="text" class="form-control" id="CLINIC_USER_NAME" name="CLINIC_USER_NAME">
 								</div>
 
 								<div class="form-group">
-									<label for="CUSTOMER_USER_MAIL">邮箱<span class="span-red">*</span></label>
-									<input type="text" class="form-control" id="CUSTOMER_USER_MAIL" name="CUSTOMER_USER_MAIL">
+									<label for="pwd">邮箱<span class="span-red">*</span></label>
+									<input type="email" class="form-control" name="CLINIC_USER_MAIL" id="CLINIC_USER_MAIL" value="shelleymyl@gmail.com">
 								</div>
 
 								<div class="form-group">
-									<label for="CUSTOMER_USER_PWD">密码<span class="span-red">*</span></label>
-									<input type="password" class="form-control" name="CUSTOMER_USER_PWD" id="CUSTOMER_USER_PWD">
+									<label for="CLINIC_USER_PWD">密码<span class="span-red">*</span></label>
+									<input type="password" class="form-control" name="CLINIC_USER_PWD" id="CLINIC_USER_PWD">
 								</div>
 
 								<div class="form-group">
@@ -133,52 +137,23 @@
 								</div>
 
 								<div class="form-group">
-									<label for="CUSTOMER_NAME">姓名<span class="span-red">*</span></label>
-									<input type="text" class="form-control" id="CUSTOMER_NAME" name="CUSTOMER_NAME">
+									<label for="birthday">诊所名称<span class="span-red">*</span></label>
+									<input type="text" class="form-control" name="CLINIC_NAME" id="CLINIC_NAME" value="1">
 								</div>
-
-								<div class="form-group">
-	                              <label for="CUSTOMER_GENDER">性别<span class="span-red">*</span></label>
-	                              <select class="form-control" id="CUSTOMER_GENDER" name="CUSTOMER_GENDER">
-	                                    <option>男</option>
-	                                    <option>女</option>
-	                              </select>
-	                            </div>
 								
-								<!-- <div class="form-group">
-									<label for="pwd">手机验证码<span class="span-red">*</span></label>
-									<input type="text" class="form-control" name="verifyCode" id="verifyCode" value="1">
-								</div> -->
-								
-
-								<div class="form-group">
-									<label for="CUSTOMER_BIRTHDAY">生日<span class="span-red">*</span></label>
-									<input type="text" class="form-control" name="CUSTOMER_BIRTHDAY" id="CUSTOMER_BIRTHDAY" value="1">
-								</div>
-
-								<div class="form-group">
-									<label for="CUSTOMER_PHONE_NO">电话号码<span class="span-red">*</span></label>
-									<input type="text" class="form-control" name="CUSTOMER_PHONE_NO" id="CUSTOMER_PHONE_NO" value="1">
-								</div>	
-
-								<div class="form-group">
-									<label for="MEDICAL_CARD_NO">医疗卡号<span class="span-red">*</span></label>
-									<input type="text" class="form-control" name="MEDICAL_CARD_NO" id="MEDICAL_CARD_NO" value="1">
-								</div>
-
-								<div class="form-group">
-									<label for="CUSTOMER_POSTCODE">邮编<span class="span-red">*</span></label>
-									<input type="text" class="form-control" name="CUSTOMER_POSTCODE" id="CUSTOMER_POSTCODE" value="1">
+	                            <div class="form-group">
+									<label for="CLINIC_POSTCODE">邮编<span class="span-red">*</span></label>
+									<input type="text" class="form-control" name="CLINIC_POSTCODE" id="CLINIC_POSTCODE" value="1">
 								</div>
 
 								<div class="form-group col-md-9 col-lg-9">
-									<label for="CUSTOMER_ADDR">详细地址<span class="span-red">*</span></label>
-									<input type="text" class="form-control"  style="width:81%" name="CUSTOMER_ADDR" id="CUSTOMER_ADDR" value="1">
+									<label for="CLINIC_ADDR">详细地址<span class="span-red">*</span></label>
+									<input type="text" class="form-control"  style="width:81%" name="CLINIC_ADDR" id="CLINIC_ADDR" value="1">
 								</div>
 
 								<div class="form-group">
-									<label for="CUSTOMER_SUBURB">区<span class="span-red">*</span></label>
-									<input type="text" class="form-control" name="CUSTOMER_SUBURB" id="CUSTOMER_SUBURB" value="1">
+									<label for="CLINIC_SUBURB">区<span class="span-red">*</span></label>
+									<input type="text" class="form-control" name="CLINIC_SUBURB" id="CLINIC_SUBURB" value="1">
 								</div>
 
 								<div class="form-group">
@@ -187,18 +162,18 @@
 	                              </select>
 	                            </div>
 							</div>
+							<div class="row">
+								<div class="form-group pull-right">
+									<button type="submit" class="btn btn-lg btn-primary btn-block" id="signup_ok">Sign up for free</button>
+								 </div>
+							</div>
+							<div class="row">
+								<div class="pull-right">
+									<a href="sign_in.php"><strong>sign in</strong></a>
+								</div>
+							</div>
 						</fieldset>
 					</form>
-						<div class="row">
-							<div class="form-group pull-right">
-								<button type="submit" class="btn btn-lg btn-primary btn-block" id="signup_ok">Sign up for free</button>
-							 </div>
-						</div>
-						<div class="row">
-							<div class="pull-right">
-								<a href="sign_in.php"><strong>sign in</strong></a>
-							</div>
-						</div>
 				</div>
 			</div>
 		</div>
@@ -222,7 +197,7 @@
                 <p>84, Charing Cross Road,London<br>JL 851213-2340</p>
             </div>
             <div class="col-lg-12 center">
-                <p class="privacy">&copy; <em id="copyright-year"></em> <i>|</i> <a href="index-5.html">Privacy Policy</a></p>
+                <p class="privacy">&copy; <em id="copyright-year"></em> <i>|</i> <a href="index-5.php">Privacy Policy</a></p>
             </div>
         </div>
     </div>
@@ -232,7 +207,6 @@
 <script src="js/jquery.cookie.js"></script>
 <script src="js/bootstrapValidator.js"></script>
 <script src="js/main/pub.js"></script>
-<!-- <script src="js/main/sign_in.js"></script> -->
-<script src="js/main/sign_up_person.js"></script>
+<script src="js/main/sign_up_clinic.js"></script>
 </body>
 </html>

@@ -2,7 +2,7 @@ $(function(){
   var serviceid = "AD01";
   
   // $('#btn_return').click(function(){
-  //   window.location.href="searchDoctor.html"; 
+  //   window.location.href="searchDoctor.php"; 
   // });
 
 

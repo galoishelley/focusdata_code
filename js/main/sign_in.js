@@ -213,7 +213,7 @@ $(function(){
 
     //记录user type
     if(fd_usertype==0){
-      window.location.href="clinicUpdUserInfo.html";
+      window.location.href="clinicUpdUserInfo.php";
     }else if(fd_usertype==1){
       window.location.href="index.php";
     }else if(fd_usertype==2){

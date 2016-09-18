@@ -1,3 +1,6 @@
+<?php
+include_once 'classes/Language/language.common.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,22 +66,22 @@
     <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
         <div class="container">
             <ul class="nav sf-menu clearfix">
-                <li id="li_home" class="hidden active"><a href="index.php">home</a></li>
-                <li class="sub-menu"><a href="index-1.html">our services</a><span></span>
+                <li><a href="index.php">home</a></li>
+                <li class="sub-menu active"><a href="index-1.php">our services</a><span></span>
                     <ul class="submenu">
-                        <li id="li_SearchDoctor" class="hidden"><a href="searchDoctor.html">搜索|预约医生</a></li>
-                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.html">个人用户管理</a>
+                        <li><a href="searchDoctor.php">搜索|预约医生</a></li>
+                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.php">个人用户管理</a>
                         </li>
-                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.html">诊所用户管理</a>
+                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.php">诊所用户管理</a>
                         </li>
                         <li id="li_Admin" class="hidden"><a href="adminQryClinic.php">管理员管理</a></li>
                     </ul>
                 </li>
-                <li><a href="index-2.html">about us</a></li>
-                <li><a href="index-3.html">staff</a></li>
-                <li><a href="index-4.html">Contacts</a></li>
+                <li><a href="index-2.php">about us</a></li>
+                <li><a href="index-3.php">staff</a></li>
+                <li><a href="index-4.php">Contacts</a></li>
                 <li><a href="sign_in.php">Sign in</a></li>
-                <li><a href="sign_up_person.html">Sign up</a></li>
+                <li><a href="sign_up_person.php">Sign up</a></li>
                 <li class="sub-menu tourist"><a href="#" id="userinfo">游客</a><span></span>
                     <ul class="submenu hidden" id="sub_userinfo">
                         <li><a href="#" id="usertype"></a></li>
@@ -89,7 +92,7 @@
             </ul>
         </div>
     </nav>
-    <h1 class="navbar-brand navbar-brand_"><a href="#"><img src="img/logo_en.png" alt="logo"></a></h1>
+    <h1 class="navbar-brand navbar-brand_"><a href="index.php"><img src="img/<?php echo $lang['Lang0004']; ?>" alt="logo"></a></h1>
 </header>
 
 <!--content--> 
@@ -100,11 +103,11 @@
         <div class="row left_con">
           <div class="col-lg-3 col-md-3 col-sm-3 wow fadeInUp" data-wow-delay="0.1s">
             <div class="list-group">
-              <a href="adminQryClinic.php" class="list-group-item" id="user_appointment_recoder" >诊所用户管理</a>
-              <a href="adminQryUser.html" class="list-group-item" id="user_upd_person_pwd">个人用户管理</a>
-              <a href="adminQryDoctor.html" class="list-group-item active" id="user_upd_person_info">医生信息管理</a>
-              <a href="adminUpdPwd.html" class="list-group-item" id="user_upd_person_pwd">修改管理员密码</a>
-              <a href="adminService.html" class="list-group-item">服务列表</a>
+              <a href="userAppointmentRecoder.php" class="list-group-item" id="user_appointment_recoder" >预约记录</a>
+              <a href="userUpdPersonInfo.php" class="list-group-item" id="user_upd_person_info">修改个人用户信息</a>
+              <a href="userUpdPersonPwd.php" class="list-group-item" id="user_upd_person_pwd">修改个人用户密码</a>
+              <a href="userSaveDoctor.php" class="list-group-item active" id="user_collect_doctor">收藏医生管理</a>
+              <a href="userSaveSearch.php" class="list-group-item" id="user_search_terms">常用搜索条件管理</a>
             </div>
           </div>
 
@@ -112,10 +115,11 @@
               <div class="PersonUser">
                 <div class="savedoctor">
 
-                  <h2>医生信息管理</h2>
+                  <h2>收藏医生管理</h2>
                   <div class="row">
-                      <form class="form-inline" role="form" id="adminQryDoctor_form">
-                          <input type="hidden" class="form-control" id="action_type" name="action_type" value="viewAll_admin">
+                      <form class="form-inline" role="form" id="save_doctor_form">
+                          
+                          <input type="hidden" class="form-control" name="CUSTOMER_USER_ID" id="CUSTOMER_USER_ID">
                           <div class="form-group">
                             <label for="CLINIC_NAME" class="control-label">诊所名称</label>
                             <input type="text" class="form-control" name="CLINIC_NAME" id="CLINIC_NAME">
@@ -132,31 +136,15 @@
                               <option value="">全部</option>
                             </select>
                           </div>
-                          
+
                           <div class="form-group">
                             <label for="DOCTOR_NAME" class="control-label">医生名称</label>
                             <input type="text" class="form-control" name="DOCTOR_NAME" id="DOCTOR_NAME">
                           </div>
 
-                          <div class="form-group">
-                            <label for="DOCTOR_TYPE" class="control-label">医生类别</label>
-                            <select class="form-control" name="DOCTOR_TYPE" id="DOCTOR_TYPE">
-                              <option value="">全部</option>
-                            </select>
-                          </div>
-
-                          <div class="form-group">
-                            <label for="ACTIVE_STATUS" class="control-label">状态</label>
-                            <select class="form-control" name="ACTIVE_STATUS" id="ACTIVE_STATUS">
-                              <option value="">全部</option>
-                              <option value="1">active</option>
-                              <option value="0">inactive</option>
-                            </select>
-                          </div>
                            <button class="btn btn-primary search_ok" id="search_ok"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>  
 
-                           <button class="btn btn-danger" id="btn_inactive">inactive</button>
-                           <button class="btn btn-warning" id="btn_active">active</button>
+                           <button class="btn btn-danger" id="btn_delete">删除收藏</button>
                        </form>
                   </div>
 
@@ -172,9 +160,7 @@
                             <th>邮编</th>
                             <th>医生类别</th>
                             <th>医生名称</th>
-                            <th>性别</th>
-                            <th>状态</th>
-                            <th>操作</th>
+                            <th>预约医生</th>
                           </tr>
                       </thead>
                     </table>
@@ -212,7 +198,7 @@
                 <p>84, Charing Cross Road,London<br>JL 851213-2340</p>
             </div>
             <div class="col-lg-12 center">
-                <p class="privacy">&copy; <em id="copyright-year"></em> <i>|</i> <a href="index-5.html">Privacy Policy</a></p>
+                <p class="privacy">&copy; <em id="copyright-year"></em> <i>|</i> <a href="index-5.php">Privacy Policy</a></p>
             </div>
         </div>
     </div>
@@ -228,6 +214,6 @@
 <script src="js/bootstrap.min.js"></script><!-- dialog --><script src="js/bootstrap-dialog.min.js"></script>
 <script src="js/tm-scripts.js"></script>
 <script src="js/main/pub.js"></script>
-<script src="js/main/adminQryDoctor.js"></script>
+<script src="js/main/userSaveDoctor.js"></script>
 </body>
 </html>

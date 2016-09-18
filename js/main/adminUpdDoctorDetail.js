@@ -64,7 +64,7 @@ $(function(){
                 result = false;
               }
               // var data = ret.data[0];
-              window.location.href="adminQryDoctor.html"; 
+              window.location.href="adminQryDoctor.php"; 
             }else{
               alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
               result = false;

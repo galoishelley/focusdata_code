@@ -524,7 +524,7 @@ $(function(){
               alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
 
               if($.cookie("ilogin") == 1){
-                window.location.href="userAppointmentRecoder.html"; 
+                window.location.href="userAppointmentRecoder.php"; 
               }else if($.cookie("ilogin") == 0){
                 window.location.href="sign_in.php"; 
               }

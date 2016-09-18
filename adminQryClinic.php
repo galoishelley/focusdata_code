@@ -75,19 +75,19 @@ include_once 'classes/Language/language.common.php';
                     </ul>
                 </li>
 
-                <li><a href="index-2.html"><!-- about us --><?php echo $lang['Lang0011']; ?></a></li>
-                <li><a href="index-3.html"><!-- staff --><?php echo $lang['Lang0012']; ?></a></li>
-                <li><a href="index-4.html"><!-- Contacts --><?php echo $lang['Lang0013']; ?></a></li>
+                <li><a href="index-2.php"><!-- about us --><?php echo $lang['Lang0011']; ?></a></li>
+                <li><a href="index-3.php"><!-- staff --><?php echo $lang['Lang0012']; ?></a></li>
+                <li><a href="index-4.php"><!-- Contacts --><?php echo $lang['Lang0013']; ?></a></li>
                 <li><a href="sign_in.php"><!-- Sign in --><?php echo $lang['Lang0014']; ?></a></li>
-                <li><a href="sign_up_person.html"><!-- register --><?php echo $lang['Lang0015']; ?></a></li>
+                <li><a href="sign_up_person.php"><!-- register --><?php echo $lang['Lang0015']; ?></a></li>
                 <li class="sub-menu tourist"><a href="#" id="userinfo"><!-- 游客 --><?php echo $lang['Lang0016']; ?></a><span></span>
                     <ul class="submenu hidden" id="sub_userinfo">
                         <li><a href="#" id="usertype"></a></li>
                         <li><a href="#">账户管理</a></li>
-                        <li id="li_SearchDoctor" class="hidden"><a href="searchDoctor.html"><!-- 搜索|预约医生 --><?php echo $lang['Lang0006']; ?></a></li>
-                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.html"><!-- 个人用户管理 --><?php echo $lang['Lang0007']; ?></a>
+                        <li id="li_SearchDoctor" class="hidden"><a href="searchDoctor.php"><!-- 搜索|预约医生 --><?php echo $lang['Lang0006']; ?></a></li>
+                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.php"><!-- 个人用户管理 --><?php echo $lang['Lang0007']; ?></a>
                         </li>
-                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.html"><!-- 诊所用户管理 --><?php echo $lang['Lang0008']; ?></a>
+                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.php"><!-- 诊所用户管理 --><?php echo $lang['Lang0008']; ?></a>
                         </li>
                         <li id="li_Admin" class="hidden"><a href="adminQryClinic.php"><!-- 管理员管理 --><?php echo $lang['Lang0009']; ?></a></li>
                         <li><button class="btn btn-danger" id="btn_out"><!-- 安全退出 --><?php echo $lang['Lang0017']; ?></button></li>
@@ -107,10 +107,10 @@ include_once 'classes/Language/language.common.php';
           <div class="col-lg-3 col-md-3 col-sm-3 wow fadeInUp" data-wow-delay="0.1s">
             <div class="list-group">
               <a href="adminQryClinic.php" class="list-group-item active" id="user_appointment_recoder" ><!-- 诊所用户管理 --><?php echo $lang['Lang0034']; ?></a>
-              <a href="adminQryUser.html" class="list-group-item" id="user_upd_person_pwd"><!-- 个人用户管理 --><?php echo $lang['Lang0035']; ?></a>
-              <a href="adminQryDoctor.html" class="list-group-item" id="user_upd_person_info"><!-- 医生信息管理 --><?php echo $lang['Lang0036']; ?></a>
-              <a href="adminUpdPwd.html" class="list-group-item" id="user_upd_person_pwd"><!-- 修改管理员密码 --><?php echo $lang['Lang0037']; ?></a>
-              <a href="adminService.html" class="list-group-item"><!-- 服务列表 --><?php echo $lang['Lang0038']; ?></a>
+              <a href="adminQryUser.php" class="list-group-item" id="user_upd_person_pwd"><!-- 个人用户管理 --><?php echo $lang['Lang0035']; ?></a>
+              <a href="adminQryDoctor.php" class="list-group-item" id="user_upd_person_info"><!-- 医生信息管理 --><?php echo $lang['Lang0036']; ?></a>
+              <a href="adminUpdPwd.php" class="list-group-item" id="user_upd_person_pwd"><!-- 修改管理员密码 --><?php echo $lang['Lang0037']; ?></a>
+              <a href="adminService.php" class="list-group-item"><!-- 服务列表 --><?php echo $lang['Lang0038']; ?></a>
             </div>
           </div>
 
@@ -209,7 +209,7 @@ include_once 'classes/Language/language.common.php';
                 <p>84, Charing Cross Road,London<br>JL 851213-2340</p>
             </div>
             <div class="col-lg-12 center">
-                <p class="privacy">&copy; <em id="copyright-year"></em> <i>|</i> <a href="index-5.html">Privacy Policy</a></p>
+                <p class="privacy">&copy; <em id="copyright-year"></em> <i>|</i> <a href="index-5.php">Privacy Policy</a></p>
             </div>
         </div>
     </div>

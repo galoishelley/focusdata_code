@@ -572,7 +572,7 @@ $(document).ready(function() {
     // console.log(str);
     sessionStorage.userinfo = str;
 
-    window.location.href="adminUpdClinicInfo.html"; 
+    window.location.href="adminUpdClinicInfo.php"; 
 
     event.stopImmediatePropagation();
   });

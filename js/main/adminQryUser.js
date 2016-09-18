@@ -564,7 +564,7 @@ var miaoyl;$(document).ready(function() {
     
     // console.log("appointmentdoctor");
     // console.log($.cookie("appointmentdoctor"));
-    window.location.href="adminUpdUserInfo.html"; 
+    window.location.href="adminUpdUserInfo.php"; 
 
     event.stopImmediatePropagation();
   });

@@ -60,12 +60,12 @@ include_once 'classes/Language/language.common.php';
         <div class="container">
             <ul class="nav sf-menu clearfix">
                 <li><a href="index.php"><?php echo $lang['Lang0005']; ?></a></li>
-                <li class="sub-menu"><a href="index-1.html">xxxx</a><span></span>
+                <li class="sub-menu"><a href="index-1.php">xxxx</a><span></span>
                     <ul class="submenu">
-                        <li><a href="searchDoctor.html"><?php echo $lang['Lang0006']; ?></a></li>
-                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.html"><?php echo $lang['Lang0007']; ?></a>
+                        <li><a href="searchDoctor.php"><?php echo $lang['Lang0006']; ?></a></li>
+                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.php"><?php echo $lang['Lang0007']; ?></a>
                         </li>
-                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.html"><?php echo $lang['Lang0008']; ?></a>
+                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.php"><?php echo $lang['Lang0008']; ?></a>
                         </li>
                         <li id="li_Admin" class="hidden"><a href="adminQryClinic.php"><?php echo $lang['Lang0009']; ?></a></li>
                     </ul>
@@ -76,11 +76,11 @@ include_once 'classes/Language/language.common.php';
                         <li><a href="?lang=ch">中文</a></li>     
                     </ul>
                 </li>
-                <li><a href="index-2.html"><?php echo $lang['Lang0011']; ?></a></li>
-                <li><a href="index-3.html"><?php echo $lang['Lang0012']; ?></a></li>
-                <li><a href="index-4.html"><?php echo $lang['Lang0013']; ?></a></li>
+                <li><a href="index-2.php"><?php echo $lang['Lang0011']; ?></a></li>
+                <li><a href="index-3.php"><?php echo $lang['Lang0012']; ?></a></li>
+                <li><a href="index-4.php"><?php echo $lang['Lang0013']; ?></a></li>
                 <li class="active"><a href="sign_in.php"><?php echo $lang['Lang0014']; ?></a></li>
-                <li><a href="sign_up_person.html"><?php echo $lang['Lang0015']; ?></a></li>
+                <li><a href="sign_up_person.php"><?php echo $lang['Lang0015']; ?></a></li>
                 <li class="sub-menu tourist"><a href="#" id="userinfo"><?php echo $lang['Lang0016']; ?></a><span></span>
                     <ul class="submenu hidden" id="sub_userinfo">
                         <li><a href="#" id="usertype"></a></li>
@@ -158,7 +158,7 @@ include_once 'classes/Language/language.common.php';
 							</div>
 							<div class="row">
 								<div class="form-group pull-right">
-									<a href="forgotpwd.html"><strong><?php echo $lang['Lang0031']; ?></strong></a>
+									<a href="forgotpwd.php"><strong><?php echo $lang['Lang0031']; ?></strong></a>
 									<!-- <div class="pull-right">sign in</div> -->
 								</div>
 							</div>
@@ -187,7 +187,7 @@ include_once 'classes/Language/language.common.php';
                 <p>84, Charing Cross Road,London<br>JL 851213-2340</p>
             </div>
             <div class="col-lg-12 center">
-                <p class="privacy">&copy; <em id="copyright-year"></em> <i>|</i> <a href="index-5.html">Privacy Policy</a></p>
+                <p class="privacy">&copy; <em id="copyright-year"></em> <i>|</i> <a href="index-5.php">Privacy Policy</a></p>
             </div>
         </div>
     </div>

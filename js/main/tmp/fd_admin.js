@@ -11,19 +11,19 @@ $(function(){
 	
 	$("#admin_upd_clinic_user").click(function(){
 		$("#admin_qry_clinic").removeClass("active");
-		$("#right_admin").load("clinicUpdUserInfo.html");
+		$("#right_admin").load("clinicUpdUserInfo.php");
 		return false;
 	});
 
 	$("#admin_qry_doctor").click(function(){
 		$("#admin_qry_clinic").removeClass("active");
-		$("#right_admin").load("clinicQryDoctor.html");
+		$("#right_admin").load("clinicQryDoctor.php");
 		return false;
 	});
 
 	$("#admin_upd_doctor").click(function(){
 		$("#admin_qry_clinic").removeClass("active");
-		$("#right_admin").load("clinicQryDoctor.html");
+		$("#right_admin").load("clinicQryDoctor.php");
 		return false;
 	});
 
@@ -36,7 +36,7 @@ $(function(){
 
 	$("#admin_upd_person").click(function(){
 		$("#admin_qry_clinic").removeClass("active");
-		$("#right_admin").load("userUpdPersonInfo.html");
+		$("#right_admin").load("userUpdPersonInfo.php");
 		return false;
 	});
 
@@ -48,7 +48,7 @@ $(function(){
 
 	$("#admin_upd_pwd").click(function(){
 		$("#admin_qry_clinic").removeClass("active");
-		$("#right_admin").load("adminUpdPwd.html");
+		$("#right_admin").load("adminUpdPwd.php");
 		return false;
 	});
 
