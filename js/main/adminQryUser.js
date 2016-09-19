@@ -324,7 +324,7 @@ $(document).ready(function() {
         { 
           "class": "text-center",
           "data": null,
-          "defaultContent":"<button class='btn btn-primary btn-xs' id='opr_info'>详细</button><button class='btn btn-danger btn-xs' id='opr_upd'>修改</button><button class='btn btn-warning btn-xs' id='opr_reset_pwd'>密码重置</button>"
+          "defaultContent":"<button class='btn btn-primary btn-xs' id='opr_info'>"+$('#Lang0056').html() +"</button><button class='btn btn-danger btn-xs' id='opr_upd'>"+$('#Lang0057').html()+"</button><button class='btn btn-warning btn-xs' id='opr_reset_pwd'>"+$('#Lang0058').html()+"</button>"
         },
         {
           "visible": false,

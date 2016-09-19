@@ -150,4 +150,51 @@ $lang['Lang0113'] = '新密码';
 $lang['Lang0114'] = '确认新密码';
 $lang['Lang0115'] = '确定';
 $lang['Lang0116'] = '两次密码输入不一致';
+
+//Page adminUpdClinicInfo
+$lang['Lang0117'] = '修改诊所用户信息';
+$lang['Lang0118'] = '用户名';
+$lang['Lang0119'] = '邮箱';
+$lang['Lang0120'] = '诊所名称';
+$lang['Lang0121'] = '状态';
+$lang['Lang0122'] = '详细地址';
+$lang['Lang0123'] = '区';
+$lang['Lang0124'] = '州';
+$lang['Lang0125'] = '邮编';
+$lang['Lang0126'] = '返回';
+$lang['Lang0127'] = '确定';
+
+//Page adminUpdDoctorDetail
+$lang['Lang0128'] = '修改医生信息';
+$lang['Lang0129'] = '医生类别';
+$lang['Lang0130'] = '医生姓名';
+$lang['Lang0131'] = '性别';
+$lang['Lang0132'] = '男';
+$lang['Lang0133'] = '女';
+$lang['Lang0134'] = '状态';
+$lang['Lang0135'] = '激活';
+$lang['Lang0136'] = '禁用';
+$lang['Lang0137'] = '医生详细信息';
+$lang['Lang0138'] = '医生照片';
+$lang['Lang0139'] = '取消';
+$lang['Lang0140'] = '确认';
+
+//Page adminUpdUserInfo
+$lang['Lang0141'] = '修改个人用户信息';
+$lang['Lang0142'] = '用户名';
+$lang['Lang0143'] = '邮箱';
+$lang['Lang0144'] = '姓名';
+$lang['Lang0145'] = '性别';
+$lang['Lang0146'] = '男';
+$lang['Lang0147'] = '女';
+$lang['Lang0148'] = '生日';
+$lang['Lang0149'] = '电话号码';
+$lang['Lang0150'] = '医疗卡号';
+$lang['Lang0151'] = '状态';
+$lang['Lang0152'] = '详细地址';
+$lang['Lang0153'] = '区';
+$lang['Lang0154'] = '州';
+$lang['Lang0155'] = '邮编';
+$lang['Lang0156'] = '返回';
+$lang['Lang0157'] = '确定';
 ?>

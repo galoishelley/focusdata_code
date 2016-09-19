@@ -317,7 +317,8 @@ $(document).ready(function() {
         { 
           "class": "col_center_class",
           "data": null,
-          "defaultContent":"<button class='btn btn-primary btn-xs' id='opr_info'>详细</button><button class='btn btn-danger btn-xs' id='opr_upd'>修改</button>"
+          "defaultContent":"<button class='btn btn-primary btn-xs' id='opr_info'>"+$('#Lang0056').html() +"</button><button class='btn btn-danger btn-xs' id='opr_upd'>"+$('#Lang0057').html()+"</button>"
+        	  
         },
         {
           "visible": false,

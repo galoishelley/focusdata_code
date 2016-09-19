@@ -76,20 +76,20 @@ include_once 'classes/Menu/menu.php';
 			<div class="container">
 				<div class="row left_con">
 					<!-- <div class="col-lg-3 col-md-3 col-sm-3 wow fadeInUp" data-wow-delay="0.1s"> -->
-          <div class="col-lg-3 col-md-3 col-sm-3">
-						<div class="list-group">
-              <a href="adminQryClinic.php" class="list-group-item active" id="user_appointment_recoder" >诊所用户管理</a>
-              <a href="adminQryUser.php" class="list-group-item" id="user_upd_person_pwd">个人用户管理</a>
-              <a href="adminQryDoctor.php" class="list-group-item" id="user_upd_person_info">医生信息管理</a>
-              <a href="adminUpdPwd.php" class="list-group-item" id="user_upd_person_pwd">修改管理员密码</a>
-              <a href="adminService.php" class="list-group-item">服务列表</a>
+          <div class="col-lg-3 col-md-3 col-sm-3 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="list-group">
+              <a href="adminQryClinic.php" class="list-group-item active" id="user_appointment_recoder" ><!-- 诊所用户管理 --><?php echo $lang['Lang0034']; ?></a>
+              <a href="adminQryUser.php" class="list-group-item" id="user_upd_person_pwd"><!-- 个人用户管理 --><?php echo $lang['Lang0035']; ?></a>
+              <a href="adminQryDoctor.php" class="list-group-item" id="user_upd_person_info"><!-- 医生信息管理 --><?php echo $lang['Lang0036']; ?></a>
+              <a href="adminUpdPwd.php" class="list-group-item" id="user_upd_person_pwd"><!-- 修改管理员密码 --><?php echo $lang['Lang0037']; ?></a>
+              <a href="adminService.php" class="list-group-item"><!-- 服务列表 --><?php echo $lang['Lang0038']; ?></a>
             </div>
-					</div>
+          </div>
 
 					<!-- <div class="col-lg-9 col-md-9 col-sm-9 wow fadeInUp" data-wow-delay="0.1s"> -->
           <div class="col-lg-9 col-md-9 col-sm-9">
               <div class="AdminUser">
-                <h2>修改诊所用户信息</h2>
+                <h2><!-- 修改诊所用户信息--><?php echo $lang['Lang0117']; ?></h2>
                 <div class="row">
                   <form class="form-inline" role="form" id="adminUpdClinicInfo">
 
@@ -97,53 +97,53 @@ include_once 'classes/Menu/menu.php';
                       <input type="hidden" class="form-control" name="CLINIC_USER_ID" id="CLINIC_USER_ID">
 
                       <div class="form-group col-md-6">
-                        <label for="CUSTOMER_USER_NAME" class="col-md-3 control-label">用户名<span class="span-red">*</span></label>
+                        <label for="CUSTOMER_USER_NAME" class="col-md-3 control-label"><!-- 用户名--><?php echo $lang['Lang0118']; ?><span class="span-red">*</span></label>
                         <input type="text" class="form-control" id="CLINIC_USER_NAME" name="CLINIC_USER_NAME" readonly="readonly">
                       </div>
 
                       <div class="form-group col-md-6">
-                        <label for="Addr" class="col-md-3 control-label">邮箱<span class="span-red">*</span></label>
+                        <label for="Addr" class="col-md-3 control-label"><!-- 邮箱--><?php echo $lang['Lang0119']; ?><span class="span-red">*</span></label>
                         <input type="text" class="form-control" name="CLINIC_USER_MAIL" id="CLINIC_USER_MAIL">
                       </div>
                       
                       <div class="form-group col-md-6">
-                        <label for="birthday" class="col-md-3 control-label">诊所名称<span class="span-red">*</span></label>
+                        <label for="birthday" class="col-md-3 control-label"><!-- 诊所名称--><?php echo $lang['Lang0120']; ?><span class="span-red">*</span></label>
                         <input type="text" class="form-control" name="CLINIC_NAME" id="CLINIC_NAME">
                       </div>
 
                       <div class="form-group col-md-6">
-                        <label for="ACTIVE_STATUS" class="col-md-3">状态<span class="span-red">*</span></label>
+                        <label for="ACTIVE_STATUS" class="col-md-3"><!-- 状态--><?php echo $lang['Lang0121']; ?><span class="span-red">*</span></label>
                         <select class="form-control" name="ACTIVE_STATUS" id="ACTIVE_STATUS">
-                          <option value="1">active</option>
-                          <option value="0">inactive</option>
+                          <option value="1"><!-- active--><?php echo $lang['Lang0095']; ?></option>
+                          <option value="0"><!-- inactive--><?php echo $lang['Lang0096']; ?></option>
                         </select>
                       </div>
 
                       <div class="form-group col-md-9 col-lg-9">
-                        <label for="CLINIC_ADDR" class="col-md-2">详细地址<span class="span-red">*</span></label>
+                        <label for="CLINIC_ADDR" class="col-md-2"><!-- 详细地址--><?php echo $lang['Lang0122']; ?><span class="span-red">*</span></label>
                         <input type="text" class="form-control"  style="width:81%" name="CLINIC_ADDR" id="CLINIC_ADDR" value="1">
                       </div>
                       
                       <div class="form-group col-md-6">
-                        <label for="CLINIC_SUBURB" class="col-md-3">区<span class="span-red">*</span></label>
+                        <label for="CLINIC_SUBURB" class="col-md-3"><!-- 区--><?php echo $lang['Lang0123']; ?><span class="span-red">*</span></label>
                         <input type="text" class="form-control" name="CLINIC_SUBURB" id="CLINIC_SUBURB" value="1">
                       </div>
 
                       <div class="form-group col-md-6">
-                        <label for="STATE_ID" class="col-md-3">州<span class="span-red">*</span></label>
+                        <label for="STATE_ID" class="col-md-3"><!-- 州--><?php echo $lang['Lang0124']; ?><span class="span-red">*</span></label>
                         <select class="form-control" id="STATE_ID" name="STATE_ID">
                         </select>
                       </div>
 
                       <div class="form-group col-md-6">
-                        <label for="CLINIC_POSTCODE" class="col-md-3">邮编<span class="span-red">*</span></label>
+                        <label for="CLINIC_POSTCODE" class="col-md-3"><!-- 邮编--><?php echo $lang['Lang0125']; ?><span class="span-red">*</span></label>
                         <input type="text" class="form-control" name="CLINIC_POSTCODE" id="CLINIC_POSTCODE" value="1">
                       </div>
 
                       <div class="form-group col-md-12">
                         <div class="pull-right">
-                          <a href="adminQryClinic.php" class="btn btn-warning">return</a>
-                          <button class="btn btn-primary" id="btn_submit">确定</button>
+                          <a href="adminQryClinic.php" class="btn btn-warning"><!-- return--><?php echo $lang['Lang0126']; ?></a>
+                          <button class="btn btn-primary" id="btn_submit"><!-- 确定--><?php echo $lang['Lang0127']; ?></button>
                         </div>
                       </div>
 

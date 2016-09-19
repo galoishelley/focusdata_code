@@ -157,4 +157,51 @@ $lang['Lang0114'] = 'Confirm password';
 $lang['Lang0115'] = 'OK';
 $lang['Lang0116'] = '2 times input passwordare not same!';
 
+//Page adminUpdClinicInfo
+$lang['Lang0117'] = 'Update clinic user info';
+$lang['Lang0118'] = 'User';
+$lang['Lang0119'] = 'Email';
+$lang['Lang0120'] = 'Clinic name';
+$lang['Lang0121'] = 'Status';
+$lang['Lang0122'] = 'Address';
+$lang['Lang0123'] = 'Suburb';
+$lang['Lang0124'] = 'State';
+$lang['Lang0125'] = 'Postcode';
+$lang['Lang0126'] = 'Return';
+$lang['Lang0127'] = 'OK';
+
+//Page adminUpdDoctorDetail
+$lang['Lang0128'] = 'Update doctor info';
+$lang['Lang0129'] = 'Doctor type';
+$lang['Lang0130'] = 'Doctor name';
+$lang['Lang0131'] = 'Gender';
+$lang['Lang0132'] = 'Man';
+$lang['Lang0133'] = 'Woman';
+$lang['Lang0134'] = 'Status';
+$lang['Lang0135'] = 'active';
+$lang['Lang0136'] = 'inactive';
+$lang['Lang0137'] = 'Doctor info';
+$lang['Lang0138'] = 'Doctor photo';
+$lang['Lang0139'] = 'Cancel';
+$lang['Lang0140'] = 'Confirm';
+
+//Page adminUpdUserInfo
+$lang['Lang0141'] = 'Update personal info';
+$lang['Lang0142'] = 'User';
+$lang['Lang0143'] = 'Email';
+$lang['Lang0144'] = 'Name';
+$lang['Lang0145'] = 'Gender';
+$lang['Lang0146'] = 'Man';
+$lang['Lang0147'] = 'Woman';
+$lang['Lang0148'] = 'Birthday';
+$lang['Lang0149'] = 'Mobile';
+$lang['Lang0150'] = 'Medical Number';
+$lang['Lang0151'] = 'Status';
+$lang['Lang0152'] = 'Address';
+$lang['Lang0153'] = 'Suburb';
+$lang['Lang0154'] = 'State';
+$lang['Lang0155'] = 'Postcode';
+$lang['Lang0156'] = 'Return';
+$lang['Lang0157'] = 'OK';
+
 ?>
