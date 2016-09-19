@@ -1,6 +1,7 @@
 var json_form,json_str;
 var requesttype = 0;
 var func_code,result;
+var now_postion;
 
 $(function(){
 
@@ -64,6 +65,7 @@ $(function(){
 
 	    }
 		$('#CUSTOMER_USER_ID').val(fd_userid);
+		$('#btn_save_manage').show();
 		$('#btn_save').show();
 	}else{
 		//游客
@@ -197,6 +199,13 @@ $(function(){
 		return fmt;
   	}
 
+  	//获取当前位置
+  	var distance = $('#DISTANCE').val();
+  	if(!distance){
+  		now_postion = ""
+  	}
+  	
+
 	var str = sessionStorage.saveSearch;
 
   	if(str){
@@ -213,24 +222,38 @@ $(function(){
 
 ///////////////////////////////////组织ajax 请求参数 begin///////////////////////////////
 
-	var str = sessionStorage.getItem("search_con"); 
-	console.log(str);
-	
-	if(str === null ){
-		str ="";
-	}
-	if(str.length==0){
-		var data = {
-          	search: "",
-        };
+	var str = sessionStorage.search_index; 
 
-    	sessionStorage.setItem("search_con",JSON.stringify(data));
-    	str = sessionStorage.getItem("search_con"); 
-	}
+	
+	// if(str === null ){
+	// 	str ="";
+	// }
+	// if(str.length==0){
+	// 	var data = {
+	// 		action_type:"index_search",
+ //          	search: ""
+ //        };
+
+ //    	sessionStorage.setItem("search_con",JSON.stringify(data));
+ //    	str = sessionStorage.getItem("search_con"); 
+	// }
 	var json_value = JSON.parse(str);
+	console.log(json_value);
+
+	//赋值给此页面搜索条件
+	$('#CLINIC_SUBURB').val(json_value.CLINIC_SUBURB);
+	$('#STATE_ID').val(json_value.STATE_ID);
+	$('#CLINIC_NAME').val(json_value.CLINIC_NAME);
+	$('#DOCTOR_TYPE').val(json_value.DOCTOR_TYPE);
+	$('#DOCTOR_NAME').val(json_value.DOCTOR_NAME);
+	$('#DISTANCE').val(json_value.DISTANCE);
+	$('#APPOINTMENT_DATE_BEGIN').val(json_value.APPOINTMENT_DATE_BEGIN);
+	$('#APPOINTMENT_DATE_END').val(json_value.APPOINTMENT_DATE_END);
+
     var from_index=json_value.from_index;
 
-    if(from_index == "1"){
+    //from_index == "1" 从主页跳转
+    if(from_index == "1"){ 
     	$('#myModal').modal('hide');
     	// console.log("hiden");
     	// console.log(json_value.from_index);
@@ -238,27 +261,40 @@ $(function(){
     else{
     	$('#myModal').modal('show');
     }
+
     // 处理输入%查询问题
-    if(json_value.search == "%"){
-    	json_value.search = "-";
-    }
+    // if(json_value.search == "%"){
+    // 	json_value.search = "-";
+    // }
 	requesttype = 0;
 	func_code = "SD01";
-	json_form = {
-		CLINIC_SUBURB: json_value.search,
-		STATE_ID: json_value.search,
-		CLINIC_NAME: json_value.search,
-		DOCTOR_TYPE: json_value.search,
-		DOCTOR_NAME: json_value.search
-		// DISTANCE: json_value.search
-		// APPOINTMENT_DATE: json_value.search
-	};
 
-    var json_stringify=JSON.stringify(json_form);
-    json_form = json_stringify.replace(/[ ]/g,"");
+	json_form = $("#modal_form").serializeObject();
+
+	// var json_stringify=JSON.stringify(json_form);
+	// json_form = json_stringify.replace(/[ ]/g,"");
+
+	//生成输入参数
+	// json_str = request_const(json_form,func_code,requesttype);
+
+	// json_form = {
+	// 	action_type: json_value.action_type,
+	// 	CLINIC_SUBURB: json_value.CLINIC_SUBURB,
+	// 	STATE_ID: json_value.STATE_ID,
+	// 	CLINIC_NAME: json_value.CLINIC_NAME,
+	// 	DOCTOR_TYPE: json_value.DOCTOR_TYPE,
+	// 	DOCTOR_NAME: json_value.DOCTOR_NAME,
+	// 	// DISTANCE: json_value.search
+	// 	APPOINTMENT_DATE_BEGIN: json_value.APPOINTMENT_DATE_BEGIN,
+	// 	APPOINTMENT_DATE_END: json_value.APPOINTMENT_DATE_END
+	// };
+
+    // var json_stringify=JSON.stringify(json_form);
+    // json_form = json_stringify.replace(/[ ]/g,"");
 
     //生成输入参数
-    json_str = request_const(JSON.parse(json_form),func_code,requesttype);
+    // json_str = request_const(JSON.parse(json_form),func_code,requesttype);
+    json_str = request_const(json_form,func_code,requesttype);
 
     console.log(json_str);
 
@@ -539,13 +575,8 @@ $(function(){
 			// });
 			// console.log(data);
 
-			var data = {
-          		search: "",
-          		form_index: ""
-        	};
-    		var str = JSON.stringify(data);
-
-    		sessionStorage.setItem("search_con", str);
+    		// sessionStorage.setItem("; ", str);
+    		// sessionStorage.search_index ="";
 
 			// console.log("加载完毕");
 		}
@@ -704,7 +735,7 @@ $(function(){
 	});
 
 	$('#btn_search').click(function (){
-		$('#action_type').val("");
+		// $('#action_type').val("");
 
 ///////////////////////////////////组织ajax 请求参数 begin///////////////////////////////
 		requesttype = 1;
@@ -712,11 +743,11 @@ $(function(){
 		//form序列化成json
 		json_form = $("#modal_form").serializeObject();
 
-	    var json_stringify=JSON.stringify(json_form);
-	    json_form = json_stringify.replace(/[ ]/g,"");
+	    // var json_stringify=JSON.stringify(json_form);
+	    // json_form = json_stringify.replace(/[ ]/g,"");
 
 	    //生成输入参数
-	    json_str = request_const(JSON.parse(json_form),func_code,requesttype);
+	    json_str = request_const(json_form,func_code,requesttype);
 ///////////////////////////////////组织ajax 请求参数 end///////////////////////////////
 	    console.log(json_str);
       	_table.ajax.reload();

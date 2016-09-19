@@ -115,7 +115,7 @@ include_once 'classes/Language/language.common.php';
                                     <div class="container-fluid">
                                         <div class="row">
                                             <form class="form-inline" role="form" id="modal_form">
-                                                <input type="hidden" class="form-control" name="action_type" id="action_type" value="create">
+                                                <input type="hidden" class="form-control" name="action_type" id="action_type" value="index_search">
                                                 <input type="hidden" class="form-control" name="CUSTOMER_USER_ID" id="CUSTOMER_USER_ID">
                                                 
                                                 <div class="form-group col-md-6">
@@ -185,7 +185,7 @@ include_once 'classes/Language/language.common.php';
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <a class="btn btn-danger" href="userSaveSearch.php">常用搜索条件管理</a>
+                                    <a type="hidden" class="btn btn-danger" href="userSaveSearch.php" id="btn_save_manage">常用搜索条件管理</a>
                                     <button type="button" class="btn btn-warning" id="btn_save" >保存为常用搜索条件</button>
                                     <button type="button" class="btn btn-primary" id="btn_search" >搜索</button>
                                 </div>
@@ -277,6 +277,7 @@ include_once 'classes/Language/language.common.php';
 <script src="js/jquery.cookie.js"></script>
 <!-- <script src="js/fd_searchDoctor.js"></script> -->
 <script src="js/main/pub.js"></script>
+<script src="js/main/getdistance.js"></script>
 <script src="js/main/searchDoctor.js"></script>
 
 </body>
