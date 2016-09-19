@@ -204,4 +204,32 @@ $lang['Lang0155'] = 'Postcode';
 $lang['Lang0156'] = 'Return';
 $lang['Lang0157'] = 'OK';
 
+//Page appointmentDoctor
+$lang['Lang0158'] = 'Appointment Time';
+$lang['Lang0158a'] = 'Personal Info';
+$lang['Lang0159'] = 'Register';
+$lang['Lang0160'] = 'User';
+$lang['Lang0161'] = 'Password';
+$lang['Lang0162'] = 'Name';
+$lang['Lang0163'] = 'Gender';
+$lang['Lang0164'] = 'Man';
+$lang['Lang0165'] = 'Woman';
+$lang['Lang0166'] = 'Birthday';
+$lang['Lang0167'] = 'Address';
+$lang['Lang0168'] = 'Mobile';
+$lang['Lang0169'] = 'Medical Number';
+$lang['Lang0170'] = 'Appointment Doctor';
+$lang['Lang0171'] = 'Add to Favorite';
+$lang['Lang0172'] = 'Search Doctor';
+
+$lang['Lang0173'] = 'Please select timeslot';
+$lang['Lang0174'] = 'User empty';
+$lang['Lang0175'] = 'Password empty';
+$lang['Lang0176'] = 'PIN empty';
+$lang['Lang0177'] = 'Gender empty';
+$lang['Lang0178'] = 'Birthday empty';
+$lang['Lang0179'] = 'Address empty';
+$lang['Lang0180'] = 'Mobile empty';
+$lang['Lang0181'] = 'Medical number empty';
+$lang['Lang0182'] = 'Get Appointment ID error!';
 ?>

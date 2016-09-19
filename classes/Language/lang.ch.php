@@ -197,4 +197,34 @@ $lang['Lang0154'] = '州';
 $lang['Lang0155'] = '邮编';
 $lang['Lang0156'] = '返回';
 $lang['Lang0157'] = '确定';
+
+//Page appointmentDoctor
+$lang['Lang0158'] = '预约时间';
+$lang['Lang0158a'] = '个人信息';
+$lang['Lang0159'] = '如果您未注册,则需要输入以下信息,即可预约医生';
+$lang['Lang0160'] = '用户名';
+$lang['Lang0161'] = '密码';
+$lang['Lang0162'] = '姓名';
+$lang['Lang0163'] = '性别';
+$lang['Lang0164'] = '男';
+$lang['Lang0165'] = '女';
+$lang['Lang0166'] = '生日';
+$lang['Lang0167'] = '住址';
+$lang['Lang0168'] = '手机号';
+$lang['Lang0169'] = '医疗卡号';
+$lang['Lang0170'] = '预约医生';
+$lang['Lang0171'] = '收藏医生';
+$lang['Lang0172'] = '搜索医生';
+
+$lang['Lang0173'] = '请选择预约时间段';
+$lang['Lang0174'] = '用户名不能为空';
+$lang['Lang0175'] = '密码不能为空';
+$lang['Lang0176'] = '验证码不能为空';
+$lang['Lang0177'] = '性别不能为空';
+$lang['Lang0178'] = '生日不能为空';
+$lang['Lang0179'] = '用户地址不能为空';
+$lang['Lang0180'] = '手机号码不能为空';
+$lang['Lang0181'] = '医疗卡号不能为空';
+$lang['Lang0182'] = '获取医生预约时间ID错误!';
+
 ?>

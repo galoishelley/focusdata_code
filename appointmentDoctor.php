@@ -86,7 +86,7 @@ include_once 'classes/Menu/menu.php';
     	                            </div>
     	                        </li>
     	                        <li>
-    	                        	<appointment>预约时间</appointment>
+    	                        	<appointment><!-- 预约时间--><?php echo $lang['Lang0158']; ?></appointment>
                                     <h3 id="appointment_date"></h3>
                                     <div class="app_time" id="app_time">
     	                            <!-- <appointment id="app_time">2016-7-13 9:30</appointment> -->
@@ -98,8 +98,8 @@ include_once 'classes/Menu/menu.php';
 	                    <div class="thumb-box5_1">
 				        	<div class="row">
 					            <div class="box">
-					                <strong>Personal Info</strong>
-					                <p>如果您未注册,则需要输入以下信息,即可预约医生</p>
+					                <strong><!-- Personal Info--><?php echo $lang['Lang0158a']; ?></strong>
+					                <p><!-- 如果您未注册,则需要输入以下信息,即可预约医生--><?php echo $lang['Lang0159']; ?></p>
 					            </div>
 					        </div>
 				            
@@ -110,45 +110,45 @@ include_once 'classes/Menu/menu.php';
                                 <input type="hidden" class="form-control" name="action_type" id="action_type" value="create">
 
                                 <div class="form-group col-md-12 col-lg-12">
-                                    <label for="CUSTOMER_USER_NAME" class="col-md-3 col-lg-3 control-label">用户名<span class="span-red">*</span></label>
+                                    <label for="CUSTOMER_USER_NAME" class="col-md-3 col-lg-3 control-label"><!-- 用户名--><?php echo $lang['Lang0160']; ?><span class="span-red">*</span></label>
                                     <input type="text" class="form-control" id="CUSTOMER_USER_NAME" name="CUSTOMER_USER_NAME">
                                 </div>
 
                                 <div class="form-group col-md-12 col-lg-12">
-                                    <label for="CUSTOMER_USER_PWD" class="col-md-3 col-lg-3 control-label">密码<span class="span-red">*</span></label>
+                                    <label for="CUSTOMER_USER_PWD" class="col-md-3 col-lg-3 control-label"><!-- 密码--><?php echo $lang['Lang0161']; ?><span class="span-red">*</span></label>
                                     <input type="password" class="form-control" name="CUSTOMER_USER_PWD" id="CUSTOMER_USER_PWD">
                                 </div>
 
                                 <div class="form-group col-md-12 col-lg-12">
-                                    <label for="CUSTOMER_NAME" class="col-md-3 col-lg-3  control-label">姓名<span class="span-red">*</span></label>
+                                    <label for="CUSTOMER_NAME" class="col-md-3 col-lg-3  control-label"><!-- 姓名--><?php echo $lang['Lang0162']; ?><span class="span-red">*</span></label>
                                     <input type="text" class="form-control" name="CUSTOMER_NAME" id="CUSTOMER_NAME">
                                 </div>
 
                                 <div class="form-group col-md-12 col-lg-12">
-                                    <label for="CUSTOMER_GENDER" class="col-md-3 col-lg-3 control-label">性别<span class="span-red">*</span></label>
+                                    <label for="CUSTOMER_GENDER" class="col-md-3 col-lg-3 control-label"><!-- 性别--><?php echo $lang['Lang0163']; ?><span class="span-red">*</span></label>
                                     <select class="form-control"  name="CUSTOMER_GENDER" id="CUSTOMER_GENDER">
-                                        <option>男</option>
-                                        <option>女</option>
+                                        <option><!-- 男--><?php echo $lang['Lang0164']; ?></option>
+                                        <option><!-- 女--><?php echo $lang['Lang0165']; ?></option>
                                     </select>
                                 </div>
 
                                 <div class="form-group col-md-12 col-lg-12">
-                                    <label for="CUSTOMER_BIRTHDAY" class="col-md-3 col-lg-3  control-label">生日<span class="span-red">*</span></label>
+                                    <label for="CUSTOMER_BIRTHDAY" class="col-md-3 col-lg-3  control-label"><!-- 生日--><?php echo $lang['Lang0166']; ?><span class="span-red">*</span></label>
                                     <input type="text" class="form-control" name="CUSTOMER_BIRTHDAY" id="CUSTOMER_BIRTHDAY">
                                 </div>
 
                                 <div class="form-group col-md-12 col-lg-12">
-                                    <label for="CUSTOMER_ADDR" class="col-md-3 col-lg-3  control-label">住址<span class="span-red">*</span></label>
+                                    <label for="CUSTOMER_ADDR" class="col-md-3 col-lg-3  control-label"><!-- 住址--><?php echo $lang['Lang0167']; ?><span class="span-red">*</span></label>
                                     <input type="text" class="form-control" name="CUSTOMER_ADDR" id="CUSTOMER_ADDR">
                                 </div>
 
                                 <div class="form-group col-md-12 col-lg-12">
-                                    <label for="CUSTOMER_PHONE_NO" class="col-md-3 col-lg-3  control-label">手机号<span class="span-red">*</span></label>
+                                    <label for="CUSTOMER_PHONE_NO" class="col-md-3 col-lg-3  control-label"><!-- 手机号--><?php echo $lang['Lang0168']; ?><span class="span-red">*</span></label>
                                     <input type="text" class="form-control" name="CUSTOMER_PHONE_NO" id="CUSTOMER_PHONE_NO">
                                 </div>
 
                                 <div class="form-group col-md-12 col-lg-12">
-                                    <label for="MEDICAL_CARD_NO" class="col-md-3 col-lg-3  control-label">医疗卡号<span class="span-red">*</span></label>
+                                    <label for="MEDICAL_CARD_NO" class="col-md-3 col-lg-3  control-label"><!-- 医疗卡号--><?php echo $lang['Lang0169']; ?><span class="span-red">*</span></label>
                                     <input type="text" class="form-control" name="MEDICAL_CARD_NO" id="MEDICAL_CARD_NO">
                                 </div>
 
@@ -187,14 +187,14 @@ include_once 'classes/Menu/menu.php';
 					    </div>
 				    	
 			        	<div class="row">
-			        		<button class="btn btn-danger btn-block" id="btn_submit">Appointment Doctor</button>
+			        		<button class="btn btn-danger btn-block" id="btn_submit"><!-- Appointment Doctor--><?php echo $lang['Lang0170']; ?></button>
 			        	</div>
 			        	<div class="row">
-			        		<button class="btn btn-primary btn-block" id="btn_savedoctor">收藏医生</button>
+			        		<button class="btn btn-primary btn-block" id="btn_savedoctor"><!-- 收藏医生--><?php echo $lang['Lang0171']; ?></button>
 			        	</div>
 						<div class="row">
 			        		<a class="btn btn-warning btn-block" href="searchDoctor.php">
-                              <span class="glyphicon  glyphicon-arrow-left"> 搜索医生</span>
+                              <span class="glyphicon  glyphicon-arrow-left"><!--  搜索医生--><?php echo $lang['Lang0172']; ?></span>
                             </a>
 			        	</div>
 	                </div>
@@ -228,6 +228,61 @@ include_once 'classes/Menu/menu.php';
         </div>
     </div>
 </footer>
+
+
+<!-- 为了实现js多语言 begin -->
+
+<!-- 总开关，为了设置第三方库的多语言而设置 -->
+<div id="which_lang" style="display: none;"><?php echo $_SESSION ['lang']; ?></div>
+
+<!-- 密码重置成功! -->
+<div id="Lang0032" style="display: none;"><?php echo $lang['Lang0032']; ?></div>
+
+<!-- 请选择需要修改的数据 -->
+<div id="Lang0033" style="display: none;"><?php echo $lang['Lang0033']; ?></div>
+
+<!-- 确定修改 -->
+<div id="Lang0018" style="display: none;"><?php echo $lang['Lang0018']; ?></div>
+
+<!-- 您未登陆,无法使用此功能 -->
+<div id="Lang0019" style="display: none;"><?php echo $lang['Lang0019']; ?></div>
+
+<!-- 请修改个人信息，添加邮箱地址 -->
+<div id="Lang0020" style="display: none;"><?php echo $lang['Lang0020']; ?></div>
+
+<!-- 详细 -->
+<div id="Lang0056" style="display: none;"><?php echo $lang['Lang0056']; ?></div>
+
+<!-- 修改-->
+<div id="Lang0057" style="display: none;"><?php echo $lang['Lang0057']; ?></div>
+
+<!-- 密码重置 -->
+<div id="Lang0058" style="display: none;"><?php echo $lang['Lang0058']; ?></div>
+
+<!-- 请选择预约时间段 -->
+<div id="Lang0173" style="display: none;"><?php echo $lang['Lang0173']; ?></div>
+<!-- 用户名不能为空-->
+<div id="Lang0174" style="display: none;"><?php echo $lang['Lang0174']; ?></div>
+<!-- 密码不能为空-->
+<div id="Lang0175" style="display: none;"><?php echo $lang['Lang0175']; ?></div>
+<!-- 验证码不能为空-->
+<div id="Lang0176" style="display: none;"><?php echo $lang['Lang0176']; ?></div>
+<!-- 性别不能为空-->
+<div id="Lang0177" style="display: none;"><?php echo $lang['Lang0177']; ?></div>
+<!-- 生日不能为空-->
+<div id="Lang0178" style="display: none;"><?php echo $lang['Lang0178']; ?></div>
+<!-- 用户地址不能为空-->
+<div id="Lang0179" style="display: none;"><?php echo $lang['Lang0179']; ?></div>
+<!-- 手机号码不能为空-->
+<div id="Lang0180" style="display: none;"><?php echo $lang['Lang0180']; ?></div>
+<!-- 医疗卡号不能为空-->
+<div id="Lang0181" style="display: none;"><?php echo $lang['Lang0181']; ?></div>
+<!-- 获取医生预约时间ID错误!-->
+<div id="Lang0182" style="display: none;"><?php echo $lang['Lang0182']; ?></div>
+
+<!-- 为了实现js多语言 end -->
+
+
 <script src="js/bootstrap.min.js"></script><!-- dialog --><script src="js/bootstrap-dialog.min.js"></script>
 <script src="js/tm-scripts.js"></script>
 <script src="js/jquery.cookie.js"></script>

@@ -256,7 +256,8 @@ $(function(){
     });
 
     if( !iflag ){
-      alert("请选择预约时间段");
+
+      alert($("#Lang0173").html());//请选择预约时间段
       return false;
     }
 
@@ -265,35 +266,43 @@ $(function(){
       requesttype = 0; //注册用户
 
       if($('#CUSTOMER_USER_NAME').val()==""){   
-        alert("用户名不能为空");
+
+        alert($("#Lang0174").html());//用户名不能为空
         return false;
       }
       if($('#CUSTOMER_USER_PWD').val()==""){
-        alert("密码不能为空");
+
+        alert($("#Lang0175").html());//密码不能为空
         return false;
       }
       if($('#verifyCode').val()==""){
-        alert("验证码不能为空");
+   
+        alert($("#Lang0176").html());//验证码不能为空
         return false;
       }
       if($('#CUSTOMER_GENDER').val()==""){
-        alert("性别不能为空");
+
+        alert($("#Lang0177").html());//性别不能为空
         return false;
       }
       if($('#CUSTOMER_BIRTHDAY').val()==""){
-        alert("生日不能为空");
+
+        alert($("#Lang0178").html());//生日不能为空
         return false;
       }
       if($('#CUSTOMER_ADDR').val()==""){
-        alert("用户地址不能为空");
+
+        alert($("#Lang0179").html());//用户地址不能为空
         return false;
       }
       if($('#CUSTOMER_PHONE_NO').val()==""){
-        alert("手机号码不能为空");
+
+        alert($("#Lang0180").html());//手机号码不能为空
         return false;
       }
       if($('#MEDICAL_CARD_NO').val()==""){
-        alert("医疗卡号不能为空");
+
+        alert($("#Lang0181").html());//医疗卡号不能为空
         return false;
       }
 
@@ -409,7 +418,8 @@ $(function(){
     }
 
     if(time_id == ""){
-      alert("获取医生预约时间ID错误!");
+
+      alert($("#Lang0182").html());//获取医生预约时间ID错误!
       return;
     }
     
