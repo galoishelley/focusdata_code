@@ -75,59 +75,53 @@ include_once 'classes/Menu/menu.php';
     <div class="thumb-box9" data-stellar-background-ratio="0.1">
       <div class="container">
         <div class="row left_con">
-          <div class="col-lg-3 col-md-3 col-sm-3 wow fadeInUp" data-wow-delay="0.1s">
-            <div class="list-group">
-              <a href="adminQryClinic.php" class="list-group-item" id="user_appointment_recoder" >诊所用户管理</a>
-              <a href="adminQryUser.php" class="list-group-item active" id="user_upd_person_pwd">个人用户管理</a>
-              <a href="adminQryDoctor.php" class="list-group-item" id="user_upd_person_info">医生信息管理</a>
-              <a href="adminUpdPwd.php" class="list-group-item" id="user_upd_person_pwd">修改管理员密码</a>
-              <a href="adminService.php" class="list-group-item">服务列表</a>
-            </div>
-          </div>
+          <?php
+include_once 'classes/Menu/admin_menu.php';
+?>
 
           <div class="col-lg-9 col-md-9 col-sm-9 wow fadeInUp" data-wow-delay="0.1s">
               <div class="PersonUser">
                 <div class="savedoctor">
 
-                  <h2>个人用户管理</h2>
+                  <h2><!-- 个人用户管理 --><?php echo $lang['Lang0084']; ?></h2>
                   <div class="row">
                       <form class="form-inline" role="form" id="adminQryUser_form">
                           <input type="hidden" class="form-control" name="action_type" id="action_type" value="view_name_area">
                           <div class="form-group">
-                            <label for="CUSTOMER_USER_NAME" class="control-label">用户名</label>
+                            <label for="CUSTOMER_USER_NAME" class="control-label"><!-- 用户名 --><?php echo $lang['Lang0085']; ?></label>
                             <input type="text" class="form-control" name="CUSTOMER_USER_NAME" id="CUSTOMER_USER_NAME">
                           </div>
 
                           <div class="form-group">
-                            <label for="CUSTOMER_NAME" class="control-label">用户姓名</label>
+                            <label for="CUSTOMER_NAME" class="control-label"><!-- 用户姓名 --><?php echo $lang['Lang0086']; ?></label>
                             <input type="text" class="form-control" name="CUSTOMER_NAME" id="CUSTOMER_NAME">
                           </div>
 
                           <div class="form-group">
-                            <label for="CUSTOMER_SUBURB" class="control-label">区</label>
+                            <label for="CUSTOMER_SUBURB" class="control-label"><!-- 区 --><?php echo $lang['Lang0087']; ?></label>
                             <input type="text" class="form-control" name="CUSTOMER_SUBURB" id="CUSTOMER_SUBURB">
                           </div>
 
                           <div class="form-group">
-                            <label for="STATE_ID" class="control-label">州</label>
+                            <label for="STATE_ID" class="control-label"><!-- 州 --><?php echo $lang['Lang0088']; ?></label>
                             <select class="form-control" name="STATE_ID" id="STATE_ID">
-                              <option value="">全部</option>
+                              <option value=""><!-- 全部 --><?php echo $lang['Lang0089']; ?></option>
                             </select>
                           </div>
 
                           <div class="form-group">
-                            <label for="ACTIVE_STATUS" class="control-label">状态</label>
+                            <label for="ACTIVE_STATUS" class="control-label"><!-- 状态 --><?php echo $lang['Lang0090']; ?></label>
                             <select class="form-control" name="ACTIVE_STATUS" id="ACTIVE_STATUS">
-                              <option value="">全部</option>
-                              <option value="1">active</option>
-                              <option value="0">inactive</option>
+                              <option value=""><!-- 全部 --><?php echo $lang['Lang0091']; ?></option>
+                              <option value="1"><!-- active --><?php echo $lang['Lang0092']; ?></option>
+                              <option value="0"><!-- inactive --><?php echo $lang['Lang0093']; ?></option>
                             </select>
                           </div>
 
-                           <button class="btn btn-primary search_ok" id="search_ok"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>  
+                           <button class="btn btn-primary search_ok" id="search_ok"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> <!-- Search --><?php echo $lang['Lang0094']; ?></button>  
 
-                           <button class="btn btn-warning" id="btn_active">active</button>
-                           <button class="btn btn-danger" id="btn_inactive">inactive</button>
+                           <button class="btn btn-warning" id="btn_active"><!-- active --><?php echo $lang['Lang0095']; ?></button>
+                           <button class="btn btn-danger" id="btn_inactive"><!-- inactive --><?php echo $lang['Lang0096']; ?></button>
                        </form>
                   </div>
 
@@ -136,19 +130,19 @@ include_once 'classes/Menu/menu.php';
                       <thead class="table_title">
                           <tr>
                             <th><input type="checkbox" name="chk_all" id="chk_all"></th>
-                            <th>用户名</th>
-                            <th>邮箱</th>
-                            <th>姓名</th>
-                            <th>性别</th>
-                            <th>生日</th>
-                            <th>详细地址</th>
-                            <th>区</th>
-                            <th>州</th>
-                            <th>邮编</th>
-                            <th>手机号</th>
-                            <th>医疗卡号</th>
-                            <th>状态</th>
-                            <th>操作</th>
+                            <th><!-- 用户名 --><?php echo $lang['Lang0097']; ?></th>
+                            <th><!-- 邮箱 --><?php echo $lang['Lang0098']; ?></th>
+                            <th><!-- 姓名 --><?php echo $lang['Lang0099']; ?></th>
+                            <th><!-- 性别 --><?php echo $lang['Lang0100']; ?></th>
+                            <th><!-- 生日 --><?php echo $lang['Lang0101']; ?></th>
+                            <th><!-- 详细地址 --><?php echo $lang['Lang0102']; ?></th>
+                            <th><!-- 区 --><?php echo $lang['Lang0103']; ?></th>
+                            <th><!-- 州 --><?php echo $lang['Lang0104']; ?></th>
+                            <th><!-- 邮编 --><?php echo $lang['Lang0105']; ?></th>
+                            <th><!-- 手机号 --><?php echo $lang['Lang0106']; ?></th>
+                            <th><!-- 医疗卡号 --><?php echo $lang['Lang0107']; ?></th>
+                            <th><!-- 状态 --><?php echo $lang['Lang0108']; ?></th>
+                            <th><!-- 操作 --><?php echo $lang['Lang0109']; ?></th>
                           </tr>
                       </thead>
                     </table>
@@ -191,6 +185,37 @@ include_once 'classes/Menu/menu.php';
         </div>
     </div>
 </footer>
+<!-- 为了实现js多语言 begin -->
+
+<!-- 总开关，为了设置第三方库的多语言而设置 -->
+<div id="which_lang" style="display: none;"><?php echo $_SESSION ['lang']; ?></div>
+
+<!-- 密码重置成功! -->
+<div id="Lang0032" style="display: none;"><?php echo $lang['Lang0032']; ?></div>
+
+<!-- 请选择需要修改的数据 -->
+<div id="Lang0033" style="display: none;"><?php echo $lang['Lang0033']; ?></div>
+
+<!-- 确定修改 -->
+<div id="Lang0018" style="display: none;"><?php echo $lang['Lang0018']; ?></div>
+
+<!-- 您未登陆,无法使用此功能 -->
+<div id="Lang0019" style="display: none;"><?php echo $lang['Lang0019']; ?></div>
+
+<!-- 请修改个人信息，添加邮箱地址 -->
+<div id="Lang0020" style="display: none;"><?php echo $lang['Lang0020']; ?></div>
+
+<!-- 详细 -->
+<div id="Lang0056" style="display: none;"><?php echo $lang['Lang0056']; ?></div>
+
+<!-- 修改-->
+<div id="Lang0057" style="display: none;"><?php echo $lang['Lang0057']; ?></div>
+
+<!-- 密码重置 -->
+<div id="Lang0058" style="display: none;"><?php echo $lang['Lang0058']; ?></div>
+
+
+<!-- 为了实现js多语言 end -->
 
 <!-- DataTables JavaScript -->
 <script src="bower_components/datatables/media/js/jquery.dataTables.min.js"></script>

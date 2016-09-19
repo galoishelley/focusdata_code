@@ -75,19 +75,13 @@ include_once 'classes/Menu/menu.php';
 		<div class="thumb-box9" data-stellar-background-ratio="0.1">
 			<div class="container">
 				<div class="row left_con">
-					<div class="col-lg-3 col-md-3 col-sm-3 wow fadeInUp" data-wow-delay="0.1s">
-						<div class="list-group">
-              <a href="adminQryClinic.php" class="list-group-item" id="user_appointment_recoder" >诊所用户管理</a>
-              <a href="adminQryUser.php" class="list-group-item" id="user_upd_person_pwd">个人用户管理</a>
-              <a href="adminQryDoctor.php" class="list-group-item" id="user_upd_person_info">医生信息管理</a>
-              <a href="adminUpdPwd.php" class="list-group-item active" id="user_upd_person_pwd">修改管理员密码</a>
-              <a href="adminService.php" class="list-group-item">服务列表</a>
-            </div>
-					</div>
+					<?php
+include_once 'classes/Menu/admin_menu.php';
+?>
 
 					<div class="col-lg-9 col-md-9 col-sm-9 wow fadeInUp" data-wow-delay="0.1s">
           <div class="PersonUser">
-                <h2>修改管理员密码</h2>
+                <h2><!-- 修改管理员密码 --><?php echo $lang['Lang0110']; ?></h2>
                 <div class="row">
 
                   <form class="form-inline wow fadeInLeft" role="form" id="userUpdPersonPwd">
@@ -96,28 +90,28 @@ include_once 'classes/Menu/menu.php';
                       <input type="hidden" class="form-control" name="CUSTOMER_USER_ID" id="CUSTOMER_USER_ID">
 
                       <div class="form-group col-md-10">
-                        <label for="CUSTOMER_USER_NAME" class="col-md-4 control-label">用户名<span class="span-red">*</span></label>
+                        <label for="CUSTOMER_USER_NAME" class="col-md-4 control-label"><!-- 用户名 --><?php echo $lang['Lang0111']; ?><span class="span-red">*</span></label>
                         <input type="text" class="form-control" id="CUSTOMER_USER_NAME" name="CUSTOMER_USER_NAME" readonly="true">
                       </div>
 
                       <div class="form-group col-md-10">
-                        <label for="CUSTOMER_USER_PWD" class="col-md-4 control-label">旧密码<span class="span-red">*</span></label>
+                        <label for="CUSTOMER_USER_PWD" class="col-md-4 control-label"><!-- 旧密码 --><?php echo $lang['Lang0112']; ?><span class="span-red">*</span></label>
                         <input type="password" class="form-control" id="CUSTOMER_USER_PWD">
                       </div>
 
                       <div class="form-group col-md-10">
-                        <label for="CUSTOMER_USER_NEWPWD" class="col-md-4 control-label">新密码<span class="span-red">*</span></label>
+                        <label for="CUSTOMER_USER_NEWPWD" class="col-md-4 control-label"><!-- 新密码 --><?php echo $lang['Lang0113']; ?><span class="span-red">*</span></label>
                         <input type="password" class="form-control" id="CUSTOMER_USER_NEWPWD">
                       </div>
 
                       <div class="form-group col-md-10">
-                        <label for="CUSTOMER_USER_C_NEWPWD" class="col-md-4 control-label">确认新密码<span class="span-red">*</span></label>
+                        <label for="CUSTOMER_USER_C_NEWPWD" class="col-md-4 control-label"><!-- 确认新密码 --><?php echo $lang['Lang0114']; ?><span class="span-red">*</span></label>
                         <input type="password" class="form-control" id="CUSTOMER_USER_C_NEWPWD">
                       </div>
 
                       <div class="form-group col-md-10">
                         <!-- <div class="col-md-12"> -->
-                          <button class="btn btn-primary pull-right" id="btn_ok">确定</button>
+                          <button class="btn btn-primary pull-right" id="btn_ok"><!-- 确定 --><?php echo $lang['Lang0115']; ?></button>
                         <!-- </div> -->
                       </div>
                     </form>
@@ -158,7 +152,39 @@ include_once 'classes/Menu/menu.php';
         </div>
     </div>
 </footer>
+<!-- 为了实现js多语言 begin -->
 
+<!-- 总开关，为了设置第三方库的多语言而设置 -->
+<div id="which_lang" style="display: none;"><?php echo $_SESSION ['lang']; ?></div>
+
+<!-- 密码重置成功! -->
+<div id="Lang0032" style="display: none;"><?php echo $lang['Lang0032']; ?></div>
+
+<!-- 请选择需要修改的数据 -->
+<div id="Lang0033" style="display: none;"><?php echo $lang['Lang0033']; ?></div>
+
+<!-- 确定修改 -->
+<div id="Lang0018" style="display: none;"><?php echo $lang['Lang0018']; ?></div>
+
+<!-- 您未登陆,无法使用此功能 -->
+<div id="Lang0019" style="display: none;"><?php echo $lang['Lang0019']; ?></div>
+
+<!-- 请修改个人信息，添加邮箱地址 -->
+<div id="Lang0020" style="display: none;"><?php echo $lang['Lang0020']; ?></div>
+
+<!-- 详细 -->
+<div id="Lang0056" style="display: none;"><?php echo $lang['Lang0056']; ?></div>
+
+<!-- 修改-->
+<div id="Lang0057" style="display: none;"><?php echo $lang['Lang0057']; ?></div>
+
+<!-- 密码重置 -->
+<div id="Lang0058" style="display: none;"><?php echo $lang['Lang0058']; ?></div>
+
+<!-- 两次密码输入不一致 -->
+<div id="Lang0116" style="display: none;"><?php echo $lang['Lang0116']; ?></div>
+
+<!-- 为了实现js多语言 end -->
 <!-- DataTables JavaScript -->
 <script src="bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
 <script src="bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>

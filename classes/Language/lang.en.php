@@ -90,4 +90,71 @@ $lang['Lang0055'] = 'Action';
 $lang['Lang0056'] = 'Detail';
 $lang['Lang0057'] = 'Update';
 $lang['Lang0058'] = 'Pwd Reset';
+
+// Page adminQryDoctor
+$lang['Lang0059'] = 'Doctor User Management';
+$lang['Lang0060'] = 'Clinic name';
+$lang['Lang0061'] = 'Suburb';
+$lang['Lang0062'] = 'State';
+$lang['Lang0063'] = 'All';
+$lang['Lang0064'] = 'Doctor name';
+$lang['Lang0065'] = 'Doctor type';
+$lang['Lang0066'] = 'All';
+$lang['Lang0067'] = 'Status';
+$lang['Lang0068'] = 'All';
+$lang['Lang0069'] = 'active';
+$lang['Lang0070'] = 'inactive';
+$lang['Lang0071'] = 'Search';
+$lang['Lang0072'] = 'inactive';
+$lang['Lang0073'] = 'active';
+$lang['Lang0074'] = 'Clinic name';
+$lang['Lang0075'] = 'Address';
+$lang['Lang0076'] = 'Suburb';
+$lang['Lang0077'] = 'State';
+$lang['Lang0078'] = 'Postcode';
+$lang['Lang0079'] = 'Doctor type';
+$lang['Lang0080'] = 'Doctor name';
+$lang['Lang0081'] = 'Gender';
+$lang['Lang0082'] = 'Status';
+$lang['Lang0083'] = 'Action';
+
+
+
+// Page adminQryUser
+$lang['Lang0084'] = 'Personal User Management';
+$lang['Lang0085'] = 'User';
+$lang['Lang0086'] = 'User name';
+$lang['Lang0087'] = 'Suburb';
+$lang['Lang0088'] = 'State';
+$lang['Lang0089'] = 'All';
+$lang['Lang0090'] = 'Status';
+$lang['Lang0091'] = 'All';
+$lang['Lang0092'] = 'active';
+$lang['Lang0093'] = 'inactive';
+$lang['Lang0094'] = 'Search';
+$lang['Lang0095'] = 'active';
+$lang['Lang0096'] = 'inactive';
+$lang['Lang0097'] = 'User';
+$lang['Lang0098'] = 'Email';
+$lang['Lang0099'] = 'Name';
+$lang['Lang0100'] = 'Gender';
+$lang['Lang0101'] = 'Birthday';
+$lang['Lang0102'] = 'Address';
+$lang['Lang0103'] = 'Suburb';
+$lang['Lang0104'] = 'State';
+$lang['Lang0105'] = 'Postcode';
+$lang['Lang0106'] = 'Mobile';
+$lang['Lang0107'] = 'Medical code';
+$lang['Lang0108'] = 'Status';
+$lang['Lang0109'] = 'Action';
+
+// Page adminUpdPwd
+$lang['Lang0110'] = 'Updata Admin Password';
+$lang['Lang0111'] = 'User';
+$lang['Lang0112'] = 'Old password';
+$lang['Lang0113'] = 'New password';
+$lang['Lang0114'] = 'Confirm password';
+$lang['Lang0115'] = 'OK';
+$lang['Lang0116'] = '2 times input passwordare not same!';
+
 ?>
