@@ -25,6 +25,7 @@ include_once 'classes/Language/language.common.php';
 <!-- datetime -->
 <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 <!--JS-->
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
 <script src="js/jquery.js"></script>
 <script src="js/jquery-migrate-1.2.1.min.js"></script>
 <script src="js/jquery.easing.1.3.js"></script>
@@ -32,6 +33,7 @@ include_once 'classes/Language/language.common.php';
 <script src="js/jquery.equalheights.js"></script> 
 <script src="js/jquery.ui.totop.js"></script>
 
+<!-- <script src="js/main/searchDoctor.js"></script> -->
 <!--[if (gt IE 9)|!(IE)]><!-->
 <!-- <script src="js/wow/wow.js"></script> -->
 <script src="js/wow/device.min.js"></script>
@@ -56,6 +58,69 @@ include_once 'classes/Language/language.common.php';
   <![endif]-->
 </head>
 <body>
+
+
+    <script type="text/javascript">
+        var source, destination;
+        var directionsDisplay;
+        var directionsService = new google.maps.DirectionsService();
+        google.maps.event.addDomListener(window, 'load', function () {
+            new google.maps.places.SearchBox(document.getElementById('txtSource'));
+            new google.maps.places.SearchBox(document.getElementById('txtDestination'));
+            directionsDisplay = new google.maps.DirectionsRenderer({ 'draggable': true });
+        });
+
+        function GetRoute() {
+            var cat_home = new google.maps.LatLng(43.838634, 125.337772);
+            var mapOptions = {
+                zoom: 7,
+                center: cat_home
+            };
+            // map = new google.maps.Map(document.getElementById('dvMap'), mapOptions);
+            // directionsDisplay.setMap(map);
+            // directionsDisplay.setPanel(document.getElementById('dvPanel'));
+
+            //*********DIRECTIONS AND ROUTE**********************//
+            source = document.getElementById("txtSource").value;
+            destination = document.getElementById("txtDestination").value;
+
+            var request = {
+                origin: source,
+                destination: destination,
+                travelMode: google.maps.TravelMode.DRIVING
+            };
+            directionsService.route(request, function (response, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                }
+            });
+
+            //*********DISTANCE AND DURATION**********************//
+            var service = new google.maps.DistanceMatrixService();
+            service.getDistanceMatrix({
+                origins: [source],
+                destinations: [destination],
+                travelMode: google.maps.TravelMode.DRIVING,
+                unitSystem: google.maps.UnitSystem.METRIC,
+                avoidHighways: false,
+                avoidTolls: false
+            }, function (response, status) {
+                if (status == google.maps.DistanceMatrixStatus.OK && response.rows[0].elements[0].status != "ZERO_RESULTS") {
+                    var distance = response.rows[0].elements[0].distance.text;
+                    alert(distance);
+                    // var duration = response.rows[0].elements[0].duration.text;
+                    // var dvDistance = document.getElementById("dvDistance");
+                    // dvDistance.innerHTML = "";
+                    // dvDistance.innerHTML += "距离Distance: " + distance + "<br />";
+                    // dvDistance.innerHTML += "大约需要Duration:" + duration;
+
+                } else {
+                    alert("Unable to find the distance via road.");
+                }
+            });
+        }
+    </script>
+
 <!--header-->
 <div class="container bars"><em class="bars_"></em></div>
 <header>
@@ -167,6 +232,11 @@ include_once 'classes/Menu/menu.php';
                     </div><!-- /.modal -->
                 </div>
     
+                <input type="text" id="txtSource" value="Wo De Jia Yuan, Nanguan Qu, Changchun Shi, Jilin Sheng, China" style="width: 500px" />
+                <input type="text" id="txtDestination" value="Luo Yang Jie, Lvyuan Qu, Changchun Shi, Jilin Sheng, China" style="width: 500px" />
+                <input type="text" id="distance"/>
+                <input type="button" value="给猫获取距离" onclick="GetRoute()" />
+
 				<div class="row">
                     <input type="hidden" id="json_str1"/>
                     <table id="dataTables-example" class="table table-hover  table-bordered" cellspacing="0" width="100%">
@@ -246,11 +316,13 @@ include_once 'classes/Menu/menu.php';
 <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
 <script type="text/javascript" src="js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
 
+<!-- <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script> -->
+
 <!-- <script src="js/fd_appointmentDoctor.js"></script> -->
 <script src="js/jquery.cookie.js"></script>
 <!-- <script src="js/fd_searchDoctor.js"></script> -->
 <script src="js/main/pub.js"></script>
-<script src="js/main/getdistance.js"></script>
+<!-- <script src="js/main/getdistance.js"></script> -->
 <script src="js/main/searchDoctor.js"></script>
 
 </body>

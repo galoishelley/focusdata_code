@@ -89,32 +89,32 @@ include_once 'classes/Menu/menu.php';
 							</div>
 							
 							<div id="personal">
-								<div class="form-group">
+								<div class="form-group col-md-6 col-lg-6">
 									<label for="CUSTOMER_USER_NAME">用户名<span class="span-red">*</span></label>
 									<input type="text" class="form-control" id="CUSTOMER_USER_NAME" name="CUSTOMER_USER_NAME">
 								</div>
 
-								<div class="form-group">
+								<div class="form-group col-md-6 col-lg-6">
 									<label for="CUSTOMER_USER_MAIL">邮箱<span class="span-red">*</span></label>
 									<input type="text" class="form-control" id="CUSTOMER_USER_MAIL" name="CUSTOMER_USER_MAIL">
 								</div>
 
-								<div class="form-group">
+								<div class="form-group col-md-6 col-lg-6">
 									<label for="CUSTOMER_USER_PWD">密码<span class="span-red">*</span></label>
 									<input type="password" class="form-control" name="CUSTOMER_USER_PWD" id="CUSTOMER_USER_PWD">
 								</div>
 
-								<div class="form-group">
+								<div class="form-group col-md-6 col-lg-6">
 									<label for="CONFIME_PWD">确认密码<span class="span-red">*</span></label>
 									<input type="password" class="form-control" name="CONFIME_PWD" id="CONFIME_PWD">
 								</div>
 
-								<div class="form-group">
+								<div class="form-group col-md-6 col-lg-6">
 									<label for="CUSTOMER_NAME">姓名<span class="span-red">*</span></label>
 									<input type="text" class="form-control" id="CUSTOMER_NAME" name="CUSTOMER_NAME">
 								</div>
 
-								<div class="form-group">
+								<div class="form-group col-md-6 col-lg-6">
 	                              <label for="CUSTOMER_GENDER">性别<span class="span-red">*</span></label>
 	                              <select class="form-control" id="CUSTOMER_GENDER" name="CUSTOMER_GENDER">
 	                                    <option>男</option>
@@ -128,41 +128,42 @@ include_once 'classes/Menu/menu.php';
 								</div> -->
 								
 
-								<div class="form-group">
+								<div class="form-group col-md-6 col-lg-6">
 									<label for="CUSTOMER_BIRTHDAY">生日<span class="span-red">*</span></label>
 									<input type="text" class="form-control" name="CUSTOMER_BIRTHDAY" id="CUSTOMER_BIRTHDAY" value="1">
 								</div>
 
-								<div class="form-group">
+								<div class="form-group col-md-6 col-lg-6">
 									<label for="CUSTOMER_PHONE_NO">电话号码<span class="span-red">*</span></label>
-									<input type="text" class="form-control" name="CUSTOMER_PHONE_NO" id="CUSTOMER_PHONE_NO" value="1">
+									<input type="text" class="form-control" name="CUSTOMER_PHONE_NO" id="CUSTOMER_PHONE_NO" maxlength="10">
 								</div>	
 
-								<div class="form-group">
+								<div class="form-group col-md-6 col-lg-6">
 									<label for="MEDICAL_CARD_NO">医疗卡号<span class="span-red">*</span></label>
 									<input type="text" class="form-control" name="MEDICAL_CARD_NO" id="MEDICAL_CARD_NO" value="1">
 								</div>
 
-								<div class="form-group">
-									<label for="CUSTOMER_POSTCODE">邮编<span class="span-red">*</span></label>
-									<input type="text" class="form-control" name="CUSTOMER_POSTCODE" id="CUSTOMER_POSTCODE" value="1">
-								</div>
 
 								<div class="form-group col-md-9 col-lg-9">
 									<label for="CUSTOMER_ADDR">详细地址<span class="span-red">*</span></label>
 									<input type="text" class="form-control"  style="width:81%" name="CUSTOMER_ADDR" id="CUSTOMER_ADDR" value="1">
 								</div>
 
-								<div class="form-group">
+								<div class="form-group col-md-6 col-lg-6">
 									<label for="CUSTOMER_SUBURB">区<span class="span-red">*</span></label>
 									<input type="text" class="form-control" name="CUSTOMER_SUBURB" id="CUSTOMER_SUBURB" value="1">
 								</div>
 
-								<div class="form-group">
+								<div class="form-group col-md-6 col-lg-6">
 	                              <label for="STATE_ID">州<span class="span-red">*</span></label>
 	                              <select class="form-control" id="STATE_ID" name="STATE_ID">
 	                              </select>
 	                            </div>
+
+	                            <div class="form-group col-md-6 col-lg-6">
+									<label for="CUSTOMER_POSTCODE">邮编<span class="span-red">*</span></label>
+									<input type="text" class="form-control" name="CUSTOMER_POSTCODE" id="CUSTOMER_POSTCODE" value="1">
+								</div>
 							</div>
 						</fieldset>
 					</form>

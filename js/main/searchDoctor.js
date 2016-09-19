@@ -633,6 +633,9 @@ $(function(){
 		var data = {
 		      CLINIC_NAME: obj_data.CLINIC_NAME,
 		      CLINIC_ADDR: obj_data.CLINIC_ADDR,
+		      CLINIC_SUBURB: obj_data.CLINIC_SUBURB,
+		      STATE_NAME: obj_data.STATE_NAME,
+		      CLINIC_POSTCODE: obj_data.CLINIC_POSTCODE,
 		      DOCTOR_ID: obj_data.DOCTOR_ID,
 		      DOCTOR_NAME: obj_data.DOCTOR_NAME,
 		      DOCTOR_TYPE: obj_data.DOCTOR_TYPE,
