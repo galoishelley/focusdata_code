@@ -7,7 +7,7 @@ Language: Chinese
 
 $lang = array();
 // Page Title
-$lang['Lang0001'] = '首页';
+$lang['Lang0001'] = 'FocusData-医生在线预约系统';
 $lang['Lang0002'] = '登陆';
 $lang['Lang0003']='诊所用户管理';
 // Logo

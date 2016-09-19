@@ -8,7 +8,7 @@ Language: English
 $lang = array();
 
 // Page Title
-$lang['Lang0001'] = 'Home';
+$lang['Lang0001'] = 'FocusData-Appointment System';
 $lang['Lang0002'] = 'Sign In';
 $lang['Lang0003']='Clinic user manangement';
 
