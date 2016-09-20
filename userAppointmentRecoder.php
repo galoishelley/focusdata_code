@@ -78,11 +78,11 @@ include_once 'classes/Menu/menu.php';
 					 <div class="col-lg-3 col-md-3 col-sm-3 wow rollIn" data-wow-delay="0.1s">
          <!-- <div class="col-lg-3 col-md-3 col-sm-3"> -->
 						<div class="list-group">
-							<a href="userAppointmentRecoder.php" class="list-group-item active" id="user_appointment_recoder" >预约记录</a>
-							<a href="userUpdPersonInfo.php" class="list-group-item" id="user_upd_person_info">修改个人用户信息</a>
-							<a href="userUpdPersonPwd.php" class="list-group-item" id="user_upd_person_pwd">修改个人用户密码</a>
-							<a href="userSaveDoctor.php" class="list-group-item" id="user_collect_doctor">收藏医生管理</a>
-							<a href="userSaveSearch.php" class="list-group-item" id="user_search_terms">常用搜索条件管理</a>
+							<a href="userAppointmentRecoder.php" class="list-group-item active" id="user_appointment_recoder" ><!-- 预约记录--><?php echo $lang['Lang0275']; ?></a>
+							<a href="userUpdPersonInfo.php" class="list-group-item" id="user_upd_person_info"><!-- 修改个人用户信息--><?php echo $lang['Lang0276']; ?></a>
+							<a href="userUpdPersonPwd.php" class="list-group-item" id="user_upd_person_pwd"><!-- 修改个人用户密码--><?php echo $lang['Lang0277']; ?></a>
+							<a href="userSaveDoctor.php" class="list-group-item" id="user_collect_doctor"><!-- 收藏医生管理--><?php echo $lang['Lang0278']; ?></a>
+							<a href="userSaveSearch.php" class="list-group-item" id="user_search_terms"><!-- 常用搜索条件管理--><?php echo $lang['Lang0279']; ?></a>
 						</div>
 					</div>
 
@@ -90,28 +90,28 @@ include_once 'classes/Menu/menu.php';
           <!-- <div class="col-lg-9 col-md-9 col-sm-9"> -->
               <div class="PersonUser">
 
-                <h2>预约记录</h2>
+                <h2><!-- 预约记录--><?php echo $lang['Lang0275']; ?></h2>
                 <div class="row">
                     <form class="form-inline wow fadeInLeft" role="form">
                         <div class="input-group">
-                          <span class="input-group-addon" id="basic-addon1">开始时间</span>
+                          <span class="input-group-addon" id="basic-addon1"><!-- 开始时间--><?php echo $lang['Lang0280']; ?></span>
                           <input type="text" class="form-control form_datetime" id="begin_time" readonly>
                         </div>
 
                         <div class="input-group">
-                          <span class="input-group-addon" id="basic-addon1">结束时间</span>
+                          <span class="input-group-addon" id="basic-addon1"><!-- 结束时间--><?php echo $lang['Lang0281']; ?></span>
                           <input type="text" class="form-control form_datetime" id="end_time" readonly>
                         </div>
                         
                         <div class="form-group">
                           <select class="form-control" id="app_status">
-                            <option value="%">全部</option>
+                            <option value="%"><!-- 全部--><?php echo $lang['Lang0237']; ?></option>
                           </select>
                         </div>
 
-                         <button class="btn btn-primary search_ok" id="search_ok"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search</button>  
+                         <button class="btn btn-primary search_ok" id="search_ok"><span class="glyphicon glyphicon-search" aria-hidden="true"></span><!-- <?php echo $lang['Lang0000']; ?>--><?php echo $lang['Lang0240']; ?></button>  
 
-                         <button class="btn btn-danger" id="btn_cancel">取消预约</button>
+                         <button class="btn btn-danger" id="btn_cancel"><!-- 取消预约--><?php echo $lang['Lang0282']; ?></button>
                      </form>
                 </div>
 
@@ -120,16 +120,16 @@ include_once 'classes/Menu/menu.php';
                     <thead class="table_title">
                         <tr>
                           <th><input type="checkbox" name="chk_all" id="chk_all"></th>
-                          <th>诊所名称</th>
-                          <th>详细地址</th>
-                          <th>区</th>
-                          <th>州</th>
-                          <th>邮编</th>
-                          <th>医生类别</th>
-                          <th>医生名称</th>
-                          <th>预约时间</th>
+                          <th><!-- 诊所名称--><?php echo $lang['Lang0243']; ?></th>
+                          <th><!-- 详细地址--><?php echo $lang['Lang0244']; ?></th>
+                          <th><!-- 区--><?php echo $lang['Lang0245']; ?></th>
+                          <th><!-- 州--><?php echo $lang['Lang0246']; ?></th>
+                          <th><!-- 邮编--><?php echo $lang['Lang0247']; ?></th>
+                          <th><!-- 医生类别--><?php echo $lang['Lang0248']; ?></th>
+                          <th><!-- 医生名称--><?php echo $lang['Lang0249']; ?></th>
+                          <th><!-- 预约时间--><?php echo $lang['Lang0283']; ?></th>
                           <!-- <th>预约时间</th> -->
-                          <th>状态</th>
+                          <th><!-- 状态--><?php echo $lang['Lang0259']; ?></th>
                         </tr>
                     </thead>
                   </table>
@@ -170,7 +170,9 @@ include_once 'classes/Menu/menu.php';
         </div>
     </div>
 </footer>
-
+<?php
+include_once 'classes/Language/For_JS_multi_lang.php';
+?>
 <!-- DataTables JavaScript -->
 <script src="bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
 <script src="bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>

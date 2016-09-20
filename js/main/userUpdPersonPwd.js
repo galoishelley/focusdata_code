@@ -53,7 +53,7 @@ $(document).ready(function() {
   }
 
   if(ilogin == 0){
-    alert("您未登陆,无法使用此功能");
+    alert($('#Lang0019').html());//您未登陆,无法使用此功能! 
     history.go(-1);
     return false;
   }
@@ -67,7 +67,7 @@ $(document).ready(function() {
     var new_c_pwd = $('#CUSTOMER_USER_C_NEWPWD').val();
 
     if(new_pwd != new_c_pwd){
-      alert("两次密码输入不一致");
+    	alert($('#Lang0207').html());//两次密码输入不一致
       return false;
     }
 

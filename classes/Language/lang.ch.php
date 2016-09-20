@@ -332,4 +332,38 @@ $lang['Lang0271'] = '区';
 $lang['Lang0272'] = '州';
 $lang['Lang0273'] = '邮编';
 $lang['Lang0274'] = '确定';
+
+//Page userAppointmentRecoder
+$lang['Lang0275'] = '预约记录';
+$lang['Lang0276'] = '修改个人用户信息';
+$lang['Lang0277'] = '修改个人用户密码';
+$lang['Lang0278'] = '收藏医生管理';
+$lang['Lang0279'] = '常用搜索条件管理';
+$lang['Lang0280'] = '开始时间';
+$lang['Lang0281'] = '结束时间';
+$lang['Lang0282'] = '取消预约';
+$lang['Lang0283'] = '预约时间';
+
+$lang['Lang0284'] = '您未登陆,无预约记录';
+$lang['Lang0285'] = '您未登陆';
+
+$lang['Lang0286'] = '请选择取消预约的数据';
+
+$lang['Lang0287'] = '确定取消预约';
+
+//Page userSaveDoctor
+$lang['Lang0288'] = '删除收藏';
+$lang['Lang0289'] = '请选择需要删除的数据';
+$lang['Lang0290'] = '确定删除?';
+$lang['Lang0291'] = '预约医生';
+
+//Page userSaveSearch
+$lang['Lang0292'] = '删除常用搜索条件';
+$lang['Lang0293'] = '诊所区';
+$lang['Lang0294'] = '诊所州';
+$lang['Lang0295'] = '诊所名称';
+$lang['Lang0296'] = '医生类别';
+$lang['Lang0297'] = '医生名称';
+$lang['Lang0298'] = '医生距离';
+$lang['Lang0299'] = '使用';
 ?>

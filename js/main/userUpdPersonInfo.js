@@ -45,7 +45,7 @@ $(document).ready(function() {
   }
 
   if(ilogin == 0){
-    alert("您未登陆,无法使用此功能");
+	alert($('#Lang0019').html());//您未登陆,无法使用此功能! 
     history.go(-1);
     return false;
     // $('#a_userAppointmentRecoder').attr("href","#");

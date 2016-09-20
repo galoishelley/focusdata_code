@@ -77,17 +77,17 @@ include_once 'classes/Menu/menu.php';
 				<div class="row left_con">
 					<div class="col-lg-3 col-md-3 col-sm-3 wow fadeInUp" data-wow-delay="0.1s">
 						<div class="list-group">
-							<a href="userAppointmentRecoder.php" class="list-group-item" id="user_appointment_recoder" >预约记录</a>
-							<a href="userUpdPersonInfo.php" class="list-group-item" id="user_upd_person_info">修改个人用户信息</a>
-							<a href="userUpdPersonPwd.php" class="list-group-item active" id="user_upd_person_pwd">修改个人用户密码</a>
-              <a href="userSaveDoctor.php" class="list-group-item" id="user_collect_doctor">收藏医生管理</a>
-              <a href="userSaveSearch.php" class="list-group-item" id="user_search_terms">常用搜索条件管理</a>
+							<a href="userAppointmentRecoder.php" class="list-group-item" id="user_appointment_recoder" ><!-- 预约记录--><?php echo $lang['Lang0275']; ?></a>
+							<a href="userUpdPersonInfo.php" class="list-group-item" id="user_upd_person_info"><!-- 修改个人用户信息--><?php echo $lang['Lang0276']; ?></a>
+							<a href="userUpdPersonPwd.php" class="list-group-item active" id="user_upd_person_pwd"><!-- 修改个人用户密码--><?php echo $lang['Lang0277']; ?></a>
+							<a href="userSaveDoctor.php" class="list-group-item" id="user_collect_doctor"><!-- 收藏医生管理--><?php echo $lang['Lang0278']; ?></a>
+							<a href="userSaveSearch.php" class="list-group-item" id="user_search_terms"><!-- 常用搜索条件管理--><?php echo $lang['Lang0279']; ?></a>
 						</div>
 					</div>
 
 					<div class="col-lg-9 col-md-9 col-sm-9 wow fadeInUp" data-wow-delay="0.1s">
           <div class="PersonUser">
-                <h2>修改个人用户密码</h2>
+                <h2><!-- 修改个人用户密码--><?php echo $lang['Lang0277']; ?></h2>
                 <div class="row">
 
                   <form class="form-inline wow fadeInLeft" role="form" id="userUpdPersonPwd">
@@ -96,28 +96,28 @@ include_once 'classes/Menu/menu.php';
                       <input type="hidden" class="form-control" name="CUSTOMER_USER_ID" id="CUSTOMER_USER_ID">
 
                       <div class="form-group col-md-10">
-                        <label for="CUSTOMER_USER_NAME" class="col-md-4 control-label">用户名<span class="span-red">*</span></label>
+                        <label for="CUSTOMER_USER_NAME" class="col-md-4 control-label"><!-- 用户名--><?php echo $lang['Lang0111']; ?><span class="span-red">*</span></label>
                         <input type="text" class="form-control" id="CUSTOMER_USER_NAME" name="CUSTOMER_USER_NAME" readonly="true">
                       </div>
 
                       <div class="form-group col-md-10">
-                        <label for="CUSTOMER_USER_PWD" class="col-md-4 control-label">旧密码<span class="span-red">*</span></label>
+                        <label for="CUSTOMER_USER_PWD" class="col-md-4 control-label"><!-- 旧密码--><?php echo $lang['Lang0112']; ?><span class="span-red">*</span></label>
                         <input type="password" class="form-control" id="CUSTOMER_USER_PWD">
                       </div>
 
                       <div class="form-group col-md-10">
-                        <label for="CUSTOMER_USER_NEWPWD" class="col-md-4 control-label">新密码<span class="span-red">*</span></label>
+                        <label for="CUSTOMER_USER_NEWPWD" class="col-md-4 control-label"><!-- 新密码--><?php echo $lang['Lang0113']; ?><span class="span-red">*</span></label>
                         <input type="password" class="form-control" id="CUSTOMER_USER_NEWPWD">
                       </div>
 
                       <div class="form-group col-md-10">
-                        <label for="CUSTOMER_USER_C_NEWPWD" class="col-md-4 control-label">确认新密码<span class="span-red">*</span></label>
+                        <label for="CUSTOMER_USER_C_NEWPWD" class="col-md-4 control-label"><!-- 确认新密码--><?php echo $lang['Lang0114']; ?><span class="span-red">*</span></label>
                         <input type="password" class="form-control" id="CUSTOMER_USER_C_NEWPWD">
                       </div>
 
                       <div class="form-group col-md-10">
                         <!-- <div class="col-md-12"> -->
-                          <button class="btn btn-primary pull-right" id="btn_ok">确定</button>
+                          <button class="btn btn-primary pull-right" id="btn_ok"><!-- 确定--><?php echo $lang['Lang0115']; ?></button>
                         <!-- </div> -->
                       </div>
                     </form>
@@ -158,7 +158,9 @@ include_once 'classes/Menu/menu.php';
         </div>
     </div>
 </footer>
-
+<?php
+include_once 'classes/Language/For_JS_multi_lang.php';
+?>
 <!-- DataTables JavaScript -->
 <script src="bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
 <script src="bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>

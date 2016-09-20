@@ -339,4 +339,37 @@ $lang['Lang0271'] = 'Suburb';
 $lang['Lang0272'] = 'State';
 $lang['Lang0273'] = 'Postcode';
 $lang['Lang0274'] = 'OK';
+
+//Page userAppointmentRecoder
+$lang['Lang0275'] = 'Appointment Record';
+$lang['Lang0276'] = 'Update Personal Information';
+$lang['Lang0277'] = 'Update Personal Password';
+$lang['Lang0278'] = 'Add To Favorite Management';
+$lang['Lang0279'] = 'Search Condition Management';
+$lang['Lang0280'] = 'Start Time';
+$lang['Lang0281'] = 'End Time';
+$lang['Lang0282'] = 'Cancel appointment';
+$lang['Lang0283'] = 'Appointment time';
+
+$lang['Lang0284'] = 'Does not log in,None of appointment record';
+$lang['Lang0285'] = 'Does not log in';
+
+$lang['Lang0286'] = 'Please select the item you want to cancel';
+$lang['Lang0287'] = 'Are you sure you want to cancel?';
+
+//Page userSaveDoctor
+$lang['Lang0288'] = 'Delete Favorite';
+$lang['Lang0289'] = 'Please select the data you want to delete';
+$lang['Lang0290'] = 'Delete?';
+$lang['Lang0291'] = 'Make an appointment';
+
+//Page userSaveSearch
+$lang['Lang0292'] = 'Delete search condition';
+$lang['Lang0293'] = 'clinic suburb';
+$lang['Lang0294'] = 'clinic state';
+$lang['Lang0295'] = 'clinic name';
+$lang['Lang0296'] = 'doctor type';
+$lang['Lang0297'] = 'doctor name';
+$lang['Lang0298'] = 'doctor distance';
+$lang['Lang0299'] = 'use';
 ?>
