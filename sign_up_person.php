@@ -69,7 +69,7 @@ include_once 'classes/Menu/menu.php';
 		<div class="thumb-box9" data-stellar-background-ratio="0.1">
 			<div class="container">
 				<div class="row df_content">
-					<h2 class="wow fadeInRight">个人用户注册</h2>
+					<h2 class="wow fadeInRight"><!-- 个人用户注册--><?php echo $lang['Lang0208']; ?></h2>
 					<form class="form-inline wow fadeInLeft form_add" role="form" id="signup_form">
 						<fieldset>
 					<!-- 		<div class="form-group has-error has-feedback">
@@ -81,44 +81,44 @@ include_once 'classes/Menu/menu.php';
 							<input type="hidden" class="form-control" name="action_type" id="action_type" value="create">
 
 							<div class="form-group col-md-12 col-lg-12">
-								<label for="sele_user">选择用户<span class="span-red">*</span></label>
+								<label for="sele_user"><!-- 选择用户--><?php echo $lang['Lang0209']; ?><span class="span-red">*</span></label>
 									<select class="form-control" id="sele_user" autofocus>
-										<option value="0" selected>个人用户</option>
-										<option value="1" >诊所用户</option>
+										<option value="0" selected><!-- 个人用户--><?php echo $lang['Lang0210']; ?></option>
+										<option value="1" ><!-- 诊所用户--><?php echo $lang['Lang0211']; ?></option>
 									</select>
 							</div>
 							
 							<div id="personal">
 								<div class="form-group">
-									<label for="CUSTOMER_USER_NAME">用户名<span class="span-red">*</span></label>
+									<label for="CUSTOMER_USER_NAME"><!-- 用户名--><?php echo $lang['Lang0212']; ?><span class="span-red">*</span></label>
 									<input type="text" class="form-control" id="CUSTOMER_USER_NAME" name="CUSTOMER_USER_NAME">
 								</div>
 
 								<div class="form-group">
-									<label for="CUSTOMER_USER_MAIL">邮箱<span class="span-red">*</span></label>
+									<label for="CUSTOMER_USER_MAIL"><!-- 邮箱--><?php echo $lang['Lang0213']; ?><span class="span-red">*</span></label>
 									<input type="text" class="form-control" id="CUSTOMER_USER_MAIL" name="CUSTOMER_USER_MAIL">
 								</div>
 
 								<div class="form-group">
-									<label for="CUSTOMER_USER_PWD">密码<span class="span-red">*</span></label>
+									<label for="CUSTOMER_USER_PWD"><!-- 密码--><?php echo $lang['Lang0214']; ?><span class="span-red">*</span></label>
 									<input type="password" class="form-control" name="CUSTOMER_USER_PWD" id="CUSTOMER_USER_PWD">
 								</div>
 
 								<div class="form-group">
-									<label for="CONFIME_PWD">确认密码<span class="span-red">*</span></label>
+									<label for="CONFIME_PWD"><!-- 确认密码--><?php echo $lang['Lang0215']; ?><span class="span-red">*</span></label>
 									<input type="password" class="form-control" name="CONFIME_PWD" id="CONFIME_PWD">
 								</div>
 
 								<div class="form-group">
-									<label for="CUSTOMER_NAME">姓名<span class="span-red">*</span></label>
+									<label for="CUSTOMER_NAME"><!-- 姓名--><?php echo $lang['Lang0216']; ?><span class="span-red">*</span></label>
 									<input type="text" class="form-control" id="CUSTOMER_NAME" name="CUSTOMER_NAME">
 								</div>
 
 								<div class="form-group">
-	                              <label for="CUSTOMER_GENDER">性别<span class="span-red">*</span></label>
+	                              <label for="CUSTOMER_GENDER"><!-- 性别--><?php echo $lang['Lang0217']; ?><span class="span-red">*</span></label>
 	                              <select class="form-control" id="CUSTOMER_GENDER" name="CUSTOMER_GENDER">
-	                                    <option>男</option>
-	                                    <option>女</option>
+	                                    <option><!-- 男--><?php echo $lang['Lang0218']; ?></option>
+	                                    <option><!-- 女--><?php echo $lang['Lang0219']; ?></option>
 	                              </select>
 	                            </div>
 								
@@ -129,37 +129,37 @@ include_once 'classes/Menu/menu.php';
 								
 
 								<div class="form-group">
-									<label for="CUSTOMER_BIRTHDAY">生日<span class="span-red">*</span></label>
+									<label for="CUSTOMER_BIRTHDAY"><!-- 生日--><?php echo $lang['Lang0220']; ?><span class="span-red">*</span></label>
 									<input type="text" class="form-control" name="CUSTOMER_BIRTHDAY" id="CUSTOMER_BIRTHDAY" value="1">
 								</div>
 
 								<div class="form-group">
-									<label for="CUSTOMER_PHONE_NO">电话号码<span class="span-red">*</span></label>
+									<label for="CUSTOMER_PHONE_NO"><!-- 电话号码--><?php echo $lang['Lang0221']; ?><span class="span-red">*</span></label>
 									<input type="text" class="form-control" name="CUSTOMER_PHONE_NO" id="CUSTOMER_PHONE_NO" value="1">
 								</div>	
 
 								<div class="form-group">
-									<label for="MEDICAL_CARD_NO">医疗卡号<span class="span-red">*</span></label>
+									<label for="MEDICAL_CARD_NO"><!-- 医疗卡号--><?php echo $lang['Lang0222']; ?><span class="span-red">*</span></label>
 									<input type="text" class="form-control" name="MEDICAL_CARD_NO" id="MEDICAL_CARD_NO" value="1">
 								</div>
 
 								<div class="form-group">
-									<label for="CUSTOMER_POSTCODE">邮编<span class="span-red">*</span></label>
+									<label for="CUSTOMER_POSTCODE"><!-- 邮编--><?php echo $lang['Lang0223']; ?><span class="span-red">*</span></label>
 									<input type="text" class="form-control" name="CUSTOMER_POSTCODE" id="CUSTOMER_POSTCODE" value="1">
 								</div>
 
 								<div class="form-group col-md-9 col-lg-9">
-									<label for="CUSTOMER_ADDR">详细地址<span class="span-red">*</span></label>
+									<label for="CUSTOMER_ADDR"><!-- 详细地址--><?php echo $lang['Lang0224']; ?><span class="span-red">*</span></label>
 									<input type="text" class="form-control"  style="width:81%" name="CUSTOMER_ADDR" id="CUSTOMER_ADDR" value="1">
 								</div>
 
 								<div class="form-group">
-									<label for="CUSTOMER_SUBURB">区<span class="span-red">*</span></label>
+									<label for="CUSTOMER_SUBURB"><!-- 区--><?php echo $lang['Lang0225']; ?><span class="span-red">*</span></label>
 									<input type="text" class="form-control" name="CUSTOMER_SUBURB" id="CUSTOMER_SUBURB" value="1">
 								</div>
 
 								<div class="form-group">
-	                              <label for="STATE_ID">州<span class="span-red">*</span></label>
+	                              <label for="STATE_ID"><!-- 州--><?php echo $lang['Lang0226']; ?><span class="span-red">*</span></label>
 	                              <select class="form-control" id="STATE_ID" name="STATE_ID">
 	                              </select>
 	                            </div>
@@ -168,12 +168,12 @@ include_once 'classes/Menu/menu.php';
 					</form>
 						<div class="row">
 							<div class="form-group pull-right">
-								<button type="submit" class="btn btn-lg btn-primary btn-block" id="signup_ok">Sign up for free</button>
+								<button type="submit" class="btn btn-lg btn-primary btn-block" id="signup_ok"><!-- Sign up for free--><?php echo $lang['Lang0227']; ?></button>
 							 </div>
 						</div>
 						<div class="row">
 							<div class="pull-right">
-								<a href="sign_in.php"><strong>sign in</strong></a>
+								<a href="sign_in.php"><strong><!-- sign in--><?php echo $lang['Lang0228']; ?></strong></a>
 							</div>
 						</div>
 				</div>
@@ -204,6 +204,40 @@ include_once 'classes/Menu/menu.php';
         </div>
     </div>
 </footer>
+<!-- 为了实现js多语言 begin -->
+
+<!-- 总开关，为了设置第三方库的多语言而设置 -->
+<div id="which_lang" style="display: none;"><?php echo $_SESSION ['lang']; ?></div>
+
+<!-- 密码重置成功! -->
+<div id="Lang0032" style="display: none;"><?php echo $lang['Lang0032']; ?></div>
+
+<!-- 请选择需要修改的数据 -->
+<div id="Lang0033" style="display: none;"><?php echo $lang['Lang0033']; ?></div>
+
+<!-- 确定修改 -->
+<div id="Lang0018" style="display: none;"><?php echo $lang['Lang0018']; ?></div>
+
+<!-- 您未登陆,无法使用此功能 -->
+<div id="Lang0019" style="display: none;"><?php echo $lang['Lang0019']; ?></div>
+
+<!-- 请修改个人信息，添加邮箱地址 -->
+<div id="Lang0020" style="display: none;"><?php echo $lang['Lang0020']; ?></div>
+
+<!-- 详细 -->
+<div id="Lang0056" style="display: none;"><?php echo $lang['Lang0056']; ?></div>
+
+<!-- 修改-->
+<div id="Lang0057" style="display: none;"><?php echo $lang['Lang0057']; ?></div>
+
+<!-- 密码重置 -->
+<div id="Lang0058" style="display: none;"><?php echo $lang['Lang0058']; ?></div>
+
+<!-- 两次密码输入不一致 -->
+<div id="Lang0207" style="display: none;"><?php echo $lang['Lang0207']; ?></div>
+
+
+<!-- 为了实现js多语言 end -->
 <script src="js/bootstrap.min.js"></script><!-- dialog --><script src="js/bootstrap-dialog.min.js"></script>
 <script src="js/tm-scripts.js"></script>
 <script src="js/jquery.cookie.js"></script>

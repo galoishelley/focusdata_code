@@ -232,4 +232,58 @@ $lang['Lang0179'] = 'Address empty';
 $lang['Lang0180'] = 'Mobile empty';
 $lang['Lang0181'] = 'Medical number empty';
 $lang['Lang0182'] = 'Get Appointment ID error!';
+
+//Page forgotpwd
+$lang['Lang0183'] = 'Forgot Password';
+$lang['Lang0184'] = 'User';
+$lang['Lang0185'] = 'Please Input User ...';
+$lang['Lang0186'] = 'Clinic user';
+$lang['Lang0187'] = 'Personal user';
+$lang['Lang0188'] = 'Admin';
+$lang['Lang0189'] = 'E-mail';
+$lang['Lang0190'] = 'Send password to Email';
+$lang['Lang0191'] = 'sign in';
+
+//Page sign_up_clinic
+$lang['Lang0192'] = 'Clinic User Register';
+$lang['Lang0193'] = 'Choose User Type';
+$lang['Lang0194'] = 'Personal';
+$lang['Lang0195'] = 'Clinic';
+$lang['Lang0196'] = 'User';
+$lang['Lang0197'] = 'Email';
+$lang['Lang0198'] = 'Password';
+$lang['Lang0199'] = 're-input Password';
+$lang['Lang0200'] = 'Clinic name';
+$lang['Lang0201'] = 'Postcode';
+$lang['Lang0202'] = 'Address';
+$lang['Lang0203'] = 'Suburb';
+$lang['Lang0204'] = 'State';
+$lang['Lang0205'] = 'Register for free';
+$lang['Lang0206'] = 'sign in';
+
+$lang['Lang0207'] = 'Entered passwords differ from the another!';
+
+
+//Page sign_up_person
+$lang['Lang0208'] = 'Personal User Register';
+$lang['Lang0209'] = 'Choose User Type';
+$lang['Lang0210'] = 'Personal';
+$lang['Lang0211'] = 'Clinic';
+$lang['Lang0212'] = 'User';
+$lang['Lang0213'] = 'Email';
+$lang['Lang0214'] = 'Password';
+$lang['Lang0215'] = 're-Input Password';
+$lang['Lang0216'] = 'Name';
+$lang['Lang0217'] = 'Gender';
+$lang['Lang0218'] = 'Man';
+$lang['Lang0219'] = 'Woman';
+$lang['Lang0220'] = 'Birthday';
+$lang['Lang0221'] = 'Mobile';
+$lang['Lang0222'] = 'Medical Number';
+$lang['Lang0223'] = 'Postcode';
+$lang['Lang0224'] = 'Address';
+$lang['Lang0225'] = 'Suburb';
+$lang['Lang0226'] = 'State';
+$lang['Lang0227'] = 'Sign up for free';
+$lang['Lang0228'] = 'sign in';
 ?>

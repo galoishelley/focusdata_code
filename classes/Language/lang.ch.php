@@ -227,4 +227,57 @@ $lang['Lang0180'] = '手机号码不能为空';
 $lang['Lang0181'] = '医疗卡号不能为空';
 $lang['Lang0182'] = '获取医生预约时间ID错误!';
 
+
+//Page forgotpwd
+$lang['Lang0183'] = '忘记密码';
+$lang['Lang0184'] = '用户名';
+$lang['Lang0185'] = '请输入用户名 ...';
+$lang['Lang0186'] = '诊所用户';
+$lang['Lang0187'] = '个人用户';
+$lang['Lang0188'] = '管理员';
+$lang['Lang0189'] = 'E-mail';
+$lang['Lang0190'] = '发送密码到邮箱';
+$lang['Lang0191'] = '登陆';
+
+//Page sign_up_clinic
+$lang['Lang0192'] = '诊所用户注册';
+$lang['Lang0193'] = '选择用户';
+$lang['Lang0194'] = '个人用户';
+$lang['Lang0195'] = '诊所用户';
+$lang['Lang0196'] = '用户名';
+$lang['Lang0197'] = '邮箱';
+$lang['Lang0198'] = '密码';
+$lang['Lang0199'] = '确认密码';
+$lang['Lang0200'] = '诊所名称';
+$lang['Lang0201'] = '邮编';
+$lang['Lang0202'] = '详细地址';
+$lang['Lang0203'] = '区';
+$lang['Lang0204'] = '州';
+$lang['Lang0205'] = '免费注册';
+$lang['Lang0206'] = '登陆';
+
+$lang['Lang0207'] = '两次密码输入不一致!';
+
+//Page sign_up_person
+$lang['Lang0208'] = '个人用户注册';
+$lang['Lang0209'] = '选择用户';
+$lang['Lang0210'] = '个人用户';
+$lang['Lang0211'] = '诊所用户';
+$lang['Lang0212'] = '用户名';
+$lang['Lang0213'] = '邮箱';
+$lang['Lang0214'] = '密码';
+$lang['Lang0215'] = '确认密码';
+$lang['Lang0216'] = '姓名';
+$lang['Lang0217'] = '性别';
+$lang['Lang0218'] = '男';
+$lang['Lang0219'] = '女';
+$lang['Lang0220'] = '生日';
+$lang['Lang0221'] = '电话号码';
+$lang['Lang0222'] = '医疗卡号';
+$lang['Lang0223'] = '邮编';
+$lang['Lang0224'] = '详细地址';
+$lang['Lang0225'] = '区';
+$lang['Lang0226'] = '州';
+$lang['Lang0227'] = '免费注册';
+$lang['Lang0228'] = '登陆';
 ?>

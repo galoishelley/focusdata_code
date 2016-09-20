@@ -98,7 +98,7 @@ $(function(){
     var new_c_pwd = $('#CONFIME_PWD').val();
 
     if(new_pwd != new_c_pwd){
-      alert("两次密码输入不一致");
+      alert($('#Lang0207').html());//两次密码输入不一致
       return false;
     }
 

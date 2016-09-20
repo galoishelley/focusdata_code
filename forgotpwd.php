@@ -56,29 +56,9 @@ include_once 'classes/Language/language.common.php';
 <!--header-->
 <div class="container bars"><em class="bars_"></em></div>
 <header>
-    <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
-        <div class="container">
-            <ul class="nav sf-menu clearfix">
-                <li><a href="index.php">home</a></li>
-                <li class="sub-menu"><a href="index-1.php">our services</a><span></span>
-                    <ul class="submenu">
-        				<li><a href="#">history</a></li>
-        				<li><a href="#">staff</a><span class="fa fa-angle-right"></span>
-                            <ul class="submenu">
-                                <li><a href="#">fresh</a></li>
-                                <li><a href="#">archive</a></li>
-                            </ul> 
-                        </li>
-        				<li><a href="#">news</a></li>
-        			</ul>
-                </li>
-                <li class="active"><a href="index-2.php">about us</a></li>
-                <li><a href="index-3.php">staff</a></li>
-                <li><a href="index-4.php">Contacts</a></li>
-                <li class="active"><a href="sign_in.php">Sign in</a></li>
-            </ul>
-        </div>
-    </nav>
+    <?php
+include_once 'classes/Menu/menu.php';
+?>
     <h1 class="navbar-brand navbar-brand_"><a href="index.php"><img src="img/<?php echo $lang['Lang0004']; ?>" alt="logo"></a></h1>
 </header>
 
@@ -89,39 +69,39 @@ include_once 'classes/Language/language.common.php';
 	       <div class="container">
 			     <div class="row">
 				    <div class="col-md-8 col-md-offset-2">
-    					<h2 class="wow fadeInRight">Forgot Password</h2>
+    					<h2 class="wow fadeInRight"><!-- Forgot Password--><?php echo $lang['Lang0183']; ?></h2>
     					<form class="form-horizontal wow fadeInRight" data-wow-delay="0.5s" role="form">
     						<fieldset>
                                 <div class="form-group">
-                                    <label for="USER_NAME" class="col-sm-2 control-label">用户名<span class="span-red">*</span></label>
+                                    <label for="USER_NAME" class="col-sm-2 control-label"><!-- 用户名--><?php echo $lang['Lang0184']; ?><span class="span-red">*</span></label>
                                     <div class="col-sm-10">
-                                      <input type="text" class="form-control" id="USER_NAME" name="USER_NAME" placeholder="请输入用户名 ..." autofocus>
+                                      <input type="text" class="form-control" id="USER_NAME" name="USER_NAME" placeholder="<!-- 请输入用户名 ...--><?php echo $lang['Lang0185']; ?>" autofocus>
                                     </div>
                                 </div>
 
                                 <div class="radio col-sm-10 col-sm-offset-2">
                                   <label>
                                     <input type="radio" name="usertype" id="usertype" value="0">
-                                    诊所用户
+                                    <!-- 诊所用户--><?php echo $lang['Lang0186']; ?>
                                   </label>
                                 </div>
                                 
                                 <div class="radio col-sm-10 col-sm-offset-2">
                                   <label>
                                     <input type="radio" name="usertype" id="usertype" value="1" checked>
-                                    个人用户
+                                    <!-- 个人用户--><?php echo $lang['Lang0187']; ?>
                                   </label>
                                 </div>
 
                                 <div class="radio col-sm-10 col-sm-offset-2 radio_admin">
                                   <label>
                                     <input type="radio" name="usertype" id="usertype" value="2">
-                                   管理员
+                                   <!-- 管理员--><?php echo $lang['Lang0188']; ?>
                                   </label>
                                 </div> 
 
                                 <div class="form-group">
-                                    <label for="EMAIL" class="col-sm-2 control-label">E-mail<span class="span-red">*</span></label>
+                                    <label for="EMAIL" class="col-sm-2 control-label"><!-- E-mail--><?php echo $lang['Lang0189']; ?><span class="span-red">*</span></label>
                                     <div class="col-sm-10">
                                       <input type="text" class="form-control" id="EMAIL" name="EMAIL" readonly="true">
                                     </div>
@@ -129,13 +109,13 @@ include_once 'classes/Language/language.common.php';
     							
     							<div class="row">
                                     <div class="form-group pull-right send_email">
-                                        <button type="submit" class="btn btn-lg btn-primary btn-block" id="send_email">发送密码到邮箱</button>
+                                        <button type="submit" class="btn btn-lg btn-primary btn-block" id="send_email"><!-- 发送密码到邮箱--><?php echo $lang['Lang0190']; ?></button>
                                      </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="form-group pull-right">
-                                        <a href="sign_in.php"><strong>sign in</strong></a>
+                                        <a href="sign_in.php"><strong><!-- sign in--><?php echo $lang['Lang0191']; ?></strong></a>
                                         <!-- <div class="pull-right">sign in</div> -->
                                     </div>
                                 </div>
