@@ -90,51 +90,52 @@ include_once 'classes/Menu/menu.php';
 							</div>
 							
 							<div id="personal">
-								<div class="form-group">
+								<div class="form-group col-md-6 col-lg-6">
 									<label for="username"><!-- 用户名--><?php echo $lang['Lang0196']; ?><span class="span-red">*</span></label>
 									<input type="text" class="form-control" id="CLINIC_USER_NAME" name="CLINIC_USER_NAME">
 								</div>
 
-								<div class="form-group">
+								<div class="form-group col-md-6 col-lg-6">
 									<label for="pwd"><!-- 邮箱--><?php echo $lang['Lang0197']; ?><span class="span-red">*</span></label>
 									<input type="email" class="form-control" name="CLINIC_USER_MAIL" id="CLINIC_USER_MAIL" value="shelleymyl@gmail.com">
 								</div>
 
-								<div class="form-group">
+								<div class="form-group col-md-6 col-lg-6">
 									<label for="CLINIC_USER_PWD"><!-- 密码--><?php echo $lang['Lang0198']; ?><span class="span-red">*</span></label>
 									<input type="password" class="form-control" name="CLINIC_USER_PWD" id="CLINIC_USER_PWD">
 								</div>
 
-								<div class="form-group">
+								<div class="form-group col-md-6 col-lg-6">
 									<label for="CONFIME_PWD"><!-- 确认密码--><?php echo $lang['Lang0199']; ?><span class="span-red">*</span></label>
 									<input type="password" class="form-control" name="CONFIME_PWD" id="CONFIME_PWD">
 								</div>
 
-								<div class="form-group">
+								<div class="form-group col-md-6 col-lg-6">
 									<label for="birthday"><!-- 诊所名称--><?php echo $lang['Lang0200']; ?><span class="span-red">*</span></label>
 									<input type="text" class="form-control" name="CLINIC_NAME" id="CLINIC_NAME" value="1">
 								</div>
 								
-	                            <div class="form-group">
-									<label for="CLINIC_POSTCODE"><!-- 邮编--><?php echo $lang['Lang0201']; ?><span class="span-red">*</span></label>
-									<input type="text" class="form-control" name="CLINIC_POSTCODE" id="CLINIC_POSTCODE" value="1">
-								</div>
+	                            
 
 								<div class="form-group col-md-9 col-lg-9">
 									<label for="CLINIC_ADDR"><!-- 详细地址--><?php echo $lang['Lang0202']; ?><span class="span-red">*</span></label>
 									<input type="text" class="form-control"  style="width:81%" name="CLINIC_ADDR" id="CLINIC_ADDR" value="1">
 								</div>
 
-								<div class="form-group">
+								<div class="form-group col-md-6 col-lg-6">
 									<label for="CLINIC_SUBURB"><!-- 区--><?php echo $lang['Lang0203']; ?><span class="span-red">*</span></label>
 									<input type="text" class="form-control" name="CLINIC_SUBURB" id="CLINIC_SUBURB" value="1">
 								</div>
 
-								<div class="form-group">
+								<div class="form-group col-md-6 col-lg-6">
 	                              <label for="STATE_ID"><!-- 州--><?php echo $lang['Lang0204']; ?><span class="span-red">*</span></label>
 	                              <select class="form-control" id="STATE_ID" name="STATE_ID">
 	                              </select>
 	                            </div>
+	                            <div class="form-group col-md-6 col-lg-6">
+									<label for="CLINIC_POSTCODE"><!-- 邮编--><?php echo $lang['Lang0201']; ?><span class="span-red">*</span></label>
+									<input type="text" class="form-control" name="CLINIC_POSTCODE" id="CLINIC_POSTCODE" value="1">
+								</div>
 							</div>
 							<div class="row">
 								<div class="form-group pull-right">

@@ -384,6 +384,20 @@ nav.tm_navbar .tourist > ul{
 .appointmentDoctor form{
   padding:10px;
 }
+
+
+.appointmentDoctor .form-inline .form-control{
+  margin-bottom: 10px;
+}
+
+.appointmentDoctor #btn_save, #btn_save_manage{
+  display:none;
+}
+
+.appointmentDoctor img{
+  width:300px;
+  height:300px;
+}
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * PersonUser
  */
