@@ -2,8 +2,37 @@ var para,json_str;
 var func_code,request_type;
 var username,fd_userid,ilogin;
 var result;
+var datatable_lang_url;
 
 $(document).ready(function() {
+	
+	//设置BootstrapDialog & Datatable I18N 2006/09/17 updated by alex
+	if($("#which_lang").html()=="en"){
+	    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_DEFAULT] = 'Information';
+	    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_INFO] = 'Information';
+	    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_PRIMARY] = 'Information';
+	    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_SUCCESS] = 'Success';
+	    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_WARNING] = 'Warning';
+	    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_DANGER] = 'Danger';
+	    BootstrapDialog.DEFAULT_TEXTS['OK'] = 'OK';
+	    BootstrapDialog.DEFAULT_TEXTS['CANCEL'] = 'Cancel';
+	    BootstrapDialog.DEFAULT_TEXTS['CONFIRM'] = 'Confirmation';
+
+	    datatable_lang_url="//cdn.datatables.net/plug-ins/1.10.12/i18n/English.json";
+	}
+	else if($("#which_lang").html()=="ch"){
+	    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_DEFAULT] = '消息';
+	    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_INFO] = '消息';
+	    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_PRIMARY] = '消息';
+	    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_SUCCESS] = '成功';
+	    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_WARNING] = '警告';
+	    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_DANGER] = '危险';
+	    BootstrapDialog.DEFAULT_TEXTS['OK'] = '确定';
+	    BootstrapDialog.DEFAULT_TEXTS['CANCEL'] = '取消';
+	    BootstrapDialog.DEFAULT_TEXTS['CONFIRM'] = '请确认';
+
+	    datatable_lang_url="//cdn.datatables.net/plug-ins/1.10.12/i18n/Chinese.json";
+	}
 
   //登录cookie
   ilogin = $.cookie("ilogin");
@@ -41,7 +70,7 @@ $(document).ready(function() {
   }
 
   if(ilogin == 0){
-    alert("您未登陆,无法使用此功能");
+	  alert($('#Lang0019').html());//您未登陆,无法使用此功能!
     history.go(-1);
     return false;
     // $('#a_userAppointmentRecoder').attr("href","#");
@@ -240,7 +269,7 @@ $(document).ready(function() {
         { 
           "class": "col_center_class",
           "data": null,
-          "defaultContent":"<button class='btn btn-primary btn-xs' id='opr_info'>详细</button><button class='btn btn-danger btn-xs' id='opr_upd'>修改</button>"
+          "defaultContent":"<button class='btn btn-primary btn-xs' id='opr_info'>"+$('#Lang0056').html() +"</button><button class='btn btn-danger btn-xs' id='opr_upd'>"+$('#Lang0057').html() +"</button>"
         },
         {
           "visible": false,
@@ -251,30 +280,30 @@ $(document).ready(function() {
           "data": "CLINIC_POSTCODE"
         }
       ],
-
-      "oLanguage": {
-         "oAria": {
-             "sSortAscending": " - click/return to sort ascending",
-             "sSortDescending": " - click/return to sort descending"
-         },
-         "sLengthMenu": "显示 _MENU_ 记录",
-         "sZeroRecords": "对不起，查询不到任何相关数据",
-         "sEmptyTable": "未有相关数据",
-         "sLoadingRecords": "正在加载数据-请等待...",
-         "sInfo": "当前显示 _START_ 到 _END_ 条,共 _TOTAL_ 条记录",
-         "sInfoEmpty": "当前显示0到0条，共0条记录",
-         "sInfoFiltered": "（数据库中共为 _MAX_ 条记录）",
-         "sProcessing": "<img src='../resources/user_share/row_details/select2-spinner.gif'/> 正在加载数据...",
-         "sSearch": "模糊查询：",
-         "sUrl": "",
-         //多语言配置文件，可将oLanguage的设置放在一个txt文件中，例：Javascript/datatable/dtCH.txt
-         "oPaginate": {
-             "sFirst": "首页",
-             "sPrevious": " << ",
-             "sNext": " >> ",
-             "sLast": " 尾页 "
-        }
-      },
+      "oLanguage": { "sUrl": datatable_lang_url },
+//      "oLanguage": {
+//         "oAria": {
+//             "sSortAscending": " - click/return to sort ascending",
+//             "sSortDescending": " - click/return to sort descending"
+//         },
+//         "sLengthMenu": "显示 _MENU_ 记录",
+//         "sZeroRecords": "对不起，查询不到任何相关数据",
+//         "sEmptyTable": "未有相关数据",
+//         "sLoadingRecords": "正在加载数据-请等待...",
+//         "sInfo": "当前显示 _START_ 到 _END_ 条,共 _TOTAL_ 条记录",
+//         "sInfoEmpty": "当前显示0到0条，共0条记录",
+//         "sInfoFiltered": "（数据库中共为 _MAX_ 条记录）",
+//         "sProcessing": "<img src='../resources/user_share/row_details/select2-spinner.gif'/> 正在加载数据...",
+//         "sSearch": "模糊查询：",
+//         "sUrl": "",
+//         //多语言配置文件，可将oLanguage的设置放在一个txt文件中，例：Javascript/datatable/dtCH.txt
+//         "oPaginate": {
+//             "sFirst": "首页",
+//             "sPrevious": " << ",
+//             "sNext": " >> ",
+//             "sLast": " 尾页 "
+//        }
+//      },
 
       "columnDefs": [
         {
@@ -463,84 +492,86 @@ $(document).ready(function() {
     
     var sel = rowData.length;
     if(!sel){
-      alert("请选择需要修改的数据");
+    	alert($("#Lang0033").html());  //请选择需要修改的数据
       return false;
     }else{
-      var r=confirm("确定修改");
-      if (!r) return false;
-    }
 
-    var CLINIC_USER_ID = [];
-    var DOCTOR_ID = [];
+      BootstrapDialog.confirm($('#Lang0018').html(), function(result){
+          if(result){
+             //press OK
+        	  var CLINIC_USER_ID = [];
+        	    var DOCTOR_ID = [];
 
-    $.each(rowData,function(key,value){
-      CLINIC_USER_ID.push(fd_userid); 
-      DOCTOR_ID.push(value.DOCTOR_ID); 
-    });
+        	    $.each(rowData,function(key,value){
+        	      CLINIC_USER_ID.push(fd_userid); 
+        	      DOCTOR_ID.push(value.DOCTOR_ID); 
+        	    });
 
 
-    func_code = "CU06";
-    para={
-      action_type: "update",
-      ACTIVE_STATUS: 0,
-      DOCTOR_ID: DOCTOR_ID
-    }
+        	    func_code = "CU06";
+        	    para={
+        	      action_type: "update",
+        	      ACTIVE_STATUS: 0,
+        	      DOCTOR_ID: DOCTOR_ID
+        	    }
 
-    json_str = request_const(para, func_code, request_type);
+        	    json_str = request_const(para, func_code, request_type);
 
-    console.log(json_str);
+        	    console.log(json_str);
 
-    //请求
-    result=true;
-    $.ajax({
-      type: "POST",
-      url: "classes/class.ClinicOprDoctor.php",
-      dataType: "json",
-      async:false,
-      data: {
-        request:json_str
-      },
-      success: function (msg) {
-          // console.log(msg);
-          var ret = msg.response;
-          if(ret.success){
-            if(json_str.sequ != ret.sequ){
-              alert(func_code+":时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
-              result=false;
-            }
+        	    //请求
+        	    result=true;
+        	    $.ajax({
+        	      type: "POST",
+        	      url: "classes/class.ClinicOprDoctor.php",
+        	      dataType: "json",
+        	      async:false,
+        	      data: {
+        	        request:json_str
+        	      },
+        	      success: function (msg) {
+        	          // console.log(msg);
+        	          var ret = msg.response;
+        	          if(ret.success){
+        	            if(json_str.sequ != ret.sequ){
+        	              alert(func_code+":时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
+        	              result=false;
+        	            }
 
-            func_code = "CU05";
-            para={
-              CLINIC_USER_ID: fd_userid,
-              DOCTOR_TYPE: $('#DOCTOR_TYPE').val(),
-              DOCTOR_NAME: $('#DOCTOR_NAME').val(),
-              ACTIVE_STATUS: $('#ACTIVE_STATUS').val()
-            };
-            
-            json_str = request_const(para, func_code, request_type);
+        	            func_code = "CU05";
+        	            para={
+        	              CLINIC_USER_ID: fd_userid,
+        	              DOCTOR_TYPE: $('#DOCTOR_TYPE').val(),
+        	              DOCTOR_NAME: $('#DOCTOR_NAME').val(),
+        	              ACTIVE_STATUS: $('#ACTIVE_STATUS').val()
+        	            };
+        	            
+        	            json_str = request_const(para, func_code, request_type);
 
-            // console.log(json_str);
+        	            // console.log(json_str);
 
-            _table.ajax.reload();
-            $("#chk_all").prop("checked",false);
+        	            _table.ajax.reload();
+        	            $("#chk_all").prop("checked",false);
 
-          }else{
-            alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
-            result=false;
+        	          }else{
+        	            alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
+        	            result=false;
+        	          }
+        	          
+        	      },
+        	      error: function(XMLHttpRequest, textStatus, errorThrown){
+        	        //请求失败之后的操作
+        	        var ret_code = "999999";
+        	        var ret_msg = "失败,请联系管理员!";
+        	        alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+        	        result=false;
+        	      }
+        	    });
           }
-          
-      },
-      error: function(XMLHttpRequest, textStatus, errorThrown){
-        //请求失败之后的操作
-        var ret_code = "999999";
-        var ret_msg = "失败,请联系管理员!";
-        alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
-        result=false;
-      }
-    });
-    if(!result){
-      return result;
+      });
     }
+
+
     return false;
   });
 
@@ -550,87 +581,87 @@ $(document).ready(function() {
     
     var sel = rowData.length;
     if(!sel){
-      alert("请选择需要修改的数据");
+    	alert($("#Lang0033").html());  //请选择需要修改的数据
       return false;
     }else{
-      var r=confirm("确定修改");
-      if (!r) return false;
-    }
+    	BootstrapDialog.confirm($('#Lang0018').html(), function(result){
+            if(result){
+               //press OK
+            	var CLINIC_USER_ID = [];
+                var DOCTOR_ID = [];
 
-    var CLINIC_USER_ID = [];
-    var DOCTOR_ID = [];
+                $.each(rowData,function(key,value){
+                  CLINIC_USER_ID.push(fd_userid); 
+                  DOCTOR_ID.push(value.DOCTOR_ID); 
+                });
 
-    $.each(rowData,function(key,value){
-      CLINIC_USER_ID.push(fd_userid); 
-      DOCTOR_ID.push(value.DOCTOR_ID); 
-    });
+                // console.log(CLINIC_USER_ID);
+                console.log(DOCTOR_ID);
 
-    // console.log(CLINIC_USER_ID);
-    console.log(DOCTOR_ID);
+                func_code = "CU06";
+                para={
+                  action_type: "update",
+                  ACTIVE_STATUS: 1,
+                  DOCTOR_ID: DOCTOR_ID
+                }
+                
+                json_str = request_const(para, func_code, request_type);
 
-    func_code = "CU06";
-    para={
-      action_type: "update",
-      ACTIVE_STATUS: 1,
-      DOCTOR_ID: DOCTOR_ID
-    }
-    
-    json_str = request_const(para, func_code, request_type);
+                console.log(json_str);
 
-    console.log(json_str);
+                //请求
+                result=true;
+                $.ajax({
+                  type: "POST",
+                  url: "classes/class.ClinicOprDoctor.php",
+                  dataType: "json",
+                  async:false,
+                  data: {
+                    request:json_str
+                  },
+                  success: function (msg) {
+                      // console.log(msg);
+                      var ret = msg.response;
+                      if(ret.success){
+                        if(json_str.sequ != ret.sequ){
+                          alert(func_code+":时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
+                          result=false;
+                        }
 
-    //请求
-    result=true;
-    $.ajax({
-      type: "POST",
-      url: "classes/class.ClinicOprDoctor.php",
-      dataType: "json",
-      async:false,
-      data: {
-        request:json_str
-      },
-      success: function (msg) {
-          // console.log(msg);
-          var ret = msg.response;
-          if(ret.success){
-            if(json_str.sequ != ret.sequ){
-              alert(func_code+":时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
-              result=false;
+                        func_code = "CU05";
+                        para={
+                          CLINIC_USER_ID: fd_userid,
+                          DOCTOR_TYPE: $('#DOCTOR_TYPE').val(),
+                          DOCTOR_NAME: $('#DOCTOR_NAME').val(),
+                          ACTIVE_STATUS: $('#ACTIVE_STATUS').val()
+                        };
+                        
+                        json_str = request_const(para, func_code, request_type);
+
+                        // console.log(json_str);
+
+                        _table.ajax.reload();
+
+                        $("#chk_all").prop("checked",false);
+
+                      }else{
+                        alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
+                        result=false;
+                      }
+                      
+                  },
+                  error: function(XMLHttpRequest, textStatus, errorThrown){
+                    //请求失败之后的操作
+                    var ret_code = "999999";
+                    var ret_msg = "失败,请联系管理员!";
+                    alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+                    result=false;
+                  }
+                });
             }
-
-            func_code = "CU05";
-            para={
-              CLINIC_USER_ID: fd_userid,
-              DOCTOR_TYPE: $('#DOCTOR_TYPE').val(),
-              DOCTOR_NAME: $('#DOCTOR_NAME').val(),
-              ACTIVE_STATUS: $('#ACTIVE_STATUS').val()
-            };
-            
-            json_str = request_const(para, func_code, request_type);
-
-            // console.log(json_str);
-
-            _table.ajax.reload();
-
-            $("#chk_all").prop("checked",false);
-
-          }else{
-            alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
-            result=false;
-          }
-          
-      },
-      error: function(XMLHttpRequest, textStatus, errorThrown){
-        //请求失败之后的操作
-        var ret_code = "999999";
-        var ret_msg = "失败,请联系管理员!";
-        alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
-        result=false;
-      }
-    });
-    if(!result){
-      return result;
+        });
     }
+
     return false;
   });
 

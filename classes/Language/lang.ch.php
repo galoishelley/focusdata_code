@@ -280,4 +280,56 @@ $lang['Lang0225'] = '区';
 $lang['Lang0226'] = '州';
 $lang['Lang0227'] = '免费注册';
 $lang['Lang0228'] = '登陆';
+
+//Page clinicQryDoctor
+$lang['Lang0229'] = '修改诊所用户信息';
+$lang['Lang0230'] = '医生信息管理';
+$lang['Lang0231'] = '修改诊所用户密码';
+$lang['Lang0232'] = '医生信息管理';
+$lang['Lang0233'] = '医生类别';
+$lang['Lang0234'] = '全部';
+$lang['Lang0235'] = '医生名称';
+$lang['Lang0236'] = '状态';
+$lang['Lang0237'] = '全部';
+$lang['Lang0238'] = '激活';
+$lang['Lang0239'] = '禁用';
+$lang['Lang0240'] = '查找';
+$lang['Lang0241'] = '禁用';
+$lang['Lang0242'] = '激活';
+$lang['Lang0243'] = '诊所名称';
+$lang['Lang0244'] = '详细地址';
+$lang['Lang0245'] = '区';
+$lang['Lang0246'] = '州';
+$lang['Lang0247'] = '邮编';
+$lang['Lang0248'] = '医生类别';
+$lang['Lang0249'] = '医生名称';
+$lang['Lang0250'] = '性别';
+$lang['Lang0251'] = '状态';
+$lang['Lang0252'] = '操作';
+
+//Page clinicUpdDoctorDetail
+$lang['Lang0253'] = '修改医生信息';
+$lang['Lang0254'] = '医生类别';
+$lang['Lang0255'] = '医生姓名';
+$lang['Lang0256'] = '性别';
+$lang['Lang0257'] = '男';
+$lang['Lang0258'] = '女';
+$lang['Lang0259'] = '状态';
+$lang['Lang0260'] = '激活';
+$lang['Lang0261'] = '禁用';
+$lang['Lang0262'] = '医生详细信息';
+$lang['Lang0263'] = '医生详细信息';
+$lang['Lang0264'] = '医生照片';
+$lang['Lang0265'] = '取消';
+$lang['Lang0266'] = '确认';
+
+//Page clinicUpdUserInfo
+$lang['Lang0267'] = '用户名';
+$lang['Lang0268'] = '邮箱';
+$lang['Lang0269'] = '诊所名称';
+$lang['Lang0270'] = '详细地址';
+$lang['Lang0271'] = '区';
+$lang['Lang0272'] = '州';
+$lang['Lang0273'] = '邮编';
+$lang['Lang0274'] = '确定';
 ?>

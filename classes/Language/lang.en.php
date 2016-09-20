@@ -286,4 +286,57 @@ $lang['Lang0225'] = 'Suburb';
 $lang['Lang0226'] = 'State';
 $lang['Lang0227'] = 'Sign up for free';
 $lang['Lang0228'] = 'sign in';
+
+
+//Page clinicQryDoctor
+$lang['Lang0229'] = 'Update clinic infomation';
+$lang['Lang0230'] = 'Doctor information update';
+$lang['Lang0231'] = 'Update password';
+$lang['Lang0232'] = 'Doctor information update';
+$lang['Lang0233'] = 'doctor type';
+$lang['Lang0234'] = 'all';
+$lang['Lang0235'] = 'doctor name';
+$lang['Lang0236'] = 'status';
+$lang['Lang0237'] = 'all';
+$lang['Lang0238'] = 'active';
+$lang['Lang0239'] = 'inactive';
+$lang['Lang0240'] = 'Search';
+$lang['Lang0241'] = 'inactive';
+$lang['Lang0242'] = 'active';
+$lang['Lang0243'] = 'clinic name';
+$lang['Lang0244'] = 'address';
+$lang['Lang0245'] = 'suburb';
+$lang['Lang0246'] = 'state';
+$lang['Lang0247'] = 'postcode';
+$lang['Lang0248'] = 'doctor type';
+$lang['Lang0249'] = 'doctor name';
+$lang['Lang0250'] = 'gender';
+$lang['Lang0251'] = 'status';
+$lang['Lang0252'] = 'action';
+
+//Page clinicUpdDoctorDetail
+$lang['Lang0253'] = 'Update doctor information';
+$lang['Lang0254'] = 'doctor type';
+$lang['Lang0255'] = 'doctor name';
+$lang['Lang0256'] = 'gender';
+$lang['Lang0257'] = 'man';
+$lang['Lang0258'] = 'woman';
+$lang['Lang0259'] = 'status';
+$lang['Lang0260'] = 'active';
+$lang['Lang0261'] = 'inactive';
+$lang['Lang0262'] = 'doctor information';
+$lang['Lang0263'] = 'doctor photo';
+$lang['Lang0264'] = 'docotr photo';
+$lang['Lang0265'] = 'cancel';
+$lang['Lang0266'] = 'OK';
+
+//Page clinicUpdUserInfo
+$lang['Lang0267'] = 'User';
+$lang['Lang0268'] = 'Email';
+$lang['Lang0269'] = 'Clinic Name';
+$lang['Lang0270'] = 'Address';
+$lang['Lang0271'] = 'Suburb';
+$lang['Lang0272'] = 'State';
+$lang['Lang0273'] = 'Postcode';
+$lang['Lang0274'] = 'OK';
 ?>

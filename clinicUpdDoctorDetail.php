@@ -69,7 +69,7 @@ include_once 'classes/Menu/menu.php';
 			<div class="adminUpdDoc">
 				<div class="container">
 					<div class="row">
-							<h2 class="wow fadeInRight">修改医生信息</h2>
+							<h2 class="wow fadeInRight"><!-- 修改医生信息--><?php echo $lang['Lang0253']; ?></h2>
 							
 							
 							<div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
@@ -88,39 +88,39 @@ include_once 'classes/Menu/menu.php';
 										    </div>
 										</div>
 									 	<div class="form-group">
-										    <label for="DOCTOR_TYPE" class="col-sm-2 control-label">医生类别<span class="span-red">*</span></label>
+										    <label for="DOCTOR_TYPE" class="col-sm-2 control-label"><!-- 医生类别--><?php echo $lang['Lang0254']; ?><span class="span-red">*</span></label>
 										    <div class="col-sm-10">
 										      <input type="text" class="form-control" name="DOCTOR_TYPE" id="DOCTOR_TYPE">
 										    </div>
 										</div>
 										<div class="form-group">
-										    <label for="DOCTOR_NAME" class="col-sm-2 control-label">医生姓名<span class="span-red">*</span></label>
+										    <label for="DOCTOR_NAME" class="col-sm-2 control-label"><!-- 医生姓名--><?php echo $lang['Lang0255']; ?><span class="span-red">*</span></label>
 										    <div class="col-sm-10">
 										      <input type="text" class="form-control" name="DOCTOR_NAME" id="DOCTOR_NAME">
 										    </div>
 										</div>	
 										<div class="form-group">
-										    <label for="DOCTOR_GENDER" class="col-sm-2 control-label">性别<span class="span-red">*</span></label>
+										    <label for="DOCTOR_GENDER" class="col-sm-2 control-label"><!-- 性别--><?php echo $lang['Lang0256']; ?><span class="span-red">*</span></label>
 										    <div class="col-sm-10">
 										      	<select class="form-control" name="DOCTOR_GENDER" id="DOCTOR_GENDER">
-													<option>男</option>
-													<option>女</option>
+													<option><!-- 男--><?php echo $lang['Lang0257']; ?></option>
+													<option><!-- 女--><?php echo $lang['Lang0258']; ?></option>
 												</select>
 										    </div>
 										</div>
 										<div class="form-group">
-										    <label for="ACTIVE_STATUS" class="col-sm-2 control-label">状态<span class="span-red">*</span></label>
+										    <label for="ACTIVE_STATUS" class="col-sm-2 control-label"><!-- 状态--><?php echo $lang['Lang0259']; ?><span class="span-red">*</span></label>
 										    <div class="col-sm-10">
 										      	<select class="form-control" name="ACTIVE_STATUS" id="ACTIVE_STATUS">
-													<option value="1">active</option>
-													<option value="0">inactive</option>
+													<option value="1"><!-- active--><?php echo $lang['Lang0260']; ?></option>
+													<option value="0"><!-- inactive--><?php echo $lang['Lang0261']; ?></option>
 												</select>
 										    </div>
 										</div>
 										<div class="form-group">
-										    <label for="DOCTOR_INFO" class="col-sm-2 control-label">医生详细信息<span class="span-red">*</span></label>
+										    <label for="DOCTOR_INFO" class="col-sm-2 control-label"><!-- 医生详细信息--><?php echo $lang['Lang0262']; ?><span class="span-red">*</span></label>
 										    <div class="col-sm-10">
-										    	<textarea class="form-control" rows="5" name="DOCTOR_INFO" id="DOCTOR_INFO"  placeholder="医生详细信息"></textarea>
+										    	<textarea class="form-control" rows="5" name="DOCTOR_INFO" id="DOCTOR_INFO"  placeholder="<!-- 医生详细信息--><?php echo $lang['Lang0263']; ?>"></textarea>
 										    </div>	
 										</div>
 
@@ -130,7 +130,7 @@ include_once 'classes/Menu/menu.php';
 								</form>
 
 								<div class="row doctor_photo">
-									 <label for="DOCTOR_PHOTO" class="col-sm-2 control-label">医生照片<span class="span-red">*</span></label>
+									 <label for="DOCTOR_PHOTO" class="col-sm-2 control-label"><!-- 医生照片--><?php echo $lang['Lang0264']; ?><span class="span-red">*</span></label>
 									<div class="col-sm-offset-2">	
 										<form id="submit_form" method="post" action="./classes/class.upload.php" target="exec_target" enctype="multipart/form-data">
 											<input type="file" name="upload_file" id="upload_file">
@@ -144,8 +144,8 @@ include_once 'classes/Menu/menu.php';
 
 								<div class="row">
 									<div class="form-group pull-right">
-										<a href="clinicQryDoctor.php" class="btn btn-primary">Cancel</a>
-										<button type="submit" class="btn btn-warning" id="btn_submit">Confirm</button>
+										<a href="clinicQryDoctor.php" class="btn btn-primary"><!-- Cancel--><?php echo $lang['Lang0265']; ?></a>
+										<button type="submit" class="btn btn-warning" id="btn_submit"><!-- Confirm--><?php echo $lang['Lang0266']; ?></button>
 										
 								 	</div>
 							 	</div>
