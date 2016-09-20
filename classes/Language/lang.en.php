@@ -246,7 +246,7 @@ $lang['Lang0191'] = 'sign in';
 
 //Page sign_up_clinic
 $lang['Lang0192'] = 'Clinic User Register';
-$lang['Lang0193'] = 'Choose User Type';
+$lang['Lang0193'] = 'Account type';
 $lang['Lang0194'] = 'Personal';
 $lang['Lang0195'] = 'Clinic';
 $lang['Lang0196'] = 'User';
@@ -266,13 +266,13 @@ $lang['Lang0207'] = 'Entered passwords differ from the another!';
 
 //Page sign_up_person
 $lang['Lang0208'] = 'Personal User Register';
-$lang['Lang0209'] = 'Choose User Type';
+$lang['Lang0209'] = 'Account type';
 $lang['Lang0210'] = 'Personal';
 $lang['Lang0211'] = 'Clinic';
 $lang['Lang0212'] = 'User';
 $lang['Lang0213'] = 'Email';
 $lang['Lang0214'] = 'Password';
-$lang['Lang0215'] = 're-Input Password';
+$lang['Lang0215'] = 'Re-enter password';
 $lang['Lang0216'] = 'Name';
 $lang['Lang0217'] = 'Gender';
 $lang['Lang0218'] = 'Man';
