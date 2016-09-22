@@ -125,7 +125,7 @@ $(function(){
 	        type: "POST",
 	        url: url,
 	        dataType: "json",
-	        async: "false",
+	        async: false,
 	        data: "",
 	        success: callbackFun,
 	        error: function(XMLHttpRequest, textStatus, errorThrown){
@@ -236,6 +236,7 @@ $(function(){
 	        type: "POST",
 	        url: url,
 	        dataType: "json",
+	        async:false,
 	        data: {
 	          	request:json_str
 	        },

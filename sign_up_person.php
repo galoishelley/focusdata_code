@@ -143,14 +143,14 @@ include_once 'classes/Menu/menu.php';
 									<input type="text" class="form-control" name="MEDICAL_CARD_NO" id="MEDICAL_CARD_NO" value="1">
 								</div>
 
-								<div class="form-group">
-									<label for="CUSTOMER_POSTCODE"><!-- 邮编--><?php echo $lang['Lang0223']; ?><span class="span-red">*</span></label>
-									<input type="text" class="form-control" name="CUSTOMER_POSTCODE" id="CUSTOMER_POSTCODE" value="1">
-								</div>
-
 								<div class="form-group col-md-9 col-lg-9">
 									<label for="CUSTOMER_ADDR"><!-- 详细地址--><?php echo $lang['Lang0224']; ?><span class="span-red">*</span></label>
 									<input type="text" class="form-control"  style="width:81%" name="CUSTOMER_ADDR" id="CUSTOMER_ADDR" value="1">
+								</div>
+
+								<div class="form-group col-md-6 col-lg-6">
+									<label for="CUSTOMER_POSTCODE"><!-- 邮编--><?php echo $lang['Lang0223']; ?><span class="span-red">*</span></label>
+									<input type="text" class="form-control" name="CUSTOMER_POSTCODE" id="CUSTOMER_POSTCODE" value="1">
 								</div>
 
 								<div class="form-group col-md-6 col-lg-6">

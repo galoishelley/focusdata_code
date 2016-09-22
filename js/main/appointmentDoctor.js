@@ -667,6 +667,7 @@ $(function(){
         }
 
 
+      // 预约医生
       func_code="AD01";
       para={
         action_type: "create",
