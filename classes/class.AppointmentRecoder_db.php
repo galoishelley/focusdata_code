@@ -100,9 +100,9 @@ class AppointmentRecoder_DB{
                 t1.APPOINTMENT_STATUS_ID like '".$arr_values['APPOINTMENT_STATUS_ID']."'
                 and
                 t1.`CREATE_DATE`
-                between str_to_date('".$arr_values['CREATE_DATE_BEGIN']."','%Y-%m-%d %H:%i:%s') 
+                between str_to_date('".$arr_values['CREATE_DATE_BEGIN']."','%d-%m-%Y %H:%i:%s') 
                 and
-                str_to_date('".$arr_values['CREATE_DATE_END']."','%Y-%m-%d %H:%i:%s')";
+                str_to_date('".$arr_values['CREATE_DATE_END']."','%d-%m-%Y %H:%i:%s')";
         if($this->_dbug){
             echo "[---col_exists_sql---sql]";
             print_r($sql);
@@ -129,9 +129,9 @@ class AppointmentRecoder_DB{
             t1.APPOINTMENT_STATUS_ID like '".$arr_values['APPOINTMENT_STATUS_ID']."'
             and
             t1.`CREATE_DATE`
-            between str_to_date('".$arr_values['CREATE_DATE_BEGIN']."','%Y-%m-%d %H:%i:%s') 
+            between str_to_date('".$arr_values['CREATE_DATE_BEGIN']."','%d-%m-%Y %H:%i:%s') 
             and
-            str_to_date('".$arr_values['CREATE_DATE_END']."','%Y-%m-%d %H:%i:%s')
+            str_to_date('".$arr_values['CREATE_DATE_END']."','%d-%m-%Y %H:%i:%s')
             ORDER BY CREATE_DATE DESC";
 
         $limit = " limit ".$start.",".$lenght;

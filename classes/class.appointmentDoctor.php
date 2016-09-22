@@ -112,7 +112,6 @@ class appointmentDoctor
 		$ret_code = "AD0101"; //成功
 		
 		$ret = $this->appointmentDoctor->create($this->arr_values);
-
 		if($ret>0){
 			$success = true;
 			$ret_msg="预约成功";
