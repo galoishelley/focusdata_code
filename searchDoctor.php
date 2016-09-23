@@ -160,7 +160,7 @@ include_once 'classes/Menu/menu.php';
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <a type="hidden" class="btn btn-danger" href="userSaveSearch.php" id="btn_save_manage">常用搜索条件管理</a>
+                                    <a class="btn btn-danger" href="userSaveSearch.php" id="btn_save_manage">常用搜索条件管理</a>
                                     <button type="button" class="btn btn-warning" id="btn_save" >保存为常用搜索条件</button>
                                     <button type="button" class="btn btn-primary" id="btn_search" >搜索</button>
                                 </div>

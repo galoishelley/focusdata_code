@@ -35,11 +35,17 @@ $(function(){
     var json_value = JSON.parse(str);
     console.log(json_value);
 
+    if(json_value.CUSTOMER_GENDER == "0"){
+      $("#CUSTOMER_GENDER option[value='"+ 0 +"']").attr("selected",true);
+    }
+    if(json_value.CUSTOMER_GENDER == "1"){
+      $("#CUSTOMER_GENDER option[value='"+ 1 +"']").attr("selected",true);
+    }
     $('#CUSTOMER_USER_ID').val(json_value.CUSTOMER_USER_ID);
     $('#CUSTOMER_USER_NAME').val(json_value.CUSTOMER_USER_NAME);
     $('#CUSTOMER_USER_MAIL').val(json_value.CUSTOMER_USER_MAIL);
     $('#CUSTOMER_NAME').val(json_value.CUSTOMER_NAME);
-    $('#CUSTOMER_GENDER').val(json_value.CUSTOMER_GENDER);
+    // $('#CUSTOMER_GENDER').val(json_value.CUSTOMER_GENDER);
     $('#CUSTOMER_BIRTHDAY').val(json_value.CUSTOMER_BIRTHDAY);
     $('#CUSTOMER_ADDR').val(json_value.CUSTOMER_ADDR);
     $('#CUSTOMER_PHONE_NO').val(json_value.CUSTOMER_PHONE_NO);

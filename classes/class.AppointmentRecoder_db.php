@@ -94,19 +94,21 @@ class AppointmentRecoder_DB{
                 left join (fd_rel_clinic_doctor t4 left join fd_clinic_user as t5 on t4.clinic_user_id = t5.clinic_user_id )
                 on t4.DOCTOR_ID = t1.DOCTOR_ID
                 left join fd_dict_state t6 on t5.state_id = t6.state_id
+                left join fd_rel_doctor_appointment_time t7 on t7.DOCTOR_APPOINTMENT_TIME_ID = t1.DOCTOR_APPOINTMENT_TIME_ID
                 where 
                 t1.CUSTOMER_USER_ID = ".(int)$arr_values['CUSTOMER_USER_ID']."
                 and                
                 t1.APPOINTMENT_STATUS_ID like '".$arr_values['APPOINTMENT_STATUS_ID']."'
                 and
-                t1.`CREATE_DATE`
-                between str_to_date('".$arr_values['CREATE_DATE_BEGIN']."','%d-%m-%Y %H:%i:%s') 
+                t7.`APPOINTMENT_DATE`
+                between str_to_date('".$arr_values['CREATE_DATE_BEGIN']."','%d-%m-%Y') 
                 and
-                str_to_date('".$arr_values['CREATE_DATE_END']."','%d-%m-%Y %H:%i:%s')";
+                str_to_date('".$arr_values['CREATE_DATE_END']."','%d-%m-%Y')";
         if($this->_dbug){
             echo "[---col_exists_sql---sql]";
             print_r($sql);
         }
+        // print_r($sql);
         $ret = $this->db->col_exists_sql($sql);
 
         return $ret[0]["COUNT"];
@@ -128,15 +130,16 @@ class AppointmentRecoder_DB{
             and                
             t1.APPOINTMENT_STATUS_ID like '".$arr_values['APPOINTMENT_STATUS_ID']."'
             and
-            t1.`CREATE_DATE`
-            between str_to_date('".$arr_values['CREATE_DATE_BEGIN']."','%d-%m-%Y %H:%i:%s') 
+            t7.`APPOINTMENT_DATE`
+            between str_to_date('".$arr_values['CREATE_DATE_BEGIN']."','%d-%m-%Y') 
             and
-            str_to_date('".$arr_values['CREATE_DATE_END']."','%d-%m-%Y %H:%i:%s')
+            str_to_date('".$arr_values['CREATE_DATE_END']."','%d-%m-%Y')
             ORDER BY CREATE_DATE DESC";
 
         $limit = " limit ".$start.",".$lenght;
 
         $sql .= $limit;
+        // print_r($sql);
         $ret = $this->db->fetchAll_sql($sql,null);
         
         return $ret;

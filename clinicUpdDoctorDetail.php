@@ -103,8 +103,8 @@ include_once 'classes/Menu/menu.php';
 										    <label for="DOCTOR_GENDER" class="col-sm-2 control-label"><!-- 性别--><?php echo $lang['Lang0256']; ?><span class="span-red">*</span></label>
 										    <div class="col-sm-10">
 										      	<select class="form-control" name="DOCTOR_GENDER" id="DOCTOR_GENDER">
-													<option><!-- 男--><?php echo $lang['Lang0257']; ?></option>
-													<option><!-- 女--><?php echo $lang['Lang0258']; ?></option>
+													<option value="0"><!-- 男--><?php echo $lang['Lang0257']; ?></option>
+													<option value="1"><!-- 女--><?php echo $lang['Lang0258']; ?></option>
 												</select>
 										    </div>
 										</div>
@@ -120,7 +120,7 @@ include_once 'classes/Menu/menu.php';
 										<div class="form-group">
 										    <label for="DOCTOR_INFO" class="col-sm-2 control-label"><!-- 医生详细信息--><?php echo $lang['Lang0262']; ?><span class="span-red">*</span></label>
 										    <div class="col-sm-10">
-										    	<textarea class="form-control" rows="5" name="DOCTOR_INFO" id="DOCTOR_INFO"  placeholder="<!-- 医生详细信息--><?php echo $lang['Lang0263']; ?>"></textarea>
+										    	<textarea class="form-control" rows="5" name="DOCTOR_INFO" id="DOCTOR_INFO"  placeholder="<?php echo $lang['Lang0263']; ?>"><!-- 医生详细信息--></textarea>
 										    </div>	
 										</div>
 

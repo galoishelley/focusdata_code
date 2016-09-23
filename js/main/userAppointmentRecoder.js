@@ -97,11 +97,24 @@ $(document).ready(function() {
     // $('#a_userAppointmentRecoder').attr("href","#");
     // $('#a_userAppointmentRecoder').attr("color","#FF0000");
   }
+
+  function GetDateStr(AddDayCount) 
+  { 
+    var dd = new Date(); 
+    dd.setDate(dd.getDate()+AddDayCount);//获取AddDayCount天后的日期 
+    var y = dd.getFullYear(); 
+    var m = (dd.getMonth()+1)<10?"0"+(dd.getMonth()+1):(dd.getMonth()+1);//获取当前月份的日期，不足10补0
+    var d = dd.getDate()<10?"0"+dd.getDate():dd.getDate(); //获取当前几号，不足10补0
+    return d+"-"+m+"-"+y; 
+  }
+
   
   var d = new Date()
-  var vYear = d.getFullYear()
-  var vMon = d.getMonth() + 1
-  var vDay = d.getDate()
+  var vYear = d.getFullYear();
+  var vMon = d.getMonth() + 1;
+  var vDay = d.getDate();
+  // 两周后
+  var vDay_14 = GetDateStr(14); 
   var h = d.getHours(); 
   var m = d.getMinutes(); 
   var se = d.getSeconds(); 
@@ -109,9 +122,9 @@ $(document).ready(function() {
   var vDate_F= vYear+'-'+(vMon<10 ? "0" + vMon : vMon)+'-'+(vDay<10 ? "0"+ vDay : vDay)+' 00:00';
   var vDate_T= vYear+'-'+(vMon<10 ? "0" + vMon : vMon)+'-'+(vDay<10 ? "0"+ vDay : vDay)+' 23:59';
   var vDate_Today= (vDay<10 ? "0"+ vDay : vDay)+'-'+(vMon<10 ? "0" + vMon : vMon)+'-'+vYear;
-  var vDate_Today_1= ((vDay+1)<10 ? "0"+ (vDay+1) : (vDay+1))+'-'+(vMon<10 ? "0" + vMon : vMon)+'-'+vYear;
+  var vDate_Today_1= (vDay_14<10 ? "0"+ vDay_14 : vDay_14)+'-'+(vMon<10 ? "0" + vMon : vMon)+'-'+vYear;
   $("#begin_time").val(vDate_Today);
-  $("#end_time").val(vDate_Today_1);
+  $("#end_time").val(vDay_14);
 
   // appointment status loading pages
     func_code = "SP01";

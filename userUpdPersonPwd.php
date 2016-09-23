@@ -96,22 +96,22 @@ include_once 'classes/Menu/menu.php';
                       <input type="hidden" class="form-control" name="CUSTOMER_USER_ID" id="CUSTOMER_USER_ID">
 
                       <div class="form-group col-md-10">
-                        <label for="CUSTOMER_USER_NAME" class="col-md-4 control-label"><!-- 用户名--><?php echo $lang['Lang0111']; ?><span class="span-red">*</span></label>
+                        <label for="CUSTOMER_USER_NAME" class="col-md-5 control-label"><!-- 用户名--><?php echo $lang['Lang0111']; ?><span class="span-red">*</span></label>
                         <input type="text" class="form-control" id="CUSTOMER_USER_NAME" name="CUSTOMER_USER_NAME" readonly="true">
                       </div>
 
                       <div class="form-group col-md-10">
-                        <label for="CUSTOMER_USER_PWD" class="col-md-4 control-label"><!-- 旧密码--><?php echo $lang['Lang0112']; ?><span class="span-red">*</span></label>
+                        <label for="CUSTOMER_USER_PWD" class="col-md-5 control-label"><!-- 旧密码--><?php echo $lang['Lang0112']; ?><span class="span-red">*</span></label>
                         <input type="password" class="form-control" id="CUSTOMER_USER_PWD">
                       </div>
 
                       <div class="form-group col-md-10">
-                        <label for="CUSTOMER_USER_NEWPWD" class="col-md-4 control-label"><!-- 新密码--><?php echo $lang['Lang0113']; ?><span class="span-red">*</span></label>
+                        <label for="CUSTOMER_USER_NEWPWD" class="col-md-5 control-label"><!-- 新密码--><?php echo $lang['Lang0113']; ?><span class="span-red">*</span></label>
                         <input type="password" class="form-control" id="CUSTOMER_USER_NEWPWD">
                       </div>
 
                       <div class="form-group col-md-10">
-                        <label for="CUSTOMER_USER_C_NEWPWD" class="col-md-4 control-label"><!-- 确认新密码--><?php echo $lang['Lang0114']; ?><span class="span-red">*</span></label>
+                        <label for="CUSTOMER_USER_C_NEWPWD" class="col-md-5 control-label"><!-- 确认新密码--><?php echo $lang['Lang0114']; ?><span class="span-red">*</span></label>
                         <input type="password" class="form-control" id="CUSTOMER_USER_C_NEWPWD">
                       </div>
 

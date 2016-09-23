@@ -240,14 +240,11 @@ $(document).ready(function() {
               //type 的值  dispaly sort filter
               //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
               //这里只处理了类型是显示的，过滤和排序返回原始数据
-              if (type === 'display') {
-                  if (data.length > 15) {
-                      return '<span title="' + data + '">' + data.substr(0, 15) + '...</span>';
-                  } else {
-                    // console.log(data);
-                      // return '<span title="' + data + '>' + data + '</span>';
-                      return data;
-                  }
+              if (data === '0') {
+                return 'mate';
+              }
+              if (data === '1') {
+                return 'femate';
               }
               return data;
           }

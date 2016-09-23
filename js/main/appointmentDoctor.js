@@ -270,6 +270,7 @@ $(function(){
 
       //显示收藏医生
       $('#btn_savedoctor').show();
+      $('#btn_savedoctor_manage').show();
 
       //组织request para
       var username = $.cookie("fd_username");
@@ -349,6 +350,8 @@ $(function(){
       //显示登陆注册
       $('#sign_in').removeClass("hidden");
       $('#sign_up').removeClass("hidden");
+      // 隐藏搜索医生
+      $('#btn_savedoctor_manage').hide();
     }
 
   //只有一个预约时间段 默认选中
@@ -1170,11 +1173,20 @@ $(function(){
                 alert(func_code+":时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
                 result=false;
               }
+
               $("#app_time").empty();
-              $.each(ret.data, function(i, item) {
-                $("#app_time").append('<label class="radio-inline"><input type="radio" name="app_time_radio" id="app_time_radio" value="'+item.APPOINTMENT_TIME+'">'
-            +item.APPOINTMENT_TIME+'</label>');
-              });
+              if(ret.data.length==0){
+                $("#app_time").append('<label>无可预约时间</label>');
+                $('#btn_submit').attr("disabled",true);
+              }else{
+                $.each(ret.data, function(i, item) {
+                  $("#app_time").append('<label class="radio-inline"><input type="radio" name="app_time_radio" id="app_time_radio" value="'+item.APPOINTMENT_TIME+'">'
+              +item.APPOINTMENT_TIME+'</label>');
+                });
+                
+                $('#btn_submit').attr("disabled",false);
+              }
+
 
             }else{
               alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);

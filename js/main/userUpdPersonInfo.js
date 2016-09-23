@@ -79,10 +79,15 @@ $(document).ready(function() {
                 result = false;
             }
               var data = ret.data[0];
+              if(data.CUSTOMER_GENDER == "0"){
+                $("#CUSTOMER_GENDER option[value='"+ 0 +"']").attr("selected",true);
+              }
+              if(data.CUSTOMER_GENDER == "1"){
+                $("#CUSTOMER_GENDER option[value='"+ 1 +"']").attr("selected",true);
+              }
               $('#CUSTOMER_USER_NAME').val(data.CUSTOMER_USER_NAME);
               $('#CUSTOMER_USER_MAIL').val(data.CUSTOMER_USER_MAIL);
               $('#CUSTOMER_NAME').val(data.CUSTOMER_NAME);
-              $('#CUSTOMER_GENDER').val(data.CUSTOMER_GENDER);
               $('#CUSTOMER_BIRTHDAY').val(data.CUSTOMER_BIRTHDAY);
               $('#CUSTOMER_ADDR').val(data.CUSTOMER_ADDR);
               $('#CUSTOMER_PHONE_NO').val(data.CUSTOMER_PHONE_NO);

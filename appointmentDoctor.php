@@ -99,7 +99,9 @@ include_once 'classes/Language/language.common.php';
                             </div>
 
                             <div class="app_time pull-right" id="app_time">
-                                <button class="btn btn-primary" id="btn_savedoctor">收藏医生</button>
+                                
+                                <a class="btn btn-primary" href="userSaveDoctor.php" id="btn_savedoctor_manage">收藏医生管理</a>
+                                <button class="btn btn-warning" id="btn_savedoctor">收藏医生</button>
                              <!--    <a class="btn btn-primary" href="searchDoctor.php">
                                   <span class="glyphicon  glyphicon-arrow-left"> 搜索医生</span>
                                 </a> -->
