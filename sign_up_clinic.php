@@ -214,6 +214,7 @@ include_once 'classes/Menu/menu.php';
 <script src="js/bootstrap.min.js"></script><!-- dialog --><script src="js/bootstrap-dialog.min.js"></script>
 <script src="js/tm-scripts.js"></script>
 <script src="js/jquery.cookie.js"></script>
+<script src="js/jquery.maskedinput.min.js"></script> 
 <script src="js/bootstrapValidator.js"></script>
 <script src="js/main/pub.js"></script>
 <script src="js/main/sign_up_clinic.js"></script>

@@ -195,7 +195,7 @@ $lang['Lang0146'] = 'Man';
 $lang['Lang0147'] = 'Woman';
 $lang['Lang0148'] = 'Birthday';
 $lang['Lang0149'] = 'Mobile';
-$lang['Lang0150'] = 'Medical Number';
+$lang['Lang0150'] = 'Medicare Number';
 $lang['Lang0151'] = 'Status';
 $lang['Lang0152'] = 'Address';
 $lang['Lang0153'] = 'Suburb';
@@ -279,7 +279,7 @@ $lang['Lang0218'] = 'Man';
 $lang['Lang0219'] = 'Woman';
 $lang['Lang0220'] = 'Birthday';
 $lang['Lang0221'] = 'Mobile';
-$lang['Lang0222'] = 'Medical Number';
+
 $lang['Lang0223'] = 'Postcode';
 $lang['Lang0224'] = 'Address';
 $lang['Lang0225'] = 'Suburb';
