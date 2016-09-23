@@ -82,7 +82,7 @@ include_once 'classes/Language/language.common.php';
                                 <p id="doctor_details"></p>
                             </div>
                             <div class="form-group  col-md-12 col-lg-12">
-                                <label for="CUSTOMER_USER_PWD" class="col-md-3 col-lg-3">可预约时间<span class="span-red">*</span></label>
+                                <label for="CUSTOMER_USER_PWD" class="col-md-3 col-lg-3">可预约日期<span class="span-red">*</span></label>
                                 <div class="col-md-3 col-lg-3">
                                     <select class="form-control" id="APPOINTMENT_DATE" name="APPOINTMENT_DATE">
                                     </select>

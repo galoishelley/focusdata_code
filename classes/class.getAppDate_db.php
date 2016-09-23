@@ -15,7 +15,7 @@ class getAppDate_DB{
             echo "[---viewAll---arr_values]";
             print_r($arr_values);
         }
-        $sql = "SELECT DISTINCT APPOINTMENT_DATE FROM `fd_rel_doctor_appointment_time` WHERE `DOCTOR_ID` = ".$arr_values['DOCTOR_ID'] ." ORDER BY APPOINTMENT_DATE ASC";
+        $sql = "SELECT DISTINCT APPOINTMENT_DATE FROM `fd_rel_doctor_appointment_time` WHERE `DOCTOR_ID` = ".$arr_values['DOCTOR_ID'] ." and APPOINTMENT_DATE >= curdate() ORDER BY APPOINTMENT_DATE ASC";
 
         if($this->_dbug){
             echo "[---viewAll---sql]";

@@ -109,9 +109,9 @@ $(document).ready(function() {
   var vDate_F= vYear+'-'+(vMon<10 ? "0" + vMon : vMon)+'-'+(vDay<10 ? "0"+ vDay : vDay)+' 00:00';
   var vDate_T= vYear+'-'+(vMon<10 ? "0" + vMon : vMon)+'-'+(vDay<10 ? "0"+ vDay : vDay)+' 23:59';
   var vDate_Today= (vDay<10 ? "0"+ vDay : vDay)+'-'+(vMon<10 ? "0" + vMon : vMon)+'-'+vYear;
-
+  var vDate_Today_1= ((vDay+1)<10 ? "0"+ (vDay+1) : (vDay+1))+'-'+(vMon<10 ? "0" + vMon : vMon)+'-'+vYear;
   $("#begin_time").val(vDate_Today);
-  $("#end_time").val(vDate_Today);
+  $("#end_time").val(vDate_Today_1);
 
   // appointment status loading pages
     func_code = "SP01";
