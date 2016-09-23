@@ -353,6 +353,31 @@ $(document).ready(function() {
   $("div#dataTables-example_paginate").addClass('col-sm-12 col-md-8 col-lg-9 pull-right');
   $("div#goon").addClass('col-sm-6 col-md-2');
 
+  //单机行，中修改按钮
+  $('#dataTables-example tbody').on( 'click', 'button', function (event) {
+    var imgId = $(this).prop("id");
+    var obj_data = _table.row($(this).parents('tr')).data();
+    console.log(obj_data);
+    var data = {
+          imgId:imgId,
+          CLINIC_SUBURB:obj_data.CLINIC_SUBURB,
+          STATE_ID:obj_data.STATE_ID,
+          CLINIC_NAME:obj_data.CLINIC_NAME,
+          DOCTOR_TYPE:obj_data.DOCTOR_TYPE,
+          DOCTOR_NAME:obj_data.DOCTOR_NAME
+        };
+    var str = JSON.stringify(data);
+
+    sessionStorage.saveDoctor = str;
+    // $.cookie("appointmentdoctor", str);
+    
+    // console.log("appointmentdoctor");
+    // console.log($.cookie("appointmentdoctor"));
+    window.location.href="searchDoctor.php"; 
+
+    event.stopImmediatePropagation();
+  });
+
   //单机行，选中复选框
   $('#dataTables-example tbody').on( 'click', 'tr', function (event) {
     $(this).toggleClass('selected');

@@ -205,7 +205,7 @@ $(function(){
   		now_postion = ""
   	}
   	
-
+  	//获取收藏医生页面传递的值
 	var str = sessionStorage.saveSearch;
 
   	if(str){
@@ -219,6 +219,7 @@ $(function(){
 	    $('#DOCTOR_NAME').val(json_value.DOCTOR_NAME);
 	    $('#DISTANCE').val(json_value.DISTANCE);
 	}
+
 
 ///////////////////////////////////组织ajax 请求参数 begin///////////////////////////////
 
@@ -330,7 +331,7 @@ $(function(){
 				   json.draw = json.response.data.draw;
 				   json.recordsTotal = json.response.data.recordsTotal;
 				   json.recordsFiltered = json.response.data.recordsFiltered;
-				   console.log(json.response.data.data);
+				   // console.log(json.response.data.data);
 				   return json.response.data.data;
 				}
 	    },
@@ -828,6 +829,24 @@ $(function(){
 	  return false;
 
 	});
+
+	//获取首页传递的值
+	var str_saveDoctor = sessionStorage.saveDoctor;
+	console.log(str_saveDoctor);
+  	if(str_saveDoctor){
+	    var json_value = JSON.parse(str_saveDoctor);
+	    console.log(json_value);
+
+	    $('#CLINIC_SUBURB').val(json_value.CLINIC_SUBURB);
+	    $('#STATE_ID').val(json_value.STATE_ID);
+	    $('#CLINIC_NAME').val(json_value.CLINIC_NAME);
+	    $('#DOCTOR_TYPE').val(json_value.DOCTOR_TYPE);
+	    $('#DOCTOR_NAME').val(json_value.DOCTOR_NAME);
+	    $('#DISTANCE').val("");
+	    $('#myModal').modal('show');
+
+	    sessionStorage.saveDoctor = "";
+	}
 
 	$('.form_datetime').datetimepicker({
 	    language:  'zh-CN',
