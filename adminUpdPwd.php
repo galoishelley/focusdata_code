@@ -66,7 +66,7 @@ include_once 'classes/Language/language.common.php';
     <?php
 include_once 'classes/Menu/menu.php';
 ?>
-    <h1 class="navbar-brand navbar-brand_"><a href="#"><img src="img/<?php echo $lang['Lang0004']; ?>" alt="logo"></a></h1>
+    <h1 class="navbar-brand navbar-brand_"><a href="index.php"><img src="img/<?php echo $lang['Lang0004']; ?>" alt="logo"></a></h1>
 </header>
 
 <!--content--> 
@@ -136,61 +136,12 @@ include_once 'classes/Menu/menu.php';
 </div>
 
 <!--footer-->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 center">
-                <ul class="follow_icon">
-                    <li><a href="#" class="fa fa-twitter"></a></li>
-                    <li><a href="#" class="fa fa-facebook"></a></li>
-                    <li><a href="#" class="fa fa-google-plus"></a></li>
-                    <li><a href="#" class="fa fa-rss"></a></li>
-                    <li><a href="#" class="fa fa-pinterest"></a></li>
-                    <li><a href="#" class="fa fa-linkedin"></a></li>
-                </ul>
-            </div>
-            <div class="col-lg-12 center">
-                <p>84, Charing Cross Road,London<br>JL 851213-2340</p>
-            </div>
-            <div class="col-lg-12 center">
-                <p class="privacy">&copy; <em id="copyright-year"></em> <i>|</i> <a href="index-5.php">Privacy Policy</a></p>
-            </div>
-        </div>
-    </div>
-</footer>
-<!-- 为了实现js多语言 begin -->
-
-<!-- 总开关，为了设置第三方库的多语言而设置 -->
-<div id="which_lang" style="display: none;"><?php echo $_SESSION ['lang']; ?></div>
-
-<!-- 密码重置成功! -->
-<div id="Lang0032" style="display: none;"><?php echo $lang['Lang0032']; ?></div>
-
-<!-- 请选择需要修改的数据 -->
-<div id="Lang0033" style="display: none;"><?php echo $lang['Lang0033']; ?></div>
-
-<!-- 确定修改 -->
-<div id="Lang0018" style="display: none;"><?php echo $lang['Lang0018']; ?></div>
-
-<!-- 您未登陆,无法使用此功能 -->
-<div id="Lang0019" style="display: none;"><?php echo $lang['Lang0019']; ?></div>
-
-<!-- 请修改个人信息，添加邮箱地址 -->
-<div id="Lang0020" style="display: none;"><?php echo $lang['Lang0020']; ?></div>
-
-<!-- 详细 -->
-<div id="Lang0056" style="display: none;"><?php echo $lang['Lang0056']; ?></div>
-
-<!-- 修改-->
-<div id="Lang0057" style="display: none;"><?php echo $lang['Lang0057']; ?></div>
-
-<!-- 密码重置 -->
-<div id="Lang0058" style="display: none;"><?php echo $lang['Lang0058']; ?></div>
-
-<!-- 两次密码输入不一致 -->
-<div id="Lang0116" style="display: none;"><?php echo $lang['Lang0116']; ?></div>
-
-<!-- 为了实现js多语言 end -->
+<?php
+include_once 'classes/Footer/Footer.php';
+?>
+<?php
+include_once 'classes/Language/For_JS_multi_lang.php';
+?>
 <!-- DataTables JavaScript -->
 <script src="bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
 <script src="bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>

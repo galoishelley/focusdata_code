@@ -123,28 +123,9 @@ include_once 'classes/Menu/menu.php';
 </div>
 
 <!--footer-->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 center">
-                <ul class="follow_icon">
-                    <li><a href="#" class="fa fa-twitter"></a></li>
-                    <li><a href="#" class="fa fa-facebook"></a></li>
-                    <li><a href="#" class="fa fa-google-plus"></a></li>
-                    <li><a href="#" class="fa fa-rss"></a></li>
-                    <li><a href="#" class="fa fa-pinterest"></a></li>
-                    <li><a href="#" class="fa fa-linkedin"></a></li>
-                </ul>
-            </div>
-            <div class="col-lg-12 center">
-                <p>84, Charing Cross Road,London<br>JL 851213-2340</p>
-            </div>
-            <div class="col-lg-12 center">
-                <p class="privacy">&copy; <em id="copyright-year"></em> <i>|</i> <a href="index-5.php">Privacy Policy</a></p>
-            </div>
-        </div>
-    </div>
-</footer>
+<?php
+include_once 'classes/Footer/Footer.php';
+?>
 <?php
 include_once 'classes/Language/For_JS_multi_lang.php';
 ?>
