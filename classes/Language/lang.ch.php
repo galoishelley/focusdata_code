@@ -273,7 +273,7 @@ $lang['Lang0218'] = '男';
 $lang['Lang0219'] = '女';
 $lang['Lang0220'] = '生日';
 $lang['Lang0221'] = '电话号码';
-$lang['Lang0222'] = '医疗卡号';
+
 $lang['Lang0223'] = '邮编';
 $lang['Lang0224'] = '详细地址';
 $lang['Lang0225'] = '区';

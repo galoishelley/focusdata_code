@@ -130,7 +130,7 @@ include_once 'classes/Menu/menu.php';
 
 								<div class="form-group col-md-6 col-lg-6">
 									<label for="CUSTOMER_BIRTHDAY"><!-- 生日--><?php echo $lang['Lang0220']; ?><span class="span-red">*</span></label>
-									<input type="text" class="form-control" name="CUSTOMER_BIRTHDAY" id="CUSTOMER_BIRTHDAY" value="1">
+									<input type="text" class="form-control" name="CUSTOMER_BIRTHDAY" id="CUSTOMER_BIRTHDAY" placeholder="Birthdate (dd/mm/yyyy)">
 								</div>
 
 								<div class="form-group col-md-6 col-lg-6">
@@ -139,7 +139,7 @@ include_once 'classes/Menu/menu.php';
 								</div>	
 
 								<div class="form-group col-md-6 col-lg-6">
-									<label for="MEDICAL_CARD_NO"><!-- 医疗卡号--><?php echo $lang['Lang0222']; ?><span class="span-red">*</span></label>
+									<label for="MEDICAL_CARD_NO"><!-- 医疗卡号--><?php echo $lang['Lang0150']; ?><span class="span-red">*</span></label>
 									<input type="text" class="form-control" name="MEDICAL_CARD_NO" id="MEDICAL_CARD_NO" value="1">
 								</div>
 
@@ -244,6 +244,8 @@ include_once 'classes/Menu/menu.php';
 <script src="js/bootstrapValidator.js"></script>
 <script src="js/main/pub.js"></script>
 <!-- <script src="js/main/sign_in.js"></script> -->
+
+<script src="js/jquery.maskedinput.min.js"></script> 
 <script src="js/main/sign_up_person.js"></script>
 </body>
 </html>
