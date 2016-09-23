@@ -114,8 +114,8 @@ include_once 'classes/Menu/menu.php';
                       <div class="form-group col-md-6">
                         <label for="CUSTOMER_GENDER"  class="col-md-3 control-label"><!-- 性别--><?php echo $lang['Lang0100']; ?></label>
                         <select class="form-control" id="CUSTOMER_GENDER" name="CUSTOMER_GENDER">
-                              <option value="0"><!-- 男--><?php echo $lang['Lang0146']; ?></option>
-                              <option value="1"><!-- 女--><?php echo $lang['Lang0147']; ?></option>
+                              <option value="0"><!-- 男--><?php echo $lang['Lang0132']; ?></option>
+                              <option value="1"><!-- 女--><?php echo $lang['Lang0133']; ?></option>
                         </select>
                       </div>
 

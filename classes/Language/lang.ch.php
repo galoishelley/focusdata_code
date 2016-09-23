@@ -185,8 +185,8 @@ $lang['Lang0142'] = '用户名';
 $lang['Lang0143'] = '邮箱';
 $lang['Lang0144'] = '姓名';
 $lang['Lang0145'] = '性别';
-$lang['Lang0146'] = '男';
-$lang['Lang0147'] = '女';
+
+
 $lang['Lang0148'] = '生日';
 $lang['Lang0149'] = '电话号码';
 $lang['Lang0150'] = '医疗卡号';
@@ -206,8 +206,8 @@ $lang['Lang0160'] = '用户名';
 $lang['Lang0161'] = '密码';
 $lang['Lang0162'] = '姓名';
 $lang['Lang0163'] = '性别';
-$lang['Lang0164'] = '男';
-$lang['Lang0165'] = '女';
+
+
 $lang['Lang0166'] = '生日';
 $lang['Lang0167'] = '住址';
 $lang['Lang0168'] = '手机号';
@@ -269,8 +269,8 @@ $lang['Lang0214'] = '密码';
 $lang['Lang0215'] = '确认密码';
 $lang['Lang0216'] = '姓名';
 $lang['Lang0217'] = '性别';
-$lang['Lang0218'] = '男';
-$lang['Lang0219'] = '女';
+
+
 $lang['Lang0220'] = '生日';
 $lang['Lang0221'] = '电话号码';
 
@@ -312,8 +312,8 @@ $lang['Lang0253'] = '修改医生信息';
 $lang['Lang0254'] = '医生类别';
 $lang['Lang0255'] = '医生姓名';
 $lang['Lang0256'] = '性别';
-$lang['Lang0257'] = '男';
-$lang['Lang0258'] = '女';
+
+
 $lang['Lang0259'] = '状态';
 $lang['Lang0260'] = '激活';
 $lang['Lang0261'] = '禁用';
