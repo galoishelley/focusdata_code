@@ -175,8 +175,8 @@ $lang['Lang0128'] = 'Update doctor info';
 $lang['Lang0129'] = 'Doctor type';
 $lang['Lang0130'] = 'Doctor name';
 $lang['Lang0131'] = 'Gender';
-$lang['Lang0132'] = 'Man';
-$lang['Lang0133'] = 'Woman';
+$lang['Lang0132'] = 'Male';
+$lang['Lang0133'] = 'Female';
 $lang['Lang0134'] = 'Status';
 $lang['Lang0135'] = 'active';
 $lang['Lang0136'] = 'inactive';
@@ -191,8 +191,8 @@ $lang['Lang0142'] = 'User';
 $lang['Lang0143'] = 'Email';
 $lang['Lang0144'] = 'Name';
 $lang['Lang0145'] = 'Gender';
-$lang['Lang0146'] = 'Man';
-$lang['Lang0147'] = 'Woman';
+
+
 $lang['Lang0148'] = 'Birthday';
 $lang['Lang0149'] = 'Mobile';
 $lang['Lang0150'] = 'Medicare Number';
@@ -212,8 +212,8 @@ $lang['Lang0160'] = 'User';
 $lang['Lang0161'] = 'Password';
 $lang['Lang0162'] = 'Name';
 $lang['Lang0163'] = 'Gender';
-$lang['Lang0164'] = 'Man';
-$lang['Lang0165'] = 'Woman';
+
+
 $lang['Lang0166'] = 'Birthday';
 $lang['Lang0167'] = 'Address';
 $lang['Lang0168'] = 'Mobile';
@@ -275,8 +275,8 @@ $lang['Lang0214'] = 'Password';
 $lang['Lang0215'] = 'Re-enter password';
 $lang['Lang0216'] = 'Name';
 $lang['Lang0217'] = 'Gender';
-$lang['Lang0218'] = 'Man';
-$lang['Lang0219'] = 'Woman';
+
+
 $lang['Lang0220'] = 'Birthday';
 $lang['Lang0221'] = 'Mobile';
 
@@ -310,7 +310,7 @@ $lang['Lang0246'] = 'state';
 $lang['Lang0247'] = 'postcode';
 $lang['Lang0248'] = 'doctor type';
 $lang['Lang0249'] = 'doctor name';
-$lang['Lang0250'] = 'gender';
+$lang['Lang0250'] = 'Gender';
 $lang['Lang0251'] = 'status';
 $lang['Lang0252'] = 'action';
 
@@ -318,9 +318,9 @@ $lang['Lang0252'] = 'action';
 $lang['Lang0253'] = 'Update doctor information';
 $lang['Lang0254'] = 'doctor type';
 $lang['Lang0255'] = 'doctor name';
-$lang['Lang0256'] = 'gender';
-$lang['Lang0257'] = 'man';
-$lang['Lang0258'] = 'woman';
+$lang['Lang0256'] = 'Gender';
+
+
 $lang['Lang0259'] = 'status';
 $lang['Lang0260'] = 'active';
 $lang['Lang0261'] = 'inactive';
