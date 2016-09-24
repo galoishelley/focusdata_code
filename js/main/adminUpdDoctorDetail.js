@@ -6,6 +6,13 @@ $(document).ready(function() {
     var json_value = JSON.parse(str);
     console.log(json_value);
 
+    if(json_value.DOCTOR_GENDER == "0"){
+      $("#DOCTOR_GENDER option[value='"+ 0 +"']").attr("selected",true);
+    }
+    if(json_value.DOCTOR_GENDER == "1"){
+      $("#DOCTOR_GENDER option[value='"+ 1 +"']").attr("selected",true);
+    }
+
     var clinic_addr = json_value.CLINIC_ADDR +","+ json_value.CLINIC_SUBURB +","+ json_value.STATE_NAME +","+ json_value.CLINIC_POSTCODE;
     // $('#DOCTOR_PHOTO').attr('src','img/doctors/'+json_value.DOCTOR_PHOTO);
     $('#CLINIC_NAME').text(json_value.CLINIC_NAME);
@@ -13,7 +20,7 @@ $(document).ready(function() {
     // $('#STATE_NAME').text(json_value.STATE_NAME);
     $('#DOCTOR_TYPE').val(json_value.DOCTOR_TYPE);
     $('#DOCTOR_NAME').val(json_value.DOCTOR_NAME);
-    $('#DOCTOR_GENDER').val(json_value.DOCTOR_GENDER);
+    // $('#DOCTOR_GENDER').val(json_value.DOCTOR_GENDER);
     $('#DOCTOR_INFO').val(json_value.DOCTOR_INFO);
     $('#DOCTOR_ID').val(json_value.DOCTOR_ID);
     $('#DOCTOR_PHOTO').val(json_value.DOCTOR_PHOTO);
