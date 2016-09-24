@@ -32,13 +32,6 @@ body { font-size: 130%; }
 	 word-break:break-all;
 }*/
 
-th, td {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	vertical-align: middle;
- }
-
 /* 鍗曞厓鏍艰繛缁函瀛楁瘝鏁板瓧寮哄埗鎹㈣鏄剧ず */
 .wordwrap{
     word-wrap: break-word;
@@ -758,6 +751,17 @@ table button,img{
 .table> tbody > tr > td > button{
 	font-size: 12px;
 }
+
+.table-bordered > thead > tr > th{
+  border-bottom-width: 1px;
+}
+
+th, td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+ }
 
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
