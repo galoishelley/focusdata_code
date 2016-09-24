@@ -1,5 +1,6 @@
 <?php
 include_once ('class.searchDoctor_db.php');
+include_once ('GoogleMap/service/DistanceMatrixService.php');
 // define _DBUG_LOG 1;
 class SearchDoctor
 {
@@ -11,6 +12,9 @@ class SearchDoctor
 	private $length;
 	private $_dbug;
 	private $requesttype;
+	
+	private $customer_user_id;
+	private $distance_range;
 
 	public function __construct()
 	{
@@ -60,7 +64,17 @@ class SearchDoctor
 		{
 			$action_type = "";
 		}
+		
+		if($this->arr_values["DISTANCE"]=="20km")
+			$this->distance_range=20000;
+		else if($this->arr_values["DISTANCE"]=="10km")
+			$this->distance_range=10000;
+		else if($this->arr_values["DISTANCE"]=="5km")
+			$this->distance_range=5000;
+		else
+			$this->distance_range=100000000; //10万公里
 
+		$this->customer_user_id=$this->arr_values["CUSTOMER_USER_ID"];
 		unset($this->arr_values["CUSTOMER_USER_ID"]);
 
 		$this->action = $action_type;
@@ -115,6 +129,46 @@ class SearchDoctor
 
 		$ret["data"] = $this->searchdoctor->index_search_view ($this->arr_values,$this->requesttype,$this->start,$this->length);
 		
+		
+		
+		//distance calculation Added by Alex 2016.9.24
+		$ret["my_address"] = $this->searchdoctor->get_address($this->customer_user_id);
+		
+		$my_address=$ret["my_address"][0]["CUSTOMER_ADDR"].", ".
+				$ret["my_address"][0]["CUSTOMER_SUBURB"].", ".
+				$ret["my_address"][0]["STATE_NAME"].", Australia";
+		
+		$arrLength=count($ret["data"]);
+		for($x = 0; $x < $arrLength; $x++)
+		{
+			$doctor_addr= $ret["data"][$x]["CLINIC_ADDR"].", ".
+					$ret["data"][$x]["CLINIC_SUBURB"].", ".
+					$ret["data"][$x]["STATE_NAME"].", Australia";
+			
+			$request = new GoogleMapAPI\Service\DistanceMatrixService();
+			$request->addOrigin($my_address);
+			$request->addDestination($doctor_addr);
+			$responseMAP = $request->fetchJSON();
+			
+			$json = json_decode($responseMAP);
+			if ($json->status == 'OK') {
+				if ($json->rows[0]->elements[0]->status == 'OK') {
+					$distance = $json->rows[0]->elements[0]->distance->value; //单位：米
+				}
+			}
+			if($distance>$this->distance_range)//距离大于要求范围，踢出数据集！
+			{
+				unset($ret["data"][$x]);
+			}
+
+		}
+		$resetArray = array_values($ret["data"]);
+		$records=count($resetArray);
+		//distance calculation end
+
+		
+		
+		
 		if($records>0){
 			$success = true;
 			$ret_msg="查询成功";
@@ -139,7 +193,7 @@ class SearchDoctor
 		$data["draw"] = $this->draw;
 		$data["recordsTotal"] = $records;
 		$data["recordsFiltered"] = $records;
-		$data["data"]=$ret["data"];
+		$data["data"]=$resetArray;
 		
 		// echo $ret;
 		$response["response"] = $this->response_const();  //固定参数返回
@@ -165,6 +219,45 @@ class SearchDoctor
 
 		$ret["data"] = $this->searchdoctor->viewAll ($this->arr_values,$this->requesttype,$this->start,$this->length);
 		
+		
+		
+		
+		//distance calculation Added by Alex 2016.9.24
+		$ret["my_address"] = $this->searchdoctor->get_address($this->customer_user_id);
+		
+		$my_address=$ret["my_address"][0]["CUSTOMER_ADDR"].", ".
+				$ret["my_address"][0]["CUSTOMER_SUBURB"].", ".
+				$ret["my_address"][0]["STATE_NAME"].", Australia";
+		
+		$arrLength=count($ret["data"]);
+		for($x = 0; $x < $arrLength; $x++)
+		{
+			$doctor_addr= $ret["data"][$x]["CLINIC_ADDR"].", ".
+					$ret["data"][$x]["CLINIC_SUBURB"].", ".
+					$ret["data"][$x]["STATE_NAME"].", Australia";
+						
+					$request = new GoogleMapAPI\Service\DistanceMatrixService();
+					$request->addOrigin($my_address);
+					$request->addDestination($doctor_addr);
+					$responseMAP = $request->fetchJSON();
+						
+					$json = json_decode($responseMAP);
+					if ($json->status == 'OK') {
+						if ($json->rows[0]->elements[0]->status == 'OK') {
+							$distance = $json->rows[0]->elements[0]->distance->value; //单位：米
+						}
+					}
+					if($distance>$this->distance_range)//距离大于要求范围，踢出数据集！
+					{
+						unset($ret["data"][$x]);
+					}
+
+		}
+		$resetArray = array_values($ret["data"]);
+		$records=count($resetArray);
+		//distance calculation end
+				
+				
 		if($records>0){
 			$success = true;
 			$ret_msg="查询成功";
@@ -189,7 +282,7 @@ class SearchDoctor
 		$data["draw"] = $this->draw;
 		$data["recordsTotal"] = $records;
 		$data["recordsFiltered"] = $records;
-		$data["data"]=$ret["data"];
+		$data["data"]=$resetArray;
 		
 		// echo $ret;
 		$response["response"] = $this->response_const();  //固定参数返回
