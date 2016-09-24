@@ -204,21 +204,6 @@ $(function(){
   	if(!distance){
   		now_postion = ""
   	}
-  	
-  	//获取收藏医生页面传递的值
-	var str = sessionStorage.saveSearch;
-
-  	if(str){
-	    var json_value = JSON.parse(str);
-	    console.log(json_value);
-
-	    $('#CLINIC_SUBURB').val(json_value.CLINIC_SUBURB);
-	    $('#STATE_ID').val(json_value.STATE_NAME);
-	    $('#CLINIC_NAME').val(json_value.CLINIC_NAME);
-	    $('#DOCTOR_TYPE').val(json_value.DOCTOR_TYPE);
-	    $('#DOCTOR_NAME').val(json_value.DOCTOR_NAME);
-	    $('#DISTANCE').val(json_value.DISTANCE);
-	}
 
 
 ///////////////////////////////////组织ajax 请求参数 begin///////////////////////////////
@@ -763,7 +748,10 @@ $(function(){
 	});
 
 	$('#btn_save').click(function(){
-	      //收藏医生
+		$('#action_type').val("create");
+		// var state_name = $("#STATE_ID").find("option:selected").text();
+	    //收藏医生
+
 	///////////////////////////////////组织ajax 请求参数 begin///////////////////////////////
 		func_code = "SS01";
 		//form序列化成json
@@ -771,12 +759,10 @@ $(function(){
 		requesttype = 1;
 		//form序列化成json
 		json_form = $("#modal_form").serializeObject();
-
-		var json_stringify=JSON.stringify(json_form);
-		json_form = json_stringify.replace(/[ ]/g,"");
-
+		// json_form.STATE_ID = state_name;
+		// console.log(json_form);
 		//生成输入参数
-		json_str = request_const(JSON.parse(json_form),func_code,requesttype);
+		json_str = request_const(json_form,func_code,requesttype);
 
 		console.log(json_str);
 
@@ -826,6 +812,7 @@ $(function(){
 	      return result;
 	    }
 
+	    $('#action_type').val("index_search");
 	  return false;
 
 	});
@@ -846,6 +833,24 @@ $(function(){
 	    $('#myModal').modal('show');
 
 	    sessionStorage.saveDoctor = "";
+	}
+
+	  	//获取常用搜索条件页面传递的值
+	var str = sessionStorage.saveSearch;
+
+  	if(str){
+	    var json_value = JSON.parse(str);
+	    console.log(json_value);
+
+	    $('#CLINIC_SUBURB').val(json_value.CLINIC_SUBURB);
+	    $('#STATE_ID').val(json_value.STATE_ID);
+	    $('#CLINIC_NAME').val(json_value.CLINIC_NAME);
+	    $('#DOCTOR_TYPE').val(json_value.DOCTOR_TYPE);
+	    $('#DOCTOR_NAME').val(json_value.DOCTOR_NAME);
+	    $('#DISTANCE').val(json_value.DISTANCE);
+	    $('#myModal').modal('show');
+
+	    sessionStorage.saveSearch="";
 	}
 
 	$('.form_datetime').datetimepicker({

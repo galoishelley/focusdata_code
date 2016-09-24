@@ -25,6 +25,12 @@ class saveSearch_DB{
         //     return 2;
         // };
         // print_r("DB");
+        // foreach($arr_values as $k=>$v){
+        //     if($k=="STATE_ID"){
+        //         unset($arr_values[$k]);
+        //         $arr_values["STATE_NAME"] = $v;
+        //     }
+        // }
         // print_r($arr_values);
         $ret = $this->db->insertData('fd_save_search', $arr_values);
 
@@ -37,14 +43,12 @@ class saveSearch_DB{
         //     print_r($arr_values);
         // }
 
-
-        $sql = "SELECT * FROM `fd_save_search` where CUSTOMER_USER_ID='".$arr_values['CUSTOMER_USER_ID']."' order by create_date desc";
-
+        $sql = "SELECT t1.*,t2.STATE_NAME FROM `fd_save_search` t1 LEFT JOIN fd_dict_state t2 on t1.STATE_ID=t2.STATE_ID where CUSTOMER_USER_ID=".$arr_values['CUSTOMER_USER_ID']."  order by create_date desc";
         // if($this->_dbug){
         //     echo "[---viewAll---sql]";
         //     print_r($sql);
         // }
-
+        // print_r($sql);
         $ret = $this->db->fetchAll_sql($sql,null);
         
         return $ret;

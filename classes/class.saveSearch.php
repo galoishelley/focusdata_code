@@ -33,6 +33,7 @@ class saveSearch
 	        print_r($this->arr_values);
 	    }
 
+	    // unset($this->arr_values["DISTANCE"]);
 	    unset($this->arr_values["APPOINTMENT_DATE_BEGIN"]);
 	    unset($this->arr_values["APPOINTMENT_DATE_END"]);
 

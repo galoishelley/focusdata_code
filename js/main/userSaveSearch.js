@@ -235,6 +235,10 @@ $(document).ready(function() {
         {
           "visible": false,
           "data": "CUSTOMER_SEARCH_ID"
+        },
+        {
+          "visible": false,
+          "data": "STATE_ID"
         }
       ],
       "oLanguage": { "sUrl": datatable_lang_url },
@@ -360,11 +364,11 @@ $(document).ready(function() {
     var data = {
           imgId:imgId,
           CLINIC_SUBURB: obj_data.CLINIC_SUBURB,
-          STATE_NAME: obj_data.STATE_NAME,
+          STATE_ID: obj_data.STATE_ID,
           CLINIC_NAME: obj_data.CLINIC_NAME,
           DOCTOR_TYPE: obj_data.DOCTOR_TYPE,
           DOCTOR_NAME: obj_data.DOCTOR_NAME,
-          DISTANCE:obj_data.DISTANCE
+          DISTANCE: obj_data.DISTANCE
         };
 
     var str = JSON.stringify(data);
