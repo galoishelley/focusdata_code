@@ -81,6 +81,12 @@ $(function(){
  //  		$('#sign_up').removeClass("hidden");
 	// }
 
+	if(ilogin == 1){
+		$('#CUSTOMER_USER_ID').val(fd_userid);
+		$('#btn_save_manage').show();
+		$('#btn_save').show();
+	}
+
 	//填充州
 	func_code = "SSTE";
 	para="";
