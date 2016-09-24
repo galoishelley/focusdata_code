@@ -78,7 +78,7 @@ include_once 'classes/Language/language.common.php';
                 </li>
                 <li><a href="index-2.php"><?php echo $lang['Lang0011']; ?></a></li>
                 <li><a href="index-3.php"><?php echo $lang['Lang0012']; ?></a></li>
-                <li><a href="index-4.php"><?php echo $lang['Lang0013']; ?></a></li>
+                <li><a href="contacts.php"><?php echo $lang['Lang0013']; ?></a></li>
                 <li class="active"><a href="sign_in.php"><?php echo $lang['Lang0014']; ?></a></li>
                 <li><a href="sign_up_person.php"><?php echo $lang['Lang0015']; ?></a></li>
                 <li class="sub-menu tourist"><a href="#" id="userinfo"><?php echo $lang['Lang0016']; ?></a><span></span>

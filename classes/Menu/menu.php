@@ -11,7 +11,7 @@
 
                 <li><a href="index-2.php"><!-- about us --><?php echo $lang['Lang0011']; ?></a></li>
                 <li><a href="index-3.php"><!-- staff --><?php echo $lang['Lang0012']; ?></a></li>
-                <li><a href="index-4.php"><!-- Contacts --><?php echo $lang['Lang0013']; ?></a></li>
+                <li><a href="contacts.php"><!-- Contacts --><?php echo $lang['Lang0013']; ?></a></li>
                 <li id="sign_in"><a href="sign_in.php"><!-- Sign in --><?php echo $lang['Lang0014']; ?></a></li>
                 <li id="sign_up"><a href="sign_up_person.php"><!-- register --><?php echo $lang['Lang0015']; ?></a></li>
                 <li class="sub-menu tourist"><a href="#" id="userinfo"><!-- 游客 --><?php echo $lang['Lang0016']; ?></a><span></span>
