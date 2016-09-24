@@ -4,62 +4,63 @@ var func_code;
 
 $(document).ready(function() {
 
-  var ilogin = $.cookie("ilogin");
+  // var ilogin = $.cookie("ilogin");
 
-  $('#btn_out').click(function(){
-    $.cookie("ilogin", "");
-    // $('#userinfo').html();
-    window.location.href="index.php"; 
+  // $('#btn_out').click(function(){
+  //   $.cookie("ilogin", "");
+  //   // $('#userinfo').html();
+  //   window.location.href="index.php"; 
 
-    if ($.cookie("fd_rmbUser") == "false") {
-      $.cookie("fd_userid", "");
-      $.cookie("fd_username", "");
-      $.cookie("fd_password", "");
-      $.cookie("fd_usertype", "");
-    }
+  //   if ($.cookie("fd_rmbUser") == "false") {
+  //     $.cookie("fd_userid", "");
+  //     $.cookie("fd_username", "");
+  //     $.cookie("fd_password", "");
+  //     $.cookie("fd_usertype", "");
+  //   }
 
-  });
+  // });
 
-  var username,fd_userid;
-  if(ilogin == 1)
-  {
-    fd_userid = $.cookie("fd_userid");
+  // var username,fd_userid;
+  // if(ilogin == 1)
+  // {
+  //   fd_userid = $.cookie("fd_userid");
     
-    var fd_usertype = $.cookie("fd_usertype");
-    var fd_usertypename = $.cookie("fd_usertypename");
+  //   var fd_usertype = $.cookie("fd_usertype");
+  //   var fd_usertypename = $.cookie("fd_usertypename");
 
-    var username = $.cookie("fd_username");
+  //   var username = $.cookie("fd_username");
 
-    $('#userinfo').html(username);
-    $('#usertype').html("用户类型: "+ fd_usertypename);
+  //   $('#userinfo').html(username);
+  //   $('#usertype').html("用户类型: "+ fd_usertypename);
 
-    $('#sub_userinfo').removeClass("hidden");
+  //   $('#sub_userinfo').removeClass("hidden");
 
-    if(fd_usertype == 0){
-      $('#li_ClinicUser').removeClass("hidden");
-    }else if(fd_usertype == 1){
-      $('#li_AppRecoder').removeClass("hidden");
-    }else if(fd_usertype == 2){
-      $('#li_Admin').removeClass("hidden");
-    }else{
+  //   if(fd_usertype == 0){
+  //     $('#li_ClinicUser').removeClass("hidden");
+  //   }else if(fd_usertype == 1){
+  //     $('#li_AppRecoder').removeClass("hidden");
+  //   }else if(fd_usertype == 2){
+  //     $('#li_Admin').removeClass("hidden");
+  //   }else{
 
-    }
-    $('#CUSTOMER_USER_NAME').val(username);
-  }
+  //   }
+  //   $('#CLINIC_USER_NAME').val(username);
+  // }
 
-  if(ilogin == 0){
-	  alert($("#Lang0019").html());//您未登陆,无法使用此功能
-    history.go(-1);
-    return false;
-  }
+  // if(ilogin == 0){
+	 //  alert($("#Lang0019").html());//您未登陆,无法使用此功能
+  //   history.go(-1);
+  //   return false;
+  // }
 
+  $('#CLINIC_USER_NAME').val(username);
 
   $('#btn_ok').click(function(){
 
 
     //校验两新密码是否一致
-    var new_pwd = $('#CUSTOMER_USER_NEWPWD').val();
-    var new_c_pwd = $('#CUSTOMER_USER_C_NEWPWD').val();
+    var new_pwd = $('#CLINIC_USER_NEWPWD').val();
+    var new_c_pwd = $('#CONFIRM_PWD').val();
 
     if(new_pwd != new_c_pwd){
     	alert($("#Lang0116").html());//两次密码输入不一致
@@ -72,8 +73,8 @@ $(document).ready(function() {
     //form序列化成json
     json_form = {
       usertype: 0, //个人用户
-      USER_NAME:$('#CUSTOMER_USER_NAME').val(),
-      USER_PWD:$('#CUSTOMER_USER_PWD').val()
+      USER_NAME:$('#CLINIC_USER_NAME').val(),
+      USER_PWD:$('#CLINIC_USER_PWD').val()
     };
     //生成输入参数
     json_str = request_const(json_form,"UI01",0);
@@ -123,7 +124,7 @@ $(document).ready(function() {
     json_form = {
       action_type:"update",
       CLINIC_USER_ID:fd_userid,
-      CLINIC_USER_PWD:$('#CUSTOMER_USER_NEWPWD').val()
+      CLINIC_USER_ID:$('#CLINIC_USER_NEWPWD').val()
     };
     //生成输入参数
     json_str = request_const(json_form,"CU04",1);
@@ -155,7 +156,9 @@ $(document).ready(function() {
               // history.go(-1);
               // // window.location.href="index.php";
               alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
-              refresh();
+              $('#CLINIC_USER_PWD').val('');
+              $('#CLINIC_USER_NEWPWD').val('');
+              $('#CONFIRM_PWD').val('');
             }else{
               alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
               // $('#signin_ok').attr('disabled',false); 

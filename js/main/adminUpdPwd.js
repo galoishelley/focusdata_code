@@ -4,58 +4,58 @@ var func_code;
 
 $(document).ready(function() {
 
-  var ilogin = $.cookie("ilogin");
+  // var ilogin = $.cookie("ilogin");
 
-  $('#btn_out').click(function(){
-    $.cookie("ilogin", "");
-    // $('#userinfo').html();
-    window.location.href="index.php"; 
+  // $('#btn_out').click(function(){
+  //   $.cookie("ilogin", "");
+  //   // $('#userinfo').html();
+  //   window.location.href="index.php"; 
 
-    if ($.cookie("fd_rmbUser") == "false") {
-      $.cookie("fd_userid", "");
-      $.cookie("fd_username", "");
-      $.cookie("fd_password", "");
-      $.cookie("fd_usertype", "");
-    }
+  //   if ($.cookie("fd_rmbUser") == "false") {
+  //     $.cookie("fd_userid", "");
+  //     $.cookie("fd_username", "");
+  //     $.cookie("fd_password", "");
+  //     $.cookie("fd_usertype", "");
+  //   }
 
-  });
+  // });
 
-  var username,fd_userid;
-  if(ilogin == 1)
-  {
-    fd_userid = $.cookie("fd_userid");
+  // var username,fd_userid;
+  // if(ilogin == 1)
+  // {
+  //   fd_userid = $.cookie("fd_userid");
     
-    var fd_usertype = $.cookie("fd_usertype");
-    var fd_usertypename = $.cookie("fd_usertypename");
+  //   var fd_usertype = $.cookie("fd_usertype");
+  //   var fd_usertypename = $.cookie("fd_usertypename");
 
-    var username = $.cookie("fd_username");
+  //   var username = $.cookie("fd_username");
 
-    $('#userinfo').html(username);
-    $('#usertype').html("用户类型: "+ fd_usertypename);
+  //   $('#userinfo').html(username);
+  //   $('#usertype').html("用户类型: "+ fd_usertypename);
 
     
-    $('#sub_userinfo').removeClass("hidden");
+  //   $('#sub_userinfo').removeClass("hidden");
 
 
-    if(fd_usertype == 0){
-      $('#li_ClinicUser').removeClass("hidden");
-    }else if(fd_usertype == 1){
-      $('#li_AppRecoder').removeClass("hidden");
-    }else if(fd_usertype == 2){
-      $('#li_Admin').removeClass("hidden");
-    }else{
+  //   if(fd_usertype == 0){
+  //     $('#li_ClinicUser').removeClass("hidden");
+  //   }else if(fd_usertype == 1){
+  //     $('#li_AppRecoder').removeClass("hidden");
+  //   }else if(fd_usertype == 2){
+  //     $('#li_Admin').removeClass("hidden");
+  //   }else{
 
-    }
-    $('#CUSTOMER_USER_NAME').val(username);
-  }
+  //   }
+  //   $('#CUSTOMER_USER_NAME').val(username);
+  // }
 
-  if(ilogin == 0){
-	  alert($("#Lang0019").html());//您未登陆,无法使用此功能
-    history.go(-1);
-    return false;
-  }
+  // if(ilogin == 0){
+	 //  alert($("#Lang0019").html());//您未登陆,无法使用此功能
+  //   history.go(-1);
+  //   return false;
+  // }
 
-
+  $('#CUSTOMER_USER_NAME').val(username);
   $('#btn_ok').click(function(){
 
     //校验两新密码是否一致

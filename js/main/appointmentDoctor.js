@@ -731,8 +731,6 @@ $(function(){
           return result;
       }
 
-      alert(time_id);
-
       //获取用户详细信息
       var custom_user_id;
       func_code="UI02"; 
@@ -780,9 +778,6 @@ $(function(){
         if(!result){
             return result;
         }
-
-        alert(custom_user_id);
-        console.log("AD01");
 
         // 预约医生
         func_code="AD01";
@@ -850,7 +845,6 @@ $(function(){
           return result;
       }
 
-      alert("AD01");
       return false;
   });
 
@@ -859,9 +853,9 @@ $(function(){
 	//判断是否选择预约时间点
     var iflag=0;
     
-    if($("input[name=app_time_radio]").length==0){
-      alert("无可预约时间");
-    };
+    // if($("input[name=app_time_radio]").length==0){
+    //   alert("无可预约时间");
+    // };
     $("input[name=app_time_radio]").each(function(){
       if( $(this).attr("checked") ){
         iflag=1;
@@ -870,7 +864,8 @@ $(function(){
 
     if( !iflag ){
 
-      alert($("#Lang0173").html());//请选择预约时间段
+      alert("请选择预约时间段");//请选择预约时间段
+      // alert($("#Lang0173").html());//请选择预约时间段
       return false;
     }
 

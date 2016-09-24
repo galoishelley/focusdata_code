@@ -34,49 +34,49 @@ $(document).ready(function() {
 	    datatable_lang_url="//cdn.datatables.net/plug-ins/1.10.12/i18n/Chinese.json";
 	}
 
-  //登录cookie
-  var ilogin = $.cookie("ilogin");
-  if(ilogin == ""){
-    request_type = 0;
-  }else if(ilogin != ""){
-    request_type = 1;
-  }
+  // //登录cookie
+  // var ilogin = $.cookie("ilogin");
+  // if(ilogin == ""){
+  //   request_type = 0;
+  // }else if(ilogin != ""){
+  //   request_type = 1;
+  // }
 
-  //校验用户是否登录
-  ilogin = $.cookie("ilogin");
-  if(ilogin == 1)
-  {
-     fd_userid = $.cookie("fd_userid");
-    //校验用户是否登录
-    var fd_usertype = $.cookie("fd_usertype");
-    var fd_usertypename = $.cookie("fd_usertypename");
+  // //校验用户是否登录
+  // ilogin = $.cookie("ilogin");
+  // if(ilogin == 1)
+  // {
+  //    fd_userid = $.cookie("fd_userid");
+  //   //校验用户是否登录
+  //   var fd_usertype = $.cookie("fd_usertype");
+  //   var fd_usertypename = $.cookie("fd_usertypename");
 
-    var username = $.cookie("fd_username");
+  //   var username = $.cookie("fd_username");
 
-    $('#userinfo').html(username);
-    $('#usertype').html("用户类型: "+ fd_usertypename);
+  //   $('#userinfo').html(username);
+  //   $('#usertype').html("用户类型: "+ fd_usertypename);
 
-    $('#sub_userinfo').removeClass("hidden");
+  //   $('#sub_userinfo').removeClass("hidden");
 
-    if(fd_usertype == 0){
-      $('#li_ClinicUser').removeClass("hidden");
-    }else if(fd_usertype == 1){
-      $('#li_AppRecoder').removeClass("hidden");
-    }else if(fd_usertype == 2){
-      $('#li_Admin').removeClass("hidden");
-    }else{
+  //   if(fd_usertype == 0){
+  //     $('#li_ClinicUser').removeClass("hidden");
+  //   }else if(fd_usertype == 1){
+  //     $('#li_AppRecoder').removeClass("hidden");
+  //   }else if(fd_usertype == 2){
+  //     $('#li_Admin').removeClass("hidden");
+  //   }else{
 
-    }
-  }
+  //   }
+  // }
 
-  if(ilogin == 0){
+  // if(ilogin == 0){
 
-    alert($("#Lang0019").html());//您未登陆,无法使用此功能
-    history.go(-1);
-    return false;
-    // $('#a_userAppointmentRecoder').attr("href","#");
-    // $('#a_userAppointmentRecoder').attr("color","#FF0000");
-  }
+  //   alert($("#Lang0019").html());//您未登陆,无法使用此功能
+  //   history.go(-1);
+  //   return false;
+  //   // $('#a_userAppointmentRecoder').attr("href","#");
+  //   // $('#a_userAppointmentRecoder').attr("color","#FF0000");
+  // }
 
   //填充州
   func_code = "SSTE";

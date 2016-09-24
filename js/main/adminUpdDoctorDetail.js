@@ -1,4 +1,4 @@
-$(function(){
+$(document).ready(function() {
   
   var str = sessionStorage.doctorinfo;
   //处理浏览 修改

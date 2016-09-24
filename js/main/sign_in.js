@@ -3,10 +3,10 @@ var result,func_code,requesttype;
 
 $(function(){
 	
-  if($.cookie("ilogin") == 1)
-  {
-    $('#userinfo').html($("#USER_NAME").val());
-  }
+  // if($.cookie("ilogin") == 1)
+  // {
+  //   $('#userinfo').html($("#USER_NAME").val());
+  // }
 
   //选择Remember Me记录cookie
 	if ($.cookie("fd_rmbUser") == "true") {

@@ -219,6 +219,9 @@ include_once 'classes/Language/For_JS_multi_lang.php';
 
           }    
 </script>
-
+<script src="js/jquery.cookie.js"></script>
+<script src="js/main/pub.js"></script>
+<script src="js/main/index-4.js"></script>
 </body>
+
 </html>

@@ -62,39 +62,9 @@ include_once 'classes/Language/language.common.php';
 <!--header-->
 <div class="container bars"><em class="bars_"></em></div>
 <header>
-    <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
-        <div class="container">
-            <ul class="nav sf-menu clearfix">
-                <li id="li_home" class="hidden active"><a href="index.php"><?php echo $lang['Lang0005']; ?></a></li>
-                
-                <li class="sub-menu"><a href="#"><?php echo $lang['Lang0010']; ?></a><span></span>
-                    <ul class="submenu">
-                        <li><a href="?lang=en">English</a></li>
-                        <li><a href="?lang=ch">中文</a></li>     
-                    </ul>
-                </li>
-                <li><a href="index-2.php"><?php echo $lang['Lang0011']; ?></a></li>
-                <li><a href="index-3.php"><?php echo $lang['Lang0012']; ?></a></li>
-                <li><a href="index-4.php"><?php echo $lang['Lang0013']; ?></a></li>
-                <li id="sign_in"><a href="sign_in.php"><?php echo $lang['Lang0014']; ?></a></li>
-                <li id="sign_up"><a href="sign_up_person.php"><?php echo $lang['Lang0015']; ?></a></li>
-                <li class="sub-menu tourist"><a href="#" id="userinfo"><?php echo $lang['Lang0016']; ?></a><span></span>
-                    <ul class="submenu" id="sub_userinfo">
-                        <li><a href="#" id="usertype"></a></li>
-
-                        <li id="li_SearchDoctor" class="hidden"><a href="searchDoctor.php"><?php echo $lang['Lang0006']; ?></a></li>
-                        <li id="li_AppRecoder" class="hidden"><a href="userAppointmentRecoder.php"><?php echo $lang['Lang0007']; ?></a>
-                        </li>
-                        <li id="li_ClinicUser" class="hidden"><a href="clinicUpdUserInfo.php"><?php echo $lang['Lang0008']; ?></a>
-                        </li>
-                        <li id="li_Admin" class="hidden"><a href="adminQryClinic.php"><?php echo $lang['Lang0009']; ?></a></li>
-                        
-                        <li><button class="btn btn-danger" id="btn_out"><?php echo $lang['Lang0017']; ?></button></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <?php
+    include_once 'classes/Menu/menu.php';
+    ?>
     <h1 class="navbar-brand navbar-brand_"><a href="index.php"><img src="img/<?php echo $lang['Lang0004']; ?>" alt="logo"></a></h1>
 </header>
 <!--content-->
@@ -114,7 +84,7 @@ include_once 'classes/Language/language.common.php';
                                         <div class="form-group col-md-6">
                                             <label for="CLINIC_SUBURB" class="col-md-3">区</label>
                                             <!-- <div class="col-md-3"> -->
-                                                <input type="text" class="form-control" id="CLINIC_SUBURB" name="CLINIC_SUBURB" >
+                                                <input type="text" class="form-control" id="CLINIC_SUBURB" name="CLINIC_SUBURB" maxlength="50">
                                             <!-- </div>   -->
                                         </div>
 

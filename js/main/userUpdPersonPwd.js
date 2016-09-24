@@ -3,7 +3,7 @@ var result = true;
 
 $(document).ready(function() {
 
-  var ilogin = $.cookie("ilogin");
+  /*var ilogin = $.cookie("ilogin");
 
   $('#btn_out').click(function(){
     $.cookie("ilogin", "");
@@ -57,8 +57,10 @@ $(document).ready(function() {
     history.go(-1);
     return false;
   }
-
-
+*/
+  
+  $('#CUSTOMER_USER_NAME').val(username);
+  
   $('#btn_ok').click(function(){
 
 

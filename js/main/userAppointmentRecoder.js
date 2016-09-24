@@ -32,63 +32,63 @@ $(document).ready(function() {
 	    datatable_lang_url="//cdn.datatables.net/plug-ins/1.10.12/i18n/Chinese.json";
 	}
 
-  var ilogin = $.cookie("ilogin");
+ //  var ilogin = $.cookie("ilogin");
 
-  $('#btn_out').click(function(){
-    $.cookie("ilogin", "");
-    // $('#userinfo').html();
-    window.location.href="index.php"; 
+ //  $('#btn_out').click(function(){
+ //    $.cookie("ilogin", "");
+ //    // $('#userinfo').html();
+ //    window.location.href="index.php"; 
 
-    if ($.cookie("fd_rmbUser") == "false") {
-      $.cookie("fd_userid", "");
-      $.cookie("fd_username", "");
-      $.cookie("fd_password", "");
-      $.cookie("fd_usertype", "");
-    }
+ //    if ($.cookie("fd_rmbUser") == "false") {
+ //      $.cookie("fd_userid", "");
+ //      $.cookie("fd_username", "");
+ //      $.cookie("fd_password", "");
+ //      $.cookie("fd_usertype", "");
+ //    }
 
-  });
+ //  });
 
-  if(ilogin == 1)
-  {
-      var fd_usertype = $.cookie("fd_usertype");
-      var fd_usertypename = $.cookie("fd_usertypename");
+ //  if(ilogin == 1)
+ //  {
+ //      var fd_usertype = $.cookie("fd_usertype");
+ //      var fd_usertypename = $.cookie("fd_usertypename");
 
-      var username = $.cookie("fd_username");
+ //      var username = $.cookie("fd_username");
 
-      $('#userinfo').html(username);
-      $('#usertype').html("用户类型: "+ fd_usertypename);
+ //      $('#userinfo').html(username);
+ //      $('#usertype').html("用户类型: "+ fd_usertypename);
 
-      // 用户名
-      $('#userinfo').html(username);
-      // 设置用户类型
-      $('#usertype').html("用户类型: "+ fd_usertypename);
+ //      // 用户名
+ //      $('#userinfo').html(username);
+ //      // 设置用户类型
+ //      $('#usertype').html("用户类型: "+ fd_usertypename);
 
-      //显示安全退出
-      $('#login_out').removeClass("hidden");
+ //      //显示安全退出
+ //      $('#login_out').removeClass("hidden");
 
-      if(fd_usertype == 0){
-        $('#li_ClinicUser').removeClass("hidden");
-      }else if(fd_usertype == 1){
-        $('#li_AppRecoder').removeClass("hidden");
-      }else if(fd_usertype == 2){
-        $('#li_Admin').removeClass("hidden");
-      }else{
+ //      if(fd_usertype == 0){
+ //        $('#li_ClinicUser').removeClass("hidden");
+ //      }else if(fd_usertype == 1){
+ //        $('#li_AppRecoder').removeClass("hidden");
+ //      }else if(fd_usertype == 2){
+ //        $('#li_Admin').removeClass("hidden");
+ //      }else{
 
-      }
-  }
- else{
-  //游客
-    $.cookie("ilogin", 0);
-    //显示HOME
-    $('#li_home').removeClass("hidden");
-    //显示搜索医生
-    $('#li_SearchDoctor').removeClass("hidden");
-    //设置用户类型
-    $('#usertype').html("用户类型: 游客");
-    //显示登陆注册
-    $('#sign_in').removeClass("hidden");
-    $('#sign_up').removeClass("hidden");
-  }
+ //      }
+ //  }
+ // else{
+ //  //游客
+ //    $.cookie("ilogin", 0);
+ //    //显示HOME
+ //    $('#li_home').removeClass("hidden");
+ //    //显示搜索医生
+ //    $('#li_SearchDoctor').removeClass("hidden");
+ //    //设置用户类型
+ //    $('#usertype').html("用户类型: 游客");
+ //    //显示登陆注册
+ //    $('#sign_in').removeClass("hidden");
+ //    $('#sign_up').removeClass("hidden");
+ //  }
 
   if(ilogin == 0){
     alert($("#Lang0019").html());//您未登陆,无法使用此功能

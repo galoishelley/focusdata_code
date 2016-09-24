@@ -20,66 +20,66 @@ $(function(){
 	$("#APPOINTMENT_DATE_BEGIN").val(vDate_Today);
 	$("#APPOINTMENT_DATE_END").val(vDate_Today);
 	
-	var ilogin = $.cookie("ilogin");
+	// var ilogin = $.cookie("ilogin");
 
-	$('#btn_out').click(function(){
-		$.cookie("ilogin", "");
-		// $('#userinfo').html();
-		window.location.href="index.php"; 
+	// $('#btn_out').click(function(){
+	// 	$.cookie("ilogin", "");
+	// 	// $('#userinfo').html();
+	// 	window.location.href="index.php"; 
 
-		if ($.cookie("fd_rmbUser") == "false") {
-		  $.cookie("fd_userid", "");
-		  $.cookie("fd_username", "");
-		  $.cookie("fd_password", "");
-		  $.cookie("fd_usertype", "");
-		}
+	// 	if ($.cookie("fd_rmbUser") == "false") {
+	// 	  $.cookie("fd_userid", "");
+	// 	  $.cookie("fd_username", "");
+	// 	  $.cookie("fd_password", "");
+	// 	  $.cookie("fd_usertype", "");
+	// 	}
 
-	});
+	// });
 
-	if(ilogin == 1)
-	{
-		var fd_userid = $.cookie("fd_userid");
-	    var fd_usertype = $.cookie("fd_usertype");
-	    var fd_usertypename = $.cookie("fd_usertypename");
+	// if(ilogin == 1)
+	// {
+	// 	var fd_userid = $.cookie("fd_userid");
+	//     var fd_usertype = $.cookie("fd_usertype");
+	//     var fd_usertypename = $.cookie("fd_usertypename");
 
-	    var username = $.cookie("fd_username");
+	//     var username = $.cookie("fd_username");
 
-	    $('#userinfo').html(username);
-	    $('#usertype').html("用户类型: "+ fd_usertypename);
+	//     $('#userinfo').html(username);
+	//     $('#usertype').html("用户类型: "+ fd_usertypename);
 
-	    // 用户名
-	    $('#userinfo').html(username);
-	    // 设置用户类型
-	    $('#usertype').html("用户类型: "+ fd_usertypename);
+	//     // 用户名
+	//     $('#userinfo').html(username);
+	//     // 设置用户类型
+	//     $('#usertype').html("用户类型: "+ fd_usertypename);
 
-		//显示安全退出
-		$('#login_out').removeClass("hidden");
+	// 	//显示安全退出
+	// 	$('#login_out').removeClass("hidden");
 
-	    if(fd_usertype == 0){
-	      $('#li_ClinicUser').removeClass("hidden");
-	    }else if(fd_usertype == 1){
-	      $('#li_AppRecoder').removeClass("hidden");
-	    }else if(fd_usertype == 2){
-	      $('#li_Admin').removeClass("hidden");
-	    }else{
+	//     if(fd_usertype == 0){
+	//       $('#li_ClinicUser').removeClass("hidden");
+	//     }else if(fd_usertype == 1){
+	//       $('#li_AppRecoder').removeClass("hidden");
+	//     }else if(fd_usertype == 2){
+	//       $('#li_Admin').removeClass("hidden");
+	//     }else{
 
-	    }
-		$('#CUSTOMER_USER_ID').val(fd_userid);
-		$('#btn_save_manage').show();
-		$('#btn_save').show();
-	}else{
-		//游客
-	    $.cookie("ilogin", 0);
-	    //显示HOME
-	    $('#li_home').removeClass("hidden");
-	    //显示搜索医生
-  		$('#li_SearchDoctor').removeClass("hidden");
-  		//设置用户类型
-  		$('#usertype').html("用户类型: 游客");
-  		//显示登陆注册
-  		$('#sign_in').removeClass("hidden");
-  		$('#sign_up').removeClass("hidden");
-	}
+	//     }
+	// 	$('#CUSTOMER_USER_ID').val(fd_userid);
+	// 	$('#btn_save_manage').show();
+	// 	$('#btn_save').show();
+	// }else{
+	// 	//游客
+	//     $.cookie("ilogin", 0);
+	//     //显示HOME
+	//     $('#li_home').removeClass("hidden");
+	//     //显示搜索医生
+ //  		$('#li_SearchDoctor').removeClass("hidden");
+ //  		//设置用户类型
+ //  		$('#usertype').html("用户类型: 游客");
+ //  		//显示登陆注册
+ //  		$('#sign_in').removeClass("hidden");
+ //  		$('#sign_up').removeClass("hidden");
+	// }
 
 	//填充州
 	func_code = "SSTE";

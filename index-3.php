@@ -130,5 +130,8 @@ include_once 'classes/Language/For_JS_multi_lang.php';
 ?>
 <script src="js/bootstrap.min.js"></script><!-- dialog --><script src="js/bootstrap-dialog.min.js"></script>
 <script src="js/tm-scripts.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script src="js/main/pub.js"></script>
+<script src="js/main/index-3.js"></script>
 </body>
 </html>
