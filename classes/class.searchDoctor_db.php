@@ -105,6 +105,19 @@ class SearchDoctor_DB{
 
         return $ret[0]["COUNT"];
     }
+    
+    public function get_address($id)
+    {
+    	$sql = "SELECT * 
+    			FROM fd_customer_user t1 left join fd_dict_state t2 
+    			on t1.state_id=t2.state_id 
+    			WHERE 
+    			CUSTOMER_USER_ID=".$id;
+    	
+    	$ret = $this->db->fetchAll_sql($sql,null);
+    	
+    	return $ret;
+    }
 
     public function index_search_view($arr_values,$requesttype=0,$start=0,$lenght=10){
         if($this->_dbug){

@@ -86,7 +86,7 @@ include_once 'classes/Language/language.common.php';
                 </li>
                 <li><a href="index-2.php"><!-- about us --><?php echo $lang['Lang0011']; ?></a></li>
                 <li><a href="index-3.php">staff</a></li>
-                <li><a href="index-4.php">Contacts</a></li>
+                <li><a href="contacts.php">Contacts</a></li>
                 <li><a href="sign_in.php">Sign in</a></li>
                 <li><a href="sign_up_person.php">Sign up</a></li>
                 <li class="sub-menu tourist"><a href="#" id="userinfo">游客</a><span></span>

@@ -77,11 +77,11 @@ include_once 'classes/Menu/menu.php';
                 <h2 class="indent">Addresses</h2>
                 <div class="info">
                     <h3>Address 1:</h3>
-                    <p>The Company Name Inc.<br>84, Charing Cross Road,London, D04 89GR.</p>
+                    <p>Focusdata Inc.<br>1 Whitehorse Road, Box Hill,Melbourne,Australia</p>
                     <h3>Telephones:</h3>
-                    <p>+1 800 559 6580<br>+1 800 603 6035</p>
+                    <p>+61 03-1234-5678<br></p>
                     <h3>Address 2:</h3>
-                    <p>The Company Name Inc.<br>84, Charing Cross Road,London, MG09 99HT. </p>
+                    <p>Focusdata Inc.<br>1 Whitehorse Road, Box Hill,Melbourne,Australia</p>
                 </div>
             </div>
             <div class="col-lg-8 col-md-8">
@@ -151,8 +151,10 @@ include_once 'classes/Language/For_JS_multi_lang.php';
           google_api_map_init(); 
           function google_api_map_init(){ 
             var map; 
-            var coordData = new google.maps.LatLng(parseFloat(40.646197), parseFloat(-73.9724068,14)); 
-            var markCoord1 = new google.maps.LatLng(parseFloat(40.643180), parseFloat(-73.9874068,14)); 
+
+            
+            var coordData = new google.maps.LatLng(parseFloat(-37.819516), parseFloat(145.1391418,14)); 
+            var markCoord1 = new google.maps.LatLng(parseFloat(-37.819516), parseFloat(145.1391418,14)); 
              var markCoord2 = new google.maps.LatLng(parseFloat(40.6422180), parseFloat(-73.9784068,14)); 
              var markCoord3 = new google.maps.LatLng(parseFloat(40.6482180), parseFloat(-73.9724068,14)); 
              var markCoord4 = new google.maps.LatLng(parseFloat(40.6442180), parseFloat(-73.9664068,14)); 
