@@ -20,6 +20,15 @@ $(function(){
 	$("#APPOINTMENT_DATE_BEGIN").val(vDate_Today);
 	$("#APPOINTMENT_DATE_END").val(vDate_Today);
 	
+	//游客隐藏距离选择
+	if($.cookie("ilogin") == 1){
+		
+		$('#DISTANCE').prop('disabled', false);
+		
+	}
+	else
+		$('#DISTANCE').prop('disabled', true);
+	
 	// var ilogin = $.cookie("ilogin");
 
 	// $('#btn_out').click(function(){
