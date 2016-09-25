@@ -122,6 +122,7 @@ class SearchDoctor
 
 	public function index_search_view()
 	{
+		$distance=0;
 		$response["response"]  = array();
 		$success = true;
 		$ret_msg = "";
