@@ -14,7 +14,8 @@ include_once 'classes/Language/language.common.php';
 <meta name="author" content="Your name">
 <meta name = "format-detection" content = "telephone=no" />
 <!--CSS-->
-<link rel="stylesheet" href="css/bootstrap.css" ><!-- dialog --><link href="css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="css/bootstrap.css" ><!-- dialog -->
+<link href="css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/animate.css">
 <link rel="stylesheet" href="fonts/font-awesome.css">
@@ -72,12 +73,6 @@ include_once 'classes/Menu/menu.php';
 					<h2 class="wow fadeInRight"><!-- 个人用户注册--><?php echo $lang['Lang0208']; ?></h2>
 					<form class="form-inline wow fadeInLeft form_add" role="form" id="signup_form">
 						<fieldset>
-					<!-- 		<div class="form-group has-error has-feedback">
-								<!--<label class="control-label" for="inputError2">Input with error</label>
-								<input type="text" class="form-control" id="inputError2" aria-describedby="inputError2Status" readonly value="Info: Please select user">
-								<span class="glyphicon glyphicon-warning-sign form-control-feedback" aria-hidden="true"></span>
-								<span id="inputError2Status" class="sr-only">(error)</span>
-							</div> -->
 							<input type="hidden" class="form-control" name="action_type" id="action_type" value="create">
 
 							<div class="form-group col-md-12 col-lg-12">
@@ -89,32 +84,32 @@ include_once 'classes/Menu/menu.php';
 							</div>
 							
 							<div id="personal">
-								<div class="form-group col-md-6 col-lg-6">
+								<div class="form-group">
 									<label for="CUSTOMER_USER_NAME"><!-- 用户名--><?php echo $lang['Lang0212']; ?><span class="span-red">*</span></label>
 									<input type="text" class="form-control" id="CUSTOMER_USER_NAME" name="CUSTOMER_USER_NAME">
 								</div>
 
-								<div class="form-group col-md-6 col-lg-6">
+								<div class="form-group">
 									<label for="CUSTOMER_USER_MAIL"><!-- 邮箱--><?php echo $lang['Lang0213']; ?><span class="span-red">*</span></label>
 									<input type="text" class="form-control" id="CUSTOMER_USER_MAIL" name="CUSTOMER_USER_MAIL">
 								</div>
 
-								<div class="form-group col-md-6 col-lg-6">
+								<div class="form-group">
 									<label for="CUSTOMER_USER_PWD"><!-- 密码--><?php echo $lang['Lang0214']; ?><span class="span-red">*</span></label>
 									<input type="password" class="form-control" name="CUSTOMER_USER_PWD" id="CUSTOMER_USER_PWD">
 								</div>
 
-								<div class="form-group col-md-6 col-lg-6">
+								<div class="form-group">
 									<label for="CONFIME_PWD"><!-- 确认密码--><?php echo $lang['Lang0215']; ?><span class="span-red">*</span></label>
 									<input type="password" class="form-control" name="CONFIME_PWD" id="CONFIME_PWD">
 								</div>
 
-								<div class="form-group col-md-6 col-lg-6">
+								<div class="form-group">
 									<label for="CUSTOMER_NAME"><!-- 姓名--><?php echo $lang['Lang0216']; ?><span class="span-red">*</span></label>
-									<input type="text" class="form-control" id="CUSTOMER_NAME" name="CUSTOMER_NAME">
+									<input type="text" class="form-control" id="CUSTOMER_NAME" name="CUSTOMER_NAME" maxlength="50">
 								</div>
 
-								<div class="form-group col-md-6 col-lg-6">
+								<div class="form-group">
 	                              <label for="CUSTOMER_GENDER"><!-- 性别--><?php echo $lang['Lang0217']; ?><span class="span-red">*</span></label>
 	                              <select class="form-control" id="CUSTOMER_GENDER" name="CUSTOMER_GENDER">
 	                                    <option><!-- 男--><?php echo $lang['Lang0132']; ?></option>
@@ -128,37 +123,39 @@ include_once 'classes/Menu/menu.php';
 								</div> -->
 								
 
-								<div class="form-group col-md-6 col-lg-6">
+								<div class="form-group">
 									<label for="CUSTOMER_BIRTHDAY"><!-- 生日--><?php echo $lang['Lang0220']; ?><span class="span-red">*</span></label>
 									<input type="text" class="form-control" name="CUSTOMER_BIRTHDAY" id="CUSTOMER_BIRTHDAY" placeholder="Birthdate (dd/mm/yyyy)">
 								</div>
 
-								<div class="form-group col-md-6 col-lg-6">
+								<div class="form-group">
 									<label for="CUSTOMER_PHONE_NO"><!-- 电话号码--><?php echo $lang['Lang0221']; ?><span class="span-red">*</span></label>
-									<input type="text" class="form-control" name="CUSTOMER_PHONE_NO" id="CUSTOMER_PHONE_NO" value="1">
+									<input type="text" class="form-control" name="CUSTOMER_PHONE_NO" id="CUSTOMER_PHONE_NO" maxlength="10">
 								</div>	
 
-								<div class="form-group col-md-6 col-lg-6">
-									<label for="MEDICAL_CARD_NO"><!-- 医疗卡号--><?php echo $lang['Lang0150']; ?><span class="span-red">*</span></label>
-									<input type="text" class="form-control" name="MEDICAL_CARD_NO" id="MEDICAL_CARD_NO" value="1">
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="MEDICAL_CARD_NO"><!-- 医疗卡号--><?php echo $lang['Lang0150']; ?><span class="span-red">*</span></label>
+										<input type="text" class="form-control" name="MEDICAL_CARD_NO" id="MEDICAL_CARD_NO" maxlength="50">
+									</div>
 								</div>
 
-								<div class="form-group col-md-9 col-lg-9">
+								<div class="form-group col-md-9">
 									<label for="CUSTOMER_ADDR"><!-- 详细地址--><?php echo $lang['Lang0224']; ?><span class="span-red">*</span></label>
-									<input type="text" class="form-control"  style="width:81%" name="CUSTOMER_ADDR" id="CUSTOMER_ADDR" value="1">
+									<input type="text" class="form-control"  style="width:81%" name="CUSTOMER_ADDR" id="CUSTOMER_ADDR" maxlength="200">
 								</div>
 
-								<div class="form-group col-md-6 col-lg-6">
+								<div class="form-group">
 									<label for="CUSTOMER_POSTCODE"><!-- 邮编--><?php echo $lang['Lang0223']; ?><span class="span-red">*</span></label>
-									<input type="text" class="form-control" name="CUSTOMER_POSTCODE" id="CUSTOMER_POSTCODE" value="1">
+									<input type="text" class="form-control" name="CUSTOMER_POSTCODE" id="CUSTOMER_POSTCODE" maxlength="10">
 								</div>
 
-								<div class="form-group col-md-6 col-lg-6">
+								<div class="form-group">
 									<label for="CUSTOMER_SUBURB"><!-- 区--><?php echo $lang['Lang0225']; ?><span class="span-red">*</span></label>
-									<input type="text" class="form-control" name="CUSTOMER_SUBURB" id="CUSTOMER_SUBURB" value="1">
+									<input type="text" class="form-control" name="CUSTOMER_SUBURB" id="CUSTOMER_SUBURB">
 								</div>
 
-								<div class="form-group col-md-6 col-lg-6">
+								<div class="form-group">
 	                              <label for="STATE_ID"><!-- 州--><?php echo $lang['Lang0226']; ?><span class="span-red">*</span></label>
 	                              <select class="form-control" id="STATE_ID" name="STATE_ID">
 	                              </select>
@@ -166,16 +163,16 @@ include_once 'classes/Menu/menu.php';
 							</div>
 						</fieldset>
 					</form>
-						<div class="row">
-							<div class="form-group pull-right">
-								<button type="submit" class="btn btn-lg btn-primary btn-block" id="signup_ok"><!-- Sign up for free--><?php echo $lang['Lang0227']; ?></button>
-							 </div>
+					<div class="row">
+						<div class="form-group pull-right">
+							<button type="submit" class="btn btn-lg btn-primary btn-block" id="signup_ok"><!-- Sign up for free--><?php echo $lang['Lang0227']; ?></button>
+						 </div>
+					</div>
+					<div class="row">
+						<div class="pull-right">
+							<a href="sign_in.php"><strong><!-- sign in--><?php echo $lang['Lang0228']; ?></strong></a>
 						</div>
-						<div class="row">
-							<div class="pull-right">
-								<a href="sign_in.php"><strong><!-- sign in--><?php echo $lang['Lang0228']; ?></strong></a>
-							</div>
-						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -193,8 +190,6 @@ include_once 'classes/Language/For_JS_multi_lang.php';
 <script src="js/jquery.cookie.js"></script>
 <script src="js/bootstrapValidator.js"></script>
 <script src="js/main/pub.js"></script>
-<!-- <script src="js/main/sign_in.js"></script> -->
-
 <script src="js/jquery.maskedinput.min.js"></script> 
 <script src="js/main/sign_up_person.js"></script>
 </body>

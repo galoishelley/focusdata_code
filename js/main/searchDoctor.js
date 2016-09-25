@@ -252,25 +252,23 @@ $(function(){
 
 
 ///////////////////////////////////组织ajax 请求参数 begin///////////////////////////////
-
+	//首页跳转
 	var str = sessionStorage.search_index; 
+	console.log(str);
+	if(str === null ){
+		str ="";
+	}
+	if(str === undefined ||str === ""){
+		var data = {
+			action_type:"index_search",
+          	search: ""
+        };
 
-	
-	// if(str === null ){
-	// 	str ="";
-	// }
-	// if(str.length==0){
-	// 	var data = {
-	// 		action_type:"index_search",
- //          	search: ""
- //        };
-
- //    	sessionStorage.setItem("search_con",JSON.stringify(data));
- //    	str = sessionStorage.getItem("search_con"); 
-	// }
+    	sessionStorage.setItem("search_con",JSON.stringify(data));
+    	str = sessionStorage.getItem("search_con"); 
+	}
 	var json_value = JSON.parse(str);
 	console.log(json_value);
-
 	//赋值给此页面搜索条件
 	$('#CLINIC_SUBURB').val(json_value.CLINIC_SUBURB);
 	$('#STATE_ID').val(json_value.STATE_ID);
@@ -278,20 +276,15 @@ $(function(){
 	$('#DOCTOR_TYPE').val(json_value.DOCTOR_TYPE);
 	$('#DOCTOR_NAME').val(json_value.DOCTOR_NAME);
 	$('#DISTANCE').val(json_value.DISTANCE);
-	$('#APPOINTMENT_DATE_BEGIN').val(json_value.APPOINTMENT_DATE_BEGIN);
-	$('#APPOINTMENT_DATE_END').val(json_value.APPOINTMENT_DATE_END);
+	// $('#APPOINTMENT_DATE_BEGIN').val(json_value.APPOINTMENT_DATE_BEGIN);
+	// $('#APPOINTMENT_DATE_END').val(json_value.APPOINTMENT_DATE_END);
+	console.log(json_value.APPOINTMENT_DATE_BEGIN);
+	if(json_value.APPOINTMENT_DATE_BEGIN !== undefined ){
+		$('#APPOINTMENT_DATE_BEGIN').val(json_value.APPOINTMENT_DATE_BEGIN);
+		$('#APPOINTMENT_DATE_END').val(json_value.APPOINTMENT_DATE_END);
+	}
 
     var from_index=json_value.from_index;
-
-    //from_index == "1" 从主页跳转
-    if(from_index == "1"){ 
-    	$('#myModal').modal('hide');
-    	// console.log("hiden");
-    	// console.log(json_value.from_index);
-    }
-    else{
-    	$('#myModal').modal('show');
-    }
 
     // 处理输入%查询问题
     // if(json_value.search == "%"){
@@ -348,7 +341,7 @@ $(function(){
  		"destroy": false,
  		"ordering": false,//全局禁用排序
 
- 		// "iDeferLoading": true, //禁止加载页面自动load数据
+ 		"iDeferLoading": true, //禁止加载页面自动load数据
 
 	    "ajax": {
 			"type": "POST",
@@ -609,7 +602,7 @@ $(function(){
 			// console.log(data);
 
     		// sessionStorage.setItem("; ", str);
-    		// sessionStorage.search_index ="";
+    		sessionStorage.search_index ="";
 
 			// console.log("加载完毕");
 		}
@@ -687,6 +680,27 @@ $(function(){
 		event.stopImmediatePropagation();
 	});
 
+	//from_index == "1" 从主页跳转
+    if(from_index == "1"){ 
+    	$('#myModal').modal('hide');
+    	//$('#btn_search').click()
+		requesttype = 1;
+		func_code="SD02";
+		//form序列化成json
+		json_form = $("#modal_form").serializeObject();
+
+	    // var json_stringify=JSON.stringify(json_form);
+	    // json_form = json_stringify.replace(/[ ]/g,"");
+
+	    //生成输入参数
+	    json_str = request_const(json_form,func_code,requesttype);
+	    console.log(json_str);
+      	_table.ajax.reload();
+      	$('#myModal').modal('hide');
+    }
+    else{
+    	$('#myModal').modal('show');
+    }
 	
 
 	$('#btn_jumpgo').click(function(){

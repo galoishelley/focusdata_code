@@ -1,4 +1,4 @@
-    $("input").attr("maxlength","50");
+    // $("input").attr("maxlength","50");
     // var serviceid = "UI01";
     // var json_str = request_const(json_func_form,serviceid,0);
     var request_const=function(para,serviceid,requesttype){
