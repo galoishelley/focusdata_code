@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2016-09-24 22:16:10
--- 服务器版本： 10.1.10-MariaDB
+-- Generation Time: Sep 25, 2016 at 02:22 PM
+-- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -14,7 +14,6 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `focusdata`
@@ -25,23 +24,21 @@ USE `focusdata`;
 -- --------------------------------------------------------
 
 --
--- 表的结构 `fd_admin`
+-- Table structure for table `fd_admin`
 --
 
-DROP TABLE IF EXISTS `fd_admin`;
-CREATE TABLE IF NOT EXISTS `fd_admin` (
-  `ADMIN_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `fd_admin` (
+  `ADMIN_ID` int(11) NOT NULL,
   `ADMIN_NAME` varchar(50) NOT NULL,
   `ADMIN_PWD` varchar(50) NOT NULL,
   `CREATE_USER` varchar(50) NOT NULL,
   `CREATE_DATE` datetime NOT NULL,
   `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL,
-  PRIMARY KEY (`ADMIN_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `UPDATE_DATE` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 转存表中的数据 `fd_admin`
+-- Dumping data for table `fd_admin`
 --
 
 INSERT INTO `fd_admin` (`ADMIN_ID`, `ADMIN_NAME`, `ADMIN_PWD`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
@@ -50,12 +47,11 @@ INSERT INTO `fd_admin` (`ADMIN_ID`, `ADMIN_NAME`, `ADMIN_PWD`, `CREATE_USER`, `C
 -- --------------------------------------------------------
 
 --
--- 表的结构 `fd_clinic_user`
+-- Table structure for table `fd_clinic_user`
 --
 
-DROP TABLE IF EXISTS `fd_clinic_user`;
-CREATE TABLE IF NOT EXISTS `fd_clinic_user` (
-  `CLINIC_USER_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `fd_clinic_user` (
+  `CLINIC_USER_ID` int(11) NOT NULL,
   `CLINIC_USER_NAME` varchar(50) NOT NULL,
   `CLINIC_USER_PWD` varchar(50) NOT NULL,
   `CLINIC_USER_MAIL` varchar(50) NOT NULL,
@@ -69,18 +65,16 @@ CREATE TABLE IF NOT EXISTS `fd_clinic_user` (
   `CREATE_USER` varchar(50) NOT NULL,
   `CREATE_DATE` datetime NOT NULL,
   `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL,
-  PRIMARY KEY (`CLINIC_USER_ID`),
-  KEY `FK_fd_clinic_user_2` (`STATE_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+  `UPDATE_DATE` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 转存表中的数据 `fd_clinic_user`
+-- Dumping data for table `fd_clinic_user`
 --
 
 INSERT INTO `fd_clinic_user` (`CLINIC_USER_ID`, `CLINIC_USER_NAME`, `CLINIC_USER_PWD`, `CLINIC_USER_MAIL`, `CLINIC_NAME`, `CLINIC_ADDR`, `CLINIC_POSTCODE`, `CLINIC_SUBURB`, `STATE_ID`, `ACTIVE_STATUS`, `NOTE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
-(1, 'shelleymyl', '21232f297a57a5a743894a0e4a801fc3', 'shelleymyl@gmail.com11', '中华人民共和国吉林省长春市吉林大学第一医院', '吉林省长春市前进大街8811号1', '130066', '绿园区', 5, 0, NULL, 'shelleymyl', '2016-08-13 12:11:10', 'admin', '2016-09-24 17:38:31'),
-(2, 'shelleymyl', '3d9017e3b14d093e63b205487bee0354', 'shelleymyl@gmail.com', '市诊所', '南阳路88号', '130012', '绿园区', 2, 0, NULL, 'shelleymyl', '2016-08-13 12:11:39', 'admin', '2016-09-11 21:50:55'),
+(1, 'shelleymyl', '21232f297a57a5a743894a0e4a801fc3', 'shelleymyl@gmail.com11', '中华人民共和国吉林省长春市吉林大学第一医院', '1 Kangerong Rd', '130066', 'Box Hill', 5, 0, NULL, 'shelleymyl', '2016-08-13 12:11:10', 'admin', '2016-09-24 17:38:31'),
+(2, 'shelleymyl', '3d9017e3b14d093e63b205487bee0354', 'shelleymyl@gmail.com', '市诊所', '146-148 Glebe Point Road', '130012', 'Glebe', 2, 0, NULL, 'shelleymyl', '2016-08-13 12:11:39', 'admin', '2016-09-11 21:50:55'),
 (3, 'shelleymylee1', '80db46b43939c503e20d5c28b61a689e', 'shelleymyl@gmail.com', '朝阳区诊所1', '朝阳区1', '130012', '绿园区', 8, 0, NULL, 'shelleymyl', '2016-08-13 12:11:50', 'admin', '2016-09-11 21:50:22'),
 (4, 'shelleymyl221', 'myl1102', 'shelleymyl@gmail.com1', '绿园区诊所1', '绿园区1', '130012', '绿园区', 2, 0, NULL, 'shelleymyl', '2016-08-15 12:08:47', 'admin', '2016-09-01 16:20:53'),
 (5, 'yinxin', 'yinxin', 'shelleymyl@gmail.com', '1', '1', '130012', '朝阳区', 2, 1, NULL, 'shelleymyl', '2016-08-24 16:28:50', 'shelleymyl', '2016-08-24 16:28:50'),
@@ -89,7 +83,7 @@ INSERT INTO `fd_clinic_user` (`CLINIC_USER_ID`, `CLINIC_USER_NAME`, `CLINIC_USER
 (8, 'yinxin123', 'yinxin123', 'shelleymyl@gmail.com', '1', '1', '130012', '绿园区', 7, 1, NULL, 'yinxin123', '2016-08-24 21:42:45', 'admin', '2016-09-10 10:47:06'),
 (9, 'mao', 'mao', 'shelleymyl@gmail.com', '1', '1', '130012', '绿园区', 2, 0, NULL, 'mao', '2016-08-24 21:43:42', 'admin', '2016-09-13 15:59:18'),
 (10, 'miao', 'miao', 'shelleymyl@gmail.com', '1', '1', '130012', '绿园区', 2, 0, NULL, 'miao', '2016-09-01 15:07:02', 'miao', '2016-09-01 15:07:02'),
-(11, 'admin', '0cc175b9c0f1b6a831c399e269772661', 'shelleymyl@gmail.com', '吉大一院', '碧水云天14#3门806室', '130012', '绿园区', 6, 1, NULL, 'admin', '2016-09-01 16:53:28', 'admin', '2016-09-24 17:43:04'),
+(11, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'shelleymyl@gmail.com', '吉大一院', '碧水云天14#3门806室', '130012', '绿园区', 6, 1, NULL, 'admin', '2016-09-01 16:53:28', 'admin', '2016-09-24 17:43:04'),
 (12, 'fuy', '1', 'shelleymyl@gmail.com', '吉林大学第一医院', '新民广场1102号', '130012', '绿园区', 2, 1, NULL, 'fuy', '2016-09-06 10:30:19', 'admin', '2016-09-06 11:26:52'),
 (13, 'miaoyz', '422a1cd6e66f71337187fe049e7e64a8', 'shelleymyl@gmail.com', '1', '1', '130012', '绿园区', 1, 1, NULL, 'miaoyz', '2016-09-08 23:14:42', 'admin', '2016-09-10 10:52:03'),
 (14, '111', '6512bd43d9caa6e02c990b0a82652dca', 'shelleymyl@gmail.com', '1', '11', '130012', '绿园区', 3, 1, NULL, '111', '2016-09-12 21:32:27', '111', '2016-09-12 21:32:27'),
@@ -97,17 +91,17 @@ INSERT INTO `fd_clinic_user` (`CLINIC_USER_ID`, `CLINIC_USER_NAME`, `CLINIC_USER
 (16, '小石头', '21232f297a57a5a743894a0e4a801fc3', 'shelleymyl@gmail.com', '南阳路诊所', '南阳路881号', '130012', '绿园区', 4, 1, NULL, '小石头', '2016-09-13 09:28:26', '小石头', '2016-09-13 09:28:26'),
 (17, '123', 'c4ca4238a0b923820dcc509a6f75849b', 'shelleymyl@gmail.com', '1', '1', '130012', '绿园区', 3, 1, NULL, '123', '2016-09-13 10:15:38', '123', '2016-09-13 10:15:38'),
 (18, '123222', '202cb962ac59075b964b07152d234b70', 'shelleymyl@gmail.com', '1', '1', '130012', '', 3, 1, NULL, '123222', '2016-09-13 10:16:35', '123222', '2016-09-13 10:16:35'),
-(19, '11', '7863dceeedcb1d9c33675e020e808df5', 'shelleymyl@gmail.com', '1', '1', '130088', '绿园区1', 2, 0, NULL, '11', '2016-09-13 10:21:04', 'admin', '2016-09-23 15:35:20');
+(19, '11', '7863dceeedcb1d9c33675e020e808df5', 'shelleymyl@gmail.com', '1', '1', '130088', '绿园区1', 2, 0, NULL, '11', '2016-09-13 10:21:04', 'admin', '2016-09-23 15:35:20'),
+(20, 'shelleymyl', '21232f297a57a5a743894a0e4a801fc3', 'shelleymyl@gmail.com11', '中华人民共和国吉林省长春市吉林大学第一医院', '1 Kangerong Rd', '130066', 'Box Hill', 7, 0, NULL, 'shelleymyl', '2016-08-13 12:11:10', 'admin', '2016-09-24 17:38:31');
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `fd_customer_user`
+-- Table structure for table `fd_customer_user`
 --
 
-DROP TABLE IF EXISTS `fd_customer_user`;
-CREATE TABLE IF NOT EXISTS `fd_customer_user` (
-  `CUSTOMER_USER_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `fd_customer_user` (
+  `CUSTOMER_USER_ID` int(11) NOT NULL,
   `CUSTOMER_USER_NAME` varchar(50) NOT NULL,
   `CUSTOMER_USER_PWD` varchar(50) NOT NULL,
   `CUSTOMER_USER_MAIL` varchar(50) NOT NULL,
@@ -125,13 +119,11 @@ CREATE TABLE IF NOT EXISTS `fd_customer_user` (
   `CREATE_USER` varchar(50) NOT NULL,
   `CREATE_DATE` datetime NOT NULL,
   `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL,
-  PRIMARY KEY (`CUSTOMER_USER_ID`),
-  KEY `FK_fd_customer_user_7` (`STATE_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=166 DEFAULT CHARSET=utf8;
+  `UPDATE_DATE` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 转存表中的数据 `fd_customer_user`
+-- Dumping data for table `fd_customer_user`
 --
 
 INSERT INTO `fd_customer_user` (`CUSTOMER_USER_ID`, `CUSTOMER_USER_NAME`, `CUSTOMER_USER_PWD`, `CUSTOMER_USER_MAIL`, `CUSTOMER_NAME`, `CUSTOMER_GENDER`, `CUSTOMER_BIRTHDAY`, `CUSTOMER_ADDR`, `CUSTOMER_POSTCODE`, `CUSTOMER_SUBURB`, `STATE_ID`, `CUSTOMER_PHONE_NO`, `MEDICAL_CARD_NO`, `ACTIVE_STATUS`, `NOTE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
@@ -143,7 +135,7 @@ INSERT INTO `fd_customer_user` (`CUSTOMER_USER_ID`, `CUSTOMER_USER_NAME`, `CUSTO
 (30, '你要', 'myl1102', 'shelleymyl@gmail.com', '尹小猫', '男', '1', '1', '', '', 1, '1', '1', 1, '', 'shelleymyl', '2016-08-13 11:35:35', 'shelleymyl', '2016-08-13 11:35:35'),
 (31, 'miaoyl', 'miaoyl', 'shelleymyl@gmail.com', '尹小猫', '男', '1', '1', '', '', 1, '1', '1', 1, '', 'shelleymyl', '2016-08-24 16:24:34', 'shelleymyl', '2016-08-24 16:24:34'),
 (32, 'yinxin', 'yinxin', 'shelleymyl@gmail.com', '尹小猫', '男', '1', '1', '', '', 1, '1', '1', 1, '', 'shelleymyl', '2016-08-24 16:28:24', 'shelleymyl', '2016-08-24 16:28:24'),
-(33, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'shelleymyl@gmail.com', '尹小猫', '0', '1985-11-02', '我的家园36#102', '130022', '朝阳区', 1, '1eeeee111', '1e111', 0, '', 'admin', '2016-08-24 21:15:18', 'admin', '2016-09-24 17:15:03'),
+(33, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'shelleymyl@gmail.com', '尹小猫', '0', '1985-11-02', '1 Whitehorse Road', '130022', ' Box Hill', 7, '1eeeee111', '1e111', 0, '', 'admin', '2016-08-24 21:15:18', 'admin', '2016-09-25 10:57:29'),
 (34, 'admin123', 'admin123', 'shelleymyl@gmail.com', '尹小猫', '男', '1', '1', '', '', 1, '1', '1', 0, '', 'admin123', '2016-08-24 21:19:27', 'admin123', '2016-08-24 21:19:27'),
 (35, 'yinxin123', 'yinxin123', 'shelleymyl@gmail.com', '尹小猫', '男', '1', '1', '', '', 1, '1', '1', 1, '', 'yinxin123', '2016-08-24 21:29:08', 'yinxin123', '2016-08-24 21:29:08'),
 (36, '333', 'mao', 'shelleymyl@gmail.com', '尹小猫', '男', '11', '11', '', '', 1, '11', '11', 1, '', 'mao', '2016-08-24 21:43:29', 'mao', '2016-08-24 21:43:29'),
@@ -275,23 +267,22 @@ INSERT INTO `fd_customer_user` (`CUSTOMER_USER_ID`, `CUSTOMER_USER_NAME`, `CUSTO
 (162, 'miaoyl_admin_13', '0cc175b9c0f1b6a831c399e269772661', 'a', 'a', '男', '1', '1', '1', '1', 3, 'a', '1', 1, '', 'miaoyl_admin_13', '2016-09-22 23:34:10', 'miaoyl_admin_13', '2016-09-22 23:34:10'),
 (163, 'miaoyl_admin_14', '0cc175b9c0f1b6a831c399e269772661', 'a', 'a', '男', '1', '1', '1', '1', 3, 'a', '1', 1, '', 'miaoyl_admin_14', '2016-09-22 23:38:32', 'miaoyl_admin_14', '2016-09-22 23:38:32'),
 (164, 'miaoyl_admin_16', '0cc175b9c0f1b6a831c399e269772661', 'a', 'a', '1', '1', '1', '1', '1', 2, 'a', '1', 1, '', 'miaoyl_admin_16', '2016-09-23 09:55:02', 'admin', '2016-09-23 15:43:43'),
-(165, 'miaoyl_admin_17', '0cc175b9c0f1b6a831c399e269772661', 'a', 'a', '男', '1', '1', '1', '1', 3, 'a', '1', 1, '', 'miaoyl_admin_17', '2016-09-23 15:29:09', 'miaoyl_admin_17', '2016-09-23 15:29:09');
+(165, 'miaoyl_admin_17', '0cc175b9c0f1b6a831c399e269772661', 'a', 'a', '男', '1', '1', '1', '1', 3, 'a', '1', 1, '', 'miaoyl_admin_17', '2016-09-23 15:29:09', 'miaoyl_admin_17', '2016-09-23 15:29:09'),
+(166, 'bisubisu', '3def82404810d98aa619a6b6c4d51576', 'bisu@gmail.com', 'bisu', 'Male', '11/11/1111', '1', '1', '1', 3, '1', '1', 1, '', 'bisubisu', '2016-09-25 12:37:49', 'bisubisu', '2016-09-25 12:37:49');
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `fd_dict_appointment_status`
+-- Table structure for table `fd_dict_appointment_status`
 --
 
-DROP TABLE IF EXISTS `fd_dict_appointment_status`;
-CREATE TABLE IF NOT EXISTS `fd_dict_appointment_status` (
-  `APPOINTMENT_STATUS_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `APPOINTMENT_STATUS` varchar(50) NOT NULL,
-  PRIMARY KEY (`APPOINTMENT_STATUS_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+CREATE TABLE `fd_dict_appointment_status` (
+  `APPOINTMENT_STATUS_ID` int(11) NOT NULL,
+  `APPOINTMENT_STATUS` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 转存表中的数据 `fd_dict_appointment_status`
+-- Dumping data for table `fd_dict_appointment_status`
 --
 
 INSERT INTO `fd_dict_appointment_status` (`APPOINTMENT_STATUS_ID`, `APPOINTMENT_STATUS`) VALUES
@@ -303,31 +294,27 @@ INSERT INTO `fd_dict_appointment_status` (`APPOINTMENT_STATUS_ID`, `APPOINTMENT_
 -- --------------------------------------------------------
 
 --
--- 表的结构 `fd_dict_log_type`
+-- Table structure for table `fd_dict_log_type`
 --
 
-DROP TABLE IF EXISTS `fd_dict_log_type`;
-CREATE TABLE IF NOT EXISTS `fd_dict_log_type` (
+CREATE TABLE `fd_dict_log_type` (
   `LOG_TYPE_ID` int(11) NOT NULL,
-  `LOG_TYPE` varchar(50) NOT NULL,
-  PRIMARY KEY (`LOG_TYPE_ID`)
+  `LOG_TYPE` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `fd_dict_search`
+-- Table structure for table `fd_dict_search`
 --
 
-DROP TABLE IF EXISTS `fd_dict_search`;
-CREATE TABLE IF NOT EXISTS `fd_dict_search` (
-  `SEARCH_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `SEARCH_CONTENT` varchar(50) NOT NULL,
-  PRIMARY KEY (`SEARCH_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+CREATE TABLE `fd_dict_search` (
+  `SEARCH_ID` int(11) NOT NULL,
+  `SEARCH_CONTENT` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 转存表中的数据 `fd_dict_search`
+-- Dumping data for table `fd_dict_search`
 --
 
 INSERT INTO `fd_dict_search` (`SEARCH_ID`, `SEARCH_CONTENT`) VALUES
@@ -341,20 +328,17 @@ INSERT INTO `fd_dict_search` (`SEARCH_ID`, `SEARCH_CONTENT`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `fd_dict_state`
+-- Table structure for table `fd_dict_state`
 --
 
-DROP TABLE IF EXISTS `fd_dict_state`;
-CREATE TABLE IF NOT EXISTS `fd_dict_state` (
-  `STATE_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `fd_dict_state` (
+  `STATE_ID` int(11) NOT NULL,
   `STATE_NAME` varchar(50) NOT NULL,
-  `STATE_POSTCODE` varchar(50) NOT NULL,
-  PRIMARY KEY (`STATE_ID`),
-  UNIQUE KEY `STATE_NAME` (`STATE_NAME`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+  `STATE_POSTCODE` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 转存表中的数据 `fd_dict_state`
+-- Dumping data for table `fd_dict_state`
 --
 
 INSERT INTO `fd_dict_state` (`STATE_ID`, `STATE_NAME`, `STATE_POSTCODE`) VALUES
@@ -370,12 +354,11 @@ INSERT INTO `fd_dict_state` (`STATE_ID`, `STATE_NAME`, `STATE_POSTCODE`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `fd_doctor`
+-- Table structure for table `fd_doctor`
 --
 
-DROP TABLE IF EXISTS `fd_doctor`;
-CREATE TABLE IF NOT EXISTS `fd_doctor` (
-  `DOCTOR_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `fd_doctor` (
+  `DOCTOR_ID` int(11) NOT NULL,
   `DOCTOR_TYPE` varchar(50) NOT NULL,
   `DOCTOR_NAME` varchar(50) NOT NULL,
   `DOCTOR_GENDER` varchar(50) NOT NULL,
@@ -386,12 +369,11 @@ CREATE TABLE IF NOT EXISTS `fd_doctor` (
   `CREATE_USER` varchar(50) NOT NULL,
   `CREATE_DATE` datetime NOT NULL,
   `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL,
-  PRIMARY KEY (`DOCTOR_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+  `UPDATE_DATE` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 转存表中的数据 `fd_doctor`
+-- Dumping data for table `fd_doctor`
 --
 
 INSERT INTO `fd_doctor` (`DOCTOR_ID`, `DOCTOR_TYPE`, `DOCTOR_NAME`, `DOCTOR_GENDER`, `ACTIVE_STATUS`, `DOCTOR_PHOTO`, `DOCTOR_INFO`, `NOTE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
@@ -410,31 +392,28 @@ INSERT INTO `fd_doctor` (`DOCTOR_ID`, `DOCTOR_TYPE`, `DOCTOR_NAME`, `DOCTOR_GEND
 -- --------------------------------------------------------
 
 --
--- 表的结构 `fd_function`
+-- Table structure for table `fd_function`
 --
 
-DROP TABLE IF EXISTS `fd_function`;
-CREATE TABLE IF NOT EXISTS `fd_function` (
-  `FUNCTION_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `fd_function` (
+  `FUNCTION_ID` int(11) NOT NULL,
   `FUNCTION_CODE` varchar(50) NOT NULL,
   `FUNCTION_NAME` varchar(50) NOT NULL,
   `NOTE` varchar(200) NOT NULL,
   `CREATE_USER` varchar(50) NOT NULL,
   `CREATE_DATE` datetime NOT NULL,
   `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL,
-  PRIMARY KEY (`FUNCTION_ID`)
+  `UPDATE_DATE` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `fd_log`
+-- Table structure for table `fd_log`
 --
 
-DROP TABLE IF EXISTS `fd_log`;
-CREATE TABLE IF NOT EXISTS `fd_log` (
-  `LOG_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `fd_log` (
+  `LOG_ID` int(11) NOT NULL,
   `LOG_TYPE_ID` int(11) NOT NULL,
   `FUNCTION_ID` varchar(50) NOT NULL,
   `FUNCTION_NAME` varchar(50) NOT NULL,
@@ -442,32 +421,27 @@ CREATE TABLE IF NOT EXISTS `fd_log` (
   `CREATE_DATE` datetime NOT NULL,
   `CREATE_USER` varchar(50) NOT NULL,
   `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL,
-  PRIMARY KEY (`LOG_ID`)
+  `UPDATE_DATE` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `fd_rel_clinic_doctor`
+-- Table structure for table `fd_rel_clinic_doctor`
 --
 
-DROP TABLE IF EXISTS `fd_rel_clinic_doctor`;
-CREATE TABLE IF NOT EXISTS `fd_rel_clinic_doctor` (
-  `CLINIC_DOCTOR_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `fd_rel_clinic_doctor` (
+  `CLINIC_DOCTOR_ID` int(11) NOT NULL,
   `CLINIC_USER_ID` int(11) NOT NULL,
   `DOCTOR_ID` int(11) NOT NULL,
   `CREATE_USER` varchar(50) NOT NULL,
   `CREATE_DATE` datetime NOT NULL,
   `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL,
-  PRIMARY KEY (`CLINIC_DOCTOR_ID`),
-  KEY `FK_fd_rel_clinic_doctor_1` (`DOCTOR_ID`),
-  KEY `FK_fd_rel_clinic_doctor_2` (`CLINIC_USER_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+  `UPDATE_DATE` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 转存表中的数据 `fd_rel_clinic_doctor`
+-- Dumping data for table `fd_rel_clinic_doctor`
 --
 
 INSERT INTO `fd_rel_clinic_doctor` (`CLINIC_DOCTOR_ID`, `CLINIC_USER_ID`, `DOCTOR_ID`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
@@ -486,12 +460,11 @@ INSERT INTO `fd_rel_clinic_doctor` (`CLINIC_DOCTOR_ID`, `CLINIC_USER_ID`, `DOCTO
 -- --------------------------------------------------------
 
 --
--- 表的结构 `fd_rel_customer_appointment`
+-- Table structure for table `fd_rel_customer_appointment`
 --
 
-DROP TABLE IF EXISTS `fd_rel_customer_appointment`;
-CREATE TABLE IF NOT EXISTS `fd_rel_customer_appointment` (
-  `CUSTOMER_APPOINTMENT_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `fd_rel_customer_appointment` (
+  `CUSTOMER_APPOINTMENT_ID` int(11) NOT NULL,
   `CUSTOMER_USER_ID` int(11) NOT NULL,
   `DOCTOR_ID` int(11) NOT NULL,
   `DOCTOR_APPOINTMENT_TIME_ID` int(11) NOT NULL,
@@ -500,16 +473,11 @@ CREATE TABLE IF NOT EXISTS `fd_rel_customer_appointment` (
   `CREATE_USER` varchar(50) NOT NULL,
   `CREATE_DATE` datetime NOT NULL,
   `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL,
-  PRIMARY KEY (`CUSTOMER_APPOINTMENT_ID`),
-  KEY `FK_fd_rel_customer_appointment_1` (`CUSTOMER_USER_ID`),
-  KEY `FK_fd_rel_customer_appointment_2` (`DOCTOR_ID`),
-  KEY `FK_fd_rel_customer_appointment_3` (`DOCTOR_APPOINTMENT_TIME_ID`),
-  KEY `FK_fd_rel_customer_appointment_4` (`APPOINTMENT_STATUS_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8;
+  `UPDATE_DATE` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 转存表中的数据 `fd_rel_customer_appointment`
+-- Dumping data for table `fd_rel_customer_appointment`
 --
 
 INSERT INTO `fd_rel_customer_appointment` (`CUSTOMER_APPOINTMENT_ID`, `CUSTOMER_USER_ID`, `DOCTOR_ID`, `DOCTOR_APPOINTMENT_TIME_ID`, `APPOINTMENT_STATUS_ID`, `NOTE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
@@ -595,12 +563,11 @@ INSERT INTO `fd_rel_customer_appointment` (`CUSTOMER_APPOINTMENT_ID`, `CUSTOMER_
 -- --------------------------------------------------------
 
 --
--- 表的结构 `fd_rel_customer_appointment_his`
+-- Table structure for table `fd_rel_customer_appointment_his`
 --
 
-DROP TABLE IF EXISTS `fd_rel_customer_appointment_his`;
-CREATE TABLE IF NOT EXISTS `fd_rel_customer_appointment_his` (
-  `CUSTOMER_APPOINTMENT_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `fd_rel_customer_appointment_his` (
+  `CUSTOMER_APPOINTMENT_ID` int(11) NOT NULL,
   `CUSTOMER_USER_ID` int(11) NOT NULL,
   `DOCTOR_ID` int(11) NOT NULL,
   `DOCTOR_APPOINTMENT_TIME_ID` int(11) NOT NULL,
@@ -610,12 +577,11 @@ CREATE TABLE IF NOT EXISTS `fd_rel_customer_appointment_his` (
   `CREATE_USER` varchar(50) NOT NULL,
   `CREATE_DATE` datetime NOT NULL,
   `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL,
-  PRIMARY KEY (`CUSTOMER_APPOINTMENT_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8;
+  `UPDATE_DATE` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 转存表中的数据 `fd_rel_customer_appointment_his`
+-- Dumping data for table `fd_rel_customer_appointment_his`
 --
 
 INSERT INTO `fd_rel_customer_appointment_his` (`CUSTOMER_APPOINTMENT_ID`, `CUSTOMER_USER_ID`, `DOCTOR_ID`, `DOCTOR_APPOINTMENT_TIME_ID`, `APPOINTMENT_STATUS_ID`, `OPERATOR_STATUS`, `NOTE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
@@ -702,26 +668,22 @@ INSERT INTO `fd_rel_customer_appointment_his` (`CUSTOMER_APPOINTMENT_ID`, `CUSTO
 -- --------------------------------------------------------
 
 --
--- 表的结构 `fd_rel_customer_doctor`
+-- Table structure for table `fd_rel_customer_doctor`
 --
 
-DROP TABLE IF EXISTS `fd_rel_customer_doctor`;
-CREATE TABLE IF NOT EXISTS `fd_rel_customer_doctor` (
-  `CUSTOMER_DOCTOR_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `fd_rel_customer_doctor` (
+  `CUSTOMER_DOCTOR_ID` int(11) NOT NULL,
   `CUSTOMER_USER_ID` int(11) NOT NULL,
   `DOCTOR_ID` int(11) NOT NULL,
   `NOTE` varchar(200) NOT NULL,
   `CREATE_USER` varchar(50) NOT NULL,
   `CREATE_DATE` datetime NOT NULL,
   `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL,
-  PRIMARY KEY (`CUSTOMER_DOCTOR_ID`),
-  KEY `FK_fd_rel_customer_doctor_1` (`CUSTOMER_USER_ID`),
-  KEY `FK_fd_rel_customer_doctor_2` (`DOCTOR_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+  `UPDATE_DATE` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 转存表中的数据 `fd_rel_customer_doctor`
+-- Dumping data for table `fd_rel_customer_doctor`
 --
 
 INSERT INTO `fd_rel_customer_doctor` (`CUSTOMER_DOCTOR_ID`, `CUSTOMER_USER_ID`, `DOCTOR_ID`, `NOTE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
@@ -743,12 +705,11 @@ INSERT INTO `fd_rel_customer_doctor` (`CUSTOMER_DOCTOR_ID`, `CUSTOMER_USER_ID`, 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `fd_rel_doctor_appointment_time`
+-- Table structure for table `fd_rel_doctor_appointment_time`
 --
 
-DROP TABLE IF EXISTS `fd_rel_doctor_appointment_time`;
-CREATE TABLE IF NOT EXISTS `fd_rel_doctor_appointment_time` (
-  `DOCTOR_APPOINTMENT_TIME_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `fd_rel_doctor_appointment_time` (
+  `DOCTOR_APPOINTMENT_TIME_ID` int(11) NOT NULL,
   `DOCTOR_ID` int(11) NOT NULL,
   `APPOINTMENT_DATE` date NOT NULL,
   `APPOINTMENT_TIME` time NOT NULL,
@@ -757,19 +718,17 @@ CREATE TABLE IF NOT EXISTS `fd_rel_doctor_appointment_time` (
   `CREATE_USER` varchar(50) NOT NULL,
   `CREATE_DATE` datetime NOT NULL,
   `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL,
-  PRIMARY KEY (`DOCTOR_APPOINTMENT_TIME_ID`),
-  KEY `FK_fd_rel_doctor_appointment_time_1` (`DOCTOR_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+  `UPDATE_DATE` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 转存表中的数据 `fd_rel_doctor_appointment_time`
+-- Dumping data for table `fd_rel_doctor_appointment_time`
 --
 
 INSERT INTO `fd_rel_doctor_appointment_time` (`DOCTOR_APPOINTMENT_TIME_ID`, `DOCTOR_ID`, `APPOINTMENT_DATE`, `APPOINTMENT_TIME`, `ACTIVE_STATUS`, `NOTE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
-(1, 1, '2016-09-24', '08:30:00', 1, '', 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
+(1, 1, '2016-09-30', '10:30:00', 1, '', 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
 (2, 1, '2016-09-23', '09:00:00', 1, '', 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(3, 2, '2016-09-23', '08:00:00', 1, '', 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
+(3, 2, '2016-09-29', '08:00:00', 1, '', 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
 (4, 1, '2016-09-23', '08:00:00', 1, '', 'admin', '2016-08-17 00:00:00', 'admin', '2016-08-17 00:00:00'),
 (5, 1, '2016-09-23', '09:30:00', 1, '', 'admin', '2016-08-17 00:00:00', 'admin', '2016-08-17 00:00:00'),
 (6, 1, '2016-09-23', '10:00:00', 1, '', 'admin', '2016-08-17 00:00:00', 'admin', '2016-08-17 00:00:00'),
@@ -806,12 +765,11 @@ INSERT INTO `fd_rel_doctor_appointment_time` (`DOCTOR_APPOINTMENT_TIME_ID`, `DOC
 -- --------------------------------------------------------
 
 --
--- 表的结构 `fd_rel_doctor_appointment_time_his`
+-- Table structure for table `fd_rel_doctor_appointment_time_his`
 --
 
-DROP TABLE IF EXISTS `fd_rel_doctor_appointment_time_his`;
-CREATE TABLE IF NOT EXISTS `fd_rel_doctor_appointment_time_his` (
-  `DOCTOR_APPOINTMENT_TIME_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `fd_rel_doctor_appointment_time_his` (
+  `DOCTOR_APPOINTMENT_TIME_ID` int(11) NOT NULL,
   `DOCTOR_ID` int(11) NOT NULL,
   `APPOINTMENT_DATE` datetime NOT NULL,
   `ACTIVE_STATUS` int(11) NOT NULL,
@@ -820,37 +778,33 @@ CREATE TABLE IF NOT EXISTS `fd_rel_doctor_appointment_time_his` (
   `CREATE_USER` varchar(50) NOT NULL,
   `CREATE_DATE` datetime NOT NULL,
   `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL,
-  PRIMARY KEY (`DOCTOR_APPOINTMENT_TIME_ID`)
+  `UPDATE_DATE` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `fd_role`
+-- Table structure for table `fd_role`
 --
 
-DROP TABLE IF EXISTS `fd_role`;
-CREATE TABLE IF NOT EXISTS `fd_role` (
-  `ROLE_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `fd_role` (
+  `ROLE_ID` int(11) NOT NULL,
   `ROLE_NAME` varchar(50) NOT NULL,
   `NOTE` varchar(200) DEFAULT NULL,
   `CREATE_USER` varchar(50) NOT NULL,
   `CREATE_DATE` datetime NOT NULL,
   `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL,
-  PRIMARY KEY (`ROLE_ID`)
+  `UPDATE_DATE` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `fd_save_search`
+-- Table structure for table `fd_save_search`
 --
 
-DROP TABLE IF EXISTS `fd_save_search`;
-CREATE TABLE IF NOT EXISTS `fd_save_search` (
-  `CUSTOMER_SEARCH_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `fd_save_search` (
+  `CUSTOMER_SEARCH_ID` int(11) NOT NULL,
   `CUSTOMER_USER_ID` int(11) NOT NULL,
   `SEARCH_NAME` varchar(50) NOT NULL,
   `CLINIC_SUBURB` varchar(50) NOT NULL,
@@ -862,13 +816,11 @@ CREATE TABLE IF NOT EXISTS `fd_save_search` (
   `CREATE_USER` varchar(50) NOT NULL,
   `CREATE_DATE` datetime NOT NULL,
   `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL,
-  PRIMARY KEY (`CUSTOMER_SEARCH_ID`),
-  KEY `FK_FD_SAVE_SEARCH_1` (`CUSTOMER_USER_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=utf8;
+  `UPDATE_DATE` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 转存表中的数据 `fd_save_search`
+-- Dumping data for table `fd_save_search`
 --
 
 INSERT INTO `fd_save_search` (`CUSTOMER_SEARCH_ID`, `CUSTOMER_USER_ID`, `SEARCH_NAME`, `CLINIC_SUBURB`, `STATE_ID`, `CLINIC_NAME`, `DOCTOR_TYPE`, `DOCTOR_NAME`, `DISTANCE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
@@ -888,17 +840,17 @@ INSERT INTO `fd_save_search` (`CUSTOMER_SEARCH_ID`, `CUSTOMER_USER_ID`, `SEARCH_
 (90, 33, '', '33333333333333333333333333333333333333333333333333', '3', '33333333333333333333333333333333333333333333333333', '外科', '33333333333333333333333333333333333333333333333333', '10km', 'admin', '2016-09-24 15:16:33', 'admin', '2016-09-24 15:16:33'),
 (91, 33, '', '', '', '', '', '', '', 'admin', '2016-09-24 22:09:08', 'admin', '2016-09-24 22:09:08'),
 (92, 33, '', '', '3', '', '外科', '', '10km', 'admin', '2016-09-24 22:09:24', 'admin', '2016-09-24 22:09:24'),
-(93, 33, '', '南关区', '8', '南关区诊所', '牙科', '猫猫', '10km', 'admin', '2016-09-24 22:13:45', 'admin', '2016-09-24 22:13:45');
+(93, 33, '', '南关区', '8', '南关区诊所', '牙科', '猫猫', '10km', 'admin', '2016-09-24 22:13:45', 'admin', '2016-09-24 22:13:45'),
+(94, 33, '', '', '', '', '', '', '', 'admin', '2016-09-24 16:22:22', 'admin', '2016-09-24 16:22:22');
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `fd_service`
+-- Table structure for table `fd_service`
 --
 
-DROP TABLE IF EXISTS `fd_service`;
-CREATE TABLE IF NOT EXISTS `fd_service` (
-  `SERVICE_CODE` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `fd_service` (
+  `SERVICE_CODE` int(11) NOT NULL,
   `SERVICE_ID` varchar(50) NOT NULL,
   `DES` varchar(50) NOT NULL,
   `SERVICE_JS` varchar(50) NOT NULL,
@@ -909,13 +861,11 @@ CREATE TABLE IF NOT EXISTS `fd_service` (
   `CREATE_USER` varchar(50) NOT NULL,
   `CREATE_DATE` datetime NOT NULL,
   `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL,
-  PRIMARY KEY (`SERVICE_CODE`),
-  UNIQUE KEY `SERVICE_ID` (`SERVICE_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
+  `UPDATE_DATE` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 转存表中的数据 `fd_service`
+-- Dumping data for table `fd_service`
 --
 
 INSERT INTO `fd_service` (`SERVICE_CODE`, `SERVICE_ID`, `DES`, `SERVICE_JS`, `URL`, `INPUT_PARA`, `OUTPUT_PARA`, `NOTE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
@@ -958,12 +908,11 @@ INSERT INTO `fd_service` (`SERVICE_CODE`, `SERVICE_ID`, `DES`, `SERVICE_JS`, `UR
 -- --------------------------------------------------------
 
 --
--- 表的结构 `fd_user`
+-- Table structure for table `fd_user`
 --
 
-DROP TABLE IF EXISTS `fd_user`;
-CREATE TABLE IF NOT EXISTS `fd_user` (
-  `USER_ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `fd_user` (
+  `USER_ID` int(11) NOT NULL,
   `LOGIN_NAME` varchar(50) NOT NULL,
   `LOGIN_PWD` varchar(50) NOT NULL,
   `USER_NAME` varchar(50) NOT NULL,
@@ -976,35 +925,271 @@ CREATE TABLE IF NOT EXISTS `fd_user` (
   `CREATE_USER` varchar(50) NOT NULL,
   `CREATE_DATE` datetime NOT NULL,
   `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL,
-  PRIMARY KEY (`USER_ID`)
+  `UPDATE_DATE` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 限制导出的表
+-- Indexes for dumped tables
 --
 
 --
--- 限制表 `fd_clinic_user`
+-- Indexes for table `fd_admin`
+--
+ALTER TABLE `fd_admin`
+  ADD PRIMARY KEY (`ADMIN_ID`);
+
+--
+-- Indexes for table `fd_clinic_user`
+--
+ALTER TABLE `fd_clinic_user`
+  ADD PRIMARY KEY (`CLINIC_USER_ID`),
+  ADD KEY `FK_fd_clinic_user_2` (`STATE_ID`);
+
+--
+-- Indexes for table `fd_customer_user`
+--
+ALTER TABLE `fd_customer_user`
+  ADD PRIMARY KEY (`CUSTOMER_USER_ID`),
+  ADD KEY `FK_fd_customer_user_7` (`STATE_ID`);
+
+--
+-- Indexes for table `fd_dict_appointment_status`
+--
+ALTER TABLE `fd_dict_appointment_status`
+  ADD PRIMARY KEY (`APPOINTMENT_STATUS_ID`);
+
+--
+-- Indexes for table `fd_dict_log_type`
+--
+ALTER TABLE `fd_dict_log_type`
+  ADD PRIMARY KEY (`LOG_TYPE_ID`);
+
+--
+-- Indexes for table `fd_dict_search`
+--
+ALTER TABLE `fd_dict_search`
+  ADD PRIMARY KEY (`SEARCH_ID`);
+
+--
+-- Indexes for table `fd_dict_state`
+--
+ALTER TABLE `fd_dict_state`
+  ADD PRIMARY KEY (`STATE_ID`),
+  ADD UNIQUE KEY `STATE_NAME` (`STATE_NAME`);
+
+--
+-- Indexes for table `fd_doctor`
+--
+ALTER TABLE `fd_doctor`
+  ADD PRIMARY KEY (`DOCTOR_ID`);
+
+--
+-- Indexes for table `fd_function`
+--
+ALTER TABLE `fd_function`
+  ADD PRIMARY KEY (`FUNCTION_ID`);
+
+--
+-- Indexes for table `fd_log`
+--
+ALTER TABLE `fd_log`
+  ADD PRIMARY KEY (`LOG_ID`);
+
+--
+-- Indexes for table `fd_rel_clinic_doctor`
+--
+ALTER TABLE `fd_rel_clinic_doctor`
+  ADD PRIMARY KEY (`CLINIC_DOCTOR_ID`),
+  ADD KEY `FK_fd_rel_clinic_doctor_1` (`DOCTOR_ID`),
+  ADD KEY `FK_fd_rel_clinic_doctor_2` (`CLINIC_USER_ID`);
+
+--
+-- Indexes for table `fd_rel_customer_appointment`
+--
+ALTER TABLE `fd_rel_customer_appointment`
+  ADD PRIMARY KEY (`CUSTOMER_APPOINTMENT_ID`),
+  ADD KEY `FK_fd_rel_customer_appointment_1` (`CUSTOMER_USER_ID`),
+  ADD KEY `FK_fd_rel_customer_appointment_2` (`DOCTOR_ID`),
+  ADD KEY `FK_fd_rel_customer_appointment_3` (`DOCTOR_APPOINTMENT_TIME_ID`),
+  ADD KEY `FK_fd_rel_customer_appointment_4` (`APPOINTMENT_STATUS_ID`);
+
+--
+-- Indexes for table `fd_rel_customer_appointment_his`
+--
+ALTER TABLE `fd_rel_customer_appointment_his`
+  ADD PRIMARY KEY (`CUSTOMER_APPOINTMENT_ID`);
+
+--
+-- Indexes for table `fd_rel_customer_doctor`
+--
+ALTER TABLE `fd_rel_customer_doctor`
+  ADD PRIMARY KEY (`CUSTOMER_DOCTOR_ID`),
+  ADD KEY `FK_fd_rel_customer_doctor_1` (`CUSTOMER_USER_ID`),
+  ADD KEY `FK_fd_rel_customer_doctor_2` (`DOCTOR_ID`);
+
+--
+-- Indexes for table `fd_rel_doctor_appointment_time`
+--
+ALTER TABLE `fd_rel_doctor_appointment_time`
+  ADD PRIMARY KEY (`DOCTOR_APPOINTMENT_TIME_ID`),
+  ADD KEY `FK_fd_rel_doctor_appointment_time_1` (`DOCTOR_ID`);
+
+--
+-- Indexes for table `fd_rel_doctor_appointment_time_his`
+--
+ALTER TABLE `fd_rel_doctor_appointment_time_his`
+  ADD PRIMARY KEY (`DOCTOR_APPOINTMENT_TIME_ID`);
+
+--
+-- Indexes for table `fd_role`
+--
+ALTER TABLE `fd_role`
+  ADD PRIMARY KEY (`ROLE_ID`);
+
+--
+-- Indexes for table `fd_save_search`
+--
+ALTER TABLE `fd_save_search`
+  ADD PRIMARY KEY (`CUSTOMER_SEARCH_ID`),
+  ADD KEY `FK_FD_SAVE_SEARCH_1` (`CUSTOMER_USER_ID`);
+
+--
+-- Indexes for table `fd_service`
+--
+ALTER TABLE `fd_service`
+  ADD PRIMARY KEY (`SERVICE_CODE`),
+  ADD UNIQUE KEY `SERVICE_ID` (`SERVICE_ID`);
+
+--
+-- Indexes for table `fd_user`
+--
+ALTER TABLE `fd_user`
+  ADD PRIMARY KEY (`USER_ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `fd_admin`
+--
+ALTER TABLE `fd_admin`
+  MODIFY `ADMIN_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `fd_clinic_user`
+--
+ALTER TABLE `fd_clinic_user`
+  MODIFY `CLINIC_USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+--
+-- AUTO_INCREMENT for table `fd_customer_user`
+--
+ALTER TABLE `fd_customer_user`
+  MODIFY `CUSTOMER_USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
+--
+-- AUTO_INCREMENT for table `fd_dict_appointment_status`
+--
+ALTER TABLE `fd_dict_appointment_status`
+  MODIFY `APPOINTMENT_STATUS_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `fd_dict_search`
+--
+ALTER TABLE `fd_dict_search`
+  MODIFY `SEARCH_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `fd_dict_state`
+--
+ALTER TABLE `fd_dict_state`
+  MODIFY `STATE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `fd_doctor`
+--
+ALTER TABLE `fd_doctor`
+  MODIFY `DOCTOR_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT for table `fd_function`
+--
+ALTER TABLE `fd_function`
+  MODIFY `FUNCTION_ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `fd_log`
+--
+ALTER TABLE `fd_log`
+  MODIFY `LOG_ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `fd_rel_clinic_doctor`
+--
+ALTER TABLE `fd_rel_clinic_doctor`
+  MODIFY `CLINIC_DOCTOR_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+--
+-- AUTO_INCREMENT for table `fd_rel_customer_appointment`
+--
+ALTER TABLE `fd_rel_customer_appointment`
+  MODIFY `CUSTOMER_APPOINTMENT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+--
+-- AUTO_INCREMENT for table `fd_rel_customer_appointment_his`
+--
+ALTER TABLE `fd_rel_customer_appointment_his`
+  MODIFY `CUSTOMER_APPOINTMENT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+--
+-- AUTO_INCREMENT for table `fd_rel_customer_doctor`
+--
+ALTER TABLE `fd_rel_customer_doctor`
+  MODIFY `CUSTOMER_DOCTOR_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+--
+-- AUTO_INCREMENT for table `fd_rel_doctor_appointment_time`
+--
+ALTER TABLE `fd_rel_doctor_appointment_time`
+  MODIFY `DOCTOR_APPOINTMENT_TIME_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+--
+-- AUTO_INCREMENT for table `fd_rel_doctor_appointment_time_his`
+--
+ALTER TABLE `fd_rel_doctor_appointment_time_his`
+  MODIFY `DOCTOR_APPOINTMENT_TIME_ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `fd_role`
+--
+ALTER TABLE `fd_role`
+  MODIFY `ROLE_ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `fd_save_search`
+--
+ALTER TABLE `fd_save_search`
+  MODIFY `CUSTOMER_SEARCH_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+--
+-- AUTO_INCREMENT for table `fd_service`
+--
+ALTER TABLE `fd_service`
+  MODIFY `SERVICE_CODE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+--
+-- AUTO_INCREMENT for table `fd_user`
+--
+ALTER TABLE `fd_user`
+  MODIFY `USER_ID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `fd_clinic_user`
 --
 ALTER TABLE `fd_clinic_user`
   ADD CONSTRAINT `FK_fd_clinic_user_2` FOREIGN KEY (`STATE_ID`) REFERENCES `fd_dict_state` (`STATE_ID`);
 
 --
--- 限制表 `fd_customer_user`
+-- Constraints for table `fd_customer_user`
 --
 ALTER TABLE `fd_customer_user`
   ADD CONSTRAINT `FK_fd_customer_user_7` FOREIGN KEY (`STATE_ID`) REFERENCES `fd_dict_state` (`STATE_ID`);
 
 --
--- 限制表 `fd_rel_clinic_doctor`
+-- Constraints for table `fd_rel_clinic_doctor`
 --
 ALTER TABLE `fd_rel_clinic_doctor`
   ADD CONSTRAINT `FK_fd_rel_clinic_doctor_1` FOREIGN KEY (`DOCTOR_ID`) REFERENCES `fd_doctor` (`DOCTOR_ID`),
   ADD CONSTRAINT `FK_fd_rel_clinic_doctor_2` FOREIGN KEY (`CLINIC_USER_ID`) REFERENCES `fd_clinic_user` (`CLINIC_USER_ID`);
 
 --
--- 限制表 `fd_rel_customer_appointment`
+-- Constraints for table `fd_rel_customer_appointment`
 --
 ALTER TABLE `fd_rel_customer_appointment`
   ADD CONSTRAINT `FK_fd_rel_customer_appointment_1` FOREIGN KEY (`CUSTOMER_USER_ID`) REFERENCES `fd_customer_user` (`CUSTOMER_USER_ID`),
@@ -1013,20 +1198,20 @@ ALTER TABLE `fd_rel_customer_appointment`
   ADD CONSTRAINT `FK_fd_rel_customer_appointment_4` FOREIGN KEY (`APPOINTMENT_STATUS_ID`) REFERENCES `fd_dict_appointment_status` (`APPOINTMENT_STATUS_ID`);
 
 --
--- 限制表 `fd_rel_customer_doctor`
+-- Constraints for table `fd_rel_customer_doctor`
 --
 ALTER TABLE `fd_rel_customer_doctor`
   ADD CONSTRAINT `FK_fd_rel_customer_doctor_1` FOREIGN KEY (`CUSTOMER_USER_ID`) REFERENCES `fd_customer_user` (`CUSTOMER_USER_ID`),
   ADD CONSTRAINT `FK_fd_rel_customer_doctor_2` FOREIGN KEY (`DOCTOR_ID`) REFERENCES `fd_doctor` (`DOCTOR_ID`);
 
 --
--- 限制表 `fd_rel_doctor_appointment_time`
+-- Constraints for table `fd_rel_doctor_appointment_time`
 --
 ALTER TABLE `fd_rel_doctor_appointment_time`
   ADD CONSTRAINT `FK_fd_rel_doctor_appointment_time_1` FOREIGN KEY (`DOCTOR_ID`) REFERENCES `fd_doctor` (`DOCTOR_ID`);
 
 --
--- 限制表 `fd_save_search`
+-- Constraints for table `fd_save_search`
 --
 ALTER TABLE `fd_save_search`
   ADD CONSTRAINT `FK_FD_SAVE_SEARCH_1` FOREIGN KEY (`CUSTOMER_USER_ID`) REFERENCES `fd_customer_user` (`CUSTOMER_USER_ID`);
