@@ -59,4 +59,20 @@
 
 <!-- 使用 -->
 <div id="Lang0299" style="display: none;"><?php echo $lang['Lang0299']; ?></div>
+
+<!-- 头像 -->
+<div id="Lang0310" style="display: none;"><?php echo $lang['Lang0310']; ?></div>
+
+<!-- 用户类型 -->
+<div id="Lang0311" style="display: none;"><?php echo $lang['Lang0311']; ?></div>
+
+<!-- 诊所用户 -->
+<div id="Lang0186" style="display: none;"><?php echo $lang['Lang0186']; ?></div>
+<!-- 个人用户 -->
+<div id="Lang0187" style="display: none;"><?php echo $lang['Lang0187']; ?></div>
+<!-- 管理员 -->
+<div id="Lang0188" style="display: none;"><?php echo $lang['Lang0188']; ?></div>
+
+<!-- 游客 -->
+<div id="Lang0016" style="display: none;"><?php echo $lang['Lang0016']; ?></div>
 <!-- 为了实现js多语言 end -->
