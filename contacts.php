@@ -29,7 +29,8 @@ include_once 'classes/Language/language.common.php';
 <script src="js/modal.js"></script>  
 <script src="js/bootstrap-filestyle.js"></script> 
 <script src="js/jquery.ui.totop.js"></script>
-<script src='//maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false'></script>
+<!--<script src='//maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false'></script>-->
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDXPOIny8J39xCNQVe7pn9EIUhXpD1eP4Y"></script>
 <!--[if (gt IE 9)|!(IE)]><!-->
 <script src="js/wow/wow.js"></script>
 <script src="js/wow/device.min.js"></script>
