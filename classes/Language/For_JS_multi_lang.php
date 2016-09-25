@@ -30,6 +30,9 @@
 <!-- 两次密码输入不一致 -->
 <div id="Lang0116" style="display: none;"><?php echo $lang['Lang0116']; ?></div>
 
+<!-- 请选择预约时间段 -->
+<div id="Lang0173" style="display: none;"><?php echo $lang['Lang0173']; ?></div>
+
 <!-- 两次密码输入不一致 -->
 <div id="Lang0207" style="display: none;"><?php echo $lang['Lang0207']; ?></div>
 

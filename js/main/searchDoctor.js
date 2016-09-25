@@ -3,7 +3,37 @@ var requesttype = 0;
 var func_code,result;
 var now_postion;
 
+var datatable_lang_url;
+
 $(function(){
+	
+	//设置BootstrapDialog & Datatable I18N 2006/09/17 updated by alex
+	if($("#which_lang").html()=="en"){
+	    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_DEFAULT] = 'Information';
+	    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_INFO] = 'Information';
+	    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_PRIMARY] = 'Information';
+	    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_SUCCESS] = 'Success';
+	    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_WARNING] = 'Warning';
+	    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_DANGER] = 'Danger';
+	    BootstrapDialog.DEFAULT_TEXTS['OK'] = 'OK';
+	    BootstrapDialog.DEFAULT_TEXTS['CANCEL'] = 'Cancel';
+	    BootstrapDialog.DEFAULT_TEXTS['CONFIRM'] = 'Confirmation';
+
+	    datatable_lang_url="//cdn.datatables.net/plug-ins/1.10.12/i18n/English.json";
+	}
+	else if($("#which_lang").html()=="ch"){
+	    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_DEFAULT] = '消息';
+	    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_INFO] = '消息';
+	    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_PRIMARY] = '消息';
+	    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_SUCCESS] = '成功';
+	    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_WARNING] = '警告';
+	    BootstrapDialog.DEFAULT_TEXTS[BootstrapDialog.TYPE_DANGER] = '危险';
+	    BootstrapDialog.DEFAULT_TEXTS['OK'] = '确定';
+	    BootstrapDialog.DEFAULT_TEXTS['CANCEL'] = '取消';
+	    BootstrapDialog.DEFAULT_TEXTS['CONFIRM'] = '请确认';
+
+	    datatable_lang_url="//cdn.datatables.net/plug-ins/1.10.12/i18n/Chinese.json";
+	}
 
 	var d = new Date()
 	var vYear = d.getFullYear()
@@ -472,30 +502,32 @@ $(function(){
 	        "data": "DOCTOR_INFO" 
 	      }
 	    ],
+	    
+	    "oLanguage": { "sUrl": datatable_lang_url },
 
-	    "oLanguage": {
-	       "oAria": {
-	           "sSortAscending": " - click/return to sort ascending",
-	           "sSortDescending": " - click/return to sort descending"
-	       },
-	       "sLengthMenu": "显示 _MENU_ 记录",
-	       "sZeroRecords": "对不起，查询不到任何相关数据",
-	       "sEmptyTable": "未有相关数据",
-	       "sLoadingRecords": "正在加载数据-请等待...",
-	       "sInfo": "当前显示 _START_ 到 _END_ 条,共 _TOTAL_ 条记录",
-	       "sInfoEmpty": "当前显示0到0条，共0条记录",
-	       "sInfoFiltered": "（数据库中共为 _MAX_ 条记录）",
-	       "sProcessing": "<img src='img/spinner.gif'/> 正在加载数据...",
-	       "sSearch": "模糊查询：",
-	       "sUrl": "",
-	       //多语言配置文件，可将oLanguage的设置放在一个txt文件中，例：Javascript/datatable/dtCH.txt
-	       "oPaginate": {
-	           "sFirst": "首页",
-	           "sPrevious": " << ",
-	           "sNext": " >> ",
-	           "sLast": " 尾页 "
-	      }
-	    },
+//	    "oLanguage": {
+//	       "oAria": {
+//	           "sSortAscending": " - click/return to sort ascending",
+//	           "sSortDescending": " - click/return to sort descending"
+//	       },
+//	       "sLengthMenu": "显示 _MENU_ 记录",
+//	       "sZeroRecords": "对不起，查询不到任何相关数据",
+//	       "sEmptyTable": "未有相关数据",
+//	       "sLoadingRecords": "正在加载数据-请等待...",
+//	       "sInfo": "当前显示 _START_ 到 _END_ 条,共 _TOTAL_ 条记录",
+//	       "sInfoEmpty": "当前显示0到0条，共0条记录",
+//	       "sInfoFiltered": "（数据库中共为 _MAX_ 条记录）",
+//	       "sProcessing": "<img src='img/spinner.gif'/> 正在加载数据...",
+//	       "sSearch": "模糊查询：",
+//	       "sUrl": "",
+//	       //多语言配置文件，可将oLanguage的设置放在一个txt文件中，例：Javascript/datatable/dtCH.txt
+//	       "oPaginate": {
+//	           "sFirst": "首页",
+//	           "sPrevious": " << ",
+//	           "sNext": " >> ",
+//	           "sLast": " 尾页 "
+//	      }
+//	    },
 
 	    "columnDefs": [
 	      {
@@ -661,7 +693,7 @@ $(function(){
 		var jump = $('#jumpgo').val();
 		// console.log("跳转"+jump);
 		if(jump == ""){
-			alert("请输入跳转页面");
+			alert("Please enter the page you want to jump to");//请输入跳转页面
 			return;
 		}
 

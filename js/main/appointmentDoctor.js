@@ -864,8 +864,7 @@ $(function(){
 
     if( !iflag ){
 
-      alert("请选择预约时间段");//请选择预约时间段
-      // alert($("#Lang0173").html());//请选择预约时间段
+      alert($("#Lang0173").html());//请选择预约时间段
       return false;
     }
 
