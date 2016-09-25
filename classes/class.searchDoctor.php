@@ -65,16 +65,21 @@ class SearchDoctor
 			$action_type = "";
 		}
 		
-		if($this->arr_values["DISTANCE"]=="20km")
-			$this->distance_range=20000;
-		else if($this->arr_values["DISTANCE"]=="10km")
-			$this->distance_range=10000;
-		else if($this->arr_values["DISTANCE"]=="5km")
-			$this->distance_range=5000;
-		else
-			$this->distance_range=100000000; //10万公里
-
 		$this->customer_user_id=$this->arr_values["CUSTOMER_USER_ID"];
+		
+		if($this->customer_user_id!=null)
+		{
+			if($this->arr_values["DISTANCE"]=="20km")
+				$this->distance_range=20000;
+			else if($this->arr_values["DISTANCE"]=="10km")
+				$this->distance_range=10000;
+			else if($this->arr_values["DISTANCE"]=="5km")
+				$this->distance_range=5000;
+			else
+				$this->distance_range=100000000; //10万公里
+		}
+
+		
 		unset($this->arr_values["CUSTOMER_USER_ID"]);
 
 		$this->action = $action_type;
@@ -132,38 +137,43 @@ class SearchDoctor
 		
 		
 		//distance calculation Added by Alex 2016.9.24
-		$ret["my_address"] = $this->searchdoctor->get_address($this->customer_user_id);
-		
-		$my_address=$ret["my_address"][0]["CUSTOMER_ADDR"].", ".
-				$ret["my_address"][0]["CUSTOMER_SUBURB"].", ".
-				$ret["my_address"][0]["STATE_NAME"].", Australia";
-		
-		$arrLength=count($ret["data"]);
-		for($x = 0; $x < $arrLength; $x++)
+		if($this->customer_user_id!=null)
 		{
-			$doctor_addr= $ret["data"][$x]["CLINIC_ADDR"].", ".
-					$ret["data"][$x]["CLINIC_SUBURB"].", ".
-					$ret["data"][$x]["STATE_NAME"].", Australia";
+			$ret["my_address"] = $this->searchdoctor->get_address($this->customer_user_id);
 			
-			$request = new GoogleMapAPI\Service\DistanceMatrixService();
-			$request->addOrigin($my_address);
-			$request->addDestination($doctor_addr);
-			$responseMAP = $request->fetchJSON();
+			$my_address=$ret["my_address"][0]["CUSTOMER_ADDR"].", ".
+					$ret["my_address"][0]["CUSTOMER_SUBURB"].", ".
+					$ret["my_address"][0]["STATE_NAME"].", Australia";
 			
-			$json = json_decode($responseMAP);
-			if ($json->status == 'OK') {
-				if ($json->rows[0]->elements[0]->status == 'OK') {
-					$distance = $json->rows[0]->elements[0]->distance->value; //单位：米
-				}
-			}
-			if($distance>$this->distance_range)//距离大于要求范围，踢出数据集！
+			$arrLength=count($ret["data"]);
+			for($x = 0; $x < $arrLength; $x++)
 			{
-				unset($ret["data"][$x]);
+				$doctor_addr= $ret["data"][$x]["CLINIC_ADDR"].", ".
+						$ret["data"][$x]["CLINIC_SUBURB"].", ".
+						$ret["data"][$x]["STATE_NAME"].", Australia";
+				
+				$request = new GoogleMapAPI\Service\DistanceMatrixService();
+				$request->addOrigin($my_address);
+				$request->addDestination($doctor_addr);
+				$responseMAP = $request->fetchJSON();
+				
+				$json = json_decode($responseMAP);
+				if ($json->status == 'OK') {
+					if ($json->rows[0]->elements[0]->status == 'OK') {
+						$distance = $json->rows[0]->elements[0]->distance->value; //单位：米
+					}
+				}
+				if($distance>$this->distance_range)//距离大于要求范围，踢出数据集！
+				{
+					unset($ret["data"][$x]);
+				}
+	
 			}
-
+			$resetArray = array_values($ret["data"]);
+			$records=count($resetArray);
 		}
-		$resetArray = array_values($ret["data"]);
-		$records=count($resetArray);
+		else
+			$resetArray = $ret["data"];
 		//distance calculation end
 
 		
@@ -223,38 +233,43 @@ class SearchDoctor
 		
 		
 		//distance calculation Added by Alex 2016.9.24
-		$ret["my_address"] = $this->searchdoctor->get_address($this->customer_user_id);
-		
-		$my_address=$ret["my_address"][0]["CUSTOMER_ADDR"].", ".
-				$ret["my_address"][0]["CUSTOMER_SUBURB"].", ".
-				$ret["my_address"][0]["STATE_NAME"].", Australia";
-		
-		$arrLength=count($ret["data"]);
-		for($x = 0; $x < $arrLength; $x++)
+		if($this->customer_user_id!=null)
 		{
-			$doctor_addr= $ret["data"][$x]["CLINIC_ADDR"].", ".
-					$ret["data"][$x]["CLINIC_SUBURB"].", ".
-					$ret["data"][$x]["STATE_NAME"].", Australia";
-						
-					$request = new GoogleMapAPI\Service\DistanceMatrixService();
-					$request->addOrigin($my_address);
-					$request->addDestination($doctor_addr);
-					$responseMAP = $request->fetchJSON();
-						
-					$json = json_decode($responseMAP);
-					if ($json->status == 'OK') {
-						if ($json->rows[0]->elements[0]->status == 'OK') {
-							$distance = $json->rows[0]->elements[0]->distance->value; //单位：米
+			$ret["my_address"] = $this->searchdoctor->get_address($this->customer_user_id);
+			
+			$my_address=$ret["my_address"][0]["CUSTOMER_ADDR"].", ".
+					$ret["my_address"][0]["CUSTOMER_SUBURB"].", ".
+					$ret["my_address"][0]["STATE_NAME"].", Australia";
+			
+			$arrLength=count($ret["data"]);
+			for($x = 0; $x < $arrLength; $x++)
+			{
+				$doctor_addr= $ret["data"][$x]["CLINIC_ADDR"].", ".
+						$ret["data"][$x]["CLINIC_SUBURB"].", ".
+						$ret["data"][$x]["STATE_NAME"].", Australia";
+							
+						$request = new GoogleMapAPI\Service\DistanceMatrixService();
+						$request->addOrigin($my_address);
+						$request->addDestination($doctor_addr);
+						$responseMAP = $request->fetchJSON();
+							
+						$json = json_decode($responseMAP);
+						if ($json->status == 'OK') {
+							if ($json->rows[0]->elements[0]->status == 'OK') {
+								$distance = $json->rows[0]->elements[0]->distance->value; //单位：米
+							}
 						}
-					}
-					if($distance>$this->distance_range)//距离大于要求范围，踢出数据集！
-					{
-						unset($ret["data"][$x]);
-					}
-
+						if($distance>$this->distance_range)//距离大于要求范围，踢出数据集！
+						{
+							unset($ret["data"][$x]);
+						}
+	
+			}
+			$resetArray = array_values($ret["data"]);
+			$records=count($resetArray);
 		}
-		$resetArray = array_values($ret["data"]);
-		$records=count($resetArray);
+		else
+			$resetArray = $ret["data"];
 		//distance calculation end
 				
 				

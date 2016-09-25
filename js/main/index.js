@@ -5,6 +5,16 @@ var lang;
 $(function(){
 
 	$('#li_home').addClass("active");
+	
+	//游客隐藏距离选择
+	if($.cookie("ilogin") == 1){
+		
+		$('#DISTANCE').prop('disabled', false);
+		
+	}
+	else
+		$('#DISTANCE').prop('disabled', true);
+		
 // 	$( "#li_Chinese" ).click(function() {
 		
 // 		// $.cookie("language", "ch"); 
