@@ -86,20 +86,23 @@ $(function(){
   $("#signup_form").submit(function(ev){ev.preventDefault();});
 
   $('#signup_ok').click( function () {
-    //校验两新密码是否一致
-    var new_pwd = $('#CLINIC_USER_PWD').val();
-    var new_c_pwd = $('#CONFIME_PWD').val();
+    // //校验两新密码是否一致
+    // var new_pwd = $('#CLINIC_USER_PWD').val();
+    // var new_c_pwd = $('#CONFIME_PWD').val();
 
-    if(new_pwd != new_c_pwd){
+    // if(new_pwd != new_c_pwd){
 
-      alert($('#Lang0207').html());//两次密码输入不一致
+    //   alert($('#Lang0207').html());//两次密码输入不一致
+    //   return false;
+    // }
+
+    var bootstrapValidator = $("#signup_form").data('bootstrapValidator');
+    bootstrapValidator.validate();
+    if(bootstrapValidator.isValid()){
+      $("#signup_form").submit();
+    }else{
       return false;
     }
-
-     var bootstrapValidator = $("#signup_form").data('bootstrapValidator');
-     bootstrapValidator.validate();
-     if(bootstrapValidator.isValid()){
-       $("#signup_form").submit();
 
 ///////////////////////////////////组织ajax 请求参数 begin///////////////////////////////
     requesttype = 0;
@@ -113,44 +116,108 @@ $(function(){
 
 ///////////////////////////////////组织ajax 请求参数 end///////////////////////////////
 
-      result = true;
-      $.ajax({
-          type: "POST",
-          url: "classes/class.signup_clinic.php",
-          dataType: "json",
-          async:false,
-          data:  {
-            request:json_str
-          },
-          success: function (msg) {
-            var ret = msg.response;
-            if(ret.success){
-              if(json_str.sequ != ret.sequ){
-                alert(func_code+":时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
-                result = false;
-              }
-
-              // window.location.href="sign_in.php";
-              $('#signin_ok').attr('disabled',false);
-
-            }else{
-              alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
-              $('#signup_ok').attr('disabled',false); 
-              result=false;
+    result = true;
+    $.ajax({
+        type: "POST",
+        url: "classes/class.signup_clinic.php",
+        dataType: "json",
+        async:false,
+        data:  {
+          request:json_str
+        },
+        success: function (msg) {
+          var ret = msg.response;
+          if(ret.success){
+            if(json_str.sequ != ret.sequ){
+              alert(func_code+":时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
+              result = false;
             }
-          },
-          error: function(XMLHttpRequest, textStatus, errorThrown){
-            //请求失败之后的操作
-            var ret_code = "999999";
-            var ret_msg = "失败,请联系管理员!";
-            alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+
+            // window.location.href="sign_in.php";
+            $('#signup_ok').attr('disabled',false);
+
+          }else{
+            alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
+            $('#signup_ok').attr('disabled',false);
             result=false;
           }
-      });
-      if(!result){
-        return result;
-      }
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown){
+          //请求失败之后的操作
+          var ret_code = "999999";
+          var ret_msg = "失败,请联系管理员!";
+          alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+          result=false;
+        }
+    });
+    if(!result){
+      return result;
     }
+
+///////////////////////////////////组织ajax 请求参数 begin///////////////////////////////
+    func_code = "UI01";
+    requesttype = 0;
+
+    para={
+      USER_NAME:$('#CLINIC_USER_NAME').val(),
+      USER_PWD:$('#CLINIC_USER_PWD').val(),
+      usertype:0
+    }
+
+    // serviceid = UI01
+    //生成输入参数,函数参数说明
+    // 1- json格式 项目实际需要的参数data
+    // 2- serviceid = UI01 在[二维码服务API接口文档.xlsx]文档中 服务(serviceid)列表 查找
+    // 3- 默认0 请求类型 一般情况无用
+    json_str = request_const(para,func_code,requesttype);
+    //alert(JSON.stringify(json_str));
+
+    // console.log(json_str);
+
+    ///////////////////////////////////组织ajax 请求参数 end///////////////////////////////
+    //自动登录
+    result = true;
+    $.ajax({
+        type: "POST",
+        url: "classes/class.sign_in.php",
+        dataType: "json",
+        async:false,
+        data:  {
+          request:json_str
+        },
+        success: function (msg) {
+          // console.log(msg);
+          var ret = msg.response;
+          if(ret.success){
+            if(json_str.sequ != ret.sequ){
+              alert(func_code+":时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
+              result=false;
+            }
+
+            //登录标志
+            $.cookie("ilogin", 1);
+            //记录cookie
+            Save();
+
+        }else{
+          alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
+          // $('#signin_ok').attr('disabled',false); 
+          result=false;
+        }
+        
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown){
+        //请求失败之后的操作
+        var ret_code = "999999";
+        var ret_msg = "失败,请联系管理员!";
+        alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+        result=false;
+      }
+    });
+    if(!result){
+      return result;
+    }
+    
 
     //注册成功
     //登录标志
@@ -257,38 +324,78 @@ $(function(){
                     },
       fields: {
           CLINIC_USER_NAME: {
-              validators: {
-                  notEmpty: {
-                      message: '用户名不能为空'
-                  }
+            validators: {
+              notEmpty: {
+                    message: 'The username is required and cannot be empty'
+              },
+              stringLength: {
+                  min: 6,
+                  max: 30,
+                  message: '6 and less than 30 characters long'
+                  // message: 'The username must be more than 6 and less than 30 characters long'
+              },
+              regexp: {
+                  regexp: /^[a-zA-Z0-9_]+$/,
+                  message: 'alphabetical, number and underscore'
+                  // message: 'The username can only consist of alphabetical, number and underscore'
+              },
+              different: {
+                  field: 'CLINIC_USER_PWD',
+                  message: '用户名和密码不能相同'
               }
+            }
           },
           CLINIC_USER_MAIL: {
-              validators: {
-                  notEmpty: {
-                      message: '邮箱不能为空'
-                   }
+            validators: {
+              notEmpty: {
+                  message: 'The email is required and cannot be empty'
+              },
+              emailAddress: {
+                  message: 'The input is not a valid email address'
               }
+            }
           },
           CLINIC_USER_PWD: {
-              validators: {
-                  notEmpty: {
-                      message: '密码不能为空'
-                  }
+            validators: {
+              notEmpty: {
+                  message: '密码不能为空'
               }
+            },
+            different: {
+              field: 'CLINIC_USER_NAME',
+              message: '用户名和密码不能相同'
+            },
+            identical: {//相同
+                 field: 'CONFIME_PWD', //需要进行比较的input name值
+                 message: '两次密码不一致'
+            }
           },
           CONFIME_PWD: {
-              validators: {
-                  notEmpty: {
-                      message: '确认密码不能为空'
-                  }
-              }
+             validators: {
+              notEmpty: {
+                  message: '确认密码不能为空'
+              },
+              different: {
+                  field: 'CLINIC_USER_NAME',
+                  message: '用户名和密码不能相同'
+              },
+              identical: {//相同
+                   field: 'CLINIC_USER_PWD', //需要进行比较的input name值
+                   message: '两次密码不一致'
+              },
+            }
           },
           CLINIC_NAME: {
               validators: {
                   notEmpty: {
                       message: '诊所名称不能为空'
                    }
+              },
+              stringLength: {
+                  min: 6,
+                  max: 30,
+                  message: '6 and less than 30 characters long'
+                  // message: 'The username must be more than 6 and less than 30 characters long'
               }
           },
           CLINIC_POSTCODE: {

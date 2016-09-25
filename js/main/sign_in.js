@@ -58,10 +58,11 @@ $(function(){
     bootstrapValidator.validate();
     if(bootstrapValidator.isValid()){
       $("#signin_form").submit();
-    }else{
-      // $("USER_NAME").focus();
-      return false;
     }
+    // else{
+    //   // $("USER_NAME").focus();
+    //   return false;
+    // }
 
     // var action_type='"action_type":"create"';
     // json_func_form.push(JSON.parse(action_type));
