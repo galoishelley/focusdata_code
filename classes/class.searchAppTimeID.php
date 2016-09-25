@@ -81,11 +81,11 @@ class SearchAppTimeID
 		
 		if($ret!=""){
 			$success = true;
-			$ret_msg="查询成功";
+			$ret_msg="Success";
 			$ret_code = "S00000";
 		}else{
 			$success = true;
-			$ret_msg="无符合条件数据";
+			$ret_msg="No data";
 			$ret_code = "S00001";
 		}
 
