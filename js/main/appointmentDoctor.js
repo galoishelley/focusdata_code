@@ -248,12 +248,12 @@ $(function(){
     var username = $.cookie("fd_username");
 
     $('#userinfo').html(username);
-    $('#usertype').html("用户类型: "+ fd_usertypename);
+    $('#usertype').html($('#Lang0311').html()+": "+ fd_usertypename);
 
     // 用户名
     $('#userinfo').html(username);
     // 设置用户类型
-    $('#usertype').html("用户类型: "+ fd_usertypename);
+    $('#usertype').html($('#Lang0311').html()+": "+ fd_usertypename);
 
     //显示安全退出
     $('#login_out').removeClass("hidden");
@@ -346,7 +346,7 @@ $(function(){
       //显示搜索医生
       $('#li_SearchDoctor').removeClass("hidden");
       //设置用户类型
-      $('#usertype').html("用户类型: 游客");
+      $('#usertype').html($('#Lang0311').html()+": 游客");
       //显示登陆注册
       $('#sign_in').removeClass("hidden");
       $('#sign_up').removeClass("hidden");

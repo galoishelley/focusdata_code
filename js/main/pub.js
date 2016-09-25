@@ -68,7 +68,7 @@
       // 用户名
       $('#userinfo').html(username);
       // 设置用户类型
-      $('#usertype').html("用户类型: "+ fd_usertypename);
+      $('#usertype').html($('#Lang0311').html()+": "+ fd_usertypename);
 
     //显示安全退出
     $('#li_sign_out').removeClass("hidden");
@@ -159,7 +159,7 @@
       //显示搜索医生
       $('#li_SearchDoctor').removeClass("hidden");
       //设置用户类型
-      $('#usertype').html("用户类型: 游客");
+      $('#usertype').html($('#Lang0311').html()+": "+$('#Lang0016').html());
       //显示登陆注册
       $('#sign_in').removeClass("hidden");
       $('#sign_up').removeClass("hidden");

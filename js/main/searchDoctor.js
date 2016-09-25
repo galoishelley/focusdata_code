@@ -379,7 +379,7 @@ $(function(){
 	        "class": "col_1_class",
 	        "data": null,
 	        // "width": "200px",
-            "title": "头像",
+            "title": $("#Lang0310").html(),
             render: function (data, type, row, meta) {
                  //这里是主题  把url变成超链接、把图片路径显示为图片
                 //return "<a href='" + data + "'>" + data + "</a>";

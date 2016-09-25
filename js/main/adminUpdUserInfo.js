@@ -12,7 +12,7 @@ $(function(){
     var username = $.cookie("fd_username");
 
     $('#userinfo').html(username);
-    $('#usertype').html("用户类型: "+ fd_usertypename);
+    $('#usertype').html($('#Lang0311').html()+": "+ fd_usertypename);//用户类型
 
     
     $('#sub_userinfo').removeClass("hidden");

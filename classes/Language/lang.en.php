@@ -386,4 +386,7 @@ $lang['Lang0306'] = 'The earliest availalbe time';
 $lang['Lang0307'] = 'Appointment';
 $lang['Lang0308'] = 'Search';
 $lang['Lang0309'] = 'ID';
+$lang['Lang0310'] = 'Photo';
+
+$lang['Lang0311'] = 'User Type';
 ?>
