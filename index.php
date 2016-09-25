@@ -81,21 +81,21 @@ include_once 'classes/Language/language.common.php';
                                         <input type="hidden" class="form-control" name="from_index" id="from_index" value="1">
                                         
                                         <div class="form-group col-md-6">
-                                            <label for="CLINIC_SUBURB" class="col-md-3">区</label>
+                                            <label for="CLINIC_SUBURB" class="col-md-3"><!-- 区--><?php echo $lang['Lang0040']; ?></label>
                                             <!-- <div class="col-md-3"> -->
                                                 <input type="text" class="form-control" id="CLINIC_SUBURB" name="CLINIC_SUBURB" maxlength="50">
                                             <!-- </div>   -->
                                         </div>
 
                                         <div class="form-group col-md-6">
-                                            <label for="STATE_ID" class="col-md-3">州</label>
+                                            <label for="STATE_ID" class="col-md-3"><!-- 州--><?php echo $lang['Lang0041']; ?></label>
                                             <select class="form-control" name="STATE_ID" id="STATE_ID">
-                                              <option value="">全部</option>
+                                              <option value=""><!-- 全部--><?php echo $lang['Lang0042']; ?></option>
                                             </select>
                                         </div>
 
                                         <div class="form-group col-md-6">
-                                            <label for="CLINIC_NAME" class="col-md-3">诊所名称</label>
+                                            <label for="CLINIC_NAME" class="col-md-3"><!-- 诊所名称--><?php echo $lang['Lang0049']; ?></label>
                                             <!-- <div class="col-md-3"> -->
                                                 <input type="text" class="form-control" id="CLINIC_NAME" name="CLINIC_NAME" >
                                             <!-- </div>   -->
@@ -103,24 +103,24 @@ include_once 'classes/Language/language.common.php';
                                         
 
                                         <div class="form-group col-md-6">
-                                            <label for="DOCTOR_TYPE" class="col-md-3">医生类别</label>
+                                            <label for="DOCTOR_TYPE" class="col-md-3"><!-- 医生类别--><?php echo $lang['Lang0065']; ?></label>
                                             <select class="form-control" name="DOCTOR_TYPE" id="DOCTOR_TYPE">
-                                              <option value="">全部</option>
+                                              <option value=""><!-- 全部--><?php echo $lang['Lang0042']; ?></option>
                                             </select>
                                         </div>
 
                                         <div class="form-group col-md-6">
-                                            <label for="DOCTOR_NAME" class="col-md-3">医生姓名</label>
+                                            <label for="DOCTOR_NAME" class="col-md-3"><!-- 医生姓名--><?php echo $lang['Lang0064']; ?></label>
                                             <!-- <div class="col-md-3"> -->
                                                 <input type="text" class="form-control" id="DOCTOR_NAME" name="DOCTOR_NAME">
                                             <!-- </div> -->
                                         </div>
 
                                         <div class="form-group col-md-6">
-                                            <label for="distance" class="col-md-3">医生距离</label>
+                                            <label for="distance" class="col-md-3"><!-- 医生距离--><?php echo $lang['Lang0298']; ?></label>
                                             <!-- <div class="col-md-3"> -->
                                                 <select class="form-control" id="DISTANCE" name="DISTANCE">
-                                                    <option value="">any</option>
+                                                    <option value=""><!-- All--><?php echo $lang['Lang0042']; ?></option>
                                                     <option value="5km">5km</option>
                                                     <option value="10km">10km</option>
                                                     <option value="20km">20km</option>
@@ -129,13 +129,13 @@ include_once 'classes/Language/language.common.php';
                                         </div>
 
                                         <div class="form-group col-md-6">
-                                            <label for="APPOINTMENT_DATE_BEGIN" class="col-md-3">预约日期开始</label>
+                                            <label for="APPOINTMENT_DATE_BEGIN" class="col-md-3"><!-- 预约日期开始--><?php echo $lang['Lang0300']; ?></label>
                                             <!-- <div class="col-md-3"> -->
                                                 <input type="text" class="form-control form_datetime" id="APPOINTMENT_DATE_BEGIN" name="APPOINTMENT_DATE_BEGIN">
                                             <!-- </div> -->
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="APPOINTMENT_DATE_END" class="col-md-3">预约日期结束</label>
+                                            <label for="APPOINTMENT_DATE_END" class="col-md-3"><!-- 预约日期结束--><?php echo $lang['Lang0301']; ?></label>
                                             <!-- <div class="col-md-3"> -->
                                                 <input type="text" class="form-control form_datetime" id="APPOINTMENT_DATE_END" name="APPOINTMENT_DATE_END">
                                             <!-- </div> -->
@@ -146,7 +146,7 @@ include_once 'classes/Language/language.common.php';
                                        <!--  <a class="btn btn-success" href="userSaveSearch.php">常用搜索条件管理</a>
                                         <button type="button" class="btn btn-warning" id="btn_save" >保存为常用搜索条件</button>
                                          <button type="button" class="btn btn-info">保存为常用搜索条件</button> -->
-                                        <button type="button" class="btn btn-primary" id="btn_search" >搜索医生</button>
+                                        <button type="button" class="btn btn-primary" id="btn_search" ><!-- 搜索医生--><?php echo $lang['Lang0172']; ?></button>
                                     </div>
                                <!--  </div> -->
                             <!-- </div>不透明文字  -->

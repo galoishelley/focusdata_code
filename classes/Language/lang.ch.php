@@ -366,4 +366,18 @@ $lang['Lang0296'] = '医生类别';
 $lang['Lang0297'] = '医生名称';
 $lang['Lang0298'] = '医生距离';
 $lang['Lang0299'] = '使用';
+
+//Page Index
+$lang['Lang0300'] = '预约日期开始';
+$lang['Lang0301'] = '预约日期结束';
+
+//Page searchDoctor
+$lang['Lang0302'] = '搜索医生结果';
+$lang['Lang0303'] = '主页';
+$lang['Lang0304'] = '搜索条件';
+$lang['Lang0305'] = '保存为常用搜索条件';
+$lang['Lang0306'] = '最早可预约时间';
+$lang['Lang0307'] = '预约';
+$lang['Lang0308'] = '搜索';
+$lang['Lang0309'] = '序号';
 ?>

@@ -71,20 +71,20 @@ include_once 'classes/Menu/menu.php';
 	 <div class="stellar-section">
 	 	<div class="thumb-box9" data-stellar-background-ratio="0.1">
 			<div class="container">
-				<h2 class="wow fadeInRight">搜索医生结果</h2>
+				<h2 class="wow fadeInRight"><!-- 搜索医生结果--><?php echo $lang['Lang0302']; ?></h2>
                 <div class="row">
                     <a class="btn btn-primary" href="index.php">
-                      <span class="glyphicon  glyphicon-arrow-left"> 主页</span>
+                      <span class="glyphicon  glyphicon-arrow-left"><!--  主页--><?php echo $lang['Lang0303']; ?></span>
                     </a>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                      搜索条件
+                      <!-- 搜索条件--><?php echo $lang['Lang0304']; ?>
                     </button>
                     <div class="modal fade bs-example-modal-lg" role="dialog" aria-labelledby="gridSystemModalLabel" id="myModal">
                         <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h2 class="modal-title" id="gridSystemModalLabel">搜索医生</h2>
+                                    <h2 class="modal-title" id="gridSystemModalLabel"><!-- 搜索医生--><?php echo $lang['Lang0172']; ?></h2>
                                 </div>
                                 <div class="modal-body">
                                     <div class="container-fluid">
@@ -94,21 +94,21 @@ include_once 'classes/Menu/menu.php';
                                                 <input type="hidden" class="form-control" name="CUSTOMER_USER_ID" id="CUSTOMER_USER_ID">
                                                 
                                                 <div class="form-group col-md-6">
-                                                    <label for="CLINIC_SUBURB" class="col-md-3">区</label>
+                                                    <label for="CLINIC_SUBURB" class="col-md-3"><!-- 区--><?php echo $lang['Lang0040']; ?></label>
                                                     <div class="col-md-3">
                                                         <input type="text" class="form-control" id="CLINIC_SUBURB" name="CLINIC_SUBURB" >
                                                     </div>  
                                                 </div>
 
                                                 <div class="form-group col-md-6">
-                                                    <label for="STATE_ID" class="col-md-3">州</label>
+                                                    <label for="STATE_ID" class="col-md-3"><!-- 州--><?php echo $lang['Lang0041']; ?></label>
                                                     <select class="form-control" name="STATE_ID" id="STATE_ID">
-                                                      <option value="">全部</option>
+                                                      <option value=""><!-- 全部--><?php echo $lang['Lang0042']; ?></option>
                                                     </select>
                                                 </div>
 
                                                 <div class="form-group col-md-6">
-                                                    <label for="CLINIC_NAME" class="col-md-3">诊所名称</label>
+                                                    <label for="CLINIC_NAME" class="col-md-3"><!-- 诊所名称--><?php echo $lang['Lang0049']; ?></label>
                                                     <div class="col-md-3">
                                                         <input type="text" class="form-control" id="CLINIC_NAME" name="CLINIC_NAME" >
                                                     </div>  
@@ -116,24 +116,24 @@ include_once 'classes/Menu/menu.php';
                                                 
 
                                                 <div class="form-group col-md-6">
-                                                    <label for="DOCTOR_TYPE" class="col-md-3">医生类别</label>
+                                                    <label for="DOCTOR_TYPE" class="col-md-3"><!-- 医生类别--><?php echo $lang['Lang0065']; ?></label>
                                                     <select class="form-control" name="DOCTOR_TYPE" id="DOCTOR_TYPE">
-                                                      <option value="">全部</option>
+                                                      <option value=""><!-- 全部--><?php echo $lang['Lang0042']; ?></option>
                                                     </select>
                                                 </div>
 
                                                 <div class="form-group col-md-6">
-                                                    <label for="DOCTOR_NAME" class="col-md-3">医生姓名</label>
+                                                    <label for="DOCTOR_NAME" class="col-md-3"><!-- 医生姓名--><?php echo $lang['Lang0297']; ?></label>
                                                     <div class="col-md-3">
                                                         <input type="text" class="form-control" id="DOCTOR_NAME" name="DOCTOR_NAME">
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group col-md-6">
-                                                    <label for="distance" class="col-md-3">医生距离</label>
+                                                    <label for="distance" class="col-md-3"><!-- 医生距离--><?php echo $lang['Lang0298']; ?></label>
                                                     <div class="col-md-3">
                                                         <select class="form-control" id="DISTANCE" name="DISTANCE">
-                                                            <option value="">any</option>
+                                                            <option value=""><!-- All--><?php echo $lang['Lang0042']; ?></option>
                                                             <option value="5km">5km</option>
                                                             <option value="10km">10km</option>
                                                             <option value="20km">20km</option>
@@ -142,13 +142,13 @@ include_once 'classes/Menu/menu.php';
                                                 </div>
 
                                                 <div class="form-group col-md-6">
-                                                    <label for="APPOINTMENT_DATE_BEGIN" class="col-md-3">预约日期开始</label>
+                                                    <label for="APPOINTMENT_DATE_BEGIN" class="col-md-3"><!-- 预约日期开始--><?php echo $lang['Lang0300']; ?></label>
                                                     <div class="col-md-3">
                                                         <input type="text" class="form-control form_datetime" id="APPOINTMENT_DATE_BEGIN" name="APPOINTMENT_DATE_BEGIN">
                                                     </div>
                                                 </div>
                                                 <div class="form-group col-md-6">
-                                                    <label for="APPOINTMENT_DATE_END" class="col-md-3">预约日期结束</label>
+                                                    <label for="APPOINTMENT_DATE_END" class="col-md-3"><!-- 预约日期结束--><?php echo $lang['Lang0301']; ?></label>
                                                     <div class="col-md-3">
                                                         <input type="text" class="form-control form_datetime" id="APPOINTMENT_DATE_END" name="APPOINTMENT_DATE_END">
                                                     </div>
@@ -159,20 +159,16 @@ include_once 'classes/Menu/menu.php';
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <a class="btn btn-danger" href="userSaveSearch.php" id="btn_save_manage">常用搜索条件管理</a>
-                                    <button type="button" class="btn btn-warning" id="btn_save" >保存为常用搜索条件</button>
-                                    <button type="button" class="btn btn-primary" id="btn_search" >搜索</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal"><!-- 取消--><?php echo $lang['Lang0139']; ?></button>
+                                    <a class="btn btn-danger" href="userSaveSearch.php" id="btn_save_manage"><!-- 常用搜索条件管理--><?php echo $lang['Lang0279']; ?></a>
+                                    <button type="button" class="btn btn-warning" id="btn_save" ><!-- 保存为常用搜索条件--><?php echo $lang['Lang0305']; ?></button>
+                                    <button type="button" class="btn btn-primary" id="btn_search" ><!-- 搜索--><?php echo $lang['Lang0308']; ?></button>
                                 </div>
                             </div><!-- /.modal-content -->
                         </div><!-- /.modal-dialog -->
                     </div><!-- /.modal -->
                 </div>
     
- <!--                <input type="text" id="txtSource" value="Wo De Jia Yuan, Nanguan Qu, Changchun Shi, Jilin Sheng, China" style="width: 500px" />
-                <input type="text" id="txtDestination" value="Luo Yang Jie, Lvyuan Qu, Changchun Shi, Jilin Sheng, China" style="width: 500px" />
-                <input type="text" id="distance"/>
-                <input type="button" value="给猫获取距离" onclick="GetRoute()" /> -->
 
 				<div class="row">
                     <input type="hidden" id="json_str1"/>
@@ -180,17 +176,17 @@ include_once 'classes/Menu/menu.php';
                         <thead class="table_title">
                             <tr>
                             	<!-- <th><input type="checkbox" name="chk_all"></th> -->
-                            	<th>序号</th>
+                            	<th><!-- 序号--><?php echo $lang['Lang0309']; ?></th>
                             	<th></th>
-                                <th>诊所名称</th>
-                                <th>详细地址</th>
-                                <th>区</th>
-                                <th>州</th>
-                                <th>邮编</th>
-                                <th>医生类别</th>
-                                <th>医生名称</th>
-                                <th>最早预约时间</th>
-                                <th>操作</th>
+                                <th><!-- 诊所名称--><?php echo $lang['Lang0039']; ?></th>
+                                <th><!-- 详细地址--><?php echo $lang['Lang0050']; ?></th>
+                                <th><!-- 区--><?php echo $lang['Lang0040']; ?></th>
+                                <th><!-- 州--><?php echo $lang['Lang0041']; ?></th>
+                                <th><!-- 邮编--><?php echo $lang['Lang0053']; ?></th>
+                                <th><!-- 医生类别--><?php echo $lang['Lang0065']; ?></th>
+                                <th><!-- 医生名称--><?php echo $lang['Lang0064']; ?></th>
+                                <th><!-- 最早可预约时间--><?php echo $lang['Lang0306']; ?></th>
+                                <th><!-- 预约--><?php echo $lang['Lang0307']; ?></th>
                             </tr>
                         </thead>
                     </table> 

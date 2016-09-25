@@ -1,8 +1,14 @@
 var json_form,json_str;
 var requesttype = 0;
 var func_code,result;
-var lang;
+
+
 $(function(){
+	
+	
+	
+	
+	
 
 	$('#li_home').addClass("active");
 	
@@ -426,15 +432,41 @@ $(function(){
 
 	$("#APPOINTMENT_DATE_BEGIN").val(vDate_Today);
 	$("#APPOINTMENT_DATE_END").val(vDate_Today);
+	
+//	$('.form_datetime').datetimepicker({
+//	    language:  'en',
+//	    format: "dd-mm-yyyy",
+//	    todayBtn:  1,
+//	    autoclose: 1,
+//	    todayHighlight: 1,
+//	    startView: 2,
+//	    minView: "month"
+//  	});
+	
+	//设置Bootstrap datetimepicker  I18N 2006/09/25 updated by alex
+//	if($("#which_lang").html()=="en"){
+//		$('.form_datetime').datetimepicker({
+//		    language:  'en',
+//		    format: "dd-mm-yyyy",
+//		    todayBtn:  1,
+//		    autoclose: 1,
+//		    todayHighlight: 1,
+//		    startView: 2,
+//		    minView: "month"
+//	  	});
+//	}
+//	else if($("#which_lang").html()=="ch"){
+//		$('.form_datetime').datetimepicker({
+//		    language:  'zh-CN',
+//		    format: "dd-mm-yyyy",
+//		    todayBtn:  1,
+//		    autoclose: 1,
+//		    todayHighlight: 1,
+//		    startView: 2,
+//		    minView: "month"
+//	  	});
+//	}
 
-	$('.form_datetime').datetimepicker({
-	    language:  'zh-CN',
-	    format: "dd-mm-yyyy",
-	    todayBtn:  1,
-	    autoclose: 1,
-	    todayHighlight: 1,
-	    startView: 2,
-	    minView: "month"
-  	});
+	
 
 });
