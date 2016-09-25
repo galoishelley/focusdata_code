@@ -172,7 +172,7 @@ $(function(){
           //请求失败之后的操作
           var ret_code = "999999";
           var ret_msg = "ajax失败,请联系管理员";
-          alert("ST01 "+ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+          alert(func_code+":"+ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
           result = false;
        }
     });
@@ -230,7 +230,7 @@ $(function(){
           //请求失败之后的操作
           var ret_code = "999999";
           var ret_msg = "ajax失败,请联系管理员";
-          alert("ST01 "+ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+          alert(func_code+":"+ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
           result = false;
        }
     });
@@ -449,7 +449,6 @@ $(function(){
   // 未注册用户预约医生
   $('#btn_signin').click(function (){
 
-      alert("btn_signin");
       if($('#CUSTOMER_USER_NAME').val()==""){   
 
         alert($("#Lang0174").html());//用户名不能为空
@@ -723,7 +722,7 @@ $(function(){
             //请求失败之后的操作
             var ret_code = "999999";
             var ret_msg = "ajax失败,请联系管理员";
-            alert("ST01 "+ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+            alert(func_code+":"+ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
             result = false;
          }
       });
@@ -804,7 +803,7 @@ $(function(){
           type: "POST",
           url: "classes/class.appointmentDoctor.php",
           dataType: "json",
-          async:true,
+          async:false,
           data: {
             request:json_str
           },
@@ -822,12 +821,6 @@ $(function(){
                 }
                 alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
 
-                if($.cookie("ilogin") == 1){
-                  window.location.href="userAppointmentRecoder.php"; 
-                }else if($.cookie("ilogin") == 0){
-                  // window.location.href="sign_in.php"; 
-                }
-                
               }else{
                 alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
                 result = false;
@@ -843,6 +836,60 @@ $(function(){
       });
       if(!result){
           return result;
+      }
+
+      //修改医生预约时间状态
+      func_code="UAT0"; 
+      para={
+          action_type:"update",
+          DOCTOR_APPOINTMENT_TIME_ID:time_id,
+          ACTIVE_STATUS:0
+      };
+
+      json_str = request_const(para,func_code,1);
+
+      // console.log(json_str);
+      //请求
+      result = true;
+      $.ajax({
+        type: "POST",
+        url: "classes/class.appointmentTime.php",
+        dataType: "json",
+        async:false,
+        data: {
+            request:json_str
+        },
+        success: function (msg) {
+            // console.log(msg);
+            var ret = msg.response;
+            if(ret.success){
+              if(json_str.sequ != ret.sequ){
+                  alert(func_code+":时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
+                  result = false;
+              }
+
+            }else{
+                alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
+                result = false;
+            }
+            
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown){
+          //请求失败之后的操作
+          var ret_code = "999999";
+          var ret_msg = "失败,请联系管理员!";
+          alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+          result=false;
+        }
+      });
+      if(!result){
+          return result;
+      }
+
+      if($.cookie("ilogin") == 1){
+        window.location.href="userAppointmentRecoder.php"; 
+      }else if($.cookie("ilogin") == 0){
+        // window.location.href="sign_in.php"; 
       }
 
       return false;
@@ -925,7 +972,7 @@ $(function(){
           //请求失败之后的操作
           var ret_code = "999999";
           var ret_msg = "ajax失败,请联系管理员";
-          alert("ST01 "+ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+          alert(func_code+":"+ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
           result = false;
        }
     });
@@ -1004,7 +1051,6 @@ $(function(){
             return result;
         }
 
-
       // 预约医生
       func_code="AD01";
       para={
@@ -1032,7 +1078,7 @@ $(function(){
         type: "POST",
         url: "classes/class.appointmentDoctor.php",
         dataType: "json",
-        async:true,
+        async:false,
         data: {
           request:json_str
         },
@@ -1050,12 +1096,6 @@ $(function(){
               }
               alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
 
-              if($.cookie("ilogin") == 1){
-                window.location.href="userAppointmentRecoder.php"; 
-              }else if($.cookie("ilogin") == 0){
-                window.location.href="sign_in.php"; 
-              }
-              
             }else{
               alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
               result = false;
@@ -1072,6 +1112,61 @@ $(function(){
     if(!result){
         return result;
     }
+
+    //修改医生预约时间状态
+    func_code="UAT0"; 
+    para={
+        action_type:"update",
+        DOCTOR_APPOINTMENT_TIME_ID:time_id,
+        ACTIVE_STATUS:0
+    };
+
+    json_str = request_const(para,func_code,1);
+
+    // console.log(json_str);
+    //请求
+    result = true;
+    $.ajax({
+      type: "POST",
+      url: "classes/class.appointmentTime.php",
+      dataType: "json",
+      async:false,
+      data: {
+          request:json_str
+      },
+      success: function (msg) {
+          // console.log(msg);
+          var ret = msg.response;
+          if(ret.success){
+            if(json_str.sequ != ret.sequ){
+                alert(func_code+":时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
+                result = false;
+            }
+
+          }else{
+              alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
+              result = false;
+          }
+          
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown){
+        //请求失败之后的操作
+        var ret_code = "999999";
+        var ret_msg = "失败,请联系管理员!";
+        alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+        result=false;
+      }
+    });
+    if(!result){
+        return result;
+    }
+
+    if($.cookie("ilogin") == 1){
+      window.location.href="userAppointmentRecoder.php"; 
+    }else if($.cookie("ilogin") == 0){
+      window.location.href="sign_in.php"; 
+    }
+
     return false;
   });
 
@@ -1192,7 +1287,7 @@ $(function(){
           //请求失败之后的操作
           var ret_code = "999999";
           var ret_msg = "ajax失败,请联系管理员";
-          alert("ST01 "+ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+          alert(func_code+":"+ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
           result = false;
        }
     });
