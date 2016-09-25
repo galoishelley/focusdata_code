@@ -1,5 +1,5 @@
 <?php
-include_once ('class.SearchUserDetail_db.php');
+include_once ('class.searchUserDetail_db.php');
 // define _DBUG_LOG 1;
 class SearchUser
 {

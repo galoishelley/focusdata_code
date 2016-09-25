@@ -1,5 +1,5 @@
 <?php
-include_once ('class.SearchAppTimeID_db.php');
+include_once ('class.searchAppTimeID_db.php');
 // define _DBUG_LOG 1;
 class SearchAppTimeID
 {
