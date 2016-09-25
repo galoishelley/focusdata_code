@@ -213,7 +213,7 @@ $(function(){
 
 
 ///////////////////////////////////组织ajax 请求参数 begin///////////////////////////////
-
+	//首页跳转
 	var str = sessionStorage.search_index; 
 
 	
