@@ -63,10 +63,10 @@ class SearchAppTimeID
 
 	public function response_const(){
 		$response  = array();
-		$response["serviceid "] = $this->request["serviceid"]; //功能编号 300003
-		$response["sequ"] = $this->request["sequ"]; //时序号 随机4位数
-		$response["systemid"] = $this->request["systemid"];   //focusdata 系统ID 黄页 100
-		$response["projectid"] = $this->request["projectid"]; //focusdata项目ID 10001
+		$response["serviceid "] = $this->request["serviceid"];
+		$response["sequ"] = $this->request["sequ"];
+		$response["systemid"] = $this->request["systemid"];
+		$response["projectid"] = $this->request["projectid"];
 		return $response;
 	}
 
@@ -75,7 +75,7 @@ class SearchAppTimeID
 		$response["response"]  = array();
 		$success = true;
 		$ret_msg = "";
-		$ret_code = "S00000"; //成功
+		$ret_code = "S00000";
 
 		$ret = $this->SearchAppTimeID->viewAll ($this->arr_values);
 		
@@ -93,7 +93,7 @@ class SearchAppTimeID
 		$status["ret_msg"] = $ret_msg;	
 		$status["ret_code"] = $ret_code;
 
-		//服务器模式data
+
 		// $data  = array();
 		// $data["draw"] = $this->draw;
 		// $data["recordsTotal"] = $records;
@@ -101,9 +101,9 @@ class SearchAppTimeID
 		// $data["data"]=$ret["data"];
 		
 		// echo $ret;
-		$response["response"] = $this->response_const();  //固定参数返回
-		$response["response"]["success"] = $success;  //固定参数返回	
-		$response["response"]["status"] = $status;  //固定参数返回	
+		$response["response"] = $this->response_const();
+		$response["response"]["success"] = $success;
+		$response["response"]["status"] = $status;
 		$response["response"]["data"] = $ret;
 
 		echo json_encode ( $response );
