@@ -82,6 +82,10 @@ body { font-size: 130%; }
 	display:none;
 }
 
+.searchDoctor a>span{
+  margin-right: 5px;
+}
+
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * searchDoctorDetails
  */
