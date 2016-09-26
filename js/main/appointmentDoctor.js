@@ -14,11 +14,11 @@ $(function(){
 
     //记录user type
     if(str_usertype==0){
-      str_usertypename = "诊所用户";
+      str_usertypename = "Clinic user";
     }else if(str_usertype==1){
-      str_usertypename = "个人用户";
+      str_usertypename = "Personal user";
     }else if(str_usertype==2){
-      str_usertypename = "管理员";
+      str_usertypename = "Admin";
     }
 
     $.cookie("fd_usertype",str_usertype);
