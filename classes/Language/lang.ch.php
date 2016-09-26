@@ -383,4 +383,9 @@ $lang['Lang0309'] = '序号';
 $lang['Lang0310'] = '头像';
 
 $lang['Lang0311'] = '用户类型';
+
+//Page AppointmentDoctor
+$lang['Lang0312'] = '我们的医生';
+$lang['Lang0313'] = '可预约日期';
+$lang['Lang0314'] = '注册|预约医生';
 ?>

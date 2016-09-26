@@ -389,4 +389,9 @@ $lang['Lang0309'] = 'ID';
 $lang['Lang0310'] = 'Photo';
 
 $lang['Lang0311'] = 'User Type';
+
+//Page AppointmentDoctor
+$lang['Lang0312'] = 'Our Doctor';
+$lang['Lang0313'] = 'Available Time';
+$lang['Lang0314'] = 'Register|Make an appointment';
 ?>
