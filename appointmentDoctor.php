@@ -69,52 +69,54 @@ include_once 'classes/Language/language.common.php';
         <div class="thumb-box9" data-stellar-background-ratio="0.1">
             <div class="container">
                 <h2 class="wow fadeInRight"><!-- 我们的医生--><?php echo $lang['Lang0312']; ?></h2>
-                <div class="wow fadeIn maxheight">
-                    <div class="thumb-pad2-1">
-                        <div class="thumbnail">
-                            <figure><img src="img/page2_pic10.jpg" class="img-responsive img-thumbnail" alt="" id="doctor_img"></figure>
-                            
-                            <div class="extra-wrap">
-                                <h2 id="doctor_name"></h2>
-                                <p id="doctor_type"></p>
-                                <p id="clinic_name"></p>
-                                <p id="clinic_addr"></p>
-                                <p id="doctor_details"></p>
-                            </div>
-                            <div class="form-group  col-md-12 col-lg-12">
-                                <label for="CUSTOMER_USER_PWD" class="col-md-3 col-lg-3"><!-- 可预约日期--><?php echo $lang['Lang0313']; ?><span class="span-red">*</span></label>
-                                <div class="col-md-3 col-lg-3">
+                <div class="row">
+                    <div class="wow fadeIn maxheight">
+                        <div class="extra-wrap col-md-5 col-lg-5">
+                        <!-- <div class="thumb-pad2-1 col-md-5 col-lg-5"> -->
+                            <!-- <div class="thumbnail"> -->
+                                <img src="img/page2_pic10.jpg" class="img-responsive img-thumbnail" alt="" id="doctor_img">
+                                
+                                <div class="pull-left">
+                                    <h2 id="doctor_name"></h2>
+                                    <p id="doctor_type"></p>
+                                    <p id="clinic_name"></p>
+                                    <p id="clinic_addr"></p>
+                                    <p id="doctor_details"></p>
+                                </div>
+                            <!-- </div> -->
+                        </div>
+                        <div class="extra-wrap col-md-4 col-lg-4">
+                            <div class="row appointment_date">
+                                <label for="APPOINTMENT_DATE" class="col-md-6 col-lg-6"><!-- 可预约日期--><?php echo $lang['Lang0313']; ?><span class="span-red">*</span></label>
+                                <div class="col-md-10 col-lg-10">
                                     <select class="form-control" id="APPOINTMENT_DATE" name="APPOINTMENT_DATE">
                                     </select>
                                 </div>
-                                <!-- <h3 id="appointment_date"></h3> -->
                             </div>
-                            
-                            <div class="app_time col-md-8 col-md-offset-2 col-lg-8 col-md-offset-2" id="app_time">
+                                
+                            <div class="row app_time" id="app_time">
                                 <!-- <appointment id="app_time">2016-7-13 9:30</appointment> -->
                                <!--  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                                   搜索条件
                                 </button> -->
 
                             </div>
-
-                            <div class="app_time pull-right" id="app_time">
-                                
-                                <a class="btn btn-primary" href="userSaveDoctor.php" id="btn_savedoctor_manage"><!-- 收藏医生管理--><?php echo $lang['Lang0278']; ?></a>
-                                <button class="btn btn-warning" id="btn_savedoctor"><!-- 收藏医生--><?php echo $lang['Lang0171']; ?></button>
-                             <!--    <a class="btn btn-primary" href="searchDoctor.php">
-                                  <span class="glyphicon  glyphicon-arrow-left"> 搜索医生</span>
-                                </a> -->
-                                <!-- <button class="btn btn-default" id="btn_return">返回</button> -->
-                                <button class="btn btn-danger" id="btn_submit"><!-- 预约医生--><?php echo $lang['Lang0291']; ?></button>
-
-                            </div>
+                        </div>
+                        <div class="extra-wrap-bottom col-md-3 col-lg-3">
+                            <a class="btn btn-primary" href="userSaveDoctor.php" id="btn_savedoctor_manage"><!-- 收藏医生管理--><?php echo $lang['Lang0278']; ?></a>
+                            <button class="btn btn-warning" id="btn_savedoctor"><!-- 收藏医生--><?php echo $lang['Lang0171']; ?></button>
+                         <!--    <a class="btn btn-primary" href="searchDoctor.php">
+                              <span class="glyphicon  glyphicon-arrow-left"> 搜索医生</span>
+                            </a> -->
+                            <!-- <button class="btn btn-default" id="btn_return">返回</button> -->
+                            <button class="btn btn-danger" id="btn_submit"><!-- 预约医生--><?php echo $lang['Lang0291']; ?></button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
     
 
     <input type="hidden" id="CUSTOMER_USER_ID"/>
@@ -211,9 +213,9 @@ include_once 'classes/Language/language.common.php';
                     <button type="button" class="btn btn-default" data-dismiss="modal"><!-- Close--><?php echo $lang['Lang0139']; ?></button>
                     <button type="button" class="btn btn-primary" id="btn_signin" ><!-- 注册|预约医生--><?php echo $lang['Lang0314']; ?></button>
                 </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+            </div><!-- /.modal-content
+        </div><!-- /.modal-dialog 
+    </div><!-- /.modal 
 </div>
 
 <!--footer-->

@@ -58,14 +58,23 @@ body { font-size: 130%; }
   text-align: left;
 }
 */
-#app_time{
+.app_time{
+  padding-top: 15px;
   text-align: left;
 }
 
+/*#app_time{
+  margin-top: 15px;
+  text-align: left;
+}
+*/
 .radio-inline{
   width: 15%;
 }
 
+.extra-wrap-bottom{
+  margin-top: 28px;
+}
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * searchDoctor
  */
@@ -178,8 +187,8 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination{
  * col
  */
 .col-sm-6,.col-sm-12,
-.col-md-2,.col-md-3,.col-md-9,.col-md-12,
-.col-lg-2,.col-lg-6,.col-lg-9,.col-lg-12
+.col-md-2,.col-md-3,.col-md-5,.col-md-9,.col-md-12,
+.col-lg-2,.col-lg-5,.col-lg-6,.col-lg-9,.col-lg-12
 {
 	padding-right: 0px;
 	padding-left: 0px;
@@ -797,4 +806,22 @@ th, td {
   /*color: #FFFFFF;*/
 }
 
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * extra-wrap
+ */
+ .extra-wrap{
+  padding: 15px 30px;
+}
+.extra-wrap>p,h2{
+  text-align: left;
+}
+
+.extra-wrap>img{
+  margin-left: 0px;
+  margin-bottom: 15px;
+}
+
+.appointment_date{
+  margin-bottom: 15px;
+}
 
