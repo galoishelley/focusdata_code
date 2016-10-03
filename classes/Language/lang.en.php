@@ -9,7 +9,7 @@ $lang = array();
 
 // Page Title
 $lang['Lang0001'] = 'FocusData-Appointment System';
-$lang['Lang0002'] = 'Sign In';
+$lang['Lang0002'] = 'Login';
 $lang['Lang0003']='Clinic user manangement';
 
 // Logo
@@ -25,7 +25,7 @@ $lang['Lang0010'] = 'Language';
 $lang['Lang0011'] = 'About us';
 $lang['Lang0012'] = 'Staff';
 $lang['Lang0013'] = 'Contacts';
-$lang['Lang0014'] = 'Sign In';
+$lang['Lang0014'] = 'Login';
 $lang['Lang0015'] = 'register';
 $lang['Lang0016'] = 'Guest';
 $lang['Lang0017'] = 'Sign out';
@@ -41,8 +41,8 @@ $lang['Lang0019'] = 'You did not login,can not use this function';
 $lang['Lang0020']= 'Please update personal information and add Email';
 
 
-// Page Sign In
-$lang['Lang0021'] = 'Sign In';
+// Page Login
+$lang['Lang0021'] = 'Login';
 $lang['Lang0022'] = 'User';
 $lang['Lang0023'] = 'Please enter user name...';
 //$lang['Lang0022Error'] = 'User name can not be empty!';
@@ -53,7 +53,7 @@ $lang['Lang0026'] = 'Clinic User';
 $lang['Lang0027'] = 'Personal User';
 $lang['Lang0028'] = 'Administrator';
 $lang['Lang0029'] = 'Remember me';
-$lang['Lang0030'] = 'sign in';
+$lang['Lang0030'] = 'Login';
 $lang['Lang0031'] = 'Forgot Password?';
 
 
@@ -242,7 +242,7 @@ $lang['Lang0187'] = 'Personal user';
 $lang['Lang0188'] = 'Admin';
 $lang['Lang0189'] = 'E-mail';
 $lang['Lang0190'] = 'Send password to Email';
-$lang['Lang0191'] = 'sign in';
+$lang['Lang0191'] = 'Login';
 
 //Page sign_up_clinic
 $lang['Lang0192'] = 'Clinic User Register';
@@ -259,7 +259,7 @@ $lang['Lang0202'] = 'Address';
 $lang['Lang0203'] = 'Suburb';
 $lang['Lang0204'] = 'State';
 $lang['Lang0205'] = 'Register for free';
-$lang['Lang0206'] = 'sign in';
+$lang['Lang0206'] = 'Login';
 
 $lang['Lang0207'] = 'Entered passwords differ from the another!';
 
@@ -285,7 +285,7 @@ $lang['Lang0224'] = 'Address';
 $lang['Lang0225'] = 'Suburb';
 $lang['Lang0226'] = 'State';
 $lang['Lang0227'] = 'Sign up for free';
-$lang['Lang0228'] = 'sign in';
+$lang['Lang0228'] = 'Login';
 
 
 //Page clinicQryDoctor
