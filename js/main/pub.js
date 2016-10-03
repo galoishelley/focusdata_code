@@ -66,7 +66,7 @@
     fd_userid = $.cookie("fd_userid");
 
       // 用户名
-      $('#userinfo').html(username);
+      $('#userinfo').html($('#Lang0315').html()+','+username);
       // 设置用户类型
       $('#usertype').html($('#Lang0311').html()+": "+ fd_usertypename);
 

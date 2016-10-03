@@ -394,4 +394,7 @@ $lang['Lang0311'] = 'User Type';
 $lang['Lang0312'] = 'Our Doctor';
 $lang['Lang0313'] = 'Available Time';
 $lang['Lang0314'] = 'Register|Make an appointment';
+
+//Menu
+$lang['Lang0315'] = 'Welcome';
 ?>

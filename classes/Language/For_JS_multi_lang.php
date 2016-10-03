@@ -75,4 +75,7 @@
 
 <!-- 游客 -->
 <div id="Lang0016" style="display: none;"><?php echo $lang['Lang0016']; ?></div>
+
+<!-- 欢迎 -->
+<div id="Lang0315" style="display: none;"><?php echo $lang['Lang0315']; ?></div>
 <!-- 为了实现js多语言 end -->
