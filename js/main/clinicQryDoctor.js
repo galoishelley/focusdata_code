@@ -176,6 +176,11 @@ $(document).ready(function() {
           "defaultContent": "<input type='checkbox' id='chk_list' name='chk_list'>"
         },
         { 
+          "class": "col_center_class",
+          "data": null,
+          "defaultContent":"<button class='btn btn-primary btn-xs' id='opr_info'>"+$('#Lang0056').html() +"</button><button class='btn btn-danger btn-xs' id='opr_upd'>"+$('#Lang0057').html() +"</button>"
+        },
+        { 
           "data": "CLINIC_NAME",
           render: function(data, type, row, meta) {
               //type 的值  dispaly sort filter
@@ -274,11 +279,6 @@ $(document).ready(function() {
               return data;
           }
         },
-        { 
-          "class": "col_center_class",
-          "data": null,
-          "defaultContent":"<button class='btn btn-primary btn-xs' id='opr_info'>"+$('#Lang0056').html() +"</button><button class='btn btn-danger btn-xs' id='opr_upd'>"+$('#Lang0057').html() +"</button>"
-        },
         {
           "visible": false,
           "data": "DOCTOR_ID"
@@ -321,18 +321,18 @@ $(document).ready(function() {
            
         },
         {
+          "orderable": false,
+          "targets": 1,
+          "sWidth": "5%"
+        },
+        {
            "orderable": false,
-           "targets": 1,
+           "targets": 2,
            "sWidth": "15%"
         },
         {
           "orderable": false,
-          "targets": 2
-        },
-        {
-          "orderable": false,
-          "targets": 3,
-          "sWidth": "5%"
+          "targets": 3
         },
         {
           "orderable": false,
@@ -347,7 +347,7 @@ $(document).ready(function() {
         {
           "orderable": false,
           "targets": 6,
-          "sWidth": "10%"
+          "sWidth": "5%"
         },
         {
           "orderable": false,
@@ -357,7 +357,7 @@ $(document).ready(function() {
         {
           "orderable": false,
           "targets": 8,
-          "sWidth": "5%"
+          "sWidth": "10%"
         },
         {
           "orderable": false,
@@ -369,7 +369,7 @@ $(document).ready(function() {
           "targets": 10,
           "sWidth": "5%"
         }
-       ],
+      ],
       //第一列与第二列禁止排序
       // "order": [
       //    [0, null]

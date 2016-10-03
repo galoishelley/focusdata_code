@@ -75,7 +75,7 @@ include_once 'classes/Menu/menu.php';
     <div class="thumb-box9" data-stellar-background-ratio="0.1">
       <div class="container">
         <div class="row left_con">
-          <div class="col-lg-3 col-md-3 col-sm-3 wow fadeInUp" data-wow-delay="0.1s">
+          <div class="col-lg-2 col-md-2 col-sm-2 wow fadeInUp" data-wow-delay="0.1s">
             <div class="list-group">
                 <a href="clinicUpdUserInfo.php" class="list-group-item" id="user_appointment_recoder" ><!-- 修改诊所用户信息--><?php echo $lang['Lang0229']; ?></a>
                 <a href="clinicQryDoctor.php" class="list-group-item active" id="user_upd_person_info"><!-- 医生信息管理--><?php echo $lang['Lang0230']; ?></a>
@@ -83,7 +83,7 @@ include_once 'classes/Menu/menu.php';
               </div>
             </div>
 
-          <div class="col-lg-9 col-md-9 col-sm-9 wow fadeInUp" data-wow-delay="0.1s">
+          <div class="col-lg-10 col-md-10 col-sm-10 wow fadeInUp" data-wow-delay="0.1s">
               <div class="PersonUser">
                 <div class="savedoctor">
 
@@ -123,6 +123,7 @@ include_once 'classes/Menu/menu.php';
                       <thead class="table_title">
                           <tr>
                             <th><input type="checkbox" name="chk_all" id="chk_all"></th>
+                            <th><!-- 操作--><?php echo $lang['Lang0252']; ?></th>
                             <th><!-- 诊所名称--><?php echo $lang['Lang0243']; ?></th>
                             <th><!-- 详细地址--><?php echo $lang['Lang0244']; ?></th>
                             <th><!-- 区--><?php echo $lang['Lang0245']; ?></th>
@@ -132,7 +133,6 @@ include_once 'classes/Menu/menu.php';
                             <th><!-- 医生名称--><?php echo $lang['Lang0249']; ?></th>
                             <th><!-- 性别--><?php echo $lang['Lang0250']; ?></th>
                             <th><!-- 状态--><?php echo $lang['Lang0251']; ?></th>
-                            <th><!-- 操作--><?php echo $lang['Lang0252']; ?></th>
                           </tr>
                       </thead>
                     </table>
