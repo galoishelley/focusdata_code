@@ -960,8 +960,9 @@ $(function(){
                 alert(func_code+":时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
                 result=false;
               }
-              var data_1 = ret.data[0];
-              time_id = data_1.DOCTOR_APPOINTMENT_TIME_ID;
+              console.log(ret);
+              var data = ret.data[0];
+              time_id = data.DOCTOR_APPOINTMENT_TIME_ID;
             }else{
               alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);
               result=false;

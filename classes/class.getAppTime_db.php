@@ -18,7 +18,7 @@ class getAppTime_DB{
 
 
 
-        $sql = "SELECT DOCTOR_APPOINTMENT_TIME_ID,DOCTOR_ID,APPOINTMENT_DATE,date_format(APPOINTMENT_TIME,'%H:%i') as APPOINTMENT_TIME,ACTIVE_STATUS FROM `fd_rel_doctor_appointment_time` WHERE `DOCTOR_ID` = ".$arr_values['DOCTOR_ID'] ." and APPOINTMENT_DATE = str_to_date('".$arr_values['APPOINTMENT_DATE']."','%d-%m-%Y') and if( str_to_date('".$arr_values['APPOINTMENT_DATE']."','%d-%m-%Y')  > CURDATE(),APPOINTMENT_TIME like '%',APPOINTMENT_TIME >= CURTIME()) ORDER BY APPOINTMENT_DATE ASC";
+        $sql = "SELECT DOCTOR_APPOINTMENT_TIME_ID,DOCTOR_ID,APPOINTMENT_DATE,date_format(APPOINTMENT_TIME,'%H:%i') as APPOINTMENT_TIME,ACTIVE_STATUS FROM `fd_rel_doctor_appointment_time` WHERE ACTIVE_STATUS = 1 and  `DOCTOR_ID` = ".$arr_values['DOCTOR_ID'] ." and APPOINTMENT_DATE = str_to_date('".$arr_values['APPOINTMENT_DATE']."','%d-%m-%Y') and if( str_to_date('".$arr_values['APPOINTMENT_DATE']."','%d-%m-%Y')  > CURDATE(),APPOINTMENT_TIME like '%',APPOINTMENT_TIME >= CURTIME()) ORDER BY APPOINTMENT_DATE ASC";
 
         if($this->_dbug){
             echo "[---viewAll---sql]";
