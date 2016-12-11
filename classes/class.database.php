@@ -21,6 +21,13 @@ class Database {
         $this->conn = null;
     }
     
+    
+    public function prepare($sql) {
+    
+    	return $this->db->pdo->prepare($sql);
+    }
+    
+    
     /**
      * Function fetchData
      *

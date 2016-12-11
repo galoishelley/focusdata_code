@@ -380,7 +380,7 @@ $lang['Lang0301'] = 'End Date';
 //Page searchDoctor
 $lang['Lang0302'] = 'All available doctor list';
 $lang['Lang0303'] = 'Home';
-$lang['Lang0304'] = 'Search...';
+$lang['Lang0304'] = 'Advanced Search';
 $lang['Lang0305'] = 'Add to favorite Search';
 $lang['Lang0306'] = 'The earliest availalbe time';
 $lang['Lang0307'] = 'Appointment';
@@ -397,4 +397,11 @@ $lang['Lang0314'] = 'Register|Make an appointment';
 
 //Menu
 $lang['Lang0315'] = 'Welcome';
+$lang['Lang0316'] = 'Location';
+
+$lang['Lang0317'] = 'Search';
+$lang['Lang0318'] = 'Advanced Search';
+
+$lang['Lang0319'] = 'Appointment Date';
+
 ?>

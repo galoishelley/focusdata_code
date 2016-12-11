@@ -20,6 +20,8 @@ class SearchDoctor
 	{
 		session_start ();
 		$this->searchdoctor = new SearchDoctor_DB();
+		
+		
 		$this->_dbug = false;
 		// $this->user_name = $_SESSION ['fd_user_name'];
 		// $this->user_pwd = $_SESSION ['fd_user_pwd'];
@@ -105,7 +107,7 @@ class SearchDoctor
 				$this->index_search_view ();
 				break;
 			default :
-				$this->viewAll ();
+// 				$this->viewAll ();
 				//$this->getDataTime();
 				break;
 		}
@@ -120,6 +122,54 @@ class SearchDoctor
 		return $response;
 	}
 
+	
+	public function make_json($arr)
+	{
+		
+		$json = json_encode ($arr);
+		echo $json;
+		return;
+		$r1 = array();
+		foreach ($arr as $data) {
+			$x = $data['appointment_date'];
+			if (isset($r1[$x])) {
+				$r1[$x][] = $data;
+			} else {
+				$r1[$x] = array($data);
+			}
+		}
+		//print_r($r1);
+		
+		
+		foreach ($r1 as $k1=>$e1) {
+			$r2 = array();
+			foreach ($e1 as $e2) {
+				$x = $e2['doctor_id'];
+				if (isset($r2[$x])) {
+					$r2[$x][] = $e2;
+				} else {
+					$r2[$x] = array($e2);
+				}
+			}
+			foreach ($r2 as $k2=>$e3) {
+				foreach ($r2[$k2] as $e4)
+				{
+					$y = $e4['doctor_id'];
+				}
+			}
+			
+			$date=$r1[$k1][0]['appointment_date'];
+			unset($r1[$k1]);
+			$r1[$k1]['date']=$date;
+			$r1[$k1]['doctors']=array($r2);
+			
+		}
+		
+		$json = json_encode ($r1);
+		echo $json;
+		
+	}
+	
 	public function index_search_view()
 	{
 		$distance=0;
@@ -127,6 +177,12 @@ class SearchDoctor
 		$success = true;
 		$ret_msg = "";
 		$ret_code = "S00000"; //成功
+		
+		
+		
+		//print_r( $this->searchdoctor->index_search_sp($this->arr_values) );
+		$this->make_json($this->searchdoctor->index_search_sp($this->arr_values));
+		return;
 
 		// echo "-------start:".$this->start;
 		// echo "-------length:".$this->length;

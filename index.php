@@ -26,6 +26,14 @@ include_once 'classes/Language/language.common.php';
 <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 
 
+
+
+
+<link rel="stylesheet" href="css/easy-autocomplete.min.css"> 
+
+<link rel="stylesheet" href="css/easy-autocomplete.themes.min.css">
+
+
 <!--JS-->
 <script src="js/jquery.js"></script>
 <script src="js/jquery-migrate-1.2.1.min.js"></script>
@@ -76,77 +84,40 @@ include_once 'classes/Language/language.common.php';
                         <!-- <div class="index-form-bg">
                             <div class="index-form-txt">
                                 <div class='col-md-12'>    -->
-                                    <form class="form-inline" role="form" id="searchdoctor_form">
+                                    <form  role="form" id="searchdoctor_form">
                                         <input type="hidden" class="form-control" name="action_type" id="action_type" value="index_search">
                                         <input type="hidden" class="form-control" name="from_index" id="from_index" value="1">
                                         
-                                        <div class="form-group col-md-6">
-                                            <label for="CLINIC_SUBURB" class="col-md-3"><!-- 区--><?php echo $lang['Lang0040']; ?></label>
-                                            <!-- <div class="col-md-3"> -->
-                                                <input type="text" class="form-control" id="CLINIC_SUBURB" name="CLINIC_SUBURB" maxlength="50">
-                                            <!-- </div>   -->
-                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="DOCTOR_TYPE"><!-- 医生类别--><?php echo $lang['Lang0065']; ?></label>
+                                            
+                                            <label class="radio-inline"><input type="radio" name="DOCTOR_TYPE" value="GP" checked="checked">GP</label>
+											<label class="radio-inline"><input type="radio" name="DOCTOR_TYPE" value="Dentist">Dentist</label>
+											<label class="radio-inline"><input type="radio" name="DOCTOR_TYPE" value="Physio">Physio</label>
+											<label class="radio-inline"><input type="radio" name="DOCTOR_TYPE" value="Dermatologist">Dermatologist</label>
+											<label class="radio-inline"><input type="radio" name="DOCTOR_TYPE" value="Chiropractor">Chiropractor</label>
 
-                                        <div class="form-group col-md-6">
-                                            <label for="STATE_ID" class="col-md-3"><!-- 州--><?php echo $lang['Lang0041']; ?></label>
-                                            <select class="form-control" name="STATE_ID" id="STATE_ID">
-                                              <option value=""><!-- 全部--><?php echo $lang['Lang0042']; ?></option>
-                                            </select>
-                                        </div>
 
-                                        <div class="form-group col-md-6">
-                                            <label for="CLINIC_NAME" class="col-md-3"><!-- 诊所名称--><?php echo $lang['Lang0049']; ?></label>
-                                            <!-- <div class="col-md-3"> -->
-                                                <input type="text" class="form-control" id="CLINIC_NAME" name="CLINIC_NAME" >
-                                            <!-- </div>   -->
+                                       
+                                            
                                         </div>
                                         
-
-                                        <div class="form-group col-md-6">
-                                            <label for="DOCTOR_TYPE" class="col-md-3"><!-- 医生类别--><?php echo $lang['Lang0065']; ?></label>
-                                            <select class="form-control" name="DOCTOR_TYPE" id="DOCTOR_TYPE">
-                                              <option value=""><!-- 全部--><?php echo $lang['Lang0042']; ?></option>
-                                            </select>
+                                        
+                                        <div class="form-group">
+                                            <label for="CLINIC_SUBURB"><!-- 位置--><?php echo $lang['Lang0316']; ?></label>
+                                     
+                                                <input type="text" class="form-control" id="CLINIC_SUBURB" name="CLINIC_SUBURB" maxlength="300">
+                                         
                                         </div>
 
-                                        <div class="form-group col-md-6">
-                                            <label for="DOCTOR_NAME" class="col-md-3"><!-- 医生姓名--><?php echo $lang['Lang0064']; ?></label>
-                                            <!-- <div class="col-md-3"> -->
-                                                <input type="text" class="form-control" id="DOCTOR_NAME" name="DOCTOR_NAME">
-                                            <!-- </div> -->
-                                        </div>
-
-                                        <div class="form-group col-md-6">
-                                            <label for="distance" class="col-md-3"><!-- 医生距离--><?php echo $lang['Lang0298']; ?></label>
-                                            <!-- <div class="col-md-3"> -->
-                                                <select class="form-control" id="DISTANCE" name="DISTANCE">
-                                                    <option value=""><!-- All--><?php echo $lang['Lang0042']; ?></option>
-                                                    <option value="5km">5km</option>
-                                                    <option value="10km">10km</option>
-                                                    <option value="20km">20km</option>
-                                                </select>
-                                            <!-- </div> -->
-                                        </div>
-
-                                        <div class="form-group col-md-6">
-                                            <label for="APPOINTMENT_DATE_BEGIN" class="col-md-3"><!-- 预约日期开始--><?php echo $lang['Lang0300']; ?></label>
-                                            <!-- <div class="col-md-3"> -->
-                                                <input type="text" class="form-control form_datetime" id="APPOINTMENT_DATE_BEGIN" name="APPOINTMENT_DATE_BEGIN">
-                                            <!-- </div> -->
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="APPOINTMENT_DATE_END" class="col-md-3"><!-- 预约日期结束--><?php echo $lang['Lang0301']; ?></label>
-                                            <!-- <div class="col-md-3"> -->
-                                                <input type="text" class="form-control form_datetime" id="APPOINTMENT_DATE_END" name="APPOINTMENT_DATE_END">
-                                            <!-- </div> -->
-                                        </div>
+                                        
                                         
                                     </form>
                                     <div class="row btn_index">
-                                       <!--  <a class="btn btn-success" href="userSaveSearch.php">常用搜索条件管理</a>
-                                        <button type="button" class="btn btn-warning" id="btn_save" >保存为常用搜索条件</button>
-                                         <button type="button" class="btn btn-info">保存为常用搜索条件</button> -->
-                                        <button type="button" class="btn btn-primary" id="btn_search" ><!-- 搜索医生--><?php echo $lang['Lang0172']; ?></button>
+
+                                        <button type="button" class="btn btn-primary" id="btn_search" ><!-- 一般搜索--><?php echo $lang['Lang0317']; ?></button>
+                                         <!-- <button type="button" class="btn btn-primary" id="btn_search_advanced" ><!-- 高级搜索--><?php echo $lang['Lang0318']; ?></button>-->
                                     </div>
                                <!--  </div> -->
                             <!-- </div>不透明文字  -->
@@ -178,6 +149,9 @@ include_once 'classes/Language/For_JS_multi_lang.php';
 
 <script src="js/tm-scripts.js"></script>
 <script src="js/jquery.cookie.js"></script>
+
+<script src="js/jquery.easy-autocomplete.min.js"></script> 
+
 <script src="js/main/pub.js"></script>
 <script src="js/main/index.js"></script>
 

@@ -33,6 +33,28 @@
 <!-- 请选择预约时间段 -->
 <div id="Lang0173" style="display: none;"><?php echo $lang['Lang0173']; ?></div>
 
+<!-- 用户名不能为空 -->
+<div id="Lang0174" style="display: none;"><?php echo $lang['Lang0174']; ?></div>
+<!-- 密码不能为空 -->
+<div id="Lang0175" style="display: none;"><?php echo $lang['Lang0175']; ?></div>
+<!-- 验证码不能为空-->
+<div id="Lang0176" style="display: none;"><?php echo $lang['Lang0176']; ?></div>
+<!-- 性别不能为空 -->
+<div id="Lang0177" style="display: none;"><?php echo $lang['Lang0177']; ?></div>
+<!-- 生日不能为空 -->
+<div id="Lang0178" style="display: none;"><?php echo $lang['Lang0178']; ?></div>
+<!-- 用户地址不能为空 -->
+<div id="Lang0179" style="display: none;"><?php echo $lang['Lang0179']; ?></div>
+<!-- 手机号码不能为空 -->
+<div id="Lang0180" style="display: none;"><?php echo $lang['Lang0180']; ?></div>
+<!-- 医疗卡号不能为空 -->
+<div id="Lang0181" style="display: none;"><?php echo $lang['Lang0181']; ?></div>
+
+
+
+
+
+
 <!-- 两次密码输入不一致 -->
 <div id="Lang0207" style="display: none;"><?php echo $lang['Lang0207']; ?></div>
 

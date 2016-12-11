@@ -922,11 +922,7 @@ $(function(){
       return false;
     }
 
-    // var bootstrapValidator = $("#appointmentDoctor_form").data('bootstrapValidator');
-    // bootstrapValidator.validate();
-    // if(bootstrapValidator.isValid()){
-    //   $("#appointmentDoctor_form").submit();
-    // }
+
     var time_id="";
     //选中时间段
     var radio_txt = $("input[name=app_time_radio]:checked").val();

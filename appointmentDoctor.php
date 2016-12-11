@@ -212,10 +212,17 @@ include_once 'classes/Language/language.common.php';
                     <button type="button" class="btn btn-default" data-dismiss="modal"><!-- Close--><?php echo $lang['Lang0139']; ?></button>
                     <button type="button" class="btn btn-primary" id="btn_signin" ><!-- 注册|预约医生--><?php echo $lang['Lang0314']; ?></button>
                 </div>
+
+            </div>
+        </div>
+    </div>
+
+
             </div><!-- /.modal-content-->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 </div>
+
 
 <!--footer-->
 <?php
