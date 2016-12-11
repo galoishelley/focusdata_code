@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 01, 2016 at 07:04 PM
+-- Generation Time: Dec 11, 2016 at 04:52 PM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
@@ -15,9 +15,83 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 
+
 --
 -- Database: `focusdata`
 --
+
+DELIMITER $$
+--
+-- Procedures
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_get7daysTimeslots` (IN `dateIN` DATE, IN `suburbIN` VARCHAR(50), IN `postcodeIN` VARCHAR(50), IN `stateIN` VARCHAR(50), IN `doctorTypeIN` VARCHAR(50), IN `clinicNameIN` VARCHAR(100), IN `doctorNameIN` VARCHAR(100))  READS SQL DATA
+BEGIN 
+  IF ( datein >= CURRENT_DATE() + 4 ) THEN 
+    SELECT t1.appointment_date, 
+    		t1.doctor_id,
+           t2.doctor_photo, 
+           t2.doctor_name, 
+           t4.clinic_name, 
+           t4.clinic_addr, 
+           t1.appointment_time 
+    FROM   fd_rel_doctor_appointment_time t1 
+           LEFT JOIN fd_doctor t2 
+                  ON t1.doctor_id = t2.doctor_id 
+           LEFT JOIN fd_rel_clinic_doctor t3 
+                  ON t2.doctor_id = t3.doctor_id 
+           LEFT JOIN fd_clinic_user t4 
+                  ON t3.clinic_user_id = t4.clinic_user_id
+           left join fd_dict_state t5
+           			on t4.STATE_ID=t5.STATE_ID
+    WHERE  t1.active_status = 1 
+           AND t1.appointment_date >= datein - 3 
+           AND t1.appointment_date <= datein + 3 
+           AND CONCAT(t1.appointment_date, ' ', t1.appointment_time) > Now() 
+           AND (t5.STATE_NAME=stateIN or stateIN='')
+           AND (t4.CLINIC_SUBURB=suburbIN or suburbIN='')
+           AND (t4.CLINIC_POSTCODE=postcodeIN or postcodeIN='')
+           and (t2.DOCTOR_TYPE=doctorTypeIN or doctorTypeIN='')
+           and (t4.CLINIC_NAME=clinicNameIN or clinicNameIN='')
+           and (t2.DOCTOR_NAME= doctorNameIN or doctorNameIN='')
+    ORDER BY t1.appointment_date asc, 
+              t1.doctor_id asc,
+              t1.APPOINTMENT_TIME asc; 
+  ELSE 
+    SELECT t1.appointment_date, 
+    t1.doctor_id,
+           t2.doctor_photo, 
+           t2.doctor_name, 
+           t4.clinic_name, 
+           t4.clinic_addr, 
+           t1.appointment_time 
+    FROM   fd_rel_doctor_appointment_time t1 
+           LEFT JOIN fd_doctor t2 
+                  ON t1.doctor_id = t2.doctor_id 
+           LEFT JOIN fd_rel_clinic_doctor t3 
+                  ON t2.doctor_id = t3.doctor_id 
+           LEFT JOIN fd_clinic_user t4 
+                  ON t3.clinic_user_id = t4.clinic_user_id 
+           left join fd_dict_state t5
+           			on t4.STATE_ID=t5.STATE_ID
+    WHERE  t1.active_status = 1 
+           AND t1.appointment_date >= CURRENT_DATE() 
+           AND t1.appointment_date <= datein + 6 
+           AND CONCAT(t1.appointment_date, ' ', t1.appointment_time) > Now() 
+           AND (t5.STATE_NAME=stateIN or stateIN='')
+           AND (t4.CLINIC_SUBURB=suburbIN or suburbIN='')
+           AND (t4.CLINIC_POSTCODE=postcodeIN or postcodeIN='')
+           and (t2.DOCTOR_TYPE=doctorTypeIN or doctorTypeIN='')
+           and (t4.CLINIC_NAME=clinicNameIN or clinicNameIN='')
+           and (t2.DOCTOR_NAME= doctorNameIN or doctorNameIN='')
+    ORDER BY t1.appointment_date asc, 
+              t1.doctor_id asc,
+              t1.APPOINTMENT_TIME asc; 
+  END IF; 
+  
+
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -25,7 +99,6 @@ SET time_zone = "+00:00";
 -- Table structure for table `ap_patient`
 --
 
-DROP TABLE IF EXISTS `ap_patient`;
 CREATE TABLE `ap_patient` (
   `id` int(11) NOT NULL,
   `CUSTOMER_USER_ID` int(11) NOT NULL,
@@ -45,17 +118,19 @@ CREATE TABLE `ap_patient` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Truncate table before insert `ap_patient`
+-- Dumping data for table `ap_patient`
 --
 
-TRUNCATE TABLE `ap_patient`;
+INSERT INTO `ap_patient` (`id`, `CUSTOMER_USER_ID`, `title`, `first_name`, `last_name`, `gender`, `dob`, `email`, `phone_mobile`, `medicare_no`, `medicare_ref`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
+(22, 184, 'Mr', 'x', 'x', 'M', '11/11/1983', 'fudanyinxin@gmail.com', '0412341234', '1231231231', '1', 'fudanyinxin@gmail.com', '2016-10-03 18:42:22', '', '0000-00-00 00:00:00'),
+(23, 187, 'Mr', 'xin', 'yin', 'M', '11/11/1983', 'fudanyinxin@gmail.com', '0412341234', '1231231231', '1', 'fudanyinxin@gmail.com', '2016-12-02 09:59:13', '', '0000-00-00 00:00:00');
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `fd_admin`
 --
 
-DROP TABLE IF EXISTS `fd_admin`;
 CREATE TABLE `fd_admin` (
   `ADMIN_ID` int(11) NOT NULL,
   `ADMIN_NAME` varchar(50) NOT NULL,
@@ -66,11 +141,6 @@ CREATE TABLE `fd_admin` (
   `UPDATE_DATE` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Truncate table before insert `fd_admin`
---
-
-TRUNCATE TABLE `fd_admin`;
 --
 -- Dumping data for table `fd_admin`
 --
@@ -84,7 +154,6 @@ INSERT INTO `fd_admin` (`ADMIN_ID`, `ADMIN_NAME`, `ADMIN_PWD`, `CREATE_USER`, `C
 -- Table structure for table `fd_clinic_user`
 --
 
-DROP TABLE IF EXISTS `fd_clinic_user`;
 CREATE TABLE `fd_clinic_user` (
   `CLINIC_USER_ID` int(11) NOT NULL,
   `CLINIC_USER_NAME` varchar(50) NOT NULL,
@@ -104,16 +173,11 @@ CREATE TABLE `fd_clinic_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Truncate table before insert `fd_clinic_user`
---
-
-TRUNCATE TABLE `fd_clinic_user`;
---
 -- Dumping data for table `fd_clinic_user`
 --
 
 INSERT INTO `fd_clinic_user` (`CLINIC_USER_ID`, `CLINIC_USER_NAME`, `CLINIC_USER_PWD`, `CLINIC_USER_MAIL`, `CLINIC_NAME`, `CLINIC_ADDR`, `CLINIC_POSTCODE`, `CLINIC_SUBURB`, `STATE_ID`, `ACTIVE_STATUS`, `NOTE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
-(1, 'shelleymyl', '21232f297a57a5a743894a0e4a801fc3', 'shelleymyl@gmail.com11', '中华人民共和国吉林省长春市吉林大学第一医院', '1 Kangerong Rd', '130066', 'Box Hill', 5, 0, NULL, 'shelleymyl', '2016-08-13 12:11:10', 'admin', '2016-09-24 17:38:31'),
+(1, 'shelleymyl', '21232f297a57a5a743894a0e4a801fc3', 'shelleymyl@gmail.com11', 'Clinic for test 1 Whitehorse Road', '1 Whitehorse Road', '3128', 'Box Hill', 7, 1, NULL, 'shelleymyl', '2016-08-13 12:11:10', 'admin', '2016-09-24 17:38:31'),
 (2, 'shelleymyl', '3d9017e3b14d093e63b205487bee0354', 'shelleymyl@gmail.com', '市诊所', '146-148 Glebe Point Road', '130012', 'Glebe', 2, 0, NULL, 'shelleymyl', '2016-08-13 12:11:39', 'admin', '2016-09-11 21:50:55'),
 (3, 'shelleymylee1', '80db46b43939c503e20d5c28b61a689e', 'shelleymyl@gmail.com', '朝阳区诊所1', '朝阳区1', '130012', '绿园区', 8, 0, NULL, 'shelleymyl', '2016-08-13 12:11:50', 'admin', '2016-09-11 21:50:22'),
 (4, 'shelleymyl221', 'myl1102', 'shelleymyl@gmail.com1', '绿园区诊所1', '绿园区1', '130012', '绿园区', 2, 0, NULL, 'shelleymyl', '2016-08-15 12:08:47', 'admin', '2016-09-01 16:20:53'),
@@ -140,7 +204,6 @@ INSERT INTO `fd_clinic_user` (`CLINIC_USER_ID`, `CLINIC_USER_NAME`, `CLINIC_USER
 -- Table structure for table `fd_customer_user`
 --
 
-DROP TABLE IF EXISTS `fd_customer_user`;
 CREATE TABLE `fd_customer_user` (
   `CUSTOMER_USER_ID` int(11) NOT NULL,
   `CUSTOMER_USER_NAME` varchar(50) NOT NULL,
@@ -164,27 +227,29 @@ CREATE TABLE `fd_customer_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Truncate table before insert `fd_customer_user`
+-- Dumping data for table `fd_customer_user`
 --
 
-TRUNCATE TABLE `fd_customer_user`;
+INSERT INTO `fd_customer_user` (`CUSTOMER_USER_ID`, `CUSTOMER_USER_NAME`, `CUSTOMER_USER_PWD`, `CUSTOMER_USER_MAIL`, `CUSTOMER_NAME`, `CUSTOMER_GENDER`, `CUSTOMER_BIRTHDAY`, `CUSTOMER_ADDR`, `CUSTOMER_POSTCODE`, `CUSTOMER_SUBURB`, `STATE_ID`, `CUSTOMER_PHONE_NO`, `MEDICAL_CARD_NO`, `ACTIVE_STATUS`, `NOTE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
+(185, 'kitty', 'cd880b726e0a0dbd4237f10d15da46f4', 'kitty@gmail.com', 'kitty', 'Female', '1', '1', '1', '1', 3, '1514416056', '1', 1, '', 'kitty', '2016-11-12 07:33:35', 'kitty', '2016-11-12 07:33:35'),
+(186, 'dodo', '721c6ff80a6d3e4ad4ffa52a04c60085', 'dodo', 'dodo', 'Male', '1', '1', '1', '1', 3, '1', '1', 1, '', 'dodo', '2016-11-12 07:46:31', 'dodo', '2016-11-12 07:46:31'),
+(187, 'fudanyinxin@gmail.com', '3b5fa279e25dbae4e5535c97535d4cde', 'fudanyinxin@gmail.com', 'xin yin', 'M', '1983-11-11', '', '', '', 1, '0412341234', '1231231231', 1, '', 'xin yin', '2016-12-02 09:59:13', '', '0000-00-00 00:00:00'),
+(188, 'orochigalois', '3b5fa279e25dbae4e5535c97535d4cde', 'fudanyinxin@gmail.com', '1', 'Male', '1', '1', '1', '1', 3, '1', '1', 1, '', 'orochigalois', '2016-12-11 12:34:54', 'orochigalois', '2016-12-11 12:34:54'),
+(189, 'qwe', '3b5fa279e25dbae4e5535c97535d4cde', 'fudanyinxin@gmail.com', '1', 'Male', '1', '1', '1', '1', 3, '1', '1', 1, '', 'qwe', '2016-12-11 12:46:10', 'qwe', '2016-12-11 12:46:10'),
+(190, 'lop', '3b5fa279e25dbae4e5535c97535d4cde', 'fudanyinxin@gmail.com', '1', 'Male', '1', '1', '1', '1', 3, '1', '1', 1, '', 'lop', '2016-12-11 12:51:10', 'lop', '2016-12-11 12:51:10'),
+(191, 'dongfangbubai', '3b5fa279e25dbae4e5535c97535d4cde', 'fudanyinxin@gmail.com', '1', 'Male', '1', '1', '1', '1', 3, '1', '1', 1, '', 'dongfangbubai', '2016-12-11 12:53:36', 'dongfangbubai', '2016-12-11 12:53:36');
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `fd_dict_appointment_status`
 --
 
-DROP TABLE IF EXISTS `fd_dict_appointment_status`;
 CREATE TABLE `fd_dict_appointment_status` (
   `APPOINTMENT_STATUS_ID` int(11) NOT NULL,
   `APPOINTMENT_STATUS` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Truncate table before insert `fd_dict_appointment_status`
---
-
-TRUNCATE TABLE `fd_dict_appointment_status`;
 --
 -- Dumping data for table `fd_dict_appointment_status`
 --
@@ -201,34 +266,22 @@ INSERT INTO `fd_dict_appointment_status` (`APPOINTMENT_STATUS_ID`, `APPOINTMENT_
 -- Table structure for table `fd_dict_log_type`
 --
 
-DROP TABLE IF EXISTS `fd_dict_log_type`;
 CREATE TABLE `fd_dict_log_type` (
   `LOG_TYPE_ID` int(11) NOT NULL,
   `LOG_TYPE` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Truncate table before insert `fd_dict_log_type`
---
-
-TRUNCATE TABLE `fd_dict_log_type`;
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `fd_dict_search`
 --
 
-DROP TABLE IF EXISTS `fd_dict_search`;
 CREATE TABLE `fd_dict_search` (
   `SEARCH_ID` int(11) NOT NULL,
   `SEARCH_CONTENT` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Truncate table before insert `fd_dict_search`
---
-
-TRUNCATE TABLE `fd_dict_search`;
 --
 -- Dumping data for table `fd_dict_search`
 --
@@ -247,18 +300,12 @@ INSERT INTO `fd_dict_search` (`SEARCH_ID`, `SEARCH_CONTENT`) VALUES
 -- Table structure for table `fd_dict_state`
 --
 
-DROP TABLE IF EXISTS `fd_dict_state`;
 CREATE TABLE `fd_dict_state` (
   `STATE_ID` int(11) NOT NULL,
   `STATE_NAME` varchar(50) NOT NULL,
   `STATE_POSTCODE` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Truncate table before insert `fd_dict_state`
---
-
-TRUNCATE TABLE `fd_dict_state`;
 --
 -- Dumping data for table `fd_dict_state`
 --
@@ -279,7 +326,6 @@ INSERT INTO `fd_dict_state` (`STATE_ID`, `STATE_NAME`, `STATE_POSTCODE`) VALUES
 -- Table structure for table `fd_doctor`
 --
 
-DROP TABLE IF EXISTS `fd_doctor`;
 CREATE TABLE `fd_doctor` (
   `DOCTOR_ID` int(11) NOT NULL,
   `DOCTOR_TYPE` varchar(50) NOT NULL,
@@ -289,6 +335,7 @@ CREATE TABLE `fd_doctor` (
   `DOCTOR_PHOTO` varchar(200) NOT NULL,
   `DOCTOR_INFO` varchar(2000) NOT NULL,
   `NOTE` varchar(200) NOT NULL,
+  `DOCTOR_ID_IMPORT` int(11) NOT NULL,
   `CREATE_USER` varchar(50) NOT NULL,
   `CREATE_DATE` datetime NOT NULL,
   `UPDATE_USER` varchar(50) NOT NULL,
@@ -296,19 +343,14 @@ CREATE TABLE `fd_doctor` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Truncate table before insert `fd_doctor`
---
-
-TRUNCATE TABLE `fd_doctor`;
---
 -- Dumping data for table `fd_doctor`
 --
 
-INSERT INTO `fd_doctor` (`DOCTOR_ID`, `DOCTOR_TYPE`, `DOCTOR_NAME`, `DOCTOR_GENDER`, `ACTIVE_STATUS`, `DOCTOR_PHOTO`, `DOCTOR_INFO`, `NOTE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
-(1, '三国', '华佗', '', 1, 'test_huatuo.jpg', '', '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(2, '春秋战国', '扁鹊', '', 1, 'test_bianque.jpg', '', '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(3, '唐医', '孙思邈', '', 1, 'test_sunsimiao.jpg', '', '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(4, '明医', '李时珍', '', 1, 'test_lishizhen.jpg', '', '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00');
+INSERT INTO `fd_doctor` (`DOCTOR_ID`, `DOCTOR_TYPE`, `DOCTOR_NAME`, `DOCTOR_GENDER`, `ACTIVE_STATUS`, `DOCTOR_PHOTO`, `DOCTOR_INFO`, `NOTE`, `DOCTOR_ID_IMPORT`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
+(61337, 'GP', '孙思邈', '', 1, 'img/doctors/test_sunsimiao.jpg', '', '', 6, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(61338, 'GP', '华佗', '', 1, 'img/doctors/test_huatuo.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(61339, 'GP', '扁鹊', '', 1, 'img/doctors/test_bianque.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(61340, 'GP', '李时珍', '', 1, 'img/doctors/test_lishizhen.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -316,7 +358,6 @@ INSERT INTO `fd_doctor` (`DOCTOR_ID`, `DOCTOR_TYPE`, `DOCTOR_NAME`, `DOCTOR_GEND
 -- Table structure for table `fd_function`
 --
 
-DROP TABLE IF EXISTS `fd_function`;
 CREATE TABLE `fd_function` (
   `FUNCTION_ID` int(11) NOT NULL,
   `FUNCTION_CODE` varchar(50) NOT NULL,
@@ -328,18 +369,12 @@ CREATE TABLE `fd_function` (
   `UPDATE_DATE` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Truncate table before insert `fd_function`
---
-
-TRUNCATE TABLE `fd_function`;
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `fd_log`
 --
 
-DROP TABLE IF EXISTS `fd_log`;
 CREATE TABLE `fd_log` (
   `LOG_ID` int(11) NOT NULL,
   `LOG_TYPE_ID` int(11) NOT NULL,
@@ -352,18 +387,12 @@ CREATE TABLE `fd_log` (
   `UPDATE_DATE` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Truncate table before insert `fd_log`
---
-
-TRUNCATE TABLE `fd_log`;
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `fd_rel_clinic_doctor`
 --
 
-DROP TABLE IF EXISTS `fd_rel_clinic_doctor`;
 CREATE TABLE `fd_rel_clinic_doctor` (
   `CLINIC_DOCTOR_ID` int(11) NOT NULL,
   `CLINIC_USER_ID` int(11) NOT NULL,
@@ -375,19 +404,14 @@ CREATE TABLE `fd_rel_clinic_doctor` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Truncate table before insert `fd_rel_clinic_doctor`
---
-
-TRUNCATE TABLE `fd_rel_clinic_doctor`;
---
 -- Dumping data for table `fd_rel_clinic_doctor`
 --
 
 INSERT INTO `fd_rel_clinic_doctor` (`CLINIC_DOCTOR_ID`, `CLINIC_USER_ID`, `DOCTOR_ID`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
-(1, 1, 1, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(2, 2, 2, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(3, 1, 3, 'admin', '2016-08-22 00:00:00', 'admin', '2016-08-22 00:00:00'),
-(4, 2, 4, 'admin', '2016-08-22 00:00:00', 'admin', '2016-08-22 00:00:00'),
+(1, 1, 61337, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
+(2, 1, 61338, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
+(3, 1, 61339, 'admin', '2016-08-22 00:00:00', 'admin', '2016-08-22 00:00:00'),
+(4, 1, 61340, 'admin', '2016-08-22 00:00:00', 'admin', '2016-08-22 00:00:00'),
 (5, 2, 5, 'admin', '2016-08-22 00:00:00', 'admin', '2016-08-22 00:00:00'),
 (6, 3, 6, 'admin', '2016-08-22 00:00:00', 'admin', '2016-08-22 00:00:00'),
 (7, 2, 7, 'admin', '2016-08-22 00:00:00', 'admin', '2016-08-22 00:00:00'),
@@ -402,7 +426,6 @@ INSERT INTO `fd_rel_clinic_doctor` (`CLINIC_DOCTOR_ID`, `CLINIC_USER_ID`, `DOCTO
 -- Table structure for table `fd_rel_customer_appointment`
 --
 
-DROP TABLE IF EXISTS `fd_rel_customer_appointment`;
 CREATE TABLE `fd_rel_customer_appointment` (
   `CUSTOMER_APPOINTMENT_ID` int(11) NOT NULL,
   `CUSTOMER_USER_ID` int(11) NOT NULL,
@@ -416,18 +439,12 @@ CREATE TABLE `fd_rel_customer_appointment` (
   `UPDATE_DATE` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Truncate table before insert `fd_rel_customer_appointment`
---
-
-TRUNCATE TABLE `fd_rel_customer_appointment`;
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `fd_rel_customer_appointment_his`
 --
 
-DROP TABLE IF EXISTS `fd_rel_customer_appointment_his`;
 CREATE TABLE `fd_rel_customer_appointment_his` (
   `CUSTOMER_APPOINTMENT_ID` int(11) NOT NULL,
   `CUSTOMER_USER_ID` int(11) NOT NULL,
@@ -443,17 +460,37 @@ CREATE TABLE `fd_rel_customer_appointment_his` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Truncate table before insert `fd_rel_customer_appointment_his`
+-- Dumping data for table `fd_rel_customer_appointment_his`
 --
 
-TRUNCATE TABLE `fd_rel_customer_appointment_his`;
+INSERT INTO `fd_rel_customer_appointment_his` (`CUSTOMER_APPOINTMENT_ID`, `CUSTOMER_USER_ID`, `DOCTOR_ID`, `DOCTOR_APPOINTMENT_TIME_ID`, `APPOINTMENT_STATUS_ID`, `OPERATOR_STATUS`, `NOTE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
+(85, 184, 1, 36, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-10-03 18:42:45', 'fudanyinxin@gmail.com', '2016-10-03 18:42:45'),
+(86, 184, 1, 37, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-10-03 18:43:02', 'fudanyinxin@gmail.com', '2016-10-03 18:43:02'),
+(87, 185, 61337, 15068, '1', 'A', '', 'kitty', '2016-11-12 07:33:36', 'kitty', '2016-11-12 07:33:36'),
+(88, 186, 61337, 15130, '1', 'A', '', 'dodo', '2016-11-12 07:46:31', 'dodo', '2016-11-12 07:46:31'),
+(89, 187, 61337, 15132, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-11 06:29:43', 'fudanyinxin@gmail.com', '2016-12-11 06:29:43'),
+(90, 187, 0, 15132, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-11 06:32:26', 'fudanyinxin@gmail.com', '2016-12-11 06:32:26'),
+(91, 187, 61337, 15184, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-11 09:05:02', 'fudanyinxin@gmail.com', '2016-12-11 09:05:02'),
+(92, 187, 61337, 15190, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-11 09:06:26', 'fudanyinxin@gmail.com', '2016-12-11 09:06:26'),
+(93, 187, 61337, 15198, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-11 09:17:24', 'fudanyinxin@gmail.com', '2016-12-11 09:17:24'),
+(94, 187, 61337, 15191, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-11 09:46:33', 'fudanyinxin@gmail.com', '2016-12-11 09:46:33'),
+(95, 187, 61337, 15192, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-11 09:49:01', 'fudanyinxin@gmail.com', '2016-12-11 09:49:01'),
+(96, 187, 61337, 15193, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-11 09:49:14', 'fudanyinxin@gmail.com', '2016-12-11 09:49:14'),
+(97, 187, 61337, 15194, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-11 09:49:22', 'fudanyinxin@gmail.com', '2016-12-11 09:49:22'),
+(98, 187, 61337, 15195, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-11 09:49:33', 'fudanyinxin@gmail.com', '2016-12-11 09:49:33'),
+(99, 187, 61337, 15196, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-11 11:07:26', 'fudanyinxin@gmail.com', '2016-12-11 11:07:26'),
+(100, 189, 0, 15197, '1', 'A', '', 'qwe', '2016-12-11 12:49:48', 'qwe', '2016-12-11 12:49:48'),
+(101, 189, 61337, 15197, '1', 'A', '', 'qwe', '2016-12-11 12:49:51', 'qwe', '2016-12-11 12:49:51'),
+(102, 190, 61339, 15187, '1', 'A', '', 'lop', '2016-12-11 12:51:40', 'lop', '2016-12-11 12:51:40'),
+(103, 191, 61339, 15189, '1', 'A', '', 'dongfangbubai', '2016-12-11 12:53:36', 'dongfangbubai', '2016-12-11 12:53:36'),
+(104, 191, 61337, 15134, '1', 'A', '', 'dongfangbubai', '2016-12-11 12:53:54', 'dongfangbubai', '2016-12-11 12:53:54');
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `fd_rel_customer_doctor`
 --
 
-DROP TABLE IF EXISTS `fd_rel_customer_doctor`;
 CREATE TABLE `fd_rel_customer_doctor` (
   `CUSTOMER_DOCTOR_ID` int(11) NOT NULL,
   `CUSTOMER_USER_ID` int(11) NOT NULL,
@@ -465,18 +502,12 @@ CREATE TABLE `fd_rel_customer_doctor` (
   `UPDATE_DATE` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Truncate table before insert `fd_rel_customer_doctor`
---
-
-TRUNCATE TABLE `fd_rel_customer_doctor`;
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `fd_rel_doctor_appointment_time`
 --
 
-DROP TABLE IF EXISTS `fd_rel_doctor_appointment_time`;
 CREATE TABLE `fd_rel_doctor_appointment_time` (
   `DOCTOR_APPOINTMENT_TIME_ID` int(11) NOT NULL,
   `DOCTOR_ID` int(11) NOT NULL,
@@ -484,6 +515,9 @@ CREATE TABLE `fd_rel_doctor_appointment_time` (
   `APPOINTMENT_TIME` time NOT NULL,
   `ACTIVE_STATUS` int(11) NOT NULL,
   `NOTE` varchar(200) NOT NULL,
+  `REQUESTING_FLAG` int(11) NOT NULL,
+  `REQUESTING_USER_ID` int(11) NOT NULL,
+  `SUCCESSFUL_FLAG` int(11) NOT NULL,
   `CREATE_USER` varchar(50) NOT NULL,
   `CREATE_DATE` datetime NOT NULL,
   `UPDATE_USER` varchar(50) NOT NULL,
@@ -491,79 +525,52 @@ CREATE TABLE `fd_rel_doctor_appointment_time` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Truncate table before insert `fd_rel_doctor_appointment_time`
---
-
-TRUNCATE TABLE `fd_rel_doctor_appointment_time`;
---
 -- Dumping data for table `fd_rel_doctor_appointment_time`
 --
 
-INSERT INTO `fd_rel_doctor_appointment_time` (`DOCTOR_APPOINTMENT_TIME_ID`, `DOCTOR_ID`, `APPOINTMENT_DATE`, `APPOINTMENT_TIME`, `ACTIVE_STATUS`, `NOTE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
-(36, 1, '2016-10-08', '09:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:54'),
-(37, 1, '2016-10-08', '10:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-09-30 13:32:51'),
-(38, 1, '2016-10-08', '14:00:00', 1, '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(39, 1, '2016-10-08', '15:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:52'),
-(41, 1, '2016-10-09', '09:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:54'),
-(42, 1, '2016-10-09', '10:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-09-30 13:32:51'),
-(43, 1, '2016-10-09', '14:00:00', 1, '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(44, 1, '2016-10-09', '15:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:52'),
-(45, 1, '2016-10-10', '09:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:54'),
-(46, 1, '2016-10-10', '10:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-09-30 13:32:51'),
-(47, 1, '2016-10-10', '14:00:00', 1, '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(48, 1, '2016-10-10', '15:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:52'),
-(49, 1, '2016-10-11', '09:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:54'),
-(50, 1, '2016-10-11', '10:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-09-30 13:32:51'),
-(51, 1, '2016-10-11', '14:00:00', 1, '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(52, 1, '2016-10-11', '15:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:52'),
-(53, 2, '2016-10-08', '09:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:54'),
-(54, 2, '2016-10-08', '10:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-09-30 13:32:51'),
-(55, 2, '2016-10-08', '14:00:00', 1, '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(56, 2, '2016-10-08', '15:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:52'),
-(57, 2, '2016-10-09', '09:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:54'),
-(58, 2, '2016-10-09', '10:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-09-30 13:32:51'),
-(59, 2, '2016-10-09', '14:00:00', 1, '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(60, 2, '2016-10-09', '15:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:52'),
-(61, 2, '2016-10-10', '09:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:54'),
-(62, 2, '2016-10-10', '10:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-09-30 13:32:51'),
-(63, 2, '2016-10-10', '14:00:00', 1, '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(64, 2, '2016-10-10', '15:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:52'),
-(65, 2, '2016-10-11', '09:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:54'),
-(66, 2, '2016-10-11', '10:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-09-30 13:32:51'),
-(67, 2, '2016-10-11', '14:00:00', 1, '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(68, 2, '2016-10-11', '15:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:52'),
-(69, 3, '2016-10-08', '09:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:54'),
-(70, 3, '2016-10-08', '10:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-09-30 13:32:51'),
-(71, 3, '2016-10-08', '14:00:00', 1, '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(72, 3, '2016-10-08', '15:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:52'),
-(73, 3, '2016-10-09', '09:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:54'),
-(74, 3, '2016-10-09', '10:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-09-30 13:32:51'),
-(75, 3, '2016-10-09', '14:00:00', 1, '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(76, 3, '2016-10-09', '15:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:52'),
-(77, 3, '2016-10-10', '09:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:54'),
-(78, 3, '2016-10-10', '10:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-09-30 13:32:51'),
-(79, 3, '2016-10-10', '14:00:00', 1, '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(80, 3, '2016-10-10', '15:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:52'),
-(81, 3, '2016-10-11', '09:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:54'),
-(82, 3, '2016-10-11', '10:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-09-30 13:32:51'),
-(83, 3, '2016-10-11', '14:00:00', 1, '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(84, 3, '2016-10-11', '15:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:52'),
-(85, 4, '2016-10-08', '09:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:54'),
-(86, 4, '2016-10-08', '10:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-09-30 13:32:51'),
-(87, 4, '2016-10-08', '14:00:00', 1, '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(88, 4, '2016-10-08', '15:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:52'),
-(89, 4, '2016-10-09', '09:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:54'),
-(90, 4, '2016-10-09', '10:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-09-30 13:32:51'),
-(91, 4, '2016-10-09', '14:00:00', 1, '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(92, 4, '2016-10-09', '15:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:52'),
-(93, 4, '2016-10-10', '09:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:54'),
-(94, 4, '2016-10-10', '10:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-09-30 13:32:51'),
-(95, 4, '2016-10-10', '14:00:00', 1, '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(96, 4, '2016-10-10', '15:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:52'),
-(97, 4, '2016-10-11', '09:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:54'),
-(98, 4, '2016-10-11', '10:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-09-30 13:32:51'),
-(99, 4, '2016-10-11', '14:00:00', 1, '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(100, 4, '2016-10-11', '15:00:00', 1, '', '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-10-01 15:13:52');
+INSERT INTO `fd_rel_doctor_appointment_time` (`DOCTOR_APPOINTMENT_TIME_ID`, `DOCTOR_ID`, `APPOINTMENT_DATE`, `APPOINTMENT_TIME`, `ACTIVE_STATUS`, `NOTE`, `REQUESTING_FLAG`, `REQUESTING_USER_ID`, `SUCCESSFUL_FLAG`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
+(15124, 61337, '2016-12-14', '09:00:00', 1, '', 0, 0, 2, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15125, 61337, '2016-12-14', '10:00:00', 1, '', 0, 0, 1, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15126, 61337, '2016-12-14', '11:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15127, 61337, '2016-12-14', '13:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15128, 61337, '2016-12-14', '14:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15129, 61337, '2016-12-14', '15:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15199, 61338, '2016-12-14', '09:00:00', 1, '', 0, 0, 2, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15200, 61338, '2016-12-14', '10:00:00', 1, '', 0, 0, 1, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15201, 61338, '2016-12-14', '11:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15202, 61338, '2016-12-14', '13:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15203, 61338, '2016-12-14', '14:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15204, 61338, '2016-12-14', '15:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15205, 61339, '2016-12-14', '09:00:00', 1, '', 0, 0, 2, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15206, 61339, '2016-12-14', '10:00:00', 1, '', 0, 0, 1, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15207, 61339, '2016-12-14', '11:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15208, 61339, '2016-12-14', '13:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15209, 61339, '2016-12-14', '14:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15210, 61339, '2016-12-14', '15:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15211, 61340, '2016-12-14', '09:00:00', 1, '', 0, 0, 2, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15212, 61340, '2016-12-14', '10:00:00', 1, '', 0, 0, 1, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15213, 61340, '2016-12-14', '11:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15214, 61340, '2016-12-14', '13:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15215, 61340, '2016-12-14', '14:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15216, 61340, '2016-12-14', '15:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15217, 61337, '2016-12-15', '09:00:00', 1, '', 0, 0, 2, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15218, 61337, '2016-12-15', '10:00:00', 1, '', 0, 0, 1, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15219, 61337, '2016-12-15', '11:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15220, 61337, '2016-12-15', '13:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15221, 61337, '2016-12-15', '14:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15222, 61337, '2016-12-15', '15:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15223, 61338, '2016-12-16', '09:00:00', 1, '', 0, 0, 2, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15224, 61338, '2016-12-16', '10:00:00', 1, '', 0, 0, 1, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15225, 61338, '2016-12-16', '11:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15226, 61338, '2016-12-16', '13:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15227, 61338, '2016-12-16', '14:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15228, 61338, '2016-12-16', '15:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15229, 61339, '2016-12-17', '09:00:00', 1, '', 0, 0, 2, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15230, 61339, '2016-12-17', '10:00:00', 1, '', 0, 0, 1, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15231, 61339, '2016-12-17', '11:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15232, 61339, '2016-12-17', '13:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15233, 61339, '2016-12-17', '14:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15234, 61339, '2016-12-17', '15:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -571,7 +578,6 @@ INSERT INTO `fd_rel_doctor_appointment_time` (`DOCTOR_APPOINTMENT_TIME_ID`, `DOC
 -- Table structure for table `fd_rel_doctor_appointment_time_his`
 --
 
-DROP TABLE IF EXISTS `fd_rel_doctor_appointment_time_his`;
 CREATE TABLE `fd_rel_doctor_appointment_time_his` (
   `DOCTOR_APPOINTMENT_TIME_ID` int(11) NOT NULL,
   `DOCTOR_ID` int(11) NOT NULL,
@@ -585,18 +591,12 @@ CREATE TABLE `fd_rel_doctor_appointment_time_his` (
   `UPDATE_DATE` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Truncate table before insert `fd_rel_doctor_appointment_time_his`
---
-
-TRUNCATE TABLE `fd_rel_doctor_appointment_time_his`;
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `fd_role`
 --
 
-DROP TABLE IF EXISTS `fd_role`;
 CREATE TABLE `fd_role` (
   `ROLE_ID` int(11) NOT NULL,
   `ROLE_NAME` varchar(50) NOT NULL,
@@ -607,18 +607,12 @@ CREATE TABLE `fd_role` (
   `UPDATE_DATE` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Truncate table before insert `fd_role`
---
-
-TRUNCATE TABLE `fd_role`;
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `fd_save_search`
 --
 
-DROP TABLE IF EXISTS `fd_save_search`;
 CREATE TABLE `fd_save_search` (
   `CUSTOMER_SEARCH_ID` int(11) NOT NULL,
   `CUSTOMER_USER_ID` int(11) NOT NULL,
@@ -635,18 +629,12 @@ CREATE TABLE `fd_save_search` (
   `UPDATE_DATE` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Truncate table before insert `fd_save_search`
---
-
-TRUNCATE TABLE `fd_save_search`;
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `fd_service`
 --
 
-DROP TABLE IF EXISTS `fd_service`;
 CREATE TABLE `fd_service` (
   `SERVICE_CODE` int(11) NOT NULL,
   `SERVICE_ID` varchar(50) NOT NULL,
@@ -662,11 +650,6 @@ CREATE TABLE `fd_service` (
   `UPDATE_DATE` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Truncate table before insert `fd_service`
---
-
-TRUNCATE TABLE `fd_service`;
 --
 -- Dumping data for table `fd_service`
 --
@@ -714,7 +697,6 @@ INSERT INTO `fd_service` (`SERVICE_CODE`, `SERVICE_ID`, `DES`, `SERVICE_JS`, `UR
 -- Table structure for table `fd_user`
 --
 
-DROP TABLE IF EXISTS `fd_user`;
 CREATE TABLE `fd_user` (
   `USER_ID` int(11) NOT NULL,
   `LOGIN_NAME` varchar(50) NOT NULL,
@@ -732,11 +714,6 @@ CREATE TABLE `fd_user` (
   `UPDATE_DATE` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Truncate table before insert `fd_user`
---
-
-TRUNCATE TABLE `fd_user`;
 --
 -- Indexes for dumped tables
 --
@@ -889,7 +866,7 @@ ALTER TABLE `fd_user`
 -- AUTO_INCREMENT for table `ap_patient`
 --
 ALTER TABLE `ap_patient`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `fd_admin`
 --
@@ -904,7 +881,7 @@ ALTER TABLE `fd_clinic_user`
 -- AUTO_INCREMENT for table `fd_customer_user`
 --
 ALTER TABLE `fd_customer_user`
-  MODIFY `CUSTOMER_USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=184;
+  MODIFY `CUSTOMER_USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=192;
 --
 -- AUTO_INCREMENT for table `fd_dict_appointment_status`
 --
@@ -924,7 +901,7 @@ ALTER TABLE `fd_dict_state`
 -- AUTO_INCREMENT for table `fd_doctor`
 --
 ALTER TABLE `fd_doctor`
-  MODIFY `DOCTOR_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `DOCTOR_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61341;
 --
 -- AUTO_INCREMENT for table `fd_function`
 --
@@ -944,22 +921,22 @@ ALTER TABLE `fd_rel_clinic_doctor`
 -- AUTO_INCREMENT for table `fd_rel_customer_appointment`
 --
 ALTER TABLE `fd_rel_customer_appointment`
-  MODIFY `CUSTOMER_APPOINTMENT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `CUSTOMER_APPOINTMENT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 --
 -- AUTO_INCREMENT for table `fd_rel_customer_appointment_his`
 --
 ALTER TABLE `fd_rel_customer_appointment_his`
-  MODIFY `CUSTOMER_APPOINTMENT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `CUSTOMER_APPOINTMENT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 --
 -- AUTO_INCREMENT for table `fd_rel_customer_doctor`
 --
 ALTER TABLE `fd_rel_customer_doctor`
-  MODIFY `CUSTOMER_DOCTOR_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `CUSTOMER_DOCTOR_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `fd_rel_doctor_appointment_time`
 --
 ALTER TABLE `fd_rel_doctor_appointment_time`
-  MODIFY `DOCTOR_APPOINTMENT_TIME_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `DOCTOR_APPOINTMENT_TIME_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15235;
 --
 -- AUTO_INCREMENT for table `fd_rel_doctor_appointment_time_his`
 --
@@ -974,7 +951,7 @@ ALTER TABLE `fd_role`
 -- AUTO_INCREMENT for table `fd_save_search`
 --
 ALTER TABLE `fd_save_search`
-  MODIFY `CUSTOMER_SEARCH_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `CUSTOMER_SEARCH_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `fd_service`
 --
@@ -1000,41 +977,6 @@ ALTER TABLE `fd_clinic_user`
 --
 ALTER TABLE `fd_customer_user`
   ADD CONSTRAINT `FK_fd_customer_user_7` FOREIGN KEY (`STATE_ID`) REFERENCES `fd_dict_state` (`STATE_ID`);
-
---
--- Constraints for table `fd_rel_clinic_doctor`
---
-ALTER TABLE `fd_rel_clinic_doctor`
-  ADD CONSTRAINT `FK_fd_rel_clinic_doctor_1` FOREIGN KEY (`DOCTOR_ID`) REFERENCES `fd_doctor` (`DOCTOR_ID`),
-  ADD CONSTRAINT `FK_fd_rel_clinic_doctor_2` FOREIGN KEY (`CLINIC_USER_ID`) REFERENCES `fd_clinic_user` (`CLINIC_USER_ID`);
-
---
--- Constraints for table `fd_rel_customer_appointment`
---
-ALTER TABLE `fd_rel_customer_appointment`
-  ADD CONSTRAINT `FK_fd_rel_customer_appointment_1` FOREIGN KEY (`CUSTOMER_USER_ID`) REFERENCES `fd_customer_user` (`CUSTOMER_USER_ID`),
-  ADD CONSTRAINT `FK_fd_rel_customer_appointment_2` FOREIGN KEY (`DOCTOR_ID`) REFERENCES `fd_doctor` (`DOCTOR_ID`),
-  ADD CONSTRAINT `FK_fd_rel_customer_appointment_3` FOREIGN KEY (`DOCTOR_APPOINTMENT_TIME_ID`) REFERENCES `fd_rel_doctor_appointment_time` (`DOCTOR_APPOINTMENT_TIME_ID`),
-  ADD CONSTRAINT `FK_fd_rel_customer_appointment_4` FOREIGN KEY (`APPOINTMENT_STATUS_ID`) REFERENCES `fd_dict_appointment_status` (`APPOINTMENT_STATUS_ID`);
-
---
--- Constraints for table `fd_rel_customer_doctor`
---
-ALTER TABLE `fd_rel_customer_doctor`
-  ADD CONSTRAINT `FK_fd_rel_customer_doctor_1` FOREIGN KEY (`CUSTOMER_USER_ID`) REFERENCES `fd_customer_user` (`CUSTOMER_USER_ID`),
-  ADD CONSTRAINT `FK_fd_rel_customer_doctor_2` FOREIGN KEY (`DOCTOR_ID`) REFERENCES `fd_doctor` (`DOCTOR_ID`);
-
---
--- Constraints for table `fd_rel_doctor_appointment_time`
---
-ALTER TABLE `fd_rel_doctor_appointment_time`
-  ADD CONSTRAINT `FK_fd_rel_doctor_appointment_time_1` FOREIGN KEY (`DOCTOR_ID`) REFERENCES `fd_doctor` (`DOCTOR_ID`);
-
---
--- Constraints for table `fd_save_search`
---
-ALTER TABLE `fd_save_search`
-  ADD CONSTRAINT `FK_FD_SAVE_SEARCH_1` FOREIGN KEY (`CUSTOMER_USER_ID`) REFERENCES `fd_customer_user` (`CUSTOMER_USER_ID`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
