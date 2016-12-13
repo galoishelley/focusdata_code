@@ -122,35 +122,62 @@ class SearchDoctor_DB{
     public function index_search_sp($arr_values)
     {
 
-    	$sql = "CALL `sp_get7daysTimeslots`(:p0,:p1,:p2,:p3,:p4,:p5,:p6);";
+    	$sql = "CALL `sp_get7daysTimeslots`(:p0,:p1,:p2,:p3,:p4,:p5,:p6,:p7);";
 
     	
-    	 
-    	
-    	if($arr_values['APPOINTMENT_DATE']=="")
-    		$p0=date('Y-m-d');
+    	if(isset($arr_values['APPOINTMENT_DATE'])) 
+    	{
+	    	if($arr_values['APPOINTMENT_DATE']=="")
+	    		$p0=date('Y-m-d');
+	    	else
+	    		$p0=date('Y-m-d', strtotime($arr_values['APPOINTMENT_DATE']));
+    	}
     	else
-    		$p0=date('Y-m-d', strtotime($arr_values['APPOINTMENT_DATE']));
+    		$p0=date('Y-m-d');
     	
-    	if($arr_values['CLINIC_SUBURB']=="")
+    	if(isset($arr_values['CLINIC_SUBURB']))
+    	{
+	    	if($arr_values['CLINIC_SUBURB']=="")
+	    	{
+	    		$p1="";
+	    		$p2="";
+	    		$p3="";
+	    	}
+	    	else
+	    	{
+	    		$p1=explode(",",$arr_values['CLINIC_SUBURB'])[0];
+	    		$tmp=explode(",",$arr_values['CLINIC_SUBURB'])[1];
+	    		$tmp=ltrim($tmp," ");
+	    		$p2=explode(" ",$tmp)[1];
+	    		$p3=explode(" ",$tmp)[0];
+	    	}
+    	}
+    	else
     	{
     		$p1="";
     		$p2="";
     		$p3="";
     	}
-    	else
-    	{
-    		$p1=explode(",",$arr_values['CLINIC_SUBURB'])[0];
-    		$tmp=explode(",",$arr_values['CLINIC_SUBURB'])[1];
-    		$tmp=ltrim($tmp," ");
-    		$p2=explode(" ",$tmp)[1];
-    		$p3=explode(" ",$tmp)[0];
-    	}
     	
-    	$p4=$arr_values['DOCTOR_TYPE'];
-    	$p5=$arr_values['CLINIC_NAME'];
-    	$p6=$arr_values['DOCTOR_NAME'];
-    	 
+    	if(isset($arr_values['DOCTOR_TYPE']))
+    		$p4=$arr_values['DOCTOR_TYPE'];
+    	else
+    		$p4="";
+    	
+    	if(isset($arr_values['CLINIC_NAME']))
+    		$p5=$arr_values['CLINIC_NAME'];
+    	else
+    		$p5="";
+    		
+    	if(isset($arr_values['DOCTOR_NAME']))
+    		$p6=$arr_values['DOCTOR_NAME'];
+    	else
+    		$p6="";
+    	
+    	if(isset($arr_values['DOCTOR_ID']))
+    		$p7=$arr_values['DOCTOR_ID'];
+    	else
+    		$p7="";
 
     	$stmt = $this->db->prepare($sql);
     	
@@ -161,6 +188,7 @@ class SearchDoctor_DB{
     	$stmt->bindParam(':p4', $p4, PDO::PARAM_STR);
     	$stmt->bindParam(':p5', $p5, PDO::PARAM_STR);
     	$stmt->bindParam(':p6', $p6, PDO::PARAM_STR);
+    	$stmt->bindParam(':p7', $p7, PDO::PARAM_STR);
     	$stmt->execute();
     	
     	return $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -121,7 +121,7 @@ include_once 'classes/Menu/menu.php';
 
                       <div class="form-group col-md-6">
                         <label for="birthday" class="col-md-3 control-label"><!-- 生日--><?php echo $lang['Lang0148']; ?><span class="span-red">*</span></label>
-                        <input type="text" class="form-control" name="CUSTOMER_BIRTHDAY" id="CUSTOMER_BIRTHDAY" value="1">
+                        <input type="text" class="form-control" name="CUSTOMER_BIRTHDAY" id="CUSTOMER_BIRTHDAY" placeholder="Birthdate (dd/mm/yyyy)">
                       </div>
 
                       <div class="form-group col-md-6">
@@ -190,6 +190,8 @@ include_once 'classes/Footer/Footer.php';
 <?php
 include_once 'classes/Language/For_JS_multi_lang.php';
 ?>
+
+<script src="js/jquery.maskedinput.min.js"></script>
 <!-- DataTables JavaScript -->
 <script src="bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
 <script src="bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>

@@ -139,57 +139,58 @@ include_once 'classes/Language/language.common.php';
 									</div>
 									<div class="modal-body">
 										<div class="container-fluid">
-											<div class="row">
-												<form role="form" id="modal_form_search">
+											
+												<form class="form-horizontal" role="form" id="modal_form_search">
 													<input type="hidden" class="form-control"
 														name="action_type" id="action_type" value="index_search">
 													<input type="hidden" class="form-control"
 														name="CUSTOMER_USER_ID" id="CUSTOMER_USER_ID">
 														
-													<div class="form-group">
-													<label for="DOCTOR_TYPE"> <!-- 医生类别-->
+													<div class="form-group col-md-12">
+													<label for="DOCTOR_TYPE" class="radio-inline" style="margin-left: 0px;padding-left:0px"> <!-- 医生类别-->
 														<?php echo $lang['Lang0065']; ?></label>
 													
-													<label class="radio-inline"><input type="radio" name="DOCTOR_TYPE" value="GP">GP</label>
-													<label class="radio-inline"><input type="radio" name="DOCTOR_TYPE" value="Dentist">Dentist</label>
-													<label class="radio-inline"><input type="radio" name="DOCTOR_TYPE" value="Physio">Physio</label>
-													<label class="radio-inline"><input type="radio" name="DOCTOR_TYPE" value="Dermatologist">Dermatologist</label>
-													<label class="radio-inline"><input type="radio" name="DOCTOR_TYPE" value="Chiropractor">Chiropractor</label>
+													<label class="radio-inline"><input type="radio" class="custom-control-input" name="DOCTOR_TYPE" value="GP">GP</label>
+													<label class="radio-inline"><input type="radio" class="custom-control-input" name="DOCTOR_TYPE" value="Dentist">Dentist</label>
+													<label class="radio-inline"><input type="radio"  class="custom-control-input" name="DOCTOR_TYPE" value="Physio">Physio</label>
+													<label class="radio-inline"><input type="radio"  class="custom-control-input" name="DOCTOR_TYPE" value="Dermatologist">Dermatologist</label>
+													<label class="radio-inline"><input type="radio"  class="custom-control-input" name="DOCTOR_TYPE" value="Chiropractor">Chiropractor</label>
 													</div>
 
-													<div class="form-group">
-														<label for="CLINIC_SUBURB"> <!-- 位置-->
+													<div class="form-group  col-md-12">
+														<label for="CLINIC_SUBURB" class="col-md-2"> <!-- 位置-->
 															<?php echo $lang['Lang0316']; ?></label>
-														
+														<div class="col-md-10">
 															<input type="text"
 																class="form-control" id="CLINIC_SUBURB"
 																name="CLINIC_SUBURB">
+														</div>
+													</div>
+												
+
+	
+													<div class="form-group col-md-6" style="padding-left:0px">
+														<label for="CLINIC_NAME" class="col-md-3"> <!-- 诊所名称-->
+															<?php echo $lang['Lang0049']; ?></label>
+														
+															<input type="text" class="form-control" id="CLINIC_NAME"
+																name="CLINIC_NAME">
 														
 													</div>
 
-	
 													<div class="form-group col-md-6">
-														<label for="CLINIC_NAME" class="col-md-3"> <!-- 诊所名称-->
-															<?php echo $lang['Lang0049']; ?></label>
-														<div class="col-md-3">
-															<input type="text" class="form-control" id="CLINIC_NAME"
-																name="CLINIC_NAME">
-														</div>
-													</div>
-
-													<div class="form-group col-md-6">
-														<label for="DOCTOR_NAME" class="col-md-3"> <!-- 医生姓名-->
+														<label for="DOCTOR_NAME"  class="col-md-3"> <!-- 医生姓名-->
 															<?php echo $lang['Lang0297']; ?></label>
-														<div class="col-md-3">
+														
 															<input type="text" class="form-control" id="DOCTOR_NAME"
 																name="DOCTOR_NAME">
-														</div>
+													
 													</div>
 
-													<div class="form-group col-md-6">
+													<div class="form-group col-md-6" style="padding-left:0px">
 														<label for="distance" class="col-md-3"> <!-- 医生距离-->
 															<?php echo $lang['Lang0298']; ?></label>
-														<div class="col-md-3">
+														
 															<select class="form-control" id="DISTANCE"
 																name="DISTANCE">
 																<option value=""><!-- All--><?php echo $lang['Lang0042']; ?></option>
@@ -197,21 +198,21 @@ include_once 'classes/Language/language.common.php';
 																<option value="10km">10km</option>
 																<option value="20km">20km</option>
 															</select>
-														</div>
+														
 													</div>
 
 													<div class="form-group col-md-6">
 														<label for="APPOINTMENT_DATE" class="col-md-3"> <!-- 预约日期-->
 															<?php echo $lang['Lang0319']; ?></label>
-														<div class="col-md-3">
+												
 															<input type="text" class="form-control form_datetime"
 																id="APPOINTMENT_DATE" name="APPOINTMENT_DATE">
-														</div>
+												
 													</div>
 
 
 												</form>
-											</div>
+										
 										</div>
 									</div>
 									<div class="modal-footer">
@@ -220,9 +221,9 @@ include_once 'classes/Language/language.common.php';
 											<!-- 取消-->
 											<?php echo $lang['Lang0139']; ?></button>
 										<a class="btn btn-danger" href="userSaveSearch.php"
-											id="btn_save_manage"> <!-- 常用搜索条件管理-->
+											id="btn_save_search_manage"> <!-- 常用搜索条件管理-->
 											<?php echo $lang['Lang0279']; ?></a>
-										<button type="button" class="btn btn-warning" id="btn_save">
+										<button type="button" class="btn btn-warning" id="btn_save_search">
 											<!-- 保存为常用搜索条件-->
 											<?php echo $lang['Lang0305']; ?></button>
 										<button type="button" class="btn btn-primary" id="btn_search">

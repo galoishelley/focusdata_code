@@ -38,17 +38,17 @@ $(function(){
 		$('#DISTANCE').prop('disabled', true);
 
 	$('#btn_search').click(function (){
-///////////////////////////////////组织ajax 请求参数 begin///////////////////////////////
+
 		requesttype = 1;
 		func_code="SD02";
 		//form序列化成json
 		json_form = $("#searchdoctor_form").serializeObject();
 
-///////////////////////////////////组织ajax 请求参数 end///////////////////////////////
+
 	    
 		console.log(json_form);
 		var str = JSON.stringify(json_form);
-	    sessionStorage.setItem("search_index",str);
+	    sessionStorage.setItem("searchRestriction",str);
 
       	window.location.href="searchDoctor.php"; 
 	});

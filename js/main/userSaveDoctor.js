@@ -357,24 +357,12 @@ $(document).ready(function() {
 
   //单机行，中修改按钮
   $('#dataTables-example tbody').on( 'click', 'button', function (event) {
-    var imgId = $(this).prop("id");
-    var obj_data = _table.row($(this).parents('tr')).data();
-    console.log(obj_data);
-    var data = {
-          imgId:imgId,
-          CLINIC_SUBURB:obj_data.CLINIC_SUBURB,
-          STATE_ID:obj_data.STATE_ID,
-          CLINIC_NAME:obj_data.CLINIC_NAME,
-          DOCTOR_TYPE:obj_data.DOCTOR_TYPE,
-          DOCTOR_NAME:obj_data.DOCTOR_NAME
-        };
-    var str = JSON.stringify(data);
 
-    sessionStorage.saveDoctor = str;
-    // $.cookie("appointmentdoctor", str);
-    
-    // console.log("appointmentdoctor");
-    // console.log($.cookie("appointmentdoctor"));
+    var obj_data = _table.row($(this).parents('tr')).data();
+
+
+    sessionStorage.favDoctorID = obj_data.DOCTOR_ID;
+
     window.location.href="searchDoctor.php"; 
 
     event.stopImmediatePropagation();

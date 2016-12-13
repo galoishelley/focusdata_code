@@ -2,6 +2,8 @@ var para,json_str,json_form;
 var result = true;
 
 $(document).ready(function() {
+	
+	$("#CUSTOMER_BIRTHDAY").mask("99/99/9999",{placeholder:"dd/mm/yyyy"});
 
   // var ilogin = $.cookie("ilogin");
 
