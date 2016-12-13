@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2016 at 04:52 PM
+-- Generation Time: Dec 13, 2016 at 11:33 AM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `focusdata`
@@ -24,71 +24,89 @@ DELIMITER $$
 --
 -- Procedures
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_get7daysTimeslots` (IN `dateIN` DATE, IN `suburbIN` VARCHAR(50), IN `postcodeIN` VARCHAR(50), IN `stateIN` VARCHAR(50), IN `doctorTypeIN` VARCHAR(50), IN `clinicNameIN` VARCHAR(100), IN `doctorNameIN` VARCHAR(100))  READS SQL DATA
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_get7daysTimeslots` (IN `dateIN` DATE, IN `suburbIN` VARCHAR(50), IN `postcodeIN` VARCHAR(50), IN `stateIN` VARCHAR(50), IN `doctorTypeIN` VARCHAR(50), IN `clinicNameIN` VARCHAR(100), IN `doctorNameIN` VARCHAR(100), IN `doctorIDIN` VARCHAR(50))  READS SQL DATA
 BEGIN 
-  IF ( datein >= CURRENT_DATE() + 4 ) THEN 
-    SELECT t1.appointment_date, 
-    		t1.doctor_id,
-           t2.doctor_photo, 
-           t2.doctor_name, 
-           t4.clinic_name, 
-           t4.clinic_addr, 
-           t1.appointment_time 
+  IF ( DATEIN >= CURRENT_DATE() + 4 ) THEN 
+    SELECT t1.APPOINTMENT_DATE, 
+           t1.DOCTOR_ID, 
+           t2.DOCTOR_PHOTO, 
+           t2.DOCTOR_NAME, 
+           t4.CLINIC_NAME, 
+           t4.CLINIC_ADDR, 
+           t4.CLINIC_SUBURB, 
+           t5.STATE_NAME, 
+           t1.APPOINTMENT_TIME 
     FROM   fd_rel_doctor_appointment_time t1 
            LEFT JOIN fd_doctor t2 
-                  ON t1.doctor_id = t2.doctor_id 
+                  ON t1.DOCTOR_ID = t2.DOCTOR_ID 
            LEFT JOIN fd_rel_clinic_doctor t3 
-                  ON t2.doctor_id = t3.doctor_id 
+                  ON t2.DOCTOR_ID = t3.DOCTOR_ID 
            LEFT JOIN fd_clinic_user t4 
-                  ON t3.clinic_user_id = t4.clinic_user_id
-           left join fd_dict_state t5
-           			on t4.STATE_ID=t5.STATE_ID
-    WHERE  t1.active_status = 1 
-           AND t1.appointment_date >= datein - 3 
-           AND t1.appointment_date <= datein + 3 
-           AND CONCAT(t1.appointment_date, ' ', t1.appointment_time) > Now() 
-           AND (t5.STATE_NAME=stateIN or stateIN='')
-           AND (t4.CLINIC_SUBURB=suburbIN or suburbIN='')
-           AND (t4.CLINIC_POSTCODE=postcodeIN or postcodeIN='')
-           and (t2.DOCTOR_TYPE=doctorTypeIN or doctorTypeIN='')
-           and (t4.CLINIC_NAME=clinicNameIN or clinicNameIN='')
-           and (t2.DOCTOR_NAME= doctorNameIN or doctorNameIN='')
-    ORDER BY t1.appointment_date asc, 
-              t1.doctor_id asc,
+                  ON t3.CLINIC_USER_ID = t4.CLINIC_USER_ID 
+           LEFT JOIN fd_dict_state t5 
+                  ON t4.STATE_ID = t5.STATE_ID 
+    WHERE  t1.ACTIVE_STATUS = 1 
+           AND t1.APPOINTMENT_DATE >= DATEIN - 3 
+           AND t1.APPOINTMENT_DATE <= DATEIN + 3 
+           AND CONCAT(t1.APPOINTMENT_DATE, ' ', t1.APPOINTMENT_TIME) > Now() 
+           AND ( t5.STATE_NAME = STATEIN 
+                  OR STATEIN = '' ) 
+           AND ( t4.CLINIC_SUBURB = SUBURBIN 
+                  OR SUBURBIN = '' ) 
+           AND ( t4.CLINIC_POSTCODE = POSTCODEIN 
+                  OR POSTCODEIN = '' ) 
+           AND ( t2.DOCTOR_TYPE = DOCTORTYPEIN 
+                  OR DOCTORTYPEIN = '' ) 
+           AND ( t4.CLINIC_NAME = CLINICNAMEIN 
+                  OR CLINICNAMEIN = '' ) 
+           AND ( t2.DOCTOR_NAME = DOCTORNAMEIN 
+                  OR DOCTORNAMEIN = '' ) 
+           AND ( t1.DOCTOR_ID = DOCTORIDIN
+                OR DOCTORIDIN='')
+    ORDER BY t1.APPOINTMENT_DATE asc, 
+              t1.DOCTOR_ID asc, 
               t1.APPOINTMENT_TIME asc; 
   ELSE 
-    SELECT t1.appointment_date, 
-    t1.doctor_id,
-           t2.doctor_photo, 
-           t2.doctor_name, 
-           t4.clinic_name, 
-           t4.clinic_addr, 
-           t1.appointment_time 
+    SELECT t1.APPOINTMENT_DATE, 
+           t1.DOCTOR_ID, 
+           t2.DOCTOR_PHOTO, 
+           t2.DOCTOR_NAME, 
+           t4.CLINIC_NAME, 
+           t4.CLINIC_ADDR, 
+           t4.CLINIC_SUBURB, 
+           t5.STATE_NAME, 
+           t1.APPOINTMENT_TIME 
     FROM   fd_rel_doctor_appointment_time t1 
            LEFT JOIN fd_doctor t2 
-                  ON t1.doctor_id = t2.doctor_id 
+                  ON t1.DOCTOR_ID = t2.DOCTOR_ID 
            LEFT JOIN fd_rel_clinic_doctor t3 
-                  ON t2.doctor_id = t3.doctor_id 
+                  ON t2.DOCTOR_ID = t3.DOCTOR_ID 
            LEFT JOIN fd_clinic_user t4 
-                  ON t3.clinic_user_id = t4.clinic_user_id 
-           left join fd_dict_state t5
-           			on t4.STATE_ID=t5.STATE_ID
-    WHERE  t1.active_status = 1 
-           AND t1.appointment_date >= CURRENT_DATE() 
-           AND t1.appointment_date <= datein + 6 
-           AND CONCAT(t1.appointment_date, ' ', t1.appointment_time) > Now() 
-           AND (t5.STATE_NAME=stateIN or stateIN='')
-           AND (t4.CLINIC_SUBURB=suburbIN or suburbIN='')
-           AND (t4.CLINIC_POSTCODE=postcodeIN or postcodeIN='')
-           and (t2.DOCTOR_TYPE=doctorTypeIN or doctorTypeIN='')
-           and (t4.CLINIC_NAME=clinicNameIN or clinicNameIN='')
-           and (t2.DOCTOR_NAME= doctorNameIN or doctorNameIN='')
-    ORDER BY t1.appointment_date asc, 
-              t1.doctor_id asc,
+                  ON t3.CLINIC_USER_ID = t4.CLINIC_USER_ID 
+           LEFT JOIN fd_dict_state t5 
+                  ON t4.STATE_ID = t5.STATE_ID 
+    WHERE  t1.ACTIVE_STATUS = 1 
+           AND t1.APPOINTMENT_DATE >= CURRENT_DATE() 
+           AND t1.APPOINTMENT_DATE <= DATEIN + 6 
+           AND CONCAT(t1.APPOINTMENT_DATE, ' ', t1.APPOINTMENT_TIME) > Now() 
+           AND ( t5.STATE_NAME = STATEIN 
+                  OR STATEIN = '' ) 
+           AND ( t4.CLINIC_SUBURB = SUBURBIN 
+                  OR SUBURBIN = '' ) 
+           AND ( t4.CLINIC_POSTCODE = POSTCODEIN 
+                  OR POSTCODEIN = '' ) 
+           AND ( t2.DOCTOR_TYPE = DOCTORTYPEIN 
+                  OR DOCTORTYPEIN = '' ) 
+           AND ( t4.CLINIC_NAME = CLINICNAMEIN 
+                  OR CLINICNAMEIN = '' ) 
+           AND ( t2.DOCTOR_NAME = DOCTORNAMEIN 
+                  OR DOCTORNAMEIN = '' ) 
+           AND ( t1.DOCTOR_ID = DOCTORIDIN
+                OR DOCTORIDIN='')
+    ORDER BY t1.APPOINTMENT_DATE asc, 
+              t1.DOCTOR_ID asc, 
               t1.APPOINTMENT_TIME asc; 
   END IF; 
-  
-
 END$$
 
 DELIMITER ;
@@ -231,9 +249,7 @@ CREATE TABLE `fd_customer_user` (
 --
 
 INSERT INTO `fd_customer_user` (`CUSTOMER_USER_ID`, `CUSTOMER_USER_NAME`, `CUSTOMER_USER_PWD`, `CUSTOMER_USER_MAIL`, `CUSTOMER_NAME`, `CUSTOMER_GENDER`, `CUSTOMER_BIRTHDAY`, `CUSTOMER_ADDR`, `CUSTOMER_POSTCODE`, `CUSTOMER_SUBURB`, `STATE_ID`, `CUSTOMER_PHONE_NO`, `MEDICAL_CARD_NO`, `ACTIVE_STATUS`, `NOTE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
-(185, 'kitty', 'cd880b726e0a0dbd4237f10d15da46f4', 'kitty@gmail.com', 'kitty', 'Female', '1', '1', '1', '1', 3, '1514416056', '1', 1, '', 'kitty', '2016-11-12 07:33:35', 'kitty', '2016-11-12 07:33:35'),
-(186, 'dodo', '721c6ff80a6d3e4ad4ffa52a04c60085', 'dodo', 'dodo', 'Male', '1', '1', '1', '1', 3, '1', '1', 1, '', 'dodo', '2016-11-12 07:46:31', 'dodo', '2016-11-12 07:46:31'),
-(187, 'fudanyinxin@gmail.com', '3b5fa279e25dbae4e5535c97535d4cde', 'fudanyinxin@gmail.com', 'xin yin', 'M', '1983-11-11', '', '', '', 1, '0412341234', '1231231231', 1, '', 'xin yin', '2016-12-02 09:59:13', '', '0000-00-00 00:00:00'),
+(187, 'fudanyinxin@gmail.com', '3b5fa279e25dbae4e5535c97535d4cde', 'fudanyinxin@gmail.com', 'xin yin', '0', '11/11/1983', '465 Elgar Rd', '', 'Box Hill', 7, '0412341234', '1231231231', 1, '', 'xin yin', '2016-12-02 09:59:13', 'fudanyinxin@gmail.com', '2016-12-13 08:20:57'),
 (188, 'orochigalois', '3b5fa279e25dbae4e5535c97535d4cde', 'fudanyinxin@gmail.com', '1', 'Male', '1', '1', '1', '1', 3, '1', '1', 1, '', 'orochigalois', '2016-12-11 12:34:54', 'orochigalois', '2016-12-11 12:34:54'),
 (189, 'qwe', '3b5fa279e25dbae4e5535c97535d4cde', 'fudanyinxin@gmail.com', '1', 'Male', '1', '1', '1', '1', 3, '1', '1', 1, '', 'qwe', '2016-12-11 12:46:10', 'qwe', '2016-12-11 12:46:10'),
 (190, 'lop', '3b5fa279e25dbae4e5535c97535d4cde', 'fudanyinxin@gmail.com', '1', 'Male', '1', '1', '1', '1', 3, '1', '1', 1, '', 'lop', '2016-12-11 12:51:10', 'lop', '2016-12-11 12:51:10'),
@@ -439,6 +455,17 @@ CREATE TABLE `fd_rel_customer_appointment` (
   `UPDATE_DATE` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `fd_rel_customer_appointment`
+--
+
+INSERT INTO `fd_rel_customer_appointment` (`CUSTOMER_APPOINTMENT_ID`, `CUSTOMER_USER_ID`, `DOCTOR_ID`, `DOCTOR_APPOINTMENT_TIME_ID`, `APPOINTMENT_STATUS_ID`, `NOTE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
+(1, 187, 61339, 15234, 1, '', 'fudanyinxin@gmail.com', '2016-12-13 07:44:59', 'fudanyinxin@gmail.com', '2016-12-13 07:44:59'),
+(2, 187, 61339, 15210, 1, '', 'fudanyinxin@gmail.com', '2016-12-13 07:50:18', 'fudanyinxin@gmail.com', '2016-12-13 07:50:18'),
+(3, 187, 61339, 15205, 1, '', 'fudanyinxin@gmail.com', '2016-12-13 07:50:46', 'fudanyinxin@gmail.com', '2016-12-13 07:50:46'),
+(4, 187, 61339, 15209, 1, '', 'fudanyinxin@gmail.com', '2016-12-13 07:51:29', 'fudanyinxin@gmail.com', '2016-12-13 07:51:29'),
+(5, 187, 61340, 15216, 1, '', 'fudanyinxin@gmail.com', '2016-12-13 07:55:02', 'fudanyinxin@gmail.com', '2016-12-13 07:55:02');
+
 -- --------------------------------------------------------
 
 --
@@ -483,7 +510,12 @@ INSERT INTO `fd_rel_customer_appointment_his` (`CUSTOMER_APPOINTMENT_ID`, `CUSTO
 (101, 189, 61337, 15197, '1', 'A', '', 'qwe', '2016-12-11 12:49:51', 'qwe', '2016-12-11 12:49:51'),
 (102, 190, 61339, 15187, '1', 'A', '', 'lop', '2016-12-11 12:51:40', 'lop', '2016-12-11 12:51:40'),
 (103, 191, 61339, 15189, '1', 'A', '', 'dongfangbubai', '2016-12-11 12:53:36', 'dongfangbubai', '2016-12-11 12:53:36'),
-(104, 191, 61337, 15134, '1', 'A', '', 'dongfangbubai', '2016-12-11 12:53:54', 'dongfangbubai', '2016-12-11 12:53:54');
+(104, 191, 61337, 15134, '1', 'A', '', 'dongfangbubai', '2016-12-11 12:53:54', 'dongfangbubai', '2016-12-11 12:53:54'),
+(105, 187, 61339, 15234, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-13 07:44:59', 'fudanyinxin@gmail.com', '2016-12-13 07:44:59'),
+(106, 187, 61339, 15210, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-13 07:50:18', 'fudanyinxin@gmail.com', '2016-12-13 07:50:18'),
+(107, 187, 61339, 15205, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-13 07:50:46', 'fudanyinxin@gmail.com', '2016-12-13 07:50:46'),
+(108, 187, 61339, 15209, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-13 07:51:29', 'fudanyinxin@gmail.com', '2016-12-13 07:51:29'),
+(109, 187, 61340, 15216, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-13 07:55:02', 'fudanyinxin@gmail.com', '2016-12-13 07:55:02');
 
 -- --------------------------------------------------------
 
@@ -501,6 +533,16 @@ CREATE TABLE `fd_rel_customer_doctor` (
   `UPDATE_USER` varchar(50) NOT NULL,
   `UPDATE_DATE` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `fd_rel_customer_doctor`
+--
+
+INSERT INTO `fd_rel_customer_doctor` (`CUSTOMER_DOCTOR_ID`, `CUSTOMER_USER_ID`, `DOCTOR_ID`, `NOTE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
+(1, 187, 61338, '', 'fudanyinxin@gmail.com', '2016-12-12 15:41:43', 'fudanyinxin@gmail.com', '2016-12-12 15:41:43'),
+(2, 187, 61339, '', 'fudanyinxin@gmail.com', '2016-12-12 17:49:43', 'fudanyinxin@gmail.com', '2016-12-12 17:49:43'),
+(3, 187, 61337, '', 'fudanyinxin@gmail.com', '2016-12-13 04:56:19', 'fudanyinxin@gmail.com', '2016-12-13 04:56:19'),
+(4, 187, 61340, '', 'fudanyinxin@gmail.com', '2016-12-13 06:03:32', 'fudanyinxin@gmail.com', '2016-12-13 06:03:32');
 
 -- --------------------------------------------------------
 
@@ -541,18 +583,18 @@ INSERT INTO `fd_rel_doctor_appointment_time` (`DOCTOR_APPOINTMENT_TIME_ID`, `DOC
 (15202, 61338, '2016-12-14', '13:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
 (15203, 61338, '2016-12-14', '14:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
 (15204, 61338, '2016-12-14', '15:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15205, 61339, '2016-12-14', '09:00:00', 1, '', 0, 0, 2, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15205, 61339, '2016-12-14', '09:00:00', 0, '', 0, 0, 2, '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-12-13 07:50:46'),
 (15206, 61339, '2016-12-14', '10:00:00', 1, '', 0, 0, 1, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
 (15207, 61339, '2016-12-14', '11:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
 (15208, 61339, '2016-12-14', '13:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15209, 61339, '2016-12-14', '14:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15210, 61339, '2016-12-14', '15:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15209, 61339, '2016-12-14', '14:00:00', 0, '', 0, 0, 0, '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-12-13 07:51:29'),
+(15210, 61339, '2016-12-14', '15:00:00', 0, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
 (15211, 61340, '2016-12-14', '09:00:00', 1, '', 0, 0, 2, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
 (15212, 61340, '2016-12-14', '10:00:00', 1, '', 0, 0, 1, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
 (15213, 61340, '2016-12-14', '11:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
 (15214, 61340, '2016-12-14', '13:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
 (15215, 61340, '2016-12-14', '14:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15216, 61340, '2016-12-14', '15:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15216, 61340, '2016-12-14', '15:00:00', 0, '', 0, 0, 0, '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-12-13 07:55:02'),
 (15217, 61337, '2016-12-15', '09:00:00', 1, '', 0, 0, 2, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
 (15218, 61337, '2016-12-15', '10:00:00', 1, '', 0, 0, 1, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
 (15219, 61337, '2016-12-15', '11:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
@@ -570,7 +612,7 @@ INSERT INTO `fd_rel_doctor_appointment_time` (`DOCTOR_APPOINTMENT_TIME_ID`, `DOC
 (15231, 61339, '2016-12-17', '11:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
 (15232, 61339, '2016-12-17', '13:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
 (15233, 61339, '2016-12-17', '14:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15234, 61339, '2016-12-17', '15:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00');
+(15234, 61339, '2016-12-17', '15:00:00', 0, '', 0, 0, 0, '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-12-13 07:44:59');
 
 -- --------------------------------------------------------
 
@@ -921,17 +963,17 @@ ALTER TABLE `fd_rel_clinic_doctor`
 -- AUTO_INCREMENT for table `fd_rel_customer_appointment`
 --
 ALTER TABLE `fd_rel_customer_appointment`
-  MODIFY `CUSTOMER_APPOINTMENT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+  MODIFY `CUSTOMER_APPOINTMENT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `fd_rel_customer_appointment_his`
 --
 ALTER TABLE `fd_rel_customer_appointment_his`
-  MODIFY `CUSTOMER_APPOINTMENT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `CUSTOMER_APPOINTMENT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 --
 -- AUTO_INCREMENT for table `fd_rel_customer_doctor`
 --
 ALTER TABLE `fd_rel_customer_doctor`
-  MODIFY `CUSTOMER_DOCTOR_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `CUSTOMER_DOCTOR_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `fd_rel_doctor_appointment_time`
 --
@@ -951,7 +993,7 @@ ALTER TABLE `fd_role`
 -- AUTO_INCREMENT for table `fd_save_search`
 --
 ALTER TABLE `fd_save_search`
-  MODIFY `CUSTOMER_SEARCH_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `CUSTOMER_SEARCH_ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `fd_service`
 --
