@@ -336,12 +336,12 @@ $(function(){
               },
               regexp: {
                   regexp: /^[a-zA-Z0-9_]+$/,
-                  message: 'alphabetical, number and underscore'
+                  message: 'Alphabetical, number and underscore'
                   // message: 'The username can only consist of alphabetical, number and underscore'
               },
               different: {
                   field: 'CLINIC_USER_PWD',
-                  message: '用户名和密码不能相同'
+                  message: 'User name and password cannot be the same'
               }
             }
           },
@@ -358,71 +358,70 @@ $(function(){
           CLINIC_USER_PWD: {
             validators: {
               notEmpty: {
-                  message: '密码不能为空'
+                  message: 'Password is required and cannot be empty'
               }
             },
             different: {
               field: 'CLINIC_USER_NAME',
-              message: '用户名和密码不能相同'
+              message: 'User name and password cannot be the same'
             },
             identical: {//相同
                  field: 'CONFIME_PWD', //需要进行比较的input name值
-                 message: '两次密码不一致'
+                 message: 'The password and the confirm are not the same'
             }
           },
           CONFIME_PWD: {
              validators: {
               notEmpty: {
-                  message: '确认密码不能为空'
+                  message: 'Confirm is required and cannot be empty'
               },
               different: {
                   field: 'CLINIC_USER_NAME',
-                  message: '用户名和密码不能相同'
+                  message: 'User name and password cannot be the same'
               },
               identical: {//相同
                    field: 'CLINIC_USER_PWD', //需要进行比较的input name值
-                   message: '两次密码不一致'
+                   message: 'The password and the confirm are not the same'
               },
             }
           },
           CLINIC_NAME: {
               validators: {
                   notEmpty: {
-                      message: '诊所名称不能为空'
+                      message: 'Clinic name is required and cannot be empty'
                    }
               },
               stringLength: {
                   min: 6,
                   max: 30,
                   message: '6 and less than 30 characters long'
-                  // message: 'The username must be more than 6 and less than 30 characters long'
               }
           },
           CLINIC_POSTCODE: {
               validators: {
                   notEmpty: {
-                      message: '邮编不能为空'
+                      message: 'Postcode is required and cannot be empty'
                    }
               }
           },
           CLINIC_ADDR: {
               validators: {
                   notEmpty: {
-                      message: '详细地址不能为空'
+                      message: 'Address is required and cannot be empty'
                    }
               }
           },
           CLINIC_SUBURB: {
               validators: {
                   notEmpty: {
-                      message: '区不能为空'
+                      message: 'Suburb is required and cannot be empty'
                   }
               }
           },
           STATE_ID: {
               validators: {
                   notEmpty: {
-                      message: '州不能为空'
+                      message: 'State is required and cannot be empty'
                   }
               }
           }
