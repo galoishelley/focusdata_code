@@ -25,39 +25,20 @@ include_once 'classes/Language/language.common.php';
 <!-- datetime -->
 <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 
-<!--JS-->
+
+
 <script src="js/jquery.js"></script>
 <script src="js/jquery-migrate-1.2.1.min.js"></script>
 <script src="js/jquery.easing.1.3.js"></script>
 <script src="js/jquery.mobilemenu.js"></script>
 <script src="js/jquery.equalheights.js"></script> 
-<script src="js/jquery.ui.totop.js"></script>
-<script src="js/jquery.cookie.js"></script>
 
 
 
-<!--[if (gt IE 9)|!(IE)]><!-->
-<script src="js/wow/wow.js"></script>
-<script src="js/wow/device.min.js"></script>
-<script>
-    $(document).ready(function () {       
-      if ($('html').hasClass('desktop')) {
-        new WOW().init();
-      }   
-    });
-</script>
-<!--<![endif]-->
-<!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 
-    <div id="ie6-alert" style="width: 100%; text-align:center;">
-    <img src="http://beatie6.frontcube.com/images/ie6.jpg" alt="Upgrade IE 6" width="640" height="344" border="0" usemap="#Map" longdesc="http://die6.frontcube.com" />
-      <map name="Map" id="Map"><area shape="rect" coords="496,201,604,329" href="http://www.microsoft.com/windows/internet-explorer/default.aspx" target="_blank" alt="Download Interent Explorer" /><area shape="rect" coords="380,201,488,329" href="http://www.apple.com/safari/download/" target="_blank" alt="Download Apple Safari" /><area shape="rect" coords="268,202,376,330" href="http://www.opera.com/download/" target="_blank" alt="Download Opera" /><area shape="rect" coords="155,202,263,330" href="http://www.mozilla.com/" target="_blank" alt="Download Firefox" />
-        <area shape="rect" coords="35,201,143,329" href="http://www.google.com/chrome" target="_blank" alt="Download Google Chrome" />
-      </map>
-  </div>
-  <![endif]-->
+  
+  <!--JS-->
+
 </head>
 <body>
 <!--header-->
@@ -75,7 +56,7 @@ include_once 'classes/Menu/menu.php';
 		<div class="thumb-box9" data-stellar-background-ratio="0.1">
 			<div class="container">
 				<div class="row left_con">
-					 <div class="col-lg-3 col-md-3 col-sm-3 wow rollIn" data-wow-delay="3.1s">
+					 <div class="col-lg-3 col-md-3 col-sm-3 wow fadeInLeft" data-wow-delay="0.1s">
          <!-- <div class="col-lg-3 col-md-3 col-sm-3"> -->
 						<div class="list-group">
 							<a href="userAppointmentRecoder.php" class="list-group-item active" id="user_appointment_recoder" ><!-- 预约记录--><?php echo $lang['Lang0275']; ?></a>
@@ -92,7 +73,7 @@ include_once 'classes/Menu/menu.php';
 
                 <h2><!-- 预约记录--><?php echo $lang['Lang0275']; ?></h2>
                 <div class="row">
-                    <form class="form-inline wow fadeInLeft" role="form">
+                    <form class="form-inline" role="form">
                         <div class="input-group">
                           <span class="input-group-addon" id="basic-addon1"><!-- 开始时间--><?php echo $lang['Lang0280']; ?></span>
                           <input type="text" class="form-control form_datetime" id="begin_time" readonly>
@@ -138,7 +119,7 @@ include_once 'classes/Menu/menu.php';
             </div>
             <!-- userAppointmentRecoder -->
           </div>
-          <!-- wow -->
+
 				</div>
         <!-- row -->
 			</div>
@@ -157,7 +138,7 @@ include_once 'classes/Language/For_JS_multi_lang.php';
 <!-- DataTables JavaScript -->
 <script src="bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
 <script src="bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
-
+<script src="js/jquery.cookie.js"></script>
 <!-- datetime -->
 <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
 <script type="text/javascript" src="js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
