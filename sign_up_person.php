@@ -25,6 +25,7 @@ include_once 'classes/Language/language.common.php';
 <link rel="stylesheet" href="css/bootstrapValidator.css"/>
 <!--JS-->
 <script src="js/jquery.js"></script>
+<script src="js/underscore-min.js"></script>
 <script src="js/jquery-migrate-1.2.1.min.js"></script>
 <script src="js/jquery.easing.1.3.js"></script>
 <script src="js/jquery.mobilemenu.js"></script>
@@ -84,16 +85,20 @@ include_once 'classes/Menu/menu.php';
 							</div>
 							
 							<div id="personal">
+							<div class="row">
 								<div class="form-group">
 									<label for="CUSTOMER_USER_NAME"><!-- 用户名--><?php echo $lang['Lang0212']; ?><span class="span-red">*</span></label>
 									<input type="text" class="form-control" id="CUSTOMER_USER_NAME" name="CUSTOMER_USER_NAME">
 								</div>
+								</div>
+								<div class="row">
 
 								<div class="form-group">
 									<label for="CUSTOMER_USER_MAIL"><!-- 邮箱--><?php echo $lang['Lang0213']; ?><span class="span-red">*</span></label>
 									<input type="text" class="form-control" id="CUSTOMER_USER_MAIL" name="CUSTOMER_USER_MAIL">
 								</div>
-
+								</div>
+<div class="row">
 								<div class="form-group">
 									<label for="CUSTOMER_USER_PWD"><!-- 密码--><?php echo $lang['Lang0214']; ?><span class="span-red">*</span></label>
 									<input type="password" class="form-control" name="CUSTOMER_USER_PWD" id="CUSTOMER_USER_PWD">
@@ -103,12 +108,25 @@ include_once 'classes/Menu/menu.php';
 									<label for="CONFIME_PWD"><!-- 确认密码--><?php echo $lang['Lang0215']; ?><span class="span-red">*</span></label>
 									<input type="password" class="form-control" name="CONFIME_PWD" id="CONFIME_PWD">
 								</div>
-
+</div>
+<div class="row">
 								<div class="form-group">
 									<label for="CUSTOMER_NAME"><!-- 姓名--><?php echo $lang['Lang0216']; ?><span class="span-red">*</span></label>
 									<input type="text" class="form-control" id="CUSTOMER_NAME" name="CUSTOMER_NAME" maxlength="50">
 								</div>
 
+								
+	                            <div class="form-group">
+									<label for="CUSTOMER_PHONE_NO"><!-- 电话号码--><?php echo $lang['Lang0221']; ?><span class="span-red">*</span></label>
+									<input type="text" class="form-control" name="CUSTOMER_PHONE_NO" id="CUSTOMER_PHONE_NO" maxlength="10">
+								</div>	
+</div>								
+								<!-- <div class="form-group">
+									<label for="pwd">手机验证码<span class="span-red">*</span></label>
+									<input type="text" class="form-control" name="verifyCode" id="verifyCode" value="1">
+								</div> -->
+								
+<div class="row">
 								<div class="form-group">
 	                              <label for="CUSTOMER_GENDER"><!-- 性别--><?php echo $lang['Lang0217']; ?><span class="span-red">*</span></label>
 	                              <select class="form-control" id="CUSTOMER_GENDER" name="CUSTOMER_GENDER">
@@ -116,39 +134,28 @@ include_once 'classes/Menu/menu.php';
 	                                    <option><!-- 女--><?php echo $lang['Lang0133']; ?></option>
 	                              </select>
 	                            </div>
-								
-								<!-- <div class="form-group">
-									<label for="pwd">手机验证码<span class="span-red">*</span></label>
-									<input type="text" class="form-control" name="verifyCode" id="verifyCode" value="1">
-								</div> -->
-								
-
 								<div class="form-group">
 									<label for="CUSTOMER_BIRTHDAY"><!-- 生日--><?php echo $lang['Lang0220']; ?><span class="span-red">*</span></label>
 									<input type="text" class="form-control" name="CUSTOMER_BIRTHDAY" id="CUSTOMER_BIRTHDAY" placeholder="Birthdate (dd/mm/yyyy)">
 								</div>
 
-								<div class="form-group">
-									<label for="CUSTOMER_PHONE_NO"><!-- 电话号码--><?php echo $lang['Lang0221']; ?><span class="span-red">*</span></label>
-									<input type="text" class="form-control" name="CUSTOMER_PHONE_NO" id="CUSTOMER_PHONE_NO" maxlength="10">
-								</div>	
+								
 
-								<div class="col-md-12">
+							
 									<div class="form-group">
 										<label for="MEDICAL_CARD_NO"><!-- 医疗卡号--><?php echo $lang['Lang0150']; ?><span class="span-red">*</span></label>
 										<input type="text" class="form-control" name="MEDICAL_CARD_NO" id="MEDICAL_CARD_NO" maxlength="50">
 									</div>
-								</div>
-
+							
+</div>
+<div class="row">
 								<div class="form-group col-md-9">
 									<label for="CUSTOMER_ADDR"><!-- 详细地址--><?php echo $lang['Lang0224']; ?><span class="span-red">*</span></label>
 									<input type="text" class="form-control"  style="width:81%" name="CUSTOMER_ADDR" id="CUSTOMER_ADDR" maxlength="200">
 								</div>
-
-								<div class="form-group">
-									<label for="CUSTOMER_POSTCODE"><!-- 邮编--><?php echo $lang['Lang0223']; ?><span class="span-red">*</span></label>
-									<input type="text" class="form-control" name="CUSTOMER_POSTCODE" id="CUSTOMER_POSTCODE" maxlength="10">
-								</div>
+</div>
+<div class="row">
+								
 
 								<div class="form-group">
 									<label for="CUSTOMER_SUBURB"><!-- 区--><?php echo $lang['Lang0225']; ?><span class="span-red">*</span></label>
@@ -160,6 +167,11 @@ include_once 'classes/Menu/menu.php';
 	                              <select class="form-control" id="STATE_ID" name="STATE_ID">
 	                              </select>
 	                            </div>
+	                            <div class="form-group">
+									<label for="CUSTOMER_POSTCODE"><!-- 邮编--><?php echo $lang['Lang0223']; ?><span class="span-red">*</span></label>
+									<input type="text" class="form-control" name="CUSTOMER_POSTCODE" id="CUSTOMER_POSTCODE" maxlength="10">
+								</div>
+</div>
 							</div>
 						</fieldset>
 					</form>

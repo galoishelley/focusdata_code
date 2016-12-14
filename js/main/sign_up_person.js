@@ -1,6 +1,64 @@
 var para,json_str,json_form;
 var result,func_code,requesttype;
 
+
+
+(function($) {
+    $.fn.bootstrapValidator.validators.medicareNumberValidation = {
+        /**
+         * @param {BootstrapValidator} validator The validator plugin instance
+         * @param {jQuery} $field The jQuery object represents the field element
+         * @param {Object} options The validator options
+         * @returns {boolean}
+         */
+        validate: function(validator, $field, options) {
+            // You can get the field value
+            var val = $field.val();
+
+            // strip non-numeric, and update the field
+            var val = val.replace(/\D/g,'');
+
+            // bail early if blank (may trigger required)
+            //if(!val) { returnf; }
+
+            var blacklist = [
+                '0000000000',
+                '3316611188'
+            ];
+
+            if(_.contains(blacklist, val)) {
+                // console.warn( 'Medicare # blacklisted' );
+            	return false;
+                //return 'Not a valid medicare number.';
+            }
+
+            // valid test medicare number: 123 123 123 1 / 1
+            // http://www.clearwater.com.au/code/medicare
+            var M_WEIGHTS = [1, 3, 7, 9, 1, 3, 7, 9];
+
+            if(val.length != 10) { 
+            	return false;
+            	//return 'Must be 10 digits long.'; 
+            	}
+
+            var sum = 0;
+            var checkDigit = parseInt(val[8], 10);
+            for(var i=0; i<8; i++) {
+                sum += M_WEIGHTS[i] * parseInt(val[i], 10);
+            }
+            if((sum % 10) !== checkDigit) {
+            	return false;
+                //return 'Not a valid medicare number.';
+            }
+        
+            
+            return true;
+            
+        }
+    };
+}(window.jQuery));
+
+
 $(function(){
 
 	$("#CUSTOMER_BIRTHDAY").mask("99/99/9999",{placeholder:"dd/mm/yyyy"});
@@ -409,6 +467,9 @@ $(function(){
         },
         MEDICAL_CARD_NO: {
             validators: {
+	            	medicareNumberValidation:{
+	            		message:'Invalid medicare number'
+	            	},
                 notEmpty: {
                     message: 'Medical card number is required and cannot be empty'
                  }

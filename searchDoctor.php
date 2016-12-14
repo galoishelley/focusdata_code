@@ -14,14 +14,14 @@ include_once 'classes/Language/language.common.php';
 <meta name="author" content="Your name">
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="css/bootstrap-dialog.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap-dialog.min.css">-->
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/animate.css">
 <link rel="stylesheet" href="fonts/font-awesome.css">
 <!--user css-->
 <link rel="stylesheet" href="css/user.css">
 <link rel="stylesheet" href="css/focusdata.css">
-
+<link rel="stylesheet" href="css/bootstrapValidator.css"/>
 <!-- datetime -->
 <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
 
@@ -51,6 +51,10 @@ include_once 'classes/Language/language.common.php';
 	
 	margin: 5px;
 	margin-top: 100px;
+}
+
+.alexrow{
+	margin-top:8px;
 }
 </style>
 
@@ -261,83 +265,107 @@ include_once 'classes/Language/language.common.php';
                 </div>
                 <div class="modal-body">
                     <div class="container-fluid">
-                        <div class="row">
+                     
                          <form class="form-inline" role="form" id="modal_form_signup">
 
                             <input type="hidden" class="form-control" name="action_type" id="action_type" value="create">
-
-                            <div class="form-group col-md-6 col-lg-6">
-                                <label for="CUSTOMER_USER_NAME" class="col-md-3 col-lg-3"><!-- 用户名--><?php echo $lang['Lang0047']; ?><span class="span-red">*</span></label>
+<div class="row alexrow">
+                            <div class="form-group col-md-6" style="padding-left:0px">
+                                <label for="CUSTOMER_USER_NAME" class="col-md-3"><!-- 用户名--><?php echo $lang['Lang0047']; ?><span class="span-red">*</span></label>
+                          
                                 <input type="text" class="form-control" id="CUSTOMER_USER_NAME" name="CUSTOMER_USER_NAME">
+                               
                             </div>
 
-                            <div class="form-group col-md-6 col-lg-6">
-                                <label for="CUSTOMER_USER_MAIL" class="col-md-3 col-lg-3"><!-- 邮箱--><?php echo $lang['Lang0048']; ?><span class="span-red">*</span></label>
+                            <div class="form-group col-md-6">
+                                <label for="CUSTOMER_USER_MAIL" class="col-md-3"><!-- 邮箱--><?php echo $lang['Lang0048']; ?><span class="span-red">*</span></label>
+                               
                                 <input type="text" class="form-control" id="CUSTOMER_USER_MAIL" name="CUSTOMER_USER_MAIL">
+                               
                             </div>
-
-                            <div class="form-group col-md-6 col-lg-6">
-                                <label for="CUSTOMER_USER_PWD" class="col-md-3 col-lg-3"><!-- 密码--><?php echo $lang['Lang0161']; ?><span class="span-red">*</span></label>
+</div>
+<div class="row alexrow">
+                            <div class="form-group col-md-6" style="padding-left:0px">
+                                <label for="CUSTOMER_USER_PWD" class="col-md-3"><!-- 密码--><?php echo $lang['Lang0161']; ?><span class="span-red">*</span></label>
+                         
                                 <input type="password" class="form-control" name="CUSTOMER_USER_PWD" id="CUSTOMER_USER_PWD">
+                           
                             </div>
 
-                            <div class="form-group col-md-6 col-lg-6">
-                                <label for="CONFIME_PWD" class="col-md-3 col-lg-3"><!-- 确认密码--><?php echo $lang['Lang0199']; ?><span class="span-red">*</span></label>
+                            <div class="form-group col-md-6">
+                                <label for="CONFIME_PWD" class="col-md-3"><!-- 确认密码--><?php echo $lang['Lang0199']; ?><span class="span-red">*</span></label>
+                       
                                 <input type="password" class="form-control" name="CONFIME_PWD" id="CONFIME_PWD">
+                        
                             </div>
-
-                            <div class="form-group col-md-6 col-lg-6">
-                                <label for="CUSTOMER_NAME" class="col-md-3 col-lg-3"><!-- 姓名--><?php echo $lang['Lang0216']; ?><span class="span-red">*</span></label>
+</div>
+<div class="row alexrow">
+                            <div class="form-group col-md-6" style="padding-left:0px">
+                            
+                                <label for="CUSTOMER_NAME" class="col-md-3"><!-- 姓名--><?php echo $lang['Lang0216']; ?><span class="span-red">*</span></label>
+                           
                                 <input type="text" class="form-control" id="CUSTOMER_NAME" name="CUSTOMER_NAME">
+                       
                             </div>
-
-                            <div class="form-group col-md-6 col-lg-6">
-                              <label for="CUSTOMER_GENDER" class="col-md-3 col-lg-3"><!-- 性别--><?php echo $lang['Lang0217']; ?><span class="span-red">*</span></label>
-                              <select class="form-control" id="CUSTOMER_GENDER" name="CUSTOMER_GENDER">
+                            <div class="form-group col-md-6">
+                                <label for="CUSTOMER_PHONE_NO" class="col-md-3"><!-- 电话号码--><?php echo $lang['Lang0149']; ?><span class="span-red">*</span></label>
+                  
+                                <input type="text" class="form-control" name="CUSTOMER_PHONE_NO" id="CUSTOMER_PHONE_NO" maxlength="10">
+                          
+                            </div>  
+</div>
+<div class="row alexrow">
+                            <div class="form-group">
+                              <label for="CUSTOMER_GENDER"><!-- 性别--><?php echo $lang['Lang0217']; ?><span class="span-red">*</span></label>
+                            
+                              <select class="form-control" style="margin-left: 40px" id="CUSTOMER_GENDER" name="CUSTOMER_GENDER">
                                     <option><!-- 男--><?php echo $lang['Lang0132']; ?></option>
                                     <option><!-- 女--><?php echo $lang['Lang0133']; ?></option>
                               </select>
+                         
                             </div>
 
-                            <div class="form-group col-md-6 col-lg-6">
-                                <label for="CUSTOMER_BIRTHDAY" class="col-md-3 col-lg-3"><!-- 生日--><?php echo $lang['Lang0148']; ?><span class="span-red">*</span></label>
-                                <input type="text" class="form-control" name="CUSTOMER_BIRTHDAY" id="CUSTOMER_BIRTHDAY">
+                            <div class="form-group">
+                                <label for="CUSTOMER_BIRTHDAY"><!-- 生日--><?php echo $lang['Lang0148']; ?><span class="span-red">*</span></label>
+ 
+                                <input type="text" class="form-control" name="CUSTOMER_BIRTHDAY" id="CUSTOMER_BIRTHDAY" placeholder="dd/mm/yyyy">
+                        
+                            
                             </div>
 
-                            <div class="form-group col-md-6 col-lg-6">
-                                <label for="CUSTOMER_PHONE_NO" class="col-md-3 col-lg-3"><!-- 电话号码--><?php echo $lang['Lang0149']; ?><span class="span-red">*</span></label>
-                                <input type="text" class="form-control" name="CUSTOMER_PHONE_NO" id="CUSTOMER_PHONE_NO" maxlength="10">
-                            </div>  
-
-                            <div class="form-group col-md-6 col-lg-6">
-                                <label for="MEDICAL_CARD_NO" class="col-md-3 col-lg-3"><!-- 医疗卡号--><?php echo $lang['Lang0150']; ?><span class="span-red">*</span></label>
+                            <div class="form-group">
+                                <label for="MEDICAL_CARD_NO"><!-- 医疗卡号--><?php echo $lang['Lang0150']; ?><span class="span-red">*</span></label>
+                    
                                 <input type="text" class="form-control" name="MEDICAL_CARD_NO" id="MEDICAL_CARD_NO">
+                 
+                            </div>
+</div>
+<div class="row alexrow">
+
+                            <div class="form-group">
+                                <label for="CUSTOMER_ADDR"><!-- 详细地址--><?php echo $lang['Lang0152']; ?><span class="span-red">*</span></label>
+                                <input type="text" class="form-control"  style="margin-left: 34px" name="CUSTOMER_ADDR" id="CUSTOMER_ADDR">
+                            </div>
+</div>
+<div class="row alexrow">
+                            <div class="form-group">
+                                <label for="CUSTOMER_SUBURB"><!-- 区--><?php echo $lang['Lang0153']; ?><span class="span-red">*</span></label>
+                                <input type="text" style="margin-left: 40px" class="form-control" name="CUSTOMER_SUBURB" id="CUSTOMER_SUBURB">
                             </div>
 
-
-                            <div class="form-group col-md-9 col-lg-9">
-                                <label for="CUSTOMER_ADDR" class="col-md-2 col-lg-2"><!-- 详细地址--><?php echo $lang['Lang0152']; ?><span class="span-red">*</span></label>
-                                <input type="text" class="form-control"  style="width:81%" name="CUSTOMER_ADDR" id="CUSTOMER_ADDR">
-                            </div>
-
-                            <div class="form-group col-md-6 col-lg-6">
-                                <label for="CUSTOMER_SUBURB" class="col-md-3 col-lg-3"><!-- 区--><?php echo $lang['Lang0153']; ?><span class="span-red">*</span></label>
-                                <input type="text" class="form-control" name="CUSTOMER_SUBURB" id="CUSTOMER_SUBURB">
-                            </div>
-
-                            <div class="form-group col-md-6 col-lg-6">
-                              <label for="STATE_ID" class="col-md-3 col-lg-3"><!-- 州--><?php echo $lang['Lang0154']; ?><span class="span-red">*</span></label>
+                            <div class="form-group">
+                              <label for="STATE_ID"><!-- 州--><?php echo $lang['Lang0154']; ?><span class="span-red">*</span></label>
                               <select class="form-control" id="STATE_ID" name="STATE_ID">
                               </select>
                             </div>
 
-                            <div class="form-group col-md-6 col-lg-6">
-                                <label for="CUSTOMER_POSTCODE" class="col-md-3 col-lg-3"><!-- 邮编--><?php echo $lang['Lang0155']; ?><span class="span-red">*</span></label>
+                            <div class="form-group">
+                                <label for="CUSTOMER_POSTCODE"><!-- 邮编--><?php echo $lang['Lang0155']; ?><span class="span-red">*</span></label>
                                 <input type="text" class="form-control" name="CUSTOMER_POSTCODE" id="CUSTOMER_POSTCODE">
                             </div>
-
+</div>
                         </form>
-                        </div>
+                        
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -413,7 +441,8 @@ include_once 'classes/Language/For_JS_multi_lang.php';
 	<!-- dialog -->
 	<script src="js/bootstrap-dialog.min.js"></script>
 	<script src="js/tm-scripts.js"></script>
-	
+	<script src="js/bootstrapValidator.js"></script>
+	<script src="js/jquery.maskedinput.min.js"></script> 
 	<!-- date time -->
 	<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"
 		charset="UTF-8"></script>

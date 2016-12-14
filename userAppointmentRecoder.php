@@ -75,7 +75,7 @@ include_once 'classes/Menu/menu.php';
 		<div class="thumb-box9" data-stellar-background-ratio="0.1">
 			<div class="container">
 				<div class="row left_con">
-					 <div class="col-lg-3 col-md-3 col-sm-3 wow rollIn" data-wow-delay="0.1s">
+					 <div class="col-lg-3 col-md-3 col-sm-3 wow rollIn" data-wow-delay="3.1s">
          <!-- <div class="col-lg-3 col-md-3 col-sm-3"> -->
 						<div class="list-group">
 							<a href="userAppointmentRecoder.php" class="list-group-item active" id="user_appointment_recoder" ><!-- 预约记录--><?php echo $lang['Lang0275']; ?></a>

@@ -45,7 +45,7 @@ $lang['Lang0020']= 'Please update personal information and add Email';
 $lang['Lang0021'] = 'Login';
 $lang['Lang0022'] = 'User';
 $lang['Lang0023'] = 'Please enter user name...';
-//$lang['Lang0022Error'] = 'User name can not be empty!';
+//$lang['Lang0022Error'] = 'User Name can not be empty!';
 $lang['Lang0024'] = 'Password';
 $lang['Lang0025'] = 'Please enter password...';
 //$lang['Lang0024Error'] = 'Password can not be empty!';
@@ -77,7 +77,7 @@ $lang['Lang0043'] = 'Status';
 $lang['Lang0044'] = 'Search';
 $lang['Lang0045'] = 'Active';
 $lang['Lang0046'] = 'Inactive';
-$lang['Lang0047'] = 'User name';
+$lang['Lang0047'] = 'User Name';
 $lang['Lang0048'] = 'Email';
 $lang['Lang0049'] = 'Clinic name';
 $lang['Lang0050'] = 'Address';
@@ -123,7 +123,7 @@ $lang['Lang0083'] = 'Action';
 // Page adminQryUser
 $lang['Lang0084'] = 'Personal User Management';
 $lang['Lang0085'] = 'User';
-$lang['Lang0086'] = 'User name';
+$lang['Lang0086'] = 'User Name';
 $lang['Lang0087'] = 'Suburb';
 $lang['Lang0088'] = 'State';
 $lang['Lang0089'] = 'All';
@@ -246,13 +246,13 @@ $lang['Lang0191'] = 'Login';
 
 //Page sign_up_clinic
 $lang['Lang0192'] = 'Clinic User Register';
-$lang['Lang0193'] = 'Account type';
+$lang['Lang0193'] = 'Account Type';
 $lang['Lang0194'] = 'Personal';
 $lang['Lang0195'] = 'Clinic';
-$lang['Lang0196'] = 'User';
+$lang['Lang0196'] = 'User Name';
 $lang['Lang0197'] = 'Email';
 $lang['Lang0198'] = 'Password';
-$lang['Lang0199'] = 'Re-input Password';
+$lang['Lang0199'] = 'Confirm';
 $lang['Lang0200'] = 'Clinic name';
 $lang['Lang0201'] = 'Postcode';
 $lang['Lang0202'] = 'Address';
@@ -266,13 +266,13 @@ $lang['Lang0207'] = 'Entered passwords differ from the another!';
 
 //Page sign_up_person
 $lang['Lang0208'] = 'Personal User Register';
-$lang['Lang0209'] = 'Account type';
+$lang['Lang0209'] = 'Account Type';
 $lang['Lang0210'] = 'Personal';
 $lang['Lang0211'] = 'Clinic';
-$lang['Lang0212'] = 'User';
+$lang['Lang0212'] = 'User Name';
 $lang['Lang0213'] = 'Email';
 $lang['Lang0214'] = 'Password';
-$lang['Lang0215'] = 'Re-enter password';
+$lang['Lang0215'] = 'Confirm Password';
 $lang['Lang0216'] = 'Name';
 $lang['Lang0217'] = 'Gender';
 
