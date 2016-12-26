@@ -39,7 +39,7 @@ class Sign_up_person
 
 		unset($this->arr_values["action_type"]);
 		unset($this->arr_values["verifyCode"]);
-		$this->user_name = $this->arr_values["CUSTOMER_USER_NAME"];
+		$this->user_name = $this->arr_values["CUSTOMER_USER_MAIL"];
 		$this->user_pwd = $this->arr_values["CUSTOMER_USER_PWD"];
 		$this->arr_values["CREATE_USER"] = $this->user_name;
 		$this->arr_values["UPDATE_USER"] = $this->user_name;

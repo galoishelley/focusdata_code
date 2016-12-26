@@ -44,7 +44,7 @@ $(document).ready(function() {
   //   }else{
 
   //   }
-  //   $('#CLINIC_USER_NAME').val(username);
+  //   $('#CLINIC_USER_MAIL').val(username);
   // }
 
   // if(ilogin == 0){
@@ -53,7 +53,7 @@ $(document).ready(function() {
   //   return false;
   // }
 
-  $('#CLINIC_USER_NAME').val(username);
+  $('#CLINIC_USER_MAIL').val(username);
 
   $('#btn_ok').click(function(){
 
@@ -72,8 +72,8 @@ $(document).ready(function() {
     func_code = "UI01";
     //form序列化成json
     json_form = {
-      usertype: 0, //个人用户
-      USER_NAME:$('#CLINIC_USER_NAME').val(),
+      usertype: 0, 
+      USER_MAIL:$('#CLINIC_USER_MAIL').val(),
       USER_PWD:$('#CLINIC_USER_PWD').val()
     };
     //生成输入参数

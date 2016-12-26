@@ -1,43 +1,38 @@
 <?php
-include_once ('class.sign_in_db.php');
-class Sign_in
+include_once ('class.getGenderEN_db.php');
+// define _DBUG_LOG 1;
+class getGenderEN
 {
-	private $sign_in;
+	private $getGenderEN;
 	private $arr_values = array();
+	private $request;
 	private $_dbug;
 
 	public function __construct()
 	{
 		session_start ();
-		$this->sign_in = new Sign_in_DB();
+		$this->getGenderEN = new getGenderEN_DB();
 		$this->_dbug = false;
 
-		// $this->user_name = $_SESSION ['user_name'];
-		// $this->user_pwd = $_SESSION ['user_pwd'];
-		// $this->date = date("Y-m-d H:i:s",time());
 
 		if (isset ( $_POST ['request'] )){
 			$this->request = $_POST ['request'];
 		}
 
-		if($this->_dbug){
-		    echo "[---Sign_in---request]";
-		    print_r($this->request);
-		}
+        if($this->_dbug){
+            echo "[---getGenderEN---request]";
+            print_r($this->request);
+        }
 
 		$this->arr_values = $this->request["para"];
 
-		if (isset ( $this->arr_values["action_type"] )){
-			$action_type = $this->arr_values["action_type"];
-			unset($this->arr_values["action_type"]);
-		}else
-		{
-			$action_type = "";
-		}
-		
-		$this->action = $action_type;
+		if($this->_dbug){
+	        echo "[---getGenderEN---arr_values]";
+	        print_r($this->arr_values);
+	    }
+
+		$this->action = "";
 		$this->action_type ();
-		
 	}
 	private function action_type()
 	{
@@ -57,6 +52,7 @@ class Sign_in
 				break;	
 			default :
 				$this->viewAll ();
+				//$this->getDataTime();
 				break;
 		}
 	}
@@ -75,50 +71,34 @@ class Sign_in
 		$response["response"]  = array();
 		$success = true;
 		$ret_msg = "";
-		$ret_code = "I00000"; //成功
+		$ret_code = "S00000"; //成功
 
-		$ret= $this->sign_in->viewAll ($this->arr_values);
+		$ret = $this->getGenderEN->viewAll ();
 		
-		$count = $ret[0]["COUNT"];
-
-		if($count == 1){
+		if($ret!=""){
 			$success = true;
-			$ret_msg="登录成功";
-			$ret_code = "I00000";
-			$_SESSION ['fd_user_name'] = $this->arr_values["USER_MAIL"];
-			$_SESSION ['fd_user_pwd'] = $this->arr_values["USER_PWD"];
-		}elseif($count == 0){
-			$success = false;
-			$ret_msg="用户名密码错误";
-			$ret_code = "I00001";
+			$ret_msg="查询成功";
+			$ret_code = "S00000";
 		}else{
-			$success = false;
-			$ret_msg="失败,请联系管理员";
-			$ret_code = "999999";
+			$success = true;
+			$ret_msg="无符合条件数据";
+			$ret_code = "S00001";
 		}
 
 		$status  = array();
 		$status["ret_msg"] = $ret_msg;	
 		$status["ret_code"] = $ret_code;
 
-		//服务器模式data
-		// $data  = array();
-		// $data["draw"] = $this->draw;
-		// $data["recordsTotal"] = $records;
-		// $data["recordsFiltered"] = $records;
-		// $data["data"]=$ret["data"];
-		
+
 		// echo $ret;
 		$response["response"] = $this->response_const();  //固定参数返回
 		$response["response"]["success"] = $success;  //固定参数返回	
 		$response["response"]["status"] = $status;  //固定参数返回	
-		$response["response"]["data"] = "";
+		$response["response"]["data"] = $ret;
 
 		echo json_encode ( $response );
 	}
-
 }
 
-$Sign_in = new Sign_in();
+$getGenderEN = new getGenderEN();
 ?>
-

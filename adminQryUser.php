@@ -71,14 +71,11 @@ include_once 'classes/Menu/menu.php';
                       <form class="form-inline" role="form" id="adminQryUser_form">
                           <input type="hidden" class="form-control" name="action_type" id="action_type" value="view_name_area">
                           <div class="form-group">
-                            <label for="CUSTOMER_USER_NAME" class="control-label"><!-- 用户名 --><?php echo $lang['Lang0085']; ?></label>
-                            <input type="text" class="form-control" name="CUSTOMER_USER_NAME" id="CUSTOMER_USER_NAME">
+                            <label for="CUSTOMER_USER_MAIL" class="control-label"><!-- 用户名 --><?php echo $lang['Lang0098']; ?></label>
+                            <input type="text" class="form-control" name="CUSTOMER_USER_MAIL" id="CUSTOMER_USER_MAIL">
                           </div>
 
-                          <div class="form-group">
-                            <label for="CUSTOMER_NAME" class="control-label"><!-- 用户姓名 --><?php echo $lang['Lang0086']; ?></label>
-                            <input type="text" class="form-control" name="CUSTOMER_NAME" id="CUSTOMER_NAME">
-                          </div>
+                         
 
                           <div class="form-group">
                             <label for="CUSTOMER_SUBURB" class="control-label"><!-- 区 --><?php echo $lang['Lang0087']; ?></label>
@@ -113,9 +110,11 @@ include_once 'classes/Menu/menu.php';
                       <thead class="table_title">
                           <tr>
                             <th><input type="checkbox" name="chk_all" id="chk_all"></th>
-                            <th><!-- 用户名 --><?php echo $lang['Lang0097']; ?></th>
+                           
                             <th><!-- 邮箱 --><?php echo $lang['Lang0098']; ?></th>
-                            <th><!-- 姓名 --><?php echo $lang['Lang0099']; ?></th>
+                            <th><!-- title --><?php echo $lang['Lang0322']; ?></th>
+                            <th><!-- 名 --><?php echo $lang['Lang0320']; ?></th>
+                            <th><!-- 姓 --><?php echo $lang['Lang0321']; ?></th>
                             <th><!-- 性别 --><?php echo $lang['Lang0100']; ?></th>
                             <th><!-- 生日 --><?php echo $lang['Lang0101']; ?></th>
                             <th><!-- 详细地址 --><?php echo $lang['Lang0102']; ?></th>

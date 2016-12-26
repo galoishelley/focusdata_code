@@ -85,7 +85,7 @@ $(document).ready(function() {
               var data = ret.data[0];
               console.log(data);
               $('#CLINIC_USER_ID').val(data.CLINIC_USER_ID);
-              $('#CLINIC_USER_NAME').val(data.CLINIC_USER_NAME);
+
               $('#CLINIC_USER_MAIL').val(data.CLINIC_USER_MAIL);
               $('#CLINIC_NAME').val(data.CLINIC_NAME);
               $('#CLINIC_POSTCODE').val(data.CLINIC_POSTCODE);
@@ -195,7 +195,7 @@ $(document).ready(function() {
               
               alert(func_code + " " + ret.status.ret_code + " " + ret.status.ret_msg);
 
-              $.cookie("fd_username", $('#CLINIC_USER_NAME').val());
+              $.cookie("fd_username", $('#CLINIC_USER_MAIL').val());
 
               var username = $.cookie("fd_username");
 

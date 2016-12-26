@@ -73,10 +73,7 @@ include_once 'classes/Menu/menu.php';
                       <input type="hidden" class="form-control" name="action_type" id="action_type" value="update">
                       <input type="hidden" class="form-control" name="CLINIC_USER_ID" id="CLINIC_USER_ID">
 
-                      <div class="form-group col-md-6">
-                        <label for="CUSTOMER_USER_NAME" class="col-md-3 control-label"><!-- 用户名--><?php echo $lang['Lang0118']; ?><span class="span-red">*</span></label>
-                        <input type="text" class="form-control" id="CLINIC_USER_NAME" name="CLINIC_USER_NAME" readonly="readonly">
-                      </div>
+                      
 
                       <div class="form-group col-md-6">
                         <label for="Addr" class="col-md-3 control-label"><!-- 邮箱--><?php echo $lang['Lang0119']; ?><span class="span-red">*</span></label>

@@ -7,7 +7,6 @@ $(function(){
     console.log(json_value);
 
     $('#CLINIC_USER_ID').val(json_value.CLINIC_USER_ID);
-    $('#CLINIC_USER_NAME').val(json_value.CLINIC_USER_NAME);
     $('#CLINIC_USER_MAIL').val(json_value.CLINIC_USER_MAIL);
     $('#CLINIC_NAME').val(json_value.CLINIC_NAME);
     $("#ACTIVE_STATUS option[value='"+ json_value.ACTIVE_STATUS +"']").attr("selected",true);

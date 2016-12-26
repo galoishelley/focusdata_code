@@ -59,7 +59,7 @@ $(document).ready(function() {
   }
 */
   
-  $('#CUSTOMER_USER_NAME').val(username);
+  $('#CUSTOMER_USER_MAIL').val(username);
   
   $('#btn_ok').click(function(){
 
@@ -79,7 +79,7 @@ $(document).ready(function() {
     //form序列化成json
     json_form = {
       usertype: 1, //个人用户
-      USER_NAME:$('#CUSTOMER_USER_NAME').val(),
+      USER_MAIL:$('#CUSTOMER_USER_MAIL').val(),
       USER_PWD:$('#CUSTOMER_USER_PWD').val()
     };
     //生成输入参数

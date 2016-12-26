@@ -8,13 +8,13 @@ class Sign_up_clinic_DB{
     $this->db = new Database();
     }
     public function col_exists($where){
-        $ret = $this->db->col_exists('fd_clinic_user','CLINIC_USER_NAME="'.$where.'"');
+        $ret = $this->db->col_exists('fd_clinic_user','CLINIC_USER_MAIL="'.$where.'"');
         return $ret;
     }
 
     public function create($arr_values){
 
-        if($this->col_exists($arr_values["CLINIC_USER_NAME"])){
+        if($this->col_exists($arr_values["CLINIC_USER_MAIL"])){
             return 2;
         };
 

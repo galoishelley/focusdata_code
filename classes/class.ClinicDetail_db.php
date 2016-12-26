@@ -58,7 +58,7 @@ class ClinicDetail_DB{
             print_r($arr_values);
         }
 
-        $sql = "SELECT * FROM `fd_clinic_user` WHERE `CLINIC_USER_NAME` = '".$arr_values["username"]."'";
+        $sql = "SELECT * FROM `fd_clinic_user` WHERE `CLINIC_USER_MAIL` = '".$arr_values["username"]."'";
 
         // echo $sql;
         if($this->_dbug){

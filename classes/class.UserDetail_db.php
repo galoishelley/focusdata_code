@@ -36,7 +36,11 @@ class UserDetail_DB{
             print_r($arr_values);
         }
 
-        $sql = "SELECT count(*) as count FROM `fd_customer_user` t1 WHERE t1.ACTIVE_STATUS  like '%".$arr_values['ACTIVE_STATUS']."%' and t1.CUSTOMER_NAME like '%".$arr_values['CUSTOMER_NAME']."%' and t1.CUSTOMER_SUBURB like '%".$arr_values['CUSTOMER_SUBURB']."%' and t1.STATE_ID like '%".$arr_values['STATE_ID']."%' and t1.CUSTOMER_USER_NAME like '%".$arr_values['CUSTOMER_USER_NAME']."%'";
+        $sql = "SELECT count(*) as count FROM `fd_customer_user` t1 WHERE t1.ACTIVE_STATUS  like '%".
+        $arr_values['ACTIVE_STATUS']."%' and t1.CUSTOMER_USER_MAIL like '%".
+        $arr_values['CUSTOMER_USER_MAIL']."%' and t1.CUSTOMER_SUBURB like '%".
+        $arr_values['CUSTOMER_SUBURB']."%' and t1.STATE_ID like '%".
+        $arr_values['STATE_ID']."%'";
 
         // echo $sql;
         if($this->_dbug){
@@ -59,9 +63,9 @@ class UserDetail_DB{
         $limit = " limit ".$start.",".$lenght;
         $sql = "SELECT t1.*, t2.STATE_NAME  FROM `fd_customer_user` t1
             left join fd_dict_state t2 on t1.state_id = t2.state_id
-            WHERE  t1.ACTIVE_STATUS  like '%".$arr_values['ACTIVE_STATUS']."%' and t1.CUSTOMER_NAME like '%".$arr_values['CUSTOMER_NAME']."%' and t1.CUSTOMER_SUBURB like '%".$arr_values['CUSTOMER_SUBURB']."%' and
-                t1.STATE_ID like '%".$arr_values['STATE_ID']."%' and t1.CUSTOMER_USER_NAME
-                like '%".$arr_values['CUSTOMER_USER_NAME']."%' order by create_date desc". $limit;
+            WHERE  t1.ACTIVE_STATUS  like '%".$arr_values['ACTIVE_STATUS']."%' and t1.CUSTOMER_SUBURB like '%".$arr_values['CUSTOMER_SUBURB']."%' and
+                t1.STATE_ID like '%".$arr_values['STATE_ID']."%' and t1.CUSTOMER_USER_MAIL
+                like '%".$arr_values['CUSTOMER_USER_MAIL']."%' order by create_date desc". $limit;
 
 
         // echo $sql;
@@ -101,7 +105,7 @@ class UserDetail_DB{
             print_r($arr_values);
         }
 
-        $sql = "SELECT * FROM `fd_customer_user` WHERE `CUSTOMER_USER_NAME` = '".$arr_values["username"]."'";
+        $sql = "SELECT * FROM `fd_customer_user` WHERE `CUSTOMER_USER_MAIL` = '".$arr_values["username"]."'";
 
         // echo $sql;
         if($this->_dbug){

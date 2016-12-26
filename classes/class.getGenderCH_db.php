@@ -1,7 +1,7 @@
 <?php 
 include_once('class.database.php');
 
-class getState_DB{
+class getGenderCH_DB{
     private $db;
     private $_dbug;
     public function __construct(){  
@@ -16,7 +16,7 @@ class getState_DB{
             print_r($arr_values);
         }
 
-        $sql = "SELECT * FROM `fd_dict_state` order by state_name";
+        $sql = "SELECT * FROM `fd_dict_gender_ch`";
 
         if($this->_dbug){
             echo "[---viewAll---sql]";

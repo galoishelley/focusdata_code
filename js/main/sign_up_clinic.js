@@ -6,7 +6,7 @@ $(function(){
 
   //记住用户名密码
   function Save() {
-    var str_username = $("#CLINIC_USER_NAME").val();
+    var str_username = $("#CLINIC_USER_MAIL").val();
     var str_password = $("#CLINIC_USER_PWD").val();
     var str_usertype = 0;
 
@@ -159,7 +159,7 @@ $(function(){
     requesttype = 0;
 
     para={
-      USER_NAME:$('#CLINIC_USER_NAME').val(),
+      USER_MAIL:$('#CLINIC_USER_MAIL').val(),
       USER_PWD:$('#CLINIC_USER_PWD').val(),
       usertype:0
     }

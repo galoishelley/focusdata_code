@@ -43,8 +43,8 @@ $lang['Lang0020']= 'Please update personal information and add Email';
 
 // Page Login
 $lang['Lang0021'] = 'Login';
-$lang['Lang0022'] = 'User';
-$lang['Lang0023'] = 'Please enter user name...';
+$lang['Lang0022'] = 'Email';
+$lang['Lang0023'] = 'Please enter your email...';
 //$lang['Lang0022Error'] = 'User Name can not be empty!';
 $lang['Lang0024'] = 'Password';
 $lang['Lang0025'] = 'Please enter password...';
@@ -403,5 +403,10 @@ $lang['Lang0317'] = 'Search';
 $lang['Lang0318'] = 'Advanced Search';
 
 $lang['Lang0319'] = 'Date';
+$lang['Lang0320'] = 'First Name';
+$lang['Lang0321'] = 'Last Name';
+
+$lang['Lang0322'] = 'Title';
+$lang['Lang0323'] = 'classes/class.getGenderEN.php';
 
 ?>

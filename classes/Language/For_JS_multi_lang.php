@@ -100,4 +100,13 @@
 
 <!-- 欢迎 -->
 <div id="Lang0315" style="display: none;"><?php echo $lang['Lang0315']; ?></div>
+
+<!-- 获取性别 -->
+<div id="Lang0323" style="display: none;"><?php echo $lang['Lang0323']; ?></div>
+
+<!-- 男 -->
+<div id="Lang0132" style="display: none;"><?php echo $lang['Lang0132']; ?></div>
+
+<!-- 女 -->
+<div id="Lang0133" style="display: none;"><?php echo $lang['Lang0133']; ?></div>
 <!-- 为了实现js多语言 end -->

@@ -39,8 +39,8 @@ $lang['Lang0020']= '请修改个人信息，添加邮箱地址';
 
 // Page Sign In
 $lang['Lang0021'] = '登陆';
-$lang['Lang0022'] = '用户名';
-$lang['Lang0023'] = '请输入用户名...';
+$lang['Lang0022'] = '邮箱';
+$lang['Lang0023'] = '请输入注册邮箱...';
 //$lang['Lang0022Error'] = '用户名不能为空!';
 $lang['Lang0024'] = '密码';
 $lang['Lang0025'] = '请输入密码...';
@@ -398,5 +398,10 @@ $lang['Lang0317'] = '一般搜索';
 $lang['Lang0318'] = '高级搜索';
 
 $lang['Lang0319'] = '预约日期';
+$lang['Lang0320'] = '名字';
+$lang['Lang0321'] = '姓氏';
+
+$lang['Lang0322'] = '称呼';
+$lang['Lang0323'] = 'classes/class.getGenderCH.php';
 
 ?>

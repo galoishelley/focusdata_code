@@ -74,19 +74,25 @@ include_once 'classes/Menu/menu.php';
                       <input type="hidden" class="form-control" name="action_type" id="action_type" value="update">
                       <input type="hidden" class="form-control" name="CUSTOMER_USER_ID" id="CUSTOMER_USER_ID">
 
-                      <div class="form-group col-md-6">
-                        <label for="CUSTOMER_USER_NAME" class="col-md-3 control-label"><!-- 用户名--><?php echo $lang['Lang0142']; ?><span class="span-red">*</span></label>
-                        <input type="text" class="form-control" id="CUSTOMER_USER_NAME" name="CUSTOMER_USER_NAME" readonly="readonly">
-                      </div>
+                      
 
                       <div class="form-group col-md-6">
                         <label for="CUSTOMER_USER_MAIL" class="col-md-3 control-label"><!-- 邮箱--><?php echo $lang['Lang0143']; ?><span class="span-red">*</span></label>
                         <input type="text" class="form-control" id="CUSTOMER_USER_MAIL" name="CUSTOMER_USER_MAIL">
                       </div>
 
+					<div class="form-group col-md-6">
+                        <label for="TITLE_ID" class="col-md-3"><!-- title--><?php echo $lang['Lang0322']; ?><span class="span-red">*</span></label>
+                        <select class="form-control" id="TITLE_ID" name="TITLE_ID">
+                        </select>
+                      </div>
                       <div class="form-group col-md-6">
-                        <label for="CUSTOMER_NAME" class="col-md-3 control-label"><!-- 姓名--><?php echo $lang['Lang0144']; ?><span class="span-red">*</span></label>
-                        <input type="text" class="form-control" id="CUSTOMER_NAME" name="CUSTOMER_NAME">
+                        <label for="CUSTOMER_FIRSTNAME" class="col-md-3 control-label"><!-- 名--><?php echo $lang['Lang0320']; ?><span class="span-red">*</span></label>
+                        <input type="text" class="form-control" id="CUSTOMER_FIRSTNAME" name="CUSTOMER_FIRSTNAME">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="CUSTOMER_LASTNAME" class="col-md-3 control-label"><!-- 姓--><?php echo $lang['Lang0321']; ?><span class="span-red">*</span></label>
+                        <input type="text" class="form-control" id="CUSTOMER_LASTNAME" name="CUSTOMER_LASTNAME">
                       </div>
                       
                       <div class="form-group col-md-6">

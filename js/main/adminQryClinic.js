@@ -36,54 +36,7 @@ $(document).ready(function() {
   }
   else{}
 
-  // //登录cookie
-  // var ilogin = $.cookie("ilogin");
-  // if(ilogin == ""){
-  //   request_type = 0;
-  // }else if(ilogin != ""){
-  //   request_type = 1;
-  // }
-
-  // //校验用户是否登录
-  // ilogin = $.cookie("ilogin");
-  // if(ilogin == 1)
-  // {
-  //   fd_userid = $.cookie("fd_userid");
-    
-  //   var fd_usertype = $.cookie("fd_usertype");
-  //   var fd_usertypename = $.cookie("fd_usertypename");
-
-  //   var username = $.cookie("fd_username");
-
-  //   $('#userinfo').html(username);
-  //   $('#usertype').html("用户类型: "+ fd_usertypename);
-
-    
-  //   $('#sub_userinfo').removeClass("hidden");
-
-  //   // // $('#li_home').hide();
-  //   // $('#li_home').addClass('show');
-
-  //   // // $('#li_SearchDoctor').hidden();
-
-  //   if(fd_usertype == 0){
-  //     $('#li_ClinicUser').removeClass("hidden");
-  //   }else if(fd_usertype == 1){
-  //     $('#li_AppRecoder').removeClass("hidden");
-  //   }else if(fd_usertype == 2){
-  //     $('#li_Admin').removeClass("hidden");
-  //   }else{
-
-  //   }
-  // }
-
-  // if(ilogin == 0){
-  //   alert($('#Lang0019').html());//您未登陆,无法使用此功能!
-  //   history.go(-1);
-  //   return false;
-  //   // $('#a_userAppointmentRecoder').attr("href","#");
-  //   // $('#a_userAppointmentRecoder').attr("color","#FF0000");
-  // }
+ 
 
   //填充州
   func_code = "SSTE";
@@ -172,9 +125,6 @@ $(document).ready(function() {
         d.request = json_str
       },
       dataSrc: function(json){
-           // json.draw = json.response.data.draw;
-           // json.recordsTotal = json.response.data.recordsTotal;
-           // json.recordsFiltered = json.response.data.recordsFiltered;
 
            return json.response.data;
         }
@@ -186,24 +136,24 @@ $(document).ready(function() {
           "data": null,
           "defaultContent": "<input type='checkbox' id='chk_list' name='chk_list'>"
         },
-        { 
-          "data": "CLINIC_USER_NAME",
-          render: function(data, type, row, meta) {
-              //type 的值  dispaly sort filter
-              //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
-              //这里只处理了类型是显示的，过滤和排序返回原始数据
-              if (type === 'display') {
-                  if (data.length > 10) {
-                      return '<span title="' + data + '">' + data.substr(0, 8) + '...</span>';
-                  } else {
-                    // console.log(data);
-                      // return '<span title="' + data + '>' + data + '</span>';
-                      return data;
-                  }
-              }
-              return data;
-          }
-        },
+//        { 
+//          "data": "CLINIC_USER_NAME",
+//          render: function(data, type, row, meta) {
+//              //type 的值  dispaly sort filter
+//              //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
+//              //这里只处理了类型是显示的，过滤和排序返回原始数据
+//              if (type === 'display') {
+//                  if (data.length > 10) {
+//                      return '<span title="' + data + '">' + data.substr(0, 8) + '...</span>';
+//                  } else {
+//                    // console.log(data);
+//                      // return '<span title="' + data + '>' + data + '</span>';
+//                      return data;
+//                  }
+//              }
+//              return data;
+//          }
+//        },
         { 
           "data": "CLINIC_USER_MAIL",
           render: function(data, type, row, meta) {
@@ -308,29 +258,6 @@ $(document).ready(function() {
       
       "oLanguage": { "sUrl": datatable_lang_url },
 
-//      "oLanguage": {
-//         "oAria": {
-//             "sSortAscending": " - click/return to sort ascending",
-//             "sSortDescending": " - click/return to sort descending"
-//         },
-//         "sLengthMenu": "显示 _MENU_ 记录",
-//         "sZeroRecords": "对不起，查询不到任何相关数据",
-//         "sEmptyTable": "未有相关数据",
-//         "sLoadingRecords": "正在加载数据-请等待...",
-//         "sInfo": "当前显示 _START_ 到 _END_ 条,共 _TOTAL_ 条记录",
-//         "sInfoEmpty": "当前显示0到0条，共0条记录",
-//         "sInfoFiltered": "（数据库中共为 _MAX_ 条记录）",
-//         "sProcessing": "<img src='../resources/user_share/row_details/select2-spinner.gif'/> 正在加载数据...",
-//         "sSearch": "模糊查询：",
-//         "sUrl": "",
-//         //多语言配置文件，可将oLanguage的设置放在一个txt文件中，例：Javascript/datatable/dtCH.txt
-//         "oPaginate": {
-//             "sFirst": "首页",
-//             "sPrevious": " << ",
-//             "sNext": " >> ",
-//             "sLast": " 尾页 "
-//        }
-//      },
 
       "columnDefs": [
         {
@@ -389,17 +316,7 @@ $(document).ready(function() {
 
 
     initComplete: function(data){
-      // $('#ok_id').append("<button id='btn_ok'>OK</button>");
 
-      // // $('#btn_ok').on('click', function(){
-      // //   alert("click me");
-      // // });
-      // $('#btn_ok').click(function(){
-      //  alert("click me");
-      // });
-      // console.log(data);
-      // $.cookie("search_con", "");
-      // console.log("加载完毕");
     }
 
   });
@@ -461,7 +378,7 @@ $(document).ready(function() {
           CLINIC_ADDR: obj_data.CLINIC_ADDR,
           CLINIC_USER_ID: obj_data.CLINIC_USER_ID,
           CLINIC_USER_MAIL: obj_data.CLINIC_USER_MAIL,
-          CLINIC_USER_NAME: obj_data.CLINIC_USER_NAME,
+          //CLINIC_USER_NAME: obj_data.CLINIC_USER_NAME,
           ACTIVE_STATUS: obj_data.ACTIVE_STATUS,
           CLINIC_POSTCODE: obj_data.CLINIC_POSTCODE,
           CLINIC_SUBURB: obj_data.CLINIC_SUBURB,
@@ -492,7 +409,7 @@ $(document).ready(function() {
           data: {
         	  email: obj_data.CLINIC_USER_MAIL,
               pwd: reset_pwd,
-              name:obj_data.CLINIC_USER_NAME
+              name:obj_data.CLINIC_USER_MAIL
           },
           success: function (msg) {
         	  

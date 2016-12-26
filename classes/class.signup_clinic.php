@@ -38,7 +38,7 @@ class Sign_up_clinic
 		
 		$this->action = $action_type;
 
-		$this->user_name = $this->arr_values["CLINIC_USER_NAME"];
+		$this->user_name = $this->arr_values["CLINIC_USER_MAIL"];
 		$this->user_pwd = $this->arr_values["CLINIC_USER_PWD"];
 		$this->arr_values["CREATE_USER"] = $this->user_name;
 		$this->arr_values["UPDATE_USER"] = $this->user_name;

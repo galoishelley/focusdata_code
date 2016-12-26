@@ -11,7 +11,7 @@ class Sign_up_person_DB{
     }
 
     public function col_exists($where){
-        $ret = $this->db->col_exists('fd_customer_user','CUSTOMER_USER_NAME="'.$where.'"');
+        $ret = $this->db->col_exists('fd_customer_user','CUSTOMER_USER_MAIL="'.$where.'"');
         return $ret;
     }
 
@@ -22,7 +22,7 @@ class Sign_up_person_DB{
             print_r($arr_values);
         }
 
-        if($this->col_exists($arr_values["CUSTOMER_USER_NAME"])){
+        if($this->col_exists($arr_values["CUSTOMER_USER_MAIL"])){
             return 2;
         };
 
@@ -33,7 +33,7 @@ class Sign_up_person_DB{
                 // base64_encode base64_decode
                 // $arr_values[$k] = base64_encode($v);
             }
-            if($k == "STATE_ID"){
+            if($k == "STATE_ID" || $k == "GENDER_ID"|| $k == "TITLE_ID"){
                 $arr_values[$k] = intval($v);
             }
         }

@@ -107,12 +107,11 @@ include_once 'classes/Menu/menu.php';
 
 
                   <div class="row">
-                   <!-- <table id="dataTables-example" class="table table-striped table-bordered" cellspacing="0" width="100%"> -->
+                   
                     <table id="dataTables-example" class="table table-hover  table-bordered" >
                       <thead class="table_title">
                           <tr>
                             <th><input type="checkbox" name="chk_all" id="chk_all"></th>
-                            <th><!-- 用户名 --><?php echo $lang['Lang0047']; ?></th>
                             <th><!-- 邮箱 --><?php echo $lang['Lang0048']; ?></th>
                             <th><!-- 诊所名称 --><?php echo $lang['Lang0049']; ?></th>
                             <th><!-- 详细地址 --><?php echo $lang['Lang0050']; ?></th>

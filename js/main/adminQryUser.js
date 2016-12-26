@@ -35,52 +35,6 @@ $(document).ready(function() {
 	    datatable_lang_url="//cdn.datatables.net/plug-ins/1.10.12/i18n/Chinese.json";
 	}
 	
-  // //登录cookie
-  // var ilogin = $.cookie("ilogin");
-  // if(ilogin == ""){
-  //   request_type = 0;
-  // }else if(ilogin != ""){
-  //   request_type = 1;
-  // }
-
-  // //校验用户是否登录
-  // if(ilogin == 1)
-  // {
-  //   fd_userid = $.cookie("fd_userid");
-    
-  //   var fd_usertype = $.cookie("fd_usertype");
-  //   var fd_usertypename = $.cookie("fd_usertypename");
-
-  //   var username = $.cookie("fd_username");
-
-  //   $('#userinfo').html(username);
-  //   $('#usertype').html("用户类型: "+ fd_usertypename);
-
-    
-  //   $('#sub_userinfo').removeClass("hidden");
-
-
-  //   if(fd_usertype == 0){
-  //     $('#li_ClinicUser').removeClass("hidden");
-  //   }else if(fd_usertype == 1){
-  //     $('#li_AppRecoder').removeClass("hidden");
-  //   }else if(fd_usertype == 2){
-  //     $('#li_Admin').removeClass("hidden");
-  //   }else{
-
-  //   }
-  // }
-
-  // if(ilogin == 0){
-    
-  //   alert($("#Lang0019").html());//您未登陆,无法使用此功能
-  //   history.go(-1);
-  //   return false;
-  //   // $('#a_userAppointmentRecoder').attr("href","#");
-  //   // $('#a_userAppointmentRecoder').attr("color","#FF0000");
-  // }
-
-
   //填充州
   func_code = "SSTE";
   para="";
@@ -180,24 +134,24 @@ $(document).ready(function() {
           "data": null,
           "defaultContent": "<input type='checkbox' id='chk_list' name='chk_list'>"
         },
-        { 
-          "data": "CUSTOMER_USER_NAME",
-          render: function(data, type, row, meta) {
-              //type 的值  dispaly sort filter
-              //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
-              //这里只处理了类型是显示的，过滤和排序返回原始数据
-              if (type === 'display') {
-                  if (data.length > 10) {
-                      return '<span title="' + data + '">' + data.substr(0, 8) + '...</span>';
-                  } else {
-                    // console.log(data);
-                      // return '<span title="' + data + '>' + data + '</span>';
-                      return data;
-                  }
-              }
-              return data;
-          }
-        },
+//        { 
+//          "data": "CUSTOMER_USER_NAME",
+//          render: function(data, type, row, meta) {
+//              //type 的值  dispaly sort filter
+//              //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
+//              //这里只处理了类型是显示的，过滤和排序返回原始数据
+//              if (type === 'display') {
+//                  if (data.length > 10) {
+//                      return '<span title="' + data + '">' + data.substr(0, 8) + '...</span>';
+//                  } else {
+//                    // console.log(data);
+//                      // return '<span title="' + data + '>' + data + '</span>';
+//                      return data;
+//                  }
+//              }
+//              return data;
+//          }
+//        },
         { 
           "data": "CUSTOMER_USER_MAIL",
           render: function(data, type, row, meta) {
@@ -217,7 +171,28 @@ $(document).ready(function() {
           }
         },
         { 
-          "data": "CUSTOMER_NAME",
+            "data": "TITLE_ID",
+            render: function(data, type, row, meta) {
+                //type 的值  dispaly sort filter
+                //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
+                //这里只处理了类型是显示的，过滤和排序返回原始数据
+                if (data === '0') {
+                  return 'Mr.';
+                }
+                if (data === '1') {
+                  return 'Mrs.';
+                }
+                if (data === '2') {
+                    return 'Ms.';
+                  }
+                if (data === '3') {
+                    return 'Miss';
+                  }
+                return data;
+            }
+          },
+        { 
+          "data": "CUSTOMER_FIRSTNAME",
           render: function(data, type, row, meta) {
               //type 的值  dispaly sort filter
               //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
@@ -235,16 +210,34 @@ $(document).ready(function() {
           }
         },
         { 
-          "data": "CUSTOMER_GENDER",
+            "data": "CUSTOMER_LASTNAME",
+            render: function(data, type, row, meta) {
+                //type 的值  dispaly sort filter
+                //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
+                //这里只处理了类型是显示的，过滤和排序返回原始数据
+                if (type === 'display') {
+                    if (data.length > 15) {
+                        return '<span title="' + data + '">' + data.substr(0, 15) + '...</span>';
+                    } else {
+                      // console.log(data);
+                        // return '<span title="' + data + '>' + data + '</span>';
+                        return data;
+                    }
+                }
+                return data;
+            }
+          },
+        { 
+          "data": "GENDER_ID",
           render: function(data, type, row, meta) {
               //type 的值  dispaly sort filter
               //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
               //这里只处理了类型是显示的，过滤和排序返回原始数据
               if (data === '0') {
-                return 'mate';
+                return $('#Lang0132').html();
               }
               if (data === '1') {
-                return 'femate';
+                return $('#Lang0133').html();
               }
               return data;
           }
@@ -501,10 +494,12 @@ $(document).ready(function() {
     var data = {
           imgId:imgId,
           CUSTOMER_USER_ID: obj_data.CUSTOMER_USER_ID,
-          CUSTOMER_USER_NAME: obj_data.CUSTOMER_USER_NAME,
+          //CUSTOMER_USER_NAME: obj_data.CUSTOMER_USER_NAME,
           CUSTOMER_USER_MAIL: obj_data.CUSTOMER_USER_MAIL,
-          CUSTOMER_NAME: obj_data.CUSTOMER_NAME,
-          CUSTOMER_GENDER: obj_data.CUSTOMER_GENDER,
+          CUSTOMER_TITLE_ID: obj_data.TITLE_ID,
+          CUSTOMER_FIRSTNAME: obj_data.CUSTOMER_FIRSTNAME,
+          CUSTOMER_LASTNAME: obj_data.CUSTOMER_LASTNAME,
+          CUSTOMER_GENDER_ID: obj_data.GENDER_ID,
           CUSTOMER_BIRTHDAY: obj_data.CUSTOMER_BIRTHDAY,
           CUSTOMER_ADDR: obj_data.CUSTOMER_ADDR,
           CUSTOMER_POSTCODE: obj_data.CUSTOMER_POSTCODE,

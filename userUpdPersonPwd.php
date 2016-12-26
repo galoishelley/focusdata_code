@@ -72,8 +72,8 @@ include_once 'classes/Menu/menu.php';
                       <input type="hidden" class="form-control" name="CUSTOMER_USER_ID" id="CUSTOMER_USER_ID">
 
                       <div class="form-group col-md-10">
-                        <label for="CUSTOMER_USER_NAME" class="col-md-5 control-label"><!-- 用户名--><?php echo $lang['Lang0111']; ?><span class="span-red">*</span></label>
-                        <input type="text" class="form-control" id="CUSTOMER_USER_NAME" name="CUSTOMER_USER_NAME" readonly="true">
+                        <label for="CUSTOMER_USER_MAIL" class="col-md-5 control-label"><!-- 用户名--><?php echo $lang['Lang0111']; ?><span class="span-red">*</span></label>
+                        <input type="text" class="form-control" id="CUSTOMER_USER_MAIL" name="CUSTOMER_USER_MAIL" readonly="true">
                       </div>
 
                       <div class="form-group col-md-10">

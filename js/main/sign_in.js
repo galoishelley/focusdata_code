@@ -5,20 +5,20 @@ $(function(){
 	
   // if($.cookie("ilogin") == 1)
   // {
-  //   $('#userinfo').html($("#USER_NAME").val());
+  //   $('#userinfo').html($("#USER_MAIL").val());
   // }
 
   //选择Remember Me记录cookie
 	if ($.cookie("fd_rmbUser") == "true") {
     $("#ck_rmbUser").attr("checked", true);
-    $("#USER_NAME").val($.cookie("fd_username"));
+    $("#USER_MAIL").val($.cookie("fd_username"));
     $("#USER_PWD").val($.cookie("fd_password"));
     $("input[name='usertype']:eq("+$.cookie("fd_usertype")+")").attr("checked",'checked');
   }
 
   //记住用户名密码
   function Save() {
-    var str_username = $("#USER_NAME").val();
+    var str_username = $("#USER_MAIL").val();
     var str_password = $("#USER_PWD").val();
     var str_usertype = $('input[name="usertype"]:checked').val();
 
@@ -60,7 +60,7 @@ $(function(){
       $("#signin_form").submit();
     }
     // else{
-    //   // $("USER_NAME").focus();
+    //   // $("USER_MAIL").focus();
     //   return false;
     // }
 
@@ -243,7 +243,7 @@ $(function(){
         　　　　　　　　validating: 'glyphicon glyphicon-refresh'
                     },
       fields: {
-          USER_NAME: {
+          USER_MAIL: {
               validators: {
                   notEmpty: {
                       message: 'User name can not be empty!'

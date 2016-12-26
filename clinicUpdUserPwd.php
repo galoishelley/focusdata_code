@@ -71,8 +71,8 @@ include_once 'classes/Menu/menu.php';
                       <input type="hidden" class="form-control" name="CLINIC_USER_ID" id="CLINIC_USER_ID">
 
                       <div class="form-group col-md-10">
-                        <label for="CLINIC_USER_NAME" class="col-md-5 control-label"><!-- 用户名--><?php echo $lang['Lang0111']; ?><span class="span-red">*</span></label>
-                        <input type="text" class="form-control" id="CLINIC_USER_NAME" name="CLINIC_USER_NAME" readonly="true">
+                        <label for="CLINIC_USER_MAIL" class="col-md-5 control-label"><!-- 用户名--><?php echo $lang['Lang0111']; ?><span class="span-red">*</span></label>
+                        <input type="text" class="form-control" id="CLINIC_USER_MAIL" name="CLINIC_USER_MAIL" readonly="true">
                       </div>
 
                       <div class="form-group col-md-10">
