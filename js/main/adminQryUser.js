@@ -188,6 +188,12 @@ $(document).ready(function() {
                 if (data === '3') {
                     return 'Miss';
                   }
+                if (data === '4') {
+                    return 'Master';
+                  }
+                if (data === '5') {
+                    return 'Dr';
+                  }
                 return data;
             }
           },

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2016 at 11:33 AM
+-- Generation Time: Dec 30, 2016 at 05:11 AM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
@@ -141,7 +141,8 @@ CREATE TABLE `ap_patient` (
 
 INSERT INTO `ap_patient` (`id`, `CUSTOMER_USER_ID`, `title`, `first_name`, `last_name`, `gender`, `dob`, `email`, `phone_mobile`, `medicare_no`, `medicare_ref`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
 (22, 184, 'Mr', 'x', 'x', 'M', '11/11/1983', 'fudanyinxin@gmail.com', '0412341234', '1231231231', '1', 'fudanyinxin@gmail.com', '2016-10-03 18:42:22', '', '0000-00-00 00:00:00'),
-(23, 187, 'Mr', 'xin', 'yin', 'M', '11/11/1983', 'fudanyinxin@gmail.com', '0412341234', '1231231231', '1', 'fudanyinxin@gmail.com', '2016-12-02 09:59:13', '', '0000-00-00 00:00:00');
+(23, 187, 'Mr', 'xin', 'yin', 'M', '11/11/1983', 'fudanyinxin@gmail.com', '0412341234', '1231231231', '1', 'fudanyinxin@gmail.com', '2016-12-02 09:59:13', '', '0000-00-00 00:00:00'),
+(24, 205, 'Miss', '1555', '1', 'F', '1999-11-11', '2@2.com', '0412341234', '1231231231', '1', '2@2.com', '2016-12-26 13:34:04', '2@2.com', '2016-12-26 13:41:26');
 
 -- --------------------------------------------------------
 
@@ -174,7 +175,6 @@ INSERT INTO `fd_admin` (`ADMIN_ID`, `ADMIN_NAME`, `ADMIN_PWD`, `CREATE_USER`, `C
 
 CREATE TABLE `fd_clinic_user` (
   `CLINIC_USER_ID` int(11) NOT NULL,
-  `CLINIC_USER_NAME` varchar(50) NOT NULL,
   `CLINIC_USER_PWD` varchar(50) NOT NULL,
   `CLINIC_USER_MAIL` varchar(50) NOT NULL,
   `CLINIC_NAME` varchar(200) NOT NULL,
@@ -194,27 +194,9 @@ CREATE TABLE `fd_clinic_user` (
 -- Dumping data for table `fd_clinic_user`
 --
 
-INSERT INTO `fd_clinic_user` (`CLINIC_USER_ID`, `CLINIC_USER_NAME`, `CLINIC_USER_PWD`, `CLINIC_USER_MAIL`, `CLINIC_NAME`, `CLINIC_ADDR`, `CLINIC_POSTCODE`, `CLINIC_SUBURB`, `STATE_ID`, `ACTIVE_STATUS`, `NOTE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
-(1, 'shelleymyl', '21232f297a57a5a743894a0e4a801fc3', 'shelleymyl@gmail.com11', 'Clinic for test 1 Whitehorse Road', '1 Whitehorse Road', '3128', 'Box Hill', 7, 1, NULL, 'shelleymyl', '2016-08-13 12:11:10', 'admin', '2016-09-24 17:38:31'),
-(2, 'shelleymyl', '3d9017e3b14d093e63b205487bee0354', 'shelleymyl@gmail.com', '市诊所', '146-148 Glebe Point Road', '130012', 'Glebe', 2, 0, NULL, 'shelleymyl', '2016-08-13 12:11:39', 'admin', '2016-09-11 21:50:55'),
-(3, 'shelleymylee1', '80db46b43939c503e20d5c28b61a689e', 'shelleymyl@gmail.com', '朝阳区诊所1', '朝阳区1', '130012', '绿园区', 8, 0, NULL, 'shelleymyl', '2016-08-13 12:11:50', 'admin', '2016-09-11 21:50:22'),
-(4, 'shelleymyl221', 'myl1102', 'shelleymyl@gmail.com1', '绿园区诊所1', '绿园区1', '130012', '绿园区', 2, 0, NULL, 'shelleymyl', '2016-08-15 12:08:47', 'admin', '2016-09-01 16:20:53'),
-(5, 'yinxin', 'yinxin', 'shelleymyl@gmail.com', '1', '1', '130012', '朝阳区', 2, 1, NULL, 'shelleymyl', '2016-08-24 16:28:50', 'shelleymyl', '2016-08-24 16:28:50'),
-(6, 'Miaoyl', 'bdfb51e038e40bde21cbd1219c971b55', 'shelleymyl@gmail.com', '1', '1', '130012', '绿园区', 3, 1, NULL, 'shelleymyl', '2016-08-24 16:31:50', 'admin', '2016-09-10 10:47:19'),
-(7, 'shelleymyl111', 'myl1102111', 'shelleymyl@gmail.com', '1', '1', '130012', '绿园区', 2, 1, NULL, 'shelleymyl', '2016-08-24 16:33:17', 'shelleymyl', '2016-08-24 16:33:17'),
-(8, 'yinxin123', 'yinxin123', 'shelleymyl@gmail.com', '1', '1', '130012', '绿园区', 7, 1, NULL, 'yinxin123', '2016-08-24 21:42:45', 'admin', '2016-09-10 10:47:06'),
-(9, 'mao', 'mao', 'shelleymyl@gmail.com', '1', '1', '130012', '绿园区', 2, 0, NULL, 'mao', '2016-08-24 21:43:42', 'admin', '2016-09-13 15:59:18'),
-(10, 'miao', 'miao', 'shelleymyl@gmail.com', '1', '1', '130012', '绿园区', 2, 0, NULL, 'miao', '2016-09-01 15:07:02', 'miao', '2016-09-01 15:07:02'),
-(11, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'shelleymyl@gmail.com', '吉大一院', '碧水云天14#3门806室', '130012', '绿园区', 6, 1, NULL, 'admin', '2016-09-01 16:53:28', 'admin', '2016-09-24 17:43:04'),
-(12, 'fuy', '1', 'shelleymyl@gmail.com', '吉林大学第一医院', '新民广场1102号', '130012', '绿园区', 2, 1, NULL, 'fuy', '2016-09-06 10:30:19', 'admin', '2016-09-06 11:26:52'),
-(13, 'miaoyz', '422a1cd6e66f71337187fe049e7e64a8', 'shelleymyl@gmail.com', '1', '1', '130012', '绿园区', 1, 1, NULL, 'miaoyz', '2016-09-08 23:14:42', 'admin', '2016-09-10 10:52:03'),
-(14, '111', '6512bd43d9caa6e02c990b0a82652dca', 'shelleymyl@gmail.com', '1', '11', '130012', '绿园区', 3, 1, NULL, '111', '2016-09-12 21:32:27', '111', '2016-09-12 21:32:27'),
-(15, '耗子想猫猫', '21232f297a57a5a743894a0e4a801fc3', 'shelleymyl@gmail.com', '吉林人民诊所', '人民大街881号', '130012', '绿园区', 1, 1, NULL, '耗子想猫猫', '2016-09-12 21:33:01', '耗子想猫猫', '2016-09-12 21:39:39'),
-(16, '小石头', '21232f297a57a5a743894a0e4a801fc3', 'shelleymyl@gmail.com', '南阳路诊所', '南阳路881号', '130012', '绿园区', 4, 1, NULL, '小石头', '2016-09-13 09:28:26', '小石头', '2016-09-13 09:28:26'),
-(17, '123', 'c4ca4238a0b923820dcc509a6f75849b', 'shelleymyl@gmail.com', '1', '1', '130012', '绿园区', 3, 1, NULL, '123', '2016-09-13 10:15:38', '123', '2016-09-13 10:15:38'),
-(18, '123222', '202cb962ac59075b964b07152d234b70', 'shelleymyl@gmail.com', '1', '1', '130012', '', 3, 1, NULL, '123222', '2016-09-13 10:16:35', '123222', '2016-09-13 10:16:35'),
-(19, '11', '7863dceeedcb1d9c33675e020e808df5', 'shelleymyl@gmail.com', '1', '1', '130088', '绿园区1', 2, 0, NULL, '11', '2016-09-13 10:21:04', 'admin', '2016-09-23 15:35:20'),
-(20, 'shelleymyl', '21232f297a57a5a743894a0e4a801fc3', 'shelleymyl@gmail.com11', '中华人民共和国吉林省长春市吉林大学第一医院', '1 Kangerong Rd', '130066', 'Box Hill', 7, 0, NULL, 'shelleymyl', '2016-08-13 12:11:10', 'admin', '2016-09-24 17:38:31');
+INSERT INTO `fd_clinic_user` (`CLINIC_USER_ID`, `CLINIC_USER_PWD`, `CLINIC_USER_MAIL`, `CLINIC_NAME`, `CLINIC_ADDR`, `CLINIC_POSTCODE`, `CLINIC_SUBURB`, `STATE_ID`, `ACTIVE_STATUS`, `NOTE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
+(26, '0cc175b9c0f1b6a831c399e269772661', 'a@a.com', 'b', 'b', 'b', 'b', 2, 1, NULL, 'a@a.com', '2016-12-20 12:28:56', 'a@a.com', '2016-12-20 12:29:06'),
+(27, '703b649e9a6f92dbde6cf51078ed44f4', 's@gmail.com', 'sb', 'sb', 'sb', 'sb', 3, 1, NULL, 's@gmail.com', '2016-12-20 16:52:14', 'admin', '2016-12-26 05:06:23');
 
 -- --------------------------------------------------------
 
@@ -224,11 +206,12 @@ INSERT INTO `fd_clinic_user` (`CLINIC_USER_ID`, `CLINIC_USER_NAME`, `CLINIC_USER
 
 CREATE TABLE `fd_customer_user` (
   `CUSTOMER_USER_ID` int(11) NOT NULL,
-  `CUSTOMER_USER_NAME` varchar(50) NOT NULL,
   `CUSTOMER_USER_PWD` varchar(50) NOT NULL,
   `CUSTOMER_USER_MAIL` varchar(50) NOT NULL,
-  `CUSTOMER_NAME` varchar(50) NOT NULL,
-  `CUSTOMER_GENDER` varchar(10) NOT NULL,
+  `CUSTOMER_FIRSTNAME` varchar(50) NOT NULL,
+  `CUSTOMER_LASTNAME` varchar(50) NOT NULL,
+  `TITLE_ID` int(11) NOT NULL,
+  `GENDER_ID` int(11) NOT NULL,
   `CUSTOMER_BIRTHDAY` varchar(50) NOT NULL,
   `CUSTOMER_ADDR` varchar(200) NOT NULL,
   `CUSTOMER_POSTCODE` varchar(50) NOT NULL,
@@ -248,12 +231,13 @@ CREATE TABLE `fd_customer_user` (
 -- Dumping data for table `fd_customer_user`
 --
 
-INSERT INTO `fd_customer_user` (`CUSTOMER_USER_ID`, `CUSTOMER_USER_NAME`, `CUSTOMER_USER_PWD`, `CUSTOMER_USER_MAIL`, `CUSTOMER_NAME`, `CUSTOMER_GENDER`, `CUSTOMER_BIRTHDAY`, `CUSTOMER_ADDR`, `CUSTOMER_POSTCODE`, `CUSTOMER_SUBURB`, `STATE_ID`, `CUSTOMER_PHONE_NO`, `MEDICAL_CARD_NO`, `ACTIVE_STATUS`, `NOTE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
-(187, 'fudanyinxin@gmail.com', '3b5fa279e25dbae4e5535c97535d4cde', 'fudanyinxin@gmail.com', 'xin yin', '0', '11/11/1983', '465 Elgar Rd', '', 'Box Hill', 7, '0412341234', '1231231231', 1, '', 'xin yin', '2016-12-02 09:59:13', 'fudanyinxin@gmail.com', '2016-12-13 08:20:57'),
-(188, 'orochigalois', '3b5fa279e25dbae4e5535c97535d4cde', 'fudanyinxin@gmail.com', '1', 'Male', '1', '1', '1', '1', 3, '1', '1', 1, '', 'orochigalois', '2016-12-11 12:34:54', 'orochigalois', '2016-12-11 12:34:54'),
-(189, 'qwe', '3b5fa279e25dbae4e5535c97535d4cde', 'fudanyinxin@gmail.com', '1', 'Male', '1', '1', '1', '1', 3, '1', '1', 1, '', 'qwe', '2016-12-11 12:46:10', 'qwe', '2016-12-11 12:46:10'),
-(190, 'lop', '3b5fa279e25dbae4e5535c97535d4cde', 'fudanyinxin@gmail.com', '1', 'Male', '1', '1', '1', '1', 3, '1', '1', 1, '', 'lop', '2016-12-11 12:51:10', 'lop', '2016-12-11 12:51:10'),
-(191, 'dongfangbubai', '3b5fa279e25dbae4e5535c97535d4cde', 'fudanyinxin@gmail.com', '1', 'Male', '1', '1', '1', '1', 3, '1', '1', 1, '', 'dongfangbubai', '2016-12-11 12:53:36', 'dongfangbubai', '2016-12-11 12:53:36');
+INSERT INTO `fd_customer_user` (`CUSTOMER_USER_ID`, `CUSTOMER_USER_PWD`, `CUSTOMER_USER_MAIL`, `CUSTOMER_FIRSTNAME`, `CUSTOMER_LASTNAME`, `TITLE_ID`, `GENDER_ID`, `CUSTOMER_BIRTHDAY`, `CUSTOMER_ADDR`, `CUSTOMER_POSTCODE`, `CUSTOMER_SUBURB`, `STATE_ID`, `CUSTOMER_PHONE_NO`, `MEDICAL_CARD_NO`, `ACTIVE_STATUS`, `NOTE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
+(200, 'c4ca4238a0b923820dcc509a6f75849b', '1@1.com', '1', '1', 0, 0, '11/11/1111', '1', '1', '1', 3, '1', '1231231231', 1, '', '1@1.com', '2016-12-20 12:56:38', '1@1.com', '2016-12-20 12:56:38'),
+(201, 'c81e728d9d4c2f636f067f89cc14862c', '2@gmail.com', '', '', 1, 1, '22/22/2222', '2', '2', '2', 2, '222', '1231231231', 1, '', '2@gmail.com', '2016-12-20 14:45:15', '2@gmail.com', '2016-12-20 14:45:41'),
+(202, 'eccbc87e4b5ce2fe28308fd9f2a7baf3', '3@gmail.com', '4', '4', 3, 1, '33/33/3333', '4', '4', '4', 8, '4', '1231231231', 1, '', '3@gmail.com', '2016-12-20 14:47:55', '3@gmail.com', '2016-12-20 14:48:29'),
+(203, 'e4da3b7fbbce2345d7772b0674a318d5', '4@gmail.com', '4', '4', 0, 0, '44/44/4444', '4', '4', '4', 1, '4', '1231231231', 1, '', '4@gmail.com', '2016-12-20 16:43:27', '4@gmail.com', '2016-12-20 16:43:57'),
+(204, 'a39401275d1b300aa789fb22aea4148a', 'flash@gmail.com', 'flash', 'flash', 0, 0, '11/11/1111', '1', '1', '1', 3, '1', '1231231231', 1, '', 'flash@gmail.com', '2016-12-26 08:24:50', 'flash@gmail.com', '2016-12-26 08:24:50'),
+(205, 'c81e728d9d4c2f636f067f89cc14862c', '2@2.com', '1update', '1', 3, 1, '1999-11-11', '', '', '', 1, '0412341234', '1231231231', 1, '', '2@2.com', '2016-12-26 13:32:16', '2@2.com', '2016-12-26 13:39:46');
 
 -- --------------------------------------------------------
 
@@ -275,6 +259,44 @@ INSERT INTO `fd_dict_appointment_status` (`APPOINTMENT_STATUS_ID`, `APPOINTMENT_
 (2, 'cancelled'),
 (3, '已就诊'),
 (4, '未就诊');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `fd_dict_gender_ch`
+--
+
+CREATE TABLE `fd_dict_gender_ch` (
+  `GENDER_ID` int(11) NOT NULL,
+  `GENDER_NAME` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `fd_dict_gender_ch`
+--
+
+INSERT INTO `fd_dict_gender_ch` (`GENDER_ID`, `GENDER_NAME`) VALUES
+(0, '男'),
+(1, '女');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `fd_dict_gender_en`
+--
+
+CREATE TABLE `fd_dict_gender_en` (
+  `GENDER_ID` int(11) NOT NULL,
+  `GENDER_NAME` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `fd_dict_gender_en`
+--
+
+INSERT INTO `fd_dict_gender_en` (`GENDER_ID`, `GENDER_NAME`) VALUES
+(0, 'Male'),
+(1, 'Female');
 
 -- --------------------------------------------------------
 
@@ -335,6 +357,29 @@ INSERT INTO `fd_dict_state` (`STATE_ID`, `STATE_NAME`, `STATE_POSTCODE`) VALUES
 (6, 'TAS', ''),
 (7, 'VIC', ''),
 (8, 'WA', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `fd_dict_title`
+--
+
+CREATE TABLE `fd_dict_title` (
+  `TITLE_ID` int(11) NOT NULL,
+  `TITLE_NAME` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `fd_dict_title`
+--
+
+INSERT INTO `fd_dict_title` (`TITLE_ID`, `TITLE_NAME`) VALUES
+(0, 'Mr'),
+(1, 'Mrs'),
+(2, 'Ms'),
+(3, 'Miss'),
+(4, 'Master'),
+(5, 'Dr');
 
 -- --------------------------------------------------------
 
@@ -542,7 +587,9 @@ INSERT INTO `fd_rel_customer_doctor` (`CUSTOMER_DOCTOR_ID`, `CUSTOMER_USER_ID`, 
 (1, 187, 61338, '', 'fudanyinxin@gmail.com', '2016-12-12 15:41:43', 'fudanyinxin@gmail.com', '2016-12-12 15:41:43'),
 (2, 187, 61339, '', 'fudanyinxin@gmail.com', '2016-12-12 17:49:43', 'fudanyinxin@gmail.com', '2016-12-12 17:49:43'),
 (3, 187, 61337, '', 'fudanyinxin@gmail.com', '2016-12-13 04:56:19', 'fudanyinxin@gmail.com', '2016-12-13 04:56:19'),
-(4, 187, 61340, '', 'fudanyinxin@gmail.com', '2016-12-13 06:03:32', 'fudanyinxin@gmail.com', '2016-12-13 06:03:32');
+(4, 187, 61340, '', 'fudanyinxin@gmail.com', '2016-12-13 06:03:32', 'fudanyinxin@gmail.com', '2016-12-13 06:03:32'),
+(5, 0, 61338, '', 'fudanyinxin@gmail.com', '2016-12-14 07:54:12', 'fudanyinxin@gmail.com', '2016-12-14 07:54:12'),
+(6, 0, 61338, '', 'fudanyinxin@gmail.com', '2016-12-14 07:54:19', 'fudanyinxin@gmail.com', '2016-12-14 07:54:19');
 
 -- --------------------------------------------------------
 
@@ -671,6 +718,13 @@ CREATE TABLE `fd_save_search` (
   `UPDATE_DATE` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `fd_save_search`
+--
+
+INSERT INTO `fd_save_search` (`CUSTOMER_SEARCH_ID`, `CUSTOMER_USER_ID`, `SEARCH_NAME`, `CLINIC_SUBURB`, `STATE_ID`, `CLINIC_NAME`, `DOCTOR_TYPE`, `DOCTOR_NAME`, `DISTANCE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
+(1, 0, '', '', '', '', '', '', '', 'fudanyinxin@gmail.com', '2016-12-14 07:24:18', 'fudanyinxin@gmail.com', '2016-12-14 07:24:18');
+
 -- --------------------------------------------------------
 
 --
@@ -793,6 +847,18 @@ ALTER TABLE `fd_dict_appointment_status`
   ADD PRIMARY KEY (`APPOINTMENT_STATUS_ID`);
 
 --
+-- Indexes for table `fd_dict_gender_ch`
+--
+ALTER TABLE `fd_dict_gender_ch`
+  ADD PRIMARY KEY (`GENDER_ID`);
+
+--
+-- Indexes for table `fd_dict_gender_en`
+--
+ALTER TABLE `fd_dict_gender_en`
+  ADD PRIMARY KEY (`GENDER_ID`);
+
+--
 -- Indexes for table `fd_dict_log_type`
 --
 ALTER TABLE `fd_dict_log_type`
@@ -810,6 +876,12 @@ ALTER TABLE `fd_dict_search`
 ALTER TABLE `fd_dict_state`
   ADD PRIMARY KEY (`STATE_ID`),
   ADD UNIQUE KEY `STATE_NAME` (`STATE_NAME`);
+
+--
+-- Indexes for table `fd_dict_title`
+--
+ALTER TABLE `fd_dict_title`
+  ADD PRIMARY KEY (`TITLE_ID`);
 
 --
 -- Indexes for table `fd_doctor`
@@ -908,7 +980,7 @@ ALTER TABLE `fd_user`
 -- AUTO_INCREMENT for table `ap_patient`
 --
 ALTER TABLE `ap_patient`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `fd_admin`
 --
@@ -918,12 +990,12 @@ ALTER TABLE `fd_admin`
 -- AUTO_INCREMENT for table `fd_clinic_user`
 --
 ALTER TABLE `fd_clinic_user`
-  MODIFY `CLINIC_USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `CLINIC_USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `fd_customer_user`
 --
 ALTER TABLE `fd_customer_user`
-  MODIFY `CUSTOMER_USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=192;
+  MODIFY `CUSTOMER_USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=206;
 --
 -- AUTO_INCREMENT for table `fd_dict_appointment_status`
 --
@@ -973,7 +1045,7 @@ ALTER TABLE `fd_rel_customer_appointment_his`
 -- AUTO_INCREMENT for table `fd_rel_customer_doctor`
 --
 ALTER TABLE `fd_rel_customer_doctor`
-  MODIFY `CUSTOMER_DOCTOR_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `CUSTOMER_DOCTOR_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `fd_rel_doctor_appointment_time`
 --
@@ -993,7 +1065,7 @@ ALTER TABLE `fd_role`
 -- AUTO_INCREMENT for table `fd_save_search`
 --
 ALTER TABLE `fd_save_search`
-  MODIFY `CUSTOMER_SEARCH_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `CUSTOMER_SEARCH_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `fd_service`
 --
