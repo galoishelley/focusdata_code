@@ -7,6 +7,7 @@ var keyDoctorID;
 var keyDate;
 var keyTime;
 
+/*medicareNumber 输入框检查*/
 (function($) {
     $.fn.bootstrapValidator.validators.medicareNumberValidation = {
         /**
@@ -65,7 +66,118 @@ var keyTime;
 
 $(function() {
 	
-	$("#CUSTOMER_BIRTHDAY").mask("99/99/9999",{placeholder:"dd/mm/yyyy"});
+	
+	
+	/***
+	 * 公共方法列表:
+	 * ajaxSearchClinic
+	 * ajaxSearchDoctor
+	 * SaveNameAndPWD
+	 */
+	function ajaxSearchClinic(json_str)
+	{
+		var all_date = [];
+		$.ajax({
+			type: "POST",
+			url: "classes/class.searchDoctor.php",
+			dataType: "json",
+			async: false,
+			data: {
+				request: json_str
+			},
+			success: function(msg) {
+				var ret = msg.response;
+			
+				var groupsDate = _.groupBy(ret.data, function(value) {
+					return value.APPOINTMENT_DATE;
+				});
+				var count = 1;
+				for (var i in groupsDate) {
+					var item = groupsDate[i];
+					var each_date = {
+						ID: "",
+						date: "",
+						clinics: []
+					};
+					each_date.ID = count++;
+					each_date.date = i;
+					var groupsClinic = _.groupBy(item, function(value) {
+						return value.CLINIC_USER_ID;
+					});
+					for (var j in groupsClinic) {
+						var jtem = groupsClinic[j];
+						var clinic = {
+							clinicID: 0,
+							clinicPIC: "",
+							clinicName: "",
+							clinicAddress: "",
+							clinicSuburb:"",
+							
+						};
+						clinic.clinicID = j;
+						clinic.clinicPIC = jtem[0].CLINIC_PHOTO;
+						clinic.clinicName = jtem[0].CLINIC_NAME;
+						clinic.clinicAddress = jtem[0].CLINIC_ADDR;
+						clinic.clinicSuburb = jtem[0].CLINIC_SUBURB;
+						
+						each_date.clinics.push(clinic);
+					}
+					all_date.push(each_date);
+				}
+				console.log(all_date);
+				
+		          
+		          if(ret.success){
+		            if(json_str.sequ != ret.sequ){
+		              alert(func_code + ":" + "时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
+		              result=false;
+		            }
+		
+		            $('#TMP1').html($('#tmp1').render(all_date));
+		            $('#TMP3').show();
+		            $('#TMP2').hide();
+					$('#TMP3').html($('#tmp3').render(all_date));
+		          }else{
+		            alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg); 
+		            result=false;
+		          }
+			},
+			error: function(XMLHttpRequest, textStatus, errorThrown) {
+				//请求失败之后的操作
+				var ret_code = "999999";
+				var ret_msg = "失败,请联系管理员!";
+				alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
+				result = false;
+			}
+		});
+		
+		
+
+		
+		
+		
+		//显示医生,每次查询出结果集之后要重新绑定 一遍
+		  $(".showDoctors").each(function(index) {
+				$(this).on("click", function() {
+					var keyClinicID = $(this).attr('keyClinicID');
+					
+					requesttype = 0;
+					func_code = "SD01";
+					json_form = JSON.parse('{"CLINIC_USER_ID":"'+keyClinicID +'"}');
+					json_str = request_const(json_form, func_code, requesttype);
+					ajaxSearchDoctor(json_str);
+					
+				
+					
+				});
+			});
+		  
+	}
+	
+	
+	////////////////////////////////////////////////////////////////////////////////////////////	
+	
+	
 	function ajaxSearchDoctor(json_str)
 	{
 		var all_date = [];
@@ -132,6 +244,9 @@ $(function() {
 		            }
 		
 		            $('#TMP1').html($('#tmp1').render(all_date));
+		            
+		            $('#TMP2').show();
+		            $('#TMP3').hide();
 					$('#TMP2').html($('#tmp2').render(all_date));
 		          }else{
 		            alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg); 
@@ -421,7 +536,7 @@ $(function() {
 				                // //登录标志
 				                // $.cookie("ilogin", 1);
 				                // //记录cookie
-				                // Save();
+				                // SaveNameAndPWD();
 				                // history.go(-1);
 				                // // window.location.href="index.php";
 				                alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
@@ -462,7 +577,8 @@ $(function() {
 			}
 	}
 	//记住用户名密码
-	  function Save() {
+	  function SaveNameAndPWD()
+	  {
 	    var str_username = $("#CUSTOMER_USER_NAME").val();
 	    var str_password = $("#CUSTOMER_USER_PWD").val();
 	    var str_usertype = 1;
@@ -483,8 +599,14 @@ $(function() {
 	    $.cookie("fd_usertypename",str_usertypename);
 	  
 	  };
-	  
-	  
+	
+	/***
+	 * 第三方js插件配置区
+	 * maskedinput
+	 * autocomplete
+	 */
+	//
+	$("#CUSTOMER_BIRTHDAY").mask("99/99/9999",{placeholder:"dd/mm/yyyy"});
 	//autocomplete
 	var options = {
 		url: "classes/AutoComplete/suburb.php",
@@ -499,41 +621,26 @@ $(function() {
 	};
 	$("#CLINIC_SUBURB").easyAutocomplete(options);
 
-	//游客隐藏距离选择
+	
+	/***
+	 * 页面主逻辑区
+	 */
+	/*根据登陆与否确定是否显示按钮*/
 	if ($.cookie("ilogin") == 1) {
 		$('#DISTANCE').prop('disabled', false);
-		
 		$('#btn_save_search_manage').show();
 		$('#btn_save_search').show();
-
-		
 	} 
 	else 
 	{
 		$('#DISTANCE').prop('disabled', true);
 		$('#btn_save_search_manage').hide();
 		$('#btn_save_search').hide();
-
 	}
 		
 	
 	
-	//获取收藏医生传递的值
-	var fromSaveDoctor_favDoctorID = sessionStorage.favDoctorID;
-	if (fromSaveDoctor_favDoctorID) {
-		
-		requesttype = 0;
-		func_code = "SD01";
-		json_form = JSON.parse('{"DOCTOR_ID":"'+fromSaveDoctor_favDoctorID +'"}');
-		
-		json_str = request_const(json_form, func_code, requesttype);
-		ajaxSearchDoctor(json_str);
-		
-		sessionStorage.favDoctorID = "";
-	}
-	
-	
-
+	/*Case1.从主页点击搜索按钮跳转*/
 	var fromIndex_searchRestriction = sessionStorage.searchRestriction;
 	
 	if(fromIndex_searchRestriction)
@@ -553,13 +660,27 @@ $(function() {
 		func_code = "SD01";
 		json_form = $("#modal_form_search").serializeObject();
 		json_str = request_const(json_form, func_code, requesttype);
-		ajaxSearchDoctor(json_str);
+		ajaxSearchClinic(json_str);
 		
 		sessionStorage.searchRestriction="";
 	}
 	
+	/*Case2.从收藏医生页面点击医生按钮跳转*/
+	var fromSaveDoctor_favDoctorID = sessionStorage.favDoctorID;
+	if (fromSaveDoctor_favDoctorID) {
+		
+		requesttype = 0;
+		func_code = "SD01";
+		json_form = JSON.parse('{"DOCTOR_ID":"'+fromSaveDoctor_favDoctorID +'"}');
+		
+		json_str = request_const(json_form, func_code, requesttype);
+		ajaxSearchDoctor(json_str);
+		
+		sessionStorage.favDoctorID = "";
+	}
 	
 	
+	/*Case3.本页面点击搜索医生按钮跳转*/
 	$('#btn_search').click(function() {
 		///////////////////////////////////组织ajax 请求参数 begin///////////////////////////////
 		requesttype = 1;
@@ -571,8 +692,10 @@ $(function() {
 		$('#searchModal').modal('hide')
 	});
 
-	
-	/*收藏搜索条件*/
+	/***
+	 * 按钮事件区
+	 */
+	/*点击收藏搜索条件*/
 	$('#btn_save_search').click(function() {
 		$('#action_type').val("create");
 		// var state_name = $("#STATE_ID").find("option:selected").text();
@@ -811,7 +934,7 @@ $(function() {
 	              //登录标志
 	              $.cookie("ilogin", 1);
 	              //记录cookie
-	              Save();
+	              SaveNameAndPWD();
 
 	          }else{
 	            alert(func_code+":"+ret.status.ret_code + " " + ret.status.ret_msg);

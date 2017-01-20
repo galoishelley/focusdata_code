@@ -122,7 +122,7 @@ class SearchDoctor_DB{
     public function index_search_sp($arr_values)
     {
 
-    	$sql = "CALL `sp_get7daysTimeslots`(:p0,:p1,:p2,:p3,:p4,:p5,:p6,:p7);";
+    	$sql = "CALL `sp_get7daysTimeslots`(:p0,:p1,:p2,:p3,:p4,:p5,:p6,:p7,:p8);";
 
     	
     	if(isset($arr_values['APPOINTMENT_DATE'])) 
@@ -178,6 +178,11 @@ class SearchDoctor_DB{
     		$p7=$arr_values['DOCTOR_ID'];
     	else
     		$p7="";
+    	
+    	if(isset($arr_values['CLINIC_USER_ID']))
+    		$p8=$arr_values['CLINIC_USER_ID'];
+    	else
+    		$p8="";
 
     	$stmt = $this->db->prepare($sql);
     	
@@ -189,6 +194,7 @@ class SearchDoctor_DB{
     	$stmt->bindParam(':p5', $p5, PDO::PARAM_STR);
     	$stmt->bindParam(':p6', $p6, PDO::PARAM_STR);
     	$stmt->bindParam(':p7', $p7, PDO::PARAM_STR);
+    	$stmt->bindParam(':p8', $p8, PDO::PARAM_STR);
     	$stmt->execute();
     	
     	return $stmt->fetchAll(PDO::FETCH_ASSOC);

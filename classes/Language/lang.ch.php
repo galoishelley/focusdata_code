@@ -404,4 +404,6 @@ $lang['Lang0321'] = '姓氏';
 $lang['Lang0322'] = '称呼';
 $lang['Lang0323'] = 'classes/class.getGenderCH.php';
 
+$lang['Lang0324'] = '可预约医生';
+
 ?>

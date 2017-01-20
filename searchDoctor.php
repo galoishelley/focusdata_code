@@ -53,6 +53,12 @@ include_once 'classes/Language/language.common.php';
 	margin-top: 100px;
 }
 
+.show-doctors{
+		margin: 5px;
+		
+	margin-top: 150px;
+}
+
 .alexrow{
 	margin-top:8px;
 }
@@ -227,6 +233,7 @@ include_once 'classes/Language/language.common.php';
 						</ul>
 
 						<div class="tab-content" id="TMP2"></div>
+						<div class="tab-content" id="TMP3"></div>
 					</div>
 				</div>
 			</div>
@@ -413,6 +420,44 @@ include_once 'classes/Language/For_JS_multi_lang.php';
 {{/for}}				
 </script>
 
+
+<script id="tmp3" type="text/x-jsrender">
+{{for #data}}
+
+	<div class="tab-pane {{if ID=="1"}}active{{else}}{{/if}}" id="{{>ID}}">
+									
+									
+		{{for clinics ~ppdate=date}}
+			<div  class="outer">
+				<div class="row">
+					<div class="col-md-2">
+						<img src="{{>clinicPIC}}" alt="Smiley face" height="192"
+														width="192">
+					</div>
+					<div class="col-md-4 inner1" >
+						<h2>{{>clinicName}}</h2>
+						<h5>{{>clinicSuburb}}</h5>
+						<h5>{{>clinicAddress}}</h5>
+					</div>
+												
+					<div class="col-md-6">
+						
+													
+						<div class="show-doctors">
+
+							<button style="position: absolute;right:5px" class="btn btn-primary showDoctors" keyClinicID="{{>clinicID}}"><?php echo $lang['Lang0324']; ?></button>
+	
+						</div>
+					</div>
+				</div>
+			</div>
+		{{/for}}
+
+							
+	</div>
+														
+{{/for}}				
+</script>
 
 	<script src="js/bootstrap.min.js"></script>
 	

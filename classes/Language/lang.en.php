@@ -409,4 +409,5 @@ $lang['Lang0321'] = 'Last Name';
 $lang['Lang0322'] = 'Title';
 $lang['Lang0323'] = 'classes/class.getGenderEN.php';
 
+$lang['Lang0324'] = 'Available doctors';
 ?>
