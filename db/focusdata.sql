@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 30, 2016 at 05:11 AM
+-- Generation Time: Jan 21, 2017 at 12:53 AM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
@@ -24,13 +24,15 @@ DELIMITER $$
 --
 -- Procedures
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_get7daysTimeslots` (IN `dateIN` DATE, IN `suburbIN` VARCHAR(50), IN `postcodeIN` VARCHAR(50), IN `stateIN` VARCHAR(50), IN `doctorTypeIN` VARCHAR(50), IN `clinicNameIN` VARCHAR(100), IN `doctorNameIN` VARCHAR(100), IN `doctorIDIN` VARCHAR(50))  READS SQL DATA
+CREATE DEFINER=`focus167`@`localhost` PROCEDURE `sp_get7daysTimeslots` (IN `dateIN` DATE, IN `suburbIN` VARCHAR(50), IN `postcodeIN` VARCHAR(50), IN `stateIN` VARCHAR(50), IN `doctorTypeIN` VARCHAR(50), IN `clinicNameIN` VARCHAR(100), IN `doctorNameIN` VARCHAR(100), IN `doctorIDIN` VARCHAR(50), IN `clinicIDIN` VARCHAR(50))  READS SQL DATA
 BEGIN 
   IF ( DATEIN >= CURRENT_DATE() + 4 ) THEN 
     SELECT t1.APPOINTMENT_DATE, 
            t1.DOCTOR_ID, 
            t2.DOCTOR_PHOTO, 
-           t2.DOCTOR_NAME, 
+           t2.DOCTOR_NAME,
+           t3.CLINIC_USER_ID,
+           t4.CLINIC_PHOTO,
            t4.CLINIC_NAME, 
            t4.CLINIC_ADDR, 
            t4.CLINIC_SUBURB, 
@@ -63,6 +65,8 @@ BEGIN
                   OR DOCTORNAMEIN = '' ) 
            AND ( t1.DOCTOR_ID = DOCTORIDIN
                 OR DOCTORIDIN='')
+           AND ( t3.CLINIC_USER_ID = CLINICIDIN
+                OR CLINICIDIN='')
     ORDER BY t1.APPOINTMENT_DATE asc, 
               t1.DOCTOR_ID asc, 
               t1.APPOINTMENT_TIME asc; 
@@ -71,6 +75,8 @@ BEGIN
            t1.DOCTOR_ID, 
            t2.DOCTOR_PHOTO, 
            t2.DOCTOR_NAME, 
+           t3.CLINIC_USER_ID,
+           t4.CLINIC_PHOTO,
            t4.CLINIC_NAME, 
            t4.CLINIC_ADDR, 
            t4.CLINIC_SUBURB, 
@@ -103,6 +109,8 @@ BEGIN
                   OR DOCTORNAMEIN = '' ) 
            AND ( t1.DOCTOR_ID = DOCTORIDIN
                 OR DOCTORIDIN='')
+           AND ( t3.CLINIC_USER_ID = CLINICIDIN
+                OR CLINICIDIN='')
     ORDER BY t1.APPOINTMENT_DATE asc, 
               t1.DOCTOR_ID asc, 
               t1.APPOINTMENT_TIME asc; 
@@ -178,6 +186,7 @@ CREATE TABLE `fd_clinic_user` (
   `CLINIC_USER_PWD` varchar(50) NOT NULL,
   `CLINIC_USER_MAIL` varchar(50) NOT NULL,
   `CLINIC_NAME` varchar(200) NOT NULL,
+  `CLINIC_PHOTO` varchar(200) NOT NULL,
   `CLINIC_ADDR` varchar(200) NOT NULL,
   `CLINIC_POSTCODE` varchar(50) NOT NULL,
   `CLINIC_SUBURB` varchar(50) NOT NULL,
@@ -194,9 +203,9 @@ CREATE TABLE `fd_clinic_user` (
 -- Dumping data for table `fd_clinic_user`
 --
 
-INSERT INTO `fd_clinic_user` (`CLINIC_USER_ID`, `CLINIC_USER_PWD`, `CLINIC_USER_MAIL`, `CLINIC_NAME`, `CLINIC_ADDR`, `CLINIC_POSTCODE`, `CLINIC_SUBURB`, `STATE_ID`, `ACTIVE_STATUS`, `NOTE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
-(26, '0cc175b9c0f1b6a831c399e269772661', 'a@a.com', 'b', 'b', 'b', 'b', 2, 1, NULL, 'a@a.com', '2016-12-20 12:28:56', 'a@a.com', '2016-12-20 12:29:06'),
-(27, '703b649e9a6f92dbde6cf51078ed44f4', 's@gmail.com', 'sb', 'sb', 'sb', 'sb', 3, 1, NULL, 's@gmail.com', '2016-12-20 16:52:14', 'admin', '2016-12-26 05:06:23');
+INSERT INTO `fd_clinic_user` (`CLINIC_USER_ID`, `CLINIC_USER_PWD`, `CLINIC_USER_MAIL`, `CLINIC_NAME`, `CLINIC_PHOTO`, `CLINIC_ADDR`, `CLINIC_POSTCODE`, `CLINIC_SUBURB`, `STATE_ID`, `ACTIVE_STATUS`, `NOTE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
+(1, 'fef7a0536578a077d04989b3c8f98dbd', 'jingwumen@gmail.com', '精武门', 'img/clinics/test_jingwumen.jpg', '惠民路8号', '130000', '上海', 1, 1, NULL, 'jingwumen@gmail.com', '2017-01-20 13:18:09', 'jingwumen@gmail.com', '2017-01-20 13:18:09'),
+(2, '25ccd325869097a683e3466ffcaf31cf', 'baozhilin@gmail.com', '宝芝林', 'img/clinics/test_baozhilin.jpg', '东海蓝湾13号', '137000', '佛山', 1, 1, NULL, 'baozhilin@gmail.com', '2017-01-20 13:16:46', 'baozhilin@gmail.com', '2017-01-20 13:16:46');
 
 -- --------------------------------------------------------
 
@@ -237,7 +246,8 @@ INSERT INTO `fd_customer_user` (`CUSTOMER_USER_ID`, `CUSTOMER_USER_PWD`, `CUSTOM
 (202, 'eccbc87e4b5ce2fe28308fd9f2a7baf3', '3@gmail.com', '4', '4', 3, 1, '33/33/3333', '4', '4', '4', 8, '4', '1231231231', 1, '', '3@gmail.com', '2016-12-20 14:47:55', '3@gmail.com', '2016-12-20 14:48:29'),
 (203, 'e4da3b7fbbce2345d7772b0674a318d5', '4@gmail.com', '4', '4', 0, 0, '44/44/4444', '4', '4', '4', 1, '4', '1231231231', 1, '', '4@gmail.com', '2016-12-20 16:43:27', '4@gmail.com', '2016-12-20 16:43:57'),
 (204, 'a39401275d1b300aa789fb22aea4148a', 'flash@gmail.com', 'flash', 'flash', 0, 0, '11/11/1111', '1', '1', '1', 3, '1', '1231231231', 1, '', 'flash@gmail.com', '2016-12-26 08:24:50', 'flash@gmail.com', '2016-12-26 08:24:50'),
-(205, 'c81e728d9d4c2f636f067f89cc14862c', '2@2.com', '1update', '1', 3, 1, '1999-11-11', '', '', '', 1, '0412341234', '1231231231', 1, '', '2@2.com', '2016-12-26 13:32:16', '2@2.com', '2016-12-26 13:39:46');
+(205, 'c81e728d9d4c2f636f067f89cc14862c', '2@2.com', '1update', '1', 3, 1, '1999-11-11', '', '', '', 1, '0412341234', '1231231231', 1, '', '2@2.com', '2016-12-26 13:32:16', '2@2.com', '2016-12-26 13:39:46'),
+(206, '37b57a830c2c7c69adbfba4ace0603a6', 'shelleymyl@gmail.com', '亚柳', '苗', 0, 0, '02/11/1985', '长春市碧水云天', '001200', '绿园区', 1, '1350089823', '2428778132', 1, '', 'shelleymyl@gmail.com', '2017-01-19 09:48:59', 'shelleymyl@gmail.com', '2017-01-19 09:48:59');
 
 -- --------------------------------------------------------
 
@@ -276,8 +286,8 @@ CREATE TABLE `fd_dict_gender_ch` (
 --
 
 INSERT INTO `fd_dict_gender_ch` (`GENDER_ID`, `GENDER_NAME`) VALUES
-(0, '男'),
-(1, '女');
+(0, '女'),
+(1, '男');
 
 -- --------------------------------------------------------
 
@@ -295,8 +305,8 @@ CREATE TABLE `fd_dict_gender_en` (
 --
 
 INSERT INTO `fd_dict_gender_en` (`GENDER_ID`, `GENDER_NAME`) VALUES
-(0, 'Male'),
-(1, 'Female');
+(0, 'Female'),
+(1, 'Male');
 
 -- --------------------------------------------------------
 
@@ -408,10 +418,10 @@ CREATE TABLE `fd_doctor` (
 --
 
 INSERT INTO `fd_doctor` (`DOCTOR_ID`, `DOCTOR_TYPE`, `DOCTOR_NAME`, `DOCTOR_GENDER`, `ACTIVE_STATUS`, `DOCTOR_PHOTO`, `DOCTOR_INFO`, `NOTE`, `DOCTOR_ID_IMPORT`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
-(61337, 'GP', '孙思邈', '', 1, 'img/doctors/test_sunsimiao.jpg', '', '', 6, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(61338, 'GP', '华佗', '', 1, 'img/doctors/test_huatuo.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(61339, 'GP', '扁鹊', '', 1, 'img/doctors/test_bianque.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(61340, 'GP', '李时珍', '', 1, 'img/doctors/test_lishizhen.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00');
+(1, 'GP', '霍元甲', '', 1, 'img/doctors/test_huoyuanjia.jpg', '', '', 6, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(2, 'GP', '陈真', '', 1, 'img/doctors/test_chenzhen.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(3, 'GP', '黄飞鸿', '', 1, 'img/doctors/test_huangfeihong.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(4, 'GP', '十三姨', '', 1, 'img/doctors/test_shisanyi.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -469,17 +479,10 @@ CREATE TABLE `fd_rel_clinic_doctor` (
 --
 
 INSERT INTO `fd_rel_clinic_doctor` (`CLINIC_DOCTOR_ID`, `CLINIC_USER_ID`, `DOCTOR_ID`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
-(1, 1, 61337, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(2, 1, 61338, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(3, 1, 61339, 'admin', '2016-08-22 00:00:00', 'admin', '2016-08-22 00:00:00'),
-(4, 1, 61340, 'admin', '2016-08-22 00:00:00', 'admin', '2016-08-22 00:00:00'),
-(5, 2, 5, 'admin', '2016-08-22 00:00:00', 'admin', '2016-08-22 00:00:00'),
-(6, 3, 6, 'admin', '2016-08-22 00:00:00', 'admin', '2016-08-22 00:00:00'),
-(7, 2, 7, 'admin', '2016-08-22 00:00:00', 'admin', '2016-08-22 00:00:00'),
-(8, 3, 8, 'admin', '2016-08-22 00:00:00', 'admin', '2016-08-22 00:00:00'),
-(9, 2, 9, 'admin', '2016-08-22 00:00:00', 'admin', '2016-08-22 00:00:00'),
-(10, 3, 10, 'admin', '2016-08-22 00:00:00', 'admin', '2016-08-22 00:00:00'),
-(11, 11, 11, 'admin', '2016-08-22 00:00:00', 'admin', '2016-08-22 00:00:00');
+(1, 1, 1, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
+(2, 1, 2, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
+(3, 2, 3, 'admin', '2016-08-22 00:00:00', 'admin', '2016-08-22 00:00:00'),
+(4, 2, 4, 'admin', '2016-08-22 00:00:00', 'admin', '2016-08-22 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -509,7 +512,9 @@ INSERT INTO `fd_rel_customer_appointment` (`CUSTOMER_APPOINTMENT_ID`, `CUSTOMER_
 (2, 187, 61339, 15210, 1, '', 'fudanyinxin@gmail.com', '2016-12-13 07:50:18', 'fudanyinxin@gmail.com', '2016-12-13 07:50:18'),
 (3, 187, 61339, 15205, 1, '', 'fudanyinxin@gmail.com', '2016-12-13 07:50:46', 'fudanyinxin@gmail.com', '2016-12-13 07:50:46'),
 (4, 187, 61339, 15209, 1, '', 'fudanyinxin@gmail.com', '2016-12-13 07:51:29', 'fudanyinxin@gmail.com', '2016-12-13 07:51:29'),
-(5, 187, 61340, 15216, 1, '', 'fudanyinxin@gmail.com', '2016-12-13 07:55:02', 'fudanyinxin@gmail.com', '2016-12-13 07:55:02');
+(5, 187, 61340, 15216, 1, '', 'fudanyinxin@gmail.com', '2016-12-13 07:55:02', 'fudanyinxin@gmail.com', '2016-12-13 07:55:02'),
+(6, 0, 61337, 15280, 1, '', 'shelleymyl@gmail.com', '2017-01-19 09:51:07', 'shelleymyl@gmail.com', '2017-01-19 09:51:07'),
+(7, 0, 61337, 15294, 1, '', 'shelleymyl@gmail.com', '2017-01-19 09:57:22', 'shelleymyl@gmail.com', '2017-01-19 09:57:22');
 
 -- --------------------------------------------------------
 
@@ -560,7 +565,9 @@ INSERT INTO `fd_rel_customer_appointment_his` (`CUSTOMER_APPOINTMENT_ID`, `CUSTO
 (106, 187, 61339, 15210, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-13 07:50:18', 'fudanyinxin@gmail.com', '2016-12-13 07:50:18'),
 (107, 187, 61339, 15205, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-13 07:50:46', 'fudanyinxin@gmail.com', '2016-12-13 07:50:46'),
 (108, 187, 61339, 15209, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-13 07:51:29', 'fudanyinxin@gmail.com', '2016-12-13 07:51:29'),
-(109, 187, 61340, 15216, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-13 07:55:02', 'fudanyinxin@gmail.com', '2016-12-13 07:55:02');
+(109, 187, 61340, 15216, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-13 07:55:02', 'fudanyinxin@gmail.com', '2016-12-13 07:55:02'),
+(110, 0, 61337, 15280, '1', 'A', '', 'shelleymyl@gmail.com', '2017-01-19 09:51:07', 'shelleymyl@gmail.com', '2017-01-19 09:51:07'),
+(111, 0, 61337, 15294, '1', 'A', '', 'shelleymyl@gmail.com', '2017-01-19 09:57:22', 'shelleymyl@gmail.com', '2017-01-19 09:57:22');
 
 -- --------------------------------------------------------
 
@@ -618,48 +625,26 @@ CREATE TABLE `fd_rel_doctor_appointment_time` (
 --
 
 INSERT INTO `fd_rel_doctor_appointment_time` (`DOCTOR_APPOINTMENT_TIME_ID`, `DOCTOR_ID`, `APPOINTMENT_DATE`, `APPOINTMENT_TIME`, `ACTIVE_STATUS`, `NOTE`, `REQUESTING_FLAG`, `REQUESTING_USER_ID`, `SUCCESSFUL_FLAG`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
-(15124, 61337, '2016-12-14', '09:00:00', 1, '', 0, 0, 2, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15125, 61337, '2016-12-14', '10:00:00', 1, '', 0, 0, 1, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15126, 61337, '2016-12-14', '11:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15127, 61337, '2016-12-14', '13:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15128, 61337, '2016-12-14', '14:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15129, 61337, '2016-12-14', '15:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15199, 61338, '2016-12-14', '09:00:00', 1, '', 0, 0, 2, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15200, 61338, '2016-12-14', '10:00:00', 1, '', 0, 0, 1, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15201, 61338, '2016-12-14', '11:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15202, 61338, '2016-12-14', '13:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15203, 61338, '2016-12-14', '14:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15204, 61338, '2016-12-14', '15:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15205, 61339, '2016-12-14', '09:00:00', 0, '', 0, 0, 2, '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-12-13 07:50:46'),
-(15206, 61339, '2016-12-14', '10:00:00', 1, '', 0, 0, 1, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15207, 61339, '2016-12-14', '11:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15208, 61339, '2016-12-14', '13:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15209, 61339, '2016-12-14', '14:00:00', 0, '', 0, 0, 0, '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-12-13 07:51:29'),
-(15210, 61339, '2016-12-14', '15:00:00', 0, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15211, 61340, '2016-12-14', '09:00:00', 1, '', 0, 0, 2, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15212, 61340, '2016-12-14', '10:00:00', 1, '', 0, 0, 1, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15213, 61340, '2016-12-14', '11:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15214, 61340, '2016-12-14', '13:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15215, 61340, '2016-12-14', '14:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15216, 61340, '2016-12-14', '15:00:00', 0, '', 0, 0, 0, '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-12-13 07:55:02'),
-(15217, 61337, '2016-12-15', '09:00:00', 1, '', 0, 0, 2, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15218, 61337, '2016-12-15', '10:00:00', 1, '', 0, 0, 1, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15219, 61337, '2016-12-15', '11:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15220, 61337, '2016-12-15', '13:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15221, 61337, '2016-12-15', '14:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15222, 61337, '2016-12-15', '15:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15223, 61338, '2016-12-16', '09:00:00', 1, '', 0, 0, 2, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15224, 61338, '2016-12-16', '10:00:00', 1, '', 0, 0, 1, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15225, 61338, '2016-12-16', '11:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15226, 61338, '2016-12-16', '13:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15227, 61338, '2016-12-16', '14:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15228, 61338, '2016-12-16', '15:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15229, 61339, '2016-12-17', '09:00:00', 1, '', 0, 0, 2, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15230, 61339, '2016-12-17', '10:00:00', 1, '', 0, 0, 1, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15231, 61339, '2016-12-17', '11:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15232, 61339, '2016-12-17', '13:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15233, 61339, '2016-12-17', '14:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(15234, 61339, '2016-12-17', '15:00:00', 0, '', 0, 0, 0, '', '0000-00-00 00:00:00', 'fudanyinxin@gmail.com', '2016-12-13 07:44:59');
+(15235, 1, '2017-01-21', '09:30:00', 1, '', 0, 0, 1, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15236, 2, '2017-01-21', '09:45:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15237, 3, '2017-01-21', '10:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15238, 4, '2017-01-21', '10:15:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15239, 1, '2017-01-22', '10:30:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15240, 2, '2017-01-22', '10:45:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15241, 3, '2017-01-22', '11:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15242, 4, '2017-01-22', '11:15:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15243, 1, '2017-01-23', '11:30:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15244, 2, '2017-01-23', '11:45:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15245, 3, '2017-01-23', '12:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15246, 4, '2017-01-23', '12:15:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15247, 1, '2017-01-24', '12:30:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15248, 2, '2017-01-24', '12:45:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15249, 3, '2017-01-24', '13:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15250, 4, '2017-01-24', '09:30:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15251, 1, '2017-01-25', '09:45:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15252, 2, '2017-01-25', '10:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15253, 3, '2017-01-25', '10:15:00', 0, '', 0, 0, 1, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(15254, 4, '2017-01-25', '10:30:00', 0, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -990,12 +975,12 @@ ALTER TABLE `fd_admin`
 -- AUTO_INCREMENT for table `fd_clinic_user`
 --
 ALTER TABLE `fd_clinic_user`
-  MODIFY `CLINIC_USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `CLINIC_USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `fd_customer_user`
 --
 ALTER TABLE `fd_customer_user`
-  MODIFY `CUSTOMER_USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=206;
+  MODIFY `CUSTOMER_USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=207;
 --
 -- AUTO_INCREMENT for table `fd_dict_appointment_status`
 --
@@ -1035,12 +1020,12 @@ ALTER TABLE `fd_rel_clinic_doctor`
 -- AUTO_INCREMENT for table `fd_rel_customer_appointment`
 --
 ALTER TABLE `fd_rel_customer_appointment`
-  MODIFY `CUSTOMER_APPOINTMENT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `CUSTOMER_APPOINTMENT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `fd_rel_customer_appointment_his`
 --
 ALTER TABLE `fd_rel_customer_appointment_his`
-  MODIFY `CUSTOMER_APPOINTMENT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+  MODIFY `CUSTOMER_APPOINTMENT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 --
 -- AUTO_INCREMENT for table `fd_rel_customer_doctor`
 --
@@ -1050,7 +1035,7 @@ ALTER TABLE `fd_rel_customer_doctor`
 -- AUTO_INCREMENT for table `fd_rel_doctor_appointment_time`
 --
 ALTER TABLE `fd_rel_doctor_appointment_time`
-  MODIFY `DOCTOR_APPOINTMENT_TIME_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15235;
+  MODIFY `DOCTOR_APPOINTMENT_TIME_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15342;
 --
 -- AUTO_INCREMENT for table `fd_rel_doctor_appointment_time_his`
 --
