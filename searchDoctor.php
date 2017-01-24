@@ -56,7 +56,7 @@ include_once 'classes/Language/language.common.php';
 .show-doctors{
 		margin: 5px;
 		
-	margin-top: 150px;
+	margin-top: 100px;
 }
 
 .alexrow{
@@ -441,7 +441,9 @@ include_once 'classes/Language/For_JS_multi_lang.php';
 					</div>
 												
 					<div class="col-md-6">
-						
+						{{for timeslot}}
+												<div class="btn active btn-default timeslotBtn">{{>time}}</div>
+						{{/for}}
 													
 						<div class="show-doctors">
 

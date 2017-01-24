@@ -112,6 +112,7 @@ $(function() {
 							clinicName: "",
 							clinicAddress: "",
 							clinicSuburb:"",
+							timeslot: []
 							
 						};
 						clinic.clinicID = j;
@@ -119,7 +120,13 @@ $(function() {
 						clinic.clinicName = jtem[0].CLINIC_NAME;
 						clinic.clinicAddress = jtem[0].CLINIC_ADDR;
 						clinic.clinicSuburb = jtem[0].CLINIC_SUBURB;
-						
+						for (var m in jtem) {
+							var mtem = jtem[m];
+							clinic.timeslot.push({
+								time: convertTime(mtem.APPOINTMENT_TIME),
+								originalTime: mtem.APPOINTMENT_TIME
+							});
+						}
 						each_date.clinics.push(clinic);
 					}
 					all_date.push(each_date);
