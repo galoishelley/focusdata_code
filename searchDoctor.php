@@ -55,8 +55,7 @@ include_once 'classes/Language/language.common.php';
 
 .show-doctors{
 		margin: 5px;
-		
-	margin-top: 100px;
+		width:90px;
 }
 
 .alexrow{
@@ -107,6 +106,11 @@ include_once 'classes/Language/language.common.php';
 							class="glyphicon  glyphicon-arrow-left"> <!--  主页-->
 								<?php echo $lang['Lang0303']; ?></span>
 						</a>
+						<button type="button" class="btn btn-primary" id="btn_returnClinic">
+							<!-- 返回诊所-->
+							<?php echo $lang['Lang0325']; ?>
+                    </button>
+                    
 						<button type="button" class="btn btn-primary" data-toggle="modal"
 							data-target="#searchModal">
 							<!-- 搜索条件-->
@@ -228,12 +232,13 @@ include_once 'classes/Language/language.common.php';
 
 
 					<div class="container">
-						<ul class="nav nav-tabs" id="TMP1">
-
+						<ul class="nav nav-tabs" id="TMP_Clinic_Tab">
+						</ul>
+						<ul class="nav nav-tabs" id="TMP_Doctor_Tab">
 						</ul>
 
-						<div class="tab-content" id="TMP2"></div>
-						<div class="tab-content" id="TMP3"></div>
+						<div class="tab-content" id="TMP_Clinic_Content"></div>
+						<div class="tab-content" id="TMP_Doctor_Content"></div>
 					</div>
 				</div>
 			</div>
@@ -368,20 +373,30 @@ include_once 'classes/Footer/Footer.php';
 include_once 'classes/Language/For_JS_multi_lang.php';
 ?>
 
-<script id="tmp1" type="text/x-jsrender">
+<script id="tmp_clinic_tab" type="text/x-jsrender">
 {{for #data}}
 
-<li {{if ID=="1"}}class="active"{{else}}{{/if}}>
-<a href="#{{>ID}}" data-toggle="tab"> {{>date}}</a>
+<li {{if ID==activeID}}class="active"{{else}}{{/if}}>
+<a href="#c{{>ID}}" data-toggle="tab"> {{>date}}</a>
 </li>
  
 {{/for}}				
 </script>
 
-	<script id="tmp2" type="text/x-jsrender">
+<script id="tmp_doctor_tab" type="text/x-jsrender">
 {{for #data}}
 
- <div class="tab-pane {{if ID=="1"}}active{{else}}{{/if}}" id="{{>ID}}">
+<li {{if ID==activeID}}class="active"{{else}}{{/if}}>
+<a href="#d{{>ID}}" data-toggle="tab"> {{>date}}</a>
+</li>
+ 
+{{/for}}				
+</script>
+
+	<script id="tmp_doctor_content" type="text/x-jsrender">
+{{for #data}}
+
+ <div class="tab-pane {{if ID==activeID}}active{{else}}{{/if}}" id="d{{>ID}}">
 									
 									
 									{{for doctors ~ppdate=date}}
@@ -421,10 +436,10 @@ include_once 'classes/Language/For_JS_multi_lang.php';
 </script>
 
 
-<script id="tmp3" type="text/x-jsrender">
+<script id="tmp_clinic_content" type="text/x-jsrender">
 {{for #data}}
 
-	<div class="tab-pane {{if ID=="1"}}active{{else}}{{/if}}" id="{{>ID}}">
+	<div class="tab-pane {{if ID==activeID}}active{{else}}{{/if}}" id="c{{>ID}}">
 									
 									
 		{{for clinics ~ppdate=date}}
@@ -440,14 +455,17 @@ include_once 'classes/Language/For_JS_multi_lang.php';
 						<h5>{{>clinicAddress}}</h5>
 					</div>
 												
-					<div class="col-md-6">
+					<div class="col-md-4">
 						{{for timeslot}}
 												<div class="btn active btn-default timeslotBtn">{{>time}}</div>
 						{{/for}}
 													
+						
+					</div>
+					<div class="col-md-2">
 						<div class="show-doctors">
 
-							<button style="position: absolute;right:5px" class="btn btn-primary showDoctors" keyClinicID="{{>clinicID}}"><?php echo $lang['Lang0324']; ?></button>
+							<button class="btn btn-primary showDoctors" keyClinicID="{{>clinicID}}"><?php echo $lang['Lang0324']; ?></button>
 	
 						</div>
 					</div>

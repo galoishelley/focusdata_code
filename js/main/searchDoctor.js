@@ -66,7 +66,8 @@ var keyTime;
 
 $(function() {
 	
-	
+	var fd_userid = $.cookie("fd_userid");
+	$('#CUSTOMER_USER_ID').val(fd_userid);
 	
 	/***
 	 * 公共方法列表:
@@ -86,18 +87,32 @@ $(function() {
 				request: json_str
 			},
 			success: function(msg) {
+				var activeIndex;
+				if(json_str.serviceid=="SC02")
+				{
+					var activeIndex=$("ul#TMP_Doctor_Tab li.active").index();
+					if(activeIndex==-1)
+						activeIndex=0;
+				
+				}
+				else
+					activeIndex=0;
+				
+				
+				
 				var ret = msg.response;
 			
 				var groupsDate = _.groupBy(ret.data, function(value) {
 					return value.APPOINTMENT_DATE;
 				});
-				var count = 1;
+				var count = 0;
 				for (var i in groupsDate) {
 					var item = groupsDate[i];
 					var each_date = {
 						ID: "",
 						date: "",
-						clinics: []
+						clinics: [],
+						activeID:activeIndex
 					};
 					each_date.ID = count++;
 					each_date.date = i;
@@ -112,6 +127,7 @@ $(function() {
 							clinicName: "",
 							clinicAddress: "",
 							clinicSuburb:"",
+							timeslottmp: [],
 							timeslot: []
 							
 						};
@@ -122,11 +138,13 @@ $(function() {
 						clinic.clinicSuburb = jtem[0].CLINIC_SUBURB;
 						for (var m in jtem) {
 							var mtem = jtem[m];
-							clinic.timeslot.push({
-								time: convertTime(mtem.APPOINTMENT_TIME),
-								originalTime: mtem.APPOINTMENT_TIME
+							clinic.timeslottmp.push({
+								time: convertTime(mtem.APPOINTMENT_TIME)
 							});
 						}
+						clinic.timeslot=_.uniq(clinic.timeslottmp, false, function(p){ return p.time; });
+						
+						
 						each_date.clinics.push(clinic);
 					}
 					all_date.push(each_date);
@@ -139,11 +157,22 @@ $(function() {
 		              alert(func_code + ":" + "时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
 		              result=false;
 		            }
-		
-		            $('#TMP1').html($('#tmp1').render(all_date));
-		            $('#TMP3').show();
-		            $('#TMP2').hide();
-					$('#TMP3').html($('#tmp3').render(all_date));
+		            
+		            
+		            $('#TMP_Clinic_Tab').html($('#tmp_clinic_tab').render(all_date));
+					$('#TMP_Clinic_Content').html($('#tmp_clinic_content').render(all_date));
+					
+					
+		            $('#TMP_Clinic_Tab').show();
+		            $('#TMP_Doctor_Tab').hide();
+		            $('#TMP_Clinic_Content').show();
+		            $('#TMP_Doctor_Content').hide();
+		            
+		            
+					
+					
+					
+					$('#btn_returnClinic').hide();
 		          }else{
 		            alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg); 
 		            result=false;
@@ -197,18 +226,29 @@ $(function() {
 				request: json_str
 			},
 			success: function(msg) {
+				var activeIndex;
+				if(json_str.serviceid=="SD01")
+				{
+					activeIndex=$("ul#TMP_Clinic_Tab li.active").index();
+					if(activeIndex==-1)
+						activeIndex=0;
+				}
+				else
+					activeIndex=0;
+				
 				var ret = msg.response;
 			
 				var groupsDate = _.groupBy(ret.data, function(value) {
 					return value.APPOINTMENT_DATE;
 				});
-				var count = 1;
+				var count = 0;
 				for (var i in groupsDate) {
 					var item = groupsDate[i];
 					var each_date = {
 						ID: "",
 						date: "",
-						doctors: []
+						doctors: [],
+						activeID:activeIndex
 					};
 					each_date.ID = count++;
 					each_date.date = i;
@@ -250,11 +290,17 @@ $(function() {
 		              result=false;
 		            }
 		
-		            $('#TMP1').html($('#tmp1').render(all_date));
-		            
-		            $('#TMP2').show();
-		            $('#TMP3').hide();
-					$('#TMP2').html($('#tmp2').render(all_date));
+
+					$('#TMP_Doctor_Tab').html($('#tmp_doctor_tab').render(all_date));
+					$('#TMP_Doctor_Content').html($('#tmp_doctor_content').render(all_date));
+					
+					
+		            $('#TMP_Clinic_Tab').hide();
+		            $('#TMP_Doctor_Tab').show();
+		            $('#TMP_Clinic_Content').hide();
+		            $('#TMP_Doctor_Content').show();
+					
+					$('#btn_returnClinic').show();
 		          }else{
 		            alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg); 
 		            result=false;
@@ -645,6 +691,18 @@ $(function() {
 		$('#btn_save_search').hide();
 	}
 		
+	//返回诊所按钮 默认隐藏
+	$('#btn_returnClinic').hide();
+	$('#btn_returnClinic').click(function() {
+		///////////////////////////////////组织ajax 请求参数 begin///////////////////////////////
+		requesttype = 1;
+		func_code = "SC02";
+		json_form = $("#modal_form_search").serializeObject();
+		json_str = request_const(json_form, func_code, requesttype);
+		///////////////////////////////////组织ajax 请求参数 end///////////////////////////////
+		ajaxSearchClinic(json_str);
+		$('#searchModal').modal('hide')
+	});
 	
 	
 	/*Case1.从主页点击搜索按钮跳转*/
@@ -664,7 +722,7 @@ $(function() {
 		
 		var isFromIndex = json_value.from_index;
 		requesttype = 0;
-		func_code = "SD01";
+		func_code = "SC01";
 		json_form = $("#modal_form_search").serializeObject();
 		json_str = request_const(json_form, func_code, requesttype);
 		ajaxSearchClinic(json_str);
@@ -677,7 +735,7 @@ $(function() {
 	if (fromSaveDoctor_favDoctorID) {
 		
 		requesttype = 0;
-		func_code = "SD01";
+		func_code = "SD02";
 		json_form = JSON.parse('{"DOCTOR_ID":"'+fromSaveDoctor_favDoctorID +'"}');
 		
 		json_str = request_const(json_form, func_code, requesttype);
@@ -691,7 +749,7 @@ $(function() {
 	$('#btn_search').click(function() {
 		///////////////////////////////////组织ajax 请求参数 begin///////////////////////////////
 		requesttype = 1;
-		func_code = "SD02";
+		func_code = "SD03";
 		json_form = $("#modal_form_search").serializeObject();
 		json_str = request_const(json_form, func_code, requesttype);
 		///////////////////////////////////组织ajax 请求参数 end///////////////////////////////
