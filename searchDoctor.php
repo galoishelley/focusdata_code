@@ -282,76 +282,89 @@ include_once 'classes/Language/language.common.php';
 
                             <input type="hidden" class="form-control" name="action_type" id="action_type" value="create">
 <div class="row alexrow">
-                            <div class="form-group col-md-6" style="padding-left:0px">
-                                <label for="CUSTOMER_USER_NAME" class="col-md-3"><!-- 用户名--><?php echo $lang['Lang0047']; ?><span class="span-red">*</span></label>
-                          
-                                <input type="text" class="form-control" id="CUSTOMER_USER_NAME" name="CUSTOMER_USER_NAME">
+                            <div class="form-group">
+                                <label for="CUSTOMER_USER_MAIL" ><!-- 邮箱--><?php echo $lang['Lang0048']; ?><span class="span-red">*</span></label>
                                
+                                <input type="text" style="margin-left: 50px" class="form-control" id="CUSTOMER_USER_MAIL" name="CUSTOMER_USER_MAIL">
                             </div>
 
-                            <div class="form-group col-md-6">
-                                <label for="CUSTOMER_USER_MAIL" class="col-md-3"><!-- 邮箱--><?php echo $lang['Lang0048']; ?><span class="span-red">*</span></label>
-                               
-                                <input type="text" class="form-control" id="CUSTOMER_USER_MAIL" name="CUSTOMER_USER_MAIL">
-                               
-                            </div>
 </div>
 <div class="row alexrow">
-                            <div class="form-group col-md-6" style="padding-left:0px">
-                                <label for="CUSTOMER_USER_PWD" class="col-md-3"><!-- 密码--><?php echo $lang['Lang0161']; ?><span class="span-red">*</span></label>
+                            <div class="form-group">
+                                <label for="CUSTOMER_USER_PWD"><!-- 密码--><?php echo $lang['Lang0161']; ?><span class="span-red">*</span></label>
                          
-                                <input type="password" class="form-control" name="CUSTOMER_USER_PWD" id="CUSTOMER_USER_PWD">
+                                <input type="password" style="margin-left: 26px" class="form-control" name="CUSTOMER_USER_PWD" id="CUSTOMER_USER_PWD">
                            
                             </div>
 
-                            <div class="form-group col-md-6">
-                                <label for="CONFIME_PWD" class="col-md-3"><!-- 确认密码--><?php echo $lang['Lang0199']; ?><span class="span-red">*</span></label>
+                            <div class="form-group">
+                                <label for="CONFIME_PWD" style="margin-left: 129px"><!-- 确认密码--><?php echo $lang['Lang0199']; ?><span class="span-red">*</span></label>
                        
                                 <input type="password" class="form-control" name="CONFIME_PWD" id="CONFIME_PWD">
                         
                             </div>
 </div>
 <div class="row alexrow">
-                            <div class="form-group col-md-6" style="padding-left:0px">
-                            
-                                <label for="CUSTOMER_NAME" class="col-md-3"><!-- 姓名--><?php echo $lang['Lang0216']; ?><span class="span-red">*</span></label>
-                           
-                                <input type="text" class="form-control" id="CUSTOMER_NAME" name="CUSTOMER_NAME">
-                       
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="CUSTOMER_PHONE_NO" class="col-md-3"><!-- 电话号码--><?php echo $lang['Lang0149']; ?><span class="span-red">*</span></label>
-                  
-                                <input type="text" class="form-control" name="CUSTOMER_PHONE_NO" id="CUSTOMER_PHONE_NO" maxlength="10">
-                          
-                            </div>  
+							<div class="form-group">
+											<label for="TITLE_ID"> <!-- title-->
+												<?php echo $lang['Lang0322']; ?><span class="span-red">*</span>
+											</label> <select style="margin-left: 57px" class="form-control"  id="TITLE_ID"
+												name="TITLE_ID">
+											</select>
+										</div>
+										
+
+
 </div>
 <div class="row alexrow">
-                            <div class="form-group">
-                              <label for="CUSTOMER_GENDER"><!-- 性别--><?php echo $lang['Lang0217']; ?><span class="span-red">*</span></label>
-                            
-                              <select class="form-control" style="margin-left: 40px" id="CUSTOMER_GENDER" name="CUSTOMER_GENDER">
-                                    <option><!-- 男--><?php echo $lang['Lang0132']; ?></option>
-                                    <option><!-- 女--><?php echo $lang['Lang0133']; ?></option>
-                              </select>
-                         
-                            </div>
+									<div class="form-group">
+											<label for="CUSTOMER_FIRSTNAME"> <!-- 名-->
+												<?php echo $lang['Lang0320']; ?><span class="span-red">*</span>
+											</label> <input type="text" style="margin-left: 17px" class="form-control"
+												id="CUSTOMER_FIRSTNAME" name="CUSTOMER_FIRSTNAME"
+												maxlength="50">
+										</div>
+										<div class="form-group">
+											<label for="CUSTOMER_LASTNAME" style="margin-left: 114px"> <!-- 姓-->
+												<?php echo $lang['Lang0321']; ?><span class="span-red">*</span>
+											</label> <input type="text" class="form-control"
+												id="CUSTOMER_LASTNAME" name="CUSTOMER_LASTNAME"
+												maxlength="50">
+										</div>
 
-                            <div class="form-group">
-                                <label for="CUSTOMER_BIRTHDAY"><!-- 生日--><?php echo $lang['Lang0148']; ?><span class="span-red">*</span></label>
- 
-                                <input type="text" class="form-control" name="CUSTOMER_BIRTHDAY" id="CUSTOMER_BIRTHDAY" placeholder="dd/mm/yyyy">
-                        
-                            
-                            </div>
-
-                            <div class="form-group">
-                                <label for="MEDICAL_CARD_NO"><!-- 医疗卡号--><?php echo $lang['Lang0150']; ?><span class="span-red">*</span></label>
-                    
-                                <input type="text" class="form-control" name="MEDICAL_CARD_NO" id="MEDICAL_CARD_NO">
-                 
-                            </div>
 </div>
+<div class="row alexrow">
+                            
+                            <div class="form-group">
+											<label for="GENDER_ID"> <!-- 性别-->
+												<?php echo $lang['Lang0217']; ?><span class="span-red">*</span>
+											</label> <select class="form-control"  style="margin-left: 40px" id="GENDER_ID"
+												name="GENDER_ID">
+											</select>
+										</div>
+										<div class="form-group">
+											<label for="CUSTOMER_BIRTHDAY" style="margin-left: 260px"> <!-- 生日-->
+												<?php echo $lang['Lang0220']; ?><span class="span-red">*</span>
+											</label> <input type="text" class="form-control"
+												name="CUSTOMER_BIRTHDAY" id="CUSTOMER_BIRTHDAY"
+												placeholder="Birthdate (dd/mm/yyyy)">
+										</div>
+</div>
+<div class="row alexrow">
+									<div class="form-group">
+											<label for="CUSTOMER_PHONE_NO"> <!-- 电话号码-->
+												<?php echo $lang['Lang0221']; ?><span class="span-red">*</span>
+											</label> <input type="text" class="form-control"  style="margin-left: 42px"
+												name="CUSTOMER_PHONE_NO" id="CUSTOMER_PHONE_NO"
+												maxlength="10">
+										</div>
+
+										<div class="form-group">
+											<label for="MEDICAL_CARD_NO" style="margin-left: 67px"> <!-- 医疗卡号-->
+												<?php echo $lang['Lang0150']; ?><span class="span-red">*</span>
+											</label> <input type="text" class="form-control"
+												name="MEDICAL_CARD_NO" id="MEDICAL_CARD_NO" maxlength="50">
+										</div></div>
 <div class="row alexrow">
 
                             <div class="form-group">

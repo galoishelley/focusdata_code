@@ -16,7 +16,7 @@ class SearchUser_DB{
             print_r($arr_values);
         }
 
-        $sql = "SELECT * FROM `fd_customer_user` WHERE `CUSTOMER_USER_NAME` = '".$arr_values["username"]."'";
+        $sql = "SELECT * FROM `fd_customer_user` WHERE `CUSTOMER_USER_MAIL` = '".$arr_values["user_mail"]."'";
 
         if($this->_dbug){
             echo "[---viewAll---sql]";
