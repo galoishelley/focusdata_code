@@ -12,10 +12,10 @@ var keyTime;
 /*for googlemap*/
 var map;
 var address;
-var location;
+var mylocation;
 $(document).on('shown.bs.modal','#googlemap', function () {
   google.maps.event.trigger(map, "resize");
-  map.setCenter(location);
+  map.setCenter(mylocation);
 });
 
 
@@ -235,7 +235,7 @@ $(function() {
 					var suburb = $(this).attr('suburb');
 					
 					address=street+","+suburb+",Australia";
-					location=new google.maps.LatLng(lat, lng);
+					mylocation=new google.maps.LatLng(lat, lng);
 					var mapCanvas = document.getElementById('map');
 					var mapOptions = {
 					      center: new google.maps.LatLng(lat, lng),
