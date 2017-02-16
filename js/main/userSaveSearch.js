@@ -182,9 +182,7 @@ $(document).ready(function() {
               return data;
           }
         },
-        {
-          "data": "STATE_NAME"
-        },
+        
         { 
           "data": "CLINIC_NAME",
           render: function(data, type, row, meta) {

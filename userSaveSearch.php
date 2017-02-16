@@ -75,7 +75,7 @@ include_once 'classes/Menu/menu.php';
                           <tr>
                             <th><input type="checkbox" name="chk_all" id="chk_all"></th>
                             <th><!-- 诊所区--><?php echo $lang['Lang0293']; ?></th>
-                            <th><!-- 诊所州--><?php echo $lang['Lang0294']; ?></th>
+                            
                             <th><!-- 诊所名称--><?php echo $lang['Lang0295']; ?></th>
                             <th><!-- 医生类别--><?php echo $lang['Lang0296']; ?></th>
                             <th><!-- 医生名称--><?php echo $lang['Lang0297']; ?></th>
