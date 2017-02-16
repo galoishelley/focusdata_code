@@ -161,61 +161,88 @@ $(document).ready(function() {
     $("#STATE_ID option[value='"+ state_id +"']").attr("selected",true);
 
   $('#btn_ok').click(function(){
-
+	  
+	  /*calculate lat/lng begin*/ 
+	  var address=$('#CLINIC_ADDR').val()+","+$('#CLINIC_SUBURB').val()+","+$("#STATE_ID option:selected").text()+","+"Australia";
+	  var geocoder = new google.maps.Geocoder();
+	  if (geocoder) {
+	      geocoder.geocode( { 'address': address}, function(results, status) {
+	        if (status == google.maps.GeocoderStatus.OK) {
+	          if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
+	          
+			    $('#CLINIC_LAT').val(results[0].geometry.location.lat());
+			    $('#CLINIC_LNG').val(results[0].geometry.location.lng());
+			    
+			    
 ///////////////////////////////////组织ajax 请求参数 begin///////////////////////////////
-    //form序列化成json
-    func_code="CU03";
-    json_form = $("#clinicUpdUserInfo").serializeObject();
-    //生成输入参数
-    json_str = request_const(json_form,func_code,1);
-    //alert(JSON.stringify(json_str));
+			    //form序列化成json
+			    func_code="CU03";
+			    json_form = $("#clinicUpdUserInfo").serializeObject();
+			    //生成输入参数
+			    json_str = request_const(json_form,func_code,1);
+			    //alert(JSON.stringify(json_str));
 
-    console.log(json_str);
+			    console.log(json_str);
 
-///////////////////////////////////组织ajax 请求参数 end///////////////////////////////
+			///////////////////////////////////组织ajax 请求参数 end///////////////////////////////
 
-    //请求
-    result = true;
-    $.ajax({
-        type: "POST",
-        url: "classes/class.ClinicDetail.php",
-        dataType: "json",
-        async:false,
-        data: {
-            request:json_str
-        },
-        success: function (msg) {
-            // console.log(msg);
-            var ret = msg.response;
-            if(ret.success){
-              if(json_str.sequ != ret.sequ){
-                  alert(func_code+" 时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
-                  result = false;
-              }
-              
-              alert(func_code + " " + ret.status.ret_code + " " + ret.status.ret_msg);
+			    //请求
+			    result = true;
+			    $.ajax({
+			        type: "POST",
+			        url: "classes/class.ClinicDetail.php",
+			        dataType: "json",
+			        async:false,
+			        data: {
+			            request:json_str
+			        },
+			        success: function (msg) {
+			            // console.log(msg);
+			            var ret = msg.response;
+			            if(ret.success){
+			              if(json_str.sequ != ret.sequ){
+			                  alert(func_code+" 时序号错误,请联系管理员ret.sequ"+ret.sequ+" json_str.sequ:"+json_str.sequ);
+			                  result = false;
+			              }
+			              
+			              alert(func_code + " " + ret.status.ret_code + " " + ret.status.ret_msg);
 
-              $.cookie("fd_username", $('#CLINIC_USER_MAIL').val());
+			              $.cookie("fd_username", $('#CLINIC_USER_MAIL').val());
 
-              var username = $.cookie("fd_username");
+			              var username = $.cookie("fd_username");
 
-              $('#userinfo').html(username);
-              // $('#usertype').html("用户类型: "+$.cookie("fd_usertype"));
+			              $('#userinfo').html(username);
+			              // $('#usertype').html("用户类型: "+$.cookie("fd_usertype"));
 
-            }else{
-                alert(func_code + " " + ret.status.ret_code + " " + ret.status.ret_msg);
-                result = false;
-            }
-            
-        },
-        error: function(XMLHttpRequest, textStatus, errorThrown){
-          //请求失败之后的操作
-          var ret_code = "999999";
-          var ret_msg = "ajax失败,请联系管理员!";
-          alert(func_code + " " + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
-          result = false;
-       }
-    });
+			            }else{
+			                alert(func_code + " " + ret.status.ret_code + " " + ret.status.ret_msg);
+			                result = false;
+			            }
+			            
+			        },
+			        error: function(XMLHttpRequest, textStatus, errorThrown){
+			          //请求失败之后的操作
+			          var ret_code = "999999";
+			          var ret_msg = "ajax失败,请联系管理员!";
+			          alert(func_code + " " + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+			          result = false;
+			       }
+			    });
+			    
+			    
+
+	          } else {
+	            alert("Invalid address!");
+	          }
+	        } else {
+	          alert("Geocode was not successful for the following reason: " + status);
+	        }
+	      });
+	    }
+	  
+	  /*calculate lat/lng end*/
+	  
+
     if(!result){
       return result;
     }

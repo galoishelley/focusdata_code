@@ -7,6 +7,18 @@ var keyDoctorID;
 var keyDate;
 var keyTime;
 
+
+
+/*for googlemap*/
+var map;
+var address;
+var location;
+$(document).on('shown.bs.modal','#googlemap', function () {
+  google.maps.event.trigger(map, "resize");
+  map.setCenter(location);
+});
+
+
 /*medicareNumber 输入框检查*/
 (function($) {
     $.fn.bootstrapValidator.validators.medicareNumberValidation = {
@@ -127,6 +139,8 @@ $(function() {
 							clinicName: "",
 							clinicAddress: "",
 							clinicSuburb:"",
+							clinicLat:0,
+							clinicLng:0,
 							timeslottmp: [],
 							timeslot: []
 							
@@ -136,6 +150,10 @@ $(function() {
 						clinic.clinicName = jtem[0].CLINIC_NAME;
 						clinic.clinicAddress = jtem[0].CLINIC_ADDR;
 						clinic.clinicSuburb = jtem[0].CLINIC_SUBURB;
+						
+						clinic.clinicLat= jtem[0].CLINIC_LAT;
+						clinic.clinicLng= jtem[0].CLINIC_LNG;
+						
 						for (var m in jtem) {
 							var mtem = jtem[m];
 							clinic.timeslottmp.push({
@@ -205,6 +223,42 @@ $(function() {
 					
 				
 					
+				});
+			});
+		  
+		//显示地图,每次查询出结果集之后要重新绑定 一遍
+		  $(".showMap").each(function(index) {
+				$(this).on("click", function() {
+					var lat = $(this).attr('lat');
+					var lng = $(this).attr('lng');
+					var street = $(this).attr('street');
+					var suburb = $(this).attr('suburb');
+					
+					address=street+","+suburb+",Australia";
+					location=new google.maps.LatLng(lat, lng);
+					var mapCanvas = document.getElementById('map');
+					var mapOptions = {
+					      center: new google.maps.LatLng(lat, lng),
+					      zoom: 15,
+					      mapTypeId: google.maps.MapTypeId.ROADMAP
+					}
+					map = new google.maps.Map(mapCanvas, mapOptions)
+					   
+					var infowindow = new google.maps.InfoWindow(
+					                { content: '<b>'+address+'</b>',
+					                  size: new google.maps.Size(150,50)
+					                });
+
+					var marker = new google.maps.Marker({
+					                position: new google.maps.LatLng(lat, lng),
+					                map: map, 
+					                title:address
+					            }); 
+					google.maps.event.addListener(marker, 'click', function() {
+					                infowindow.open(map,marker);
+					            });
+					            
+
 				});
 			});
 		  

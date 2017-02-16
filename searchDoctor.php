@@ -61,6 +61,10 @@ include_once 'classes/Language/language.common.php';
 .alexrow{
 	margin-top:8px;
 }
+#map{
+  height: 300px;
+  width: 600px;  
+}
 </style>
 
 <!--JS-->
@@ -245,6 +249,24 @@ include_once 'classes/Language/language.common.php';
 		</div>
 	</div>
 	
+	
+	
+	<div class="modal fade" id="googlemap" role="dialog" >
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content" id="back" >  
+                    <div class="modal-header">
+                    <h4>Location</h4>
+                </div>
+                <div class="modal-body">    
+                    <div id="map"></div>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-default" data-dismiss="modal">Close</a>
+                </div>      
+            </div>
+      </div>
+     </div>
+      
 	
 	<div class="modal fade bs-example-modal-lg" role="dialog" aria-labelledby="gridSystemModalLabel" id="signupModal">
         <div class="modal-dialog modal-lg" role="document">
@@ -453,6 +475,7 @@ include_once 'classes/Language/For_JS_multi_lang.php';
 						<h2>{{>clinicName}}</h2>
 						<h5>{{>clinicSuburb}}</h5>
 						<h5>{{>clinicAddress}}</h5>
+						<a class="btn-primary showMap" href="#googlemap"  data-toggle="modal" street="{{>clinicAddress}}" suburb="{{>clinicSuburb}}" lat="{{>clinicLat}}" lng="{{>clinicLng}}">Show Map</a> 
 					</div>
 												
 					<div class="col-md-4">
@@ -494,6 +517,8 @@ include_once 'classes/Language/For_JS_multi_lang.php';
 
 	<script src="js/main/pub.js"></script>
 	<script src="js/main/searchDoctor.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCyZERlQBAH0_PRkVI8bu7oqx8HIBlyZG4&libraries=geometry"></script>
+	
 
 </body>
 </html>
