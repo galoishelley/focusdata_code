@@ -29,10 +29,8 @@ include_once 'classes/Language/language.common.php';
 
 
 
-<link rel="stylesheet" href="css/easy-autocomplete.min.css"> 
 
-<link rel="stylesheet" href="css/easy-autocomplete.themes.min.css">
-
+<link href="css/jquery-ui.css" rel="stylesheet">
 
 <!--JS-->
 <script src="js/jquery.js"></script>
@@ -57,7 +55,7 @@ include_once 'classes/Language/language.common.php';
     <div class="thumb-box1">
         <div class="container">
             <div class="thumb-box2 clearfix">
-                <div class="wow fadeInLeft" data-wow-delay="0.2s">
+                <div>
                     <div class="row">
                         <!-- <div class="index-form-bg">
                             <div class="index-form-txt">
@@ -67,7 +65,7 @@ include_once 'classes/Language/language.common.php';
                                         <input type="hidden" class="form-control" name="from_index" id="from_index" value="1">
                                         
                                         
-                                        <div class="form-group">
+                                        <div class="form-group col-xs-12">
                                             <label for="DOCTOR_TYPE"><!-- 医生类别--><?php echo $lang['Lang0065']; ?></label>
                                             
                                             <label class="radio-inline"><input type="radio" name="DOCTOR_TYPE" value="GP" checked="checked">GP</label>
@@ -82,7 +80,7 @@ include_once 'classes/Language/language.common.php';
                                         </div>
                                         
                                         
-                                        <div class="form-group">
+                                        <div class="form-group col-xs-11">
                                             <label for="CLINIC_SUBURB"><!-- 位置--><?php echo $lang['Lang0316']; ?></label>
                                      
                                                 <input type="text" class="form-control" id="CLINIC_SUBURB" name="CLINIC_SUBURB" maxlength="300">
@@ -95,7 +93,7 @@ include_once 'classes/Language/language.common.php';
                                     <div class="row btn_index">
 
                                         <button type="button" class="btn btn-primary" id="btn_search" ><!-- 一般搜索--><?php echo $lang['Lang0317']; ?></button>
-                                         <!-- <button type="button" class="btn btn-primary" id="btn_search_advanced" ><!-- 高级搜索--><?php echo $lang['Lang0318']; ?></button>-->
+                                         
                                     </div>
                                <!--  </div> -->
                             <!-- </div>不透明文字  -->
@@ -127,8 +125,7 @@ include_once 'classes/Language/For_JS_multi_lang.php';
 
 <script src="js/tm-scripts.js"></script>
 <script src="js/jquery.cookie.js"></script>
-
-<script src="js/jquery.easy-autocomplete.min.js"></script> 
+<script src="js/jquery-ui.js"></script>
 
 <script src="js/main/pub.js"></script>
 <script src="js/main/index.js"></script>

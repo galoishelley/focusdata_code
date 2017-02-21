@@ -797,18 +797,44 @@ $(function() {
 	//
 	$("#CUSTOMER_BIRTHDAY").mask("99/99/9999",{placeholder:"dd/mm/yyyy"});
 	//autocomplete
-	var options = {
-		url: "classes/AutoComplete/suburb.php",
-		getValue: "Suburb",
-		list: {
-			match: {
-				enabled: true
-			}
-		},
-		placeholder: "Suburb, State or Postcode",
-		theme: "plate-dark"
-	};
-	$("#CLINIC_SUBURB").easyAutocomplete(options);
+	
+	var localSuburb=localStorage.getItem('suburb');
+	if(localSuburb==null)
+	{
+		$.ajax({
+	          type: "GET",
+	          url: "classes/AutoComplete/suburb.php",
+	          dataType: "json",
+	          async:false,
+	          cache : false,
+	       
+	          success: function (msg) {
+	            localStorage.setItem('suburb',JSON.stringify(msg)); 
+	          },
+	          error: function(XMLHttpRequest, textStatus, errorThrown){
+	            //请求失败之后的操作
+	            var ret_code = "999911";
+	            var ret_msg = "失败,请联系管理员!";
+	            alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
+	          }
+	        });
+	}
+	$( "#CLINIC_SUBURB" ).autocomplete({
+ 	   
+ 	   //only match with the beginning of terms
+ 	   source:function( request, response ) {
+ 	          var matcher = new RegExp( "^" + $.ui.autocomplete.escapeRegex( request.term ), "i" );
+ 	          response( $.grep( JSON.parse(localStorage.getItem('suburb')), function( item ){
+ 	              return matcher.test( item );
+ 	          }) );
+ 	      },
+    
+      
+      
+      
+      minLength: 3
+    });
+	
 
 	
 	/***

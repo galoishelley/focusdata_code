@@ -25,11 +25,13 @@ include_once 'classes/Language/language.common.php';
 <!-- datetime -->
 <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
 
-<!-- easy-autocomplete -->
-<link rel="stylesheet" href="css/easy-autocomplete.min.css">
-<link rel="stylesheet" href="css/easy-autocomplete.themes.min.css">
+<link href="css/jquery-ui.css" rel="stylesheet">
+
 
 <style>
+.ui-autocomplete {
+    z-index: 5000;
+}
 .outer {
 	padding: 10px;
 	margin: 10px;
@@ -77,7 +79,7 @@ include_once 'classes/Language/language.common.php';
 <script src="js/jquery.equalheights.js"></script>
 <script src="js/jquery.ui.totop.js"></script>
 <script src="js/jquery.cookie.js"></script>
-<script src="js/jquery.easy-autocomplete.min.js"></script>
+
 
 
 
@@ -516,6 +518,8 @@ include_once 'classes/Language/For_JS_multi_lang.php';
 </script>
 
 	<script src="js/bootstrap.min.js"></script>
+	<!-- autocomplete -->
+	<script src="js/jquery-ui.js"></script>
 	
 	<!-- dialog -->
 	<script src="js/bootstrap-dialog.min.js"></script>
