@@ -94,7 +94,10 @@ class ClinicOprDoctor_DB{
             print_r($arr_values);
         }
 
-        $sql = "SELECT t1.*, t3.CLINIC_NAME,t3.CLINIC_ADDR,t3.CLINIC_POSTCODE,t3.CLINIC_SUBURB,t4.STATE_NAME FROM fd_doctor t1
+        $sql = "SELECT t1.*,GROUP_CONCAT(t6.language_name  SEPARATOR ',') as LANGUAGE_NAME, t3.CLINIC_NAME,t3.CLINIC_ADDR,t3.CLINIC_POSTCODE,t3.CLINIC_SUBURB,t4.STATE_NAME 
+        		FROM fd_doctor t1 left join 
+        		(fd_rel_doctor_language as t5 left join fd_dict_language as t6 on t5.LANGUAGE_ID = t6.LANGUAGE_ID )
+ ON t1.DOCTOR_ID = t5.DOCTOR_ID
                 left join (fd_rel_clinic_doctor as t2 left join fd_clinic_user as t3 on t2.clinic_user_id = t3.clinic_user_id )
                 ON t1.DOCTOR_ID = t2.DOCTOR_ID
                 left join fd_dict_state t4 on t4.state_id = t3.state_id
@@ -150,11 +153,28 @@ class ClinicOprDoctor_DB{
             echo "[---viewAll---$arr_values]";
             print_r($arr_values);
         }
-         // print_r($arr_values);
         
         $where =" DOCTOR_ID = ".intval($arr_values['DOCTOR_ID']);
-        unset($arr_values["DOCTOR_ID"]);
+        //1.delete rel id=DOCTOR_ID
+        $ret = $this->db->deleteData('fd_rel_doctor_language', $where);
+        
+        //2.
+     	$arr=explode(",",$arr_values["LANGUAGE_NAME"]);
 
+     	$arrlength=count($arr);
+     	
+     	for($k = 0; $k < $arrlength; $k++){
+     		$sql = "SELECT LANGUAGE_ID FROM `fd_dict_language` where LANGUAGE_NAME ='".$arr[$k]."'";
+     		$LANGUAGE_ID = $this->db->fetchAll_sql($sql,null);
+     		
+     		$arr_values_tmp["DOCTOR_ID"] = intval($arr_values['DOCTOR_ID']);
+     		$arr_values_tmp["LANGUAGE_ID"] = intval($LANGUAGE_ID[0]["LANGUAGE_ID"]);
+     		$ret = $this->db->insertData('fd_rel_doctor_language', $arr_values_tmp);
+     	}
+
+        
+        unset($arr_values["DOCTOR_ID"]);
+        unset($arr_values["LANGUAGE_NAME"]);
         $ret = $this->db->updateData('fd_doctor', $arr_values, $where);
 
         return $ret;

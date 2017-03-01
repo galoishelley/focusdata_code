@@ -411,4 +411,7 @@ $lang['Lang0323'] = 'classes/class.getGenderEN.php';
 
 $lang['Lang0324'] = 'Doctors';
 $lang['Lang0325'] = 'Return Clinics';
+
+$lang['Lang0326'] = 'Language';
+$lang['Lang0327'] = 'Choose at least one language';
 ?>

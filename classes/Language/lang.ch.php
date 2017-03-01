@@ -407,4 +407,7 @@ $lang['Lang0323'] = 'classes/class.getGenderCH.php';
 $lang['Lang0324'] = '可预约医生';
 
 $lang['Lang0325'] = '返回诊所';
+
+$lang['Lang0326'] = '语言';
+$lang['Lang0327'] = '至少需要选择一种语言';
 ?>

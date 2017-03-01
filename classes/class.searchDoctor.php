@@ -71,6 +71,30 @@ class SearchDoctor
 		
 
 		$ret["data"]=$this->searchdoctor_db->index_search_sp($this->arr_values);
+		
+		//language filter begin 2017.3.1
+		if(isset($this->arr_values['LANGUAGE']))
+		{
+			for($x = 0; $x < count($ret["data"]); $x++)
+			{
+				
+				$found=false;
+				$arrDocLang=explode(",",$ret["data"][$x]["LANGUAGE_NAME"]);
+				for($y = 0; $y < count($arrDocLang); $y++)
+				{
+					for($z = 0; $z < count($this->arr_values['LANGUAGE']); $z++)
+					{
+						if($arrDocLang[$y]==$this->arr_values['LANGUAGE'][$z])
+						{
+							$found=true;
+						}
+					}
+				}
+				if(!$found)
+					unset($ret["data"][$x]);
+			}
+		}
+		//language filter begin 2017.3.1 end
 
 
 		$recordCount = count($ret["data"]);

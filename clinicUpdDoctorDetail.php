@@ -21,6 +21,8 @@ include_once 'classes/Language/language.common.php';
 <!--User CSS-->
 <link rel="stylesheet" href="css/user.css">
 <link rel="stylesheet" href="css/focusdata.css">
+
+<link rel="stylesheet" href="css/bootstrap-multiselect.css">
 <!--JS-->
 <script src="js/jquery.js"></script>
 <script src="js/jquery-migrate-1.2.1.min.js"></script>
@@ -77,6 +79,21 @@ include_once 'classes/Menu/menu.php';
 										      <input type="text" class="form-control" name="DOCTOR_NAME" id="DOCTOR_NAME">
 										    </div>
 										</div>	
+										
+										<div class="form-group">
+														
+													    <label for="ddlLanguage" class="col-sm-2  control-label"> <!-- 位置-->
+															<?php echo $lang['Lang0326']; ?><span class="span-red">*</span></label>
+															<div class="col-sm-10">
+													<select id="ddlLanguage" multiple="multiple">
+													<option value="English" >English</option>
+													<option value="Chinese" >Chinese</option>
+													<option value="Spanish">Spanish</option>
+													<option value="Arabic">Arabic</option>
+
+													</select>
+													</div>
+										</div>
 										<div class="form-group">
 										    <label for="DOCTOR_GENDER" class="col-sm-2 control-label"><!-- 性别--><?php echo $lang['Lang0256']; ?><span class="span-red">*</span></label>
 										    <div class="col-sm-10">
@@ -103,10 +120,11 @@ include_once 'classes/Menu/menu.php';
 										</div>
 
 										<input type="hidden" class="form-control" name="DOCTOR_PHOTO" id="DOCTOR_PHOTO">
-										
+										<input type="hidden" class="form-control" name="LANGUAGE_NAME" id="LANGUAGE_NAME">
 									</fieldset>
 								</form>
 
+			
 								<div class="row doctor_photo">
 									 <label for="DOCTOR_PHOTO" class="col-sm-2 control-label"><!-- 医生照片--><?php echo $lang['Lang0264']; ?><span class="span-red">*</span></label>
 									<div class="col-sm-offset-2">	
@@ -144,8 +162,10 @@ include_once 'classes/Footer/Footer.php';
 include_once 'classes/Language/For_JS_multi_lang.php';
 ?>
 <script src="js/bootstrap.min.js"></script><!-- dialog --><script src="js/bootstrap-dialog.min.js"></script>
+
 <script src="js/tm-scripts.js"></script>
 <script src="js/jquery.cookie.js"></script>
+<script src="js/bootstrap-multiselect.js"></script>
 <script src="js/main/pub.js"></script>
 <script src="js/main/clinicUpdDoctorDetail.js"></script>
 </body>

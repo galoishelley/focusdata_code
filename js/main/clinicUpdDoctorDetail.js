@@ -1,5 +1,6 @@
 $(function(){
   
+	$('#ddlLanguage').multiselect();
   var str = sessionStorage.doctorinfo;
   //处理浏览 修改
   if(str){
@@ -12,8 +13,15 @@ $(function(){
     if(json_value.DOCTOR_GENDER == "1"){
       $("#DOCTOR_GENDER option[value='"+ 1 +"']").attr("selected",true);
     }
+    
+    var langArr = json_value.LANGUAGE_NAME.split(",");
+
+    $('#ddlLanguage').multiselect('select', langArr);
+    
+
+    
     var clinic_addr = json_value.CLINIC_ADDR +","+ json_value.CLINIC_SUBURB +","+ json_value.STATE_NAME +","+ json_value.CLINIC_POSTCODE;
-    $('#DOCTOR_PHOTO').attr('src','img/doctors/'+json_value.DOCTOR_PHOTO);
+    $('#DOCTOR_PHOTO').attr('src',json_value.DOCTOR_PHOTO);
     $('#CLINIC_NAME').text(json_value.CLINIC_NAME);
     $('#CLINIC_ADDR').text(clinic_addr);
     $('#DOCTOR_TYPE').val(json_value.DOCTOR_TYPE);
@@ -22,7 +30,7 @@ $(function(){
     $('#DOCTOR_INFO').val(json_value.DOCTOR_INFO);
     $('#DOCTOR_ID').val(json_value.DOCTOR_ID);
     $('#DOCTOR_PHOTO').val(json_value.DOCTOR_PHOTO);
-    $('#feedback').html("<img src='img/doctors/"+json_value.DOCTOR_PHOTO+"'/>");
+    $('#feedback').html("<img src='"+json_value.DOCTOR_PHOTO+"'/>");
     $('#ACTIVE_STATUS').find("option[value='"+json_value.ACTIVE_STATUS+"']").attr("selected",true);
 
     if(json_value.imgId == "opr_info"){
@@ -35,6 +43,15 @@ $(function(){
   }
 
   $('#btn_submit').click(function (){
+	  
+	console.log($('#ddlLanguage').val());
+	
+	if($('#ddlLanguage').val() == null){
+		alert($("#Lang0327").html());
+		return;
+	}
+
+	$('#LANGUAGE_NAME').val($('#ddlLanguage').val());
 
 ///////////////////////////////////组织ajax 请求参数 begin///////////////////////////////
     requesttype = 1;

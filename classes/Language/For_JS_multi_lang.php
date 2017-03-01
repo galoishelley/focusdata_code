@@ -109,4 +109,8 @@
 
 <!-- 女 -->
 <div id="Lang0133" style="display: none;"><?php echo $lang['Lang0133']; ?></div>
+
+<!-- 至少选择一种语言 -->
+<div id="Lang0327" style="display: none;"><?php echo $lang['Lang0327']; ?></div>
+
 <!-- 为了实现js多语言 end -->

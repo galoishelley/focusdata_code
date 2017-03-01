@@ -248,6 +248,9 @@ $(document).ready(function() {
           "data": "DOCTOR_NAME" 
         },
         { 
+          "data": "LANGUAGE_NAME" 
+        },
+        { 
           "data": "DOCTOR_GENDER",
           render: function(data, type, row, meta) {
               //type 的值  dispaly sort filter
@@ -452,6 +455,7 @@ $(document).ready(function() {
           CLINIC_ADDR: obj_data.CLINIC_ADDR,
           DOCTOR_ID: obj_data.DOCTOR_ID,
           DOCTOR_NAME: obj_data.DOCTOR_NAME,
+          LANGUAGE_NAME: obj_data.LANGUAGE_NAME,
           DOCTOR_GENDER: obj_data.DOCTOR_GENDER,
           DOCTOR_TYPE: obj_data.DOCTOR_TYPE,
           APPOINTMENT_TIME: obj_data.APPOINTMENT_TIME,

@@ -78,6 +78,7 @@ $(document).on('shown.bs.modal','#googlemap', function () {
 
 $(function() {
 	
+	$('#LANGUAGE').multiselect();
 	
 	//填充州
 	  func_code = "SSTE";

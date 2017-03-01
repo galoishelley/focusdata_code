@@ -121,6 +121,11 @@ class SearchDoctor_DB{
     
     public function index_search_sp($arr_values)
     {
+    	
+
+    	
+    	
+    	
 
     	$sql = "CALL `sp_get7daysTimeslots`(:p0,:p1,:p2,:p3,:p4,:p5,:p6,:p7,:p8);";
 

@@ -109,6 +109,7 @@ include_once 'classes/Menu/menu.php';
                             <th><!-- 邮编--><?php echo $lang['Lang0247']; ?></th>
                             <th><!-- 医生类别--><?php echo $lang['Lang0248']; ?></th>
                             <th><!-- 医生名称--><?php echo $lang['Lang0249']; ?></th>
+                            <th><!-- 语言--><?php echo $lang['Lang0326']; ?></th>
                             <th><!-- 性别--><?php echo $lang['Lang0250']; ?></th>
                             <th><!-- 状态--><?php echo $lang['Lang0251']; ?></th>
                           </tr>

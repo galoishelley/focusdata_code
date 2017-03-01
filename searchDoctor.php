@@ -27,7 +27,7 @@ include_once 'classes/Language/language.common.php';
 
 <link href="css/jquery-ui.css" rel="stylesheet">
 
-
+<link rel="stylesheet" href="css/bootstrap-multiselect.css">
 <style>
 .ui-autocomplete {
     z-index: 5000;
@@ -155,6 +155,19 @@ include_once 'classes/Language/language.common.php';
 													<label class="radio-inline"><input type="radio"  class="custom-control-input" name="DOCTOR_TYPE" value="Chiropractor">Chiropractor</label>
 													</div>
 
+													<div class="form-group  col-md-12">
+														
+													    <label for="LANGUAGE" class="col-md-2"> <!-- 位置-->
+															<?php echo $lang['Lang0326']; ?></label>
+													<select id="LANGUAGE" name="LANGUAGE" multiple="multiple" class="form-control">
+													<option value="English">English</option>
+													<option value="Chinese">Chinese</option>
+													<option value="Spanish">Spanish</option>
+													<option value="Arabic">Arabic</option>
+
+													</select>
+													</div>
+													
 													<div class="form-group  col-md-12">
 														<label for="CLINIC_SUBURB" class="col-md-2"> <!-- 位置-->
 															<?php echo $lang['Lang0316']; ?></label>
@@ -531,7 +544,7 @@ include_once 'classes/Language/For_JS_multi_lang.php';
 		charset="UTF-8"></script>
 	<script type="text/javascript"
 		src="js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
-
+<script src="js/bootstrap-multiselect.js"></script>
 	<script src="js/main/pub.js"></script>
 	<script src="js/main/searchDoctor.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCyZERlQBAH0_PRkVI8bu7oqx8HIBlyZG4&libraries=geometry"></script>
