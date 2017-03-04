@@ -19,6 +19,75 @@ $(document).on('shown.bs.modal','#googlemap', function () {
 });
 
 
+/**
+ * Module for displaying "Waiting for..." dialog using Bootstrap
+ *
+ * @author Eugene Maslovich <ehpc@em42.ru>
+ */
+
+var waitingDialog = waitingDialog || (function ($) {
+    'use strict';
+
+	// Creating modal dialog's DOM
+	var $dialog = $(
+		'<div class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top:15%; overflow-y:visible;">' +
+		'<div class="modal-dialog modal-m">' +
+		'<div class="modal-content">' +
+			'<div class="modal-header"><h3 style="margin:0;color:red;"></h3></div>' +
+			'<div class="modal-body">' +
+				'<div class="progress progress-striped active" style="margin-bottom:0;"><div class="progress-bar" style="width: 100%"></div></div>' +
+			'</div>' +
+		'</div></div></div>');
+
+	return {
+		/**
+		 * Opens our dialog
+		 * @param message Custom message
+		 * @param options Custom options:
+		 * 				  options.dialogSize - bootstrap postfix for dialog size, e.g. "sm", "m";
+		 * 				  options.progressType - bootstrap postfix for progress bar type, e.g. "success", "warning".
+		 */
+		show: function (message, options) {
+			// Assigning defaults
+			if (typeof options === 'undefined') {
+				options = {};
+			}
+			if (typeof message === 'undefined') {
+				message = 'Loading';
+			}
+			var settings = $.extend({
+				dialogSize: 'm',
+				progressType: '',
+				onHide: null // This callback runs after the dialog was hidden
+			}, options);
+
+			// Configuring dialog
+			$dialog.find('.modal-dialog').attr('class', 'modal-dialog').addClass('modal-' + settings.dialogSize);
+			$dialog.find('.progress-bar').attr('class', 'progress-bar');
+			if (settings.progressType) {
+				$dialog.find('.progress-bar').addClass('progress-bar-' + settings.progressType);
+			}
+			$dialog.find('h3').text(message);
+			// Adding callbacks
+			if (typeof settings.onHide === 'function') {
+				$dialog.off('hidden.bs.modal').on('hidden.bs.modal', function (e) {
+					settings.onHide.call($dialog);
+				});
+			}
+			// Opening dialog
+			$dialog.modal();
+		},
+		/**
+		 * Closes dialog
+		 */
+		hide: function () {
+			$dialog.modal('hide');
+		}
+	};
+
+})(jQuery);
+
+
 /*medicareNumber 输入框检查*/
 (function($) {
     $.fn.bootstrapValidator.validators.medicareNumberValidation = {
@@ -524,40 +593,40 @@ $(function() {
 					$('#signupModal').modal('show');
 					return false;
 				}
-				var time_id = "";
-				//搜索医生预约时间ID
+				
+				
+				
+				//Step1.弹出进度条，设置REQUESTING_USER_ID，REQUESTING_FLAG
+				waitingDialog.show('Please wait for 10s...');
+				var AppointmentSuc=false;
+				
 				func_code = "ST01";
 				para = {
 					DOCTOR_ID: keyDoctorID,
 					APPOINTMENT_DATE: keyDate,
-					APPOINTMENT_TIME: keyTime
+					APPOINTMENT_TIME: keyTime,
+					CUSTOMER_USER_ID: $('#CUSTOMER_USER_ID').val()
 				};
 				json_str = request_const(para, func_code, 0);
-
-				//获取DOCTOR_APPOINTMENT_TIME_ID
-				result = true;
+				
 				$.ajax({
 					type: "POST",
-					url: "classes/class.searchAppTimeID.php",
+					url: "classes/class.REQUESTING_FLAG.php",
 					dataType: "json",
 					async: false,
 					data: {
 						request: json_str
 					},
-					success: function(msg) {
-						// console.log(msg);
-						var ret = msg.response;
-						if (ret.success) {
-							if (json_str.sequ != ret.sequ) {
-								alert(func_code + ":时序号错误,请联系管理员ret.sequ" + ret.sequ + " json_str.sequ:" + json_str.sequ);
-								result = false;
-							}
-							console.log(ret);
-							var data = ret.data[0];
-							time_id = data.DOCTOR_APPOINTMENT_TIME_ID;
+					success: function(succeed) {
+						
+						if (succeed) {
+							
+							AppointmentSuc=true;
+							
 						} else {
 							alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
-							result = false;
+							
+							AppointmentSuc=false;
 						}
 					},
 					error: function(XMLHttpRequest, textStatus, errorThrown) {
@@ -565,120 +634,427 @@ $(function() {
 						var ret_code = "999906";
 						var ret_msg = "ajax失败,请联系管理员";
 						alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
-						result = false;
+						AppointmentSuc=false;
 					}
 				});
-				if (!result) {
-					return result;
-				}
-				if (time_id == "") {
-					alert($("#Lang0182").html()); //获取医生预约时间ID错误!
-					return;
-				}
-				var requesttype;
-				//处理登录用户预约
-				if ($.cookie("ilogin") == 1) {
-					//组织request para
-					var username = $.cookie("fd_username");
-					requesttype = 1; //登录用户
+				
+				
+				
+				setTimeout(function () 
+						{
+					
+					waitingDialog.hide();
+					
+					if(!AppointmentSuc)
+					{
+						alert("Appointment failed, please try another time");
+						return false;
+					}
+					
+					
+					//Step2.等待10s后，检查SUCCESSFUL_FLAG，等于1表示成功，否则失败
+
+					func_code = "ST01";
 					para = {
-						action_type: "create",
-						CUSTOMER_USER_ID: $('#CUSTOMER_USER_ID').val(),
 						DOCTOR_ID: keyDoctorID,
-						DOCTOR_APPOINTMENT_TIME_ID: time_id,
-						APPOINTMENT_STATUS_ID: 1
+						APPOINTMENT_DATE: keyDate,
+						APPOINTMENT_TIME: keyTime
 					};
-				}
-				json_str = request_const(para, func_code, requesttype);
-				//请求
-				result = true;
-				$.ajax({
-					type: "POST",
-					url: "classes/class.appointmentDoctor.php",
-					dataType: "json",
-					async: false,
-					data: {
-						request: json_str
-					},
-					success: function(msg) {
-						// console.log(msg);
-						var ret = msg.response;
-						if (ret.success) {
-							if (json_str.sequ != ret.sequ) {
-								alert(func_code + ":时序号错误,请联系管理员ret.sequ" + ret.sequ + " json_str.sequ:" + json_str.sequ);
-								result = false;
+					json_str = request_const(para, func_code, 0);
+
+					result = true;
+					$.ajax({
+						type: "POST",
+						url: "classes/class.SUCCESSFUL_FLAG.php",
+						dataType: "json",
+						async: false,
+						data: {
+							request: json_str
+						},
+						success: function(succeed) {
+
+							if (succeed) {
+								AppointmentSuc=true;
+							} else {
+								AppointmentSuc=false;
 							}
-							if (ret.status.ret_code == "AD0102") {
+						},
+						error: function(XMLHttpRequest, textStatus, errorThrown) {
+							//请求失败之后的操作
+							var ret_code = "999907";
+							var ret_msg = "ajax失败,请联系管理员";
+							alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
+							AppointmentSuc=false;
+						}
+					});
+					if(!AppointmentSuc)
+					{
+						alert("Appointment failed, please try another time");
+						return false;
+					}
+					
+
+					var time_id = "";
+					//搜索医生预约时间ID
+					func_code = "ST01";
+					para = {
+						DOCTOR_ID: keyDoctorID,
+						APPOINTMENT_DATE: keyDate,
+						APPOINTMENT_TIME: keyTime
+					};
+					json_str = request_const(para, func_code, 0);
+
+					//获取DOCTOR_APPOINTMENT_TIME_ID
+					result = true;
+					$.ajax({
+						type: "POST",
+						url: "classes/class.searchAppTimeID.php",
+						dataType: "json",
+						async: false,
+						data: {
+							request: json_str
+						},
+						success: function(msg) {
+							// console.log(msg);
+							var ret = msg.response;
+							if (ret.success) {
+								if (json_str.sequ != ret.sequ) {
+									alert(func_code + ":时序号错误,请联系管理员ret.sequ" + ret.sequ + " json_str.sequ:" + json_str.sequ);
+									result = false;
+								}
+								console.log(ret);
+								var data = ret.data[0];
+								time_id = data.DOCTOR_APPOINTMENT_TIME_ID;
+							} else {
 								alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
 								result = false;
 							}
-							alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
-						} else {
-							alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
+						},
+						error: function(XMLHttpRequest, textStatus, errorThrown) {
+							//请求失败之后的操作
+							var ret_code = "999908";
+							var ret_msg = "ajax失败,请联系管理员";
+							alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 							result = false;
 						}
-					},
-					error: function(XMLHttpRequest, textStatus, errorThrown) {
-						//请求失败之后的操作
-						var ret_code = "999907";
-						var ret_msg = "失败,请联系管理员!";
-						alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
-						result = false;
+					});
+					if (!result) {
+						return result;
 					}
-				});
-				if (!result) {
-					return result;
-				}
-				//修改医生预约时间状态
-				func_code = "UAT0";
-				para = {
-					action_type: "update",
-					DOCTOR_APPOINTMENT_TIME_ID: time_id,
-					ACTIVE_STATUS: 0
-				};
-				json_str = request_const(para, func_code, 1);
-				// console.log(json_str);
-				//请求
-				result = true;
-				$.ajax({
-					type: "POST",
-					url: "classes/class.appointmentTime.php",
-					dataType: "json",
-					async: false,
-					data: {
-						request: json_str
-					},
-					success: function(msg) {
-						// console.log(msg);
-						var ret = msg.response;
-						if (ret.success) {
-							if (json_str.sequ != ret.sequ) {
-								alert(func_code + ":时序号错误,请联系管理员ret.sequ" + ret.sequ + " json_str.sequ:" + json_str.sequ);
+					if (time_id == "") {
+						alert($("#Lang0182").html()); //获取医生预约时间ID错误!
+						return;
+					}
+					var requesttype;
+					//处理登录用户预约
+					if ($.cookie("ilogin") == 1) {
+						//组织request para
+						var username = $.cookie("fd_username");
+						requesttype = 1; //登录用户
+						para = {
+							action_type: "create",
+							CUSTOMER_USER_ID: $('#CUSTOMER_USER_ID').val(),
+							DOCTOR_ID: keyDoctorID,
+							DOCTOR_APPOINTMENT_TIME_ID: time_id,
+							APPOINTMENT_STATUS_ID: 1
+						};
+					}
+					json_str = request_const(para, func_code, requesttype);
+					//请求
+					result = true;
+					$.ajax({
+						type: "POST",
+						url: "classes/class.appointmentDoctor.php",
+						dataType: "json",
+						async: false,
+						data: {
+							request: json_str
+						},
+						success: function(msg) {
+							// console.log(msg);
+							var ret = msg.response;
+							if (ret.success) {
+								if (json_str.sequ != ret.sequ) {
+									alert(func_code + ":时序号错误,请联系管理员ret.sequ" + ret.sequ + " json_str.sequ:" + json_str.sequ);
+									result = false;
+								}
+								if (ret.status.ret_code == "AD0102") {
+									alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
+									result = false;
+								}
+								alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
+							} else {
+								alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
 								result = false;
 							}
-						} else {
-							alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
+						},
+						error: function(XMLHttpRequest, textStatus, errorThrown) {
+							//请求失败之后的操作
+							var ret_code = "999909";
+							var ret_msg = "失败,请联系管理员!";
+							alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 							result = false;
 						}
-					},
-					error: function(XMLHttpRequest, textStatus, errorThrown) {
-						//请求失败之后的操作
-						var ret_code = "999908";
-						var ret_msg = "失败,请联系管理员!";
-						alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
-						result = false;
+					});
+					if (!result) {
+						return result;
 					}
-				});
-				if (!result) {
-					return result;
-				}
-				if ($.cookie("ilogin") == 1) {
-					window.location.href = "userAppointmentRecoder.php";
-				} else if ($.cookie("ilogin") == 0) {
-					window.location.href = "sign_in.php";
-				}
-				return false;
-				/////////////////预约 end         
+					//修改医生预约时间状态
+					func_code = "UAT0";
+					para = {
+						action_type: "update",
+						DOCTOR_APPOINTMENT_TIME_ID: time_id,
+						ACTIVE_STATUS: 0
+					};
+					json_str = request_const(para, func_code, 1);
+					// console.log(json_str);
+					//请求
+					result = true;
+					$.ajax({
+						type: "POST",
+						url: "classes/class.appointmentTime.php",
+						dataType: "json",
+						async: false,
+						data: {
+							request: json_str
+						},
+						success: function(msg) {
+							// console.log(msg);
+							var ret = msg.response;
+							if (ret.success) {
+								if (json_str.sequ != ret.sequ) {
+									alert(func_code + ":时序号错误,请联系管理员ret.sequ" + ret.sequ + " json_str.sequ:" + json_str.sequ);
+									result = false;
+								}
+							} else {
+								alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
+								result = false;
+							}
+						},
+						error: function(XMLHttpRequest, textStatus, errorThrown) {
+							//请求失败之后的操作
+							var ret_code = "999910";
+							var ret_msg = "失败,请联系管理员!";
+							alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
+							result = false;
+						}
+					});
+					if (!result) {
+						return result;
+					}
+					if ($.cookie("ilogin") == 1) {
+						window.location.href = "userAppointmentRecoder.php";
+					} 
+					return false;
+					/////////////////预约 end if(!AppointmentSuc)
+					{
+						alert("Appointment failed, please try another time");
+						return false;
+					}
+					
+					
+					//Step2.等待10s后，检查SUCCESSFUL_FLAG，等于1表示成功，否则失败
+
+					func_code = "ST01";
+					para = {
+						DOCTOR_ID: keyDoctorID,
+						APPOINTMENT_DATE: keyDate,
+						APPOINTMENT_TIME: keyTime
+					};
+					json_str = request_const(para, func_code, 0);
+
+					result = true;
+					$.ajax({
+						type: "POST",
+						url: "classes/class.SUCCESSFUL_FLAG.php",
+						dataType: "json",
+						async: false,
+						data: {
+							request: json_str
+						},
+						success: function(succeed) {
+
+							if (succeed) {
+								AppointmentSuc=true;
+							} else {
+								AppointmentSuc=false;
+							}
+						},
+						error: function(XMLHttpRequest, textStatus, errorThrown) {
+							//请求失败之后的操作
+							var ret_code = "999907";
+							var ret_msg = "ajax失败,请联系管理员";
+							alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
+							AppointmentSuc=false;
+						}
+					});
+					if(!AppointmentSuc)
+					{
+						alert("Appointment failed, please try another time");
+						return false;
+					}
+					
+
+					var time_id = "";
+					//搜索医生预约时间ID
+					func_code = "ST01";
+					para = {
+						DOCTOR_ID: keyDoctorID,
+						APPOINTMENT_DATE: keyDate,
+						APPOINTMENT_TIME: keyTime
+					};
+					json_str = request_const(para, func_code, 0);
+
+					//获取DOCTOR_APPOINTMENT_TIME_ID
+					result = true;
+					$.ajax({
+						type: "POST",
+						url: "classes/class.searchAppTimeID.php",
+						dataType: "json",
+						async: false,
+						data: {
+							request: json_str
+						},
+						success: function(msg) {
+							// console.log(msg);
+							var ret = msg.response;
+							if (ret.success) {
+								if (json_str.sequ != ret.sequ) {
+									alert(func_code + ":时序号错误,请联系管理员ret.sequ" + ret.sequ + " json_str.sequ:" + json_str.sequ);
+									result = false;
+								}
+								console.log(ret);
+								var data = ret.data[0];
+								time_id = data.DOCTOR_APPOINTMENT_TIME_ID;
+							} else {
+								alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
+								result = false;
+							}
+						},
+						error: function(XMLHttpRequest, textStatus, errorThrown) {
+							//请求失败之后的操作
+							var ret_code = "999908";
+							var ret_msg = "ajax失败,请联系管理员";
+							alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
+							result = false;
+						}
+					});
+					if (!result) {
+						return result;
+					}
+					if (time_id == "") {
+						alert($("#Lang0182").html()); //获取医生预约时间ID错误!
+						return;
+					}
+					var requesttype;
+					//处理登录用户预约
+					if ($.cookie("ilogin") == 1) {
+						//组织request para
+						var username = $.cookie("fd_username");
+						requesttype = 1; //登录用户
+						para = {
+							action_type: "create",
+							CUSTOMER_USER_ID: $('#CUSTOMER_USER_ID').val(),
+							DOCTOR_ID: keyDoctorID,
+							DOCTOR_APPOINTMENT_TIME_ID: time_id,
+							APPOINTMENT_STATUS_ID: 1
+						};
+					}
+					json_str = request_const(para, func_code, requesttype);
+					//请求
+					result = true;
+					$.ajax({
+						type: "POST",
+						url: "classes/class.appointmentDoctor.php",
+						dataType: "json",
+						async: false,
+						data: {
+							request: json_str
+						},
+						success: function(msg) {
+							// console.log(msg);
+							var ret = msg.response;
+							if (ret.success) {
+								if (json_str.sequ != ret.sequ) {
+									alert(func_code + ":时序号错误,请联系管理员ret.sequ" + ret.sequ + " json_str.sequ:" + json_str.sequ);
+									result = false;
+								}
+								if (ret.status.ret_code == "AD0102") {
+									alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
+									result = false;
+								}
+								alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
+							} else {
+								alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
+								result = false;
+							}
+						},
+						error: function(XMLHttpRequest, textStatus, errorThrown) {
+							//请求失败之后的操作
+							var ret_code = "999909";
+							var ret_msg = "失败,请联系管理员!";
+							alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
+							result = false;
+						}
+					});
+					if (!result) {
+						return result;
+					}
+					//修改医生预约时间状态
+					func_code = "UAT0";
+					para = {
+						action_type: "update",
+						DOCTOR_APPOINTMENT_TIME_ID: time_id,
+						ACTIVE_STATUS: 0
+					};
+					json_str = request_const(para, func_code, 1);
+					// console.log(json_str);
+					//请求
+					result = true;
+					$.ajax({
+						type: "POST",
+						url: "classes/class.appointmentTime.php",
+						dataType: "json",
+						async: false,
+						data: {
+							request: json_str
+						},
+						success: function(msg) {
+							// console.log(msg);
+							var ret = msg.response;
+							if (ret.success) {
+								if (json_str.sequ != ret.sequ) {
+									alert(func_code + ":时序号错误,请联系管理员ret.sequ" + ret.sequ + " json_str.sequ:" + json_str.sequ);
+									result = false;
+								}
+							} else {
+								alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
+								result = false;
+							}
+						},
+						error: function(XMLHttpRequest, textStatus, errorThrown) {
+							//请求失败之后的操作
+							var ret_code = "999910";
+							var ret_msg = "失败,请联系管理员!";
+							alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
+							result = false;
+						}
+					});
+					if (!result) {
+						return result;
+					}
+					if ($.cookie("ilogin") == 1) {
+						window.location.href = "userAppointmentRecoder.php";
+					} 
+					return false;
+					/////////////////预约 end 
+					
+					
+					
+					
+					
+				}, 10000);
+				        
 			});
 		});
 		
@@ -739,7 +1115,7 @@ $(function() {
 				            },
 				            error: function(XMLHttpRequest, textStatus, errorThrown){
 				              //请求失败之后的操作
-				              var ret_code = "999909";
+				              var ret_code = "999911";
 				              var ret_msg = "失败,请联系管理员!";
 				              alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
 				              result=false;
