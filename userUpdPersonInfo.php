@@ -101,6 +101,12 @@ include_once 'classes/Language/language.common.php';
 											id="action_type" value="update"> <input type="hidden"
 											class="form-control" name="CUSTOMER_USER_ID"
 											id="CUSTOMER_USER_ID">
+											<input type="hidden"
+ 											class="form-control" name="CUSTOMER_LAT"
+ 											id="CUSTOMER_LAT">
+ 											<input type="hidden"
+ 											class="form-control" name="CUSTOMER_LNG"
+ 											id="CUSTOMER_LNG">
 
 										
 
@@ -263,5 +269,6 @@ include_once 'classes/Language/For_JS_multi_lang.php';
 	<script src="js/tm-scripts.js"></script>
 	<script src="js/main/pub.js"></script>
 	<script src="js/main/userUpdPersonInfo.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCyZERlQBAH0_PRkVI8bu7oqx8HIBlyZG4&libraries=geometry"></script>
 </body>
 </html>

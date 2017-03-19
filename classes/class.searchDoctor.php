@@ -59,6 +59,44 @@ class SearchDoctor
 	}
 
 	
+	/*
+	public function distance($lat1, $lon1, $lat2, $lon2, $unit) {
+	
+		$theta = $lon1 - $lon2;
+		$dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
+		$dist = acos($dist);
+		$dist = rad2deg($dist);
+		$miles = $dist * 60 * 1.1515;
+		$unit = strtoupper($unit);
+	
+		if ($unit == "K") {
+			return ($miles * 1.609344);
+		} else if ($unit == "N") {
+			return ($miles * 0.8684);
+		} else {
+			return $miles* 1.609344*1000;//metre
+		}
+	}
+	*/
+	
+	public function vincentyGreatCircleDistance(
+			$latitudeFrom, $longitudeFrom, $latitudeTo, $longitudeTo, $earthRadius = 6371000)
+	{
+		// convert from degrees to radians
+		$latFrom = deg2rad($latitudeFrom);
+		$lonFrom = deg2rad($longitudeFrom);
+		$latTo = deg2rad($latitudeTo);
+		$lonTo = deg2rad($longitudeTo);
+	
+		$lonDelta = $lonTo - $lonFrom;
+		$a = pow(cos($latTo) * sin($lonDelta), 2) +
+		pow(cos($latFrom) * sin($latTo) - sin($latFrom) * cos($latTo) * cos($lonDelta), 2);
+		$b = sin($latFrom) * sin($latTo) + cos($latFrom) * cos($latTo) * cos($lonDelta);
+	
+		$angle = atan2(sqrt($a), $b);
+		return $angle * $earthRadius;
+	}
+	
 	
 	public function searchdoctor()
 	{
@@ -101,8 +139,8 @@ class SearchDoctor
 
 
 		
-		//distance calculation Added by Alex 2016.9.24
-		if(false && $this->customer_user_id!=null)
+		//distance calculation Added by Alex 2016.9.24 deprecated
+		if(false &&$this->customer_user_id!=null)
 		{
 			$ret["my_address"] = $this->searchdoctor_db->get_address($this->customer_user_id);
 			
@@ -123,6 +161,7 @@ class SearchDoctor
 				$responseMAP = $request->fetchJSON();
 				
 				$json = json_decode($responseMAP);
+				if(isset($json))
 				if ($json->status == 'OK') {
 					if ($json->rows[0]->elements[0]->status == 'OK') {
 						$distance = $json->rows[0]->elements[0]->distance->value; //单位：米
@@ -133,6 +172,44 @@ class SearchDoctor
 					unset($ret["data"][$x]);
 				}
 	
+			}
+			$filteredArray = array_values($ret["data"]);
+			$recordCount=count($filteredArray);
+		}
+		else
+			$filteredArray = $ret["data"];
+		//distance calculation end deprecated
+		
+
+			
+			
+		//distance calculation Added by Alex 2017.3.15
+		if($this->customer_user_id!=null)
+		{
+			$ret["my_address"] = $this->searchdoctor_db->get_address($this->customer_user_id);
+				
+			$my_address_lat=$ret["my_address"][0]["CUSTOMER_LAT"];
+			$my_address_lng=$ret["my_address"][0]["CUSTOMER_LNG"];
+			
+			
+			$arrLength=count($ret["data"]);
+			for($x = 0; $x < $arrLength; $x++)
+			{
+				$doctor_addr_lat= $ret["data"][$x]["CLINIC_LAT"];
+				$doctor_addr_lng= $ret["data"][$x]["CLINIC_LNG"];
+				if($doctor_addr_lat!=''&&$doctor_addr_lng!=''&&$my_address_lat!=''&&$my_address_lng!='')
+					$distance=$this->vincentyGreatCircleDistance(floatval($my_address_lat), floatval($my_address_lng), floatval($doctor_addr_lat), floatval($doctor_addr_lng));
+				else
+					$distance=100000000;
+			
+// 				print_r($distance);
+// 				echo "<br><br>";
+				
+				if($distance>$this->distance_range)//距离大于要求范围，踢出数据集！
+				{
+					unset($ret["data"][$x]);
+				}
+
 			}
 			$filteredArray = array_values($ret["data"]);
 			$recordCount=count($filteredArray);

@@ -269,6 +269,20 @@ $(document).ready(function() {
   $("#GENDER_ID option[value='"+ gender_id +"']").attr("selected",true);
 
   $('#btn_ok').click(function(){
+	  
+	  
+	  /*calculate lat/lng begin*/ 
+	  	  var address=$('#CUSTOMER_ADDR').val()+","+$('#CUSTOMER_SUBURB').val()+","+$("#STATE_ID option:selected").text()+","+"Australia";
+	  	  var geocoder = new google.maps.Geocoder();
+	  	  if (geocoder) {
+	  	      geocoder.geocode( { 'address': address}, function(results, status) {
+	  	        if (status == google.maps.GeocoderStatus.OK) {
+	  	          if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
+	  	          
+	  			    $('#CUSTOMER_LAT').val(results[0].geometry.location.lat());
+	  			    $('#CUSTOMER_LNG').val(results[0].geometry.location.lng());
+	  
+	  
 
 ///////////////////////////////////组织ajax 请求参数 begin///////////////////////////////
     func_code = "UU03";
@@ -329,6 +343,17 @@ $(document).ready(function() {
     }
 
     return false;
+    
+	  	        } else {
+                    alert("Invalid address!");
+                }
+            } else {
+                alert("Geocode was not successful for the following reason: " + status);
+            }
+        });
+    }
+
+    /* calculate lat/lng end */
   })
 
 });
