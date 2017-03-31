@@ -103,7 +103,7 @@ class ClinicOprDoctor_DB{
                 left join fd_dict_state t4 on t4.state_id = t3.state_id
                  where t3.clinic_user_id = ".$arr_values['CLINIC_USER_ID']."
                  and t1.DOCTOR_TYPE like '%".$arr_values['DOCTOR_TYPE']."%'
-                 and t1.DOCTOR_NAME like '%".$arr_values['DOCTOR_NAME']."%' and t1.ACTIVE_STATUS like '%".$arr_values['ACTIVE_STATUS']."%' order by t1.CREATE_DATE DESC";
+                 and t1.DOCTOR_NAME like '%".$arr_values['DOCTOR_NAME']."%' and t1.ACTIVE_STATUS like '%".$arr_values['ACTIVE_STATUS']."%' GROUP BY t1.DOCTOR_ID order by t1.CREATE_DATE DESC";
 
         // echo $sql;
         if($this->_dbug){
