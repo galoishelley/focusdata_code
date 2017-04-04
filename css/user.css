@@ -547,11 +547,12 @@ a.list-group-item-danger.active:focus {
   width:10px;
 }
 
-.container{
+.tab_container{
 /*  margin-right: 1px;
-  margin-left: 1px;*/
-/*  padding-left: 1px;
-  padding-right: 1px;*/
+  margin-left: 1px;
+  padding-left: 200px;
+  padding-right: 200px;*/
+
 }
 
 

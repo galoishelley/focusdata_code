@@ -3695,6 +3695,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .nav-tabs > li > a:hover {
   border-color: #eeeeee #eeeeee #dddddd;
+  color: #555555;
 }
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
