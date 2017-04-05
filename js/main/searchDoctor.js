@@ -343,6 +343,43 @@ $(function () {
 
 	}
 
+
+
+
+	function replaceToday() {
+		$("ul.nav-tabs > li").each(function () {
+			var LI = $(this);
+			var spanValue = LI.find("a").text();
+
+			var rightNow = new Date();
+			var res = rightNow.toISOString().slice(0,10).replace(/-/g,"-");
+
+			if(res.trim()==spanValue.trim())
+			{
+				LI.find("a").text("Today");
+			}
+
+		});
+
+
+		$(".search-time-booknow").each(function () {
+			var span = $(this);
+			var spanValue = span.text();
+
+			var rightNow = new Date();
+			var res = rightNow.toISOString().slice(0,10).replace(/-/g,"-");
+
+			if(res.trim()==spanValue.trim())
+			{
+				span.text("Today");
+			}
+
+		});
+
+
+
+	}
+
 	function ajaxSearchClinic(json_str) {
 		var all_date = [];
 		$.ajax({
@@ -354,15 +391,7 @@ $(function () {
 				request: json_str
 			},
 			success: function (msg) {
-				var activeIndex;
-				if (json_str.serviceid == "SC02") {
-					var activeIndex = $("ul#TMP_Doctor_Tab li.active").index();
-					if (activeIndex == -1)
-						activeIndex = 0;
-
-				}
-				else
-					activeIndex = 0;
+				
 
 
 
@@ -371,16 +400,28 @@ $(function () {
 				var groupsDate = _.groupBy(ret.data, function (value) {
 					return value.APPOINTMENT_DATE;
 				});
-				var count = 0;
+
+				var activeIndex;
+				if (json_str.serviceid == "SC02") {
+					var activeIndex = $("ul#TMP_Doctor_Tab li.active").text().trim();
+					if (activeIndex == null||activeIndex=="Today")
+						activeIndex = Object.keys(groupsDate)[0];
+
+				}
+				else
+					activeIndex = Object.keys(groupsDate)[0];
+
+				
+			
 				for (var i in groupsDate) {
 					var item = groupsDate[i];
 					var each_date = {
-						ID: "",
+					
 						date: "",
 						clinics: [],
 						activeID: activeIndex
 					};
-					each_date.ID = count++;
+				
 					each_date.date = i;
 					var groupsClinic = _.groupBy(item, function (value) {
 						return value.CLINIC_USER_ID;
@@ -460,9 +501,11 @@ $(function () {
 
 
 
-				
+
 
 					bindMoreLessBtn();
+
+					replaceToday();
 				} else {
 					alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
 					result = false;
@@ -552,30 +595,33 @@ $(function () {
 				request: json_str
 			},
 			success: function (msg) {
-				var activeIndex;
-				if (json_str.serviceid == "SD01") {
-					activeIndex = $("ul#TMP_Clinic_Tab li.active").index();
-					if (activeIndex == -1)
-						activeIndex = 0;
-				}
-				else
-					activeIndex = 0;
+				
 
 				var ret = msg.response;
 
 				var groupsDate = _.groupBy(ret.data, function (value) {
 					return value.APPOINTMENT_DATE;
 				});
-				var count = 0;
+
+				var activeIndex;
+				if (json_str.serviceid == "SD01") {
+					activeIndex = $("ul#TMP_Clinic_Tab li.active").text().trim();
+					if (activeIndex == null||activeIndex=="Today")
+						activeIndex = Object.keys(groupsDate)[0];
+				}
+				else
+					activeIndex = Object.keys(groupsDate)[0];
+
+		
 				for (var i in groupsDate) {
 					var item = groupsDate[i];
 					var each_date = {
-						ID: "",
+				
 						date: "",
 						doctors: [],
 						activeID: activeIndex
 					};
-					each_date.ID = count++;
+					
 					each_date.date = i;
 					var groupsDoctor = _.groupBy(item, function (value) {
 						return value.DOCTOR_ID;
@@ -621,7 +667,7 @@ $(function () {
 
 					$("#TMP_Doctor_Tab").append("<li><a id=\"tab_Return_Clinic\" href=\"#\">Clinic</a></li>");
 					$("#TMP_Doctor_Tab").append("<li><a id=\"tab_Advanced_Search\" href=\"#\" data-toggle=\"modal\" data-target=\"#searchModal\">Search</a></li>");
-					
+
 
 
 
@@ -641,9 +687,11 @@ $(function () {
 					$('#TMP_Clinic_Content').hide();
 					$('#TMP_Doctor_Content').show();
 
-		
+
 
 					bindMoreLessBtn();
+
+					replaceToday();
 				} else {
 					alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
 					result = false;

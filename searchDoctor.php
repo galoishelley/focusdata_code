@@ -71,6 +71,21 @@
                alt="logo" height="55" width="346"></a>
          </h1>
       </header>
+      <div class="modal fade" id="googlemap" role="dialog" >
+         <div class="modal-dialog modal-lg">
+            <div class="modal-content" id="back" >
+               <div class="modal-header">
+                  <h4>Location</h4>
+               </div>
+               <div class="modal-body">
+                  <div id="map"></div>
+               </div>
+               <div class="modal-footer">
+                  <a class="btn btn-default" data-dismiss="modal">Close</a>
+               </div>
+            </div>
+         </div>
+      </div>
       <div class="content searchDoctor">
          <div class="stellar-section">
             <div class="thumb-box9" data-stellar-background-ratio="0.1">
@@ -218,21 +233,7 @@
                      </div>
                      <!-- /.modal -->
 					 
-      <div class="modal fade" id="googlemap" role="dialog" >
-         <div class="modal-dialog modal-lg">
-            <div class="modal-content" id="back" >
-               <div class="modal-header">
-                  <h4>Location</h4>
-               </div>
-               <div class="modal-body">
-                  <div id="map"></div>
-               </div>
-               <div class="modal-footer">
-                  <a class="btn btn-default" data-dismiss="modal">Close</a>
-               </div>
-            </div>
-         </div>
-      </div>
+      
       <div class="modal fade bs-example-modal-lg" role="dialog" aria-labelledby="gridSystemModalLabel" id="signupModal">
          <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -391,8 +392,8 @@
       <script id="tmp_clinic_tab" type="text/x-jsrender">
          {{for #data}}
          
-         <li {{if ID==activeID}}class="active"{{else}}{{/if}}>
-         <a href="#c{{>ID}}" data-toggle="tab"> {{>date}}</a>
+         <li {{if date==activeID}}class="active"{{else}}{{/if}}>
+         <a href="#c{{>date}}" data-toggle="tab">{{>date}}</a>
          </li>
           
          {{/for}}				
@@ -400,8 +401,8 @@
       <script id="tmp_doctor_tab" type="text/x-jsrender">
          {{for #data}}
          
-         <li {{if ID==activeID}}class="active"{{else}}{{/if}}>
-         <a href="#d{{>ID}}" data-toggle="tab"> {{>date}}</a>
+         <li {{if date==activeID}}class="active"{{else}}{{/if}}>
+         <a href="#d{{>date}}" data-toggle="tab">{{>date}}</a>
          </li>
           
          {{/for}}				
@@ -415,7 +416,7 @@
 
 
 		 {{for #data}}
-			<div class="tab-pane {{if ID==activeID}}active{{else}}{{/if}}" id="d{{>ID}}">
+			<div class="tab-pane {{if date==activeID}}active{{else}}{{/if}}" id="d{{>date}}">
          									
          		{{for doctors ~ppdate=date}}
          		<section class="search-card-contain search-practice ">
@@ -467,7 +468,7 @@
 					</div>
 					<div class="search-time-container clearfix closed">
 						<div class="search-time-scroll doctor-time-scroll">
-							<span class="search-time-booknow">Today</span>
+							<span class="search-time-booknow">{{>~ppdate}}</span>
 							
 				
 
@@ -496,7 +497,7 @@
       </script>
       <script id="tmp_clinic_content" type="text/x-jsrender">
          {{for #data}}
-         	<div class="tab-pane {{if ID==activeID}}active{{else}}{{/if}}" id="c{{>ID}}">
+         	<div class="tab-pane {{if date==activeID}}active{{else}}{{/if}}" id="c{{>date}}">
          									
          		{{for clinics ~ppdate=date}}
          		<section class="search-card-contain search-practice ">
@@ -509,7 +510,7 @@
 								<h3 class="search-suburb">{{>clinicSuburb}}</h3>
 								<div class="search-map-dets">
 									
-									<span class="search-map-link"><span class="search-map-ico"></span><span class="search-map-txt"><a href="#googlemap"  data-toggle="modal" street="{{>clinicAddress}}" suburb="{{>clinicSuburb}}" lat="{{>clinicLat}}" lng="{{>clinicLng}}">Map</a></span></span>
+									<span class="search-map-link"><span class="search-map-ico"></span><span class="search-map-txt"><a href="#googlemap" class="showMap" data-toggle="modal" street="{{>clinicAddress}}" suburb="{{>clinicSuburb}}" lat="{{>clinicLat}}" lng="{{>clinicLng}}">Map</a></span></span>
 								</div>
 							</div>
 							<div class="search-images-dets">
@@ -547,7 +548,7 @@
 					</div>
 					<div class="search-time-container clearfix closed">
 						<div class="search-time-scroll">
-							<span class="search-time-booknow">Today</span>
+							<span class="search-time-booknow">{{>~ppdate}}</span>
 							
 				
 							{{for timeslot}}
