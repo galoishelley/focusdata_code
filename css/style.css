@@ -101,7 +101,7 @@ h4 {
 header {
   position: relative;
   margin: 0;
-  padding: 100px 0 53px 0;
+  padding: 70px 0 30px 0;
   background: #fafafb;
   text-align: center;
   overflow: hidden;
@@ -524,7 +524,7 @@ nav.tm_navbar .sub-menu > ul li > ul li a:hover {
   background-image: url(../img/bg_pic2.jpg);
   background-position: 100% 0;
   background-attachment: fixed;
-  padding: 62px 0 30px 0;
+  padding: 20px 0 30px 0;
 }
 .thumb-box9 .col-lg-3 {
   margin-bottom: 23px;
