@@ -28,7 +28,9 @@
 
       <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700" rel="stylesheet"
          type="text/css">
+      <link rel="stylesheet" type="text/css" href="css/sm.css@ver-3"/>
       <link rel="stylesheet" type="text/css" href="css/searchDoctor.css" />
+      
       <style>
          .ui-autocomplete {
          z-index: 5000;
@@ -40,6 +42,13 @@
          height: 300px;
          width: 600px;  
          }
+
+         /* Google map */
+      #popup-Googlemap .slickWindow iframe,
+      #popup-Googlemap #mapDiv {
+            width: 100%;
+            height: 100%;
+            }
       </style>
       
       <!--JS-->
@@ -71,30 +80,18 @@
                alt="logo" height="55" width="346"></a>
          </h1>
       </header>
-      <div class="modal fade" id="googlemap" role="dialog" >
-         <div class="modal-dialog modal-lg">
-            <div class="modal-content" id="back" >
-               <div class="modal-header">
-                  <h4>Location</h4>
-               </div>
-               <div class="modal-body">
-                  <div id="map"></div>
-               </div>
-               <div class="modal-footer">
-                  <a class="btn btn-default" data-dismiss="modal">Close</a>
-               </div>
-            </div>
-         </div>
-      </div>
+      
+
+      <div id="popup-Googlemap" class="slickModal">
+		<div class="slickWindow">
+			<div id="mapDiv"></div>
+		</div>
+	</div>
+
       <div class="content searchDoctor">
          <div class="stellar-section">
             <div class="thumb-box9" data-stellar-background-ratio="0.1">
-               
-                  
-                  
-                     
-                     
-                  
+
                   <div class="tab_container">
                      <ul class="nav nav-tabs" id="TMP_Clinic_Tab">		
                      </ul>
@@ -510,7 +507,7 @@
 								<h3 class="search-suburb">{{>clinicSuburb}}</h3>
 								<div class="search-map-dets">
 									
-									<span class="search-map-link"><span class="search-map-ico"></span><span class="search-map-txt"><a href="#googlemap" class="showMap" data-toggle="modal" street="{{>clinicAddress}}" suburb="{{>clinicSuburb}}" lat="{{>clinicLat}}" lng="{{>clinicLng}}">Map</a></span></span>
+									<span class="search-map-link"><span class="search-map-ico"></span><span class="search-map-txt"><a class="showMap" street="{{>clinicAddress}}" suburb="{{>clinicSuburb}}" lat="{{>clinicLat}}" lng="{{>clinicLng}}">Map</a></span></span>
 								</div>
 							</div>
 							<div class="search-images-dets">
@@ -582,8 +579,10 @@
       <script type="text/javascript"
          src="js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
       <script src="js/bootstrap-multiselect.js"></script>
+      <script src="js/site.js@ver-3"></script>
       <script src="js/main/pub.js"></script>
       <script src="js/main/searchDoctor.js"></script>
       <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCyZERlQBAH0_PRkVI8bu7oqx8HIBlyZG4&libraries=geometry"></script>
+      
    </body>
 </html>

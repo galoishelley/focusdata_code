@@ -20,6 +20,209 @@ $(document).on('shown.bs.modal', '#googlemap', function () {
 });
 
 
+/* ========= INFORMATION ============================
+
+ - document:  Slick Modals - HTML5 and CSS3 powered modal popups
+ - author:    Capelle @ Codecanyon
+ - profile:   http://codecanyon.net/user/Capelle
+ - version:   3.5
+
+ ==================================================== */
+
+! function (a) {
+	a.fn.slickModals = function (b) {
+		var c = a.extend({
+			cookieTriggerClass: "setSlickCookie",
+			cookieName: "slickCookie"
+		}, b);
+		return this.each(function () {
+			function j(c) {
+				"center" === c ? a(b).children(".slickWindow").css({
+					margin: "auto"
+				}) : "bottomCenter" === c || "topCenter" === c ? a(b).children(".slickWindow").css({
+					"margin-left": "auto",
+					"margin-right": "auto"
+				}) : "right" !== c && "left" !== c || a(b).children(".slickWindow").css({
+					"margin-top": "auto",
+					"margin-bottom": "auto"
+				})
+			}
+
+			function k() {
+				c.breakPoint = parseInt(c.breakPoint), a(b).children(".slickWindow").addClass("animated").css({
+					"box-shadow": c.popupShadowOffsetX + " " + c.popupShadowOffsetY + " " + c.popupShadowBlurRadius + " " + c.popupShadowSpreadRadius + " " + c.popupShadowColor,
+					background: c.popupBackground,
+					"-webkit-animation-duration": c.popupAnimationDuration + "s",
+					"animation-duration": c.popupAnimationDuration + "s",
+					"-webkit-animation-delay": parseFloat(c.overlayTransitionSpeed) / 2 + "s",
+					"animation-delay": parseFloat(c.overlayTransitionSpeed) / 2 + "s"
+				}), c.responsive === !0 && a(window).width() <= c.breakPoint ? (a(b).children(".slickWindow").addClass(c.mobileLocation).css({
+					"border-radius": c.mobileRadius,
+					width: c.mobileWidth,
+					height: c.mobileHeight,
+					margin: c.mobileMargin,
+					padding: c.mobilePadding
+				}), j(c.mobileLocation)) : (a(b).children(".slickWindow").addClass(c.popupLocation).css({
+					"border-radius": c.popupRadius,
+					width: c.popupWidth,
+					height: c.popupHeight,
+					margin: c.popupMargin,
+					padding: c.popupPadding
+				}), j(c.popupLocation))
+			}
+
+			function l() {
+				a(b).children(".slickWindow").addClass(c.popupAnimationEffect)
+			}
+
+			function m() {
+				a(b).children(".slickWindow").removeClass(c.popupAnimationEffect)
+			}
+
+			function n() {
+				c.contentAnimate === !0 && a(b).children(".slickWindow").children().not(".slickCloseBtn").wrapAll('<div class="slickContent"></div>')
+			}
+
+			function o() {
+				c.contentAnimate === !0 && a(b).find(".slickWindow .slickContent").addClass(c.contentAnimateEffect + " animated").css({
+					"-webkit-animation-duration": c.contentAnimateSpeed + "s",
+					"animation-duration": c.contentAnimateSpeed + "s",
+					"-webkit-animation-delay": c.contentAnimateDelay + "s",
+					"animation-delay": c.contentAnimateDelay + "s"
+				})
+			}
+
+			function p() {
+				c.contentAnimate === !0 && a(b).find(".slickWindow .slickContent").removeClass(c.contentAnimateEffect)
+			}
+
+			function q() {
+				i.addClass("blurred").css({
+					"-webkit-filter": "blur(" + c.blurBgRadius + ")",
+					filter: "blur(" + c.blurBgRadius + ")"
+				})
+			}
+
+			function r() {
+				i.addClass("scaled").css({
+					"-webkit-transform": "scale(" + c.scaleBgValue + ")",
+					transform: "scale(" + c.scaleBgValue + ")"
+				})
+			}
+
+			function s() {
+				"blur" === c.pageEffect ? q() : "scale" === c.pageEffect ? r() : "both" === c.pageEffect && (q(), r()), "blur" !== c.pageEffect && "scale" !== c.pageEffect && "both" !== c.pageEffect || i.css({
+					"-webkit-transition-duration": c.overlayTransitionSpeed + "s",
+					"transition-duration": c.overlayTransitionSpeed + "s"
+				})
+			}
+
+			function t() {
+				(i.hasClass("blurred") || i.hasClass("scaled")) && i.removeClass("blurred scaled").css({
+					"-webkit-transform": "",
+					transform: "",
+					"-webkit-filter": "",
+					filter: ""
+				})
+			}
+
+			function u() {
+				c.overlayBg === !0 && (a(b).prepend('<div class="slickOverlay"></div>'), c.overlayClosesModal === !0 && a(b).children(".slickOverlay").addClass("closeModal"), a(b).children(".slickOverlay").addClass(c.cookieTriggerClass).css({
+					background: c.overlayBgColor,
+					"-webkit-transition-duration": c.overlayTransitionSpeed + "s",
+					"transition-duration": c.overlayTransitionSpeed + "s"
+				}))
+			}
+
+			function v() {
+				c.addCloseButton === !0 && (a(b).children(".slickWindow").prepend('<div class="slickCloseBtn close closeModal ' + c.buttonStyle + '"></div>'), c.setCookie === !0 && a(b).find(".slickWindow").children(".closeModal").addClass(c.cookieTriggerClass))
+			}
+
+			function w() {
+				c.enableESC === !0 && a(window).bind("keydown", function (a) {
+					27 === a.keyCode && G()
+				})
+			}
+
+			function x() {
+				void 0 !== c.onSlickLoad && c.onSlickLoad()
+			}
+
+			function y() {
+				void 0 !== c.onSlickClose && c.onSlickClose()
+			}
+
+			function z() {
+				if (!d)
+					if ("delayed" === c.popupType) setTimeout(F, c.delayTime);
+					else if ("exit" === c.popupType) {
+						var b = !1;
+						a(document).on("mouseleave", function (a) {
+							a.clientY < 0 && !b && (b = !0, F())
+						})
+					} else "scrolled" === c.popupType && a(document).scroll(function () {
+						var b = a(this).scrollTop();
+						b > c.scrollTopDistance && F()
+					})
+			}
+
+			function A() {
+				c.videoSupport === !0 && c.videoAutoPlay === !0 && g.length > 0 && g.attr("src", h + "?autoplay=1")
+			}
+
+			function B() {
+				c.videoSupport === !0 && c.videoStopOnClose === !0 && g.length > 0 && g.attr("src", h + "?autoplay=0")
+			}
+
+			function C() {
+				switch (days = c.cookieDays, CookieDate = new Date, CookieDate.setTime(CookieDate.getTime() + 24 * days * 60 * 60 * 1e3), c.cookieScope) {
+					case "domain":
+						scopeSetting = "/";
+						break;
+					case "page":
+						scopeSetting = window.location.href
+				}
+				days > 0 ? document.cookie = c.cookieName + "=true; path=" + scopeSetting + "; expires=" + CookieDate.toGMTString() : 0 === days && (document.cookie = c.cookieName + "=true; path=" + scopeSetting + ";")
+			}
+
+			function D() {
+				c.setCookie === !0 && (a("." + c.cookieTriggerClass).on("click", function () {
+					C()
+				}), c.enableESC === !0 && a(window).bind("keydown", function (a) {
+					27 === a.keyCode && C()
+				}))
+			}
+
+			function E() {
+				a(b).css({
+					"-webkit-transition-duration": c.overlayTransitionSpeed + "s",
+					"transition-duration": c.overlayTransitionSpeed + "s"
+				})
+			}
+
+			function F() {
+				a(b).addClass("isActive"), s(), l(), o(), x(), A()
+			}
+
+			function G() {
+				a(b).removeClass("isActive"), t(), m(), p(), y(), B()
+			}
+			var b = this,
+				d = document.cookie.indexOf(c.cookieName) >= 0,
+				e = window.location.pathname,
+				f = a.inArray(e, c.hideOnPages) === -1,
+				g = a(b).find('iframe[src*="youtube.com"]'),
+				h = g.attr("src"),
+				i = a("body > *").not(".slickModal, script");
+			f && (E(), u(), v(), w(), z(), k(), D(), n(), a(b).find(".closeModal").on("click", function () {
+				G()
+			}), a("." + c.reopenClass).on("click", function () {
+				F()
+			}))
+		})
+	}
+}(jQuery);
+
 
 // _______________________________________________________________________________________ "Waiting for..." dialog
 var waitingDialog = waitingDialog || (function ($) {
@@ -146,6 +349,8 @@ var waitingDialog = waitingDialog || (function ($) {
 
 // _______________________________________________________________________________________ $(document).ready
 $(function () {
+
+
 
 	// _______________________________________________________________________________________ center the Tab area
 	$('.tab_container').css('padding-left', ($(window).width() - 728) / 2);
@@ -303,6 +508,35 @@ $(function () {
 
 
 	// _______________________________________________________________________________________ functions 
+
+
+	function rebindMap() {
+		$('#popup-Googlemap').slickModals({
+			overlayBg: true,
+			overlayClosesModal: true,
+			overlayBgColor: 'rgba(0,0,0,0.85)',
+			overlayTransitionSpeed: '0.4',
+			popupWidth: '60%',
+			popupHeight: '50%',
+			popupLocation: 'center',
+			popupAnimationDuration: '0.8',
+			popupAnimationEffect: 'fadeIn',
+			popupShadowOffsetX: '0',
+			popupShadowOffsetY: '0',
+			popupShadowBlurRadius: '0',
+			popupShadowSpreadRadius: '0',
+			popupShadowColor: 'rgba(0,0,0,0)',
+			popupBackground: '#fff',
+			popupRadius: '0',
+			popupMargin: '0',
+			popupPadding: '0',
+			addCloseButton: true,
+			buttonStyle: 'labeled',
+			enableESC: true,
+			reopenClass: 'showMap',
+		});
+
+	}
 	function bindMoreLessBtn() {
 		//More Less Btn
 		var moreNumber = ($(window).width() >= 768 ? 8 : 6);
@@ -352,10 +586,9 @@ $(function () {
 			var spanValue = LI.find("a").text();
 
 			var rightNow = new Date();
-			var res = rightNow.toISOString().slice(0,10).replace(/-/g,"-");
+			var res = rightNow.toISOString().slice(0, 10).replace(/-/g, "-");
 
-			if(res.trim()==spanValue.trim())
-			{
+			if (res.trim() == spanValue.trim()) {
 				LI.find("a").text("Today");
 			}
 
@@ -367,10 +600,9 @@ $(function () {
 			var spanValue = span.text();
 
 			var rightNow = new Date();
-			var res = rightNow.toISOString().slice(0,10).replace(/-/g,"-");
+			var res = rightNow.toISOString().slice(0, 10).replace(/-/g, "-");
 
-			if(res.trim()==spanValue.trim())
-			{
+			if (res.trim() == spanValue.trim()) {
 				span.text("Today");
 			}
 
@@ -391,7 +623,7 @@ $(function () {
 				request: json_str
 			},
 			success: function (msg) {
-				
+
 
 
 
@@ -404,24 +636,24 @@ $(function () {
 				var activeIndex;
 				if (json_str.serviceid == "SC02") {
 					var activeIndex = $("ul#TMP_Doctor_Tab li.active").text().trim();
-					if (activeIndex == null||activeIndex=="Today")
+					if (activeIndex == null || activeIndex == "Today")
 						activeIndex = Object.keys(groupsDate)[0];
 
 				}
 				else
 					activeIndex = Object.keys(groupsDate)[0];
 
-				
-			
+
+
 				for (var i in groupsDate) {
 					var item = groupsDate[i];
 					var each_date = {
-					
+
 						date: "",
 						clinics: [],
 						activeID: activeIndex
 					};
-				
+
 					each_date.date = i;
 					var groupsClinic = _.groupBy(item, function (value) {
 						return value.CLINIC_USER_ID;
@@ -506,6 +738,7 @@ $(function () {
 					bindMoreLessBtn();
 
 					replaceToday();
+					rebindMap();
 				} else {
 					alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
 					result = false;
@@ -551,12 +784,14 @@ $(function () {
 
 				address = street + "," + suburb + ",Australia";
 				mylocation = new google.maps.LatLng(lat, lng);
-				var mapCanvas = document.getElementById('map');
+				var mapCanvas = document.getElementById('mapDiv');
 				var mapOptions = {
 					center: new google.maps.LatLng(lat, lng),
-					zoom: 15,
-					mapTypeId: google.maps.MapTypeId.ROADMAP
+					zoom: 12,
+					styles: [{ "featureType": "administrative", "elementType": "all", "stylers": [{ "visibility": "on" }, { "lightness": 33 }] }, { "featureType": "landscape", "elementType": "all", "stylers": [{ "color": "#f2e5d4" }] }, { "featureType": "poi.park", "elementType": "geometry", "stylers": [{ "color": "#c5dac6" }] }, { "featureType": "poi.park", "elementType": "labels", "stylers": [{ "visibility": "on" }, { "lightness": 20 }] }, { "featureType": "road", "elementType": "all", "stylers": [{ "lightness": 20 }] }, { "featureType": "road.highway", "elementType": "geometry", "stylers": [{ "color": "#c5c6c6" }] }, { "featureType": "road.arterial", "elementType": "geometry", "stylers": [{ "color": "#e4d7c6" }] }, { "featureType": "road.local", "elementType": "geometry", "stylers": [{ "color": "#fbfaf7" }] }, { "featureType": "water", "elementType": "all", "stylers": [{ "visibility": "on" }, { "color": "#acbcc9" }] }]
 				}
+
+
 				map = new google.maps.Map(mapCanvas, mapOptions)
 
 				var infowindow = new google.maps.InfoWindow(
@@ -595,7 +830,7 @@ $(function () {
 				request: json_str
 			},
 			success: function (msg) {
-				
+
 
 				var ret = msg.response;
 
@@ -606,22 +841,22 @@ $(function () {
 				var activeIndex;
 				if (json_str.serviceid == "SD01") {
 					activeIndex = $("ul#TMP_Clinic_Tab li.active").text().trim();
-					if (activeIndex == null||activeIndex=="Today")
+					if (activeIndex == null || activeIndex == "Today")
 						activeIndex = Object.keys(groupsDate)[0];
 				}
 				else
 					activeIndex = Object.keys(groupsDate)[0];
 
-		
+
 				for (var i in groupsDate) {
 					var item = groupsDate[i];
 					var each_date = {
-				
+
 						date: "",
 						doctors: [],
 						activeID: activeIndex
 					};
-					
+
 					each_date.date = i;
 					var groupsDoctor = _.groupBy(item, function (value) {
 						return value.DOCTOR_ID;
@@ -692,6 +927,8 @@ $(function () {
 					bindMoreLessBtn();
 
 					replaceToday();
+
+					rebindMap();
 				} else {
 					alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
 					result = false;
