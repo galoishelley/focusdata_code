@@ -1639,8 +1639,11 @@ $(function () {
 		func_code = "SD03";
 		json_form = $("#modal_form_search").serializeObject();
 		json_str = request_const(json_form, func_code, requesttype);
-		///////////////////////////////////组织ajax 请求参数 end///////////////////////////////
-		ajaxSearchDoctor(json_str);
+		
+		if(json_str.para.DOCTOR_NAME)
+			ajaxSearchDoctor(json_str);
+		else
+			ajaxSearchClinic(json_str);
 		$('#searchModal').modal('hide')
 	});
 
