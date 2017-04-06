@@ -454,12 +454,16 @@
 								{{>clinicAddress}}
 								
 								</div>
-
-								<div class="search-showDoctors">
+                                                <div class="search-addie">
+								{{>language}}
+								
          
          						<a class="save2favBtn" keyDoctorID="{{>doctorID}}"><?php echo $lang['Lang0171']; ?></a>
          <a class="jumptouserSaveDoctor" href="userSaveDoctor.php"><!-- 收藏医生管理--><?php echo $lang['Lang0278']; ?></a>
-         													</div>
+         													
+								</div>
+
+								
 							
 						</div>
 					</div>
@@ -538,7 +542,8 @@
 								{{>clinicAddress}}
 								
 								</div>
-							<div class="search-showDoctors">
+							<div class="search-addie">
+                                                {{>language}}
 								<a class="showDoctors" keyClinicID="{{>clinicID}}"><?php echo $lang['Lang0324']; ?></a>
 							</div>
 						</div>

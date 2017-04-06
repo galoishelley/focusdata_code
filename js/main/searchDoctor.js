@@ -664,6 +664,7 @@ $(function () {
 							clinicID: 0,
 							clinicPIC: "",
 							clinicName: "",
+							language:"",
 							clinicAddress: "",
 							clinicSuburb: "",
 							clinicLat: 0,
@@ -677,6 +678,7 @@ $(function () {
 						clinic.clinicName = jtem[0].CLINIC_NAME;
 						clinic.clinicAddress = jtem[0].CLINIC_ADDR;
 						clinic.clinicSuburb = jtem[0].CLINIC_SUBURB;
+						clinic.language = jtem[0].LANGUAGE_NAME;
 
 						clinic.clinicLat = jtem[0].CLINIC_LAT;
 						clinic.clinicLng = jtem[0].CLINIC_LNG;
@@ -867,11 +869,13 @@ $(function () {
 							doctorID: 0,
 							doctorPIC: "",
 							doctorName: "",
+							language:"",
 							clinicName: "",
 							clinicAddress: "",
 							timeslot: []
 						};
 						doctor.doctorID = j;
+						doctor.language = jtem[0].LANGUAGE_NAME;
 						doctor.doctorPIC = jtem[0].DOCTOR_PHOTO;
 						doctor.doctorName = jtem[0].DOCTOR_NAME;
 						doctor.clinicName = jtem[0].CLINIC_NAME;

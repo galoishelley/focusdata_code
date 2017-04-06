@@ -5098,11 +5098,11 @@ h2.search-imd-header {
 }
 .search-card-contain .search-main-dets .search-addie {
     color: #63707b;
-    margin: 11px 0 4px;
-    height: 34px;
-    line-height: 32px;
+    margin: 3px 0 3px;
+    height: 40px;
+    line-height: 40px;
     border-top: 1px solid #ecedee;
-    border-bottom: 1px solid #ecedee;
+
     font-size: 13px;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -5110,26 +5110,7 @@ h2.search-imd-header {
     font-weight: 400;
     vertical-align: top
 }
-@media (max-width: 767px) {
-    .search-card-contain .search-main-dets .search-addie {
-        width: 69%;
-        margin: 0 0 0 -60px;
-        padding: 0 4% 0 74px;
-        line-height: normal;
-        height: auto;
-        border: none;
-        display: inline-block;
-        white-space: normal;
-        text-overflow: clip;
-        min-height: 50px;
-        font-size: 14px
-    }
-}
-@media (max-width: 767px) {
-    .search-card-contain .search-main-dets .search-addie .search-addie-loc {
-        display: inline-block
-    }
-}
+
 .search-card-contain .search-main-dets .search-map-desc {
     display: inline-block;
     color: #63666a;
@@ -5520,17 +5501,18 @@ h2.search-imd-header {
     }
 }
 
-.search-showDoctors > a
+.search-addie > a
 {
     display: block;
     float: right;
     width: auto;
-    margin: 8px .5% 4px .5%;
+    margin-top: 8px;
+    margin-left: 8px;
     padding-left: 5px;
     padding-right:5px;
     text-align: center;
-    font-size: 13px;
-    height: 32px;
+    font-size: 12px;
+    height: 30px;
     line-height: 31px;
     color: #313436;
     background-color: #fff;
@@ -5544,7 +5526,7 @@ h2.search-imd-header {
     background-clip: padding-box
 }
 
-.search-showDoctors > a:hover
+.search-addie > a:hover
 {
     color: #008ec8;
     background-color: #e0edf3
