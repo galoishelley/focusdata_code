@@ -664,11 +664,15 @@ $(function () {
 							clinicID: 0,
 							clinicPIC: "",
 							clinicName: "",
-							language:"",
+							
 							clinicAddress: "",
 							clinicSuburb: "",
 							clinicLat: 0,
 							clinicLng: 0,
+
+							languagetmp: [],
+							languageUni: [],
+							language:"",
 							timeslottmp: [],
 							timeslot: []
 
@@ -678,16 +682,30 @@ $(function () {
 						clinic.clinicName = jtem[0].CLINIC_NAME;
 						clinic.clinicAddress = jtem[0].CLINIC_ADDR;
 						clinic.clinicSuburb = jtem[0].CLINIC_SUBURB;
-						clinic.language = jtem[0].LANGUAGE_NAME;
+						//clinic.language = jtem[0].LANGUAGE_NAME;
 
 						clinic.clinicLat = jtem[0].CLINIC_LAT;
 						clinic.clinicLng = jtem[0].CLINIC_LNG;
 
 						for (var m in jtem) {
 							var mtem = jtem[m];
+							//Step1.convert string to array
+							var langArr = mtem.LANGUAGE_NAME.split(",");
+							//Step2.push langArr to languagetmp
+							Array.prototype.push.apply(clinic.languagetmp,langArr);
+						}
+						//Step3.identify the unique
+						clinic.languageUni= _.uniq(clinic.languagetmp);
+
+						//Step4.convert array to string
+						clinic.language=clinic.languageUni.join();
+
+						for (var m in jtem) {
+							var mtem = jtem[m];
 							clinic.timeslottmp.push({
 								time: convertTime(mtem.APPOINTMENT_TIME)
 							});
+
 						}
 						clinic.timeslot = _.uniq(clinic.timeslottmp, false, function (p) { return p.time; });
 
