@@ -432,20 +432,9 @@
 										<ul class="slides">
 											<li class="flex-active-slide" style="width: 100%; float: left; margin-right: -100%; position: relative; display: block; z-index: 2; opacity: 1;"><img class="lazy" src="{{>doctorPIC}}"
 													draggable="false"></li>
-											<li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;"><img class="lazy" data-src="//d3o6iw1i9icjwo.cloudfront.net/thumbs/photos/grp_loc/364x364/grploc61182-20160505030425.png"
-													draggable="false"></li>
-											<li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;"><img class="lazy search-logo" data-src="//d2g92a8pyizotc.cloudfront.net/photos/groups/grploc61182-20160318055251.jpg"
-													draggable="false"></li>
+											
 										</ul>
-										<ol class="flex-control-nav flex-control-paging">
-											<li><a class="flex-active">1</a></li>
-											<li><a>2</a></li>
-											<li><a>3</a></li>
-										</ol>
-										<ul class="flex-direction-nav">
-											<li class="flex-nav-prev"><a class="flex-prev" href="#">Previous</a></li>
-											<li class="flex-nav-next"><a class="flex-next" href="#">Next</a></li>
-										</ul>
+										
 									</div>
 									<img src="{{>doctorPIC}}">
 								</div>
@@ -520,20 +509,8 @@
 										<ul class="slides">
 											<li class="flex-active-slide" style="width: 100%; float: left; margin-right: -100%; position: relative; display: block; z-index: 2; opacity: 1;"><img class="lazy" src="{{>clinicPIC}}"
 													draggable="false"></li>
-											<li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;"><img class="lazy" data-src="//d3o6iw1i9icjwo.cloudfront.net/thumbs/photos/grp_loc/364x364/grploc61182-20160505030425.png"
-													draggable="false"></li>
-											<li style="width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;"><img class="lazy search-logo" data-src="//d2g92a8pyizotc.cloudfront.net/photos/groups/grploc61182-20160318055251.jpg"
-													draggable="false"></li>
 										</ul>
-										<ol class="flex-control-nav flex-control-paging">
-											<li><a class="flex-active">1</a></li>
-											<li><a>2</a></li>
-											<li><a>3</a></li>
-										</ol>
-										<ul class="flex-direction-nav">
-											<li class="flex-nav-prev"><a class="flex-prev" href="#">Previous</a></li>
-											<li class="flex-nav-next"><a class="flex-next" href="#">Next</a></li>
-										</ul>
+									
 									</div>
 									<img src="{{>clinicPIC}}">
 								</div>
