@@ -102,11 +102,7 @@ include_once 'classes/Menu/menu.php';
                           <tr>
                             <th><input type="checkbox" name="chk_all" id="chk_all"></th>
                             <th><!-- 操作--><?php echo $lang['Lang0252']; ?></th>
-                            <th><!-- 诊所名称--><?php echo $lang['Lang0243']; ?></th>
-                            <th><!-- 详细地址--><?php echo $lang['Lang0244']; ?></th>
-                            <th><!-- 区--><?php echo $lang['Lang0245']; ?></th>
-                            <th><!-- 州--><?php echo $lang['Lang0246']; ?></th>
-                            <th><!-- 邮编--><?php echo $lang['Lang0247']; ?></th>
+                            
                             <th><!-- 医生类别--><?php echo $lang['Lang0248']; ?></th>
                             <th><!-- 医生名称--><?php echo $lang['Lang0249']; ?></th>
                             <th><!-- 语言--><?php echo $lang['Lang0326']; ?></th>

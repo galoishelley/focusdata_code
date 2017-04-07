@@ -180,52 +180,7 @@ $(document).ready(function() {
           "data": null,
           "defaultContent":"<button class='btn btn-primary btn-xs' id='opr_info'>"+$('#Lang0056').html() +"</button><button class='btn btn-danger btn-xs' id='opr_upd'>"+$('#Lang0057').html() +"</button>"
         },
-        { 
-          "data": "CLINIC_NAME",
-          render: function(data, type, row, meta) {
-              //type 的值  dispaly sort filter
-              //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
-              //这里只处理了类型是显示的，过滤和排序返回原始数据
-              if (type === 'display') {
-                  if (data.length > 10) {
-                      return '<span title="' + data + '">' + data.substr(0, 8) + '...</span>';
-                  } else {
-                    // console.log(data);
-                      // return '<span title="' + data + '>' + data + '</span>';
-                      return data;
-                  }
-              }
-              return data;
-          }
-        },
-        { 
-          "data": "CLINIC_ADDR",
-          render: function(data, type, row, meta) {
-              //type 的值  dispaly sort filter
-              //代表，是显示类型的时候判断值的长度是否超过8，如果是则截取
-              //这里只处理了类型是显示的，过滤和排序返回原始数据
-              // console.log(data);
-              if (type === 'display') {
-                  if (data.length > 15) {
-                      return '<span title="' + data + '">' + data.substr(0, 15) + '...</span>';
-                  } else {
-                    // console.log(data);
-                    // return '<span title="' + data + '>' + data + '</span>';
-                    return data;
-                  }
-              }
-              return data;
-          }
-        },
-        { 
-          "data": "CLINIC_SUBURB"
-        },
-        { 
-          "data": "STATE_NAME"
-        },
-        { 
-          "data": "CLINIC_POSTCODE"
-        },
+        
         { 
           "data": "DOCTOR_TYPE",
           render: function(data, type, row, meta) {
@@ -328,14 +283,16 @@ $(document).ready(function() {
           "targets": 1,
           "sWidth": "5%"
         },
+        
         {
-           "orderable": false,
-           "targets": 2,
-           "sWidth": "15%"
+          "orderable": false,
+          "targets": 2,
+          "sWidth": "10%"
         },
         {
           "orderable": false,
-          "targets": 3
+          "targets": 3,
+          "sWidth": "10%"
         },
         {
           "orderable": false,
@@ -345,31 +302,6 @@ $(document).ready(function() {
         {
           "orderable": false,
           "targets": 5,
-          "sWidth": "5%"
-        },
-        {
-          "orderable": false,
-          "targets": 6,
-          "sWidth": "5%"
-        },
-        {
-          "orderable": false,
-          "targets": 7,
-          "sWidth": "10%"
-        },
-        {
-          "orderable": false,
-          "targets": 8,
-          "sWidth": "10%"
-        },
-        {
-          "orderable": false,
-          "targets": 9,
-          "sWidth": "5%"
-        },
-        {
-          "orderable": false,
-          "targets": 10,
           "sWidth": "5%"
         }
       ],
