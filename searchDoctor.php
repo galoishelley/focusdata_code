@@ -88,8 +88,8 @@
 		</div>
 	</div>
 
-      <div class="content searchDoctor">
-         <div class="stellar-section">
+      <div class="content">
+         
             <div class="thumb-box9" data-stellar-background-ratio="0.1">
 
                   <div class="tab_container">
@@ -103,7 +103,7 @@
                   </div>
                
             </div>
-         </div>
+         
       </div>
 
 	  <div class="modal fade bs-example-modal-lg" role="dialog"

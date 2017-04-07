@@ -75,25 +75,6 @@ body { font-size: 130%; }
 .extra-wrap-bottom{
   margin-top: 28px;
 }
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * searchDoctor
- */
-.searchDoctor .form-inline .form-control{
-	margin-bottom: 10px;
-}
-
-.searchDoctor .row {
-    margin-left: 0px;
-    margin-right: 0px;
-}
-
-.searchDoctor #btn_save, #btn_save_manage{
-	display:none;
-}
-
-.searchDoctor a>span{
-  margin-right: 5px;
-}
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * searchDoctorDetails
@@ -170,7 +151,8 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination{
  */
 
 .thumb-box9{
-	padding-bottom: 62px;
+	
+  min-height:700px;
 }
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * row
