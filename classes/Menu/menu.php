@@ -2,7 +2,7 @@
     <div class="container">
         <ul class="nav sf-menu clearfix">
             <li id="li_home" class="hidden"><a href="index.php"><!-- Home --><?php echo $lang['Lang0005']; ?></a></li>
-            <li class="sub-menu"><a href="#"><?php echo $lang['Lang0010']; ?></a><span></span>
+            <li class="sub-menu"><a href="#"><?php echo $lang['Lang0010']; ?></a>
                 <ul class="submenu">
                     <li><a href="?lang=en">English</a></li>
                     <li><a href="?lang=ch">中文</a></li>     
@@ -12,7 +12,7 @@
             
             <li id="sign_in" class="hidden"><a href="sign_in.php"><!-- Sign in --><?php echo $lang['Lang0014']; ?></a></li>
             <li id="sign_up" class="hidden"><a href="sign_up_person.php"><!-- register --><?php echo $lang['Lang0015']; ?></a></li>
-            <li class="sub-menu tourist"><a href="#" id="userinfo"><!-- 游客 --><?php echo $lang['Lang0016']; ?></a><span></span>
+            <li class="sub-menu tourist"><a href="#" id="userinfo"><!-- 游客 --><?php echo $lang['Lang0016']; ?></a>
                 <ul class="submenu" id="sub_userinfo">
                     <li><a href="#" id="usertype"></a></li>
                     <!-- <li><a href="#">账户管理</a></li> -->
