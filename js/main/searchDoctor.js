@@ -602,9 +602,8 @@ $(function () {
 	}
 
 	function ajaxSearchClinic(json_str) {
-		if(!Array.isArray(json_str.para.LANGUAGE))
-		{
-			json_str.para.LANGUAGE=[json_str.para.LANGUAGE];
+		if (!Array.isArray(json_str.para.LANGUAGE)) {
+			json_str.para.LANGUAGE = [json_str.para.LANGUAGE];
 		}
 		var all_date = [];
 		$.ajax({
@@ -621,6 +620,10 @@ $(function () {
 
 
 				var ret = msg.response;
+				if (ret.data.length == 0) {
+					alert("Sorry,we couldn't find any appointments matching your search criteria.Try changing your search criteria for more results");
+				} 
+
 
 				var groupsDate = _.groupBy(ret.data, function (value) {
 					return value.APPOINTMENT_DATE;
@@ -789,7 +792,7 @@ $(function () {
 
 				json_form = $("#modal_form_search").serializeObject();
 				json_str = request_const(json_form, func_code, requesttype);
-				json_str.para.CLINIC_USER_ID=keyClinicID;
+				json_str.para.CLINIC_USER_ID = keyClinicID;
 
 				// json_form = JSON.parse('{"CLINIC_USER_ID":"' + keyClinicID + '"}');
 				// json_str = request_const(json_form, func_code, requesttype);
@@ -847,11 +850,10 @@ $(function () {
 
 	function ajaxSearchDoctor(json_str) {
 
-		if(!Array.isArray(json_str.para.LANGUAGE))
-		{
-			json_str.para.LANGUAGE=[json_str.para.LANGUAGE];
+		if (!Array.isArray(json_str.para.LANGUAGE)) {
+			json_str.para.LANGUAGE = [json_str.para.LANGUAGE];
 		}
-		
+
 		var all_date = [];
 		$.ajax({
 			type: "POST",
@@ -865,6 +867,9 @@ $(function () {
 
 
 				var ret = msg.response;
+				if (ret.data.length == 0) {
+					alert("Sorry,we couldn't find any appointments matching your search criteria.Try changing your search criteria for more results");
+				} 
 
 				var groupsDate = _.groupBy(ret.data, function (value) {
 					return value.APPOINTMENT_DATE;
