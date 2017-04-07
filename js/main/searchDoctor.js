@@ -9,17 +9,6 @@ var keyDate;
 var keyTime;
 
 
-
-// _______________________________________________________________________________________ Module Googlemap
-var map;
-var address;
-var mylocation;
-$(document).on('shown.bs.modal', '#googlemap', function () {
-	google.maps.event.trigger(map, "resize");
-	map.setCenter(mylocation);
-});
-
-
 /* ========= INFORMATION ============================
 
  - document:  Slick Modals - HTML5 and CSS3 powered modal popups
@@ -613,6 +602,10 @@ $(function () {
 	}
 
 	function ajaxSearchClinic(json_str) {
+		if(!Array.isArray(json_str.para.LANGUAGE))
+		{
+			json_str.para.LANGUAGE=[json_str.para.LANGUAGE];
+		}
 		var all_date = [];
 		$.ajax({
 			type: "POST",
@@ -635,10 +628,18 @@ $(function () {
 
 				var activeIndex;
 				if (json_str.serviceid == "SC02") {
-					var activeIndex = $("ul#TMP_Doctor_Tab li.active").text().trim();
+					activeIndex = $("ul#TMP_Doctor_Tab li.active").text().trim();
 					if (activeIndex == null || activeIndex == "Today")
 						activeIndex = Object.keys(groupsDate)[0];
 
+				}
+				else if (json_str.serviceid == "SCD01") {
+					if (json_str.para.APPOINTMENT_DATE) {
+						var newdate = json_str.para.APPOINTMENT_DATE.split("-").reverse().join("-");
+						activeIndex = newdate;
+					}
+					else
+						activeIndex = Object.keys(groupsDate)[0];
 				}
 				else
 					activeIndex = Object.keys(groupsDate)[0];
@@ -664,7 +665,7 @@ $(function () {
 							clinicID: 0,
 							clinicPIC: "",
 							clinicName: "",
-							
+
 							clinicAddress: "",
 							clinicSuburb: "",
 							clinicLat: 0,
@@ -672,7 +673,7 @@ $(function () {
 
 							languagetmp: [],
 							languageUni: [],
-							language:"",
+							language: "",
 							timeslottmp: [],
 							timeslot: []
 
@@ -692,13 +693,13 @@ $(function () {
 							//Step1.convert string to array
 							var langArr = mtem.LANGUAGE_NAME.split(",");
 							//Step2.push langArr to languagetmp
-							Array.prototype.push.apply(clinic.languagetmp,langArr);
+							Array.prototype.push.apply(clinic.languagetmp, langArr);
 						}
 						//Step3.identify the unique
-						clinic.languageUni= _.uniq(clinic.languagetmp);
+						clinic.languageUni = _.uniq(clinic.languagetmp);
 
 						//Step4.convert array to string
-						clinic.language=clinic.languageUni.join();
+						clinic.language = clinic.languageUni.join();
 
 						for (var m in jtem) {
 							var mtem = jtem[m];
@@ -785,8 +786,13 @@ $(function () {
 
 				requesttype = 0;
 				func_code = "SD01";
-				json_form = JSON.parse('{"CLINIC_USER_ID":"' + keyClinicID + '"}');
+
+				json_form = $("#modal_form_search").serializeObject();
 				json_str = request_const(json_form, func_code, requesttype);
+				json_str.para.CLINIC_USER_ID=keyClinicID;
+
+				// json_form = JSON.parse('{"CLINIC_USER_ID":"' + keyClinicID + '"}');
+				// json_str = request_const(json_form, func_code, requesttype);
 				ajaxSearchDoctor(json_str);
 
 
@@ -802,8 +808,8 @@ $(function () {
 				var street = $(this).attr('street');
 				var suburb = $(this).attr('suburb');
 
-				address = street + "," + suburb + ",Australia";
-				mylocation = new google.maps.LatLng(lat, lng);
+				var address = street + "," + suburb + ",Australia";
+				var mylocation = new google.maps.LatLng(lat, lng);
 				var mapCanvas = document.getElementById('mapDiv');
 				var mapOptions = {
 					center: new google.maps.LatLng(lat, lng),
@@ -840,6 +846,12 @@ $(function () {
 
 
 	function ajaxSearchDoctor(json_str) {
+
+		if(!Array.isArray(json_str.para.LANGUAGE))
+		{
+			json_str.para.LANGUAGE=[json_str.para.LANGUAGE];
+		}
+		
 		var all_date = [];
 		$.ajax({
 			type: "POST",
@@ -862,6 +874,14 @@ $(function () {
 				if (json_str.serviceid == "SD01") {
 					activeIndex = $("ul#TMP_Clinic_Tab li.active").text().trim();
 					if (activeIndex == null || activeIndex == "Today")
+						activeIndex = Object.keys(groupsDate)[0];
+				}
+				else if (json_str.serviceid == "SCD01") {
+					if (json_str.para.APPOINTMENT_DATE) {
+						var newdate = json_str.para.APPOINTMENT_DATE.split("-").reverse().join("-");
+						activeIndex = newdate;
+					}
+					else
 						activeIndex = Object.keys(groupsDate)[0];
 				}
 				else
@@ -887,7 +907,7 @@ $(function () {
 							doctorID: 0,
 							doctorPIC: "",
 							doctorName: "",
-							language:"",
+							language: "",
 							clinicName: "",
 							clinicAddress: "",
 							timeslot: []
@@ -1654,11 +1674,12 @@ $(function () {
 	$('#btn_search').click(function () {
 		///////////////////////////////////组织ajax 请求参数 begin///////////////////////////////
 		requesttype = 1;
-		func_code = "SD03";
+		func_code = "SCD01";
 		json_form = $("#modal_form_search").serializeObject();
 		json_str = request_const(json_form, func_code, requesttype);
-		
-		if(json_str.para.DOCTOR_NAME)
+
+
+		if (json_str.para.DOCTOR_NAME)
 			ajaxSearchDoctor(json_str);
 		else
 			ajaxSearchClinic(json_str);
@@ -1754,7 +1775,7 @@ $(function () {
 		sessionStorage.saveSearch = "";
 	}
 	$('.form_datetime').datetimepicker({
-		language: 'zh-CN',
+		language: 'EN',
 		format: "dd-mm-yyyy",
 		todayBtn: 1,
 		autoclose: 1,
@@ -1762,6 +1783,21 @@ $(function () {
 		startView: 2,
 		minView: "month"
 	});
+
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth() + 1; //January is 0!
+
+	var yyyy = today.getFullYear();
+	if (dd < 10) {
+		dd = '0' + dd;
+	}
+	if (mm < 10) {
+		mm = '0' + mm;
+	}
+	today = dd + '-' + mm + '-' + yyyy;
+
+	$('.form_datetime').datetimepicker('setStartDate', today);
 
 
 

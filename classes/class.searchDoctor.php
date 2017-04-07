@@ -110,10 +110,12 @@ class SearchDoctor
 
 		$ret["data"]=$this->searchdoctor_db->index_search_sp($this->arr_values);
 		
+		$arrlength=count($ret["data"]);
+		
 		//language filter begin 2017.3.1
 		if(isset($this->arr_values['LANGUAGE']))
 		{
-			for($x = 0; $x < count($ret["data"]); $x++)
+			for($x = 0; $x < $arrlength; $x++)
 			{
 				
 				$found=false;
@@ -129,7 +131,9 @@ class SearchDoctor
 					}
 				}
 				if(!$found)
+				{
 					unset($ret["data"][$x]);
+				}
 			}
 		}
 		//language filter begin 2017.3.1 end
