@@ -88,6 +88,7 @@ include_once 'classes/Language/language.common.php';
 									<!-- 修改诊所用户信息-->
 									<?php echo $lang['Lang0229']; ?></h2>
 								<div class="row">
+
 									<form class="form-inline" role="form" id="clinicUpdUserInfo">
 
 										<input type="hidden" class="form-control" name="action_type"
@@ -155,17 +156,45 @@ include_once 'classes/Language/language.common.php';
 											</label> <input type="text" class="form-control"
 												name="CLINIC_POSTCODE" id="CLINIC_POSTCODE" value="1">
 										</div>
-
-										<div class="form-group pull-right">
-											<button class="btn btn-primary" id="btn_ok">
-												<!-- 确定-->
-												<?php echo $lang['Lang0274']; ?></button>
+										
+										<div class="form-group col-md-9">
+											<label for="CLINIC_OVERVIEW" class="col-md-2 control-label">
+												<!-- 简介-->
+												<?php echo $lang['Lang0328']; ?>
+											</label> 
+											<div class="col-md-10">
+												<textarea class="form-control" name="CLINIC_OVERVIEW" id="CLINIC_OVERVIEW" cols="75" rows="10"></textarea>
+											</div>	
 										</div>
-
+										
+										
+<input type="hidden" class="form-control" name="CLINIC_PHOTO" id="CLINIC_PHOTO">
 									</form>
-
 								</div>
 								<!-- row -->
+								
+								<div class="row">
+									<div class="col-md-9">
+										<label for="CLINIC_PHOTO" class="col-md-2 control-label"><!-- 诊所照片--><?php echo $lang['Lang0329']; ?><span class="span-red">*</span></label>
+										<div class="col-md-offset-2">	
+											<form id="submit_form" method="post" action="./classes/class.upload_clinic.php" target="exec_target" enctype="multipart/form-data">
+												<input type="file" name="upload_file" id="upload_file">
+											</form>
+	
+											<iframe id="exec_target" name="exec_target"></iframe>
+	
+											<div id="feedback"></div>
+										</div>
+									</div>
+								</div>
+								
+								<div class="row">
+									<div class="form-group pull-right">
+										<button class="btn btn-primary" id="btn_ok">
+										<!-- 确定-->
+										<?php echo $lang['Lang0274']; ?></button>
+									</div>
+							 	</div>
 							</div>
 							<!-- PersonUser -->
 						</div>

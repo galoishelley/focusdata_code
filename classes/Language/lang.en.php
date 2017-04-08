@@ -414,4 +414,8 @@ $lang['Lang0325'] = 'Return Clinics';
 
 $lang['Lang0326'] = 'Language';
 $lang['Lang0327'] = 'Choose at least one language';
+
+$lang['Lang0328'] = 'Overview';
+
+$lang['Lang0329'] = 'Clinic Photo';
 ?>

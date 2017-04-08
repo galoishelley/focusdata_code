@@ -175,6 +175,7 @@ class ClinicOprDoctor_DB{
         
         unset($arr_values["DOCTOR_ID"]);
         unset($arr_values["LANGUAGE_NAME"]);
+        
         $ret = $this->db->updateData('fd_doctor', $arr_values, $where);
 
         return $ret;

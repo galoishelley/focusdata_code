@@ -49,6 +49,106 @@
             width: 100%;
             height: 100%;
             }
+            
+            
+#clinicProfile .slickWindow * {
+    
+    box-sizing: border-box;
+}
+#clinicProfile .slickWindow {
+    overflow: auto;
+}
+#clinicProfile .slickWindow::-webkit-scrollbar {
+    width: 6px;
+    height: 2px;
+}
+#clinicProfile .slickWindow::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+#clinicProfile .slickWindow::-webkit-scrollbar-thumb {
+    background: #acacac;
+    border: 0px none #ffffff;
+    border-radius: 0;
+}
+#clinicProfile .slickWindow::-webkit-scrollbar-thumb:hover {
+    background: #000000;
+}
+#clinicProfile .slickWindow::-webkit-scrollbar-thumb:active {
+    background: #000000;
+}
+#clinicProfile .slickWindow::-webkit-scrollbar-track {
+    background: #f0f0f0;
+    border: 0px none #ffffff;
+    border-radius: 0;
+}
+#clinicProfile .slickWindow::-webkit-scrollbar-track:hover {
+    background: #f0f0f0;
+}
+#clinicProfile .slickWindow::-webkit-scrollbar-track:active {
+    background: #f0f0f0;
+}
+#clinicProfile .slickWindow::-webkit-scrollbar-corner {
+    background: transparent;
+}
+#clinicProfile .slickWindow .actions {
+	display: inline-block;
+    width: 100%;
+    padding: 28px 36px 36px 36px;
+}
+#clinicProfile .slickWindow .action {
+    border: #42abb5;
+    font-weight: 800;
+    border: solid 1px #333;
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+#clinicProfile .slickWindow .action:hover {
+    background: #42abb5;
+    border-color: #42abb5;
+    color: #fff;
+}
+
+#clinicProfile .slickWindow .cartItems {
+    display: inline-block;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#clinicProfile .slickWindow .cartItems .clinic-title {
+    margin: 1px 0 14px;
+    padding: 0 90px 0 10px;
+    font-size: 20px;
+    width: 100%;
+    color: #313436;
+    font-weight: 400;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden
+}
+
+#clinicProfile .slickWindow .cartItems .clinic-address {
+    margin: 1px 0 14px;
+    padding: 0 90px 0 10px;
+    font-size: 13px;
+    
+    color: #63707b;
+    font-weight: 400
+}
+#clinicProfile .slickWindow .cartItems img {
+    width:595px;
+    height:300px;
+}
+
+#clinicProfile .slickWindow .cartItems p {
+     color: #605833; font-family: Enriqueta; font-size: 16px; padding: 10px 0; margin: 0 0 24px 10px; line-height: 20px;
+
+}
       </style>
       
       <!--JS-->
@@ -86,6 +186,25 @@
 		<div class="slickWindow">
 			<div id="mapDiv"></div>
 		</div>
+	</div>
+
+	<div id="clinicProfile" class="slickModal">
+			<div class="slickWindow">
+				<div class="cartItems">
+                    <img class="clinic-img"/>
+                    <div class="clinic-title"></div>
+                    <div class="clinic-address"></div>
+                    <p class="clinic-overview"></p>
+                </div>
+							
+
+
+				<div class="actions">
+					<div class="action closeModal">Close</div>
+					
+				</div>
+		
+			</div>
 	</div>
 
       <div class="content">
@@ -419,7 +538,7 @@
          		<section class="search-card-contain search-practice ">
 					<div class="search-card-overflow">
 						<div class="search-main-dets">
-							<h2 class="search-main-title">{{>doctorName}}</h2>
+							<h2 class="search-main-title showProfile">{{>doctorName}}</h2>
 							
 				
 							<div class="search-suburb-contain clearfix">
@@ -439,7 +558,10 @@
 									<img src="{{>doctorPIC}}">
 								</div>
 							</div>
-							<div class="search-addie">
+                            <div class="search-overview" style="display:none;">
+                                {{>overview}}
+                                </div>
+							<div class="search-addie doctor-addr">
 								{{>clinicAddress}}
 								
 								</div>
@@ -493,7 +615,7 @@
          		<section class="search-card-contain search-practice ">
 					<div class="search-card-overflow">
 						<div class="search-main-dets">
-							<h2 class="search-main-title">{{>clinicName}}</h2>
+							<h2 class="search-main-title showProfile">{{>clinicName}}</h2>
 							
 				
 							<div class="search-suburb-contain clearfix">
@@ -515,7 +637,7 @@
 									<img src="{{>clinicPIC}}">
 								</div>
 							</div>
-							<div class="search-addie">
+							<div class="search-addie clinic-addr">
 								{{>clinicAddress}}
 								
 								</div>
@@ -523,6 +645,10 @@
                                                 {{>language}}
 								<a class="showDoctors" keyClinicID="{{>clinicID}}"><?php echo $lang['Lang0324']; ?></a>
 							</div>
+
+                            <div class="search-overview" style="display:none;">
+                                {{>overview}}
+                                </div>
 						</div>
 					</div>
 					<div class="search-time-container clearfix closed">

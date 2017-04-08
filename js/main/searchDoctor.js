@@ -9,6 +9,8 @@ var keyDate;
 var keyTime;
 
 
+
+
 /* ========= INFORMATION ============================
 
  - document:  Slick Modals - HTML5 and CSS3 powered modal popups
@@ -497,8 +499,82 @@ $(function () {
 
 
 	// _______________________________________________________________________________________ functions 
+	function rebindProfile() {
+
+		// Mini cart
+		$('#clinicProfile').slickModals({
+			// Hide on pages
+			hideOnPages: [
+				'/foo/page1/',
+				'/foo/page2/',
+				'/foo/page3/'
+			],
+			// Popup type
+			popupType: '',
+			delayTime: 0,
+			scrollTopDistance: 400,
+			// Popup cookies
+			setCookie: false,
+			cookieDays: 30,
+			cookieTriggerClass: 'setCookie-1',
+			cookieName: 'slickModal-1',
+			cookieScope: 'domain',
+			// Overlay styling
+			overlayBg: true,
+			overlayClosesModal: true,
+			overlayBgColor: 'rgba(0,0,0,0.5)',
+			overlayTransitionSpeed: '0.4',
+			// Background effects
+			pageEffect: 'scale',
+			blurBgRadius: '1px',
+			scaleBgValue: '0.98',
+			// Popup styling
+			popupWidth: '600px',
+			popupHeight: '100%',
+			popupLocation: 'topRight',
+			popupAnimationDuration: '0.6',
+			popupAnimationEffect: 'slideRight',
+			popupShadowOffsetX: '0',
+			popupShadowOffsetY: '0',
+			popupShadowBlurRadius: '60px',
+			popupShadowSpreadRadius: '0',
+			popupShadowColor: 'rgba(0,0,0,0.8)',
+			popupBackground: '#fff',
+			popupRadius: '0',
+			popupMargin: '0',
+			popupPadding: '0',
+			// Responsive rules
+			responsive: false,
+			breakPoint: '480px',
+			mobileLocation: 'center',
+			mobileWidth: '100%',
+			mobileHeight: 'auto',
+			mobileRadius: '0',
+			mobileMargin: '0',
+			mobilePadding: '20px',
+			// Animate content
+			contentAnimate: false,
+			contentAnimateEffect: 'slideRight',
+			contentAnimateSpeed: '0.4',
+			contentAnimateDelay: '0.4',
+			// Youtube videos
+			videoSupport: true,
+			videoAutoPlay: true,
+			videoStopOnClose: true,
+			// Close and reopen button
+			addCloseButton: false,
+			buttonStyle: 'icon',
+			enableESC: true,
+			reopenClass: 'showProfile',
+			// Additional events
+
+			onSlickClose: function () {
+				console.log("Slick is hidden")
+			}
+		});
 
 
+	}
 	function rebindMap() {
 		$('#popup-Googlemap').slickModals({
 			overlayBg: true,
@@ -565,10 +641,6 @@ $(function () {
 		}
 
 	}
-
-
-
-
 	function replaceToday() {
 		$("ul.nav-tabs > li").each(function () {
 			var LI = $(this);
@@ -600,7 +672,6 @@ $(function () {
 
 
 	}
-
 	function ajaxSearchClinic(json_str) {
 		if (!Array.isArray(json_str.para.LANGUAGE)) {
 			json_str.para.LANGUAGE = [json_str.para.LANGUAGE];
@@ -674,6 +745,7 @@ $(function () {
 							clinicLat: 0,
 							clinicLng: 0,
 
+							overview: "",
 							languagetmp: [],
 							languageUni: [],
 							language: "",
@@ -682,11 +754,11 @@ $(function () {
 
 						};
 						clinic.clinicID = j;
-						clinic.clinicPIC = jtem[0].CLINIC_PHOTO;
+						clinic.clinicPIC = 'img/clinics/' + jtem[0].CLINIC_PHOTO;
 						clinic.clinicName = jtem[0].CLINIC_NAME;
 						clinic.clinicAddress = jtem[0].CLINIC_ADDR;
 						clinic.clinicSuburb = jtem[0].CLINIC_SUBURB;
-						//clinic.language = jtem[0].LANGUAGE_NAME;
+						clinic.overview = jtem[0].CLINIC_OVERVIEW;
 
 						clinic.clinicLat = jtem[0].CLINIC_LAT;
 						clinic.clinicLng = jtem[0].CLINIC_LNG;
@@ -763,6 +835,7 @@ $(function () {
 
 					replaceToday();
 					rebindMap();
+					rebindProfile();
 				} else {
 					alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
 					result = false;
@@ -842,12 +915,26 @@ $(function () {
 			});
 		});
 
+		$(".showProfile").each(function (index) {
+			$(this).on("click", function () {
+
+
+
+				var clinic_img = $(this).parent().find('.lazy').attr('src');
+
+				$('#clinicProfile').find('.clinic-img').attr('src', clinic_img);
+				var clinic_title = $(this).text();
+
+				$('#clinicProfile').find('.clinic-title').text(clinic_title);
+				var clinic_address = $(this).parent().find('.clinic-addr').text() + " , " + $(this).parent().find('.search-suburb').text();
+				$('#clinicProfile').find('.clinic-address').text(clinic_address);
+				var clinic_overview = $(this).parent().find('.search-overview').text();
+				$('#clinicProfile').find('.clinic-overview').text(clinic_overview);
+
+			});
+		});
+
 	}
-
-
-	////////////////////////////////////////////////////////////////////////////////////////////	
-
-
 	function ajaxSearchDoctor(json_str) {
 
 		if (!Array.isArray(json_str.para.LANGUAGE)) {
@@ -912,6 +999,7 @@ $(function () {
 							doctorID: 0,
 							doctorPIC: "",
 							doctorName: "",
+							overview:"",
 							language: "",
 							clinicName: "",
 							clinicAddress: "",
@@ -919,10 +1007,11 @@ $(function () {
 						};
 						doctor.doctorID = j;
 						doctor.language = jtem[0].LANGUAGE_NAME;
-						doctor.doctorPIC = jtem[0].DOCTOR_PHOTO;
+						doctor.doctorPIC = 'img/doctors/' + jtem[0].DOCTOR_PHOTO;
 						doctor.doctorName = jtem[0].DOCTOR_NAME;
 						doctor.clinicName = jtem[0].CLINIC_NAME;
-						doctor.clinicAddress = jtem[0].CLINIC_ADDR;
+						doctor.overview=jtem[0].DOCTOR_INFO;
+						doctor.clinicAddress = jtem[0].CLINIC_ADDR+' , '+jtem[0].CLINIC_SUBURB;
 						for (var m in jtem) {
 							var mtem = jtem[m];
 							doctor.timeslot.push({
@@ -976,6 +1065,7 @@ $(function () {
 					replaceToday();
 
 					rebindMap();
+					rebindProfile();
 				} else {
 					alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
 					result = false;
@@ -1546,8 +1636,27 @@ $(function () {
 			$('.save2favBtn').hide();
 			$('.jumptouserSaveDoctor').hide();
 		}
+
+
+		$(".showProfile").each(function (index) {
+			$(this).on("click", function () {
+
+
+
+				var doctor_img = $(this).parent().find('.lazy').attr('src');
+
+				$('#clinicProfile').find('.clinic-img').attr('src', doctor_img);
+				var doctor_title = $(this).text();
+
+				$('#clinicProfile').find('.clinic-title').text(doctor_title);
+				var doctor_address = $(this).parent().find('.doctor-addr').text();
+				$('#clinicProfile').find('.clinic-address').text(doctor_address);
+				var doctor_overview = $(this).parent().find('.search-overview').text();
+				$('#clinicProfile').find('.clinic-overview').text(doctor_overview);
+
+			});
+		});
 	}
-	//记住用户名密码
 	function SaveNameAndPWD() {
 		var str_username = $("#CUSTOMER_USER_MAIL").val();
 		var str_password = $("#CUSTOMER_USER_PWD").val();
@@ -1570,15 +1679,10 @@ $(function () {
 
 	};
 
-	/***
-	 * 第三方js插件配置区
-	 * maskedinput
-	 * autocomplete
-	 */
-	//
+	// _______________________________________________________________________________________ maskedinput
 	$("#CUSTOMER_BIRTHDAY").mask("99/99/9999", { placeholder: "dd/mm/yyyy" });
-	//autocomplete
 
+	// _______________________________________________________________________________________ autocomplete
 	var localSuburb = localStorage.getItem('suburb');
 	if (localSuburb == null) {
 		$.ajax({
@@ -1617,9 +1721,7 @@ $(function () {
 
 
 
-	/***
-	 * 页面主逻辑区
-	 */
+	// _______________________________________________________________________________________ page main logic
 	/*根据登陆与否确定是否显示按钮*/
 	if ($.cookie("ilogin") == 1) {
 		$('#DISTANCE').prop('disabled', false);
@@ -1635,7 +1737,6 @@ $(function () {
 
 
 	/*Case0.默认页面*/
-
 	requesttype = 0;
 	func_code = "SC00";
 	json_form = $("#modal_form_search").serializeObject();
@@ -2415,9 +2516,6 @@ $(function () {
 
 
 	$('.eac-plate-dark').css("width", "650px");
-
-	//$('#CUSTOMER_BIRTHDAY').css("width", "148px");
-	//$('#MEDICAL_CARD_NO').css("width", "177px");
 	$('#CUSTOMER_ADDR').css("width", "653px");
 	$('#CUSTOMER_POSTCODE').css("width", "191px");
 });

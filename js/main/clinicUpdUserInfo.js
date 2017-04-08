@@ -85,12 +85,15 @@ $(document).ready(function() {
               var data = ret.data[0];
               console.log(data);
               $('#CLINIC_USER_ID').val(data.CLINIC_USER_ID);
-
+              $('#CLINIC_PHOTO').val(data.CLINIC_PHOTO);
+              $('#CLINIC_PHOTO').attr('src',data.CLINIC_PHOTO);
+              $('#feedback').html("<img src='img/clinics/"+data.CLINIC_PHOTO+"'/>");
               $('#CLINIC_USER_MAIL').val(data.CLINIC_USER_MAIL);
               $('#CLINIC_NAME').val(data.CLINIC_NAME);
               $('#CLINIC_POSTCODE').val(data.CLINIC_POSTCODE);
               $('#CLINIC_ADDR').val(data.CLINIC_ADDR);
               $('#CLINIC_SUBURB').val(data.CLINIC_SUBURB);
+              $('#CLINIC_OVERVIEW').val(data.CLINIC_OVERVIEW);
               state_id = data.STATE_ID;
           }else{
               alert(func_code + " " +  ret.status.ret_code + " " + ret.status.ret_msg);
@@ -249,5 +252,25 @@ $(document).ready(function() {
 
     return false;
   })
+
+
+  $("#upload_file").change(function(){
+    if($("#upload_file").val() != '')  $("#submit_form").submit();
+    
+  });
+
+  $("#exec_target").load(function(){
+
+    var data = $(window.frames['exec_target'].document.body).find("textarea").html();
+
+    img_path=$("#upload_file").val();
+    var arr = img_path.split('\\');
+    $('#CLINIC_PHOTO').val(arr[2]);
+
+    if(data != null){
+      $("#feedback").replaceWith(data.replace(/&lt;/g,'<').replace(/&gt;/g,'>'));
+//      $("#upload_file").val('');
+    }
+  });
 
 });

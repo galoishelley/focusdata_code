@@ -112,7 +112,6 @@ class ClinicDetail_DB{
                 $arr_values[$k]=md5($v);
             }
         }
-
         $ret = $this->db->updateData('fd_clinic_user', $arr_values, $where);
         // echo $ret;
         return $ret;

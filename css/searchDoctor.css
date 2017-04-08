@@ -2652,7 +2652,8 @@ body {
     line-height: 1.5em;
     color: #63666a;
     background-color: #fff;
-    -webkit-text-size-adjust: 100%
+    -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
 }
 @media (max-width: 767px) {
     body {
@@ -2918,10 +2919,7 @@ input:-webkit-autofill:focus {
     -moz-box-shadow: none !important;
     box-shadow: none !important
 }
-body {
-    color: #313436;
-    background-color: #eeecf0
-}
+
 @media (max-width: 767px) {
     body {
         min-height: 100vh

@@ -30,7 +30,7 @@ $(function(){
     $('#DOCTOR_INFO').val(json_value.DOCTOR_INFO);
     $('#DOCTOR_ID').val(json_value.DOCTOR_ID);
     $('#DOCTOR_PHOTO').val(json_value.DOCTOR_PHOTO);
-    $('#feedback').html("<img src='"+json_value.DOCTOR_PHOTO+"'/>");
+    $('#feedback').html("<img src='img/doctors/"+json_value.DOCTOR_PHOTO+"'/>");
     $('#ACTIVE_STATUS').find("option[value='"+json_value.ACTIVE_STATUS+"']").attr("selected",true);
 
     if(json_value.imgId == "opr_info"){

@@ -682,7 +682,7 @@ label{
   font-weight: bold;
 }
 
-.adminUpdDoc #exec_target{
+#exec_target{
   display:none;
   width:0;
   height:0;
@@ -696,13 +696,14 @@ label{
 }
 
 .adminUpdDoc #feedback img{
-  float:left;
+  margin-left: 0px;
   width:300px;
   height:300px;
 }
 
 .adminUpdDoc #doctor_img{
   margin-top: 20px;
+  margin-left: 0px;
   width:300px;
   height:300px;
 }
@@ -810,5 +811,30 @@ th, td {
 
 .appointment_date{
   margin-bottom: 15px;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *clinicUpdUserInfo PersonUser
+ */
+
+.PersonUser #feedback{
+  padding-top: 10px;
+  width:1200px;
+  margin:0 
+  auto;
+}
+
+
+.PersonUser #feedback img{
+  margin-left: 0px;
+  width:300px;
+  height:300px;
+}
+
+.PersonUser #clinic_img{
+  margin-top: 10px;
+  margin-left: 0px;
+  width:300px;
+  height:300px;
 }
 
