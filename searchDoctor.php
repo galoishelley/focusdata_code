@@ -141,8 +141,8 @@
     font-weight: 400
 }
 #clinicProfile .slickWindow .cartItems img {
-    width:595px;
-    height:300px;
+    max-width:595px;
+    max-height:300px;
 }
 
 #clinicProfile .slickWindow .cartItems p {
