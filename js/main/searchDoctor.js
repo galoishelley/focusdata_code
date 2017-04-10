@@ -347,6 +347,9 @@ $(function () {
 	$('.tab_container').css('padding-left', ($(window).width() - 728) / 2);
 	$('.tab_container').css('padding-right', ($(window).width() - 728) / 2);
 
+	$('.warning').css('padding-left', ($(window).width() - 728) / 2+12);
+
+
 
 
 
@@ -692,8 +695,13 @@ $(function () {
 
 				var ret = msg.response;
 				if (ret.data.length == 0) {
-					alert("Sorry,we couldn't find any appointments matching your search criteria.Try changing your search criteria for more results");
+
+					$( ".warning" ).css('display','block')
+					//$( ".thumb-box9" ).append( "<p style='margin-left:350px;color:red'>Sorry,we couldn't find any appointments matching your search criteria.Try changing your search criteria for more results</p>" );
+					//alert("Sorry,we couldn't find any appointments matching your search criteria.Try changing your search criteria for more results");
 				}
+				else
+					$( ".warning" ).css('display','none')
 
 
 				var groupsDate = _.groupBy(ret.data, function (value) {
@@ -955,8 +963,13 @@ $(function () {
 
 				var ret = msg.response;
 				if (ret.data.length == 0) {
-					alert("Sorry,we couldn't find any appointments matching your search criteria.Try changing your search criteria for more results");
+					$( ".warning" ).css('display','block')
+
+					
+					//alert("Sorry,we couldn't find any appointments matching your search criteria.Try changing your search criteria for more results");
 				}
+				else
+					$( ".warning" ).css('display','none')
 
 				var groupsDate = _.groupBy(ret.data, function (value) {
 					return value.APPOINTMENT_DATE;
