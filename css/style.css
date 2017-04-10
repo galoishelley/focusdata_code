@@ -3,7 +3,7 @@
 =========================================================*/
 body {
   background: #ffffff;
-  font: 12px 'Georgia', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 12px "Source Sans Pro", "Open Sans", sans-serif;
   line-height: 1.428571429;
   color: #9fdbf3;
 }
@@ -198,7 +198,7 @@ nav.tm_navbar li:after {
 nav.tm_navbar li a {
   position: relative;
   padding: 0;
-  font: 12px 'Georgia';
+  font: 12px "Source Sans Pro", "Open Sans", sans-serif;
   text-transform: uppercase;
   color: #afafaf;
   background: none;
@@ -280,7 +280,7 @@ nav.tm_navbar .sub-menu > ul li a {
   padding: 0;
   margin: 0;
   float: none;
-  font: 13px 'Georgia';
+  font: 13px "Source Sans Pro", "Open Sans", sans-serif;
   color: #a0c3c8;
   border: none;
   text-transform: none;
@@ -341,7 +341,7 @@ nav.tm_navbar .sub-menu ul ul li a {
   padding: 0;
   margin: 0;
   float: none;
-  font: 13px 'Georgia';
+  font: 13px "Source Sans Pro", "Open Sans", sans-serif;
   color: #bbe7e9;
   -webkit-transition: all 0.25s ease;
   -o-transition: all 0.25s ease;
@@ -401,13 +401,13 @@ nav.tm_navbar .sub-menu > ul li > ul li a:hover {
   overflow: hidden;
 }
 .thumb-box1 .title {
-  font: 38px/42px 'Georgia';
+  font: 38px/42px "Source Sans Pro", "Open Sans", sans-serif;
   color: #ffffff;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.07);
   margin-bottom: 24px;
 }
 .thumb-box1 .description {
-  font: 22px/30px 'Trebuchet MS';
+  font: 22px/30px "Source Sans Pro", "Open Sans", sans-serif;
   color: #e5ffff;
   margin-bottom: 36px;
 }
@@ -420,7 +420,7 @@ nav.tm_navbar .sub-menu > ul li > ul li a:hover {
 }
 .thumb-box3 .title1 {
   color: #ffffff;
-  font: 55px/60px 'Georgia';
+  font: 55px/60px "Source Sans Pro", "Open Sans", sans-serif;
   margin-bottom: 0;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.07);
 }
@@ -439,12 +439,12 @@ nav.tm_navbar .sub-menu > ul li > ul li a:hover {
   overflow: hidden;
 }
 .thumb-box4 .title {
-  font: 72px/1em 'Georgia', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 72px/1em "Source Sans Pro", "Open Sans", sans-serif;
   color: #74c5be;
   margin: 44px 0 29px 0;
 }
 .thumb-box4 .description {
-  font: 24px/30px 'Georgia', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 24px/30px "Source Sans Pro", "Open Sans", sans-serif;
   color: #4e88a0;
 }
 .thumb-box4 p {
@@ -464,11 +464,11 @@ nav.tm_navbar .sub-menu > ul li > ul li a:hover {
 }
 .thumb-box5 .box strong {
   color: #ffffff;
-  font: 36px 'Georgia', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 36px "Source Sans Pro", "Open Sans", sans-serif;
   display: block;
 }
 .thumb-box5 .box p {
-  font: 17px/24px 'Georgia', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 17px/24px "Source Sans Pro", "Open Sans", sans-serif;
   color: #9fdbf3;
 }
 .thumb-box6 {
@@ -476,7 +476,7 @@ nav.tm_navbar .sub-menu > ul li > ul li a:hover {
   overflow: hidden;
 }
 .thumb-box6 strong {
-  font: 36px 'Georgia', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 36px "Source Sans Pro", "Open Sans", sans-serif;
   color: #4e4e4e;
   display: block;
   margin-bottom: 40px;
@@ -484,7 +484,7 @@ nav.tm_navbar .sub-menu > ul li > ul li a:hover {
 .thumb-box6 time {
   color: #1abbae;
   text-transform: uppercase;
-  font: 18px/1em 'Georgia', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 18px/1em "Source Sans Pro", "Open Sans", sans-serif;
   margin-bottom: 16px;
   display: block;
 }
@@ -566,7 +566,7 @@ nav.tm_navbar .sub-menu > ul li > ul li a:hover {
 }
 .thumb-box11 .box strong {
   color: #ffffff;
-  font: 56px/49px 'Georgia', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 56px/49px "Source Sans Pro", "Open Sans", sans-serif;
   display: block;
 }
 .thumb-box11 .box strong span {
@@ -649,7 +649,7 @@ nav.tm_navbar .sub-menu > ul li > ul li a:hover {
   z-index: 2;
 }
 .thumb-pad1 .thumbnail .caption strong {
-  font: 32px 'Georgia';
+  font: 32px "Source Sans Pro", "Open Sans", sans-serif;
   color: #616161;
   margin-bottom: 31px;
   display: inline-block;
@@ -692,7 +692,7 @@ nav.tm_navbar .sub-menu > ul li > ul li a:hover {
   margin: 0;
 }
 .thumb-pad1-1 .thumbnail .caption strong {
-  font: 22px 'Georgia', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 22px "Source Sans Pro", "Open Sans", sans-serif;
   color: #616161;
   margin-bottom: 21px;
   display: inline-block;
@@ -731,7 +731,7 @@ nav.tm_navbar .sub-menu > ul li > ul li a:hover {
   padding: 0;
 }
 .thumb-pad2 .thumbnail .caption strong {
-  font: 36px/40px 'Georgia';
+  font: 36px/40px "Source Sans Pro", "Open Sans", sans-serif;
   color: #4e4e4e;
   margin-bottom: 11px;
   display: block;
@@ -766,7 +766,7 @@ nav.tm_navbar .sub-menu > ul li > ul li a:hover {
   padding: 0;
 }
 .thumb-pad2-1 .thumbnail .caption a {
-  font: 24px 'Georgia';
+  font: 24px "Source Sans Pro", "Open Sans", sans-serif;
   color: #4e4e4e;
   -webkit-transition: all 0.25s;
   -o-transition: all 0.25s;
@@ -955,7 +955,7 @@ nav.tm_navbar .sub-menu > ul li > ul li a:hover {
   overflow: hidden;
 }
 .thumb-pad7 .thumbnail .caption a {
-  font: 18px/24px 'Open Sans';
+  font: 18px/24px "Source Sans Pro", "Open Sans", sans-serif;
   color: #111;
   -webkit-transition: all 0.25s;
   -o-transition: all 0.25s;
@@ -998,7 +998,7 @@ nav.tm_navbar .sub-menu > ul li > ul li a:hover {
 }
 .thumb-pad8 .thumbnail .caption time {
   color: #7cc3d8;
-  font: bold 16px 'Georgia', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: bold 16px "Source Sans Pro", "Open Sans", sans-serif;
   display: block;
   margin-bottom: 3px;
 }
@@ -1073,7 +1073,7 @@ nav.tm_navbar .sub-menu > ul li > ul li a:hover {
   padding: 15px 29px;
   border: none;
   vertical-align: middle;
-  font: 14px/18px 'Georgia';
+  font: 14px/18px "Source Sans Pro", "Open Sans", sans-serif;
   position: relative;
   z-index: 1;
   background-image: -webkit-linear-gradient(top, #ffffff 0%, #f0f0f0 100%);
@@ -1103,7 +1103,7 @@ nav.tm_navbar .sub-menu > ul li > ul li a:hover {
   padding: 0;
   border: none;
   border-radius: 0;
-  font: 15px/92px 'Georgia';
+  font: 15px/92px "Source Sans Pro", "Open Sans", sans-serif;
   width: 78px;
   height: 78px;
   border-radius: 100%;
@@ -1127,7 +1127,7 @@ nav.tm_navbar .sub-menu > ul li > ul li a:hover {
   padding: 15px 34px;
   border: none;
   vertical-align: middle;
-  font: 18px/18px 'Georgia';
+  font: 18px/18px "Source Sans Pro", "Open Sans", sans-serif;
   position: relative;
   z-index: 1;
   background: transparent;
@@ -1150,7 +1150,7 @@ nav.tm_navbar .sub-menu > ul li > ul li a:hover {
   padding: 12px 30px;
   border: none;
   vertical-align: middle;
-  font: 13px/18px 'Georgia';
+  font: 13px/18px "Source Sans Pro", "Open Sans", sans-serif;
   position: relative;
   z-index: 1;
   background-image: -webkit-linear-gradient(top, #eaeaea 0%, #e2e2e2 100%);
@@ -1178,7 +1178,7 @@ nav.tm_navbar .sub-menu > ul li > ul li a:hover {
   padding: 12px 30px;
   border: none;
   vertical-align: middle;
-  font: 13px/18px 'Georgia';
+  font: 13px/18px "Source Sans Pro", "Open Sans", sans-serif;
   position: relative;
   z-index: 1;
   background-image: -webkit-linear-gradient(top, #80cbc1 0%, #5eb7a9 100%);
@@ -1207,7 +1207,7 @@ nav.tm_navbar .sub-menu > ul li > ul li a:hover {
   min-height: 67px;
   border: none;
   vertical-align: middle;
-  font: 24px/18px 'Georgia';
+  font: 24px/18px "Source Sans Pro", "Open Sans", sans-serif;
   position: relative;
   z-index: 1;
   background: #40afa6;
@@ -1230,7 +1230,7 @@ nav.tm_navbar .sub-menu > ul li > ul li a:hover {
   padding: 12px 30px;
   border: none;
   vertical-align: middle;
-  font: 13px/18px 'Georgia';
+  font: 13px/18px "Source Sans Pro", "Open Sans", sans-serif;
   position: relative;
   z-index: 1;
   background-image: -webkit-linear-gradient(top, #e4f1ed 0%, #d9ebe6 100%);
@@ -1257,7 +1257,7 @@ nav.tm_navbar .sub-menu > ul li > ul li a:hover {
   margin: 0;
   padding: 0;
   border: none;
-  font: 13px 'Georgia';
+  font: 13px "Source Sans Pro", "Open Sans", sans-serif;
   border-radius: 0;
   position: relative;
   z-index: 1;
@@ -1294,7 +1294,7 @@ nav.tm_navbar .sub-menu > ul li > ul li a:hover {
   margin: 0 0 16px 0;
 }
 .list1 li span {
-  font: bold 24px 'Georgia', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: bold 24px "Source Sans Pro", "Open Sans", sans-serif;
   display: block;
   margin-bottom: 1px;
 }

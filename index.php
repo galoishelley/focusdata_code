@@ -31,7 +31,8 @@ include_once 'classes/Language/language.common.php';
 
 
 <link href="css/jquery-ui.css" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700" rel="stylesheet"
+         type="text/css">
 <!--JS-->
 <script src="js/jquery.js"></script>
 <script src="js/jquery-migrate-1.2.1.min.js"></script>
