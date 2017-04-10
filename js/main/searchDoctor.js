@@ -347,7 +347,7 @@ $(function () {
 	$('.tab_container').css('padding-left', ($(window).width() - 728) / 2);
 	$('.tab_container').css('padding-right', ($(window).width() - 728) / 2);
 
-	$('.warning').css('padding-left', ($(window).width() - 728) / 2+12);
+	$('.warning').css('padding-left', ($(window).width() - 728) / 2 + 12);
 
 
 
@@ -675,6 +675,11 @@ $(function () {
 
 
 	}
+
+	function reformatDate(dateStr) {
+		dArr = dateStr.split("-");  // ex input "2010-01-18"
+		return dArr[2] + "-" + dArr[1] + "-" + dArr[0]; 
+	}
 	function ajaxSearchClinic(json_str) {
 		if (!Array.isArray(json_str.para.LANGUAGE)) {
 			json_str.para.LANGUAGE = [json_str.para.LANGUAGE];
@@ -696,12 +701,12 @@ $(function () {
 				var ret = msg.response;
 				if (ret.data.length == 0) {
 
-					$( ".warning" ).css('display','block')
+					$(".warning").css('display', 'block')
 					//$( ".thumb-box9" ).append( "<p style='margin-left:350px;color:red'>Sorry,we couldn't find any appointments matching your search criteria.Try changing your search criteria for more results</p>" );
 					//alert("Sorry,we couldn't find any appointments matching your search criteria.Try changing your search criteria for more results");
 				}
 				else
-					$( ".warning" ).css('display','none')
+					$(".warning").css('display', 'none')
 
 
 				var groupsDate = _.groupBy(ret.data, function (value) {
@@ -712,19 +717,18 @@ $(function () {
 				if (json_str.serviceid == "SC02") {
 					activeIndex = $("ul#TMP_Doctor_Tab li.active").text().trim();
 					if (activeIndex == null || activeIndex == "Today")
-						activeIndex = Object.keys(groupsDate)[0];
+						activeIndex = reformatDate(Object.keys(groupsDate)[0]);
 
 				}
 				else if (json_str.serviceid == "SCD01") {
 					if (json_str.para.APPOINTMENT_DATE) {
-						var newdate = json_str.para.APPOINTMENT_DATE.split("-").reverse().join("-");
-						activeIndex = newdate;
+						activeIndex = json_str.para.APPOINTMENT_DATE;
 					}
 					else
-						activeIndex = Object.keys(groupsDate)[0];
+						activeIndex = reformatDate(Object.keys(groupsDate)[0]);
 				}
 				else
-					activeIndex = Object.keys(groupsDate)[0];
+					activeIndex = reformatDate(Object.keys(groupsDate)[0]);
 
 
 
@@ -737,7 +741,7 @@ $(function () {
 						activeID: activeIndex
 					};
 
-					each_date.date = i;
+					each_date.date = reformatDate(i);
 					var groupsClinic = _.groupBy(item, function (value) {
 						return value.CLINIC_USER_ID;
 					});
@@ -963,13 +967,13 @@ $(function () {
 
 				var ret = msg.response;
 				if (ret.data.length == 0) {
-					$( ".warning" ).css('display','block')
+					$(".warning").css('display', 'block')
 
-					
+
 					//alert("Sorry,we couldn't find any appointments matching your search criteria.Try changing your search criteria for more results");
 				}
 				else
-					$( ".warning" ).css('display','none')
+					$(".warning").css('display', 'none')
 
 				var groupsDate = _.groupBy(ret.data, function (value) {
 					return value.APPOINTMENT_DATE;
@@ -979,18 +983,17 @@ $(function () {
 				if (json_str.serviceid == "SD01") {
 					activeIndex = $("ul#TMP_Clinic_Tab li.active").text().trim();
 					if (activeIndex == null || activeIndex == "Today")
-						activeIndex = Object.keys(groupsDate)[0];
+						activeIndex = reformatDate(Object.keys(groupsDate)[0]);
 				}
 				else if (json_str.serviceid == "SCD01") {
 					if (json_str.para.APPOINTMENT_DATE) {
-						var newdate = json_str.para.APPOINTMENT_DATE.split("-").reverse().join("-");
-						activeIndex = newdate;
+						activeIndex = json_str.para.APPOINTMENT_DATE;
 					}
 					else
-						activeIndex = Object.keys(groupsDate)[0];
+						activeIndex = reformatDate(Object.keys(groupsDate)[0]);
 				}
 				else
-					activeIndex = Object.keys(groupsDate)[0];
+					activeIndex = reformatDate(Object.keys(groupsDate)[0]);
 
 
 				for (var i in groupsDate) {
@@ -1002,7 +1005,7 @@ $(function () {
 						activeID: activeIndex
 					};
 
-					each_date.date = i;
+					each_date.date = reformatDate(i);
 					var groupsDoctor = _.groupBy(item, function (value) {
 						return value.DOCTOR_ID;
 					});
@@ -1012,7 +1015,7 @@ $(function () {
 							doctorID: 0,
 							doctorPIC: "",
 							doctorName: "",
-							overview:"",
+							overview: "",
 							language: "",
 							clinicName: "",
 							clinicAddress: "",
@@ -1023,8 +1026,8 @@ $(function () {
 						doctor.doctorPIC = 'img/doctors/' + jtem[0].DOCTOR_PHOTO;
 						doctor.doctorName = jtem[0].DOCTOR_NAME;
 						doctor.clinicName = jtem[0].CLINIC_NAME;
-						doctor.overview=jtem[0].DOCTOR_INFO;
-						doctor.clinicAddress = jtem[0].CLINIC_ADDR+' , '+jtem[0].CLINIC_SUBURB;
+						doctor.overview = jtem[0].DOCTOR_INFO;
+						doctor.clinicAddress = jtem[0].CLINIC_ADDR + ' , ' + jtem[0].CLINIC_SUBURB;
 						for (var m in jtem) {
 							var mtem = jtem[m];
 							doctor.timeslot.push({
