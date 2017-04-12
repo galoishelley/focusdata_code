@@ -33,6 +33,7 @@
         <link rel="stylesheet" type="text/css" href="css/searchDoctor.css" />
 
         <style>
+            
             .ui-autocomplete {
                 z-index: 5000;
             }
@@ -240,8 +241,17 @@
 
                     </div>
 
-                    <p class="warning">Sorry,we couldn't find any appointments matching your search criteria.Try changing your search criteria
-                        for more results</p>
+                    
+
+
+                    <section class="search-card-contain search-card-top warning">
+                        <div class="search-card-overflow">
+                            <h1>Sorry, we couldn't find any appointments matching your search criteria</h1>
+                            <h2>Try changing your search criteria for more results</h2>
+                            
+                        </div>
+                    </section>
+
 
                 </div>
 
