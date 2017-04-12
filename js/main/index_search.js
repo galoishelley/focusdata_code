@@ -2,8 +2,8 @@ $(function () {
     $('.type-unified-search').on('resetactive', function (e) {
         $('.icons-act.active, .ius-act.active').not(this).trigger('deactivated', [true]);
         $('.type-unified-search').removeClass('tactive');
-        $('.or-unified-search').addClass('show');
-        $('.where-unified-search').removeClass('show');
+        
+  
     }).on('click', '.icons-act:not(.icons-sp)', function (e, nofocus) {
         $(this).trigger('toggleactive', [nofocus]);
         if ($(window).width() < 768) {
@@ -45,14 +45,14 @@ $(function () {
         if ($(this).hasClass('active')) {
             $(this).trigger('deactivated', [nofocus]);
             $('.type-unified-search').removeClass('tactive');
-            $('.or-unified-search').addClass('show');
-            $('.where-unified-search').removeClass('show');
+           
+           
             //$('#location-unified-search').attr('placeholder', 'Suburb, Practitioner, Practice or Procedure');
         } else {
             $(this).trigger('activated', [nofocus]);
             $('.type-unified-search').addClass('tactive');
-            $('.or-unified-search').removeClass('show');
-            $('.where-unified-search').addClass('show');
+           
+          
             //$('#location-unified-search').attr('placeholder', 'Suburb, Practice or Practitioner');
         }
     }).on('activated', '.icons-act:not(.icons-sp)', function (e, nofocus) {

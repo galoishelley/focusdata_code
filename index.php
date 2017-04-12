@@ -139,26 +139,9 @@ include_once 'classes/Language/language.common.php';
                 box-sizing: border-box;
             }
             
-            .panel-unified-search .box-unified-search h2.where-unified-search {
-                display: none;
-            }
             
-            .panel-unified-search .box-unified-search h2.where-unified-search.show {
-                display: block;
-            }
             
-            .panel-unified-search .box-unified-search h2.what-unified-search {
-                font-size: 26px;
-                padding-top: 12px;
-            }
             
-            .panel-unified-search .box-unified-search h2.or-unified-search {
-                display: none;
-            }
-            
-            .panel-unified-search .box-unified-search h2.or-unified-search.show {
-                display: block;
-            }
             
             .panel-unified-search .box-unified-search .type-unified-search {
                 height: 78px;
@@ -171,6 +154,7 @@ include_once 'classes/Language/language.common.php';
                 -webkit-box-sizing: border-box;
                 -moz-box-sizing: border-box;
                 box-sizing: border-box;
+                margin-bottom: 20px;
             }
             
             .panel-unified-search .box-unified-search .input-unified-search {
@@ -216,14 +200,14 @@ include_once 'classes/Language/language.common.php';
                 margin: 0 0 0 2px;
                 vertical-align: middle;
                 z-index: 99;
-                background-position: -18px -2004px;
+                background-position: -18px -2008px;
                 top: 13px;
                 left: 7px;
             }
             
             input[type="text"].location-unified-search {
                 width: 100%;
-                height: 48px;
+                height: 36px;
                 border: none;
                 margin: 0;
                 padding: 0 95px 0 46px;
@@ -972,7 +956,7 @@ include_once 'classes/Language/language.common.php';
                 top: 0;
                 right: 0;
                 width: 90px;
-                height: 48px;
+                height: 36px;
                 text-align: center;
                 color: #fff;
                 text-transform: capitalize;
@@ -990,7 +974,7 @@ include_once 'classes/Language/language.common.php';
                 margin-bottom: 0;
                 font-size: 15px;
                 font-weight: 500;
-                line-height: 22px;
+                line-height: 10px;
                 text-align: center;
                 text-decoration: none;
                 vertical-align: middle;
@@ -1113,8 +1097,7 @@ include_once 'classes/Language/language.common.php';
                             </span><span class="ius-act"><input name="search-option-type" class="hide" type="radio" value="optometry" id="radio-opto"><label class="radio-opto" for="radio-opto">Optometry</label></span></div>
                                 </div>
                             </div>
-                            <h2 class="where-unified-search">Where?</h2>
-                            <h2 class="or-unified-search show">Where?</h2>
+            
                             <div class="input-unified-search">
                                 <div class="input-contain-unified-search">
 
@@ -1123,10 +1106,8 @@ include_once 'classes/Language/language.common.php';
                                         <input type="hidden" class="form-control" name="from_index" id="from_index" value="1">
 
 
-                                        <span class="pill-us" style="display: none;"><span class="pico-unified-search local-pill"></span>
-                                        <span class="cross-unified-search"></span>
-                                        </span>
-                                        <input id="location-unified-search" class="location-unified-search" placeholder="Suburb, State or Postcode" type="text" name="CLINIC_SUBURB">
+                                       
+                                        <input id="location-unified-search" class="location-unified-search" placeholder="Suburb, State, Postcode" type="text" name="CLINIC_SUBURB">
 
 
                                         <button tabindex="-1" id="btn_search" class="btn">Search</button>
