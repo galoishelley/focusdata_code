@@ -677,8 +677,10 @@ $(function () {
 	}
 
 	function reformatDate(dateStr) {
-		dArr = dateStr.split("-");  // ex input "2010-01-18"
-		return dArr[2] + "-" + dArr[1] + "-" + dArr[0]; 
+		if (dateStr) {
+			dArr = dateStr.split("-");  // ex input "2010-01-18"
+			return dArr[2] + "-" + dArr[1] + "-" + dArr[0];
+		}
 	}
 	function ajaxSearchClinic(json_str) {
 		if (!Array.isArray(json_str.para.LANGUAGE)) {
@@ -1752,12 +1754,7 @@ $(function () {
 
 
 
-	/*Case0.默认页面*/
-	requesttype = 0;
-	func_code = "SC00";
-	json_form = $("#modal_form_search").serializeObject();
-	json_str = request_const(json_form, func_code, requesttype);
-	ajaxSearchClinic(json_str);
+
 
 	/*Case1.从主页点击搜索按钮跳转*/
 	var fromIndex_searchRestriction = sessionStorage.searchRestriction;
@@ -1781,6 +1778,15 @@ $(function () {
 		ajaxSearchClinic(json_str);
 
 		sessionStorage.searchRestriction = "";
+	}
+	else {
+		/*Case0.默认页面*/
+		requesttype = 0;
+		func_code = "SC00";
+		json_form = $("#modal_form_search").serializeObject();
+		json_str = request_const(json_form, func_code, requesttype);
+		ajaxSearchClinic(json_str);
+
 	}
 
 	/*Case2.从收藏医生页面点击医生按钮跳转*/

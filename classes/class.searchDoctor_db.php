@@ -150,11 +150,37 @@ class SearchDoctor_DB{
 	    	}
 	    	else
 	    	{
-	    		$p1=explode(",",$arr_values['CLINIC_SUBURB'])[0];
-	    		$tmp=explode(",",$arr_values['CLINIC_SUBURB'])[1];
-	    		$tmp=ltrim($tmp," ");
-	    		$p2=explode(" ",$tmp)[1];
-	    		$p3=explode(" ",$tmp)[0];
+	    		
+	    		
+	    		if (strpos($arr_values['CLINIC_SUBURB'], ',') !== false) {
+	    			$p1=explode(",",$arr_values['CLINIC_SUBURB'])[0];
+	    			$tmp=explode(",",$arr_values['CLINIC_SUBURB'])[1];
+	    			$tmp=ltrim($tmp," ");
+	    			if (strpos($tmp, ' ') !== false)
+	    			{
+	    				$p2=explode(" ",$tmp)[1];
+	    				$p3=explode(" ",$tmp)[0];
+	    			}
+	    			else
+	    			{
+	    				$p1=$arr_values['CLINIC_SUBURB'];
+	    				$p2="";
+	    				$p3="";
+	    			}
+	    		}
+	    		else
+	    		{
+	    			$p1=$arr_values['CLINIC_SUBURB'];
+	    			$p2="";
+	    			$p3="";
+	    		}
+	    		
+    			
+    			
+	    		
+	    		
+	    		
+	    		
 	    	}
     	}
     	else
