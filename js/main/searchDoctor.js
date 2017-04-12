@@ -532,7 +532,7 @@ $(function () {
 			blurBgRadius: '1px',
 			scaleBgValue: '0.98',
 			// Popup styling
-			popupWidth: '600px',
+			popupWidth: '400px',
 			popupHeight: '100%',
 			popupLocation: 'topRight',
 			popupAnimationDuration: '0.6',

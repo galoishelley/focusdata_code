@@ -156,7 +156,7 @@
             }
             
             #clinicProfile .slickWindow .cartItems img {
-                max-width: 595px;
+                max-width: 400px;
                 max-height: 300px;
             }
             
