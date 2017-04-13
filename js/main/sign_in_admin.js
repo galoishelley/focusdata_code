@@ -19,7 +19,7 @@ $(function() {
     function Save() {
         var str_username = $("#USER_MAIL").val();
         var str_password = $("#USER_PWD").val();
-        var str_usertype = 1;
+        var str_usertype = 2;
 
         if ($("#ck_rmbUser").attr("checked")) {
             $.cookie("fd_rmbUser", "true", {
@@ -80,7 +80,7 @@ $(function() {
 
         //form序列化成json
         json_form = $("#signin_form").serializeObject();
-        json_form.usertype=1;
+        json_form.usertype=2;
         // serviceid = UI01
         //生成输入参数,函数参数说明
         // 1- json格式 项目实际需要的参数data

@@ -33,7 +33,6 @@ include_once 'classes/Language/language.common.php';
 		<script src="js/jquery.mobilemenu.js"></script>
 		<script src="js/jquery.equalheights.js"></script>
 		<script src="js/jquery.ui.totop.js"></script>
-
 		<style>
 		h2{
 			font-size: 30px;
@@ -65,7 +64,7 @@ include_once 'classes/Language/language.common.php';
 						<div class="row df_content col-md-4 col-md-offset-4">
 							<div class="col-md-8 col-md-offset-2">
 								<h2 class="wow fadeInRight">
-									<?php echo $lang['Lang0330']; ?>
+									<?php echo $lang['Lang0331']; ?>
 								</h2>
 
 								<form class="form-horizontal wow fadeInUp" role="form" id="signin_form">
@@ -115,7 +114,8 @@ include_once 'classes/Language/For_JS_multi_lang.php';
 				<script src="js/jquery.cookie.js"></script>
 				<script src="js/bootstrapValidator.js"></script>
 				<script src="js/main/pub.js"></script>
-				<script src="js/main/sign_in.js"></script>
+				<script src="js/main/sign_in_clinic.js"></script>
+	</body>
 	</body>
 
 	</html>

@@ -53,7 +53,7 @@ h1.navbar-brand_ a {
   display: inline-block;
 }
 h2 {
-  font: 36px/1em 'Georgia', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /*font: 36px/1em 'Georgia', "Helvetica Neue", Helvetica, Arial, sans-serif;*/
   margin: 0 0 41px 0;
   color: #ffffff;
 }

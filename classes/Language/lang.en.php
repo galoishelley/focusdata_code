@@ -418,4 +418,9 @@ $lang['Lang0327'] = 'Choose at least one language';
 $lang['Lang0328'] = 'Overview';
 
 $lang['Lang0329'] = 'Clinic Photo';
+
+
+$lang['Lang0330'] = 'Personal Login';
+$lang['Lang0331'] = 'Clinic Login';
+$lang['Lang0332'] = 'Admin Login';
 ?>
