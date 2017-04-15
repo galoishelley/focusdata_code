@@ -39,9 +39,10 @@ include_once 'classes/Language/language.common.php';
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700" rel="stylesheet"
             type="text/css">
 
+        <link rel="stylesheet" type="text/css" href="css/hexagons.css">
+
         <style>
             .input-contain-unified-search:after,
-   
             .pill-us .pico-unified-search,
             .pill-us-mob .pico-unified-search,
             .pill-us .cross-unified-search,
@@ -51,8 +52,6 @@ include_once 'classes/Language/language.common.php';
                 background-repeat: no-repeat;
                 background-image: url("img/he-icons-search-64.png");
             }
-            
-      
             
             input {
                 -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
@@ -139,10 +138,6 @@ include_once 'classes/Language/language.common.php';
                 box-sizing: border-box;
             }
             
-            
-            
-            
-            
             .panel-unified-search .box-unified-search .type-unified-search {
                 height: 78px;
                 -webkit-border-radius: 4px !important;
@@ -171,6 +166,9 @@ include_once 'classes/Language/language.common.php';
                 box-sizing: border-box;
                 position: relative;
                 z-index: 10;
+                width: 505px;
+                margin-left: 70px;
+                margin-top: 20px;
             }
             
             .panel-unified-search .box-unified-search .input-unified-search.showing {
@@ -258,12 +256,6 @@ include_once 'classes/Language/language.common.php';
                 line-height: 60px;
             }
             
-     
-            
-            
-            
-      
-            
             .pill-us,
             .pill-us-mob {
                 position: absolute;
@@ -345,27 +337,27 @@ include_once 'classes/Language/language.common.php';
                 opacity: .5;
             }
             
-             .icons-unified-search:hover {
+            .icons-unified-search:hover {
                 background-color: #f7f8fc;
             }
             
-            .tactive  .icons-unified-search:hover label.icons-text {
+            .tactive .icons-unified-search:hover label.icons-text {
                 color: #008ec8;
             }
             
-            .tactive  .icons-unified-search:hover.active label.icons-text {
+            .tactive .icons-unified-search:hover.active label.icons-text {
                 color: #fff;
             }
             
-             .icons-unified-search:hover.icons-sp.active label.icons-text {
+            .icons-unified-search:hover.icons-sp.active label.icons-text {
                 color: #008ec8;
             }
             
-             .icons-unified-search.active:hover {
+            .icons-unified-search.active:hover {
                 background-color: #2386c8;
             }
             
-             .icons-unified-search.icons-more.active:hover {
+            .icons-unified-search.icons-more.active:hover {
                 background-color: #fff;
             }
             
@@ -498,7 +490,7 @@ include_once 'classes/Language/language.common.php';
                 background-position: -80px -14px;
             }
             
-             .icons-unified-search.icons-gp:hover .icons-image {
+            .icons-unified-search.icons-gp:hover .icons-image {
                 background-position: -16px -14px;
             }
             
@@ -518,7 +510,7 @@ include_once 'classes/Language/language.common.php';
                 background-position: -80px -78px;
             }
             
-             .icons-unified-search.icons-dt:hover .icons-image {
+            .icons-unified-search.icons-dt:hover .icons-image {
                 background-position: -16px -78px;
             }
             
@@ -538,7 +530,7 @@ include_once 'classes/Language/language.common.php';
                 background-position: -80px -142px;
             }
             
-             .icons-unified-search.icons-ph:hover .icons-image {
+            .icons-unified-search.icons-ph:hover .icons-image {
                 background-position: -16px -142px;
             }
             
@@ -558,7 +550,7 @@ include_once 'classes/Language/language.common.php';
                 background-position: -80px -206px;
             }
             
-             .icons-unified-search.icons-ch:hover .icons-image {
+            .icons-unified-search.icons-ch:hover .icons-image {
                 background-position: -16px -206px;
             }
             
@@ -578,7 +570,7 @@ include_once 'classes/Language/language.common.php';
                 background-position: -80px -270px;
             }
             
-             .icons-unified-search.icons-ps:hover .icons-image {
+            .icons-unified-search.icons-ps:hover .icons-image {
                 background-position: -16px -270px;
             }
             
@@ -598,7 +590,7 @@ include_once 'classes/Language/language.common.php';
                 background-position: -80px -524px;
             }
             
-             .icons-unified-search.icons-audio:hover .icons-image {
+            .icons-unified-search.icons-audio:hover .icons-image {
                 background-position: -16px -524px;
             }
             
@@ -618,7 +610,7 @@ include_once 'classes/Language/language.common.php';
                 background-position: -80px -588px;
             }
             
-             .icons-unified-search.icons-podia:hover .icons-image {
+            .icons-unified-search.icons-podia:hover .icons-image {
                 background-position: -16px -588px;
             }
             
@@ -638,7 +630,7 @@ include_once 'classes/Language/language.common.php';
                 background-position: -80px -652px;
             }
             
-             .icons-unified-search.icons-counse:hover .icons-image {
+            .icons-unified-search.icons-counse:hover .icons-image {
                 background-position: -16px -652px;
             }
             
@@ -658,7 +650,7 @@ include_once 'classes/Language/language.common.php';
                 background-position: -80px -716px;
             }
             
-             .icons-unified-search.icons-skin:hover .icons-image {
+            .icons-unified-search.icons-skin:hover .icons-image {
                 background-position: -16px -716px;
             }
             
@@ -678,7 +670,7 @@ include_once 'classes/Language/language.common.php';
                 background-position: -80px -780px;
             }
             
-             .icons-unified-search.icons-opto:hover .icons-image {
+            .icons-unified-search.icons-opto:hover .icons-image {
                 background-position: -16px -780px;
             }
             
@@ -749,7 +741,7 @@ include_once 'classes/Language/language.common.php';
                 background-position: -16px -398px;
             }
             
-             .tactive .icons-unified-search.icons-sp.icons-sp.icons-radio:hover .icons-image {
+            .tactive .icons-unified-search.icons-sp.icons-sp.icons-radio:hover .icons-image {
                 background-position: -16px -398px;
             }
             
@@ -761,7 +753,7 @@ include_once 'classes/Language/language.common.php';
                 background-position: -80px -398px;
             }
             
-             .tactive .icons-unified-search.icons-sp.active:hover .icons-image {
+            .tactive .icons-unified-search.icons-sp.active:hover .icons-image {
                 background-position: -80px -398px;
             }
             
@@ -981,10 +973,8 @@ include_once 'classes/Language/language.common.php';
                 cursor: pointer;
                 border: none;
                 color: #fff;
-                background-color: #008ec7;
-                *background-color: #2386c8;
-                *border: 0;
-                *margin-left: .3em
+                background-color: #4f798c;
+               
             }
             
             .btn a {
@@ -1048,111 +1038,87 @@ include_once 'classes/Language/language.common.php';
         <?php
     include_once 'classes/Menu/menu.php';
     ?>
-        <header>
-            
+            <header>
+
                 <h1 class="navbar-brand navbar-brand_"><a href="index.php"><img src="img/<?php echo $lang['Lang0004']; ?>" alt="logo"></a></h1>
-        </header>
-        <!--content-->
-        <div class="content index">
-            <div class="thumb-box1">
-                <div class="container">
-                    <div class="panel-unified-search">
+            </header>
+            <!--content-->
+            <div class="content index">
+                <div class="thumb-box1">
+                    <div class="container">
+                        <div class="panel-unified-search">
 
-                        <div class="box-unified-search">
-                            <div class="type-unified-search">
-                                <div class="icons-unified-search icons-act icons-gp">
-                                    <input name="search-option-type" class="hide" type="radio" id="radio-gp" value="gp">
-                                    <span class="icons-image"></span>
-                                    <label class="icons-text" for="radio-gp">GP</label>
-                                </div>
-                                <div class="icons-unified-search icons-act icons-dt">
-                                    <input name="search-option-type" class="hide" type="radio" id="radio-dentist" value="dentist">
-                                    <span class="icons-image"></span>
-                                    <label class="icons-text" for="radio-dentist">Dentist</label>
-                                </div>
-                                <div class="icons-unified-search icons-act icons-ph"><input name="search-option-type" class="hide" type="radio" id="radio-physio" value="physiotherapist">
-                                    <span class="icons-image"></span>
-                                    <label class="icons-text" for="radio-physio">Physio</label>
-                                </div>
-                                <div class="icons-unified-search icons-act icons-ch"><input name="search-option-type" class="hide" type="radio" id="radio-chiro" value="chiropractor">
-                                    <span class="icons-image"></span>
-                                    <label class="icons-text" for="radio-chiro">Chiropractor</label>
-                                </div>
-                                <div class="icons-unified-search icons-act icons-ps"><input name="search-option-type" class="hide" type="radio" id="radio-psycho" value="psychologist">
-                                    <span class="icons-image"></span>
-                                    <label class="icons-text" for="radio-psycho">Psychologist</label>
-                                </div>
-                                <div class="icons-unified-search icons-act icons-sp icons-more">
-                                    <span class="icons-image icons-sp-icon" id=""></span><label class="icons-text icons-sp-text">More</label>
-                                    <div class="icons-sp-search"><span class="ius-act ius-mob">
-                                        <input name="search-option-type" class="hide" type="radio" value="chiropractor" id="radio-chiro">
-                                        <label class="radio-chiro" for="radio-chiro">Chiropractor</label></span>
-                                        <span class="ius-act ius-mob">
-                                            <input name="search-option-type" class="hide" type="radio" value="psychologist" id="radio-psycho"><label class="radio-psycho"
-                    for="radio-psycho">Psychologist</label></span><span class="ius-act"><input name="search-option-type" class="hide" type="radio" value="audiologist" id="radio-audio"><label class="radio-audio" for="radio-audio">Audiologist</label></span>
-                                        <span class="ius-act"><input name="search-option-type" class="hide" type="radio" value="podiatrist" id="radio-podia"><label class="radio-podia"
-                        for="radio-podia">Podiatrist</label></span><span class="ius-act"><input name="search-option-type" class="hide" type="radio" value="counsellor" id="radio-counse"><label class="radio-counse" for="radio-counse">Counsellor</label></span>
-                                        <span class="ius-act"><input name="search-option-type" class="hide" type="radio" value="skinchecks" id="radio-skin">
-                        <label
-                            class="radio-skin" for="radio-skin">Skin Checks</label>
-                            </span><span class="ius-act"><input name="search-option-type" class="hide" type="radio" value="optometry" id="radio-opto"><label class="radio-opto" for="radio-opto">Optometry</label></span></div>
-                                </div>
-                            </div>
-            
-                            <div class="input-unified-search">
-                                <div class="input-contain-unified-search">
-
-                                    <form id="unified-search-form-inline">
-                                        <input type="hidden" class="form-control" name="action_type" id="action_type" value="index_search">
-                                        <input type="hidden" class="form-control" name="from_index" id="from_index" value="1">
+                            <div class="box-unified-search">
+                                <a href="#"><span class="hb hb-sm"><p class="fa">GP</p></span></a>
+                                <a href="#" class="hexagon-hidden"><span class="hb hb-sm"></span></a>
+                                <a href="#"><span class="hb hb-sm"><p class="fa">Dentist</p></span></a>
+                                <a href="#"><span class="hb hb-sm"><p class="fa">Physio</p></span></a>
+                                <a href="#" class="hexagon-hidden"><span class="hb hb-sm"></span></a>
+                                <a href="#"><span class="hb hb-sm"><p class="fa">Chiropractor</p></span></a>
+                                <a href="#"><span class="hb hb-sm"><p class="fa">Psychologist</p></span></a>
 
 
-                                       
-                                        <input id="location-unified-search" class="location-unified-search" placeholder="Suburb, State, Postcode" type="text" name="CLINIC_SUBURB">
 
 
-                                        <button tabindex="-1" id="btn_search" class="btn">Search</button>
-                                    </form>
+
+                                <div class="moveup">
+                                    <a href="#"><span class="hb hb-sm"><p class="fa">Audiologist</p></span></a>
+                                    <a href="#"><span class="hb hb-sm"><p class="fa">Podiatrist</p></span></a>
+                                    <a href="#" class="hexagon-hidden"><span class="hb hb-sm"></span></a>
+                                    <a href="#"><span class="hb hb-sm"><p class="fa">Counsellor</p></span></a>
+                                    <a href="#"><span class="hb hb-sm"><p class="fa">Skin Checks</p></span></a>
+                                    <a href="#" class="hexagon-hidden"><span class="hb hb-sm"></span></a>
+                                    <a href="#"><span class="hb hb-sm"><p class="fa">Optometry</p></span></a>
                                 </div>
+
+                                <div class="input-unified-search">
+                                    <div class="input-contain-unified-search">
+
+                                        <form id="unified-search-form-inline">
+                                            <input type="hidden" class="form-control" name="action_type" id="action_type" value="index_search">
+                                            <input type="hidden" class="form-control" name="from_index" id="from_index" value="1">
+
+
+
+                                            <input id="location-unified-search" class="location-unified-search" placeholder="Suburb, State, Postcode" type="text" name="CLINIC_SUBURB">
+
+
+                                            <button tabindex="-1" id="btn_search" class="btn">Search</button>
+                                        </form>
+                                    </div>
+
+                                </div>
+
+
 
                             </div>
-
-
-
                         </div>
-                    </div>
 
-                    <div class="col-lg-12">
-                        <p class="title wow fadeInUp">We specialize in helping patients with symptomatic rapid appointment to doctor.</p>
-                    </div>
-                    <div class="col-lg-10 col-lg-offset-1">
-                        <p class="description wow fadeInUp" data-wow-delay="0.1s">Nos especializamos en ayudar a los pacientes con cita rápida sintomática en médico.</p>
-                        <a href="index-2.php" class="btn-default btn1 wow fadeInUp" data-wow-delay="0.2s">read more</a>
+                        
                     </div>
                 </div>
             </div>
-        </div>
-        <!--footer-->
-        <?php
+            <!--footer-->
+            <?php
 include_once 'classes/Footer/Footer.php';
 ?>
-            <?php
+                <?php
 include_once 'classes/Language/For_JS_multi_lang.php';
 ?>
-                <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
-                <script type="text/javascript" src="js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
-                <script src="js/bootstrap.min.js"></script>
-                <!-- dialog -->
-                <script src="js/bootstrap-dialog.min.js"></script>
+                    <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+                    <script type="text/javascript" src="js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+                    <script src="js/bootstrap.min.js"></script>
+                    <!-- dialog -->
+                    <script src="js/bootstrap-dialog.min.js"></script>
 
-                <script src="js/tm-scripts.js"></script>
-                <script src="js/jquery.cookie.js"></script>
-                <script src="js/jquery-ui.js"></script>
+                    <script src="js/tm-scripts.js"></script>
+                    <script src="js/jquery.cookie.js"></script>
+                    <script src="js/jquery-ui.js"></script>
 
-                
-                <script src="js/main/pub.js"></script>
-                <script src="js/main/index.js"></script>
-                <script type="text/javascript" src="js/main/index_search.js"></script>
+
+                    <script src="js/main/pub.js"></script>
+                    <script src="js/main/index.js"></script>
+                    <script type="text/javascript" src="js/main/index_search.js"></script>
 
 
 
