@@ -56,7 +56,7 @@ h1.navbar-brand_ a {
 h2 {
   /*font: 36px/1em  sans-serif;*/
   margin: 0 0 41px 0;
-  color: #ffffff;
+  color: #4f798c;
 }
 h2.indent {
   font-size: 72px;
@@ -523,7 +523,8 @@ nav.tm_navbar .sub-menu > ul li > ul li a:hover {
 .thumb-box9 {
   overflow: hidden;
   padding: 0;
-  background-image: url(../img/bg_pic2.jpg);
+  /*background-image: url(../img/bg_pic2.jpg);*/
+  background-color:#f8f8f9;
   background-position: 100% 0;
   background-attachment: fixed;
   padding: 20px 0 20px 0;
@@ -1766,13 +1767,14 @@ nav.tm_navbar .sub-menu > ul li > ul li a:hover {
                     footer
 =========================================================*/
 footer {
-  padding: 56px 0;
+  padding: 26px 0;
   position: relative;
-  background: url(../img/bg_pic1.jpg) center center no-repeat;
+  /*background: url(../img/bg_pic1.jpg) center center no-repeat;*/
+  background-color: #3fb0ac;
   background-size: cover;
 }
 footer .privacy {
-  font: 18px  sans-serif;
+  font: 14px  sans-serif;
   color: #ffffff;
   text-transform: uppercase;
   margin: 0;
@@ -1787,7 +1789,7 @@ footer .privacy a:hover {
   color: #1abbae;
 }
 footer p {
-  font: 20px/26px  sans-serif;
+  font: 14px  sans-serif;
   color: #ffffff;
   margin: 0;
 }

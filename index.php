@@ -42,6 +42,11 @@ include_once 'classes/Language/language.common.php';
         <link rel="stylesheet" type="text/css" href="css/hexagons.css">
 
         <style>
+
+            .alex-image{
+                background-repeat: no-repeat;
+                background-image: url("img/dentist.png");
+            }
             .input-contain-unified-search:after,
             .pill-us .pico-unified-search,
             .pill-us-mob .pico-unified-search,
@@ -462,7 +467,7 @@ include_once 'classes/Language/language.common.php';
                 border: 1px solid #ecedee;
             }
             
-            .icons-unified-search .icons-image {
+            .alex-image {
                 display: block;
                 margin: 12px auto 2px;
                 width: 34px;
@@ -1051,7 +1056,9 @@ include_once 'classes/Language/language.common.php';
                             <div class="box-unified-search">
                                 <a href="#"><span class="hb hb-sm"><p class="fa">GP</p></span></a>
                                 <a href="#" class="hexagon-hidden"><span class="hb hb-sm"></span></a>
-                                <a href="#"><span class="hb hb-sm"><p class="fa">Dentist</p></span></a>
+                                <a href="#"><span class="hb hb-sm">
+                                    <!--<span class="alex-image"></span>-->
+                                <p class="fa">Dentist</p></span></a>
                                 <a href="#"><span class="hb hb-sm"><p class="fa">Physio</p></span></a>
                                 <a href="#" class="hexagon-hidden"><span class="hb hb-sm"></span></a>
                                 <a href="#"><span class="hb hb-sm"><p class="fa">Chiropractor</p></span></a>
