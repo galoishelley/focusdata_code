@@ -174,19 +174,36 @@
                 padding-left: 15px;
             }
             
-            .nav-tabs{
+            .nav-tabs {
                 margin-bottom: 2px;
             }
-            .nav-tabs > li > a {
+            
+            .nav-tabs>li>a {
                 border: 1px solid #cccccc;
                 color: #000;
             }
-
-            .nav-tabs > li.active > a {
+            
+            .nav-tabs>li.active>a {
                 font-weight: bold;
             }
-
-
+            
+            .modal-body {
+                padding: 0;
+            }
+            
+            .radio-inline {
+                width: auto;
+                margin: 0;
+            }
+            
+            .container-fluid {
+                padding-top: 15px;
+            }
+            
+            .col-md-6 {
+                padding-left: 0px;
+                padding-right: 0px;
+            }
         </style>
 
         <!--JS-->
@@ -294,19 +311,21 @@
                                 <form class="form-horizontal" role="form" id="modal_form_search">
                                     <input type="hidden" class="form-control" name="action_type" id="action_type" value="index_search">
                                     <input type="hidden" class="form-control" name="CUSTOMER_USER_ID" id="CUSTOMER_USER_ID">
-                                    <div class="form-group col-md-12">
-                                        <label for="DOCTOR_TYPE" class="radio-inline" style="margin-left: 0px;padding-left:0px">
+                                    <div class="form-group">
+                                        <label for="DOCTOR_TYPE" class="col-xs-12 col-sm-12 col-md-2 col-lg-1">
                                              <!-- 医生类别-->
                                              <?php echo $lang['Lang0065']; ?>
                                           </label>
+                                        <!--<div class="col-xs-12 col-sm-12">-->
                                         <label class="radio-inline"><input type="radio" class="custom-control-input" name="DOCTOR_TYPE" value="GP">GP</label>
                                         <label class="radio-inline"><input type="radio" class="custom-control-input" name="DOCTOR_TYPE" value="Dentist">Dentist</label>
                                         <label class="radio-inline"><input type="radio"  class="custom-control-input" name="DOCTOR_TYPE" value="Physio">Physio</label>
                                         <label class="radio-inline"><input type="radio"  class="custom-control-input" name="DOCTOR_TYPE" value="Dermatologist">Dermatologist</label>
                                         <label class="radio-inline"><input type="radio"  class="custom-control-input" name="DOCTOR_TYPE" value="Chiropractor">Chiropractor</label>
+                                        <!--</div>-->
                                     </div>
                                     <div class="form-group  col-md-12">
-                                        <label for="LANGUAGE" class="col-md-2">
+                                        <label for="LANGUAGE" class="col-xs-12 col-sm-12 col-md-2 col-lg-1">
                                              <!-- 位置-->
                                              <?php echo $lang['Lang0326']; ?>
                                           </label>
@@ -326,21 +345,25 @@
                                             <input type="text" class="form-control" id="CLINIC_SUBURB" name="CLINIC_SUBURB">
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-6" style="padding-left:0px">
+                                    <div class="form-group col-md-6">
                                         <label for="CLINIC_NAME" class="col-md-3">
                                              <!-- 诊所名称-->
                                              <?php echo $lang['Lang0049']; ?>
                                           </label>
-                                        <input type="text" class="form-control" id="CLINIC_NAME" name="CLINIC_NAME">
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="CLINIC_NAME" name="CLINIC_NAME">
+                                        </div>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="DOCTOR_NAME" class="col-md-3">
                                              <!-- 医生姓名-->
                                              <?php echo $lang['Lang0297']; ?>
                                           </label>
-                                        <input type="text" class="form-control" id="DOCTOR_NAME" name="DOCTOR_NAME">
+                                        <div class="col-md-8">
+                                            <input type="text" class="form-control" id="DOCTOR_NAME" name="DOCTOR_NAME">
+                                        </div>
                                     </div>
-                                    <div class="form-group col-md-6" style="padding-left:0px">
+                                    <div class="form-group col-md-6">
                                         <label for="distance" class="col-md-3">
                                              <!-- 医生距离-->
                                              <?php echo $lang['Lang0298']; ?>
@@ -365,19 +388,19 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                            <button type="button" class="btn btn-default col-xs-12" data-dismiss="modal">
                                     <!-- 取消-->
                                     <?php echo $lang['Lang0139']; ?>
                                  </button>
-                            <a class="btn btn-danger" href="userSaveSearch.php" id="btn_save_search_manage">
+                            <a class="btn btn-danger col-xs-12" href="userSaveSearch.php" id="btn_save_search_manage">
                                 <!-- 常用搜索条件管理-->
                                 <?php echo $lang['Lang0279']; ?>
                             </a>
-                            <button type="button" class="btn btn-warning" id="btn_save_search">
+                            <button type="button" class="btn btn-warning col-xs-12" id="btn_save_search">
                                     <!-- 保存为常用搜索条件-->
                                     <?php echo $lang['Lang0305']; ?>
                                  </button>
-                            <button type="button" class="btn btn-primary" id="btn_search">
+                            <button type="button" class="btn btn-primary col-xs-12" id="btn_search">
                                     <!-- 搜索-->
                                     <?php echo $lang['Lang0308']; ?>
                                  </button>

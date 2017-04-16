@@ -126,6 +126,7 @@ form fieldset .checkbox label{
 	float: right;
 	margin: 0 20px 10px 0;
 }
+
 .radio-inline{
 	margin:0 5px;
 	/*padding-left:10px;*/
@@ -133,7 +134,11 @@ form fieldset .checkbox label{
 .radio-inline + .radio-inline,
 .checkbox-inline + .checkbox-inline {
   margin-top: 0;
-  margin-left: 5px;
+  margin-left: 0;
+  margin-right: 20px;
+}
+.form-horizontal .radio-inline{
+  margin-right: 20px;
 }
 .info-content .many_radio{
 	padding:5px;
