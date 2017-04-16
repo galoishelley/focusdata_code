@@ -36,17 +36,16 @@ include_once 'classes/Language/language.common.php';
 
 
         <link href="css/jquery-ui.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700" rel="stylesheet"
-            type="text/css">
+
 
         <link rel="stylesheet" type="text/css" href="css/hexagons.css">
 
         <style>
-
-            .alex-image{
+            .alex-image {
                 background-repeat: no-repeat;
                 background-image: url("img/dentist.png");
             }
+            
             .input-contain-unified-search:after,
             .pill-us .pico-unified-search,
             .pill-us-mob .pico-unified-search,
@@ -121,9 +120,11 @@ include_once 'classes/Language/language.common.php';
             
             .panel-unified-search .box-unified-search {
                 height: auto;
-                width: 615px;
-                margin: 0 auto;
-                padding: 0;
+                /*width: 615px;*/
+
+                /*margin: 0 auto;*/
+                /*padding: 0;*/
+                padding: 0px 0px 50px 0px;
                 -webkit-box-sizing: border-box;
                 -moz-box-sizing: border-box;
                 box-sizing: border-box;
@@ -979,7 +980,6 @@ include_once 'classes/Language/language.common.php';
                 border: none;
                 color: #fff;
                 background-color: #4f798c;
-               
             }
             
             .btn a {
@@ -1026,6 +1026,28 @@ include_once 'classes/Language/language.common.php';
                 background-image: none;
                 outline: 0
             }
+
+            /*.input-unified-search .input-contain-unified-search-under{
+
+            }*/
+            /*            
+            .index p {
+                margin: 0px;
+            }
+            
+            .index .fa {
+                display: inline;
+            }*/
+            
+            /*.panel-unified-search .box-unified-search .col-xs-12 {
+                margin-left: -100px;
+                margin-right: -100px;
+            }*/
+
+            .index .col-md-6,.col-xs-12{
+                padding-left: 0px;
+                padding-right: 0px;
+            }
         </style>
         <!--JS-->
         <script src="js/jquery.js"></script>
@@ -1052,33 +1074,29 @@ include_once 'classes/Language/language.common.php';
                 <div class="thumb-box1">
                     <div class="container">
                         <div class="panel-unified-search">
-
-                            <div class="box-unified-search">
-                                <a href="#"><span class="hb hb-sm"><p class="fa">GP</p></span></a>
-                                <a href="#" class="hexagon-hidden"><span class="hb hb-sm"></span></a>
-                                <a href="#"><span class="hb hb-sm">
+                            <div class="box-unified-search col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                                    <a href="#"><span class="hb hb-sm"><p class="fa">GP</p></span></a>
+                                    <a href="#" class="hexagon-hidden"><span class="hb hb-sm"></span></a>
+                                    <a href="#"><span class="hb hb-sm">
                                     <!--<span class="alex-image"></span>-->
                                 <p class="fa">Dentist</p></span></a>
-                                <a href="#"><span class="hb hb-sm"><p class="fa">Physio</p></span></a>
-                                <a href="#" class="hexagon-hidden"><span class="hb hb-sm"></span></a>
-                                <a href="#"><span class="hb hb-sm"><p class="fa">Chiropractor</p></span></a>
-                                <a href="#"><span class="hb hb-sm"><p class="fa">Psychologist</p></span></a>
-
-
-
-
-
-                                <div class="moveup">
-                                    <a href="#"><span class="hb hb-sm"><p class="fa">Audiologist</p></span></a>
-                                    <a href="#"><span class="hb hb-sm"><p class="fa">Podiatrist</p></span></a>
+                                    <a href="#"><span class="hb hb-sm"><p class="fa">Physio</p></span></a>
                                     <a href="#" class="hexagon-hidden"><span class="hb hb-sm"></span></a>
-                                    <a href="#"><span class="hb hb-sm"><p class="fa">Counsellor</p></span></a>
-                                    <a href="#"><span class="hb hb-sm"><p class="fa">Skin Checks</p></span></a>
-                                    <a href="#" class="hexagon-hidden"><span class="hb hb-sm"></span></a>
-                                    <a href="#"><span class="hb hb-sm"><p class="fa">Optometry</p></span></a>
+                                    <a href="#"><span class="hb hb-sm"><p class="fa">Chiropractor</p></span></a>
+                                    <a href="#"><span class="hb hb-sm"><p class="fa">Psychologist</p></span></a>
+
+                                    <div class="moveup">
+                                        <a href="#"><span class="hb hb-sm"><p class="fa">Audiologist</p></span></a>
+                                        <a href="#"><span class="hb hb-sm"><p class="fa">Podiatrist</p></span></a>
+                                        <a href="#" class="hexagon-hidden"><span class="hb hb-sm"></span></a>
+                                        <a href="#"><span class="hb hb-sm"><p class="fa">Counsellor</p></span></a>
+                                        <a href="#"><span class="hb hb-sm"><p class="fa">Skin Checks</p></span></a>
+                                        <a href="#" class="hexagon-hidden"><span class="hb hb-sm"></span></a>
+                                        <a href="#"><span class="hb hb-sm"><p class="fa">Optometry</p></span></a>
+                                    </div>
                                 </div>
 
-                                <div class="input-unified-search">
+                                <div class="input-unified-search col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 ">
                                     <div class="input-contain-unified-search">
 
                                         <form id="unified-search-form-inline">
@@ -1093,15 +1111,9 @@ include_once 'classes/Language/language.common.php';
                                             <button tabindex="-1" id="btn_search" class="btn">Search</button>
                                         </form>
                                     </div>
-
                                 </div>
-
-
-
                             </div>
                         </div>
-
-                        
                     </div>
                 </div>
             </div>

@@ -402,6 +402,7 @@ nav.tm_navbar .sub-menu > ul li > ul li a:hover {
   text-align: center;
   overflow: hidden;
 }
+
 .thumb-box1 .title {
   font: 38px/42px sans-serif;
   color: #ffffff;
@@ -2008,7 +2009,7 @@ footer i {
   .select-menu {
     display: inline-block !important;
     padding: 4px 4px 4px 0;
-    margin: 30px 0;
+    margin: 15px 0;
     width: 100%;
     border: 1px solid #74c5be;
     background: #74c5be;
