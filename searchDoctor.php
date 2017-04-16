@@ -33,7 +33,6 @@
         <link rel="stylesheet" type="text/css" href="css/searchDoctor.css" />
 
         <style>
-            
             .ui-autocomplete {
                 z-index: 5000;
             }
@@ -168,6 +167,26 @@
                 margin: 0 0 24px 10px;
                 line-height: 20px;
             }
+            
+            .search-card-contain .search-card-top .col-sm-12,
+            .col-lg-8 {
+                padding-right: 15px;
+                padding-left: 15px;
+            }
+            
+            .nav-tabs{
+                margin-bottom: 2px;
+            }
+            .nav-tabs > li > a {
+                border: 1px solid #cccccc;
+                color: #000;
+            }
+
+            .nav-tabs > li.active > a {
+                font-weight: bold;
+            }
+
+
         </style>
 
         <!--JS-->
@@ -232,23 +251,24 @@
                 <div class="thumb-box9" data-stellar-background-ratio="0.1">
 
                     <div class="tab_container">
-                        <ul class="nav nav-tabs" id="TMP_Clinic_Tab">
-                        </ul>
-                        <ul class="nav nav-tabs" id="TMP_Doctor_Tab">
-                        </ul>
-                        <div class="tab-content" id="TMP_Clinic_Content"></div>
-                        <div class="tab-content" id="TMP_Doctor_Content"></div>
-
+                        <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+                            <ul class="nav nav-tabs" id="TMP_Clinic_Tab">
+                            </ul>
+                            <ul class="nav nav-tabs" id="TMP_Doctor_Tab">
+                            </ul>
+                            <div class="tab-content" id="TMP_Clinic_Content"></div>
+                            <div class="tab-content" id="TMP_Doctor_Content"></div>
+                        </div>
                     </div>
 
-                    
 
 
-                    <section class="search-card-contain search-card-top warning">
+
+                    <section class="search-card-contain search-card-top warning col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="search-card-overflow">
                             <h1>Sorry, we couldn't find any appointments matching your search criteria</h1>
                             <h2>Try changing your search criteria for more results</h2>
-                            
+
                         </div>
                     </section>
 
@@ -539,7 +559,7 @@
                         <div class="tab-pane {{if date==activeID}}active{{else}}{{/if}}" id="d{{>date}}">
 
                             {{for doctors ~ppdate=date}}
-                            <section class="search-card-contain search-practice ">
+                            <section class="search-card-contain search-practice  col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                 <div class="search-card-overflow">
                                     <div class="search-main-dets">
                                         <h2 class="search-main-title showProfile">{{>doctorName}}</h2>
@@ -595,7 +615,7 @@
                         {{for #data}}
                         <div class="tab-pane {{if date==activeID}}active{{else}}{{/if}}" id="c{{>date}}">
                             {{for clinics ~ppdate=date}}
-                            <section class="search-card-contain search-practice ">
+                            <section class="search-card-contain search-practice  col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                 <div class="search-card-overflow">
                                     <div class="search-main-dets">
                                         <h2 class="search-main-title showProfile">{{>clinicName}}</h2>

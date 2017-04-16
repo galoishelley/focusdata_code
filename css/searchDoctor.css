@@ -4737,7 +4737,7 @@ h2.search-imd-header {
     background-clip: padding-box
 }
 .search-card-contain {
-    width: 728px;
+    /*width: 728px;*/
     padding: 0;
     margin: 0 0 25px;
     overflow: hidden;
@@ -4994,7 +4994,7 @@ h2.search-imd-header {
 }
 .search-card-contain .search-main-dets .search-suburb-contain .search-suburb {
     margin: 0;
-    padding: 0;
+    padding: 0px 10px;
     font-size: 13px;
     float: left;
     color: #63707b;
@@ -5095,6 +5095,7 @@ h2.search-imd-header {
     background-position: 5px -537px
 }
 .search-card-contain .search-main-dets .search-addie {
+    padding-left: 10px;
     color: #63707b;
     margin: 3px 0 3px;
     height: 40px;
@@ -5442,7 +5443,8 @@ h2.search-imd-header {
     margin: 0;
     width: 100%;
     min-height: 54px;
-    padding: 0 10px;
+    /*padding: 0 10px;*/
+    padding-right: 10px;
     overflow: hidden;
     background-color: #f7f8fc;
     border-bottom: 1px solid #ebeced;

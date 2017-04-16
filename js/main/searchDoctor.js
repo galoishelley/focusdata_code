@@ -344,8 +344,8 @@ $(function () {
 
 
 	// _______________________________________________________________________________________ center the Tab area
-	$('.tab_container').css('padding-left', ($(window).width() - 728) / 2);
-	$('.tab_container').css('padding-right', ($(window).width() - 728) / 2);
+	// $('.tab_container').css('padding-left', ($(window).width() - 728) / 2);
+	// $('.tab_container').css('padding-right', ($(window).width() - 728) / 2);
 
 	$('.warning').css('margin-left', ($(window).width() - 728) / 2);
 
