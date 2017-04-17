@@ -14,7 +14,7 @@
                 <a href="#">
                     <?php echo $lang['Lang0014']; ?>
                 </a>
-                <ul class="submenu">
+                <ul class="submenu sub-menu-login">
                     <li>
                         <a href="sign_in.php">
                             <?php echo $lang['Lang0027']; ?>
@@ -45,7 +45,7 @@
                 <a href="#">
                     <?php echo $lang['Lang0010']; ?>
                 </a>
-                <ul class="submenu">
+                <ul class="submenu sub-menu-languang">
                     <li><a href="?lang=en">English</a></li>
                     <li><a href="?lang=ch">中文</a></li>
                 </ul>

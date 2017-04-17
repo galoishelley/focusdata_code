@@ -234,11 +234,16 @@ nav.tm_navbar li span {
 }
 /* subMenu1
 ========================================================*/
+.sub-menu-login{
+  left:-70px;
+}
+.sub-menu-languang{
+  left:-60px;
+}
 nav.tm_navbar .sub-menu > ul {
   position: absolute;
   display: none;
   width: 180px;
-  left: 0;
   top: 35px;
   list-style: none !important;
   zoom: 1;
