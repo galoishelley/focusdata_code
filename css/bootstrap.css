@@ -3680,7 +3680,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   max-width: none;
 }
 .nav-tabs {
-  /*border-bottom: 1px solid #dddddd;*/
+  border-bottom: 1px solid #dddddd;
 }
 .nav-tabs > li {
   float: left;

@@ -175,7 +175,7 @@
             }
             
             .nav-tabs {
-                margin-bottom: 2px;
+                margin-bottom: 30px;
             }
             
             .nav-tabs>li>a {
