@@ -200,9 +200,17 @@
                 padding-top: 15px;
             }
             
-            .col-md-6 {
+            .col-md-6, .col-md-1 {
                 padding-left: 0px;
                 padding-right: 0px;
+            }
+
+            .modal-footer .btn{
+                margin-top: 5px;
+            }
+
+            .modal-footer .btn + .btn{
+                margin-left: 0px;
             }
         </style>
 
@@ -275,24 +283,31 @@
                             </ul>
                             <div class="tab-content" id="TMP_Clinic_Content"></div>
                             <div class="tab-content" id="TMP_Doctor_Content"></div>
-                        </div>
-                    </div>
 
 
 
-
-                    <section class="search-card-contain search-card-top warning col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <section class="search-card-contain search-card-top warning">
                         <div class="search-card-overflow">
                             <h1>Sorry, we couldn't find any appointments matching your search criteria</h1>
                             <h2>Try changing your search criteria for more results</h2>
 
                         </div>
                     </section>
+                    
+                        </div>
+                    </div>
+
+
+
+
+                    
 
 
                 </div>
 
             </div>
+
+            
 
             <div class="modal fade bs-example-modal-lg" role="dialog" aria-labelledby="gridSystemModalLabel" id="searchModal">
                 <div class="modal-dialog modal-lg" role="document">
@@ -312,7 +327,7 @@
                                     <input type="hidden" class="form-control" name="action_type" id="action_type" value="index_search">
                                     <input type="hidden" class="form-control" name="CUSTOMER_USER_ID" id="CUSTOMER_USER_ID">
                                     <div class="form-group">
-                                        <label for="DOCTOR_TYPE" class="col-xs-12 col-sm-12 col-md-2 col-lg-1">
+                                        <label for="DOCTOR_TYPE" class="col-xs-12 col-sm-12 col-md-1 col-lg-1">
                                              <!-- 医生类别-->
                                              <?php echo $lang['Lang0065']; ?>
                                           </label>
@@ -325,7 +340,7 @@
                                         <!--</div>-->
                                     </div>
                                     <div class="form-group  col-md-12">
-                                        <label for="LANGUAGE" class="col-xs-12 col-sm-12 col-md-2 col-lg-1">
+                                        <label for="LANGUAGE" class="col-xs-12 col-sm-12 col-md-1 col-lg-1">
                                              <!-- 位置-->
                                              <?php echo $lang['Lang0326']; ?>
                                           </label>
@@ -336,21 +351,28 @@
                                              <option value="Arabic">Arabic</option>
                                           </select>
                                     </div>
-                                    <div class="form-group  col-md-12">
-                                        <label for="CLINIC_SUBURB" class="col-md-2">
+
+                                    <div class="form-group col-md-12">
+                                        <div class="col-md-6">
+                                        <label for="CLINIC_SUBURB" class="col-md-3">
                                              <!-- 位置-->
                                              <?php echo $lang['Lang0316']; ?>
                                           </label>
-                                        <div class="col-md-10">
+
+                                           <div class="col-md-9" >
                                             <input type="text" class="form-control" id="CLINIC_SUBURB" name="CLINIC_SUBURB">
                                         </div>
+
+                                        </div>
+                                         <!--<div class="clearfix visible-xs-block"></div>-->
+                                       
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="CLINIC_NAME" class="col-md-3">
                                              <!-- 诊所名称-->
                                              <?php echo $lang['Lang0049']; ?>
                                           </label>
-                                        <div class="col-md-8">
+                                        <div class="col-xs-12 col-sm-12 col-md-8">
                                             <input type="text" class="form-control" id="CLINIC_NAME" name="CLINIC_NAME">
                                         </div>
                                     </div>
@@ -359,7 +381,7 @@
                                              <!-- 医生姓名-->
                                              <?php echo $lang['Lang0297']; ?>
                                           </label>
-                                        <div class="col-md-8">
+                                        <div class="col-xs-12 col-sm-12 col-md-8">
                                             <input type="text" class="form-control" id="DOCTOR_NAME" name="DOCTOR_NAME">
                                         </div>
                                     </div>
@@ -368,7 +390,9 @@
                                              <!-- 医生距离-->
                                              <?php echo $lang['Lang0298']; ?>
                                           </label>
-                                        <select class="form-control" id="DISTANCE" name="DISTANCE">
+                                        <div class="col-xs-12 col-sm-12 col-md-8">
+
+                                            <select class="form-control" id="DISTANCE" name="DISTANCE">
                                              <option value="">
                                                 <!-- All--><?php echo $lang['Lang0042']; ?>
                                              </option>
@@ -376,31 +400,34 @@
                                              <option value="10km">10km</option>
                                              <option value="20km">20km</option>
                                           </select>
+                                        </div>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="APPOINTMENT_DATE" class="col-md-3">
                                              <!-- 预约日期-->
                                              <?php echo $lang['Lang0319']; ?>
                                           </label>
-                                        <input type="text" class="form-control form_datetime" id="APPOINTMENT_DATE" name="APPOINTMENT_DATE">
+                                        <div class="col-xs-12 col-sm-12 col-md-8">
+                                            <input type="text" class="form-control form_datetime" id="APPOINTMENT_DATE" name="APPOINTMENT_DATE">
+                                        </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default col-xs-12" data-dismiss="modal">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
                                     <!-- 取消-->
                                     <?php echo $lang['Lang0139']; ?>
                                  </button>
-                            <a class="btn btn-danger col-xs-12" href="userSaveSearch.php" id="btn_save_search_manage">
+                            <a class="btn btn-danger" href="userSaveSearch.php" id="btn_save_search_manage">
                                 <!-- 常用搜索条件管理-->
                                 <?php echo $lang['Lang0279']; ?>
                             </a>
-                            <button type="button" class="btn btn-warning col-xs-12" id="btn_save_search">
+                            <button type="button" class="btn btn-warning" id="btn_save_search">
                                     <!-- 保存为常用搜索条件-->
                                     <?php echo $lang['Lang0305']; ?>
                                  </button>
-                            <button type="button" class="btn btn-primary col-xs-12" id="btn_search">
+                            <button type="button" class="btn btn-primary" id="btn_search">
                                     <!-- 搜索-->
                                     <?php echo $lang['Lang0308']; ?>
                                  </button>
