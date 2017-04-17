@@ -236,9 +236,7 @@
             include_once 'classes/Menu/menu.php';
             ?>
             <header>
-                <?php
-            include_once 'classes/Menu/menu.php';
-            ?>
+                
                     <h1 class="navbar-brand navbar-brand_">
                         <a href="index.php"><img src="img/<?php echo $lang['Lang0004']; ?>"
                alt="logo" height="55" width="346"></a>

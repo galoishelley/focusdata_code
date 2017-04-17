@@ -33,10 +33,11 @@ include_once 'classes/Language/language.common.php';
 <body>
 <!--header-->
 <div class="container bars"><em class="bars_"></em></div>
-<header>
-    <?php
+<?php
 include_once 'classes/Menu/menu.php';
 ?>
+<header>
+    
     <h1 class="navbar-brand navbar-brand_"><a href="index.php"><img src="img/<?php echo $lang['Lang0004']; ?>" alt="logo"></a></h1>
 </header>
 

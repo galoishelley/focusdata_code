@@ -620,7 +620,9 @@ table thead .sorting:after {
 
 .form_add .form-group label{
   width:100px;
-  font-weight: normal;
+  /*font-weight: normal;*/
+  font: 12px sans-serif;
+  color: #4f798c;
   margin-right: 5px;
   margin-left: 20px;
 }
