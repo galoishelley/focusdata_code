@@ -7,15 +7,7 @@
                     <?php echo $lang['Lang0005']; ?>
                 </a>
             </li>
-            <li class="sub-menu">
-                <a href="#">
-                    <?php echo $lang['Lang0010']; ?>
-                </a>
-                <ul class="submenu">
-                    <li><a href="?lang=en">English</a></li>
-                    <li><a href="?lang=ch">中文</a></li>
-                </ul>
-            </li>
+            
 
 
             <li class="sub-menu hidden" id="sign_in">
@@ -47,7 +39,20 @@
                     <?php echo $lang['Lang0015']; ?>
                 </a>
             </li>
-            <li class="sub-menu tourist">
+
+
+            <li class="sub-menu">
+                <a href="#">
+                    <?php echo $lang['Lang0010']; ?>
+                </a>
+                <ul class="submenu">
+                    <li><a href="?lang=en">English</a></li>
+                    <li><a href="?lang=ch">中文</a></li>
+                </ul>
+            </li>
+
+
+            <li class="sub-menu tourist" style="left:200px">
                 <a href="#" id="userinfo">
                     <!-- 游客 -->
                     <?php echo $lang['Lang0016']; ?>
