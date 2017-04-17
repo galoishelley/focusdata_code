@@ -2666,7 +2666,10 @@ h1 {
     color: #2b4b5a;
     font-weight: 600;
     margin: 0 0 20px;
-    font-size: 30px
+    font-size: 22px;
+    font-weight: 400;
+    padding-top:30px;
+    padding-bottom: 20px;
 }
 @media (max-width: 767px) {
     h1 {
@@ -2680,9 +2683,10 @@ h1 {
 }
 h2 {
     color: #2b4b5a;
-    font-weight: 600;
+    font-size:16px;
+    font-weight: 400;
     margin: 0 0 10px;
-    font-size: 20px;
+
     line-height: 1.2em
 }
 @media (max-width: 767px) {
