@@ -187,7 +187,7 @@ nav.tm_navbar li:first-child {
 nav.tm_navbar li:first-child:after {
   display: none;
 }
-nav.tm_navbar li:after {
+/*nav.tm_navbar li:after {
   content: '';
   position: absolute;
   top: 0;
@@ -196,7 +196,7 @@ nav.tm_navbar li:after {
   height: 100%;
   display: inline-block;
   background: url(../img/dotted.png) 0 center no-repeat;
-}
+}*/
 nav.tm_navbar li a {
   position: relative;
   padding: 0;

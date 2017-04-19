@@ -96,6 +96,7 @@
 
       var url, str_data;
       if (fd_usertype == 0) {
+        $('#li_home').removeClass("hidden");
         $('#li_ClinicUser').removeClass("hidden");
         url = "classes/class.ClinicDetail.php";
         // str_data="CLINIC_USER_ID";
