@@ -2173,7 +2173,7 @@ $(function () {
 		func_code = "ST01";
 		para = {
 			DOCTOR_ID: keyDoctorID,
-			APPOINTMENT_DATE: keyDate,
+			APPOINTMENT_DATE: reformatDate(keyDate),
 			APPOINTMENT_TIME: keyTime
 		};
 

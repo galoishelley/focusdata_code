@@ -84,7 +84,7 @@ class Sign_up_person
 	{
 		$response["response"]  = array();
 		$success = true;
-		$ret_msg = "注册成功";
+		$ret_msg = "Succeed";
 		$ret_code = "UP0000"; 
 
 		$ret = $this->sign_up_person->create($this->arr_values);
@@ -95,7 +95,7 @@ class Sign_up_person
 			$ret_code = "UP0001";
 		}elseif($ret>0){
 			$success = true;
-			$ret_msg="注册成功";
+			$ret_msg="Succeed";
 			$ret_code = "UP0000";
 		}else{
 			$success = false;

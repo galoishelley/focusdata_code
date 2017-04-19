@@ -83,7 +83,7 @@ class Sign_up_clinic
 	{
 		$response["response"]  = array();
 		$success = true;
-		$ret_msg = "注册成功";
+		$ret_msg = "Succeed";
 		$ret_code = "UP0000"; 
 
 		$ret = $this->Sign_up_clinic->create($this->arr_values);
@@ -94,7 +94,7 @@ class Sign_up_clinic
 			$ret_code = "UP0001";
 		}elseif($ret>0){
 			$success = true;
-			$ret_msg="注册成功";
+			$ret_msg="Succeed";
 			$ret_code = "UP0000";
 		}else{
 			$success = false;
