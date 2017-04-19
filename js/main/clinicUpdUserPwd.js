@@ -124,7 +124,7 @@ $(document).ready(function() {
     json_form = {
       action_type:"update",
       CLINIC_USER_ID:fd_userid,
-      CLINIC_USER_ID:$('#CLINIC_USER_NEWPWD').val()
+      CLINIC_USER_PWD:$('#CLINIC_USER_NEWPWD').val()
     };
     //生成输入参数
     json_str = request_const(json_form,"CU04",1);
