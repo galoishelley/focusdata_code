@@ -17,30 +17,25 @@ include_once 'classes/Language/language.common.php';
         <meta name="keywords" content="Your keywords">
         <meta name="author" content="Your name">
         <meta name="format-detection" content="telephone=no" />
+
         <!--CSS-->
         <link rel="stylesheet" href="css/bootstrap.css">
-        <!-- dialog -->
-        <link href="css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css" />
+
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/animate.css">
         <link rel="stylesheet" href="fonts/font-awesome.css">
         <!-- User CSS -->
         <link rel="stylesheet" href="css/user.css">
         <link rel="stylesheet" href="css/focusdata.css">
-        <!-- datetime -->
-        <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-
-
-
         
-
-
         <link href="css/jquery-ui.css" rel="stylesheet">
-        
 
         <style>
+            * {
+                box-sizing: border-box;
+            }
+
             .input-contain-unified-search:after,
-   
             .pill-us .pico-unified-search,
             .pill-us-mob .pico-unified-search,
             .pill-us .cross-unified-search,
@@ -50,147 +45,12 @@ include_once 'classes/Language/language.common.php';
                 background-repeat: no-repeat;
                 background-image: url("img/he-icons-search-64.png");
             }
-            
-      
-            
+
             input {
                 -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
                 -webkit-tap-highlight-color: transparent;
             }
-            
-            .panel-unified-search {
-                height: 480px;
-                padding: 0;
-                background-repeat: no-repeat;
-                background-position: center bottom;
-                background-color: transparent;
-                background-size: cover;
-                behavior: url("/js/backgroundsize.min.htc");
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-                box-sizing: border-box;
-                text-align: center;
-            }
-            
-            .panel-unified-search h1 {
-                height: 170px;
-                padding: 65px 0 0;
-                margin: 0;
-                color: #fff;
-                font-size: 35px;
-                font-weight: 400;
-                display: inline-block;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-                box-sizing: border-box;
-            }
-            
-            .panel-unified-search h1.what-unified-search {
-                display: none;
-            }
-            
-            .panel-unified-search h1.what-unified-search.show {
-                display: block;
-            }
-            
-            .panel-unified-search h1.book-unified-search {
-                padding: 60px 0 0;
-            }
-            
-            .panel-unified-search h1.book-unified-search .smaller-text-us {
-                display: block;
-                font-size: 20px;
-                margin-top: -2px;
-                padding-top: 0;
-                padding-bottom: 0;
-                font-weight: 400;
-            }
-            
-            .panel-unified-search h1.book-unified-search .top-line-us {
-                display: inline-block;
-            }
-            
-            .panel-unified-search h1.book-unified-search.show {
-                display: block;
-            }
-            
-            .panel-unified-search .box-unified-search {
-                height: auto;
-                /*width: 615px;*/
-
-                /*margin: 0 auto;*/
-                /*padding: 0;*/
-                padding: 0px 0px 50px 0px;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-                box-sizing: border-box;
-                text-align: center;
-            }
-            
-            .panel-unified-search .box-unified-search h2 {
-                color: #fff;
-                font-size: 21px;
-                font-weight: 400;
-                margin: 0;
-                padding: 22px 0 0;
-                height: 58px;
-                display: inline-block;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-                box-sizing: border-box;
-            }
-            
-            
-            
-            
-            
-            .panel-unified-search .box-unified-search .type-unified-search {
-                height: 78px;
-                -webkit-border-radius: 4px !important;
-                -moz-border-radius: 4px !important;
-                -ms-border-radius: 4px !important;
-                border-radius: 4px !important;
-                background-clip: padding-box;
-                width: 100%;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-                box-sizing: border-box;
-                margin-bottom: 20px;
-            }
-            
-            .panel-unified-search .box-unified-search .input-unified-search {
-                max-height: 60px;
-                -webkit-border-radius: 4px !important;
-                -moz-border-radius: 4px !important;
-                -ms-border-radius: 4px !important;
-                border-radius: 4px !important;
-                background-clip: padding-box;
-                width: 100%;
-                background-color: transparent;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
-                box-sizing: border-box;
-                position: relative;
-                z-index: 10;
-                width: 505px;
-                margin-left: 70px;
-                margin-top: 20px;
-            }
-            
-            .panel-unified-search .box-unified-search .input-unified-search.showing {
-                max-height: 500px;
-            }
-            
-            .panel-unified-search .box-unified-search .input-unified-search.showing .location-unified-search {
-                -webkit-border-radius: 4px 4px 4px 0 !important;
-                -moz-border-radius: 4px 4px 4px 0 !important;
-                -ms-border-radius: 4px 4px 4px 0 !important;
-                border-radius: 4px 4px 4px 0 !important;
-                background-clip: padding-box;
-                border-color: #008ec8;
-                border-bottom: 1px solid #dddddd;
-            }
-            
+                        
             .input-contain-unified-search {
                 position: relative;
             }
@@ -262,11 +122,255 @@ include_once 'classes/Language/language.common.php';
                 line-height: 60px;
             }
             
-     
             
             
+            .btn {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 90px;
+                height: 36px;
+                text-align: center;
+                color: #fff;
+                text-transform: capitalize;
+                font-size: 15px;
+                font-weight: 400;
+                -webkit-border-radius: 0 4px 4px 0 !important;
+                -moz-border-radius: 0 4px 4px 0 !important;
+                -ms-border-radius: 0 4px 4px 0 !important;
+                border-radius: 0 4px 4px 0 !important;
+                background-clip: padding-box;
+                display: inline-block;
+                *display: inline;
+                *zoom: 1;
+                padding: 9px 12px;
+                margin-bottom: 0;
+                font-size: 15px;
+                font-weight: 500;
+                line-height: 10px;
+                text-align: center;
+                text-decoration: none;
+                vertical-align: middle;
+                cursor: pointer;
+                border: none;
+                color: #fff;
+                background-color: #4f798c;
+            }
             
-      
+            .btn a {
+                color: #fff;
+                text-decoration: none
+            }
+            
+            .btn a:hover,
+            .btn a:focus,
+            .btn a:active {
+                text-decoration: underline
+            }
+            
+            .btn:hover,
+            .btn:focus,
+            .btn:active {
+                color: #fff;
+                background-color: #2386c8;
+                *background-color: #1f77b2
+            }
+            
+            .btn:active {
+                background-color: #1b699d \9
+            }
+            
+            .btn:first-child {
+                *margin-left: 0
+            }
+            
+            .btn:hover,
+            .btn:focus {
+                color: #fff;
+                background-color: #2386c8;
+                text-decoration: none
+            }
+            
+            .btn:focus {
+                outline: thin dotted #333;
+                outline: 5px auto -webkit-focus-ring-color;
+                outline-offset: -2px
+            }
+            
+            .btn:active {
+                background-image: none;
+                outline: 0
+            }
+            
+            .index-main-box {
+                padding: 55px 0 45px 0;
+                background: #005182 url(img/bg_pic_new.jpg) center 0 no-repeat;
+                background-size: cover;
+                text-align: center;
+                height: 780px;
+                overflow: hidden;
+            }
+            
+            .box-unified-search {
+                height: auto;
+                width: 615px;
+                margin: 0 auto;
+                padding: 0;
+            }
+            
+            @media (max-width: 767px) {
+                .box-unified-search {
+                    background: #eff3f3;
+                    border: none;
+                    height: auto;
+                    width: 100%;
+                    padding: 25px 5% 15px;
+                    border-radius: 0 !important;
+                    background-clip: padding-box;
+                }
+            }
+            
+            .type-unified-search {
+                height: 78px;
+                background-clip: padding-box;
+                width: 100%;
+                margin-bottom: 50px;
+            }
+            
+            .icons-unified-search {
+                height: 78px;
+                float: left;
+                width: 16.5%;
+                cursor: pointer;
+                background-color: #fff;
+                transition: background-color 0.5s, border-color 0.5s;
+                border-right: 1px solid #ecedee;
+                border-top: 1px solid #ecedee;
+                border-bottom: 1px solid #ecedee;
+            }
+            
+            .icons-unified-search:hover {
+                background-color: #f7f8fc;
+            }
+            
+            @media (max-width: 767px) {
+                .icons-unified-search {
+                    width: 25%;
+                }
+            }
+            
+            .icons-unified-search:first-child {
+                border-radius: 4px 0 0 4px !important;
+                background-clip: padding-box;
+                border: 1px solid #ecedee;
+            }
+            
+            .icons-more {
+                border-radius: 0 4px 4px 0 !important;
+                background-clip: padding-box;
+                float: right;
+                width: 17.5%;
+            }
+            
+            .gp-pill {
+                background-position: -276px -20px;
+            }
+            
+            .dt-pill {
+                background-position: -276px -84px;
+            }
+            
+            .ph-pill {
+                background-position: -276px -148px;
+            }
+            
+            .xray-pill {
+                background-position: -276px -980px;
+            }
+            
+            .ctscan-pill {
+                background-position: -276px -1172px;
+            }
+            
+            .mri-pill {
+                background-position: -276px -1236px;
+            }
+            
+            .ultra-pill {
+                background-position: -276px -1108px;
+            }
+            
+            .ch-pill {
+                background-position: -276px -212px;
+            }
+            
+            .ps-pill {
+                background-position: -276px -276px;
+            }
+            
+            .audio-pill {
+                background-position: -276px -532px;
+            }
+            
+            .podia-pill {
+                background-position: -276px -596px;
+            }
+            
+            .counse-pill {
+                background-position: -276px -660px;
+            }
+            
+            .skin-pill {
+                background-position: -276px -724px;
+            }
+            
+            .opto-pill {
+                background-position: -276px -788px;
+            }
+            
+            .local-pill {
+                background-position: -84px -1620px;
+            }
+            
+            .specialty-pill {
+                background-position: -84px -1750px;
+            }
+            
+            .practice-pill {
+                background-position: -84px -1430px;
+            }
+            
+            .practitioner-pill {
+                background-position: -84px -1494px;
+            }
+            
+            .intproc-pill {
+                background-position: -84px -1556px;
+            }
+            
+            .search-pill {
+                background-position: -84px -1686px;
+            }
+            
+            .search-head-trigger {
+                position: absolute;
+                display: inline-block;
+                width: 26px;
+                height: 28px;
+                text-indent: -9999px;
+                margin: 0;
+                left: 7px;
+                top: 12px;
+                background-position: -21px -2066px;
+                cursor: pointer;
+                vertical-align: middle;
+                z-index: 9;
+            }
+            
+            .search-head-trigger:hover,
+            .search-head-trigger:active {
+                background-position: -85px -2066px;
+            }
             
             .pill-us,
             .pill-us-mob {
@@ -293,6 +397,14 @@ include_once 'classes/Language/language.common.php';
                 background-clip: padding-box;
             }
             
+            @media (max-width: 767px) {
+                .pill-us,
+                .pill-us-mob {
+                    padding-left: 8px;
+                    padding-right: 26px;
+                }
+            }
+            
             .pill-us .pico-unified-search,
             .pill-us-mob .pico-unified-search {
                 position: absolute;
@@ -301,6 +413,13 @@ include_once 'classes/Language/language.common.php';
                 display: inline-block;
                 height: 24px;
                 width: 24px;
+            }
+            
+            @media (max-width: 767px) {
+                .pill-us .pico-unified-search,
+                .pill-us-mob .pico-unified-search {
+                    display: none;
+                }
             }
             
             .pill-us .cross-unified-search,
@@ -320,8 +439,31 @@ include_once 'classes/Language/language.common.php';
                 background-position: -84px -1940px;
             }
             
+            @media (max-width: 767px) {
+                .pill-us .cross-unified-search,
+                .pill-us-mob .cross-unified-search {
+                    right: 2px;
+                }
+            }
+            
+            @media (max-width: 767px) {
+                .pill-us {
+                    top: 6px;
+                    left: 6px;
+                }
+            }
+            
             .pill-us-mob {
                 position: relative;
+            }
+            
+            @media (max-width: 767px) {
+                .pill-us-mob {
+                    display: inline-block;
+                    margin-left: 0;
+                    margin-top: 2px;
+                    left: 38px;
+                }
             }
             
             .icons-unified-search {
@@ -341,6 +483,12 @@ include_once 'classes/Language/language.common.php';
                 border-bottom: 1px solid #ecedee;
             }
             
+            @media (max-width: 767px) {
+                .icons-unified-search {
+                    width: 25%;
+                }
+            }
+            
             .tactive .icons-unified-search .icons-image {
                 opacity: .5;
             }
@@ -349,27 +497,27 @@ include_once 'classes/Language/language.common.php';
                 opacity: .5;
             }
             
-             .icons-unified-search:hover {
+            .no-touchevents .icons-unified-search:hover {
                 background-color: #f7f8fc;
             }
             
-            .tactive  .icons-unified-search:hover label.icons-text {
+            .tactive .no-touchevents .icons-unified-search:hover label.icons-text {
                 color: #008ec8;
             }
             
-            .tactive  .icons-unified-search:hover.active label.icons-text {
+            .tactive .no-touchevents .icons-unified-search:hover.active label.icons-text {
                 color: #fff;
             }
             
-             .icons-unified-search:hover.icons-sp.active label.icons-text {
+            .no-touchevents .icons-unified-search:hover.icons-sp.active label.icons-text {
                 color: #008ec8;
             }
             
-             .icons-unified-search.active:hover {
+            .no-touchevents .icons-unified-search.active:hover {
                 background-color: #2386c8;
             }
             
-             .icons-unified-search.icons-more.active:hover {
+            .no-touchevents .icons-unified-search.icons-more.active:hover {
                 background-color: #fff;
             }
             
@@ -477,8 +625,8 @@ include_once 'classes/Language/language.common.php';
             .icons-unified-search .icons-image {
                 display: block;
                 margin: 12px auto 2px;
-                width: 34px;
-                height: 35px;
+                width: 36px;
+                height: 36px;
                 float: none;
                 clear: both;
             }
@@ -490,7 +638,7 @@ include_once 'classes/Language/language.common.php';
                 clear: both;
                 height: 27px;
                 padding: 2px 0 0;
-                font-size: 11px;
+                font-size: 13px;
                 color: #616365;
                 font-weight: 400;
                 -webkit-box-sizing: border-box;
@@ -498,11 +646,17 @@ include_once 'classes/Language/language.common.php';
                 box-sizing: border-box;
             }
             
+            @media (max-width: 767px) {
+                .icons-unified-search label.icons-text {
+                    font-size: 12px;
+                }
+            }
+            
             .icons-unified-search.icons-gp .icons-image {
                 background-position: -80px -14px;
             }
             
-             .icons-unified-search.icons-gp:hover .icons-image {
+            .no-touchevents .icons-unified-search.icons-gp:hover .icons-image {
                 background-position: -16px -14px;
             }
             
@@ -522,7 +676,7 @@ include_once 'classes/Language/language.common.php';
                 background-position: -80px -78px;
             }
             
-             .icons-unified-search.icons-dt:hover .icons-image {
+            .no-touchevents .icons-unified-search.icons-dt:hover .icons-image {
                 background-position: -16px -78px;
             }
             
@@ -537,12 +691,34 @@ include_once 'classes/Language/language.common.php';
             .tactive .icons-unified-search.icons-dt.active .icons-image {
                 background-position: -144px -78px;
             }
+
+            .icons-unified-search.icons-dietitian .icons-image {
+                background-position: -80px -334px;
+            }
+            
+            .no-touchevents .icons-unified-search.icons-dietitian:hover .icons-image {
+                background-position: -16px -334px;
+            }
+            
+            .tactive .icons-unified-search.icons-dietitian .icons-image {
+                background-position: -16px -334px;
+            }
+            
+            .tactive .icons-unified-search.icons-dietitian:hover .icons-image {
+                background-position: -80px -334px;
+            }
+            
+            .tactive .icons-unified-search.icons-dietitian.active .icons-image {
+                background-position: -144px -334px;
+            }
+
+
             
             .icons-unified-search.icons-ph .icons-image {
                 background-position: -80px -142px;
             }
             
-             .icons-unified-search.icons-ph:hover .icons-image {
+            .no-touchevents .icons-unified-search.icons-ph:hover .icons-image {
                 background-position: -16px -142px;
             }
             
@@ -557,12 +733,19 @@ include_once 'classes/Language/language.common.php';
             .tactive .icons-unified-search.icons-ph.active .icons-image {
                 background-position: -144px -142px;
             }
+
+            @media (max-width: 767px) {
+                .icons-unified-search.icons-ph {
+                    display: none;
+                }
+            }
+
             
             .icons-unified-search.icons-ch .icons-image {
                 background-position: -80px -206px;
             }
             
-             .icons-unified-search.icons-ch:hover .icons-image {
+            .no-touchevents .icons-unified-search.icons-ch:hover .icons-image {
                 background-position: -16px -206px;
             }
             
@@ -578,11 +761,46 @@ include_once 'classes/Language/language.common.php';
                 background-position: -144px -206px;
             }
             
+            @media (max-width: 767px) {
+                .icons-unified-search.icons-ch {
+                    display: none;
+                }
+            }
+
+
+            .icons-unified-search.icons-Podiatrist .icons-image {
+                background-position: -80px -590px;
+            }
+            
+            .no-touchevents .icons-unified-search.icons-Podiatrist:hover .icons-image {
+                background-position: -16px -590px;
+            }
+            
+            .tactive .icons-unified-search.icons-Podiatrist .icons-image {
+                background-position: -16px -590px;
+            }
+            
+            .tactive .icons-unified-search.icons-Podiatrist:hover .icons-image {
+                background-position: -80px -590px;
+            }
+            
+            .tactive .icons-unified-search.icons-Podiatrist.active .icons-image {
+                background-position: -144px -590px;
+            }
+            
+            @media (max-width: 767px) {
+                .icons-unified-search.icons-Podiatrist {
+                    display: none;
+                }
+            }
+
+           
+            
             .icons-unified-search.icons-ps .icons-image {
                 background-position: -80px -270px;
             }
             
-             .icons-unified-search.icons-ps:hover .icons-image {
+            .no-touchevents .icons-unified-search.icons-ps:hover .icons-image {
                 background-position: -16px -270px;
             }
             
@@ -598,11 +816,17 @@ include_once 'classes/Language/language.common.php';
                 background-position: -144px -270px;
             }
             
+            @media (max-width: 767px) {
+                .icons-unified-search.icons-ps {
+                    display: none;
+                }
+            }
+            
             .icons-unified-search.icons-audio .icons-image {
                 background-position: -80px -524px;
             }
             
-             .icons-unified-search.icons-audio:hover .icons-image {
+            .no-touchevents .icons-unified-search.icons-audio:hover .icons-image {
                 background-position: -16px -524px;
             }
             
@@ -618,11 +842,17 @@ include_once 'classes/Language/language.common.php';
                 background-position: -144px -524px;
             }
             
+            @media (max-width: 767px) {
+                .icons-unified-search.icons-audio {
+                    display: none;
+                }
+            }
+            
             .icons-unified-search.icons-podia .icons-image {
                 background-position: -80px -588px;
             }
             
-             .icons-unified-search.icons-podia:hover .icons-image {
+            .no-touchevents .icons-unified-search.icons-podia:hover .icons-image {
                 background-position: -16px -588px;
             }
             
@@ -638,11 +868,17 @@ include_once 'classes/Language/language.common.php';
                 background-position: -144px -588px;
             }
             
+            @media (max-width: 767px) {
+                .icons-unified-search.icons-podia {
+                    display: none;
+                }
+            }
+            
             .icons-unified-search.icons-counse .icons-image {
                 background-position: -80px -652px;
             }
             
-             .icons-unified-search.icons-counse:hover .icons-image {
+            .no-touchevents .icons-unified-search.icons-counse:hover .icons-image {
                 background-position: -16px -652px;
             }
             
@@ -658,11 +894,17 @@ include_once 'classes/Language/language.common.php';
                 background-position: -144px -652px;
             }
             
+            @media (max-width: 767px) {
+                .icons-unified-search.icons-counse {
+                    display: none;
+                }
+            }
+            
             .icons-unified-search.icons-skin .icons-image {
                 background-position: -80px -716px;
             }
             
-             .icons-unified-search.icons-skin:hover .icons-image {
+            .no-touchevents .icons-unified-search.icons-skin:hover .icons-image {
                 background-position: -16px -716px;
             }
             
@@ -678,11 +920,17 @@ include_once 'classes/Language/language.common.php';
                 background-position: -144px -716px;
             }
             
+            @media (max-width: 767px) {
+                .icons-unified-search.icons-skin {
+                    display: none;
+                }
+            }
+            
             .icons-unified-search.icons-opto .icons-image {
                 background-position: -80px -780px;
             }
             
-             .icons-unified-search.icons-opto:hover .icons-image {
+            .no-touchevents .icons-unified-search.icons-opto:hover .icons-image {
                 background-position: -16px -780px;
             }
             
@@ -698,6 +946,12 @@ include_once 'classes/Language/language.common.php';
                 background-position: -144px -780px;
             }
             
+            @media (max-width: 767px) {
+                .icons-unified-search.icons-opto {
+                    display: none;
+                }
+            }
+            
             .icons-unified-search.icons-sp.icons-more {
                 -webkit-border-radius: 0 4px 4px 0 !important;
                 -moz-border-radius: 0 4px 4px 0 !important;
@@ -708,12 +962,24 @@ include_once 'classes/Language/language.common.php';
                 width: 17.5%;
             }
             
+            @media (max-width: 767px) {
+                .icons-unified-search.icons-sp.icons-more {
+                    width: 25%;
+                }
+            }
+            
             .icons-unified-search.icons-sp.icons-more.active {
                 -webkit-border-radius: 0 4px 0 0 !important;
                 -moz-border-radius: 0 4px 0 0 !important;
                 -ms-border-radius: 0 4px 0 0 !important;
                 border-radius: 0 4px 0 0 !important;
                 background-clip: padding-box;
+            }
+            
+            @media (max-width: 767px) {
+                .icons-unified-search.icons-sp.icons-radio {
+                    display: none;
+                }
             }
             
             .icons-unified-search.icons-sp {
@@ -753,7 +1019,7 @@ include_once 'classes/Language/language.common.php';
                 background-position: -16px -398px;
             }
             
-             .tactive .icons-unified-search.icons-sp.icons-sp.icons-radio:hover .icons-image {
+            .no-touchevents .tactive .icons-unified-search.icons-sp.icons-sp.icons-radio:hover .icons-image {
                 background-position: -16px -398px;
             }
             
@@ -765,7 +1031,7 @@ include_once 'classes/Language/language.common.php';
                 background-position: -80px -398px;
             }
             
-             .tactive .icons-unified-search.icons-sp.active:hover .icons-image {
+            .no-touchevents .tactive .icons-unified-search.icons-sp.active:hover .icons-image {
                 background-position: -80px -398px;
             }
             
@@ -798,7 +1064,7 @@ include_once 'classes/Language/language.common.php';
             }
             
             .icons-unified-search.icons-sp #radio-physio-icon {
-                background-position: -144px -270px;
+                background-position: -144px -142px;
             }
             
             .icons-unified-search.icons-sp #radio-chiro-icon {
@@ -853,6 +1119,13 @@ include_once 'classes/Language/language.common.php';
                 margin: 0 0 0 3px;
                 vertical-align: middle;
                 background-position: -25px -1305px;
+            }
+            
+            @media (max-width: 767px) {
+                .icons-unified-search.icons-sp .icons-text:after {
+                    content: none;
+                    display: none;
+                }
             }
             
             .icons-unified-search.icons-sp:hover .icons-text:after,
@@ -912,6 +1185,16 @@ include_once 'classes/Language/language.common.php';
                 display: none;
             }
             
+            @media (max-width: 767px) {
+                .icons-unified-search .icons-sp-search {
+                    width: 120px;
+                    right: 0;
+                }
+                .icons-unified-search .icons-sp-search span.ius-mob {
+                    display: block;
+                }
+            }
+            
             .icons-unified-search .icons-sp-search span {
                 display: block;
                 color: #63666a;
@@ -944,115 +1227,231 @@ include_once 'classes/Language/language.common.php';
             .icons-unified-search .icons-sp-search span label {
                 display: block;
                 padding: 6px 10px 6px 16px;
-                font-size: 11px;
+                font-size: 13px;
                 color: #777777;
                 font-weight: 400;
                 margin: 0;
                 text-align: left;
             }
             
+            @media (max-width: 767px) {
+                .icons-unified-search .icons-sp-search span label {
+                    text-align: center;
+                    padding: 6px 10px;
+                }
+            }
+            
             #unified-search-form-inline {
                 margin: 0;
             }
             
-            .btn {
-                position: absolute;
-                top: 0;
-                right: 0;
-                width: 90px;
-                height: 36px;
-                text-align: center;
-                color: #fff;
-                text-transform: capitalize;
-                font-size: 15px;
-                font-weight: 400;
-                -webkit-border-radius: 0 4px 4px 0 !important;
-                -moz-border-radius: 0 4px 4px 0 !important;
-                -ms-border-radius: 0 4px 4px 0 !important;
-                border-radius: 0 4px 4px 0 !important;
+            .find-prac-search {
+                height: 290px;
+                font-family: 'Source Sans Pro', 'Open Sans', sans-serif;
+            }
+            
+            @media (max-width: 767px) {
+                .find-prac-search {
+                    padding: 0;
+                    width: 100%;
+                    height: auto;
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+                }
+            }
+            
+            .find-prac-search.panel-unified-search {
+                background: transparent url("/images/search/find-prac-main-image.jpg") repeat center top;
+                background-size: cover;
+                width: 100%;
+                background-position: center -350px;
+            }
+            
+            @media (min-width: 980px) and (max-width: 1199px) {
+                .find-prac-search.panel-unified-search {
+                    background-position: center -300px;
+                }
+            }
+            
+            @media (min-width: 768px) and (max-width: 979px) {
+                .find-prac-search.panel-unified-search {
+                    background-position: center right;
+                    background-size: auto 135%;
+                }
+            }
+            
+            .find-prac-search.panel-unified-search .alpha-unified-search {
+                width: 100%;
+                height: 100%;
+                background: transparent url("/images/home/unified-search-alpha25.png") repeat center top;
+            }
+            
+            .find-prac-search.panel-unified-search h1.book-unified-search {
+                margin: 0 auto;
+                padding-top: 70px;
+                width: 100%;
+            }
+            
+            @media (max-width: 767px) {
+                .find-prac-search.panel-unified-search h1.book-unified-search {
+                    padding: 20px 5% 15px;
+                    height: auto;
+                    width: 100%;
+                }
+            }
+            
+            @media (max-width: 767px) {
+                .find-prac-search.panel-unified-search h1.book-unified-search .smaller-text-us {
+                    font-size: 15px;
+                    padding-top: 6px;
+                    padding-bottom: 0;
+                }
+            }
+            
+            .find-prac-search.panel-unified-search .box-unified-search {
+                height: 80px;
+                padding-top: 15px;
+            }
+            
+            @media (max-width: 767px) {
+                .find-prac-search.panel-unified-search .box-unified-search {
+                    height: auto;
+                    width: 100%;
+                    padding-top: 25px;
+                    padding-bottom: 32px;
+                }
+            }
+            
+            .find-prac-search.panel-unified-search .input-unified-search {
+                margin-bottom: 5px;
+            }
+            
+            .find-practitioner-popular,
+            .obs-feature {
+                width: 100%;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                -webkit-border-radius: 0 !important;
+                -moz-border-radius: 0 !important;
+                -ms-border-radius: 0 !important;
+                border-radius: 0 !important;
                 background-clip: padding-box;
-                display: inline-block;
-                *display: inline;
-                *zoom: 1;
-                padding: 9px 12px;
-                margin-bottom: 0;
-                font-size: 15px;
-                font-weight: 500;
-                line-height: 10px;
-                text-align: center;
+            }
+            
+            .find-practitioner-popular {
+                background: #fff;
+                margin: 0 auto;
+                padding: 70px 0;
+            }
+            
+            .find-practitioner-popular h2 {
+                font-size: 26px;
+                color: #2b4b5a;
+                font-weight: 400;
+                margin: 0 0 35px;
+            }
+            
+            .find-practitioner-popular ul {
+                text-align: left;
+                width: 615px;
+                margin: 0;
+            }
+            
+            .find-practitioner-popular ul li {
+                line-height: normal;
+                width: 25%;
+                margin: 0;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+            
+            .find-practitioner-popular ul li a {
+                font-size: 13px;
+                padding: 0;
+                background: #fff;
                 text-decoration: none;
-                vertical-align: middle;
-                cursor: pointer;
+                color: #008ec8;
+                font-weight: 400;
                 border: none;
+                -webkit-border-radius: 0 !important;
+                -moz-border-radius: 0 !important;
+                -ms-border-radius: 0 !important;
+                border-radius: 0 !important;
+                background-clip: padding-box;
+            }
+            
+            .find-practitioner-popular ul li a:hover,
+            .find-practitioner-popular ul li a:active {
+                color: #2b4b5a;
+                background: #fff;
+            }
+            
+            .obs-feature {
+                border-bottom: none;
+                background: #008ec8;
+                padding: 70px 5%;
+                text-align: center;
+                font-weight: 400;
+            }
+            
+            .obs-feature h3 {
                 color: #fff;
-                background-color: #4f798c;
+                font-size: 26px;
+                font-weight: 400;
+                margin: 0 0 15px;
             }
             
-            .btn a {
-                color: #fff;
-                text-decoration: none
+            .obs-feature p {
+                padding: 0 0 2px;
+                margin: 0;
+                font-size: 18px;
+                line-height: normal;
             }
             
-            .btn a:hover,
-            .btn a:focus,
-            .btn a:active {
-                text-decoration: underline
+            .obs-feature a {
+                display: inline-block;
+                width: 180px;
+                height: 42px;
+                line-height: 42px;
+                padding: 0;
+                margin: 40px 0 0;
+                border: 1px solid #fff;
+                font-size: 15px;
+                text-align: center;
+                -webkit-border-radius: 4px !important;
+                -moz-border-radius: 4px !important;
+                -ms-border-radius: 4px !important;
+                border-radius: 4px !important;
+                background-clip: padding-box;
+                text-decoration: none;
             }
             
-            .btn:hover,
-            .btn:focus,
-            .btn:active {
-                color: #fff;
-                background-color: #2386c8;
-                *background-color: #1f77b2
+            .obs-feature a:hover,
+            .obs-feature a:active {
+                background: #007caf;
             }
             
-            .btn:active {
-                background-color: #1b699d \9
+            @media (max-width: 767px) {
+                .obs-feature a {
+                    width: 100%;
+                }
             }
             
-            .btn:first-child {
-                *margin-left: 0
-            }
-            
-            .btn:hover,
-            .btn:focus {
-                color: #fff;
-                background-color: #2386c8;
-                text-decoration: none
-            }
-            
-            .btn:focus {
-                outline: thin dotted #333;
-                outline: 5px auto -webkit-focus-ring-color;
-                outline-offset: -2px
-            }
-            
-            .btn:active {
-                background-image: none;
-                outline: 0
-            }
-
-            /*.input-unified-search .input-contain-unified-search-under{
-
-            }*/
-            /*            
-            .index p {
-                margin: 0px;
-            }
-            
-            .index .fa {
-                display: inline;
-            }*/
-            
-            /*.panel-unified-search .box-unified-search .col-xs-12 {
-                margin-left: -100px;
-                margin-right: -100px;
-            }*/
-
-            .index .col-md-6,.col-xs-12{
-                padding-left: 0px;
-                padding-right: 0px;
+            @media (max-width: 767px) {
+                .obs-feature {
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+                    margin-bottom: 16px;
+                    -webkit-border-radius: 0 !important;
+                    -moz-border-radius: 0 !important;
+                    -ms-border-radius: 0 !important;
+                    border-radius: 0 !important;
+                    background-clip: padding-box;
+                }
             }
         </style>
         <!--JS-->
@@ -1061,7 +1460,10 @@ include_once 'classes/Language/language.common.php';
         <script src="js/jquery.easing.1.3.js"></script>
         <script src="js/jquery.mobilemenu.js"></script>
         <script src="js/jquery.equalheights.js"></script>
-        <script src="js/sForm.js"></script>
+
+        <style>
+
+        </style>
 
     </head>
 
@@ -1071,110 +1473,126 @@ include_once 'classes/Language/language.common.php';
         <?php
     include_once 'classes/Menu/menu.php';
     ?>
-        <header>
-            
+            <header>
+
                 <h1 class="navbar-brand navbar-brand_"><a href="index.php"><img src="img/<?php echo $lang['Lang0004']; ?>" alt="logo"></a></h1>
-        </header>
-        <!--content-->
-        <div class="content index">
-                <div class="thumb-box1">
-                    <div class="container">
-                        <div class="panel-unified-search">
-                            <div class="box-unified-search col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+            </header>
 
-<div class="type-unified-search">
-<div class="icons-unified-search icons-act icons-gp">
-                                    <input name="search-option-type" class="hide" type="radio" id="radio-gp" value="gp">
-                                    <span class="icons-image"></span>
-                                    <label class="icons-text" for="radio-gp">GP</label>
-                                </div>
-                                <div class="icons-unified-search icons-act icons-dt">
-                                    <input name="search-option-type" class="hide" type="radio" id="radio-dentist" value="dentist">
-                                    <span class="icons-image"></span>
-                                    <label class="icons-text" for="radio-dentist">Dentist</label>
-                                </div>
-                                <div class="icons-unified-search icons-act icons-ph"><input name="search-option-type" class="hide" type="radio" id="radio-physio" value="physiotherapist">
-                                    <span class="icons-image"></span>
-                                    <label class="icons-text" for="radio-physio">Physio</label>
-                                </div>
-                                <div class="icons-unified-search icons-act icons-ch"><input name="search-option-type" class="hide" type="radio" id="radio-chiro" value="chiropractor">
-                                    <span class="icons-image"></span>
-                                    <label class="icons-text" for="radio-chiro">Chiropractor</label>
-                                </div>
-                                <div class="icons-unified-search icons-act icons-ps"><input name="search-option-type" class="hide" type="radio" id="radio-psycho" value="psychologist">
-                                    <span class="icons-image"></span>
-                                    <label class="icons-text" for="radio-psycho">Psychologist</label>
-                                </div>
-                                <div class="icons-unified-search icons-act icons-sp icons-more">
-                                    <span class="icons-image icons-sp-icon" id=""></span><label class="icons-text icons-sp-text">More</label>
-                                    <div class="icons-sp-search"><span class="ius-act ius-mob">
-                                        <input name="search-option-type" class="hide" type="radio" value="chiropractor" id="radio-chiro">
-                                        <label class="radio-chiro" for="radio-chiro">Chiropractor</label></span>
-                                        <span class="ius-act ius-mob">
-                                            <input name="search-option-type" class="hide" type="radio" value="psychologist" id="radio-psycho"><label class="radio-psycho"
-                    for="radio-psycho">Psychologist</label></span><span class="ius-act"><input name="search-option-type" class="hide" type="radio" value="audiologist" id="radio-audio"><label class="radio-audio" for="radio-audio">Audiologist</label></span>
-                                        <span class="ius-act"><input name="search-option-type" class="hide" type="radio" value="podiatrist" id="radio-podia"><label class="radio-podia"
-                        for="radio-podia">Podiatrist</label></span><span class="ius-act"><input name="search-option-type" class="hide" type="radio" value="counsellor" id="radio-counse"><label class="radio-counse" for="radio-counse">Counsellor</label></span>
-                                        <span class="ius-act"><input name="search-option-type" class="hide" type="radio" value="skinchecks" id="radio-skin">
-                        <label
-                            class="radio-skin" for="radio-skin">Skin Checks</label>
-                            </span><span class="ius-act"><input name="search-option-type" class="hide" type="radio" value="optometry" id="radio-opto"><label class="radio-opto" for="radio-opto">Optometry</label></span>
-                            </div>
-                                </div>
+            <div class="index-main-box">
 
 
+                <div class="box-unified-search">
 
+                    <div class="type-unified-search">
+                        <div class="icons-unified-search icons-act icons-gp">
+                            <input name="search-option-type" class="hide" type="radio" id="radio-gp" value="gp">
+                            <span class="icons-image"></span>
+                            <label class="icons-text" for="radio-gp">GP</label>
+                        </div>
+                        <div class="icons-unified-search icons-act icons-dt">
+                            <input name="search-option-type" class="hide" type="radio" id="radio-dentist" value="dentist">
+                            <span class="icons-image"></span>
+                            <label class="icons-text" for="radio-dentist">Dentist</label>
+                        </div>
+                        <div class="icons-unified-search icons-act icons-dietitian">
+                            <input name="search-option-type" class="hide" type="radio" id="radio-dietitian" value="dietitian">
+                            <span class="icons-image"></span>
+                            <label class="icons-text" for="radio-dietitian">Dietitian</label>
+                        </div>
 
+                        <div class="icons-unified-search icons-act icons-ph"><input name="search-option-type" class="hide" type="radio" id="radio-physio" value="physiotherapist">
+                            <span class="icons-image"></span>
+                            <label class="icons-text" for="radio-physio">Physio</label>
+                        </div>
+                        <div class="icons-unified-search icons-act icons-Podiatrist"><input name="search-option-type" class="hide" type="radio" id="radio-podia" value="podiatrist">
+                            <span class="icons-image"></span>
+                            <label class="icons-text" for="radio-podia">Podiatrist</label>
+                        </div>
+                        
+                        <div class="icons-unified-search icons-act icons-sp icons-more">
+                            <span class="icons-image icons-sp-icon" id=""></span>
+                            <label class="icons-text icons-sp-text">More</label>
+                            <div class="icons-sp-search">
+                                <span class="ius-act ius-mob">
+                                        <input name="search-option-type" class="hide" type="radio" value="physio" id="radio-physio">
+                                        <label class="radio-physio" for="radio-physio">Physio</label>
+                                </span>
+                                <span class="ius-act ius-mob">
+                                        <input name="search-option-type" class="hide" type="radio" value="podiatrist" id="radio-podia">
+                                        <label class="radio-podia" for="radio-podia">Podiatrist</label>
+                                </span>
 
-
-                            </div>
-
-
-                            </div>
-<div class="input-unified-search col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 ">
-                                    <div class="input-contain-unified-search">
-
-                                        <form id="unified-search-form-inline">
-                                            <input type="hidden" class="form-control" name="action_type" id="action_type" value="index_search">
-                                            <input type="hidden" class="form-control" name="from_index" id="from_index" value="1">
-
-
-
-                                            <input id="location-unified-search" class="location-unified-search" placeholder="Suburb, State, Postcode" type="text" name="CLINIC_SUBURB">
-
-
-                                            <button tabindex="-1" id="btn_search" class="btn">Search</button>
-                                        </form>
-                                    </div>
-                                </div>
-                                
+                                <span class="ius-act">
+                                    <input name="search-option-type" class="hide" type="radio" value="psychologist" id="radio-psycho">
+                                    <label class="radio-psycho" for="radio-psycho">Psychologist</label>
+                                </span>
+                                <span class="ius-act">
+                                    <input name="search-option-type" class="hide" type="radio" value="chiropractor" id="radio-chiro">
+                                    <label class="radio-chiro" for="radio-chiro">Chiropractor</label>
+                                </span>
+                                <span class="ius-act">
+                                    <input name="search-option-type" class="hide" type="radio" value="audiologist" id="radio-audio">
+                                    <label class="radio-audio" for="radio-audio">Audiologist</label>
+                                </span>
+                                <span class="ius-act">
+                                    <input name="search-option-type" class="hide" type="radio" value="optometry" id="radio-opto">
+                                    <label class="radio-opto" for="radio-opto">Optometry</label>
+                                </span>
+                                <span class="ius-act">
+                                    <input name="search-option-type" class="hide" type="radio" value="skinchecks" id="radio-skin">
+                                    <label class="radio-skin" for="radio-skin">Skin Doctors</label>
+                                </span>
+                                <span class="ius-act">
+                                    <input name="search-option-type" class="hide" type="radio" value="counsellor" id="radio-counse">
+                                    <label class="radio-counse" for="radio-counse">Counsellor</label>
+                                </span>
                             </div>
                         </div>
                     </div>
+
+                    <div class="input-unified-search">
+                        <div class="input-contain-unified-search">
+
+                            <form id="unified-search-form-inline">
+                                <input type="hidden" class="form-control" name="action_type" id="action_type" value="index_search">
+                                <input type="hidden" class="form-control" name="from_index" id="from_index" value="1">
+
+
+
+                                <input id="location-unified-search" class="location-unified-search" placeholder="Suburb, State, Postcode" type="text" name="CLINIC_SUBURB">
+
+
+                                <button tabindex="-1" id="btn_search" class="btn">Search</button>
+                            </form>
+                        </div>
+                    </div>
+
+
                 </div>
-        <!--footer-->
-        <?php
+
+
+
+
+            </div>
+
+            <!--footer-->
+            <?php
 include_once 'classes/Footer/Footer.php';
 ?>
-            <?php
+                <?php
 include_once 'classes/Language/For_JS_multi_lang.php';
 ?>
-                <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
-                <script type="text/javascript" src="js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
-                <script src="js/bootstrap.min.js"></script>
-                <!-- dialog -->
-                <script src="js/bootstrap-dialog.min.js"></script>
+                    
+                    
 
-                <script src="js/tm-scripts.js"></script>
-                <script src="js/jquery.cookie.js"></script>
-                <script src="js/jquery-ui.js"></script>
+                    <script src="js/tm-scripts.js"></script>
+                    <script src="js/jquery.cookie.js"></script>
+                    <script src="js/jquery-ui.js"></script>
 
-                
-                <script src="js/main/pub.js"></script>
-                <script src="js/main/index.js"></script>
-                <script type="text/javascript" src="js/main/index_search.js"></script>
 
-<!--<link href="css/he-unified-search-box.css" rel="stylesheet" media="screen">-->
+                    <script src="js/main/pub.js"></script>
+                    <script src="js/main/index.js"></script>
+                    <script type="text/javascript" src="js/main/index_search.js"></script>
 
     </body>
 

@@ -332,9 +332,15 @@
                                         <!--<div class="col-xs-12 col-sm-12">-->
                                         <label class="radio-inline"><input type="radio" class="custom-control-input" name="DOCTOR_TYPE" value="GP">GP</label>
                                         <label class="radio-inline"><input type="radio" class="custom-control-input" name="DOCTOR_TYPE" value="Dentist">Dentist</label>
+                                        <label class="radio-inline"><input type="radio"  class="custom-control-input" name="DOCTOR_TYPE" value="Dietitian">Dietitian</label>
                                         <label class="radio-inline"><input type="radio"  class="custom-control-input" name="DOCTOR_TYPE" value="Physio">Physio</label>
-                                        <label class="radio-inline"><input type="radio"  class="custom-control-input" name="DOCTOR_TYPE" value="Dermatologist">Dermatologist</label>
-                                        <label class="radio-inline"><input type="radio"  class="custom-control-input" name="DOCTOR_TYPE" value="Chiropractor">Chiropractor</label>
+                                        <label class="radio-inline"><input type="radio"  class="custom-control-input" name="DOCTOR_TYPE" value="Podiatrist">Podiatrist</label>
+                                        <label class="radio-inline"><input type="radio"  class="custom-control-input" name="DOCTOR_TYPE" value="Pschologist">Pschologist</label>
+                                        <label class="radio-inline"><input type="radio" class="custom-control-input" name="DOCTOR_TYPE" value="Chiropractor">Chiropractor</label>
+                                        <label class="radio-inline"><input type="radio" class="custom-control-input" name="DOCTOR_TYPE" value="Audiologist">Audiologist</label>
+                                        <label class="radio-inline"><input type="radio" class="custom-control-input" name="DOCTOR_TYPE" value="Optometry">Optometry</label>
+                                        <label class="radio-inline"><input type="radio" class="custom-control-input" name="DOCTOR_TYPE" value="Skin Doctors">Skin Doctors</label>
+                                        <label class="radio-inline"><input type="radio" class="custom-control-input" name="DOCTOR_TYPE" value="Counsellor">Counsellor</label>
                                         <!--</div>-->
                                     </div>
                                     <div class="form-group  col-md-12">

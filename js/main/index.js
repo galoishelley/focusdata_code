@@ -207,30 +207,7 @@ $(function () {
 		return result;
 	}
 
-	var d = new Date()
-	var vYear = d.getFullYear()
-	var vMon = d.getMonth() + 1
-	var vDay = d.getDate()
-	var h = d.getHours();
-	var m = d.getMinutes();
-	var se = d.getSeconds();
-	var date_time = vYear + '-' + (vMon < 10 ? "0" + vMon : vMon) + '-' + (vDay < 10 ? "0" + vDay : vDay) + ' ' + (h < 10 ? "0" + h : h) + ':' + (m < 10 ? "0" + m : m) + ':' + (se < 10 ? "0" + se : se);
-	var vDate_F = vYear + '-' + (vMon < 10 ? "0" + vMon : vMon) + '-' + (vDay < 10 ? "0" + vDay : vDay) + ' 00:00';
-	var vDate_T = vYear + '-' + (vMon < 10 ? "0" + vMon : vMon) + '-' + (vDay < 10 ? "0" + vDay : vDay) + ' 23:59';
-	var vDate_Today = (vDay < 10 ? "0" + vDay : vDay) + '-' + (vMon < 10 ? "0" + vMon : vMon) + '-' + vYear;
 
-	$("#APPOINTMENT_DATE_BEGIN").val(vDate_Today);
-	$("#APPOINTMENT_DATE_END").val(vDate_Today);
-
-	$('.form_datetime').datetimepicker({
-		language: 'en',
-		format: "dd-mm-yyyy",
-		todayBtn: 1,
-		autoclose: 1,
-		todayHighlight: 1,
-		startView: 2,
-		minView: "month"
-	});
 
 
 
