@@ -753,6 +753,7 @@ $(function () {
 							clinicID: 0,
 							clinicPIC: "",
 							clinicName: "",
+							clinicPhone:"",
 
 							clinicAddress: "",
 							clinicSuburb: "",
@@ -770,6 +771,7 @@ $(function () {
 						clinic.clinicID = j;
 						clinic.clinicPIC = 'img/clinics/' + jtem[0].CLINIC_PHOTO;
 						clinic.clinicName = jtem[0].CLINIC_NAME;
+						clinic.clinicPhone = jtem[0].CLINIC_PHONE;
 						clinic.clinicAddress = jtem[0].CLINIC_ADDR;
 						clinic.clinicSuburb = jtem[0].CLINIC_SUBURB;
 						clinic.overview = jtem[0].CLINIC_OVERVIEW;
@@ -940,6 +942,11 @@ $(function () {
 				var clinic_title = $(this).text();
 
 				$('#clinicProfile').find('.clinic-title').text(clinic_title);
+
+				var clinic_phone = $(this).parent().find('.clinic-phone').text();
+				$('#clinicProfile').find('.clinic-mobile').text(clinic_phone);
+
+
 				var clinic_address = $(this).parent().find('.clinic-addr').text() + " , " + $(this).parent().find('.search-suburb').text();
 				$('#clinicProfile').find('.clinic-address').text(clinic_address);
 				var clinic_overview = $(this).parent().find('.search-overview').text();
@@ -1021,6 +1028,7 @@ $(function () {
 							language: "",
 							clinicName: "",
 							clinicAddress: "",
+							
 							timeslot: []
 						};
 						doctor.doctorID = j;

@@ -153,6 +153,14 @@
                 color: #63707b;
                 font-weight: 400
             }
+
+            #clinicProfile .slickWindow .cartItems .clinic-mobile {
+                margin: 1px 0 14px;
+                padding: 0 90px 0 10px;
+                font-size: 13px;
+                color: #63707b;
+                font-weight: 400
+            }
             
             #clinicProfile .slickWindow .cartItems img {
                 max-width: 400px;
@@ -255,6 +263,7 @@
                     <div class="cartItems">
                         <img class="clinic-img" />
                         <div class="clinic-title"></div>
+                        <div class="clinic-mobile"></div>
                         <div class="clinic-address"></div>
                         <p class="clinic-overview"></p>
                     </div>
@@ -695,6 +704,9 @@
                                         <div class="search-addie clinic-addr">
                                             {{>clinicAddress}}
 
+                                        </div>
+                                        <div class="clinic-phone" style="display:none">
+                                        {{>clinicPhone}}
                                         </div>
                                         <div class="search-addie">
                                             {{>language}}
