@@ -104,7 +104,7 @@ $(document).ready(function() {
       error: function(XMLHttpRequest, textStatus, errorThrown){
         //请求失败之后的操作
         var ret_code = "999999";
-        var ret_msg = "ajax失败,请联系管理员!";
+        var ret_msg = "ajaxError,contact admin please!";
         alert(func_code + " " +  ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
         result = false;
      }
@@ -152,7 +152,7 @@ $(document).ready(function() {
       error: function(XMLHttpRequest, textStatus, errorThrown){
           //请求失败之后的操作
           var ret_code = "999999";
-          var ret_msg = "失败,请联系管理员!";
+          var ret_msg = "Error,contact admin please!";
           alert(func_code + ":" + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
           result=false;
       }
@@ -226,7 +226,7 @@ $(document).ready(function() {
 			        error: function(XMLHttpRequest, textStatus, errorThrown){
 			          //请求失败之后的操作
 			          var ret_code = "999999";
-			          var ret_msg = "ajax失败,请联系管理员!";
+			          var ret_msg = "ajaxError,contact admin please!";
 			          alert(func_code + " " + ret_code + ":" + ret_msg +" textStatus:"+ textStatus);
 			          result = false;
 			       }

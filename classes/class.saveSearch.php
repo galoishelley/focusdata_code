@@ -137,7 +137,7 @@ class saveSearch
 			// }
 		}else{
 			$success = false;
-			$ret_msg="保存常用搜索条件失败,请联系管理员";
+			$ret_msg="保存常用搜索条件Error,contact admin please";
 			$ret_code = "S00199";
 		}
 
@@ -172,11 +172,11 @@ class saveSearch
 		
 		if($ret!=""){
 			$success = true;
-			$ret_msg="查询成功";
+			$ret_msg="Query successfully";
 			$ret_code = "S00000";
 		}else{
 			$success = true;
-			$ret_msg="无符合条件数据";
+			$ret_msg="No match data";
 			$ret_code = "S00001";
 		}
 
@@ -222,7 +222,7 @@ class saveSearch
 			$ret_code = "U99999";
 		}else{
 			$success = false;
-			$ret_msg="失败,请联系管理员";
+			$ret_msg="Error,contact admin please";
 			$ret_code = "999999";
 		}
 

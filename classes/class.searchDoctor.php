@@ -227,15 +227,15 @@ class SearchDoctor
 		
 		if($recordCount>0){
 			$success = true;
-			$ret_msg="查询成功";
+			$ret_msg="Query successfully";
 			$ret_code = "S00000";
 		}else if($recordCount==0){
 			$success = true;
-			$ret_msg="无符合条件数据";
+			$ret_msg="No match data";
 			$ret_code = "S00001";
 		}else{
 			$success = false;
-			$ret_msg="失败,请联系管理员";
+			$ret_msg="Error,contact admin please";
 			$ret_code = "999999";
 		}
 

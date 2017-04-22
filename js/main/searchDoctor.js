@@ -394,7 +394,7 @@ $(function () {
 		error: function (XMLHttpRequest, textStatus, errorThrown) {
 			//请求失败之后的操作
 			var ret_code = "999901";
-			var ret_msg = "失败,请联系管理员!";
+			var ret_msg = "Error,contact admin please!";
 			alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 			result = false;
 		}
@@ -439,7 +439,7 @@ $(function () {
 		error: function (XMLHttpRequest, textStatus, errorThrown) {
 			//请求失败之后的操作
 			var ret_code = "999902";
-			var ret_msg = "失败,请联系管理员!";
+			var ret_msg = "Error,contact admin please!";
 			alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 			result = false;
 		}
@@ -486,7 +486,7 @@ $(function () {
 		error: function (XMLHttpRequest, textStatus, errorThrown) {
 			//请求失败之后的操作
 			var ret_code = "999903";
-			var ret_msg = "失败,请联系管理员!";
+			var ret_msg = "Error,contact admin please!";
 			alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 			result = false;
 		}
@@ -860,7 +860,7 @@ $(function () {
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 				//请求失败之后的操作
 				var ret_code = "999904";
-				var ret_msg = "失败,请联系管理员!";
+				var ret_msg = "Error,contact admin please!";
 				alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 				result = false;
 			}
@@ -1100,7 +1100,7 @@ $(function () {
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 				//请求失败之后的操作
 				var ret_code = "999905";
-				var ret_msg = "失败,请联系管理员!";
+				var ret_msg = "Error,contact admin please!";
 				alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 				result = false;
 			}
@@ -1158,7 +1158,7 @@ $(function () {
 					error: function (XMLHttpRequest, textStatus, errorThrown) {
 						//请求失败之后的操作
 						var ret_code = "999906";
-						var ret_msg = "ajax失败,请联系管理员";
+						var ret_msg = "ajaxError,contact admin please";
 						alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 						AppointmentSuc = false;
 					}
@@ -1206,7 +1206,7 @@ $(function () {
 						error: function (XMLHttpRequest, textStatus, errorThrown) {
 							//请求失败之后的操作
 							var ret_code = "999907";
-							var ret_msg = "ajax失败,请联系管理员";
+							var ret_msg = "ajaxError,contact admin please";
 							alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 							AppointmentSuc = false;
 						}
@@ -1256,7 +1256,7 @@ $(function () {
 						error: function (XMLHttpRequest, textStatus, errorThrown) {
 							//请求失败之后的操作
 							var ret_code = "999908";
-							var ret_msg = "ajax失败,请联系管理员";
+							var ret_msg = "ajaxError,contact admin please";
 							alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 							result = false;
 						}
@@ -1314,7 +1314,7 @@ $(function () {
 						error: function (XMLHttpRequest, textStatus, errorThrown) {
 							//请求失败之后的操作
 							var ret_code = "999909";
-							var ret_msg = "失败,请联系管理员!";
+							var ret_msg = "Error,contact admin please!";
 							alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 							result = false;
 						}
@@ -1357,7 +1357,7 @@ $(function () {
 						error: function (XMLHttpRequest, textStatus, errorThrown) {
 							//请求失败之后的操作
 							var ret_code = "999910";
-							var ret_msg = "失败,请联系管理员!";
+							var ret_msg = "Error,contact admin please!";
 							alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 							result = false;
 						}
@@ -1406,7 +1406,7 @@ $(function () {
 						error: function (XMLHttpRequest, textStatus, errorThrown) {
 							//请求失败之后的操作
 							var ret_code = "999907";
-							var ret_msg = "ajax失败,请联系管理员";
+							var ret_msg = "ajaxError,contact admin please";
 							alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 							AppointmentSuc = false;
 						}
@@ -1456,7 +1456,7 @@ $(function () {
 						error: function (XMLHttpRequest, textStatus, errorThrown) {
 							//请求失败之后的操作
 							var ret_code = "999908";
-							var ret_msg = "ajax失败,请联系管理员";
+							var ret_msg = "ajaxError,contact admin please";
 							alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 							result = false;
 						}
@@ -1514,7 +1514,7 @@ $(function () {
 						error: function (XMLHttpRequest, textStatus, errorThrown) {
 							//请求失败之后的操作
 							var ret_code = "999909";
-							var ret_msg = "失败,请联系管理员!";
+							var ret_msg = "Error,contact admin please!";
 							alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 							result = false;
 						}
@@ -1557,7 +1557,7 @@ $(function () {
 						error: function (XMLHttpRequest, textStatus, errorThrown) {
 							//请求失败之后的操作
 							var ret_code = "999910";
-							var ret_msg = "失败,请联系管理员!";
+							var ret_msg = "Error,contact admin please!";
 							alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 							result = false;
 						}
@@ -1638,7 +1638,7 @@ $(function () {
 					error: function (XMLHttpRequest, textStatus, errorThrown) {
 						//请求失败之后的操作
 						var ret_code = "999911";
-						var ret_msg = "失败,请联系管理员!";
+						var ret_msg = "Error,contact admin please!";
 						alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 						result = false;
 					}
@@ -1724,7 +1724,7 @@ $(function () {
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 				//请求失败之后的操作
 				var ret_code = "999911";
-				var ret_msg = "失败,请联系管理员!";
+				var ret_msg = "Error,contact admin please!";
 				alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 			}
 		});
@@ -1874,7 +1874,7 @@ $(function () {
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 				//请求失败之后的操作
 				var ret_code = "999910";
-				var ret_msg = "失败,请联系管理员!";
+				var ret_msg = "Error,contact admin please!";
 				alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 				result = false;
 			}
@@ -2033,7 +2033,7 @@ $(function () {
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 				//请求失败之后的操作
 				var ret_code = "999911";
-				var ret_msg = "失败,请联系管理员!";
+				var ret_msg = "Error,contact admin please!";
 				alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 				result = false;
 			}
@@ -2097,7 +2097,7 @@ $(function () {
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 				//请求失败之后的操作
 				var ret_code = "999912";
-				var ret_msg = "失败,请联系管理员!";
+				var ret_msg = "Error,contact admin please!";
 				alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 				result = false;
 			}
@@ -2155,7 +2155,7 @@ $(function () {
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 				//请求失败之后的操作
 				var ret_code = "999913";
-				var ret_msg = "失败,请联系管理员!";
+				var ret_msg = "Error,contact admin please!";
 				alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 				result = false;
 			}
@@ -2218,7 +2218,7 @@ $(function () {
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 				//请求失败之后的操作
 				var ret_code = "999914";
-				var ret_msg = "ajax失败,请联系管理员";
+				var ret_msg = "ajaxError,contact admin please";
 				alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 				result = false;
 			}
@@ -2266,7 +2266,7 @@ $(function () {
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 				//请求失败之后的操作
 				var ret_code = "999915";
-				var ret_msg = "失败,请联系管理员!";
+				var ret_msg = "Error,contact admin please!";
 				alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 				result = false;
 			}
@@ -2326,7 +2326,7 @@ $(function () {
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 				//请求失败之后的操作
 				var ret_code = "999916";
-				var ret_msg = "失败,请联系管理员!";
+				var ret_msg = "Error,contact admin please!";
 				alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 				result = false;
 			}
@@ -2374,7 +2374,7 @@ $(function () {
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 				//请求失败之后的操作
 				var ret_code = "999917";
-				var ret_msg = "失败,请联系管理员!";
+				var ret_msg = "Error,contact admin please!";
 				alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 				result = false;
 			}

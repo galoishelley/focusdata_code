@@ -5,7 +5,7 @@
         "systemid": null,
         "projectid": null,
         "state": 1,
-        "msg": "查询成功",
+        "msg": "Query successfully",
         "result": {
             "draw": null,
             "recordsTotal": "2",

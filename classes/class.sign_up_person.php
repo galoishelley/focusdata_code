@@ -99,7 +99,7 @@ class Sign_up_person
 			$ret_code = "UP0000";
 		}else{
 			$success = false;
-			$ret_msg="失败,请联系管理员";
+			$ret_msg="Error,contact admin please";
 			$ret_code = "999999";
 		}
 

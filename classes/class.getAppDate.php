@@ -92,11 +92,11 @@ class getAppDate
 		
 		if($ret!=""){
 			$success = true;
-			$ret_msg="查询成功";
+			$ret_msg="Query successfully";
 			$ret_code = "S00000";
 		}else{
 			$success = true;
-			$ret_msg="无符合条件数据";
+			$ret_msg="No match data";
 			$ret_code = "S00001";
 		}
 
@@ -131,11 +131,11 @@ class getAppDate
 		
 		if($ret!=""){
 			$success = true;
-			$ret_msg="查询成功";
+			$ret_msg="Query successfully";
 			$ret_code = "S00000";
 		}else{
 			$success = true;
-			$ret_msg="无符合条件数据";
+			$ret_msg="No match data";
 			$ret_code = "S00001";
 		}
 
