@@ -543,7 +543,8 @@
                                         <div class="form-group">
                                             <label for="MEDICAL_CARD_NO" style="margin-left: 67px">
                                  <!-- 医疗卡号-->
-                                 <?php echo $lang['Lang0150']; ?><span class="span-red">*</span>
+                                 <?php echo $lang['Lang0150']; ?>
+                                 <!--<span class="span-red">*</span>-->
                               </label>
                                             <input type="text" class="form-control" name="MEDICAL_CARD_NO" id="MEDICAL_CARD_NO" maxlength="50">
                                         </div>

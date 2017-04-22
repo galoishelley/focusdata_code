@@ -595,12 +595,14 @@ $(function () {
             },
             MEDICAL_CARD_NO: {
                 validators: {
+                    /*
                     medicareNumberValidation: {
                         message: 'Invalid medicare number'
                     },
                     notEmpty: {
                         message: 'Medical card number is required and cannot be empty'
                     }
+                    */
                 }
             },
             CUSTOMER_ADDR: {

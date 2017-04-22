@@ -164,7 +164,8 @@ include_once 'classes/Language/language.common.php';
 
 										<div class="form-group">
 											<label for="MEDICAL_CARD_NO"> <!-- 医疗卡号-->
-												<?php echo $lang['Lang0150']; ?><span class="span-red">*</span>
+												<?php echo $lang['Lang0150']; ?>
+												<!--<span class="span-red">*</span>-->
 											</label> <input type="text" class="form-control"
 												name="MEDICAL_CARD_NO" id="MEDICAL_CARD_NO" maxlength="50">
 										</div>
