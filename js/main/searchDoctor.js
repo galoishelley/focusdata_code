@@ -1287,7 +1287,7 @@ $(function () {
 					error: function (XMLHttpRequest, textStatus, errorThrown) {
 						//请求失败之后的操作
 						var ret_code = "999906";
-						var ret_msg = "ajaxError,contact admin please";
+						var ret_msg = "Sorry, your appointment can't be done because of some issue. Please try later.";
 						alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 						AppointmentSuc = false;
 					}
@@ -1300,7 +1300,7 @@ $(function () {
 					waitingDialog.hide();
 
 					if (!AppointmentSuc) {
-						alert("Appointment failed, please try another time");
+						alert("Sorry, your appointment can't be done because of some issue. Please try later.");
 						return false;
 					}
 
@@ -1335,13 +1335,13 @@ $(function () {
 						error: function (XMLHttpRequest, textStatus, errorThrown) {
 							//请求失败之后的操作
 							var ret_code = "999907";
-							var ret_msg = "ajaxError,contact admin please";
+							var ret_msg = "Sorry, your appointment can't be done because of some issue. Please try later.";
 							alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 							AppointmentSuc = false;
 						}
 					});
 					if (!AppointmentSuc) {
-						alert("Appointment failed, please try another time");
+						alert("Sorry, your appointment can't be done because of some issue. Please try later.");
 						return false;
 					}
 
@@ -1385,7 +1385,7 @@ $(function () {
 						error: function (XMLHttpRequest, textStatus, errorThrown) {
 							//请求失败之后的操作
 							var ret_code = "999908";
-							var ret_msg = "ajaxError,contact admin please";
+							var ret_msg = "Sorry, your appointment can't be done because of some issue. Please try later.";
 							alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 							result = false;
 						}
@@ -1443,7 +1443,7 @@ $(function () {
 						error: function (XMLHttpRequest, textStatus, errorThrown) {
 							//请求失败之后的操作
 							var ret_code = "999909";
-							var ret_msg = "Error,contact admin please!";
+							var ret_msg = "Sorry, your appointment can't be done because of some issue. Please try later.";
 							alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 							result = false;
 						}
@@ -1486,7 +1486,7 @@ $(function () {
 						error: function (XMLHttpRequest, textStatus, errorThrown) {
 							//请求失败之后的操作
 							var ret_code = "999910";
-							var ret_msg = "Error,contact admin please!";
+							var ret_msg = "Sorry, your appointment can't be done because of some issue. Please try later.";
 							alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 							result = false;
 						}
@@ -1535,13 +1535,13 @@ $(function () {
 						error: function (XMLHttpRequest, textStatus, errorThrown) {
 							//请求失败之后的操作
 							var ret_code = "999907";
-							var ret_msg = "ajaxError,contact admin please";
+							var ret_msg = "Sorry, your appointment can't be done because of some issue. Please try later.";
 							alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 							AppointmentSuc = false;
 						}
 					});
 					if (!AppointmentSuc) {
-						alert("Appointment failed, please try another time");
+						alert("Sorry, your appointment can't be done because of some issue. Please try later.");
 						return false;
 					}
 
@@ -1585,7 +1585,7 @@ $(function () {
 						error: function (XMLHttpRequest, textStatus, errorThrown) {
 							//请求失败之后的操作
 							var ret_code = "999908";
-							var ret_msg = "ajaxError,contact admin please";
+							var ret_msg = "Sorry, your appointment can't be done because of some issue. Please try later.";
 							alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 							result = false;
 						}
@@ -1643,7 +1643,7 @@ $(function () {
 						error: function (XMLHttpRequest, textStatus, errorThrown) {
 							//请求失败之后的操作
 							var ret_code = "999909";
-							var ret_msg = "Error,contact admin please!";
+							var ret_msg = "Sorry, your appointment can't be done because of some issue. Please try later.";
 							alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 							result = false;
 						}
@@ -1686,7 +1686,7 @@ $(function () {
 						error: function (XMLHttpRequest, textStatus, errorThrown) {
 							//请求失败之后的操作
 							var ret_code = "999910";
-							var ret_msg = "Error,contact admin please!";
+							var ret_msg = "Sorry, your appointment can't be done because of some issue. Please try later.";
 							alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 							result = false;
 						}
