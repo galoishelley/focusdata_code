@@ -701,7 +701,7 @@ $(function () {
 					//no yellow page data
 				}
 				else {
-					yellowClinics=ret.data;
+					yellowClinics = ret.data;
 				}
 
 
@@ -769,10 +769,10 @@ $(function () {
 							language: "",
 							timeslottmp: [],
 							timeslot: [],
-							showDoc:0
+							showDoc: 0
 
 						};
-						
+
 						clinic.clinicPIC = 'img/clinics/' + ztem.CLINIC_PHOTO;
 						clinic.clinicName = ztem.CLINIC_NAME;
 						clinic.clinicPhone = ztem.CLINIC_PHONE;
@@ -784,156 +784,159 @@ $(function () {
 						clinic.clinicLng = ztem.CLINIC_LNG;
 
 						each_date.clinics.push(clinic);
+
+						
+					}
+					all_date.push(each_date);
+
+
+
+
+				}
+				else {
+					$(".warning").css('display', 'none')
+
+
+					var groupsDate = _.groupBy(ret.data, function (value) {
+						return value.APPOINTMENT_DATE;
+					});
+
+					var activeIndex;
+					if (json_str.serviceid == "SC02") {
+						activeIndex = $("ul#TMP_Doctor_Tab li.active").text().trim();
+						if (activeIndex == null || activeIndex == "Today")
+							activeIndex = reformatDate(Object.keys(groupsDate)[0]);
+
+					}
+					else if (json_str.serviceid == "SCD01") {
+						if (json_str.para.APPOINTMENT_DATE) {
+							activeIndex = json_str.para.APPOINTMENT_DATE;
+						}
+						else
+							activeIndex = reformatDate(Object.keys(groupsDate)[0]);
+					}
+					else
+						activeIndex = reformatDate(Object.keys(groupsDate)[0]);
+
+
+
+					for (var i in groupsDate) {
+						var item = groupsDate[i];
+						var each_date = {
+
+							date: "",
+							clinics: [],
+							activeID: activeIndex
+						};
+
+						each_date.date = reformatDate(i);
+
+						//Step1. push all appointment data
+						var groupsClinic = _.groupBy(item, function (value) {
+							return value.CLINIC_USER_ID;
+						});
+						for (var j in groupsClinic) {
+							var jtem = groupsClinic[j];
+							var clinic = {
+								clinicID: 0,
+								clinicPIC: "",
+								clinicName: "",
+								clinicPhone: "",
+
+								clinicAddress: "",
+								clinicSuburb: "",
+								clinicLat: 0,
+								clinicLng: 0,
+
+								overview: "",
+								languagetmp: [],
+								languageUni: [],
+								language: "",
+								timeslottmp: [],
+								timeslot: [],
+
+								showDoc: 1
+
+							};
+							clinic.clinicID = j;
+							clinic.clinicPIC = 'img/clinics/' + jtem[0].CLINIC_PHOTO;
+							clinic.clinicName = jtem[0].CLINIC_NAME;
+							clinic.clinicPhone = jtem[0].CLINIC_PHONE;
+							clinic.clinicAddress = jtem[0].CLINIC_ADDR;
+							clinic.clinicSuburb = jtem[0].CLINIC_SUBURB;
+							clinic.overview = jtem[0].CLINIC_OVERVIEW;
+
+							clinic.clinicLat = jtem[0].CLINIC_LAT;
+							clinic.clinicLng = jtem[0].CLINIC_LNG;
+
+							for (var m in jtem) {
+								var mtem = jtem[m];
+								//Step1.convert string to array
+								var langArr = mtem.LANGUAGE_NAME.split(",");
+								//Step2.push langArr to languagetmp
+								Array.prototype.push.apply(clinic.languagetmp, langArr);
+							}
+							//Step3.identify the unique
+							clinic.languageUni = _.uniq(clinic.languagetmp);
+
+							//Step4.convert array to string
+							clinic.language = clinic.languageUni.join();
+
+							for (var m in jtem) {
+								var mtem = jtem[m];
+								clinic.timeslottmp.push({
+									time: convertTime(mtem.APPOINTMENT_TIME)
+								});
+
+							}
+							clinic.timeslot = _.uniq(clinic.timeslottmp, false, function (p) { return p.time; });
+
+
+							each_date.clinics.push(clinic);
+						}
+
+						//Step2.push all yellow page data
+						for (var z in yellowClinics) {
+							var ztem = yellowClinics[z];
+							var clinic = {
+								clinicID: 0,
+								clinicPIC: "",
+								clinicName: "",
+								clinicPhone: "",
+
+								clinicAddress: "",
+								clinicSuburb: "",
+								clinicLat: 0,
+								clinicLng: 0,
+
+								overview: "",
+								languagetmp: [],
+								languageUni: [],
+								language: "",
+								timeslottmp: [],
+								timeslot: [],
+								showDoc: 0
+
+							};
+
+							clinic.clinicPIC = 'img/clinics/' + ztem.CLINIC_PHOTO;
+							clinic.clinicName = ztem.CLINIC_NAME;
+							clinic.clinicPhone = ztem.CLINIC_PHONE;
+							clinic.clinicAddress = ztem.CLINIC_ADDR;
+							clinic.clinicSuburb = ztem.CLINIC_SUBURB;
+							clinic.overview = ztem.CLINIC_OVERVIEW;
+
+							clinic.clinicLat = ztem.CLINIC_LAT;
+							clinic.clinicLng = ztem.CLINIC_LNG;
+
+							each_date.clinics.push(clinic);
+						}
+
+
 
 						all_date.push(each_date);
 					}
 
-
-
-
-				}
-				else
-					$(".warning").css('display', 'none')
-
-
-				var groupsDate = _.groupBy(ret.data, function (value) {
-					return value.APPOINTMENT_DATE;
-				});
-
-				var activeIndex;
-				if (json_str.serviceid == "SC02") {
-					activeIndex = $("ul#TMP_Doctor_Tab li.active").text().trim();
-					if (activeIndex == null || activeIndex == "Today")
-						activeIndex = reformatDate(Object.keys(groupsDate)[0]);
-
-				}
-				else if (json_str.serviceid == "SCD01") {
-					if (json_str.para.APPOINTMENT_DATE) {
-						activeIndex = json_str.para.APPOINTMENT_DATE;
-					}
-					else
-						activeIndex = reformatDate(Object.keys(groupsDate)[0]);
-				}
-				else
-					activeIndex = reformatDate(Object.keys(groupsDate)[0]);
-
-
-
-				for (var i in groupsDate) {
-					var item = groupsDate[i];
-					var each_date = {
-
-						date: "",
-						clinics: [],
-						activeID: activeIndex
-					};
-
-					each_date.date = reformatDate(i);
-
-					//Step1. push all appointment data
-					var groupsClinic = _.groupBy(item, function (value) {
-						return value.CLINIC_USER_ID;
-					});
-					for (var j in groupsClinic) {
-						var jtem = groupsClinic[j];
-						var clinic = {
-							clinicID: 0,
-							clinicPIC: "",
-							clinicName: "",
-							clinicPhone: "",
-
-							clinicAddress: "",
-							clinicSuburb: "",
-							clinicLat: 0,
-							clinicLng: 0,
-
-							overview: "",
-							languagetmp: [],
-							languageUni: [],
-							language: "",
-							timeslottmp: [],
-							timeslot: [],
-
-							showDoc:1
-
-						};
-						clinic.clinicID = j;
-						clinic.clinicPIC = 'img/clinics/' + jtem[0].CLINIC_PHOTO;
-						clinic.clinicName = jtem[0].CLINIC_NAME;
-						clinic.clinicPhone = jtem[0].CLINIC_PHONE;
-						clinic.clinicAddress = jtem[0].CLINIC_ADDR;
-						clinic.clinicSuburb = jtem[0].CLINIC_SUBURB;
-						clinic.overview = jtem[0].CLINIC_OVERVIEW;
-
-						clinic.clinicLat = jtem[0].CLINIC_LAT;
-						clinic.clinicLng = jtem[0].CLINIC_LNG;
-
-						for (var m in jtem) {
-							var mtem = jtem[m];
-							//Step1.convert string to array
-							var langArr = mtem.LANGUAGE_NAME.split(",");
-							//Step2.push langArr to languagetmp
-							Array.prototype.push.apply(clinic.languagetmp, langArr);
-						}
-						//Step3.identify the unique
-						clinic.languageUni = _.uniq(clinic.languagetmp);
-
-						//Step4.convert array to string
-						clinic.language = clinic.languageUni.join();
-
-						for (var m in jtem) {
-							var mtem = jtem[m];
-							clinic.timeslottmp.push({
-								time: convertTime(mtem.APPOINTMENT_TIME)
-							});
-
-						}
-						clinic.timeslot = _.uniq(clinic.timeslottmp, false, function (p) { return p.time; });
-
-
-						each_date.clinics.push(clinic);
-					}
-
-					//Step2.push all yellow page data
-					for (var z in yellowClinics) {
-						var ztem = yellowClinics[z];
-						var clinic = {
-							clinicID: 0,
-							clinicPIC: "",
-							clinicName: "",
-							clinicPhone: "",
-
-							clinicAddress: "",
-							clinicSuburb: "",
-							clinicLat: 0,
-							clinicLng: 0,
-
-							overview: "",
-							languagetmp: [],
-							languageUni: [],
-							language: "",
-							timeslottmp: [],
-							timeslot: [],
-							showDoc:0
-
-						};
-						
-						clinic.clinicPIC = 'img/clinics/' + ztem.CLINIC_PHOTO;
-						clinic.clinicName = ztem.CLINIC_NAME;
-						clinic.clinicPhone = ztem.CLINIC_PHONE;
-						clinic.clinicAddress = ztem.CLINIC_ADDR;
-						clinic.clinicSuburb = ztem.CLINIC_SUBURB;
-						clinic.overview = ztem.CLINIC_OVERVIEW;
-
-						clinic.clinicLat = ztem.CLINIC_LAT;
-						clinic.clinicLng = ztem.CLINIC_LNG;
-
-						each_date.clinics.push(clinic);
-					}
-
-
-						
-					all_date.push(each_date);
 				}
 				console.log(all_date);
 

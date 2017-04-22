@@ -727,7 +727,9 @@
                                 </div>
                                 <div class="search-time-container clearfix closed">
                                     <div class="search-time-scroll">
-                                        <span class="search-time-booknow">{{>~ppdate}}</span> {{for timeslot}}
+                                        {{if showDoc==1}}<span class="search-time-booknow">{{>~ppdate}}</span>
+                                        {{else}}{{/if}}
+                                         {{for timeslot}}
                                         <a class="apptTimeBtn">{{>time}}</a> {{/for}}
 
                                         <span class="search-more apptTimeMore">More</span>
