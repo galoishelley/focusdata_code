@@ -121,11 +121,6 @@ class SearchDoctor_DB{
     
     public function index_search_sp($arr_values)
     {
-    	
-
-    	
-    	
-    	
 
     	$sql = "CALL `sp_get7daysTimeslots`(:p0,:p1,:p2,:p3,:p4,:p5,:p6,:p7,:p8);";
 
@@ -175,11 +170,7 @@ class SearchDoctor_DB{
 	    			$p3="";
 	    		}
 	    		
-    			
-    			
-	    		
-	    		
-	    		
+
 	    		
 	    	}
     	}
@@ -230,6 +221,85 @@ class SearchDoctor_DB{
     	
     	return $stmt->fetchAll(PDO::FETCH_ASSOC);
     	
+    }
+
+
+    public function yellowpage_sp($arr_values){
+        $sql = "CALL `sp_getYellowPageClinic`(:p1,:p2,:p3,:p4,:p5);";
+
+    	
+    	
+    	
+    	if(isset($arr_values['CLINIC_SUBURB']))
+    	{
+	    	if($arr_values['CLINIC_SUBURB']=="")
+	    	{
+	    		$p1="";
+	    		$p2="";
+	    		$p3="";
+	    	}
+	    	else
+	    	{
+	    		
+	    		
+	    		if (strpos($arr_values['CLINIC_SUBURB'], ',') !== false) {
+	    			$p1=explode(",",$arr_values['CLINIC_SUBURB'])[0];
+	    			$tmp=explode(",",$arr_values['CLINIC_SUBURB'])[1];
+	    			$tmp=ltrim($tmp," ");
+	    			if (strpos($tmp, ' ') !== false)
+	    			{
+	    				$p2=explode(" ",$tmp)[1];
+	    				$p3=explode(" ",$tmp)[0];
+	    			}
+	    			else
+	    			{
+	    				$p1=$arr_values['CLINIC_SUBURB'];
+	    				$p2="";
+	    				$p3="";
+	    			}
+	    		}
+	    		else
+	    		{
+	    			$p1=$arr_values['CLINIC_SUBURB'];
+	    			$p2="";
+	    			$p3="";
+	    		}
+	    		
+
+	    		
+	    	}
+    	}
+    	else
+    	{
+    		$p1="";
+    		$p2="";
+    		$p3="";
+    	}
+    	
+    	if(isset($arr_values['DOCTOR_TYPE']))
+    		$p4=$arr_values['DOCTOR_TYPE'];
+    	else
+    		$p4="";
+    	
+    	if(isset($arr_values['CLINIC_NAME']))
+    		$p5=$arr_values['CLINIC_NAME'];
+    	else
+    		$p5="";
+    		
+    	
+
+    	$stmt = $this->db->prepare($sql);
+    	
+   
+    	$stmt->bindParam(':p1', $p1, PDO::PARAM_STR);
+    	$stmt->bindParam(':p2', $p2, PDO::PARAM_STR);
+    	$stmt->bindParam(':p3', $p3, PDO::PARAM_STR);
+    	$stmt->bindParam(':p4', $p4, PDO::PARAM_STR);
+    	$stmt->bindParam(':p5', $p5, PDO::PARAM_STR);
+
+    	$stmt->execute();
+    	
+    	return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function index_search_view($arr_values,$requesttype=0,$start=0,$lenght=10){

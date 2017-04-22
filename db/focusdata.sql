@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2017-04-21 15:56:30
+-- Generation Time: 2017-04-22 10:14:46
 -- 服务器版本： 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -35,7 +35,8 @@ BEGIN
            t8.LANGUAGE_NAME,
            t3.CLINIC_USER_ID,
            t4.CLINIC_PHOTO,
-           t4.CLINIC_NAME, 
+           t4.CLINIC_NAME,
+           t4.CLINIC_PHONE,
            t4.CLINIC_ADDR, 
            t4.CLINIC_SUBURB, 
            t4.CLINIC_LAT,
@@ -58,7 +59,8 @@ fd_rel_doctor_language as t6 left join fd_dict_language as t7 on t6.LANGUAGE_ID 
 group by t6.DOCTOR_ID
 		   ) t8
            ON t1.DOCTOR_ID = t8.DOCTOR_ID
-    WHERE  t1.ACTIVE_STATUS = 1 
+    WHERE  t1.ACTIVE_STATUS = 1
+		   AND t4.IS_YELLOWPAGE=0
            AND t1.APPOINTMENT_DATE >= DATE_SUB(DATEIN,INTERVAL 3 DAY)
            AND t1.APPOINTMENT_DATE <= DATE_ADD(DATEIN,INTERVAL 3 DAY)
            AND CONCAT(t1.APPOINTMENT_DATE, ' ', t1.APPOINTMENT_TIME) > Now() 
@@ -70,7 +72,7 @@ group by t6.DOCTOR_ID
                   OR POSTCODEIN = '' ) 
            AND ( t2.DOCTOR_TYPE = DOCTORTYPEIN 
                   OR DOCTORTYPEIN = '' ) 
-           AND ( t4.CLINIC_NAME = CLINICNAMEIN 
+           AND ( t4.CLINIC_NAME like CONCAT('%', CLINICNAMEIN, '%')
                   OR CLINICNAMEIN = '' ) 
            AND ( t2.DOCTOR_NAME like CONCAT('%', DOCTORNAMEIN, '%')
                   OR DOCTORNAMEIN = '' ) 
@@ -90,7 +92,8 @@ group by t6.DOCTOR_ID
            t8.LANGUAGE_NAME,
            t3.CLINIC_USER_ID,
            t4.CLINIC_PHOTO,
-           t4.CLINIC_NAME, 
+           t4.CLINIC_NAME,
+           t4.CLINIC_PHONE,
            t4.CLINIC_ADDR, 
            t4.CLINIC_SUBURB, 
            t4.CLINIC_LAT,
@@ -114,6 +117,7 @@ group by t6.DOCTOR_ID
 		   ) t8
            ON t1.DOCTOR_ID = t8.DOCTOR_ID
     WHERE  t1.ACTIVE_STATUS = 1 
+		   AND t4.IS_YELLOWPAGE=0
            AND t1.APPOINTMENT_DATE >= CURRENT_DATE() 
            AND t1.APPOINTMENT_DATE <= DATE_ADD(DATEIN,INTERVAL 6 DAY)
            AND CONCAT(t1.APPOINTMENT_DATE, ' ', t1.APPOINTMENT_TIME) > Now() 
@@ -125,7 +129,7 @@ group by t6.DOCTOR_ID
                   OR POSTCODEIN = '' ) 
            AND ( t2.DOCTOR_TYPE = DOCTORTYPEIN 
                   OR DOCTORTYPEIN = '' ) 
-           AND ( t4.CLINIC_NAME = CLINICNAMEIN 
+           AND ( t4.CLINIC_NAME like CONCAT('%', CLINICNAMEIN, '%')
                   OR CLINICNAMEIN = '' ) 
            AND ( t2.DOCTOR_NAME like CONCAT('%', DOCTORNAMEIN, '%') 
                   OR DOCTORNAMEIN = '' ) 
@@ -137,6 +141,51 @@ group by t6.DOCTOR_ID
               t1.DOCTOR_ID asc, 
               t1.APPOINTMENT_TIME asc; 
   END IF; 
+  
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_getYellowPageClinic` (IN `suburbIN` VARCHAR(50), IN `postcodeIN` VARCHAR(50), IN `stateIN` VARCHAR(50), IN `doctorTypeIN` VARCHAR(50), IN `clinicNameIN` VARCHAR(100))  READS SQL DATA
+BEGIN 
+  
+    SELECT 
+
+           
+           t3.CLINIC_USER_ID,
+           t4.CLINIC_PHOTO,
+           t4.CLINIC_NAME,
+           t4.CLINIC_PHONE,
+           t4.CLINIC_ADDR, 
+           t4.CLINIC_SUBURB, 
+           t4.CLINIC_LAT,
+           t4.CLINIC_LNG,
+           t4.CLINIC_OVERVIEW,
+           t5.STATE_NAME
+          
+    FROM   
+		   
+		   fd_clinic_user t4 
+		   LEFT JOIN fd_rel_clinic_doctor t3 
+                  ON t3.CLINIC_USER_ID = t4.CLINIC_USER_ID 
+			LEFT JOIN fd_doctor t2 
+			ON t2.DOCTOR_ID = t3.DOCTOR_ID 
+				  
+				  
+           LEFT JOIN fd_dict_state t5 
+                  ON t4.STATE_ID = t5.STATE_ID 
+           
+    WHERE  t4.IS_YELLOWPAGE=1
+           
+           AND ( t5.STATE_NAME = STATEIN 
+                  OR STATEIN = '' ) 
+           AND ( t4.CLINIC_SUBURB = SUBURBIN 
+                  OR SUBURBIN = '' ) 
+           AND ( t4.CLINIC_POSTCODE = POSTCODEIN 
+                  OR POSTCODEIN = '' ) 
+           AND ( t2.DOCTOR_TYPE = DOCTORTYPEIN 
+                  OR DOCTORTYPEIN = '' ) 
+           AND ( t4.CLINIC_NAME like CONCAT('%', CLINICNAMEIN, '%') 
+                  OR CLINICNAMEIN = '' )
+           GROUP BY t4.CLINIC_USER_ID;
   
 END$$
 
@@ -231,9 +280,9 @@ CREATE TABLE `fd_clinic_user` (
 --
 
 INSERT INTO `fd_clinic_user` (`CLINIC_USER_ID`, `CLINIC_USER_PWD`, `CLINIC_USER_MAIL`, `CLINIC_NAME`, `CLINIC_PHONE`, `CLINIC_PHOTO`, `CLINIC_ADDR`, `CLINIC_POSTCODE`, `CLINIC_SUBURB`, `CLINIC_LAT`, `CLINIC_LNG`, `STATE_ID`, `ACTIVE_STATUS`, `CLINIC_OVERVIEW`, `IS_YELLOWPAGE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
-(1, '92eb5ffee6ae2fec3ad71c777531578f', 'bencaotang@gmail.com', 'Box Hill Superclinic', '', 'super.jpg', '810 Whitehorse Road', '3127', 'Box Hill', '', '', 7, 1, NULL, 0, 'bencaotang@gmail.com', '2017-01-23 08:37:39', 'bencaotang@gmail.com', '2017-04-19 13:12:45'),
-(2, '25ccd325869097a683e3466ffcaf31cf', 'baozhilin@gmail.com', 'Box Hill Medical Centre', '', 'medical.jpg', '528 Station Street', '3128', 'Box Hill', '', '', 7, 1, NULL, 0, 'baozhilin@gmail.com', '2017-01-20 13:16:46', 'baozhilin@gmail.com', '2017-01-20 13:16:46'),
-(3, 'fef7a0536578a077d04989b3c8f98dbd', 'jingwumen@gmail.com', 'Box Hill Mall Medical Centre', '', 'mall.jpg', '8 Market Street', '3128', 'Box Hill', '', '', 7, 1, NULL, 0, 'jingwumen@gmail.com', '2017-01-20 13:18:09', 'jingwumen@gmail.com', '2017-01-20 13:18:09');
+(1, '92eb5ffee6ae2fec3ad71c777531578f', 'bencaotang@gmail.com', 'Box Hill Superclinic', '1234', 'super.jpg', '810 Whitehorse Road', '3127', 'Box Hill', '', '', 7, 1, NULL, 0, 'bencaotang@gmail.com', '2017-01-23 08:37:39', 'bencaotang@gmail.com', '2017-04-19 13:12:45'),
+(2, '25ccd325869097a683e3466ffcaf31cf', 'baozhilin@gmail.com', 'Box Hill Medical Centre', '5678', 'medical.jpg', '528 Station Street', '3128', 'Box Hill', '', '', 7, 1, NULL, 0, 'baozhilin@gmail.com', '2017-01-20 13:16:46', 'baozhilin@gmail.com', '2017-01-20 13:16:46'),
+(3, 'fef7a0536578a077d04989b3c8f98dbd', 'jingwumen@gmail.com', 'Box Hill Mall Medical Centre', '', 'mall.jpg', '8 Market Street', '3128', 'Box Hill', '', '', 7, 1, NULL, 1, 'jingwumen@gmail.com', '2017-01-20 13:18:09', 'jingwumen@gmail.com', '2017-01-20 13:18:09');
 
 -- --------------------------------------------------------
 
@@ -474,7 +523,7 @@ INSERT INTO `fd_doctor` (`DOCTOR_ID`, `DOCTOR_TYPE`, `DOCTOR_NAME`, `DOCTOR_GEND
 (5, 'GP', 'Gillian Foster', '', 1, 'test_shisanyi.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
 (6, 'GP', 'Ria Torres', '', 1, 'test_linshirong.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
 (7, 'GP', 'Jane Bob', '', 1, 'test_huoyuanjia.jpg', '', '', 6, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(8, 'GP', 'Maurice Moss', '', 1, 'test_chenzhen.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
+(8, 'Dentist', 'Maurice Moss', '', 1, 'test_chenzhen.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
 (9, 'GP', 'Douglas Reynholm', '', 1, 'test_huotingen.jpg', '', '', 6, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------

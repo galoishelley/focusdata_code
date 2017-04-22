@@ -44,8 +44,10 @@ class SearchDoctor
 				$this->distance_range=100000000; //10万公里
 		}
 
-		
-		$this->searchdoctor ();
+		if(isset($this->arr_values["GET_YELLOWPAGE"]))
+			$this->searchYellowPagedoctor ();
+		else
+			$this->searchdoctor ();
 	}
 
 
@@ -248,6 +250,50 @@ class SearchDoctor
 		$response["response"]["success"] = $success;  //固定参数返回	
 		$response["response"]["status"] = $status;  //固定参数返回	
 		$response["response"]["data"] = $filteredArray;
+		
+		header('Content-Type: application/json');
+		echo json_encode ( $response );
+	}
+
+
+	public function searchYellowPagedoctor()
+	{
+		$response["response"]  = array();
+		$success = true;
+		$ret_msg = "";
+		$ret_code = "S00000"; //成功
+		
+		
+
+		$ret["data"]=$this->searchdoctor_db->yellowpage_sp($this->arr_values);
+
+
+		$recordCount = count($ret["data"]);
+
+
+		if($recordCount>0){
+			$success = true;
+			$ret_msg="Query successfully";
+			$ret_code = "S00000";
+		}else if($recordCount==0){
+			$success = true;
+			$ret_msg="No match data";
+			$ret_code = "S00001";
+		}else{
+			$success = false;
+			$ret_msg="Error,contact admin please";
+			$ret_code = "999999";
+		}
+
+		$status  = array();
+		$status["ret_msg"] = $ret_msg;	
+		$status["ret_code"] = $ret_code;
+
+		
+		$response["response"] = $this->response_const();  //固定参数返回
+		$response["response"]["success"] = $success;  //固定参数返回	
+		$response["response"]["status"] = $status;  //固定参数返回	
+		$response["response"]["data"] = $ret["data"];
 		
 		header('Content-Type: application/json');
 		echo json_encode ( $response );

@@ -683,6 +683,42 @@ $(function () {
 		}
 	}
 	function ajaxSearchClinic(json_str) {
+
+
+		var yellowClinics;
+		json_str.para.GET_YELLOWPAGE = 1;
+		$.ajax({
+			type: "POST",
+			url: "classes/class.searchDoctor.php",
+			dataType: "json",
+			async: false,
+			data: {
+				request: json_str
+			},
+			success: function (msg) {
+				var ret = msg.response;
+				if (ret.data.length == 0) {
+					//no yellow page data
+				}
+				else {
+					yellowClinics=ret.data;
+				}
+
+
+			},
+			error: function (XMLHttpRequest, textStatus, errorThrown) {
+				//请求失败之后的操作
+				var ret_code = "999904";
+				var ret_msg = "Error,contact admin please!";
+				alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
+				result = false;
+			}
+		});
+
+
+
+
+		delete json_str.para.GET_YELLOWPAGE;
 		if (!Array.isArray(json_str.para.LANGUAGE)) {
 			json_str.para.LANGUAGE = [json_str.para.LANGUAGE];
 		}
@@ -702,10 +738,59 @@ $(function () {
 
 				var ret = msg.response;
 				if (ret.data.length == 0) {
+					/*we show yellowpage data bellow, so this warning will never be shown,
+					refer to issue: Display YellowPage data #135*/
+					//$(".warning").css('display', 'block')
 
-					$(".warning").css('display', 'block')
-					//$( ".thumb-box9" ).append( "<p style='margin-left:350px;color:red'>Sorry,we couldn't find any appointments matching your search criteria.Try changing your search criteria for more results</p>" );
-					//alert("Sorry,we couldn't find any appointments matching your search criteria.Try changing your search criteria for more results");
+					/*We need to create a dummy date "Today" containing the yellow page clinics*/
+					var each_date = {
+
+						date: "Today",
+						clinics: [],
+						activeID: "Today"
+					};
+
+					for (var z in yellowClinics) {
+						var ztem = yellowClinics[z];
+						var clinic = {
+							clinicID: 0,
+							clinicPIC: "",
+							clinicName: "",
+							clinicPhone: "",
+
+							clinicAddress: "",
+							clinicSuburb: "",
+							clinicLat: 0,
+							clinicLng: 0,
+
+							overview: "",
+							languagetmp: [],
+							languageUni: [],
+							language: "",
+							timeslottmp: [],
+							timeslot: [],
+							showDoc:0
+
+						};
+						
+						clinic.clinicPIC = 'img/clinics/' + ztem.CLINIC_PHOTO;
+						clinic.clinicName = ztem.CLINIC_NAME;
+						clinic.clinicPhone = ztem.CLINIC_PHONE;
+						clinic.clinicAddress = ztem.CLINIC_ADDR;
+						clinic.clinicSuburb = ztem.CLINIC_SUBURB;
+						clinic.overview = ztem.CLINIC_OVERVIEW;
+
+						clinic.clinicLat = ztem.CLINIC_LAT;
+						clinic.clinicLng = ztem.CLINIC_LNG;
+
+						each_date.clinics.push(clinic);
+
+						all_date.push(each_date);
+					}
+
+
+
+
 				}
 				else
 					$(".warning").css('display', 'none')
@@ -744,6 +829,8 @@ $(function () {
 					};
 
 					each_date.date = reformatDate(i);
+
+					//Step1. push all appointment data
 					var groupsClinic = _.groupBy(item, function (value) {
 						return value.CLINIC_USER_ID;
 					});
@@ -753,7 +840,7 @@ $(function () {
 							clinicID: 0,
 							clinicPIC: "",
 							clinicName: "",
-							clinicPhone:"",
+							clinicPhone: "",
 
 							clinicAddress: "",
 							clinicSuburb: "",
@@ -765,7 +852,9 @@ $(function () {
 							languageUni: [],
 							language: "",
 							timeslottmp: [],
-							timeslot: []
+							timeslot: [],
+
+							showDoc:1
 
 						};
 						clinic.clinicID = j;
@@ -804,6 +893,46 @@ $(function () {
 
 						each_date.clinics.push(clinic);
 					}
+
+					//Step2.push all yellow page data
+					for (var z in yellowClinics) {
+						var ztem = yellowClinics[z];
+						var clinic = {
+							clinicID: 0,
+							clinicPIC: "",
+							clinicName: "",
+							clinicPhone: "",
+
+							clinicAddress: "",
+							clinicSuburb: "",
+							clinicLat: 0,
+							clinicLng: 0,
+
+							overview: "",
+							languagetmp: [],
+							languageUni: [],
+							language: "",
+							timeslottmp: [],
+							timeslot: [],
+							showDoc:0
+
+						};
+						
+						clinic.clinicPIC = 'img/clinics/' + ztem.CLINIC_PHOTO;
+						clinic.clinicName = ztem.CLINIC_NAME;
+						clinic.clinicPhone = ztem.CLINIC_PHONE;
+						clinic.clinicAddress = ztem.CLINIC_ADDR;
+						clinic.clinicSuburb = ztem.CLINIC_SUBURB;
+						clinic.overview = ztem.CLINIC_OVERVIEW;
+
+						clinic.clinicLat = ztem.CLINIC_LAT;
+						clinic.clinicLng = ztem.CLINIC_LNG;
+
+						each_date.clinics.push(clinic);
+					}
+
+
+						
 					all_date.push(each_date);
 				}
 				console.log(all_date);
@@ -1028,7 +1157,7 @@ $(function () {
 							language: "",
 							clinicName: "",
 							clinicAddress: "",
-							
+
 							timeslot: []
 						};
 						doctor.doctorID = j;

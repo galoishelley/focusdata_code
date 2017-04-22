@@ -710,9 +710,13 @@
                                         </div>
                                         <div class="search-addie">
                                             {{>language}}
+
+                                            {{if showDoc==1}}
                                             <a class="showDoctors" keyClinicID="{{>clinicID}}">
                                                 <?php echo $lang['Lang0324']; ?>
                                             </a>
+
+                                            {{else}}{{/if}}
                                         </div>
 
                                         <div class="search-overview" style="display:none;">
