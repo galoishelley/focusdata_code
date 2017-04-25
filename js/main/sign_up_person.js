@@ -590,6 +590,11 @@ $(function () {
                     },
                     digits: {
                         message: 'The phone number is not valid'
+                    },
+                    stringLength: {
+                        min: 10,
+                        max: 10,
+                        message: 'Needs to be 10 numbers'
                     }
                 }
             },
