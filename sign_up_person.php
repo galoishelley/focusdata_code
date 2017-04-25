@@ -86,11 +86,11 @@ include_once 'classes/Language/language.common.php';
 
 									<div class="row">
 
-										<div class="form-group">
+										<div class="form-group col-md-9">
 											<label for="CUSTOMER_USER_MAIL"> <!-- 邮箱-->
 												<?php echo $lang['Lang0213']; ?><span class="span-red">*</span>
 											</label> <input type="text" class="form-control"
-												id="CUSTOMER_USER_MAIL" name="CUSTOMER_USER_MAIL">
+												id="CUSTOMER_USER_MAIL" name="CUSTOMER_USER_MAIL" style="width: 38%" maxlength="200">
 										</div>
 									</div>
 									<div class="row">

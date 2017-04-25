@@ -582,7 +582,7 @@
                                             <label for="CUSTOMER_USER_MAIL">
                                  <!-- 邮箱--><?php echo $lang['Lang0048']; ?><span class="span-red">*</span>
                               </label>
-                                            <input type="text" style="margin-left: 50px" class="form-control" id="CUSTOMER_USER_MAIL" name="CUSTOMER_USER_MAIL">
+                                            <input type="text" style="margin-left: 50px;" class="form-control" id="CUSTOMER_USER_MAIL" name="CUSTOMER_USER_MAIL">
                                         </div>
                                     </div>
                                     <div class="row alexrow">

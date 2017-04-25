@@ -92,12 +92,12 @@ include_once 'classes/Language/language.common.php';
 								<div id="personal">
 									
 									<div class="row">
-										<div class="form-group">
+										<div class="form-group col-md-9">
 											<label for="pwd">
 												<!-- 邮箱-->
 												<?php echo $lang['Lang0197']; ?><span class="span-red">*</span>
 											</label> <input type="email" class="form-control"
-												name="CLINIC_USER_MAIL" id="CLINIC_USER_MAIL">
+												name="CLINIC_USER_MAIL" style="width: 38%"  id="CLINIC_USER_MAIL" >
 										</div>
 									</div>
 									<div class="row">

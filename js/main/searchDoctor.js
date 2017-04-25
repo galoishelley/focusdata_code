@@ -2653,4 +2653,7 @@ $(function () {
 	});
 
 
+	$('#CUSTOMER_USER_MAIL').css("width", "300px");
+
+
 });
