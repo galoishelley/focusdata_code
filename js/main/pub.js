@@ -21,26 +21,7 @@
       return reqStr;
     };
     
-    /* input: 13:00:00
-     * output: 1:00 pm
-     */
-    var convertTime = function (isoTime) {
-      var hours = parseInt(isoTime.substring(0, 2), 10),
-        minutes = parseInt(isoTime.substring(3, 5), 10),
-        ampm = 'am';
-
-      if (hours >= 12) {
-        ampm = 'pm';
-      }
-
-      if (hours > 12) {
-        hours -= 12;
-      }
-
-      if (minutes == 0)
-        minutes = "00";
-      return hours + ':' + minutes + ' ' + ampm;
-    };
+    
     
 
     //form序列化为json

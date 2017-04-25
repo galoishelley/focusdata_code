@@ -13,6 +13,8 @@
         <meta name="description" content="Your description">
         <meta name="keywords" content="Your keywords">
         <meta name="author" content="Your name">
+
+
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
         <!--<link rel="stylesheet" type="text/css" href="css/bootstrap-dialog.min.css">-->
         <link rel="stylesheet" href="css/style.css">
@@ -27,8 +29,7 @@
         <link href="css/jquery-ui.css" rel="stylesheet">
         <link rel="stylesheet" href="css/bootstrap-multiselect.css">
 
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700" rel="stylesheet"
-            type="text/css">
+
         <link rel="stylesheet" type="text/css" href="css/sm.css@ver-3" />
         <link rel="stylesheet" type="text/css" href="css/searchDoctor.css" />
 
@@ -153,7 +154,7 @@
                 color: #63707b;
                 font-weight: 400
             }
-
+            
             #clinicProfile .slickWindow .cartItems .clinic-mobile {
                 margin: 1px 0 14px;
                 padding: 0 90px 0 10px;
@@ -189,6 +190,7 @@
             .nav-tabs>li>a {
                 border: 1px solid #cccccc;
                 color: #000;
+                cursor:pointer;
             }
             
             .nav-tabs>li.active>a {
@@ -208,30 +210,131 @@
                 padding-top: 15px;
             }
             
-            .col-md-6, .col-md-1 {
+            .col-md-6,
+            .col-md-1 {
                 padding-left: 0px;
                 padding-right: 0px;
             }
-
-            .modal-footer .btn{
+            
+            .modal-footer .btn {
                 margin-top: 5px;
             }
-
-            .modal-footer .btn + .btn{
+            
+            .modal-footer .btn+.btn {
                 margin-left: 0px;
+            }
+            
+            .he-global-pagination {
+                clear: both;
+                float: none;
+                width: 100%;
+                text-align: right;
+                margin: 20px 0 30px
+            }
+            
+            /*@media (max-width: 767px) {
+                .he-global-pagination {
+                    display: none
+                }
+            }*/
+            
+            .he-global-pagination .he-global-paginner {
+                width: auto;
+                display: inline-block
+            }
+            
+            .he-global-pagination .he-global-paginner .he-global-pagtext {
+                display: inline-block;
+                font-size: 12px;
+                color: #63707b;
+                padding: 0 30px
+            }
+            
+            .he-global-pagination .he-global-paginner .he-global-paglinks {
+                display: inline-block;
+                background-color: #fff;
+                -webkit-box-shadow: 2px 2px 1px 0 rgba(0, 0, 0, 0.2);
+                -moz-box-shadow: 2px 2px 1px 0 rgba(0, 0, 0, 0.2);
+                box-shadow: 2px 2px 1px 0 rgba(0, 0, 0, 0.2)
+            }
+            
+            .he-global-pagination .he-global-paginner .he-global-paglinks .page-ellip {
+                padding: 0 19px
+            }
+
+            .he-global-pagination .he-global-paginner .he-global-paglinks>span bb{
+                color: #313436;
+                font-size: 15px;
+                font-weight: 600;
+                padding: 13px 19px;
+                display: inline-block;
+                line-height: normal
+            }
+            
+            .he-global-pagination .he-global-paginner .he-global-paglinks>span a {
+                color: #008ec8;
+                font-size: 15px;
+                font-weight: 600;
+                padding: 13px 19px;
+                display: inline-block;
+                line-height: normal
+            }
+            
+            .he-global-pagination .he-global-paginner .he-global-paglinks>span a:hover {
+                color: #ffffff;
+                background-color: #008ec8;
+            }
+            
+          
+            
+            #leaderboard-slot1 {
+                margin-top: 25px
+            }
+            
+            @media (max-width: 767px) {
+                #leaderboard-slot1 {
+                    display: none
+                }
+            }
+            
+            #leaderboard-slot2 {
+                margin-bottom: 25px
+            }
+            
+            @media (max-width: 767px) {
+                #sidebar-mrec-slot1 {
+                    text-align: center
+                }
+            }
+            
+            #sidebar-mrec-slot2 {
+                margin-top: 25px
+            }
+            
+            @media (max-width: 767px) {
+                #sidebar-mrec-slot2 {
+                    margin-bottom: 25px;
+                    text-align: center
+                }
+            }
+            
+            #sidebar-mrec-slot3 {
+                margin-top: 25px;
+                margin-bottom: 25px
+            }
+            
+            #sidebar-mrec-group1 {
+                margin-top: 26px
+            }
+            
+            @media (max-width: 767px) {
+                #sidebar-mrec-group2 {
+                    display: none
+                }
             }
         </style>
 
-        <!--JS-->
-        <script src="js/jquery.js"></script>
-        <script src="js/jsrender.js"></script>
-        <script src="js/underscore-min.js"></script>
-        <script src="js/jquery-migrate-1.2.1.min.js"></script>
-        <script src="js/jquery.easing.1.3.js"></script>
-        <script src="js/jquery.mobilemenu.js"></script>
-        <script src="js/jquery.equalheights.js"></script>
-        <script src="js/jquery.ui.totop.js"></script>
-        <script src="js/jquery.cookie.js"></script>
+
     </head>
 
     <body>
@@ -244,11 +347,11 @@
             include_once 'classes/Menu/menu.php';
             ?>
             <header>
-                
-                    <h1 class="navbar-brand navbar-brand_">
-                        <a href="index.php"><img src="img/<?php echo $lang['Lang0004']; ?>"
+
+                <h1 class="navbar-brand navbar-brand_">
+                    <a href="index.php"><img src="img/<?php echo $lang['Lang0004']; ?>"
                alt="logo" height="55" width="346"></a>
-                    </h1>
+                </h1>
             </header>
 
 
@@ -284,37 +387,44 @@
 
                     <div class="tab_container">
                         <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-                            <ul class="nav nav-tabs" id="TMP_Clinic_Tab">
+                            <ul class="nav nav-tabs" id="Day_Tab">
                             </ul>
-                            <ul class="nav nav-tabs" id="TMP_Doctor_Tab">
-                            </ul>
-                            <div class="tab-content" id="TMP_Clinic_Content"></div>
-                            <div class="tab-content" id="TMP_Doctor_Content"></div>
+                     
+                            <div class="tab-content" id="Clinic_Tab_Content"></div>
+                            <div class="tab-content" id="Doctor_Tab_Content"></div>
 
 
 
                             <section class="search-card-contain search-card-top warning">
-                        <div class="search-card-overflow">
-                            <h1>Sorry, we couldn't find any appointments matching your search criteria</h1>
-                            <h2>Try changing your search criteria for more results</h2>
+                                <div class="search-card-overflow">
+                                    <h1>Sorry, we couldn't find any appointments matching your search criteria</h1>
+                                    <h2>Try changing your search criteria for more results</h2>
 
-                        </div>
-                    </section>
-                    
+                                </div>
+                            </section>
+
+                            <div class="he-global-pagination">
+                                <div class="he-global-paginner">
+                                    
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 
 
 
 
-                    
+
+
+
 
 
                 </div>
 
             </div>
 
-            
+
 
             <div class="modal fade bs-example-modal-lg" role="dialog" aria-labelledby="gridSystemModalLabel" id="searchModal">
                 <div class="modal-dialog modal-lg" role="document">
@@ -367,18 +477,18 @@
 
                                     <div class="form-group col-md-12">
                                         <div class="col-md-6">
-                                        <label for="CLINIC_SUBURB" class="col-md-3">
+                                            <label for="CLINIC_SUBURB" class="col-md-3">
                                              <!-- 位置-->
                                              <?php echo $lang['Lang0316']; ?>
                                           </label>
 
-                                           <div class="col-md-9" >
-                                            <input type="text" class="form-control" id="CLINIC_SUBURB" name="CLINIC_SUBURB">
-                                        </div>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" id="CLINIC_SUBURB" name="CLINIC_SUBURB">
+                                            </div>
 
                                         </div>
-                                         <!--<div class="clearfix visible-xs-block"></div>-->
-                                       
+                                        <!--<div class="clearfix visible-xs-block"></div>-->
+
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="CLINIC_NAME" class="col-md-3">
@@ -599,30 +709,95 @@
                 <?php
          include_once 'classes/Language/For_JS_multi_lang.php';
          ?>
-                    <script id="tmp_clinic_tab" type="text/x-jsrender">
+
+
+
+                    <script id="tmp_day_tab" type="text/x-jsrender">
                         {{for #data}}
 
-                        <li {{if date==activeID}}class="active" {{else}}{{/if}}>
-                            <a href="#c{{>date}}" data-toggle="tab">{{>date}}</a>
+                        <li {{if day==activeID}}class="active" {{else}}{{/if}}>
+                            <a data-toggle="tab" class="day-tab">{{>day}}</a>
                         </li>
 
                         {{/for}}
+                        
                     </script>
-                    <script id="tmp_doctor_tab" type="text/x-jsrender">
-                        {{for #data}}
+                    
+         
 
-                        <li {{if date==activeID}}class="active" {{else}}{{/if}}>
-                            <a href="#d{{>date}}" data-toggle="tab">{{>date}}</a>
-                        </li>
+                    
 
-                        {{/for}}
+
+
+
+
+                    <script id="tmp_clinic_content" type="text/x-jsrender">
+                        
+                        <div class="tab-pane active">
+                            {{for #data}}
+                            <section class="search-card-contain search-practice  col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="search-card-overflow">
+                                    <div class="search-main-dets">
+                                        <h2 class="search-main-title showProfile">{{>clinicName}}</h2>
+
+
+                                        <div class="search-suburb-contain clearfix">
+                                            <h3 class="search-suburb">{{>clinicSuburb}}</h3>
+                                            <div class="search-map-dets">
+
+                                                <span class="search-map-link"><span class="search-map-ico"></span><span class="search-map-txt"><a class="showMap" street="{{>clinicAddress}}" suburb="{{>clinicSuburb}}" lat="{{>clinicLat}}" lng="{{>clinicLng}}">Map</a></span></span>
+                                            </div>
+                                        </div>
+                                        <div class="search-images-dets">
+                                            <div class="search-images-photo">
+                                                <div class="flexslider">
+                                                    <ul class="slides">
+                                                        <li class="flex-active-slide" style="width: 100%; float: left; margin-right: -100%; position: relative; display: block; z-index: 2; opacity: 1;"><img class="lazy" src="{{>clinicPIC}}" draggable="false"></li>
+                                                    </ul>
+                                                </div>
+                                                <img src="{{>clinicPIC}}">
+                                            </div>
+                                        </div>
+                                        <div class="search-addie clinic-addr">
+                                            {{>clinicAddress}}
+
+                                        </div>
+                                        <div class="clinic-phone" style="display:none">
+                                            {{>clinicPhone}}
+                                        </div>
+                                        <div class="search-addie">
+                                            {{>language}} {{if isYellowPage==0}}
+                                            <a class="showDoctors" keyClinicID="{{>clinicID}}">
+                                                <?php echo $lang['Lang0324']; ?>
+                                            </a>
+
+                                            {{else}}{{/if}}
+                                        </div>
+
+                                        <div class="search-overview" style="display:none;">
+                                            {{>overview}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="search-time-container clearfix closed">
+                                    <div class="search-time-scroll">
+                                        {{if isYellowPage==0}}<span class="search-time-booknow">{{>day}}</span> {{else}}{{/if}}
+                                        {{for timeslot}}
+                                        <a class="apptTimeBtn">{{>time}}</a> {{/for}}
+
+                                        <span class="search-more apptTimeMore">More</span>
+                                        <a href="#" class="search-more-mob apptTimeMore">More</a>
+                                    </div>
+                                </div>
+                            </section>
+                            {{/for}}
+                        </div>
+                       
                     </script>
+
+
                     <script id="tmp_doctor_content" type="text/x-jsrender">
-
-                        {{for #data}}
-                        <div class="tab-pane {{if date==activeID}}active{{else}}{{/if}}" id="d{{>date}}">
-
-                            {{for doctors ~ppdate=date}}
+                            {{for #data}}
                             <section class="search-card-contain search-practice  col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                 <div class="search-card-overflow">
                                     <div class="search-main-dets">
@@ -663,7 +838,7 @@
                                 </div>
                                 <div class="search-time-container clearfix closed">
                                     <div class="search-time-scroll doctor-time-scroll">
-                                        <span class="search-time-booknow">{{>~ppdate}}</span> {{for timeslot ~pdoctorid=doctorID}}
+                                        <span class="search-time-booknow">{{>day}}</span> {{for timeslot ~pdoctorid=doctorID}}
                                         <a class="apptTimeBtn" keyDoctorID="{{>~pdoctorid}}" keyDate="{{>~ppdate}}" keyTime="{{>originalTime}}">{{>time}}</a>                                        {{/for}}
 
                                         <span class="search-more apptTimeMore">More</span>
@@ -673,74 +848,22 @@
                             </section>
                             {{/for}}
                         </div>
-                        {{/for}}
+
                     </script>
-                    <script id="tmp_clinic_content" type="text/x-jsrender">
-                        {{for #data}}
-                        <div class="tab-pane {{if date==activeID}}active{{else}}{{/if}}" id="c{{>date}}">
-                            {{for clinics ~ppdate=date}}
-                            <section class="search-card-contain search-practice  col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                <div class="search-card-overflow">
-                                    <div class="search-main-dets">
-                                        <h2 class="search-main-title showProfile">{{>clinicName}}</h2>
+
+                    <!--vendor-->
+                    <script src="js/jquery.js"></script>
+                    <script src="js/jsrender.js"></script>
+                    <script src="js/underscore-min.js"></script>
 
 
-                                        <div class="search-suburb-contain clearfix">
-                                            <h3 class="search-suburb">{{>clinicSuburb}}</h3>
-                                            <div class="search-map-dets">
+                    <script src="js/jquery-migrate-1.2.1.min.js"></script>
+                    <script src="js/jquery.easing.1.3.js"></script>
+                    <script src="js/jquery.mobilemenu.js"></script>
+                    <script src="js/jquery.equalheights.js"></script>
+                    <script src="js/jquery.ui.totop.js"></script>
+                    <script src="js/jquery.cookie.js"></script>
 
-                                                <span class="search-map-link"><span class="search-map-ico"></span><span class="search-map-txt"><a class="showMap" street="{{>clinicAddress}}" suburb="{{>clinicSuburb}}" lat="{{>clinicLat}}" lng="{{>clinicLng}}">Map</a></span></span>
-                                            </div>
-                                        </div>
-                                        <div class="search-images-dets">
-                                            <div class="search-images-photo">
-                                                <div class="flexslider">
-                                                    <ul class="slides">
-                                                        <li class="flex-active-slide" style="width: 100%; float: left; margin-right: -100%; position: relative; display: block; z-index: 2; opacity: 1;"><img class="lazy" src="{{>clinicPIC}}" draggable="false"></li>
-                                                    </ul>
-                                                </div>
-                                                <img src="{{>clinicPIC}}">
-                                            </div>
-                                        </div>
-                                        <div class="search-addie clinic-addr">
-                                            {{>clinicAddress}}
-
-                                        </div>
-                                        <div class="clinic-phone" style="display:none">
-                                        {{>clinicPhone}}
-                                        </div>
-                                        <div class="search-addie">
-                                            {{>language}}
-
-                                            {{if showDoc==1}}
-                                            <a class="showDoctors" keyClinicID="{{>clinicID}}">
-                                                <?php echo $lang['Lang0324']; ?>
-                                            </a>
-
-                                            {{else}}{{/if}}
-                                        </div>
-
-                                        <div class="search-overview" style="display:none;">
-                                            {{>overview}}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="search-time-container clearfix closed">
-                                    <div class="search-time-scroll">
-                                        {{if showDoc==1}}<span class="search-time-booknow">{{>~ppdate}}</span>
-                                        {{else}}{{/if}}
-                                         {{for timeslot}}
-                                        <a class="apptTimeBtn">{{>time}}</a> {{/for}}
-
-                                        <span class="search-more apptTimeMore">More</span>
-                                        <a href="#" class="search-more-mob apptTimeMore">More</a>
-                                    </div>
-                                </div>
-                            </section>
-                            {{/for}}
-                        </div>
-                        {{/for}}
-                    </script>
                     <script src="js/bootstrap.min.js"></script>
                     <!-- autocomplete -->
                     <script src="js/jquery-ui.js"></script>
@@ -753,7 +876,9 @@
                     <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
                     <script type="text/javascript" src="js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
                     <script src="js/bootstrap-multiselect.js"></script>
-                    <script src="js/site.js@ver-3"></script>
+                    <script src="js/slickModal.js"></script>
+
+                    <!--user js-->
                     <script src="js/main/pub.js"></script>
                     <script src="js/main/searchDoctor.js"></script>
                     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCyZERlQBAH0_PRkVI8bu7oqx8HIBlyZG4&libraries=geometry"></script>

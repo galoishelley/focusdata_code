@@ -128,7 +128,7 @@ class saveSearch
 
 		if($ret>0){
 			$success = true;
-			$ret_msg="保存常用搜索条件成功";
+			$ret_msg="Add to favorite search successfully";
 			$ret_code = "S00101";
 			// if($ret == 2){
 			// 	$success = true;
@@ -214,11 +214,11 @@ class saveSearch
 		
 		if($ret){
 			$success = true;
-			$ret_msg="删除成功";
+			$ret_msg="Deleted Successfully";
 			$ret_code = "U00000";
 		}else if($ret==0){
 			$success = false;
-			$ret_msg="删除失败";
+			$ret_msg="Deleted Error";
 			$ret_code = "U99999";
 		}else{
 			$success = false;
