@@ -423,4 +423,18 @@ $lang['Lang0329'] = 'Clinic Photo';
 $lang['Lang0330'] = 'Personal Login';
 $lang['Lang0331'] = 'Clinic Login';
 $lang['Lang0332'] = 'Admin Login';
+
+
+
+$lang['Lang0333'] = 'GP';
+$lang['Lang0334'] = 'Dentist';
+$lang['Lang0335'] = 'Dietitian';
+$lang['Lang0336'] = 'Physio';
+$lang['Lang0337'] = 'Podiatrist';
+$lang['Lang0338'] = 'Pschologist';
+$lang['Lang0339'] = 'Chiropractor';
+$lang['Lang0340'] = 'Audiologist';
+$lang['Lang0341'] = 'Optometry';
+$lang['Lang0342'] = 'Skin Doctors';
+$lang['Lang0343'] = 'Counsellor';
 ?>

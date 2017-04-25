@@ -190,7 +190,7 @@
             .nav-tabs>li>a {
                 border: 1px solid #cccccc;
                 color: #000;
-                cursor:pointer;
+                cursor: pointer;
             }
             
             .nav-tabs>li.active>a {
@@ -231,7 +231,6 @@
                 text-align: right;
                 margin: 20px 0 30px
             }
-            
             /*@media (max-width: 767px) {
                 .he-global-pagination {
                     display: none
@@ -261,8 +260,8 @@
             .he-global-pagination .he-global-paginner .he-global-paglinks .page-ellip {
                 padding: 0 19px
             }
-
-            .he-global-pagination .he-global-paginner .he-global-paglinks>span bb{
+            
+            .he-global-pagination .he-global-paginner .he-global-paglinks>span bb {
                 color: #313436;
                 font-size: 15px;
                 font-weight: 600;
@@ -284,8 +283,6 @@
                 color: #ffffff;
                 background-color: #008ec8;
             }
-            
-          
             
             #leaderboard-slot1 {
                 margin-top: 25px
@@ -389,7 +386,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
                             <ul class="nav nav-tabs" id="Day_Tab">
                             </ul>
-                     
+
                             <div class="tab-content" id="Clinic_Tab_Content"></div>
                             <div class="tab-content" id="Doctor_Tab_Content"></div>
 
@@ -405,7 +402,7 @@
 
                             <div class="he-global-pagination">
                                 <div class="he-global-paginner">
-                                    
+
                                 </div>
                             </div>
 
@@ -448,8 +445,25 @@
                                              <!-- 医生类别-->
                                              <?php echo $lang['Lang0065']; ?>
                                           </label>
+<div class="col-md-2">
+                                        <select class="form-control" name="DOCTOR_TYPE" id="DOCTOR_TYPE">
+                                                <option value="">All</option>
+                                                <option value="GP"><?php echo $lang['Lang0333']; ?></option>
+                                                <option value="Dentist"><?php echo $lang['Lang0334']; ?></option>
+                                                <option value="Dietitian"><?php echo $lang['Lang0335']; ?></option>
+                                                <option value="Physio"><?php echo $lang['Lang0336']; ?></option>
+                                                <option value="Podiatrist"><?php echo $lang['Lang0337']; ?></option>
+                                                <option value="Pschologist"><?php echo $lang['Lang0338']; ?></option>
+                                                <option value="Chiropractor"><?php echo $lang['Lang0339']; ?></option>
+                                                <option value="Audiologist"><?php echo $lang['Lang0340']; ?></option>
+                                                <option value="Optometry"><?php echo $lang['Lang0341']; ?></option>
+                                                <option value="Skin Doctors"><?php echo $lang['Lang0342']; ?></option>
+                                                <option value="Counsellor"><?php echo $lang['Lang0343']; ?></option>
+                                            
+                                        </select>
+                                        </div>
                                         <!--<div class="col-xs-12 col-sm-12">-->
-                                        <label class="radio-inline"><input type="radio" class="custom-control-input" name="DOCTOR_TYPE" value="GP">GP</label>
+                                        <!--<label class="radio-inline"><input type="radio" class="custom-control-input" name="DOCTOR_TYPE" value="GP">GP</label>
                                         <label class="radio-inline"><input type="radio" class="custom-control-input" name="DOCTOR_TYPE" value="Dentist">Dentist</label>
                                         <label class="radio-inline"><input type="radio"  class="custom-control-input" name="DOCTOR_TYPE" value="Dietitian">Dietitian</label>
                                         <label class="radio-inline"><input type="radio"  class="custom-control-input" name="DOCTOR_TYPE" value="Physio">Physio</label>
@@ -459,7 +473,7 @@
                                         <label class="radio-inline"><input type="radio" class="custom-control-input" name="DOCTOR_TYPE" value="Audiologist">Audiologist</label>
                                         <label class="radio-inline"><input type="radio" class="custom-control-input" name="DOCTOR_TYPE" value="Optometry">Optometry</label>
                                         <label class="radio-inline"><input type="radio" class="custom-control-input" name="DOCTOR_TYPE" value="Skin Doctors">Skin Doctors</label>
-                                        <label class="radio-inline"><input type="radio" class="custom-control-input" name="DOCTOR_TYPE" value="Counsellor">Counsellor</label>
+                                        <label class="radio-inline"><input type="radio" class="custom-control-input" name="DOCTOR_TYPE" value="Counsellor">Counsellor</label>-->
                                         <!--</div>-->
                                     </div>
                                     <div class="form-group  col-md-12">
@@ -720,19 +734,19 @@
                         </li>
 
                         {{/for}}
-                        
-                    </script>
-                    
-         
 
-                    
+                    </script>
+
+
+
+
 
 
 
 
 
                     <script id="tmp_clinic_content" type="text/x-jsrender">
-                        
+
                         <div class="tab-pane active">
                             {{for #data}}
                             <section class="search-card-contain search-practice  col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -792,61 +806,61 @@
                             </section>
                             {{/for}}
                         </div>
-                       
+
                     </script>
 
 
                     <script id="tmp_doctor_content" type="text/x-jsrender">
-                            {{for #data}}
-                            <section class="search-card-contain search-practice  col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                <div class="search-card-overflow">
-                                    <div class="search-main-dets">
-                                        <h2 class="search-main-title showProfile">{{>doctorName}}</h2>
+                        {{for #data}}
+                        <section class="search-card-contain search-practice  col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="search-card-overflow">
+                                <div class="search-main-dets">
+                                    <h2 class="search-main-title showProfile">{{>doctorName}}</h2>
 
 
-                                        <div class="search-suburb-contain clearfix">
-                                            <h3 class="search-suburb">{{>clinicName}}</h3>
-                                        </div>
-                                        <div class="search-images-dets">
-                                            <div class="search-images-photo">
-                                                <div class="flexslider">
-                                                    <ul class="slides">
-                                                        <li class="flex-active-slide" style="width: 100%; float: left; margin-right: -100%; position: relative; display: block; z-index: 2; opacity: 1;"><img class="lazy" src="{{>doctorPIC}}" draggable="false"></li>
-                                                    </ul>
-                                                </div>
-                                                <img src="{{>doctorPIC}}">
+                                    <div class="search-suburb-contain clearfix">
+                                        <h3 class="search-suburb">{{>clinicName}}</h3>
+                                    </div>
+                                    <div class="search-images-dets">
+                                        <div class="search-images-photo">
+                                            <div class="flexslider">
+                                                <ul class="slides">
+                                                    <li class="flex-active-slide" style="width: 100%; float: left; margin-right: -100%; position: relative; display: block; z-index: 2; opacity: 1;"><img class="lazy" src="{{>doctorPIC}}" draggable="false"></li>
+                                                </ul>
                                             </div>
-                                        </div>
-                                        <div class="search-overview" style="display:none;">
-                                            {{>overview}}
-                                        </div>
-                                        <div class="search-addie doctor-addr">
-                                            {{>clinicAddress}}
-
-                                        </div>
-                                        <div class="search-addie">
-                                            {{>language}}
-                                            <a class="save2favBtn" keyDoctorID="{{>doctorID}}">
-                                                <?php echo $lang['Lang0171']; ?>
-                                            </a>
-                                            <a class="jumptouserSaveDoctor" href="userSaveDoctor.php">
-                                                <!-- 收藏医生管理-->
-                                                <?php echo $lang['Lang0278']; ?>
-                                            </a>
+                                            <img src="{{>doctorPIC}}">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="search-time-container clearfix closed">
-                                    <div class="search-time-scroll doctor-time-scroll">
-                                        <span class="search-time-booknow">{{>day}}</span> {{for timeslot ~pdoctorid=doctorID}}
-                                        <a class="apptTimeBtn" keyDoctorID="{{>~pdoctorid}}" keyDate="{{>~ppdate}}" keyTime="{{>originalTime}}">{{>time}}</a>                                        {{/for}}
+                                    <div class="search-overview" style="display:none;">
+                                        {{>overview}}
+                                    </div>
+                                    <div class="search-addie doctor-addr">
+                                        {{>clinicAddress}}
 
-                                        <span class="search-more apptTimeMore">More</span>
-                                        <a href="#" class="search-more-mob apptTimeMore">More</a>
+                                    </div>
+                                    <div class="search-addie">
+                                        {{>language}}
+                                        <a class="save2favBtn" keyDoctorID="{{>doctorID}}">
+                                            <?php echo $lang['Lang0171']; ?>
+                                        </a>
+                                        <a class="jumptouserSaveDoctor" href="userSaveDoctor.php">
+                                            <!-- 收藏医生管理-->
+                                            <?php echo $lang['Lang0278']; ?>
+                                        </a>
                                     </div>
                                 </div>
-                            </section>
-                            {{/for}}
+                            </div>
+                            <div class="search-time-container clearfix closed">
+                                <div class="search-time-scroll doctor-time-scroll">
+                                    <span class="search-time-booknow">{{>day}}</span> {{for timeslot ~pdoctorid=doctorID}}
+                                    <a class="apptTimeBtn" keyDoctorID="{{>~pdoctorid}}" keyDate="{{>~ppdate}}" keyTime="{{>originalTime}}">{{>time}}</a>                                    {{/for}}
+
+                                    <span class="search-more apptTimeMore">More</span>
+                                    <a href="#" class="search-more-mob apptTimeMore">More</a>
+                                </div>
+                            </div>
+                        </section>
+                        {{/for}}
                         </div>
 
                     </script>

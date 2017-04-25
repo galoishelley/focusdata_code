@@ -2597,10 +2597,9 @@ $(function () {
 		//赋值给此页面搜索条件
 		$('#CLINIC_SUBURB').val(json_value.CLINIC_SUBURB);
 
-		var $radios = $('input:radio[name=DOCTOR_TYPE]');
-		if ($radios.is(':checked') === false) {
-			$radios.filter('[value=' + json_value.DOCTOR_TYPE + ']').prop('checked', true);
-		}
+
+		if(json_value.DOCTOR_TYPE)
+			$('select option:contains("'+json_value.DOCTOR_TYPE+'")').prop('selected',true);
 
 
 		requesttype = 0;
@@ -2654,6 +2653,10 @@ $(function () {
 
 
 	$('#CUSTOMER_USER_MAIL').css("width", "300px");
+	$('.multiselect-native-select').css("margin-left", "37px");
+	$('#DOCTOR_TYPE').css("margin-left", "37px");
+	
+	
 
 
 });

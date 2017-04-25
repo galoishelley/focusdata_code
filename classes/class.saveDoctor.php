@@ -129,7 +129,7 @@ class saveDoctor
 			$ret_code = "S00101";
 			if($ret == 2){
 				$success = true;
-				$ret_msg="医生已经被收藏";
+				$ret_msg="Add this doctor to favorite";
 				$ret_code = "S00102";
 			}
 		}else{
