@@ -77,6 +77,10 @@ class Sign_in
 		$ret_msg = "";
 		$ret_code = "I00000"; //成功
 
+		$retData=array();
+
+
+
 		$ret= $this->sign_in->viewAll ($this->arr_values);
 		
 		$count = $ret[0]["COUNT"];
@@ -87,6 +91,7 @@ class Sign_in
 			$ret_code = "I00000";
 			$_SESSION ['fd_user_name'] = $this->arr_values["USER_MAIL"];
 			$_SESSION ['fd_user_pwd'] = $this->arr_values["USER_PWD"];
+			$retData= $this->sign_in->getUserName($this->arr_values);
 		}elseif($count == 0){
 			$success = false;
 			$ret_msg="用户名密码错误";
@@ -112,7 +117,7 @@ class Sign_in
 		$response["response"] = $this->response_const();  //固定参数返回
 		$response["response"]["success"] = $success;  //固定参数返回	
 		$response["response"]["status"] = $status;  //固定参数返回	
-		$response["response"]["data"] = "";
+		$response["response"]["data"] = $retData;
 
 		echo json_encode ( $response );
 	}

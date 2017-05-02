@@ -1782,7 +1782,7 @@ footer {
 footer .privacy {
   font: 14px  sans-serif;
   color: #ffffff;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   margin: 0;
 }
 footer .privacy a {

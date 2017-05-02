@@ -112,6 +112,7 @@ $(function() {
                     $.cookie("ilogin", 1);
                     //记录cookie
                     Save();
+                    $.cookie("welcomeInfo", ret.data[0].name);
 
                 } else {
                     alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);

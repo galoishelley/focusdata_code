@@ -125,7 +125,7 @@ class saveDoctor
 
 		if($ret>0){
 			$success = true;
-			$ret_msg="收藏成功";
+			$ret_msg="successful";
 			$ret_code = "S00101";
 			if($ret == 2){
 				$success = true;
@@ -134,7 +134,7 @@ class saveDoctor
 			}
 		}else{
 			$success = false;
-			$ret_msg="收藏医生Error,contact admin please";
+			$ret_msg="Error,contact admin please";
 			$ret_code = "S00199";
 		}
 

@@ -25,11 +25,7 @@
                             <?php echo $lang['Lang0026']; ?>
                         </a>
                     </li>
-                    <li>
-                        <a href="sign_in_admin.php">
-                            <?php echo $lang['Lang0028']; ?>
-                        </a>
-                    </li>
+                    
                 </ul>
             </li>
 

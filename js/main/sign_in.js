@@ -112,6 +112,7 @@ $(function() {
                     $.cookie("ilogin", 1);
                     //记录cookie
                     Save();
+                    $.cookie("welcomeInfo", ret.data[0].name);
 
                 } else {
                     alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
@@ -146,9 +147,7 @@ $(function() {
         } else if (fd_usertype == 2) {
             $('#li_Admin').removeClass("hidden");
             url = "classes/class.AdminDetail.php";
-        } else {
-
-}
+        } else {}
 
         //获取用户基本信息
         func_code = "UI02";

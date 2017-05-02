@@ -69,15 +69,34 @@ include_once 'classes/Menu/menu.php';
 										    </div>
 										</div>
 									 	<div class="form-group">
-										    <label for="DOCTOR_TYPE" class="col-sm-2 control-label"><!-- 医生类别--><?php echo $lang['Lang0254']; ?><span class="span-red">*</span></label>
-										    <div class="col-sm-10">
-										      <input type="text" class="form-control" name="DOCTOR_TYPE" id="DOCTOR_TYPE">
-										    </div>
+
+											 <label for="DOCTOR_TYPE" class="col-sm-2 control-label">
+                                             <!-- 医生类别-->
+                                             <?php echo $lang['Lang0065']; ?>
+                                          </label>
+											<div class="col-sm-10">
+											<select class="form-control" name="DOCTOR_TYPE" id="DOCTOR_TYPE">
+													<option value="">All</option>
+													<option value="GP"><?php echo $lang['Lang0333']; ?></option>
+													<option value="Dentist"><?php echo $lang['Lang0334']; ?></option>
+													<option value="Dietitian"><?php echo $lang['Lang0335']; ?></option>
+													<option value="Physio"><?php echo $lang['Lang0336']; ?></option>
+													<option value="Podiatrist"><?php echo $lang['Lang0337']; ?></option>
+													<option value="Pschologist"><?php echo $lang['Lang0338']; ?></option>
+													<option value="Chiropractor"><?php echo $lang['Lang0339']; ?></option>
+													<option value="Audiologist"><?php echo $lang['Lang0340']; ?></option>
+													<option value="Optometry"><?php echo $lang['Lang0341']; ?></option>
+													<option value="Skin Doctors"><?php echo $lang['Lang0342']; ?></option>
+													<option value="Counsellor"><?php echo $lang['Lang0343']; ?></option>
+												
+											</select>
+											</div>
+
 										</div>
 										<div class="form-group">
-										    <label for="DOCTOR_NAME" class="col-sm-2 control-label"><!-- 医生姓名--><?php echo $lang['Lang0255']; ?><span class="span-red">*</span></label>
+										    <label for="DOCTOR_NAME" class="col-sm-2 control-label"><!-- 医生姓名--><?php echo $lang['Lang0255']; ?></label>
 										    <div class="col-sm-10">
-										      <input type="text" class="form-control" name="DOCTOR_NAME" id="DOCTOR_NAME">
+										      <input type="text" readonly="true" class="form-control" name="DOCTOR_NAME" id="DOCTOR_NAME">
 										    </div>
 										</div>	
 										
@@ -98,7 +117,7 @@ include_once 'classes/Menu/menu.php';
 										<div class="form-group">
 										    <label for="DOCTOR_GENDER" class="col-sm-2 control-label"><!-- 性别--><?php echo $lang['Lang0256']; ?><span class="span-red">*</span></label>
 										    <div class="col-sm-10">
-										      	<select class="form-control" name="DOCTOR_GENDER" id="DOCTOR_GENDER">
+										      	<select class="form-control" disabled="disabled" name="DOCTOR_GENDER" id="DOCTOR_GENDER">
 													<option value="0"><!-- 男--><?php echo $lang['Lang0132']; ?></option>
 													<option value="1"><!-- 女--><?php echo $lang['Lang0133']; ?></option>
 												</select>
@@ -114,9 +133,9 @@ include_once 'classes/Menu/menu.php';
 										    </div>
 										</div>
 										<div class="form-group">
-										    <label for="DOCTOR_INFO" class="col-sm-2 control-label"><!-- 医生详细信息--><?php echo $lang['Lang0262']; ?><span class="span-red">*</span></label>
+										    <label for="DOCTOR_INFO" class="col-sm-2 control-label"><?php echo $lang['Lang0262']; ?><span class="span-red">*</span></label>
 										    <div class="col-sm-10">
-										    	<textarea class="form-control" rows="5" name="DOCTOR_INFO" id="DOCTOR_INFO"  placeholder="<?php echo $lang['Lang0263']; ?>"><!-- 医生详细信息--></textarea>
+										    	<textarea class="form-control" rows="5" name="DOCTOR_INFO" id="DOCTOR_INFO"  placeholder="<?php echo $lang['Lang0262']; ?>"></textarea>
 										    </div>	
 										</div>
 
@@ -136,6 +155,9 @@ include_once 'classes/Menu/menu.php';
 										<iframe id="exec_target" name="exec_target"></iframe>
 
 										<div id="feedback"></div>
+
+
+
 									</div>
 								</div>
 

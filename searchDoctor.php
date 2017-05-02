@@ -445,7 +445,7 @@
                                              <!-- 医生类别-->
                                              <?php echo $lang['Lang0065']; ?>
                                           </label>
-<div class="col-md-2">
+                                        <div class="col-md-2">
                                         <select class="form-control" name="DOCTOR_TYPE" id="DOCTOR_TYPE">
                                                 <option value="">All</option>
                                                 <option value="GP"><?php echo $lang['Lang0333']; ?></option>
@@ -852,8 +852,8 @@
                             </div>
                             <div class="search-time-container clearfix closed">
                                 <div class="search-time-scroll doctor-time-scroll">
-                                    <span class="search-time-booknow">{{>day}}</span> {{for timeslot ~pdoctorid=doctorID}}
-                                    <a class="apptTimeBtn" keyDoctorID="{{>~pdoctorid}}" keyDate="{{>~ppdate}}" keyTime="{{>originalTime}}">{{>time}}</a>                                    {{/for}}
+                                    <span class="search-time-booknow">{{>day}}</span> {{for timeslot ~pdoctorid=doctorID ~day=day}}
+                                    <a class="apptTimeBtn" keyDoctorID="{{>~pdoctorid}}" keyDate="{{>~day}}" keyTime="{{>originalTime}}">{{>time}}</a>                                    {{/for}}
 
                                     <span class="search-more apptTimeMore">More</span>
                                     <a href="#" class="search-more-mob apptTimeMore">More</a>

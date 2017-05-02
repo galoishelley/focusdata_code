@@ -1909,7 +1909,8 @@ $(function () {
 							var timeslotArrUni = _.uniq(timeslotArr);
 							for (var m in timeslotArrUni) {
 								doctor.timeslot.push({
-									time: reformatTime(timeslotArrUni[m])
+									time: reformatTime(timeslotArrUni[m]),
+									originalTime:timeslotArrUni[m]
 								});
 
 							}
@@ -2080,7 +2081,7 @@ $(function () {
 		$(".apptTimeBtn").each(function (index) {
 			$(this).on("click", function () {
 				keyDoctorID = $(this).attr('keyDoctorID');
-				keyDate = $(this).attr('keyDate');
+				keyDate = reformatDate($(this).attr('keyDate'));
 				keyTime = $(this).attr('keyTime');
 
 				//未注册用户

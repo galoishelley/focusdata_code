@@ -14,9 +14,11 @@ $(function(){
       $("#DOCTOR_GENDER option[value='"+ 1 +"']").attr("selected",true);
     }
     
-    var langArr = json_value.LANGUAGE_NAME.split(",");
-
-    $('#ddlLanguage').multiselect('select', langArr);
+    if(json_value.LANGUAGE_NAME)
+    {
+      var langArr = json_value.LANGUAGE_NAME.split(",");
+      $('#ddlLanguage').multiselect('select', langArr);
+    }
     
 
     
