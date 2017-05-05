@@ -203,7 +203,7 @@ include_once 'classes/Language/language.common.php';
             }
             
             .index-main-box {
-                padding: 55px 0 45px 0;
+                padding: 155px 0 45px 0;
                 background: #005182 url(img/bg_pic_new.jpg) center 0 no-repeat;
                 background-size: cover;
                 text-align: center;
@@ -1475,7 +1475,7 @@ include_once 'classes/Language/language.common.php';
     ?>
             <header>
 
-                <h1 class="navbar-brand navbar-brand_"><a href="index.php"><img src="img/<?php echo $lang['Lang0004']; ?>" alt="logo"></a></h1>
+                <h1 class="navbar-brand navbar-brand_"><a href="index.php"><img src="img/<?php echo $lang['Lang0344']; ?>" alt="logo"></a></h1>
             </header>
 
             <div class="index-main-box">

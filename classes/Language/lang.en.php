@@ -437,4 +437,6 @@ $lang['Lang0340'] = 'Audiologist';
 $lang['Lang0341'] = 'Optometry';
 $lang['Lang0342'] = 'Skin Doctors';
 $lang['Lang0343'] = 'Counsellor';
+
+$lang['Lang0344']='logo_en_index.png';
 ?>

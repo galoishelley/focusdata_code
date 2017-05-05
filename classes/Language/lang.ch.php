@@ -430,4 +430,6 @@ $lang['Lang0340'] = '听觉';
 $lang['Lang0341'] = '视觉';
 $lang['Lang0342'] = '皮肤科';
 $lang['Lang0343'] = '顾问';
+
+$lang['Lang0344']='logo_cn_index.png';
 ?>
