@@ -60,7 +60,7 @@ include_once 'classes/Language/language.common.php';
 						<h2 class="wow fadeInRight">
 							<!-- 个人用户注册-->
 							<?php echo $lang['Lang0208']; ?></h2>
-						<form class="form-inline wow fadeInLeft form_add" role="form"
+						<form class="form-inline form_add" role="form"
 							id="signup_form">
 							<fieldset>
 								<input type="hidden" class="form-control" name="action_type"
@@ -86,11 +86,11 @@ include_once 'classes/Language/language.common.php';
 
 									<div class="row">
 
-										<div class="form-group col-md-9">
+										<div class="form-group">
 											<label for="CUSTOMER_USER_MAIL"> <!-- 邮箱-->
 												<?php echo $lang['Lang0213']; ?><span class="span-red">*</span>
 											</label> <input type="text" class="form-control"
-												id="CUSTOMER_USER_MAIL" name="CUSTOMER_USER_MAIL" style="width: 38%" maxlength="200">
+												id="CUSTOMER_USER_MAIL" name="CUSTOMER_USER_MAIL" maxlength="200">
 										</div>
 									</div>
 									<div class="row">
@@ -171,12 +171,12 @@ include_once 'classes/Language/language.common.php';
 										</div>
 
 									</div>
-									<div class="row">
-										<div class="form-group col-md-9">
+									<div class="row col-md-9">
+										<div class="form-group">
 											<label for="CUSTOMER_ADDR"> <!-- 详细地址-->
 												<?php echo $lang['Lang0224']; ?><span class="span-red">*</span>
 											</label> <input type="text" class="form-control"
-												style="width: 81%" name="CUSTOMER_ADDR" id="CUSTOMER_ADDR"
+												 name="CUSTOMER_ADDR" id="CUSTOMER_ADDR"
 												maxlength="200">
 										</div>
 									</div>

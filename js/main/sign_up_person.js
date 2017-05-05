@@ -64,6 +64,14 @@ var result, func_code, requesttype;
 
 $(function () {
 
+    if($(window).width()>768)
+    {
+        $("#CUSTOMER_USER_MAIL").css("width","400px");
+        $("#CUSTOMER_ADDR").css("width","400px");
+        
+    }
+
+
     $("#CUSTOMER_BIRTHDAY").mask("99/99/9999", {
         placeholder: "dd/mm/yyyy"
     });

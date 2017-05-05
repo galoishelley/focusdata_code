@@ -4,6 +4,13 @@ var result,func_code,requesttype;
 /* Formatting function for row details - modify as you need */
 $(function(){
 
+	if($(window).width()>768)
+    {
+        $("#CLINIC_USER_MAIL").css("width","400px");
+        $("#CLINIC_ADDR").css("width","400px");
+        
+    }
+
   //记住用户名密码
   function Save() {
     var str_username = $("#CLINIC_USER_MAIL").val();

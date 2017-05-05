@@ -92,12 +92,12 @@ include_once 'classes/Language/language.common.php';
 								<div id="personal">
 									
 									<div class="row">
-										<div class="form-group col-md-9">
+										<div class="form-group">
 											<label for="pwd">
 												<!-- 邮箱-->
 												<?php echo $lang['Lang0197']; ?><span class="span-red">*</span>
 											</label> <input type="email" class="form-control"
-												name="CLINIC_USER_MAIL" style="width: 38%"  id="CLINIC_USER_MAIL" >
+												name="CLINIC_USER_MAIL"  id="CLINIC_USER_MAIL" >
 										</div>
 									</div>
 									<div class="row">
@@ -127,12 +127,12 @@ include_once 'classes/Language/language.common.php';
 										</div>
 									</div>
 									<div class="row">
-										<div class="form-group col-md-9">
+										<div class="form-group">
 											<label for="CLINIC_ADDR">
 												<!-- 详细地址-->
 												<?php echo $lang['Lang0202']; ?><span class="span-red">*</span>
 											</label> <input type="text" class="form-control"
-												style="width: 81%" name="CLINIC_ADDR" id="CLINIC_ADDR">
+												name="CLINIC_ADDR" id="CLINIC_ADDR">
 										</div>
 									</div>
 									<div class="row">
