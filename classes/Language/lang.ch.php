@@ -432,4 +432,5 @@ $lang['Lang0342'] = '皮肤科';
 $lang['Lang0343'] = '顾问';
 
 $lang['Lang0344']='logo_cn_index.png';
+$lang['Lang0345']='请选择';
 ?>

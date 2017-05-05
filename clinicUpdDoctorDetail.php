@@ -117,7 +117,8 @@ include_once 'classes/Menu/menu.php';
 										<div class="form-group">
 										    <label for="DOCTOR_GENDER" class="col-sm-2 control-label"><!-- 性别--><?php echo $lang['Lang0256']; ?><span class="span-red">*</span></label>
 										    <div class="col-sm-10">
-										      	<select class="form-control" disabled="disabled" name="DOCTOR_GENDER" id="DOCTOR_GENDER">
+										      	<select class="form-control" name="DOCTOR_GENDER" id="DOCTOR_GENDER">
+												  	<option value=""><?php echo $lang['Lang0345']; ?></option>
 													<option value="0"><!-- 男--><?php echo $lang['Lang0132']; ?></option>
 													<option value="1"><!-- 女--><?php echo $lang['Lang0133']; ?></option>
 												</select>

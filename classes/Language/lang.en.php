@@ -439,4 +439,5 @@ $lang['Lang0342'] = 'Skin Doctors';
 $lang['Lang0343'] = 'Counsellor';
 
 $lang['Lang0344']='logo_en_index.png';
+$lang['Lang0345']='Unknown';
 ?>

@@ -61,11 +61,11 @@ $(function(){
     //form序列化成json
     json_form = $("#clinicUpdDoctorDetail").serializeObject();
 
-    var json_stringify=JSON.stringify(json_form);
-    json_form = json_stringify.replace(/[ ]/g,"");
+    //var json_stringify=JSON.stringify(json_form);
+    //json_form = json_stringify.replace(/[ ]/g,"");
 
     //生成输入参数
-    json_str = request_const(JSON.parse(json_form),func_code,requesttype);
+    json_str = request_const(json_form,func_code,requesttype);
 
     console.log(json_str);
 
