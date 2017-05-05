@@ -2653,9 +2653,12 @@ $(function () {
 	});
 
 
-	$('#CUSTOMER_USER_MAIL').css("width", "300px");
-	$('.multiselect-native-select').css("margin-left", "37px");
-	$('#DOCTOR_TYPE').css("margin-left", "37px");
+	if($(window).width()>768)
+	{
+		$('#CUSTOMER_USER_MAIL').css("width", "300px");
+		$('.multiselect-native-select').css("margin-left", "37px");
+		$('#DOCTOR_TYPE').css("margin-left", "37px");
+	}
 	
 	
 

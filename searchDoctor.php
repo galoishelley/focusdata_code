@@ -445,7 +445,7 @@
                                              <!-- 医生类别-->
                                              <?php echo $lang['Lang0065']; ?>
                                           </label>
-                                        <div class="col-md-2">
+                                        <div class="col-xs-12 col-sm-12 col-md-2">
                                         <select class="form-control" name="DOCTOR_TYPE" id="DOCTOR_TYPE">
                                                 <option value="">All</option>
                                                 <option value="GP"><?php echo $lang['Lang0333']; ?></option>
@@ -478,9 +478,10 @@
                                     </div>
                                     <div class="form-group  col-md-12">
                                         <label for="LANGUAGE" class="col-xs-12 col-sm-12 col-md-1 col-lg-1">
-                                             <!-- 位置-->
+                                          
                                              <?php echo $lang['Lang0326']; ?>
                                           </label>
+                                          
                                         <select id="LANGUAGE" name="LANGUAGE" multiple="multiple" class="form-control">
                                              <option value="English">English</option>
                                              <option value="Chinese">Chinese</option>
