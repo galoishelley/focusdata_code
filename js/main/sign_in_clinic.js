@@ -3,6 +3,12 @@ var result, func_code, requesttype;
 
 $(function() {
 
+    if($(window).width()>768)
+    {
+        $("#signin_form").css("width","300px");
+        $("#signin_form").css("margin-left","-40px");
+    }
+
     // if($.cookie("ilogin") == 1)
     // {
     //   $('#userinfo').html($("#USER_MAIL").val());

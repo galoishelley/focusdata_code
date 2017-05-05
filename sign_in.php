@@ -69,7 +69,7 @@ include_once 'classes/Language/language.common.php';
 									<?php echo $lang['Lang0330']; ?>
 								</h2>
 
-								<form class="form-horizontal wow fadeInUp" role="form" id="signin_form">
+								<form class="form-horizontal" role="form" id="signin_form">
 
 									<fieldset>
 
