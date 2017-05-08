@@ -91,7 +91,7 @@ class Sign_up_person
 		
 		if($ret == 2){
 			$success = false;
-			$ret_msg="用户名已经存在";
+			$ret_msg="Username already exsits";
 			$ret_code = "UP0001";
 		}elseif($ret>0){
 			$success = true;

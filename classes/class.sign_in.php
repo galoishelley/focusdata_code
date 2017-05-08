@@ -87,14 +87,14 @@ class Sign_in
 
 		if($count == 1){
 			$success = true;
-			$ret_msg="登录成功";
+			$ret_msg="Successful";
 			$ret_code = "I00000";
 			$_SESSION ['fd_user_name'] = $this->arr_values["USER_MAIL"];
 			$_SESSION ['fd_user_pwd'] = $this->arr_values["USER_PWD"];
 			$retData= $this->sign_in->getUserName($this->arr_values);
 		}elseif($count == 0){
 			$success = false;
-			$ret_msg="用户名密码错误";
+			$ret_msg="Wrong password";
 			$ret_code = "I00001";
 		}else{
 			$success = false;
