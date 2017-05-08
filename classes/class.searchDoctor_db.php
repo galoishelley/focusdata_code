@@ -22,6 +22,88 @@ class SearchDoctor_DB{
     	return $ret;
     }
 
+	public function isStateName($addr)
+	{
+		$result=false;
+		$addr=strtolower($addr);
+		if($addr=="australian capital territory")
+			$result=true;
+		else if($addr=="act")
+			$result=true;
+		else if($addr=="new south wales")
+			$result=true;
+		else if($addr=="nsw")
+			$result=true;
+		else if($addr=="victoria")
+			$result=true;
+		else if($addr=="vic")
+			$result=true;
+		else if($addr=="queensland")
+			$result=true;
+		else if($addr=="qld")
+			$result=true;
+		else if($addr=="south australia")
+			$result=true;
+		else if($addr=="sa")
+			$result=true;
+		else if($addr=="western australia")
+			$result=true;
+		else if($addr=="wa")
+			$result=true;
+		else if($addr=="tasmania")
+			$result=true;
+		else if($addr=="tas")
+			$result=true;
+		else if($addr=="northern territory")
+			$result=true;
+		else if($addr=="nt")
+			$result=true;
+		else
+			$result=false;
+		return $result;
+	}
+
+	public function getStateName($addr)
+	{
+		$result="";
+		$addr=strtolower($addr);
+		if($addr=="australian capital territory")
+			$result="ACT";
+		else if($addr=="act")
+			$result="ACT";
+		else if($addr=="new south wales")
+			$result="NSW";
+		else if($addr=="nsw")
+			$result="NSW";
+		else if($addr=="victoria")
+			$result="VIC";
+		else if($addr=="vic")
+			$result="VIC";
+		else if($addr=="queensland")
+			$result="QLD";
+		else if($addr=="qld")
+			$result="QLD";
+		else if($addr=="south australia")
+			$result="SA";
+		else if($addr=="sa")
+			$result="SA";
+		else if($addr=="western australia")
+			$result="WA";
+		else if($addr=="wa")
+			$result="WA";
+		else if($addr=="tasmania")
+			$result="TAS";
+		else if($addr=="tas")
+			$result="TAS";
+		else if($addr=="northern territory")
+			$result="NT";
+		else if($addr=="nt")
+			$result="NT";
+		else
+			$result="";
+		return $result;
+	}
+
     public function sp_get_doctor($arr_values,$startPage,$pageSize)
     {
 
@@ -46,6 +128,18 @@ class SearchDoctor_DB{
 	    		$p2="";
 	    		$p3="";
 	    	}
+			else if(preg_match("/\d{4}/", $arr_values['CLINIC_SUBURB'], $matches)===1)
+			{
+				$p1="";
+	    		$p2=$matches[0];
+	    		$p3="";
+			}
+			else if($this->isStateName($arr_values['CLINIC_SUBURB']))
+			{
+				$p1="";
+	    		$p2="";
+	    		$p3=$this->getStateName($arr_values['CLINIC_SUBURB']);
+			}
 	    	else
 	    	{
 	    		
@@ -156,6 +250,18 @@ class SearchDoctor_DB{
 	    		$p2="";
 	    		$p3="";
 	    	}
+			else if(preg_match("/\d{4}/", $arr_values['CLINIC_SUBURB'], $matches)===1)
+			{
+				$p1="";
+	    		$p2=$matches[0];
+	    		$p3="";
+			}
+			else if($this->isStateName($arr_values['CLINIC_SUBURB']))
+			{
+				$p1="";
+	    		$p2="";
+	    		$p3=$this->getStateName($arr_values['CLINIC_SUBURB']);
+			}
 	    	else
 	    	{
 	    		
