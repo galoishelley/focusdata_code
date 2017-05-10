@@ -73,14 +73,7 @@ include_once 'classes/Language/language.common.php';
 										class="form-control" name="CUSTOMER_LNG"
 										id="CUSTOMER_LNG">
 
-								<div class="form-group col-md-12 col-lg-12">
-									<label for="sele_user"> <!-- 选择用户-->
-										<?php echo $lang['Lang0209']; ?><span class="span-red">*</span>
-									</label> <select class="form-control" id="sele_user" autofocus>
-										<option value="0" selected><!-- 个人用户--><?php echo $lang['Lang0210']; ?></option>
-										<option value="1"><!-- 诊所用户--><?php echo $lang['Lang0211']; ?></option>
-									</select>
-								</div>
+								
 
 								<div id="personal">
 

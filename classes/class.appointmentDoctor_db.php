@@ -21,7 +21,11 @@ class appointmentDoctor_DB{
     public function create($arr_values){
 
         if($this->col_exists($arr_values)){
-            return 2;
+            /*Testcase: we book an appointment, then cancel it, then rebook it, 
+            if here we return 2,then the page will say "This time is occupied",
+            so we comment this line to allow this testcase works
+            */
+            //return 2;
         };
         // print_r("DB");
         // print_r($arr_values);

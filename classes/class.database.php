@@ -189,7 +189,7 @@ class Database {
         if($where != null){
             $update .= ' WHERE '.$where;
         }
-        
+        $update='SET SQL_SAFE_UPDATES=0;'.$update;
         // echo $update;
         $data =$this->db->execute($update);
         if($data){   

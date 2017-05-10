@@ -392,7 +392,7 @@ $(document).ready(function() {
       { 
         reset_pwd+=Math.floor(Math.random()*10); 
       } 
-      var email_text = "您的新密码:" + reset_pwd;
+      var email_text = "Your new password:" + reset_pwd;
       
       if(!obj_data.CLINIC_USER_MAIL){
         alert($("#Lang0020").html()); //请修改个人信息，添加邮箱地址

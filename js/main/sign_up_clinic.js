@@ -206,6 +206,10 @@ $(function(){
 
 			            //登录标志
 			            $.cookie("ilogin", 1);
+
+									$.cookie("welcomeInfo", $('#CLINIC_NAME').val());
+									
+									
 			            //记录cookie
 			            Save();
 

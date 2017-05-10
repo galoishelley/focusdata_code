@@ -65,7 +65,7 @@ include_once 'classes/Menu/menu.php';
                           <input type="text" class="form-control" id="EMAIL" name="EMAIL">
                         </div>
                       </div>
-                      
+                     
 
 
 
@@ -105,6 +105,6 @@ include_once 'classes/Language/For_JS_multi_lang.php';
           <script src="js/tm-scripts.js"></script>
           <script src="js/jquery.cookie.js"></script>
           <script src="js/main/pub.js"></script>
-          <script src="js/main/forgotpwd.js"></script>
+          <script src="js/main/forgotpwd_clinic.js"></script>
 
   </html>

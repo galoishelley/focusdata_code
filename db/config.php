@@ -14,7 +14,7 @@ define('DATABASE_NAME', 'focusdata');
 
 define('DATABASE_USER', 'root');
 
-define('DATABASE_PASS', '678f424f8a');
+define('DATABASE_PASS', 'focus167_drpages');
 
 define('DATABASE_HOST', 'localhost');
 

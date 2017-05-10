@@ -60,7 +60,13 @@ $('#btn_out').click(function () {
 //登录用户
 var username, fd_userid;
 var ilogin = $.cookie("ilogin");
+
+
+$('#userinfo').hide();
+$('#userinfoGuest').show();
 if (ilogin == 1) {
+  $('#userinfo').show();
+  $('#userinfoGuest').hide();
   var fd_usertype = $.cookie("fd_usertype");
   var fd_usertypename = $.cookie("fd_usertypename");
   username = $.cookie("fd_username");

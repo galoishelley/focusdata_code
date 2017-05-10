@@ -68,7 +68,7 @@ include_once 'classes/Language/language.common.php';
 									<?php echo $lang['Lang0331']; ?>
 								</h2>
 
-								<form class="form-horizontal wow fadeInUp" role="form" id="signin_form">
+								<form class="form-horizontal" role="form" id="signin_form">
 
 									<fieldset>
 
@@ -85,7 +85,7 @@ include_once 'classes/Language/language.common.php';
 											</label>
 
 												<div class="pull-right">
-													<a href="forgotpwd.php"><strong><?php echo $lang['Lang0031']; ?></strong></a>
+													<a href="forgotpwd_clinic.php"><strong><?php echo $lang['Lang0031']; ?></strong></a>
 												</div>
 											</div>
 										</div>

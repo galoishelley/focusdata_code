@@ -372,6 +372,9 @@ $(function () {
 
                                     // 登录标志
                                     $.cookie("ilogin", 1);
+
+
+                                    $.cookie("welcomeInfo", $("#TITLE_ID option:selected").text()+' '+$('#CUSTOMER_LASTNAME').val());
                                     // 记录cookie
                                     Save();
 

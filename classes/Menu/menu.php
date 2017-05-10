@@ -29,11 +29,24 @@
                 </ul>
             </li>
 
-            <li id="sign_up" class="hidden">
-                <a href="sign_up_person.php">
-                    <!-- register -->
+
+            <li class="sub-menu hidden" id="sign_up">
+                <a href="#">
                     <?php echo $lang['Lang0015']; ?>
                 </a>
+                <ul class="submenu sub-menu-register">
+                    <li>
+                        <a href="sign_up_person.php">
+                            <?php echo $lang['Lang0027']; ?>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="sign_up_clinic.php">
+                            <?php echo $lang['Lang0026']; ?>
+                        </a>
+                    </li>
+                    
+                </ul>
             </li>
 
 
@@ -47,6 +60,13 @@
                 </ul>
             </li>
 
+
+            <li id="userinfoGuest" style="left:250px">
+                <a href="#">
+                    <!-- Home -->
+                    <?php echo $lang['Lang0016']; ?>
+                </a>
+            </li>
 
             <li class="sub-menu tourist" style="left:200px">
                 <a href="#" id="userinfo">

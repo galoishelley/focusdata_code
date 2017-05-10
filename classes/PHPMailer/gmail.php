@@ -29,7 +29,7 @@ $mail->SMTPDebug = 2;
 $mail->Debugoutput = 'html';
 
 //Set the hostname of the mail server
-$mail->Host = 'smtp.gmail.com';
+$mail->Host = 'hp207.hostpapa.com';
 // use
 // $mail->Host = gethostbyname('smtp.gmail.com');
 // if your network does not support SMTP over IPv6
@@ -44,16 +44,16 @@ $mail->SMTPSecure = 'tls';
 $mail->SMTPAuth = true;
 
 //Username to use for SMTP authentication - use full email address for gmail
-$mail->Username = "fudanyinxin@gmail.com";
+$mail->Username = "info@drpages.com.au";
 
 //Password to use for SMTP authentication
-$mail->Password = "Miaoyaliu1213";
+$mail->Password = "drpages@FD";
 
 //Set who the message is to be sent from
-$mail->setFrom('fudanyinxin@gmail.com', 'Yin Xin');
+$mail->setFrom('info@drpages.com.au', 'Focusdata');
 
 //Set an alternative reply-to address
-$mail->addReplyTo('fudanyinxin@gmail.com', 'Yin Xin');
+$mail->addReplyTo('info@drpages.com.au', 'Focusdata');
 
 //Set who the message is to be sent to
 $mail->addAddress($email, $name);
