@@ -560,6 +560,23 @@ $(function () {
                         return result;
                     }
 
+
+                    //Step2. send mail
+
+                  
+
+                    $.ajax({
+                        type: "POST",
+                        url: "classes/PHPMailer/gmail_register_succeed.php",
+                        dataType: "text",
+                        async: true,
+                        data: {
+                            email: EMAIL,
+                            pwd: '',
+                            name: EMAIL
+                        }
+                    });
+
                     // 登录成功实现跳转
                     if (fd_usertype == 0) {
                         window.location.href = "clinicUpdUserInfo.php";
