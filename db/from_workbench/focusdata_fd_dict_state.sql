@@ -30,16 +30,6 @@ CREATE TABLE `fd_dict_state` (
   UNIQUE KEY `STATE_NAME` (`STATE_NAME`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `fd_dict_state`
---
-
-LOCK TABLES `fd_dict_state` WRITE;
-/*!40000 ALTER TABLE `fd_dict_state` DISABLE KEYS */;
-INSERT INTO `fd_dict_state` VALUES (1,'QLD',''),(2,'NSW',''),(3,'ACT',''),(4,'NT',''),(5,'SA',''),(6,'TAS',''),(7,'VIC',''),(8,'WA','');
-/*!40000 ALTER TABLE `fd_dict_state` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -50,4 +40,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-10 23:06:25
+-- Dump completed on 2017-05-18 21:10:27

@@ -28,16 +28,6 @@ CREATE TABLE `fd_dict_search` (
   PRIMARY KEY (`SEARCH_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `fd_dict_search`
---
-
-LOCK TABLES `fd_dict_search` WRITE;
-/*!40000 ALTER TABLE `fd_dict_search` DISABLE KEYS */;
-INSERT INTO `fd_dict_search` VALUES (1,'诊所区域'),(2,'诊所名称'),(3,'医生类别'),(4,'医生姓名'),(5,'预约时间'),(6,'医生距离');
-/*!40000 ALTER TABLE `fd_dict_search` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -48,4 +38,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-10 23:06:25
+-- Dump completed on 2017-05-18 21:10:27

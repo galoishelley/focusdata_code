@@ -33,16 +33,6 @@ CREATE TABLE `fd_admin` (
   PRIMARY KEY (`ADMIN_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `fd_admin`
---
-
-LOCK TABLES `fd_admin` WRITE;
-/*!40000 ALTER TABLE `fd_admin` DISABLE KEYS */;
-INSERT INTO `fd_admin` VALUES (1,'admin','21232f297a57a5a743894a0e4a801fc3','','0000-00-00 00:00:00','admin','2016-09-24 17:53:48');
-/*!40000 ALTER TABLE `fd_admin` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -53,4 +43,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-10 23:06:26
+-- Dump completed on 2017-05-18 21:10:28

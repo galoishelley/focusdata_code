@@ -28,16 +28,6 @@ CREATE TABLE `fd_dict_language` (
   PRIMARY KEY (`LANGUAGE_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `fd_dict_language`
---
-
-LOCK TABLES `fd_dict_language` WRITE;
-/*!40000 ALTER TABLE `fd_dict_language` DISABLE KEYS */;
-INSERT INTO `fd_dict_language` VALUES (0,'English'),(1,'Chinese'),(2,'Spanish'),(3,'Arabic');
-/*!40000 ALTER TABLE `fd_dict_language` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -48,4 +38,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-10 23:06:27
+-- Dump completed on 2017-05-18 21:10:29

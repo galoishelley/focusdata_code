@@ -33,15 +33,6 @@ CREATE TABLE `fd_role` (
   PRIMARY KEY (`ROLE_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `fd_role`
---
-
-LOCK TABLES `fd_role` WRITE;
-/*!40000 ALTER TABLE `fd_role` DISABLE KEYS */;
-/*!40000 ALTER TABLE `fd_role` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -52,4 +43,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-10 23:06:26
+-- Dump completed on 2017-05-18 21:10:28

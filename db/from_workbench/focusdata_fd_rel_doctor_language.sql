@@ -29,16 +29,6 @@ CREATE TABLE `fd_rel_doctor_language` (
   PRIMARY KEY (`DOCTOR_LANGUAGE_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=138 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `fd_rel_doctor_language`
---
-
-LOCK TABLES `fd_rel_doctor_language` WRITE;
-/*!40000 ALTER TABLE `fd_rel_doctor_language` DISABLE KEYS */;
-INSERT INTO `fd_rel_doctor_language` VALUES (72,4,1),(73,5,2),(74,6,3),(86,2,2),(87,3,3),(92,1,1),(93,8,2),(94,8,3),(95,9,2),(96,9,3),(97,7,2),(98,1,2),(118,10058,0),(119,10058,1),(120,10058,3),(127,10111,1),(130,10110,0),(131,10110,1),(132,10370,0),(133,10370,1),(134,10370,2),(135,10370,3),(136,10012,0),(137,10012,1);
-/*!40000 ALTER TABLE `fd_rel_doctor_language` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -49,4 +39,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-10 23:06:26
+-- Dump completed on 2017-05-18 21:10:28

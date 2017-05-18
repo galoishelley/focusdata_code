@@ -36,15 +36,6 @@ CREATE TABLE `fd_rel_doctor_appointment_time_his` (
   PRIMARY KEY (`DOCTOR_APPOINTMENT_TIME_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `fd_rel_doctor_appointment_time_his`
---
-
-LOCK TABLES `fd_rel_doctor_appointment_time_his` WRITE;
-/*!40000 ALTER TABLE `fd_rel_doctor_appointment_time_his` DISABLE KEYS */;
-/*!40000 ALTER TABLE `fd_rel_doctor_appointment_time_his` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -55,4 +46,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-10 23:06:25
+-- Dump completed on 2017-05-18 21:10:27

@@ -38,18 +38,8 @@ CREATE TABLE `fd_rel_customer_appointment` (
   KEY `FK_fd_rel_customer_appointment_2` (`DOCTOR_ID`),
   KEY `FK_fd_rel_customer_appointment_3` (`DOCTOR_APPOINTMENT_TIME_ID`),
   KEY `FK_fd_rel_customer_appointment_4` (`APPOINTMENT_STATUS_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `fd_rel_customer_appointment`
---
-
-LOCK TABLES `fd_rel_customer_appointment` WRITE;
-/*!40000 ALTER TABLE `fd_rel_customer_appointment` DISABLE KEYS */;
-INSERT INTO `fd_rel_customer_appointment` VALUES (45,207,10012,179685,1,'','test@gmail.com','2017-05-09 13:33:59','test@gmail.com','2017-05-09 13:33:59'),(46,207,10012,179687,2,'','test@gmail.com','2017-05-09 13:34:24','test@gmail.com','2017-05-09 13:34:24'),(47,207,10012,179745,2,'','test@gmail.com','2017-05-09 14:34:52','test@gmail.com','2017-05-09 14:34:52'),(48,207,10012,179953,2,'','test@gmail.com','2017-05-09 14:43:32','test@gmail.com','2017-05-09 14:43:32'),(49,207,10012,179797,2,'','test@gmail.com','2017-05-09 14:49:41','test@gmail.com','2017-05-09 14:49:41'),(50,207,10012,179901,2,'','test@gmail.com','2017-05-09 14:54:07','test@gmail.com','2017-05-09 14:54:07'),(51,207,10012,179901,1,'','test@gmail.com','2017-05-09 14:54:38','test@gmail.com','2017-05-09 14:54:38');
-/*!40000 ALTER TABLE `fd_rel_customer_appointment` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -60,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-10 23:06:26
+-- Dump completed on 2017-05-18 21:10:27
