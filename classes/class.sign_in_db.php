@@ -58,5 +58,22 @@ class sign_in_DB{
         
         return $ret;
     }
+
+
+    public function checkActive($arr_values){
+        
+
+        $table_name = "fd_customer_user";
+        $whereSql = "CUSTOMER_USER_MAIL = '".$arr_values["USER_MAIL"]."' and CUSTOMER_USER_PWD = '".md5($arr_values["USER_PWD"])."'";
+
+
+        $sql = "SELECT * FROM ".$table_name." WHERE ".$whereSql;
+
+        $ret = $this->db->fetchAll_sql($sql,null);
+        
+        return $ret;
+    }
+
+
 }
 ?>

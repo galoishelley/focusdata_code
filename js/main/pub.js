@@ -48,10 +48,10 @@ $('#btn_out').click(function () {
   window.location.href = "index.php";
 
   if ($.cookie("fd_rmbUser") == "false") {
-    $.cookie("fd_userid", "");
-    $.cookie("fd_username", "");
-    $.cookie("fd_password", "");
-    $.cookie("fd_usertype", "");
+    $.cookie("fd_userid", null);
+    $.cookie("fd_username", null);
+    $.cookie("fd_password", null);
+    $.cookie("fd_usertype", null);
   }
 
 });

@@ -329,6 +329,96 @@
                     display: none
                 }
             }
+
+            #popup-1 .slickWindow {
+				text-align: center;
+			}
+
+			#popup-1 .slickWindow .title {
+				font-size: 30px;
+				font-weight: 700;
+			}
+
+			#popup-1 .slickWindow .title,
+			#popup-1 .slickWindow p {
+				color: #fff;
+				opacity: 1;
+			}
+
+			#popup-1 .slickWindow .topIcon {
+				content: "";
+				display: block;
+				
+				width: 32px;
+				height: 32px;
+				margin: 0 auto 20px auto;
+			}
+
+			#popup-1 .slickWindow form {
+				display: block;
+				margin: 30px 0;
+			}
+
+			#popup-1 .slickWindow input,
+			#popup-1 .slickWindow textarea,
+			#popup-1 .slickWindow form input.send {
+				border-style: solid;
+				border-color: transparent transparent #fff transparent;
+				border-width: 1px;
+				font-size: 12px;
+				color: #fff;
+				background: transparent;
+				display: block;
+				width: 100%;
+				padding: 12px;
+				margin-bottom: 16px;
+				text-align: left;
+			}
+
+			#popup-1 .slickWindow form input.send {
+				background: #ef6161;
+				font-size: 14px;
+				font-weight: 900;
+				letter-spacing: 1px;
+				border: none;
+				margin-top: 30px;
+				display: block;
+				text-align: center;
+			}
+
+			#popup-1 .slickWindow form input.send:hover {
+				background: #fff;
+				color: #222;
+			}
+
+			#popup-1 .slickWindow .bottomClose {
+				font-weight: 700;
+				color: #fff;
+				font-size: 12px;
+			}
+
+			@media screen and (max-width: 480px) {
+				#popup-1.slickModal .slickWindow {
+					width: 96% !important;
+				}
+				#popup-1.slickModal .slickWindow .title {
+					font-size: 24px;
+				}
+				#popup-1.slickModal .close.icon {
+					right: 0;
+					left: 0;
+					margin: 0 auto;
+				}
+			}
+
+			@media screen and (max-height: 480px) {
+				#popup-1.slickModal {
+					overflow: scroll;
+				}
+				#popup-1.slickModal .overlay {
+					position: fixed;
+				}
+			}
         </style>
 
 
@@ -350,6 +440,20 @@
                alt="logo" height="55" width="346"></a>
                 </h1>
             </header>
+            <div id="activateBtn" class="openSlickModal-1"></div>
+            <div id="popup-1" class="slickModal">
+										<div class="slickWindow">
+											<div class="topIcon"></div>
+											<div class="title">Activate</div>
+											<p id="ainfo">Check your email and input your activation code</p>
+											<form>
+												<input type="text" class="field" placeholder="activation code" id="aCODE"/>
+												
+												<input type="submit" onclick="return false" class="send" value="Activate|Make an appointment" id="aOK"/>
+											</form>
+											<div class="closeModal bottomClose">No thanks, i don't want to activate right now</div>
+										</div>
+									</div>
 
 
             <div id="popup-Googlemap" class="slickModal">

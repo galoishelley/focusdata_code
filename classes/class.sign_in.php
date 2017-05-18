@@ -77,6 +77,8 @@ class Sign_in
 		$ret_msg = "";
 		$ret_code = "I00000"; //成功
 
+		$active=false;
+
 		$retData=array();
 
 
@@ -86,6 +88,16 @@ class Sign_in
 		$count = $ret[0]["COUNT"];
 
 		if($count == 1){
+			if($this->arr_values["usertype"] == 1)
+			{
+				$retActive=$this->sign_in->checkActive($this->arr_values);
+
+				if($retActive[0]["ACTIVATE"]==1)
+				{
+					$active=true;
+				}
+			}
+
 			$success = true;
 			$ret_msg="Successful";
 			$ret_code = "I00000";
@@ -115,6 +127,7 @@ class Sign_in
 		
 		// echo $ret;
 		$response["response"] = $this->response_const();  //固定参数返回
+		$response["response"]["active"] = $active;  //固定参数返回	
 		$response["response"]["success"] = $success;  //固定参数返回	
 		$response["response"]["status"] = $status;  //固定参数返回	
 		$response["response"]["data"] = $retData;

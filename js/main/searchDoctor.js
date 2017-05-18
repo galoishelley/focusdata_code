@@ -341,11 +341,36 @@ var waitingDialog = waitingDialog || (function ($) {
 // _______________________________________________________________________________________ $(document).ready
 $(function () {
 
+	$('#popup-1').slickModals({
+		overlayBg: true,
+		overlayClosesModal: true,
+		overlayBgColor: 'rgba(0,0,0,0.85)',
+		overlayTransitionSpeed: '0.4',
+		popupWidth: '420px',
+		popupHeight: '500px',
+		popupLocation: 'center',
+		popupAnimationDuration: '0.8',
+		popupAnimationEffect: 'flipInY',
+		popupShadowOffsetX: '0',
+		popupShadowOffsetY: '0',
+		popupShadowBlurRadius: '20px',
+		popupShadowSpreadRadius: '0',
+		popupShadowColor: '0',
+		popupBackground: 'transparent',
+		popupRadius: '0',
+		popupMargin: 'auto',
+		popupPadding: '0',
+		addCloseButton: true,
+		buttonStyle: '',
+		enableESC: true,
+		reopenClass: 'openSlickModal-1',
+	});
+
 	// _______________________________________________________________________________________ language multiselect
 	$('#LANGUAGE').multiselect();
 
 
-	// _______________________________________________________________________________________ fill
+	// _______________________________________________________________________________________ fill dropdownlist
 	//填充州
 	func_code = "SSTE";
 	para = "";
@@ -484,9 +509,13 @@ $(function () {
 	}
 
 	// _______________________________________________________________________________________ fill CUSTOMER_USER_ID
+
+	var fd_usertype = $.cookie("fd_usertype");
 	var fd_userid = $.cookie("fd_userid");
+
 	if (fd_userid)
-		$('#CUSTOMER_USER_ID').val(fd_userid);
+		if (fd_usertype == 1)
+			$('#CUSTOMER_USER_ID').val(fd_userid);
 
 
 	// _______________________________________________________________________________________ functions 
@@ -505,11 +534,11 @@ $(function () {
 
 		//记录user type
 		if (str_usertype == 0) {
-			str_usertypename = "诊所用户";
+			str_usertypename = "Clinic user";
 		} else if (str_usertype == 1) {
-			str_usertypename = "个人用户";
+			str_usertypename = "Personal user";
 		} else if (str_usertype == 2) {
-			str_usertypename = "管理员";
+			str_usertypename = "Admin";
 		}
 
 		$.cookie("fd_usertype", str_usertype);
@@ -578,22 +607,16 @@ $(function () {
 	/*点击收藏搜索条件*/
 	$('#btn_save_search').click(function () {
 		$('#action_type').val("create");
-		// var state_name = $("#STATE_ID").find("option:selected").text();
-		//收藏医生
-		///////////////////////////////////组织ajax 请求参数 begin///////////////////////////////
+
 		func_code = "SS01";
-		//form序列化成json
-		///////////////////////////////////组织ajax 请求参数 end///////////////////////////////
+
 		requesttype = 1;
-		//form序列化成json
+
 		json_form = $("#modal_form_search").serializeObject();
-		// json_form.STATE_ID = state_name;
-		// console.log(json_form);
-		//生成输入参数
+
 		json_str = request_const(json_form, func_code, requesttype);
 		console.log(json_str);
-		///////////////////////////////////组织ajax 请求参数 end///////////////////////////////
-		//生成输入参数
+
 		result = true;
 		$.ajax({
 			type: "POST",
@@ -670,6 +693,7 @@ $(function () {
 		minView: "month"
 	});
 
+	// _______________________________________________________________________________________ set calendar
 	var today = new Date();
 	var dd = today.getDate();
 	var mm = today.getMonth() + 1; //January is 0!
@@ -688,9 +712,10 @@ $(function () {
 
 
 
-	/////// 未注册用户点击 注册用户预约医生 按钮
+	// _______________________________________________________________________________________ Guest click timeslot btn
 	$('#btn_signin').click(function () {
 
+		// __________________ Step1.check 
 		if ($('#CUSTOMER_USER_MAIL').val() == "") {
 
 			alert($("#Lang0174").html());//用户名不能为空
@@ -732,408 +757,410 @@ $(function () {
 			return false;
 		}
 
-		///////////////////////////////////组织ajax 请求参数 begin///////////////////////////////
-		// 注册个人用户信息  
-		func_code = "UU01";
-		//form序列化成json
-		json_form = $("#modal_form_signup").serializeObject();
-		//生成输入参数
-		json_str = request_const(json_form, func_code, 0);
-		//alert(JSON.stringify(json_str));
+		// __________________ Step2.sign up
+		var EMAIL = $("#CUSTOMER_USER_MAIL").val();
 
-		console.log(json_str);
-		result = true;
-		///////////////////////////////////组织ajax 请求参数 end///////////////////////////////
+		var activate_code = "";
+		for (var i = 0; i < 6; i++) {
+			activate_code += Math.floor(Math.random() * 10);
+		}
+
+		func_code = "UU01";
+		json_form = $("#modal_form_signup").serializeObject();
+		json_str = request_const(json_form, func_code, 0);
+		json_str.para.ACTIVATION_CODE = activate_code;
+	
 		$.ajax({
 			type: "POST",
 			url: "classes/class.sign_up_person.php",
 			dataType: "json",
 			async: false,
-			cache: false,
 			data: {
 				request: json_str
-			},
-			success: function (msg) {
-				var ret = msg.response;
-				if (ret.success) {
-					if (json_str.sequ != ret.sequ) {
-						alert(func_code + ":时序号错误,请联系管理员ret.sequ" + ret.sequ + " json_str.sequ:" + json_str.sequ);
-						result = false;
-
-					}
-					if ("UP0001" == ret.status.ret_code) {
-						alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
-						result = false;
-					}
-					alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
-					// window.location.href="sign_in.php";
-
-				} else {
-					alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
-					result = false;
-					// $('#signup_ok').attr('disabled',false); 
-				}
-			},
-			error: function (XMLHttpRequest, textStatus, errorThrown) {
-				//请求失败之后的操作
-				var ret_code = "999911";
-				var ret_msg = "Error,contact admin please!";
-				alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
-				result = false;
 			}
 		});
-		if (!result) {
-			return result;
-		}
+	
 
-		///////////////////////////////////组织ajax 请求参数 begin///////////////////////////////
-		func_code = "UI01";
-		requesttype = 0;
+		//__________________ Step3.send mail
+		
+		var email_text = "Your activate code:" + activate_code;
+		$.ajax({
+			type: "POST",
+			url: "classes/PHPMailer/gmail_activate.php",
+			dataType: "text",
+			async: true,
+			data: {
+				email: EMAIL,
+				pwd: activate_code,
+				name: EMAIL
+			}
+		});
 
-		para = {
-			USER_MAIL: $('#CUSTOMER_USER_MAIL').val(),
-			USER_PWD: $('#CUSTOMER_USER_PWD').val(),
-			usertype: 1
-		}
+		//__________________ Step4.popup activation code input
+		$('#activateBtn').trigger('click');
 
-		// serviceid = UI01
-		//生成输入参数,函数参数说明
-		// 1- json格式 项目实际需要的参数data
-		// 2- serviceid = UI01 在[二维码服务API接口文档.xlsx]文档中 服务(serviceid)列表 查找
-		// 3- 默认0 请求类型 一般情况无用
-		json_str = request_const(para, func_code, requesttype);
-		//alert(JSON.stringify(json_str));
+	});
 
-		// console.log(json_str);
 
-		///////////////////////////////////组织ajax 请求参数 end///////////////////////////////
-		//自动登录
+	// _______________________________________________________________________________________ Guest click timeslot btn
+	$('#aOK').click(function () {
+
+		var EMAIL = $("#CUSTOMER_USER_MAIL").val();
+		var ACODE = $("#aCODE").val();
+
+		json_str.para.email = EMAIL;
+		json_str.para.acode = ACODE;
+
+
 		result = true;
 		$.ajax({
 			type: "POST",
-			url: "classes/class.sign_in.php",
+			url: "classes/class.activate.php",
 			dataType: "json",
 			async: false,
 			data: {
 				request: json_str
 			},
 			success: function (msg) {
-				// console.log(msg);
-				var ret = msg.response;
-				if (ret.success) {
-					if (json_str.sequ != ret.sequ) {
-						alert(func_code + ":时序号错误,请联系管理员ret.sequ" + ret.sequ + " json_str.sequ:" + json_str.sequ);
-						result = false;
+				if (msg) {
+
+					func_code = "UI01";
+					requesttype = 0;
+					para = {
+						USER_MAIL: $('#CUSTOMER_USER_MAIL').val(),
+						USER_PWD: $('#CUSTOMER_USER_PWD').val(),
+						usertype: 1
 					}
 
-					//登录标志
-					$.cookie("ilogin", 1);
-					//记录cookie
-					SaveNameAndPWD();
+					json_str = request_const(para, func_code, requesttype);
 
+
+					result = true;
+					$.ajax({
+						type: "POST",
+						url: "classes/class.sign_in.php",
+						dataType: "json",
+						async: false,
+						data: {
+							request: json_str
+						},
+						success: function (msg) {
+							// console.log(msg);
+							var ret = msg.response;
+							if (ret.success) {
+								if (json_str.sequ != ret.sequ) {
+									alert(func_code + ":时序号错误,请联系管理员ret.sequ" + ret.sequ + " json_str.sequ:" + json_str.sequ);
+									result = false;
+								}
+
+								//登录标志
+								$.cookie("ilogin", 1);
+								//记录cookie
+								SaveNameAndPWD();
+
+							} else {
+								alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
+								// $('#signin_ok').attr('disabled',false); 
+								result = false;
+							}
+
+						},
+						error: function (XMLHttpRequest, textStatus, errorThrown) {
+							//请求失败之后的操作
+							var ret_code = "999912";
+							var ret_msg = "Error,contact admin please!";
+							alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
+							result = false;
+						}
+					});
+					if (!result) {
+						return result;
+					}
+
+					//自动登录
+					var ilogin = $.cookie("ilogin");
+					var username = $.cookie("fd_username");
+					var fd_usertype = $.cookie("fd_usertype");
+
+					//获取用户基本信息
+					url = "classes/class.UserDetail.php";
+					func_code = "UI02";
+					para = {
+						username: username
+					};
+
+					json_str = request_const(para, func_code, 0);
+
+					console.log(json_str);
+					//获取USER_ID
+					result = true;
+					$.ajax({
+						type: "POST",
+						url: url,
+						dataType: "json",
+						async: false,
+						data: {
+							request: json_str
+						},
+						success: function (msg) {
+							// console.log(msg);
+							var ret = msg.response;
+							if (ret.success) {
+								if (json_str.sequ != ret.sequ) {
+									alert(func_code + ":时序号错误,请联系管理员ret.sequ" + ret.sequ + " json_str.sequ:" + json_str.sequ);
+									result = false;
+								}
+								var data = ret.data[0];
+
+								$.cookie("fd_userid", data.CUSTOMER_USER_ID);
+
+							} else {
+								alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
+								result = false;
+							}
+						},
+						error: function (XMLHttpRequest, textStatus, errorThrown) {
+							//请求失败之后的操作
+							var ret_code = "999913";
+							var ret_msg = "Error,contact admin please!";
+							alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
+							result = false;
+						}
+					});
+					if (!result) {
+						return result;
+					}
+
+
+					//搜索医生预约时间ID
+					var time_id = "";
+
+
+					//搜索医生预约时间ID
+					func_code = "ST01";
+					para = {
+						DOCTOR_ID: keyDoctorID,
+						APPOINTMENT_DATE: keyDate,
+						APPOINTMENT_TIME: keyTime
+					};
+
+					json_str = request_const(para, func_code, 0);
+					//获取DOCTOR_APPOINTMENT_TIME_ID
+					result = true;
+					$.ajax({
+						type: "POST",
+						url: "classes/class.searchAppTimeID.php",
+						dataType: "json",
+						async: false,
+						data: {
+							request: json_str
+						},
+						success: function (msg) {
+							// console.log(msg);
+							var ret = msg.response;
+							if (ret.success) {
+								if (json_str.sequ != ret.sequ) {
+									alert(func_code + ":时序号错误,请联系管理员ret.sequ" + ret.sequ + " json_str.sequ:" + json_str.sequ);
+									result = false;
+								}
+								var data = ret.data[0];
+								console.log(ret);
+								time_id = data.DOCTOR_APPOINTMENT_TIME_ID;
+							} else {
+								alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
+								result = false;
+							}
+
+						},
+						error: function (XMLHttpRequest, textStatus, errorThrown) {
+							//请求失败之后的操作
+							var ret_code = "999914";
+							var ret_msg = "ajaxError,contact admin please";
+							alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
+							result = false;
+						}
+					});
+					if (!result) {
+						return result;
+					}
+
+					//获取用户详细信息
+					var custom_user_id;
+					func_code = "UI02";
+					para = {
+						user_mail: $('#CUSTOMER_USER_MAIL').val()
+					};
+
+					json_str = request_const(para, func_code, 0);
+
+					// console.log(json_str);
+					//请求
+					result = true;
+					$.ajax({
+						type: "POST",
+						url: "classes/class.searchUserDetail.php",
+						dataType: "json",
+						async: false,
+						data: {
+							request: json_str
+						},
+						success: function (msg) {
+							// console.log(msg);
+							var ret = msg.response;
+							if (ret.success) {
+								if (json_str.sequ != ret.sequ) {
+									alert(func_code + ":时序号错误,请联系管理员ret.sequ" + ret.sequ + " json_str.sequ:" + json_str.sequ);
+									result = false;
+								}
+								var data = ret.data[0];
+								custom_user_id = data.CUSTOMER_USER_ID;
+							} else {
+								alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
+								result = false;
+							}
+
+						},
+						error: function (XMLHttpRequest, textStatus, errorThrown) {
+							//请求失败之后的操作
+							var ret_code = "999915";
+							var ret_msg = "Error,contact admin please!";
+							alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
+							result = false;
+						}
+					});
+					if (!result) {
+						return result;
+					}
+
+					// 预约医生
+					func_code = "AD01";
+					para = {
+						action_type: "create",
+
+						CUSTOMER_USER_ID: custom_user_id,
+						DOCTOR_ID: keyDoctorID,
+						DOCTOR_APPOINTMENT_TIME_ID: time_id,
+						APPOINTMENT_STATUS_ID: 1
+					};
+
+
+					requesttype = 1; //注册用户
+
+					json_str = request_const(para, func_code, requesttype);
+
+
+					//请求
+					result = true;
+					$.ajax({
+						type: "POST",
+						url: "classes/class.appointmentDoctor.php",
+						dataType: "json",
+						async: false,
+						data: {
+							request: json_str
+						},
+						success: function (msg) {
+							// console.log(msg);
+							var ret = msg.response;
+							if (ret.success) {
+								if (json_str.sequ != ret.sequ) {
+									alert(func_code + ":时序号错误,请联系管理员ret.sequ" + ret.sequ + " json_str.sequ:" + json_str.sequ);
+									result = false;
+								}
+								if (ret.status.ret_code == "AD0102") {
+									alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
+									result = false;
+								}
+								alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
+
+							} else {
+								alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
+								result = false;
+							}
+						},
+						error: function (XMLHttpRequest, textStatus, errorThrown) {
+							//请求失败之后的操作
+							var ret_code = "999916";
+							var ret_msg = "Error,contact admin please!";
+							alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
+							result = false;
+						}
+					});
+					if (!result) {
+						return result;
+					}
+
+					//修改医生预约时间状态
+					func_code = "UAT0";
+					para = {
+						action_type: "update",
+						DOCTOR_APPOINTMENT_TIME_ID: time_id,
+						ACTIVE_STATUS: 0
+					};
+
+					json_str = request_const(para, func_code, 1);
+
+
+					//请求
+					result = true;
+					$.ajax({
+						type: "POST",
+						url: "classes/class.appointmentTime.php",
+						dataType: "json",
+						async: false,
+						data: {
+							request: json_str
+						},
+						success: function (msg) {
+							// console.log(msg);
+							var ret = msg.response;
+							if (ret.success) {
+								if (json_str.sequ != ret.sequ) {
+									alert(func_code + ":时序号错误,请联系管理员ret.sequ" + ret.sequ + " json_str.sequ:" + json_str.sequ);
+									result = false;
+								}
+
+							} else {
+								alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
+								result = false;
+							}
+
+						},
+						error: function (XMLHttpRequest, textStatus, errorThrown) {
+							//请求失败之后的操作
+							var ret_code = "999917";
+							var ret_msg = "Error,contact admin please!";
+							alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
+							result = false;
+						}
+					});
+					if (!result) {
+						return result;
+					}
+
+					if ($.cookie("ilogin") == 1) {
+						window.location.href = "userAppointmentRecoder.php";
+					} else if ($.cookie("ilogin") == 0) {
+						// window.location.href="sign_in.php"; 
+					}
 				} else {
-					alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
-					// $('#signin_ok').attr('disabled',false); 
+
+					$("#ainfo").text("Activation code is not correct");
+
 					result = false;
 				}
-
 			},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
-				//请求失败之后的操作
-				var ret_code = "999912";
+				// 请求失败之后的操作
+				var ret_code = "999999";
 				var ret_msg = "Error,contact admin please!";
 				alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
 				result = false;
 			}
 		});
-		if (!result) {
-			return result;
-		}
-
-		//自动登录
-		var ilogin = $.cookie("ilogin");
-		var username = $.cookie("fd_username");
-		var fd_usertype = $.cookie("fd_usertype");
-
-		console.log(ilogin);
-		console.log(username);
-		console.log(fd_usertype);
-
-		//获取用户基本信息
-		url = "classes/class.UserDetail.php";
-		func_code = "UI02";
-		para = {
-			username: username
-		};
-
-		json_str = request_const(para, func_code, 0);
-
-		console.log(json_str);
-		//获取USER_ID
-		result = true;
-		$.ajax({
-			type: "POST",
-			url: url,
-			dataType: "json",
-			async: false,
-			data: {
-				request: json_str
-			},
-			success: function (msg) {
-				// console.log(msg);
-				var ret = msg.response;
-				if (ret.success) {
-					if (json_str.sequ != ret.sequ) {
-						alert(func_code + ":时序号错误,请联系管理员ret.sequ" + ret.sequ + " json_str.sequ:" + json_str.sequ);
-						result = false;
-					}
-					var data = ret.data[0];
-
-					$.cookie("fd_userid", data.CUSTOMER_USER_ID);
-
-				} else {
-					alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
-					result = false;
-				}
-			},
-			error: function (XMLHttpRequest, textStatus, errorThrown) {
-				//请求失败之后的操作
-				var ret_code = "999913";
-				var ret_msg = "Error,contact admin please!";
-				alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
-				result = false;
-			}
-		});
-		if (!result) {
-			return result;
-		}
-
-		// //登录成功实现跳转
-		// if(fd_usertype==0){
-		//   window.location.href="clinicUpdUserInfo.php";
-		// }else if(fd_usertype==1){
-		//   window.location.href="index.php";
-		// }else if(fd_usertype==2){
-		//   window.location.href="adminQryClinic.php";
-		// }
-
-		//搜索医生预约时间ID
-		var time_id = "";
 
 
-		//搜索医生预约时间ID
-		func_code = "ST01";
-		para = {
-			DOCTOR_ID: keyDoctorID,
-			APPOINTMENT_DATE: reformatDate(keyDate),
-			APPOINTMENT_TIME: keyTime
-		};
 
-		json_str = request_const(para, func_code, 0);
-
-		// console.log(json_str);
-		//获取DOCTOR_APPOINTMENT_TIME_ID
-		result = true;
-		$.ajax({
-			type: "POST",
-			url: "classes/class.searchAppTimeID.php",
-			dataType: "json",
-			async: false,
-			data: {
-				request: json_str
-			},
-			success: function (msg) {
-				// console.log(msg);
-				var ret = msg.response;
-				if (ret.success) {
-					if (json_str.sequ != ret.sequ) {
-						alert(func_code + ":时序号错误,请联系管理员ret.sequ" + ret.sequ + " json_str.sequ:" + json_str.sequ);
-						result = false;
-					}
-					var data = ret.data[0];
-					console.log(ret);
-					time_id = data.DOCTOR_APPOINTMENT_TIME_ID;
-				} else {
-					alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
-					result = false;
-				}
-
-			},
-			error: function (XMLHttpRequest, textStatus, errorThrown) {
-				//请求失败之后的操作
-				var ret_code = "999914";
-				var ret_msg = "ajaxError,contact admin please";
-				alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
-				result = false;
-			}
-		});
-		if (!result) {
-			return result;
-		}
-
-		//获取用户详细信息
-		var custom_user_id;
-		func_code = "UI02";
-		para = {
-			user_mail: $('#CUSTOMER_USER_MAIL').val()
-		};
-
-		json_str = request_const(para, func_code, 0);
-
-		// console.log(json_str);
-		//请求
-		result = true;
-		$.ajax({
-			type: "POST",
-			url: "classes/class.searchUserDetail.php",
-			dataType: "json",
-			async: false,
-			data: {
-				request: json_str
-			},
-			success: function (msg) {
-				// console.log(msg);
-				var ret = msg.response;
-				if (ret.success) {
-					if (json_str.sequ != ret.sequ) {
-						alert(func_code + ":时序号错误,请联系管理员ret.sequ" + ret.sequ + " json_str.sequ:" + json_str.sequ);
-						result = false;
-					}
-					var data = ret.data[0];
-					custom_user_id = data.CUSTOMER_USER_ID;
-				} else {
-					alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
-					result = false;
-				}
-
-			},
-			error: function (XMLHttpRequest, textStatus, errorThrown) {
-				//请求失败之后的操作
-				var ret_code = "999915";
-				var ret_msg = "Error,contact admin please!";
-				alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
-				result = false;
-			}
-		});
-		if (!result) {
-			return result;
-		}
-
-		// 预约医生
-		func_code = "AD01";
-		para = {
-			action_type: "create",
-			// CUSTOMER_USER_NAME: $('#CUSTOMER_USER_NAME').val(),
-			// CUSTOMER_USER_PWD: $('#CUSTOMER_USER_PWD').val(),
-			CUSTOMER_USER_ID: custom_user_id,
-			DOCTOR_ID: keyDoctorID,
-			DOCTOR_APPOINTMENT_TIME_ID: time_id,
-			APPOINTMENT_STATUS_ID: 1
-		};
-		console.log(para);
-
-		requesttype = 1; //注册用户
-
-		json_str = request_const(para, func_code, requesttype);
-
-		// console.log(json_str_1);
-
-		//请求
-		result = true;
-		$.ajax({
-			type: "POST",
-			url: "classes/class.appointmentDoctor.php",
-			dataType: "json",
-			async: false,
-			data: {
-				request: json_str
-			},
-			success: function (msg) {
-				// console.log(msg);
-				var ret = msg.response;
-				if (ret.success) {
-					if (json_str.sequ != ret.sequ) {
-						alert(func_code + ":时序号错误,请联系管理员ret.sequ" + ret.sequ + " json_str.sequ:" + json_str.sequ);
-						result = false;
-					}
-					if (ret.status.ret_code == "AD0102") {
-						alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
-						result = false;
-					}
-					alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
-
-				} else {
-					alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
-					result = false;
-				}
-			},
-			error: function (XMLHttpRequest, textStatus, errorThrown) {
-				//请求失败之后的操作
-				var ret_code = "999916";
-				var ret_msg = "Error,contact admin please!";
-				alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
-				result = false;
-			}
-		});
-		if (!result) {
-			return result;
-		}
-
-		//修改医生预约时间状态
-		func_code = "UAT0";
-		para = {
-			action_type: "update",
-			DOCTOR_APPOINTMENT_TIME_ID: time_id,
-			ACTIVE_STATUS: 0
-		};
-
-		json_str = request_const(para, func_code, 1);
-
-		// console.log(json_str);
-		//请求
-		result = true;
-		$.ajax({
-			type: "POST",
-			url: "classes/class.appointmentTime.php",
-			dataType: "json",
-			async: false,
-			data: {
-				request: json_str
-			},
-			success: function (msg) {
-				// console.log(msg);
-				var ret = msg.response;
-				if (ret.success) {
-					if (json_str.sequ != ret.sequ) {
-						alert(func_code + ":时序号错误,请联系管理员ret.sequ" + ret.sequ + " json_str.sequ:" + json_str.sequ);
-						result = false;
-					}
-
-				} else {
-					alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
-					result = false;
-				}
-
-			},
-			error: function (XMLHttpRequest, textStatus, errorThrown) {
-				//请求失败之后的操作
-				var ret_code = "999917";
-				var ret_msg = "Error,contact admin please!";
-				alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
-				result = false;
-			}
-		});
-		if (!result) {
-			return result;
-		}
-
-		if ($.cookie("ilogin") == 1) {
-			window.location.href = "userAppointmentRecoder.php";
-		} else if ($.cookie("ilogin") == 0) {
-			// window.location.href="sign_in.php"; 
-		}
-
-		return false;
 	});
 
 
@@ -1243,6 +1270,11 @@ $(function () {
 					},
 					digits: {
 						message: 'The phone number is not valid'
+					},
+					stringLength: {
+						min: 10,
+						max: 10,
+						message: 'Needs to be 10 numbers'
 					}
 				}
 			},
@@ -1838,8 +1870,8 @@ $(function () {
 	}
 
 	//__________________________________________________________________________________________________________________Doctor Logic
-	function bind_doctor_content_per_day(json_str,page) {
-		
+	function bind_doctor_content_per_day(json_str, page) {
+
 		json_str.para.pageNum = page - 1;
 		json_str.para.action_type = "GET_DOCTOR";
 
@@ -1910,7 +1942,7 @@ $(function () {
 							for (var m in timeslotArrUni) {
 								doctor.timeslot.push({
 									time: reformatTime(timeslotArrUni[m]),
-									originalTime:timeslotArrUni[m]
+									originalTime: timeslotArrUni[m]
 								});
 
 							}
@@ -2043,12 +2075,7 @@ $(function () {
 								result = false;
 							}
 
-							// //登录标志
-							// $.cookie("ilogin", 1);
-							// //记录cookie
-							// SaveNameAndPWD();
-							// history.go(-1);
-							// // window.location.href="index.php";
+
 							alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
 						} else {
 							alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
@@ -2083,6 +2110,14 @@ $(function () {
 				keyDoctorID = $(this).attr('keyDoctorID');
 				keyDate = reformatDate($(this).attr('keyDate'));
 				keyTime = $(this).attr('keyTime');
+
+
+				//Clinic user
+				if ($.cookie("fd_usertype") == 0) {
+					alert("Clinic user can not make an appointment");
+					return false;
+				}
+
 
 				//未注册用户
 				if ($.cookie("ilogin") == 0) {
@@ -2571,7 +2606,7 @@ $(function () {
 		});
 
 
-		bind_doctor_content_per_day(json_str,1);
+		bind_doctor_content_per_day(json_str, 1);
 
 		$(".tab_container #Day_Tab li a.day-tab").unbind();
 
@@ -2579,7 +2614,7 @@ $(function () {
 			var date = $(this).text();
 			if (date) {
 				json_str.para.APPOINTMENT_DATE = reformatDate(date);
-				bind_doctor_content_per_day(json_str,1);
+				bind_doctor_content_per_day(json_str, 1);
 			}
 		});
 
@@ -2599,8 +2634,8 @@ $(function () {
 		$('#CLINIC_SUBURB').val(json_value.CLINIC_SUBURB);
 
 
-		if(json_value.DOCTOR_TYPE)
-			$('select option:contains("'+json_value.DOCTOR_TYPE+'")').prop('selected',true);
+		if (json_value.DOCTOR_TYPE)
+			$('select option:contains("' + json_value.DOCTOR_TYPE + '")').prop('selected', true);
 
 
 		requesttype = 0;
@@ -2653,14 +2688,13 @@ $(function () {
 	});
 
 
-	if($(window).width()>768)
-	{
+	if ($(window).width() > 768) {
 		$('#CUSTOMER_USER_MAIL').css("width", "300px");
 		$('.multiselect-native-select').css("margin-left", "37px");
 		$('#DOCTOR_TYPE').css("margin-left", "37px");
 	}
-	
-	
+
+
 
 
 });
