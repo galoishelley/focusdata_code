@@ -154,6 +154,7 @@ $(function () {
                                     }
                                     var data = ret.data[0];
                                     $.cookie("fd_userid", data.CUSTOMER_USER_ID);
+                                    $.cookie("my_email",$("#USER_MAIL").val());
 
                                 } else {
                                     alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
@@ -228,6 +229,7 @@ $(function () {
             success: function (msg) {
                 if (msg) {
                     $.cookie("ilogin", 1);
+                    $.cookie("my_email",$("#USER_MAIL").val());
                     Save();
 
                     var username = $.cookie("fd_username");

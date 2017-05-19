@@ -562,9 +562,6 @@ $(function () {
 
 
                     //Step2. send mail
-
-                  
-
                     $.ajax({
                         type: "POST",
                         url: "classes/PHPMailer/gmail_register_succeed.php",
