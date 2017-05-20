@@ -18,7 +18,7 @@ $(function () {
         popupHeight: '500px',
         popupLocation: 'center',
         popupAnimationDuration: '0.8',
-        popupAnimationEffect: 'flipInY',
+        popupAnimationEffect: 'rotateIn',
         popupShadowOffsetX: '0',
         popupShadowOffsetY: '0',
         popupShadowBlurRadius: '20px',
