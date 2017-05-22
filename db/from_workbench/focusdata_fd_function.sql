@@ -16,24 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `fd_function`
+-- Dumping data for table `fd_function`
 --
 
-DROP TABLE IF EXISTS `fd_function`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `fd_function` (
-  `FUNCTION_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `FUNCTION_CODE` varchar(50) NOT NULL,
-  `FUNCTION_NAME` varchar(50) NOT NULL,
-  `NOTE` varchar(200) NOT NULL,
-  `CREATE_USER` varchar(50) NOT NULL,
-  `CREATE_DATE` datetime NOT NULL,
-  `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL,
-  PRIMARY KEY (`FUNCTION_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `fd_function` WRITE;
+/*!40000 ALTER TABLE `fd_function` DISABLE KEYS */;
+/*!40000 ALTER TABLE `fd_function` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -44,4 +33,4 @@ CREATE TABLE `fd_function` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-18 21:10:27
+-- Dump completed on 2017-05-22 23:41:14

@@ -16,42 +16,14 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `fd_customer_user`
+-- Dumping data for table `fd_customer_user`
 --
 
-DROP TABLE IF EXISTS `fd_customer_user`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `fd_customer_user` (
-  `CUSTOMER_USER_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `CUSTOMER_USER_PWD` varchar(50) NOT NULL,
-  `CUSTOMER_USER_MAIL` varchar(50) NOT NULL,
-  `CUSTOMER_FIRSTNAME` varchar(50) NOT NULL,
-  `CUSTOMER_LASTNAME` varchar(50) NOT NULL,
-  `TITLE_ID` int(11) NOT NULL,
-  `GENDER_ID` int(11) NOT NULL,
-  `CUSTOMER_BIRTHDAY` varchar(50) NOT NULL,
-  `CUSTOMER_ADDR` varchar(200) NOT NULL,
-  `CUSTOMER_POSTCODE` varchar(50) NOT NULL,
-  `CUSTOMER_SUBURB` varchar(50) NOT NULL,
-  `CUSTOMER_LAT` varchar(20) NOT NULL,
-  `CUSTOMER_LNG` varchar(20) NOT NULL,
-  `STATE_ID` int(11) NOT NULL,
-  `CUSTOMER_PHONE_NO` varchar(50) NOT NULL,
-  `MEDICAL_CARD_NO` varchar(50) NOT NULL,
-  `ACTIVE_STATUS` int(11) NOT NULL DEFAULT '1',
-  `NOTE` varchar(200) NOT NULL,
-  `ACTIVATE` int(11) NOT NULL DEFAULT '0',
-  `ACTIVATION_CODE` varchar(45) NOT NULL,
-  `CREATE_USER` varchar(50) NOT NULL,
-  `CREATE_DATE` datetime NOT NULL,
-  `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL,
-  PRIMARY KEY (`CUSTOMER_USER_ID`),
-  KEY `FK_fd_customer_user_7` (`STATE_ID`),
-  CONSTRAINT `FK_fd_customer_user_7` FOREIGN KEY (`STATE_ID`) REFERENCES `fd_dict_state` (`STATE_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=257 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `fd_customer_user` WRITE;
+/*!40000 ALTER TABLE `fd_customer_user` DISABLE KEYS */;
+INSERT INTO `fd_customer_user` VALUES (207,'098f6bcd4621d373cade4e832627b4f6','test@gmail.com','test','test111',0,0,'23/02/1981','1 Whitehorse Road','3128','Box Hill','-37.8192605','145.13905020000004',7,'0412341234','1231231231',1,'',1,'','test@gmail.com','2017-01-23 09:51:38','test@gmail.com','2017-05-01 04:33:23'),(256,'c4ca4238a0b923820dcc509a6f75849b','fudanyinxin@gmail.com','1','1',0,0,'11/11/1983','1','1','1','-35.2421201','149.0572644',3,'1111111111','1',1,'',1,'853118','fudanyinxin@gmail.com','2017-05-18 09:46:26','fudanyinxin@gmail.com','2017-05-18 09:46:26'),(257,'c4ca4238a0b923820dcc509a6f75849b','fudanyinxin@gmail.com1','1','1',0,0,'11/11/1111','1','1','1','-35.2421201','149.0572644',3,'1111111111','1',1,'',0,'830314','fudanyinxin@gmail.com1','2017-05-19 04:06:39','fudanyinxin@gmail.com1','2017-05-19 04:06:39');
+/*!40000 ALTER TABLE `fd_customer_user` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -62,4 +34,4 @@ CREATE TABLE `fd_customer_user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-18 21:10:28
+-- Dump completed on 2017-05-22 23:41:16

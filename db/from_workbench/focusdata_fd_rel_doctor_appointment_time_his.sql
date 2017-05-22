@@ -16,26 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `fd_rel_doctor_appointment_time_his`
+-- Dumping data for table `fd_rel_doctor_appointment_time_his`
 --
 
-DROP TABLE IF EXISTS `fd_rel_doctor_appointment_time_his`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `fd_rel_doctor_appointment_time_his` (
-  `DOCTOR_APPOINTMENT_TIME_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `DOCTOR_ID` int(11) NOT NULL,
-  `APPOINTMENT_DATE` datetime NOT NULL,
-  `ACTIVE_STATUS` int(11) NOT NULL,
-  `NOTE` varchar(200) NOT NULL,
-  `OPERATOR_STATUS` varchar(50) NOT NULL,
-  `CREATE_USER` varchar(50) NOT NULL,
-  `CREATE_DATE` datetime NOT NULL,
-  `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL,
-  PRIMARY KEY (`DOCTOR_APPOINTMENT_TIME_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `fd_rel_doctor_appointment_time_his` WRITE;
+/*!40000 ALTER TABLE `fd_rel_doctor_appointment_time_his` DISABLE KEYS */;
+/*!40000 ALTER TABLE `fd_rel_doctor_appointment_time_his` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -46,4 +33,4 @@ CREATE TABLE `fd_rel_doctor_appointment_time_his` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-18 21:10:27
+-- Dump completed on 2017-05-22 23:41:14

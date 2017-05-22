@@ -16,18 +16,14 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `fd_dict_appointment_status`
+-- Dumping data for table `fd_dict_appointment_status`
 --
 
-DROP TABLE IF EXISTS `fd_dict_appointment_status`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `fd_dict_appointment_status` (
-  `APPOINTMENT_STATUS_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `APPOINTMENT_STATUS` varchar(50) NOT NULL,
-  PRIMARY KEY (`APPOINTMENT_STATUS_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `fd_dict_appointment_status` WRITE;
+/*!40000 ALTER TABLE `fd_dict_appointment_status` DISABLE KEYS */;
+INSERT INTO `fd_dict_appointment_status` VALUES (1,'Booked'),(2,'Cancelled'),(3,'Check in'),(4,'No show');
+/*!40000 ALTER TABLE `fd_dict_appointment_status` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -38,4 +34,4 @@ CREATE TABLE `fd_dict_appointment_status` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-18 21:10:27
+-- Dump completed on 2017-05-22 23:41:14

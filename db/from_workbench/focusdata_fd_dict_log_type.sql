@@ -16,18 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `fd_dict_log_type`
+-- Dumping data for table `fd_dict_log_type`
 --
 
-DROP TABLE IF EXISTS `fd_dict_log_type`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `fd_dict_log_type` (
-  `LOG_TYPE_ID` int(11) NOT NULL,
-  `LOG_TYPE` varchar(50) NOT NULL,
-  PRIMARY KEY (`LOG_TYPE_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `fd_dict_log_type` WRITE;
+/*!40000 ALTER TABLE `fd_dict_log_type` DISABLE KEYS */;
+/*!40000 ALTER TABLE `fd_dict_log_type` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -38,4 +33,4 @@ CREATE TABLE `fd_dict_log_type` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-18 21:10:28
+-- Dump completed on 2017-05-22 23:41:15

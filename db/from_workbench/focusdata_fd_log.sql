@@ -16,25 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `fd_log`
+-- Dumping data for table `fd_log`
 --
 
-DROP TABLE IF EXISTS `fd_log`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `fd_log` (
-  `LOG_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `LOG_TYPE_ID` int(11) NOT NULL,
-  `FUNCTION_ID` varchar(50) NOT NULL,
-  `FUNCTION_NAME` varchar(50) NOT NULL,
-  `LOG_CONTENT` varchar(200) NOT NULL,
-  `CREATE_DATE` datetime NOT NULL,
-  `CREATE_USER` varchar(50) NOT NULL,
-  `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL,
-  PRIMARY KEY (`LOG_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `fd_log` WRITE;
+/*!40000 ALTER TABLE `fd_log` DISABLE KEYS */;
+/*!40000 ALTER TABLE `fd_log` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -45,4 +33,4 @@ CREATE TABLE `fd_log` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-18 21:10:29
+-- Dump completed on 2017-05-22 23:41:18

@@ -316,6 +316,16 @@ SELECT * from (
            t4.CLINIC_SUBURB, 
            t4.CLINIC_LAT,
            t4.CLINIC_LNG,
+           t4.BULK_BILLING,
+           t4.LATE_HOUR_SERVICES,
+           t4.FREE_PARKING,
+           t4.WHEELCHAIR_ACCESS,
+           t4.FEMALE_DOCTOR,
+           t4.HOME_VISIT,
+           t4.ONSITE_PATHOLOGY_COLLECTION,
+           t4.AGPAL,
+           t4.STANDARD_15_MINUTE_CONSULTATION,
+           t4.EXTEND_30_MINUTE_CONSULTATION,
            t4.CLINIC_OVERVIEW,
            t5.STATE_NAME, 
 		   GROUP_CONCAT(DISTINCT t1.APPOINTMENT_TIME ORDER BY t1.APPOINTMENT_TIME ASC) as APPOINTMENT_TIME
@@ -369,6 +379,16 @@ union
            t4.CLINIC_SUBURB, 
            t4.CLINIC_LAT,
            t4.CLINIC_LNG,
+           t4.BULK_BILLING,
+           t4.LATE_HOUR_SERVICES,
+           t4.FREE_PARKING,
+           t4.WHEELCHAIR_ACCESS,
+           t4.FEMALE_DOCTOR,
+           t4.HOME_VISIT,
+           t4.ONSITE_PATHOLOGY_COLLECTION,
+           t4.AGPAL,
+           t4.STANDARD_15_MINUTE_CONSULTATION,
+           t4.EXTEND_30_MINUTE_CONSULTATION,
            t4.CLINIC_OVERVIEW,
            t5.STATE_NAME,
 		   ''
@@ -440,6 +460,16 @@ SELECT count(*) AS COUNT from (
            t4.CLINIC_SUBURB, 
            t4.CLINIC_LAT,
            t4.CLINIC_LNG,
+           t4.BULK_BILLING,
+           t4.LATE_HOUR_SERVICES,
+           t4.FREE_PARKING,
+           t4.WHEELCHAIR_ACCESS,
+           t4.FEMALE_DOCTOR,
+           t4.HOME_VISIT,
+           t4.ONSITE_PATHOLOGY_COLLECTION,
+           t4.AGPAL,
+           t4.STANDARD_15_MINUTE_CONSULTATION,
+           t4.EXTEND_30_MINUTE_CONSULTATION,
            t4.CLINIC_OVERVIEW,
            t5.STATE_NAME, 
 		   GROUP_CONCAT(DISTINCT t1.APPOINTMENT_TIME) as APPOINTMENT_TIME
@@ -493,6 +523,16 @@ union
            t4.CLINIC_SUBURB, 
            t4.CLINIC_LAT,
            t4.CLINIC_LNG,
+           t4.BULK_BILLING,
+           t4.LATE_HOUR_SERVICES,
+           t4.FREE_PARKING,
+           t4.WHEELCHAIR_ACCESS,
+           t4.FEMALE_DOCTOR,
+           t4.HOME_VISIT,
+           t4.ONSITE_PATHOLOGY_COLLECTION,
+           t4.AGPAL,
+           t4.STANDARD_15_MINUTE_CONSULTATION,
+           t4.EXTEND_30_MINUTE_CONSULTATION,
            t4.CLINIC_OVERVIEW,
            t5.STATE_NAME,
 		   ''
@@ -709,4 +749,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-18 21:10:29
+-- Dump completed on 2017-05-22 23:41:18

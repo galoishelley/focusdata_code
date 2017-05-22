@@ -16,37 +16,14 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `fd_clinic_user`
+-- Dumping data for table `fd_clinic_user`
 --
 
-DROP TABLE IF EXISTS `fd_clinic_user`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `fd_clinic_user` (
-  `CLINIC_USER_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `CLINIC_USER_PWD` varchar(50) NOT NULL,
-  `CLINIC_USER_MAIL` varchar(50) NOT NULL,
-  `CLINIC_NAME` varchar(200) NOT NULL,
-  `CLINIC_PHONE` varchar(50) NOT NULL,
-  `CLINIC_PHOTO` varchar(200) NOT NULL,
-  `CLINIC_ADDR` varchar(200) NOT NULL,
-  `CLINIC_POSTCODE` varchar(50) NOT NULL,
-  `CLINIC_SUBURB` varchar(50) NOT NULL,
-  `CLINIC_LAT` varchar(20) NOT NULL,
-  `CLINIC_LNG` varchar(20) NOT NULL,
-  `STATE_ID` int(11) NOT NULL,
-  `ACTIVE_STATUS` int(11) DEFAULT '1',
-  `CLINIC_OVERVIEW` varchar(5000) DEFAULT NULL,
-  `IS_YELLOWPAGE` int(11) NOT NULL,
-  `CREATE_USER` varchar(50) NOT NULL,
-  `CREATE_DATE` datetime NOT NULL,
-  `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL,
-  PRIMARY KEY (`CLINIC_USER_ID`),
-  KEY `FK_fd_clinic_user_2` (`STATE_ID`),
-  CONSTRAINT `FK_fd_clinic_user_2` FOREIGN KEY (`STATE_ID`) REFERENCES `fd_dict_state` (`STATE_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=10121 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `fd_clinic_user` WRITE;
+/*!40000 ALTER TABLE `fd_clinic_user` DISABLE KEYS */;
+INSERT INTO `fd_clinic_user` VALUES (1,'89634c352f3a1dc151e8cd19a859f27a','bencaotang@gmail.com','Box Hill Superclinic','(03)1234 1234','images.jpg','810 Whitehorse Road','3127','Box Hill','-37.8174219','145.11538080000003',7,1,'',0,1,1,1,1,1,1,1,1,0,0,'bencaotang@gmail.com','2017-01-23 08:37:39','bencaotang@gmail.com','2017-05-22 11:33:58'),(10122,'c4ca4238a0b923820dcc509a6f75849b','fudanyinxin@gmail.com','1','','','1','1','1','-35.2421201','149.0572644',3,1,NULL,0,0,0,0,0,0,0,0,0,0,0,'fudanyinxin@gmail.com','2017-05-19 03:30:45','fudanyinxin@gmail.com','2017-05-19 03:30:45');
+/*!40000 ALTER TABLE `fd_clinic_user` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -57,4 +34,4 @@ CREATE TABLE `fd_clinic_user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-18 21:10:29
+-- Dump completed on 2017-05-22 23:41:16

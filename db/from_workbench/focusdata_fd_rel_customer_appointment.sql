@@ -16,30 +16,14 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `fd_rel_customer_appointment`
+-- Dumping data for table `fd_rel_customer_appointment`
 --
 
-DROP TABLE IF EXISTS `fd_rel_customer_appointment`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `fd_rel_customer_appointment` (
-  `CUSTOMER_APPOINTMENT_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `CUSTOMER_USER_ID` int(11) NOT NULL,
-  `DOCTOR_ID` int(11) NOT NULL,
-  `DOCTOR_APPOINTMENT_TIME_ID` int(11) NOT NULL,
-  `APPOINTMENT_STATUS_ID` int(11) NOT NULL,
-  `NOTE` varchar(200) NOT NULL,
-  `CREATE_USER` varchar(50) NOT NULL,
-  `CREATE_DATE` datetime NOT NULL,
-  `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL,
-  PRIMARY KEY (`CUSTOMER_APPOINTMENT_ID`),
-  KEY `FK_fd_rel_customer_appointment_1` (`CUSTOMER_USER_ID`),
-  KEY `FK_fd_rel_customer_appointment_2` (`DOCTOR_ID`),
-  KEY `FK_fd_rel_customer_appointment_3` (`DOCTOR_APPOINTMENT_TIME_ID`),
-  KEY `FK_fd_rel_customer_appointment_4` (`APPOINTMENT_STATUS_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `fd_rel_customer_appointment` WRITE;
+/*!40000 ALTER TABLE `fd_rel_customer_appointment` DISABLE KEYS */;
+INSERT INTO `fd_rel_customer_appointment` VALUES (45,207,10012,179685,1,'','test@gmail.com','2017-05-09 13:33:59','test@gmail.com','2017-05-09 13:33:59'),(46,207,10012,179687,2,'','test@gmail.com','2017-05-09 13:34:24','test@gmail.com','2017-05-09 13:34:24'),(47,207,10012,179745,2,'','test@gmail.com','2017-05-09 14:34:52','test@gmail.com','2017-05-09 14:34:52'),(48,207,10012,179953,2,'','test@gmail.com','2017-05-09 14:43:32','test@gmail.com','2017-05-09 14:43:32'),(49,207,10012,179797,2,'','test@gmail.com','2017-05-09 14:49:41','test@gmail.com','2017-05-09 14:49:41'),(50,207,10012,179901,2,'','test@gmail.com','2017-05-09 14:54:07','test@gmail.com','2017-05-09 14:54:07'),(51,207,10012,179901,1,'','test@gmail.com','2017-05-09 14:54:38','test@gmail.com','2017-05-09 14:54:38'),(52,207,10027,250669,1,'','test@gmail.com','2017-05-11 13:39:22','test@gmail.com','2017-05-11 13:39:22'),(53,242,10027,250973,1,'','fudanyinxin@gmail.com','2017-05-17 14:00:37','fudanyinxin@gmail.com','2017-05-17 14:00:37'),(54,243,10027,250977,1,'','fudanyinxin@gmail.com','2017-05-17 14:11:25','fudanyinxin@gmail.com','2017-05-17 14:11:25'),(55,245,10027,250981,1,'','fudanyinxin@gmail.com','2017-05-17 14:22:27','fudanyinxin@gmail.com','2017-05-17 14:22:27'),(56,247,10027,250985,1,'','fudanyinxin@gmail.com','2017-05-18 01:31:18','fudanyinxin@gmail.com','2017-05-18 01:31:18'),(57,256,10058,471769,1,'','fudanyinxin@gmail.com','2017-05-19 14:48:54','fudanyinxin@gmail.com','2017-05-19 14:48:54'),(58,256,10058,471771,1,'','fudanyinxin@gmail.com','2017-05-19 14:50:41','fudanyinxin@gmail.com','2017-05-19 14:50:41'),(59,256,10058,471772,1,'','fudanyinxin@gmail.com','2017-05-19 14:57:49','fudanyinxin@gmail.com','2017-05-19 14:57:49'),(60,256,10058,471773,1,'','fudanyinxin@gmail.com','2017-05-19 15:20:33','fudanyinxin@gmail.com','2017-05-19 15:20:33');
+/*!40000 ALTER TABLE `fd_rel_customer_appointment` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -50,4 +34,4 @@ CREATE TABLE `fd_rel_customer_appointment` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-05-18 21:10:27
+-- Dump completed on 2017-05-22 23:41:14
