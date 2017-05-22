@@ -37,79 +37,79 @@
             .ui-autocomplete {
                 z-index: 5000;
             }
-            
+
             .alexrow {
                 margin-top: 8px;
             }
-            
+
             #map {
                 height: 300px;
                 width: 600px;
             }
             /* Google map */
-            
+
             #popup-Googlemap .slickWindow iframe,
             #popup-Googlemap #mapDiv {
                 width: 100%;
                 height: 100%;
             }
-            
+
             #clinicProfile .slickWindow * {
                 box-sizing: border-box;
             }
-            
+
             #clinicProfile .slickWindow {
                 overflow: auto;
             }
-            
+
             #clinicProfile .slickWindow::-webkit-scrollbar {
                 width: 6px;
                 height: 2px;
             }
-            
+
             #clinicProfile .slickWindow::-webkit-scrollbar-button {
                 width: 0px;
                 height: 0px;
             }
-            
+
             #clinicProfile .slickWindow::-webkit-scrollbar-thumb {
                 background: #acacac;
                 border: 0px none #ffffff;
                 border-radius: 0;
             }
-            
+
             #clinicProfile .slickWindow::-webkit-scrollbar-thumb:hover {
                 background: #000000;
             }
-            
+
             #clinicProfile .slickWindow::-webkit-scrollbar-thumb:active {
                 background: #000000;
             }
-            
+
             #clinicProfile .slickWindow::-webkit-scrollbar-track {
                 background: #f0f0f0;
                 border: 0px none #ffffff;
                 border-radius: 0;
             }
-            
+
             #clinicProfile .slickWindow::-webkit-scrollbar-track:hover {
                 background: #f0f0f0;
             }
-            
+
             #clinicProfile .slickWindow::-webkit-scrollbar-track:active {
                 background: #f0f0f0;
             }
-            
+
             #clinicProfile .slickWindow::-webkit-scrollbar-corner {
                 background: transparent;
             }
-            
+
             #clinicProfile .slickWindow .actions {
                 display: inline-block;
                 width: 100%;
                 padding: 28px 36px 36px 36px;
             }
-            
+
             #clinicProfile .slickWindow .action {
                 border: #42abb5;
                 font-weight: 800;
@@ -121,20 +121,20 @@
                 cursor: pointer;
                 transition: all 0.1s ease;
             }
-            
+
             #clinicProfile .slickWindow .action:hover {
                 background: #42abb5;
                 border-color: #42abb5;
                 color: #fff;
             }
-            
+
             #clinicProfile .slickWindow .cartItems {
                 display: inline-block;
                 width: 100%;
                 overflow-y: auto;
                 overflow-x: hidden;
             }
-            
+
             #clinicProfile .slickWindow .cartItems .clinic-title {
                 margin: 1px 0 14px;
                 padding: 0 90px 0 10px;
@@ -146,7 +146,7 @@
                 white-space: nowrap;
                 overflow: hidden
             }
-            
+
             #clinicProfile .slickWindow .cartItems .clinic-address {
                 margin: 1px 0 14px;
                 padding: 0 90px 0 10px;
@@ -154,7 +154,24 @@
                 color: #63707b;
                 font-weight: 400
             }
-            
+
+            #clinicProfile .slickWindow .cartItems .clinic-language {
+                margin: 1px 0 14px;
+                padding: 0 90px 0 10px;
+                font-size: 13px;
+                color: #63707b;
+                font-weight: 400
+            }
+
+            #clinicProfile .slickWindow .cartItems .clinic-feature {
+                margin: 1px 0 14px 15px;
+                padding: 0 90px 0 10px;
+                font-size: 13px;
+                color: #63707b;
+                font-weight: 400
+            }
+
+
             #clinicProfile .slickWindow .cartItems .clinic-mobile {
                 margin: 1px 0 14px;
                 padding: 0 90px 0 10px;
@@ -162,12 +179,12 @@
                 color: #63707b;
                 font-weight: 400
             }
-            
+
             #clinicProfile .slickWindow .cartItems img {
                 max-width: 400px;
                 max-height: 300px;
             }
-            
+
             #clinicProfile .slickWindow .cartItems p {
                 color: #605833;
                 font-family: Enriqueta;
@@ -176,54 +193,54 @@
                 margin: 0 0 24px 10px;
                 line-height: 20px;
             }
-            
+
             .search-card-contain .search-card-top .col-sm-12,
             .col-lg-8 {
                 padding-right: 15px;
                 padding-left: 15px;
             }
-            
+
             .nav-tabs {
                 margin-bottom: 30px;
             }
-            
+
             .nav-tabs>li>a {
                 border: 1px solid #cccccc;
                 color: #000;
                 cursor: pointer;
             }
-            
+
             .nav-tabs>li.active>a {
                 font-weight: bold;
             }
-            
+
             .modal-body {
                 padding: 0;
             }
-            
+
             .radio-inline {
                 width: auto;
                 margin: 0;
             }
-            
+
             .container-fluid {
                 padding-top: 15px;
             }
-            
+
             .col-md-6,
             .col-md-1 {
                 padding-left: 0px;
                 padding-right: 0px;
             }
-            
+
             .modal-footer .btn {
                 margin-top: 5px;
             }
-            
+
             .modal-footer .btn+.btn {
                 margin-left: 0px;
             }
-            
+
             .he-global-pagination {
                 clear: both;
                 float: none;
@@ -236,19 +253,19 @@
                     display: none
                 }
             }*/
-            
+
             .he-global-pagination .he-global-paginner {
                 width: auto;
                 display: inline-block
             }
-            
+
             .he-global-pagination .he-global-paginner .he-global-pagtext {
                 display: inline-block;
                 font-size: 12px;
                 color: #63707b;
                 padding: 0 30px
             }
-            
+
             .he-global-pagination .he-global-paginner .he-global-paglinks {
                 display: inline-block;
                 background-color: #fff;
@@ -256,11 +273,11 @@
                 -moz-box-shadow: 2px 2px 1px 0 rgba(0, 0, 0, 0.2);
                 box-shadow: 2px 2px 1px 0 rgba(0, 0, 0, 0.2)
             }
-            
+
             .he-global-pagination .he-global-paginner .he-global-paglinks .page-ellip {
                 padding: 0 19px
             }
-            
+
             .he-global-pagination .he-global-paginner .he-global-paglinks>span bb {
                 color: #313436;
                 font-size: 15px;
@@ -269,7 +286,7 @@
                 display: inline-block;
                 line-height: normal
             }
-            
+
             .he-global-pagination .he-global-paginner .he-global-paglinks>span a {
                 color: #008ec8;
                 font-size: 15px;
@@ -278,52 +295,52 @@
                 display: inline-block;
                 line-height: normal
             }
-            
+
             .he-global-pagination .he-global-paginner .he-global-paglinks>span a:hover {
                 color: #ffffff;
                 background-color: #008ec8;
             }
-            
+
             #leaderboard-slot1 {
                 margin-top: 25px
             }
-            
+
             @media (max-width: 767px) {
                 #leaderboard-slot1 {
                     display: none
                 }
             }
-            
+
             #leaderboard-slot2 {
                 margin-bottom: 25px
             }
-            
+
             @media (max-width: 767px) {
                 #sidebar-mrec-slot1 {
                     text-align: center
                 }
             }
-            
+
             #sidebar-mrec-slot2 {
                 margin-top: 25px
             }
-            
+
             @media (max-width: 767px) {
                 #sidebar-mrec-slot2 {
                     margin-bottom: 25px;
                     text-align: center
                 }
             }
-            
+
             #sidebar-mrec-slot3 {
                 margin-top: 25px;
                 margin-bottom: 25px
             }
-            
+
             #sidebar-mrec-group1 {
                 margin-top: 26px
             }
-            
+
             @media (max-width: 767px) {
                 #sidebar-mrec-group2 {
                     display: none
@@ -331,94 +348,94 @@
             }
 
             #popup-1 .slickWindow {
-				text-align: center;
-			}
+                text-align: center;
+            }
 
-			#popup-1 .slickWindow .title {
-				font-size: 30px;
-				font-weight: 700;
-			}
+            #popup-1 .slickWindow .title {
+                font-size: 30px;
+                font-weight: 700;
+            }
 
-			#popup-1 .slickWindow .title,
-			#popup-1 .slickWindow p {
-				color: #fff;
-				opacity: 1;
-			}
+            #popup-1 .slickWindow .title,
+            #popup-1 .slickWindow p {
+                color: #fff;
+                opacity: 1;
+            }
 
-			#popup-1 .slickWindow .topIcon {
-				content: "";
-				display: block;
-				
-				width: 32px;
-				height: 32px;
-				margin: 0 auto 20px auto;
-			}
+            #popup-1 .slickWindow .topIcon {
+                content: "";
+                display: block;
 
-			#popup-1 .slickWindow form {
-				display: block;
-				margin: 30px 0;
-			}
+                width: 32px;
+                height: 32px;
+                margin: 0 auto 20px auto;
+            }
 
-			#popup-1 .slickWindow input,
-			#popup-1 .slickWindow textarea,
-			#popup-1 .slickWindow form input.send {
-				border-style: solid;
-				border-color: transparent transparent #fff transparent;
-				border-width: 1px;
-				font-size: 12px;
-				color: #fff;
-				background: transparent;
-				display: block;
-				width: 100%;
-				padding: 12px;
-				margin-bottom: 16px;
-				text-align: left;
-			}
+            #popup-1 .slickWindow form {
+                display: block;
+                margin: 30px 0;
+            }
 
-			#popup-1 .slickWindow form input.send {
-				background: #ef6161;
-				font-size: 14px;
-				font-weight: 900;
-				letter-spacing: 1px;
-				border: none;
-				margin-top: 30px;
-				display: block;
-				text-align: center;
-			}
+            #popup-1 .slickWindow input,
+            #popup-1 .slickWindow textarea,
+            #popup-1 .slickWindow form input.send {
+                border-style: solid;
+                border-color: transparent transparent #fff transparent;
+                border-width: 1px;
+                font-size: 12px;
+                color: #fff;
+                background: transparent;
+                display: block;
+                width: 100%;
+                padding: 12px;
+                margin-bottom: 16px;
+                text-align: left;
+            }
 
-			#popup-1 .slickWindow form input.send:hover {
-				background: #fff;
-				color: #222;
-			}
+            #popup-1 .slickWindow form input.send {
+                background: #ef6161;
+                font-size: 14px;
+                font-weight: 900;
+                letter-spacing: 1px;
+                border: none;
+                margin-top: 30px;
+                display: block;
+                text-align: center;
+            }
 
-			#popup-1 .slickWindow .bottomClose {
-				font-weight: 700;
-				color: #fff;
-				font-size: 12px;
-			}
+            #popup-1 .slickWindow form input.send:hover {
+                background: #fff;
+                color: #222;
+            }
 
-			@media screen and (max-width: 480px) {
-				#popup-1.slickModal .slickWindow {
-					width: 96% !important;
-				}
-				#popup-1.slickModal .slickWindow .title {
-					font-size: 24px;
-				}
-				#popup-1.slickModal .close.icon {
-					right: 0;
-					left: 0;
-					margin: 0 auto;
-				}
-			}
+            #popup-1 .slickWindow .bottomClose {
+                font-weight: 700;
+                color: #fff;
+                font-size: 12px;
+            }
 
-			@media screen and (max-height: 480px) {
-				#popup-1.slickModal {
-					overflow: scroll;
-				}
-				#popup-1.slickModal .overlay {
-					position: fixed;
-				}
-			}
+            @media screen and (max-width: 480px) {
+                #popup-1.slickModal .slickWindow {
+                    width: 96% !important;
+                }
+                #popup-1.slickModal .slickWindow .title {
+                    font-size: 24px;
+                }
+                #popup-1.slickModal .close.icon {
+                    right: 0;
+                    left: 0;
+                    margin: 0 auto;
+                }
+            }
+
+            @media screen and (max-height: 480px) {
+                #popup-1.slickModal {
+                    overflow: scroll;
+                }
+                #popup-1.slickModal .overlay {
+                    position: fixed;
+                }
+            }
         </style>
 
 
@@ -442,18 +459,18 @@
             </header>
             <div id="activateBtn" class="openSlickModal-1"></div>
             <div id="popup-1" class="slickModal">
-										<div class="slickWindow">
-											<div class="topIcon"></div>
-											<div class="title">Activate</div>
-											<p id="ainfo">Check your email and input your activation code</p>
-											<form>
-												<input type="text" class="field" placeholder="activation code" id="aCODE"/>
-												
-												<input type="submit" onclick="return false" class="send" value="Activate|Make an appointment" id="aOK"/>
-											</form>
-											<div class="closeModal bottomClose">No thanks, i don't want to activate right now</div>
-										</div>
-									</div>
+                <div class="slickWindow">
+                    <div class="topIcon"></div>
+                    <div class="title">Activate</div>
+                    <p id="ainfo">Check your email and input your activation code</p>
+                    <form>
+                        <input type="text" class="field" placeholder="activation code" id="aCODE" />
+
+                        <input type="submit" onclick="return false" class="send" value="Activate|Make an appointment" id="aOK" />
+                    </form>
+                    <div class="closeModal bottomClose">No thanks, i don't want to activate right now</div>
+                </div>
+            </div>
 
 
             <div id="popup-Googlemap" class="slickModal">
@@ -469,6 +486,29 @@
                         <div class="clinic-title"></div>
                         <div class="clinic-mobile"></div>
                         <div class="clinic-address"></div>
+                        <div class="clinic-language"></div>
+                        <div class="clinic-feature">
+
+                            <ul>
+                                <li class="clinic-BULK_BILLING">bulk billing</li>
+                                <li class="clinic-LATE_HOUR_SERVICES">Late hour services (after 6pm)</li>
+                                <li class="clinic-FREE_PARKING">Free parking</li>
+                                <li class="clinic-WHEELCHAIR_ACCESS">Wheelchair access</li>
+                                <li class="clinic-FEMALE_DOCTOR">Female Doctor</li>
+                                <li class="clinic-HOME_VISIT">Home visit</li>
+                                <li class="clinic-ONSITE_PATHOLOGY_COLLECTION">Onsite pathology collection</li>
+                                <li class="clinic-AGPAL">AGPAL</li>
+
+                                <li class="clinic-STANDARD_15_MINUTE_CONSULTATION">
+                                    
+                                </li>
+                                <li class="clinic-EXTEND_30_MINUTE_CONSULTATION">
+                                   
+                                </li>
+
+                            </ul>
+                        </div>
+
                         <p class="clinic-overview"></p>
                     </div>
 
@@ -550,7 +590,7 @@
                                              <?php echo $lang['Lang0065']; ?>
                                           </label>
                                         <div class="col-xs-12 col-sm-12 col-md-2">
-                                        <select class="form-control" name="DOCTOR_TYPE" id="DOCTOR_TYPE">
+                                            <select class="form-control" name="DOCTOR_TYPE" id="DOCTOR_TYPE">
                                                 <option value="">All</option>
                                                 <option value="GP"><?php echo $lang['Lang0333']; ?></option>
                                                 <option value="Dentist"><?php echo $lang['Lang0334']; ?></option>
@@ -585,7 +625,7 @@
                                           
                                              <?php echo $lang['Lang0326']; ?>
                                           </label>
-                                          
+
                                         <select id="LANGUAGE" name="LANGUAGE" multiple="multiple" class="form-control">
                                              <option value="English">English</option>
                                              <option value="Chinese">Chinese</option>
@@ -606,7 +646,7 @@
                                             </div>
 
                                         </div>
-                                        <!--<div class="clearfix visible-xs-block"></div>-->
+
 
                                     </div>
                                     <div class="form-group col-md-6">
@@ -885,13 +925,48 @@
                                             {{>clinicPhone}}
                                         </div>
                                         <div class="search-addie">
-                                            {{>language}} {{if isYellowPage==0}}
+                                            <div class="clinic-lang">{{>language}}</div> {{if isYellowPage==0}}
                                             <a class="showDoctors" keyClinicID="{{>clinicID}}">
                                                 <?php echo $lang['Lang0324']; ?>
                                             </a>
 
                                             {{else}}{{/if}}
                                         </div>
+
+                                        <div class="search-BULK_BILLING" style="display:none;">
+                                            {{>BULK_BILLING}}
+                                        </div>
+                                        <div class="search-LATE_HOUR_SERVICES" style="display:none;">
+                                            {{>LATE_HOUR_SERVICES}}
+                                        </div>
+                                        <div class="search-FREE_PARKING" style="display:none;">
+                                            {{>FREE_PARKING}}
+                                        </div>
+                                        <div class="search-WHEELCHAIR_ACCESS" style="display:none;">
+                                            {{>WHEELCHAIR_ACCESS}}
+                                        </div>
+                                        <div class="search-FEMALE_DOCTOR" style="display:none;">
+                                            {{>FEMALE_DOCTOR}}
+                                        </div>
+                                        <div class="search-HOME_VISIT" style="display:none;">
+                                            {{>HOME_VISIT}}
+                                        </div>
+                                        <div class="search-ONSITE_PATHOLOGY_COLLECTION" style="display:none;">
+                                            {{>ONSITE_PATHOLOGY_COLLECTION}}
+                                        </div>
+                                        <div class="search-AGPAL" style="display:none;">
+                                            {{>AGPAL}}
+                                        </div>
+
+                                        <div class="search-STANDARD_15_MINUTE_CONSULTATION" style="display:none;">
+                                            {{>STANDARD_15_MINUTE_CONSULTATION}}
+                                        </div>
+
+                                        <div class="search-EXTEND_30_MINUTE_CONSULTATION" style="display:none;">
+                                            {{>EXTEND_30_MINUTE_CONSULTATION}}
+                                        </div>
+
+
 
                                         <div class="search-overview" style="display:none;">
                                             {{>overview}}
@@ -957,7 +1032,8 @@
                             </div>
                             <div class="search-time-container clearfix closed">
                                 <div class="search-time-scroll doctor-time-scroll">
-                                    <span class="search-time-booknow">{{>day}}</span> {{for timeslot ~pdoctorid=doctorID ~day=day}}
+                                    <span class="search-time-booknow">{{>day}}</span> {{for timeslot ~pdoctorid=doctorID
+                                    ~day=day}}
                                     <a class="apptTimeBtn" keyDoctorID="{{>~pdoctorid}}" keyDate="{{>~day}}" keyTime="{{>originalTime}}">{{>time}}</a>                                    {{/for}}
 
                                     <span class="search-more apptTimeMore">More</span>
