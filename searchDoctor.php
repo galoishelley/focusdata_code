@@ -498,13 +498,17 @@
                                 <li class="clinic-HOME_VISIT">Home visit</li>
                                 <li class="clinic-ONSITE_PATHOLOGY_COLLECTION">Onsite pathology collection</li>
                                 <li class="clinic-AGPAL">AGPAL</li>
+                                <li class="clinic-charge">Charge:</li>
+                                <ul>
+                                    <li class="clinic-STANDARD_15_MINUTE_CONSULTATION" style="margin-left:5px;">
 
-                                <li class="clinic-STANDARD_15_MINUTE_CONSULTATION">
-                                    
-                                </li>
-                                <li class="clinic-EXTEND_30_MINUTE_CONSULTATION">
-                                   
-                                </li>
+                                    </li>
+                                    <li class="clinic-EXTEND_30_MINUTE_CONSULTATION" style="margin-left:5px;">
+
+                                    </li>
+                                </ul>
+
+
 
                             </ul>
                         </div>

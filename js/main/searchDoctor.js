@@ -855,7 +855,7 @@ $(function () {
 
 								//登录标志
 								$.cookie("ilogin", 1);
-								$.cookie("my_email",EMAIL);
+								$.cookie("my_email", EMAIL);
 								//记录cookie
 								SaveNameAndPWD();
 
@@ -1856,80 +1856,84 @@ $(function () {
 				$('#clinicProfile').find('.clinic-address').text(clinic_address);
 
 				var clinic_lang = $(this).parent().find('.clinic-lang').text();
-				$('#clinicProfile').find('.clinic-language').text('We speak '+clinic_lang+'.');
+				$('#clinicProfile').find('.clinic-language').text('We speak ' + clinic_lang + '.');
 
 				var clinic_BULK_BILLING = $(this).parent().find('.search-BULK_BILLING').text();
-				if(clinic_BULK_BILLING!=0)
+				if (clinic_BULK_BILLING != 0)
 					$('#clinicProfile').find('.clinic-BULK_BILLING').show();
 				else
 					$('#clinicProfile').find('.clinic-BULK_BILLING').hide();
-				
+
 				var clinic_LATE_HOUR_SERVICES = $(this).parent().find('.search-LATE_HOUR_SERVICES').text();
-				if(clinic_LATE_HOUR_SERVICES!=0)
+				if (clinic_LATE_HOUR_SERVICES != 0)
 					$('#clinicProfile').find('.clinic-LATE_HOUR_SERVICES').show();
 				else
 					$('#clinicProfile').find('.clinic-LATE_HOUR_SERVICES').hide();
 
 				var clinic_FREE_PARKING = $(this).parent().find('.search-FREE_PARKING').text();
-				if(clinic_FREE_PARKING!=0)
+				if (clinic_FREE_PARKING != 0)
 					$('#clinicProfile').find('.clinic-FREE_PARKING').show();
 				else
 					$('#clinicProfile').find('.clinic-FREE_PARKING').hide();
 
 				var clinic_WHEELCHAIR_ACCESS = $(this).parent().find('.search-WHEELCHAIR_ACCESS').text();
-				if(clinic_WHEELCHAIR_ACCESS!=0)
+				if (clinic_WHEELCHAIR_ACCESS != 0)
 					$('#clinicProfile').find('.clinic-WHEELCHAIR_ACCESS').show();
 				else
 					$('#clinicProfile').find('.clinic-WHEELCHAIR_ACCESS').hide();
-				
+
 				var clinic_FEMALE_DOCTOR = $(this).parent().find('.search-FEMALE_DOCTOR').text();
-				if(clinic_FEMALE_DOCTOR!=0)
+				if (clinic_FEMALE_DOCTOR != 0)
 					$('#clinicProfile').find('.clinic-FEMALE_DOCTOR').show();
 				else
 					$('#clinicProfile').find('.clinic-FEMALE_DOCTOR').hide();
 
 				var clinic_HOME_VISIT = $(this).parent().find('.search-HOME_VISIT').text();
-				if(clinic_HOME_VISIT!=0)
+				if (clinic_HOME_VISIT != 0)
 					$('#clinicProfile').find('.clinic-HOME_VISIT').show();
 				else
 					$('#clinicProfile').find('.clinic-HOME_VISIT').hide();
 
 				var clinic_ONSITE_PATHOLOGY_COLLECTION = $(this).parent().find('.search-ONSITE_PATHOLOGY_COLLECTION').text();
-				if(clinic_ONSITE_PATHOLOGY_COLLECTION!=0)
+				if (clinic_ONSITE_PATHOLOGY_COLLECTION != 0)
 					$('#clinicProfile').find('.clinic-ONSITE_PATHOLOGY_COLLECTION').show();
 				else
 					$('#clinicProfile').find('.clinic-ONSITE_PATHOLOGY_COLLECTION').hide();
 
 				var clinic_AGPAL = $(this).parent().find('.search-AGPAL').text();
-				if(clinic_AGPAL!=0)
+				if (clinic_AGPAL != 0)
 					$('#clinicProfile').find('.clinic-AGPAL').show();
 				else
 					$('#clinicProfile').find('.clinic-AGPAL').hide();
 
 
-			
+
 
 
 
 
 
 				var clinic_STANDARD_15_MINUTE_CONSULTATION = $(this).parent().find('.search-STANDARD_15_MINUTE_CONSULTATION').text();
-				if(clinic_STANDARD_15_MINUTE_CONSULTATION!=0)
-				{
+				if (clinic_STANDARD_15_MINUTE_CONSULTATION != 0) {
 					$('#clinicProfile').find('.clinic-STANDARD_15_MINUTE_CONSULTATION').show();
-					$('#clinicProfile').find('.clinic-STANDARD_15_MINUTE_CONSULTATION').text('Standard 15 minute consultation - $'+clinic_STANDARD_15_MINUTE_CONSULTATION);
+					$('#clinicProfile').find('.clinic-STANDARD_15_MINUTE_CONSULTATION').text('Standard 15 minute consultation - $' + clinic_STANDARD_15_MINUTE_CONSULTATION);
 				}
 				else
 					$('#clinicProfile').find('.clinic-STANDARD_15_MINUTE_CONSULTATION').hide();
 
 				var clinic_EXTEND_30_MINUTE_CONSULTATION = $(this).parent().find('.search-EXTEND_30_MINUTE_CONSULTATION').text();
-				if(clinic_EXTEND_30_MINUTE_CONSULTATION!=0)
-				{
+				if (clinic_EXTEND_30_MINUTE_CONSULTATION != 0) {
 					$('#clinicProfile').find('.clinic-EXTEND_30_MINUTE_CONSULTATION').show();
-					$('#clinicProfile').find('.clinic-EXTEND_30_MINUTE_CONSULTATION').text('Extended standard 30 minute consultation - $'+clinic_EXTEND_30_MINUTE_CONSULTATION);
+					$('#clinicProfile').find('.clinic-EXTEND_30_MINUTE_CONSULTATION').text('Extended standard 30 minute consultation - $' + clinic_EXTEND_30_MINUTE_CONSULTATION);
 				}
 				else
 					$('#clinicProfile').find('.clinic-EXTEND_30_MINUTE_CONSULTATION').hide();
+
+
+				if (clinic_STANDARD_15_MINUTE_CONSULTATION == 0 && clinic_EXTEND_30_MINUTE_CONSULTATION == 0)
+					$('#clinicProfile').find('.clinic-charge').hide();
+				else
+					$('#clinicProfile').find('.clinic-charge').show();
 
 
 				var clinic_overview = $(this).parent().find('.search-overview').text();
@@ -2463,9 +2467,9 @@ $(function () {
 					if (!result) {
 						return result;
 					}
-					
 
-					
+
+
 					var EMAIL = $.cookie("my_email");
 
 					//Step2. send mail to patient
