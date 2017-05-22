@@ -98,7 +98,7 @@ class ClinicDetail_DB{
             print_r($arr_values);
         }
 
-        // print_r($arr_values);
+  
 
         
         $where =" CLINIC_USER_ID = ".intval($arr_values['CLINIC_USER_ID']);
@@ -106,6 +106,72 @@ class ClinicDetail_DB{
             $arr_values['ACTIVE_STATUS'] = intval($arr_values['ACTIVE_STATUS']);
         }
         unset($arr_values["CLINIC_USER_ID"]);
+
+
+        if(isset ( $arr_values['BULK_BILLING'] )){
+            $arr_values['BULK_BILLING'] = 1;
+        }
+        else
+            $arr_values['BULK_BILLING'] = 0;
+
+        if(isset ( $arr_values['LATE_HOUR_SERVICES'] )){
+            $arr_values['LATE_HOUR_SERVICES'] = 1;
+        }
+        else
+            $arr_values['LATE_HOUR_SERVICES'] = 0;
+
+        if(isset ( $arr_values['FREE_PARKING'] )){
+            $arr_values['FREE_PARKING'] = 1;
+        }
+        else
+            $arr_values['FREE_PARKING'] = 0;
+
+        if(isset ( $arr_values['WHEELCHAIR_ACCESS'] )){
+            $arr_values['WHEELCHAIR_ACCESS'] = 1;
+        }
+        else
+            $arr_values['WHEELCHAIR_ACCESS'] = 0;
+
+        if(isset ( $arr_values['FEMALE_DOCTOR'] )){
+            $arr_values['FEMALE_DOCTOR'] = 1;
+        }
+        else
+            $arr_values['FEMALE_DOCTOR'] = 0;
+
+        if(isset ( $arr_values['HOME_VISIT'] )){
+            $arr_values['HOME_VISIT'] = 1;
+        }
+        else
+            $arr_values['HOME_VISIT'] = 0;
+
+        if(isset ( $arr_values['ONSITE_PATHOLOGY_COLLECTION'] )){
+            $arr_values['ONSITE_PATHOLOGY_COLLECTION'] = 1;
+        }
+        else
+            $arr_values['ONSITE_PATHOLOGY_COLLECTION'] = 0;
+
+        if(isset ( $arr_values['AGPAL'] )){
+            $arr_values['AGPAL'] = 1;
+        }
+        else
+            $arr_values['AGPAL'] = 0;
+
+        if(isset ( $arr_values['STANDARD_15_MINUTE_CONSULTATION'] )){
+            if($arr_values['STANDARD_15_MINUTE_CONSULTATION'] =='')
+            {
+                $arr_values["STANDARD_15_MINUTE_CONSULTATION"]=0;
+            }
+        }
+
+        if(isset ( $arr_values['EXTEND_30_MINUTE_CONSULTATION'] )){
+            if($arr_values['EXTEND_30_MINUTE_CONSULTATION'] =='')
+            {
+                $arr_values["EXTEND_30_MINUTE_CONSULTATION"]=0;
+            }
+        }
+
+
+
 
         foreach($arr_values as $k=>$v){
             if($k=="CLINIC_USER_PWD"){
