@@ -289,7 +289,7 @@ $lang['Lang0228'] = 'Login';
 
 
 //Page clinicQryDoctor
-$lang['Lang0229'] = 'Update clinic infomation';
+$lang['Lang0229'] = 'Update clinic information';
 $lang['Lang0230'] = 'Doctor information update';
 $lang['Lang0231'] = 'Update password';
 $lang['Lang0232'] = 'Doctor information update';
