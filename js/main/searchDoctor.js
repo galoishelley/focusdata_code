@@ -1349,6 +1349,80 @@ $(function () {
 
 	function rebindProfile() {
 
+
+		$('#doctorProfile').slickModals({
+			// Hide on pages
+			hideOnPages: [
+				'/foo/page1/',
+				'/foo/page2/',
+				'/foo/page3/'
+			],
+			// Popup type
+			popupType: '',
+			delayTime: 0,
+			scrollTopDistance: 400,
+			// Popup cookies
+			setCookie: false,
+			cookieDays: 30,
+			cookieTriggerClass: 'setCookie-1',
+			cookieName: 'slickModal-1',
+			cookieScope: 'domain',
+			// Overlay styling
+			overlayBg: true,
+			overlayClosesModal: true,
+			overlayBgColor: 'rgba(0,0,0,0.5)',
+			overlayTransitionSpeed: '0.4',
+			// Background effects
+			pageEffect: 'scale',
+			blurBgRadius: '1px',
+			scaleBgValue: '0.98',
+			// Popup styling
+			popupWidth: '400px',
+			popupHeight: '100%',
+			popupLocation: 'topRight',
+			popupAnimationDuration: '0.6',
+			popupAnimationEffect: 'slideRight',
+			popupShadowOffsetX: '0',
+			popupShadowOffsetY: '0',
+			popupShadowBlurRadius: '60px',
+			popupShadowSpreadRadius: '0',
+			popupShadowColor: 'rgba(0,0,0,0.8)',
+			popupBackground: '#fff',
+			popupRadius: '0',
+			popupMargin: '0',
+			popupPadding: '0',
+			// Responsive rules
+			responsive: false,
+			breakPoint: '480px',
+			mobileLocation: 'center',
+			mobileWidth: '100%',
+			mobileHeight: 'auto',
+			mobileRadius: '0',
+			mobileMargin: '0',
+			mobilePadding: '20px',
+			// Animate content
+			contentAnimate: false,
+			contentAnimateEffect: 'slideRight',
+			contentAnimateSpeed: '0.4',
+			contentAnimateDelay: '0.4',
+			// Youtube videos
+			videoSupport: true,
+			videoAutoPlay: true,
+			videoStopOnClose: true,
+			// Close and reopen button
+			addCloseButton: false,
+			buttonStyle: 'icon',
+			enableESC: true,
+			reopenClass: 'showProfileDoctor',
+			// Additional events
+
+			onSlickClose: function () {
+				console.log("Slick is hidden")
+			}
+		});
+
+
+
 		// Mini cart
 		$('#clinicProfile').slickModals({
 			// Hide on pages
@@ -1413,7 +1487,7 @@ $(function () {
 			addCloseButton: false,
 			buttonStyle: 'icon',
 			enableESC: true,
-			reopenClass: 'showProfile',
+			reopenClass: 'showProfileClinic',
 			// Additional events
 
 			onSlickClose: function () {
@@ -1860,7 +1934,7 @@ $(function () {
 	}
 	function bindClinicProfileBtn() {
 
-		$(".showProfile").each(function (index) {
+		$(".showProfileClinic").each(function (index) {
 			$(this).on("click", function () {
 
 
@@ -2039,6 +2113,9 @@ $(function () {
 							doctorPIC: 'img/doctors/' + item.DOCTOR_PHOTO,
 							doctorName: item.DOCTOR_NAME,
 							overview: item.DOCTOR_INFO,
+							doctorSex: item.DOCTOR_GENDER,
+							doctorYear: item.DOCTOR_YEAR,
+							interest: "",
 							language: "",
 							clinicName: item.CLINIC_NAME,
 							clinicAddress: item.CLINIC_ADDR + ' , ' + item.CLINIC_SUBURB,
@@ -2047,6 +2124,15 @@ $(function () {
 
 
 						};
+
+						if (item.INTEREST_NAME) {
+							//Step1.convert string to array
+							var interestArr = item.INTEREST_NAME.split(",");
+							//Step2.identify the unique
+							var interestArrUni = _.uniq(interestArr);
+							//Step3.convert array to string
+							doctor.interest = interestArrUni.join();
+						}
 
 						if (item.LANGUAGE_NAME) {
 							//Step1.convert string to array
@@ -2141,17 +2227,55 @@ $(function () {
 
 	}
 	function bindDoctorProfileBtn() {
-		$(".showProfile").each(function (index) {
+		$(".showProfileDoctor").each(function (index) {
 			$(this).on("click", function () {
 
 				var doctor_img = $(this).parent().find('.lazy').attr('src');
-				$('#clinicProfile').find('.clinic-img').attr('src', doctor_img);
+				$('#doctorProfile').find('.doctor-img').attr('src', doctor_img);
 				var doctor_title = $(this).text();
-				$('#clinicProfile').find('.clinic-title').text(doctor_title);
+				$('#doctorProfile').find('.doctor-title').text(doctor_title);
 				var doctor_address = $(this).parent().find('.doctor-addr').text();
-				$('#clinicProfile').find('.clinic-address').text(doctor_address);
+				$('#doctorProfile').find('.doctor-address').text(doctor_address);
+
+
+				var doctor_lang = $(this).parent().find('.doctor-lang').text();
+				$('#doctorProfile').find('.doctor-language').text('Language spoken:' + doctor_lang + '.');
+
+
+
+				var doctor_sex = $(this).parent().find('.doctor-sex').text();
+				if (doctor_sex == 0)
+					doctor_sex = 'Male';
+				else
+					doctor_sex = 'Female';
+				$('#doctorProfile').find('.doctor-sex').text(doctor_sex);
+
+
+				var doctor_year = $(this).parent().find('.doctor-year').text();
+				$('#doctorProfile').find('.doctor-year').text('Commenced practice since ' + doctor_year);
+
+				var doctor_interest = $(this).parent().find('.doctor-interest').text();
+				//spilt doctor_interest.
+
+				if (doctor_interest) {
+					$('#doctorProfile').find('.doctor-feature').show();
+					$('#doctorProfile').find('.doctor-interest').empty();
+					//Step1.convert string to array
+					var interestArr = doctor_interest.split(",");
+					
+					for(var i=0;i<interestArr.length;i++)
+					{
+						$('#doctorProfile').find('.doctor-interest').append("<li>"+interestArr[i]+"</li>");
+					}
+				}
+				else
+					$('#doctorProfile').find('.doctor-feature').hide();	
+
+				
+
+
 				var doctor_overview = $(this).parent().find('.search-overview').text();
-				$('#clinicProfile').find('.clinic-overview').text(doctor_overview);
+				$('#doctorProfile').find('.doctor-overview').text(doctor_overview);
 			});
 		});
 

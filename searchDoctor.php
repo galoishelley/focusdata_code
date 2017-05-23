@@ -54,6 +54,149 @@
                 height: 100%;
             }
 
+            #doctorProfile .slickWindow * {
+                box-sizing: border-box;
+            }
+
+            #doctorProfile .slickWindow {
+                overflow: auto;
+            }
+
+            #doctorProfile .slickWindow::-webkit-scrollbar {
+                width: 6px;
+                height: 2px;
+            }
+
+            #doctorProfile .slickWindow::-webkit-scrollbar-button {
+                width: 0px;
+                height: 0px;
+            }
+
+            #doctorProfile .slickWindow::-webkit-scrollbar-thumb {
+                background: #acacac;
+                border: 0px none #ffffff;
+                border-radius: 0;
+            }
+
+            #doctorProfile .slickWindow::-webkit-scrollbar-thumb:hover {
+                background: #000000;
+            }
+
+            #doctorProfile .slickWindow::-webkit-scrollbar-thumb:active {
+                background: #000000;
+            }
+
+            #doctorProfile .slickWindow::-webkit-scrollbar-track {
+                background: #f0f0f0;
+                border: 0px none #ffffff;
+                border-radius: 0;
+            }
+
+            #doctorProfile .slickWindow::-webkit-scrollbar-track:hover {
+                background: #f0f0f0;
+            }
+
+            #doctorProfile .slickWindow::-webkit-scrollbar-track:active {
+                background: #f0f0f0;
+            }
+
+            #doctorProfile .slickWindow::-webkit-scrollbar-corner {
+                background: transparent;
+            }
+
+            #doctorProfile .slickWindow .actions {
+                display: inline-block;
+                width: 100%;
+                padding: 28px 36px 36px 36px;
+            }
+
+            #doctorProfile .slickWindow .action {
+                border: #42abb5;
+                font-weight: 800;
+                border: solid 1px #333;
+                text-align: center;
+                width: 100%;
+                height: 50px;
+                line-height: 50px;
+                cursor: pointer;
+                transition: all 0.1s ease;
+            }
+
+            #doctorProfile .slickWindow .action:hover {
+                background: #42abb5;
+                border-color: #42abb5;
+                color: #fff;
+            }
+
+            #doctorProfile .slickWindow .cartItems {
+                display: inline-block;
+                width: 100%;
+                overflow-y: auto;
+                overflow-x: hidden;
+            }
+
+            #doctorProfile .slickWindow .cartItems .doctor-title {
+                margin: 1px 0 14px;
+                padding: 0 90px 0 10px;
+                font-size: 20px;
+                width: 100%;
+                color: #313436;
+                font-weight: 400;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden
+            }
+
+            #doctorProfile .slickWindow .cartItems .doctor-address {
+                margin: 1px 0 14px;
+                padding: 0 90px 0 10px;
+                font-size: 13px;
+                color: #63707b;
+                font-weight: 400
+            }
+
+            #doctorProfile .slickWindow .cartItems .doctor-language,
+            .doctor-sex,
+            .doctor-year,
+            .doctor-feature {
+                margin: 1px 0 14px;
+                padding: 0 90px 0 10px;
+                font-size: 13px;
+                color: #63707b;
+                font-weight: 400
+            }
+
+            #doctorProfile .slickWindow .cartItems .doctor-interest {
+                margin: 1px 0 14px 15px;
+                padding: 0 90px 0 10px;
+                font-size: 13px;
+                color: #63707b;
+                font-weight: 400
+            }
+
+
+            #doctorProfile .slickWindow .cartItems .doctor-mobile {
+                margin: 1px 0 14px;
+                padding: 0 90px 0 10px;
+                font-size: 13px;
+                color: #63707b;
+                font-weight: 400
+            }
+
+            #doctorProfile .slickWindow .cartItems img {
+                max-width: 400px;
+                max-height: 300px;
+            }
+
+            #doctorProfile .slickWindow .cartItems p {
+                color: #605833;
+                font-family: Enriqueta;
+                font-size: 16px;
+                padding: 10px 0;
+                margin: 0 0 24px 10px;
+                line-height: 20px;
+            }
+
             #clinicProfile .slickWindow * {
                 box-sizing: border-box;
             }
@@ -526,6 +669,43 @@
                 </div>
             </div>
 
+
+
+            <div id="doctorProfile" class="slickModal">
+                <div class="slickWindow">
+                    <div class="cartItems">
+                        <img class="doctor-img" />
+                        <div class="doctor-title"></div>
+                        <div class="doctor-mobile"></div>
+                        <div class="doctor-address"></div>
+                        <div class="doctor-language"></div>
+                        <div class="doctor-sex"></div>
+                        <div class="doctor-year"></div>
+                        <div class="doctor-feature">
+                            Special interests in:
+                            <ul class="doctor-interest">
+
+                            </ul>
+                        </div>
+                        
+
+
+                        <p class="doctor-overview"></p>
+                    </div>
+
+
+
+                    <div class="actions">
+                        <div class="action closeModal">Close</div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
             <div class="content">
 
                 <div class="thumb-box9" data-stellar-background-ratio="0.1">
@@ -898,7 +1078,7 @@
                             <section class="search-card-contain search-practice  col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                 <div class="search-card-overflow">
                                     <div class="search-main-dets">
-                                        <h2 class="search-main-title showProfile">{{>clinicName}}</h2>
+                                        <h2 class="search-main-title showProfileClinic">{{>clinicName}}</h2>
 
 
                                         <div class="search-suburb-contain clearfix">
@@ -926,7 +1106,8 @@
                                             {{>clinicPhone}}
                                         </div>
                                         <div class="search-addie">
-                                            <div class="clinic-lang">{{>language}}</div> {{if isYellowPage==0}}
+                                            <div class="clinic-lang" style="display:inline">{{>language}}</div>
+                                            {{if isYellowPage==0}}
                                             <a class="showDoctors" keyClinicID="{{>clinicID}}">
                                                 <?php echo $lang['Lang0324']; ?>
                                             </a>
@@ -996,7 +1177,7 @@
                         <section class="search-card-contain search-practice  col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="search-card-overflow">
                                 <div class="search-main-dets">
-                                    <h2 class="search-main-title showProfile">{{>doctorName}}</h2>
+                                    <h2 class="search-main-title showProfileDoctor">{{>doctorName}}</h2>
 
 
                                     <div class="search-suburb-contain clearfix">
@@ -1012,15 +1193,30 @@
                                             <img src="{{>doctorPIC}}">
                                         </div>
                                     </div>
+                                    <div class="doctor-sex" style="display:none;">
+                                        {{>doctorSex}}
+                                    </div>
+
                                     <div class="search-overview" style="display:none;">
                                         {{>overview}}
                                     </div>
+
+                                    <div class="doctor-year" style="display:none;">
+                                        {{>doctorYear}}
+                                    </div>
+
+                                    <div class="doctor-interest" style="display:none;">
+                                        {{>interest}}
+                                    </div>
+
+
                                     <div class="search-addie doctor-addr">
                                         {{>clinicAddress}}
 
                                     </div>
                                     <div class="search-addie">
-                                        {{>language}}
+
+                                        <div class="doctor-lang" style="display:inline">{{>language}}</div>
                                         <a class="save2favBtn" keyDoctorID="{{>doctorID}}">
                                             <?php echo $lang['Lang0171']; ?>
                                         </a>
