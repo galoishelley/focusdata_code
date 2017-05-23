@@ -440,4 +440,7 @@ $lang['Lang0343'] = 'Counsellor';
 
 $lang['Lang0344']='logo_en_index.png';
 $lang['Lang0345']='Unknown';
+
+$lang['Lang0346']='Commenced practice since';
+$lang['Lang0347']='Special interests';
 ?>

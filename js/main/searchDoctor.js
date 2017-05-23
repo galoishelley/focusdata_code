@@ -367,7 +367,31 @@ $(function () {
 	});
 
 	// _______________________________________________________________________________________ language multiselect
-	$('#LANGUAGE').multiselect();
+	//_________________________________fill language select
+	var ajax_get_lang = $.ajax({
+
+		type: "POST",
+		url: 'classes/class.get_lang.php',
+		dataType: 'json',
+	});
+
+	$('#LANGUAGE').multiselect({
+		maxHeight: 200
+	});
+
+
+	ajax_get_lang.done(function (data) {
+		var r = [];
+		for (var i = 0; i < data.length; i++) {
+			var item = { label: data[i].LANGUAGE_NAME, value: data[i].LANGUAGE_NAME };
+			r.push(item);
+		}
+
+		$('#LANGUAGE').multiselect('dataprovider', r);
+
+	});
+
+
 
 
 	// _______________________________________________________________________________________ fill dropdownlist

@@ -94,7 +94,10 @@ class ClinicOprDoctor_DB{
             print_r($arr_values);
         }
 
-        $sql = "SELECT t1.*,GROUP_CONCAT(t6.language_name  SEPARATOR ',') as LANGUAGE_NAME, t3.CLINIC_NAME,t3.CLINIC_ADDR,t3.CLINIC_POSTCODE,t3.CLINIC_SUBURB,t4.STATE_NAME 
+
+$sql = "select ta.*, GROUP_CONCAT(tc.interest_name  SEPARATOR ',') as INTEREST_NAME from (
+SELECT t1.*,GROUP_CONCAT(t6.language_name  SEPARATOR ',') as LANGUAGE_NAME,
+         t3.CLINIC_NAME,t3.CLINIC_ADDR,t3.CLINIC_POSTCODE,t3.CLINIC_SUBURB,t4.STATE_NAME 
         		FROM fd_doctor t1 left join 
         		(fd_rel_doctor_language as t5 left join fd_dict_language as t6 on t5.LANGUAGE_ID = t6.LANGUAGE_ID )
  ON t1.DOCTOR_ID = t5.DOCTOR_ID
@@ -103,9 +106,13 @@ class ClinicOprDoctor_DB{
                 left join fd_dict_state t4 on t4.state_id = t3.state_id
                  where t3.clinic_user_id = ".$arr_values['CLINIC_USER_ID']."
                  and t1.DOCTOR_TYPE like '%".$arr_values['DOCTOR_TYPE']."%'
-                 and t1.DOCTOR_NAME like '%".$arr_values['DOCTOR_NAME']."%' and t1.ACTIVE_STATUS like '%".$arr_values['ACTIVE_STATUS']."%' GROUP BY t1.DOCTOR_ID order by t1.CREATE_DATE DESC";
+                 and t1.DOCTOR_NAME like '%".$arr_values['DOCTOR_NAME']."%' and t1.ACTIVE_STATUS like '%".$arr_values['ACTIVE_STATUS']."%' GROUP BY t1.DOCTOR_ID 
+ORDER BY t1.CREATE_DATE DESC) ta LEFT JOIN
+    fd_rel_doctor_interest tb on ta.DOCTOR_ID=tb.DOCTOR_ID
+    LEFT JOIN fd_dict_interest tc ON tb.INTEREST_ID = tc.INTEREST_ID GROUP BY ta.DOCTOR_ID";
 
-        // echo $sql;
+
+     
         if($this->_dbug){
             echo "[---viewAll---sql]";
             print_r($sql);
@@ -157,8 +164,10 @@ class ClinicOprDoctor_DB{
         $where =" DOCTOR_ID = ".intval($arr_values['DOCTOR_ID']);
         //1.delete rel id=DOCTOR_ID
         $ret = $this->db->deleteData('fd_rel_doctor_language', $where);
+
+        $ret = $this->db->deleteData('fd_rel_doctor_interest', $where);
         
-        //2.
+        //2.handle language
      	$arr=explode(",",$arr_values["LANGUAGE_NAME"]);
 
      	$arrlength=count($arr);
@@ -172,9 +181,26 @@ class ClinicOprDoctor_DB{
      		$ret = $this->db->insertData('fd_rel_doctor_language', $arr_values_tmp);
      	}
 
+         //3.handle interest
+         $arrInterest=explode(",",$arr_values["INTEREST_NAME"]);
+
+     	$arrlengthInterest=count($arrInterest);
+     	
+     	for($k = 0; $k < $arrlengthInterest; $k++){
+     		$sql = "SELECT INTEREST_ID FROM `fd_dict_interest` where INTEREST_NAME ='".$arrInterest[$k]."'";
+     		$INTEREST_ID = $this->db->fetchAll_sql($sql,null);
+     		
+     		$arr_values_tmp_Interest["DOCTOR_ID"] = intval($arr_values['DOCTOR_ID']);
+     		$arr_values_tmp_Interest["INTEREST_ID"] = intval($INTEREST_ID[0]["INTEREST_ID"]);
+     		$ret = $this->db->insertData('fd_rel_doctor_interest', $arr_values_tmp_Interest);
+     	}
+
+
+
         
         unset($arr_values["DOCTOR_ID"]);
         unset($arr_values["LANGUAGE_NAME"]);
+        unset($arr_values["INTEREST_NAME"]);
         
         $ret = $this->db->updateData('fd_doctor', $arr_values, $where);
 

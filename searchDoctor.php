@@ -631,10 +631,7 @@
                                           </label>
 
                                         <select id="LANGUAGE" name="LANGUAGE" multiple="multiple" class="form-control">
-                                             <option value="English">English</option>
-                                             <option value="Chinese">Chinese</option>
-                                             <option value="Spanish">Spanish</option>
-                                             <option value="Arabic">Arabic</option>
+                                           
                                           </select>
                                     </div>
 

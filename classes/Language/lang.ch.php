@@ -433,4 +433,8 @@ $lang['Lang0343'] = '顾问';
 
 $lang['Lang0344']='logo_cn_index.png';
 $lang['Lang0345']='请选择';
+
+
+$lang['Lang0346']='从医起始年份';
+$lang['Lang0347']='擅长领域';
 ?>
