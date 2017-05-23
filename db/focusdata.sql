@@ -1,30 +1,634 @@
--- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
+-- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: 127.0.0.1
--- Generation Time: 2017-05-01 15:01:31
--- 服务器版本： 10.1.21-MariaDB
--- PHP Version: 5.6.30
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
+-- Host: 127.0.0.1    Database: focusdata
+-- ------------------------------------------------------
+-- Server version	5.7.18-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Database: `focusdata`
+-- Table structure for table `ap_patient`
 --
 
-DELIMITER $$
+DROP TABLE IF EXISTS `ap_patient`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ap_patient` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `CUSTOMER_USER_ID` int(11) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `gender` varchar(50) NOT NULL,
+  `dob` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `phone_mobile` varchar(50) NOT NULL,
+  `medicare_no` varchar(50) NOT NULL,
+  `medicare_ref` varchar(50) NOT NULL,
+  `CREATE_USER` varchar(50) NOT NULL,
+  `CREATE_DATE` datetime NOT NULL,
+  `UPDATE_USER` varchar(50) NOT NULL,
+  `UPDATE_DATE` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
 --
--- 存储过程
+-- Table structure for table `fd_admin`
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_get7daysTimeslots` (IN `dateIN` DATE, IN `suburbIN` VARCHAR(50), IN `postcodeIN` VARCHAR(50), IN `stateIN` VARCHAR(50), IN `doctorTypeIN` VARCHAR(50), IN `clinicNameIN` VARCHAR(100), IN `doctorNameIN` VARCHAR(100), IN `doctorIDIN` VARCHAR(50), IN `clinicIDIN` VARCHAR(50))  READS SQL DATA
+
+DROP TABLE IF EXISTS `fd_admin`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fd_admin` (
+  `ADMIN_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ADMIN_NAME` varchar(50) NOT NULL,
+  `ADMIN_PWD` varchar(50) NOT NULL,
+  `CREATE_USER` varchar(50) NOT NULL,
+  `CREATE_DATE` datetime NOT NULL,
+  `UPDATE_USER` varchar(50) NOT NULL,
+  `UPDATE_DATE` datetime NOT NULL,
+  PRIMARY KEY (`ADMIN_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `fd_clinic_user`
+--
+
+DROP TABLE IF EXISTS `fd_clinic_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fd_clinic_user` (
+  `CLINIC_USER_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `CLINIC_USER_PWD` varchar(50) NOT NULL,
+  `CLINIC_USER_MAIL` varchar(50) NOT NULL,
+  `CLINIC_NAME` varchar(200) NOT NULL,
+  `CLINIC_PHONE` varchar(50) NOT NULL,
+  `CLINIC_PHOTO` varchar(200) NOT NULL,
+  `CLINIC_ADDR` varchar(200) NOT NULL,
+  `CLINIC_POSTCODE` varchar(50) NOT NULL,
+  `CLINIC_SUBURB` varchar(50) NOT NULL,
+  `CLINIC_LAT` varchar(20) NOT NULL,
+  `CLINIC_LNG` varchar(20) NOT NULL,
+  `STATE_ID` int(11) NOT NULL,
+  `ACTIVE_STATUS` int(11) DEFAULT '1',
+  `CLINIC_OVERVIEW` varchar(5000) DEFAULT NULL,
+  `IS_YELLOWPAGE` int(11) NOT NULL,
+  `BULK_BILLING` int(11) DEFAULT '0',
+  `LATE_HOUR_SERVICES` int(11) DEFAULT '0',
+  `FREE_PARKING` int(11) DEFAULT '0',
+  `WHEELCHAIR_ACCESS` int(11) DEFAULT '0',
+  `FEMALE_DOCTOR` int(11) DEFAULT '0',
+  `HOME_VISIT` int(11) DEFAULT '0',
+  `ONSITE_PATHOLOGY_COLLECTION` int(11) DEFAULT '0',
+  `AGPAL` int(11) DEFAULT '0',
+  `STANDARD_15_MINUTE_CONSULTATION` int(11) DEFAULT '0',
+  `EXTEND_30_MINUTE_CONSULTATION` int(11) DEFAULT '0',
+  `CREATE_USER` varchar(50) NOT NULL,
+  `CREATE_DATE` datetime NOT NULL,
+  `UPDATE_USER` varchar(50) NOT NULL,
+  `UPDATE_DATE` datetime NOT NULL,
+  PRIMARY KEY (`CLINIC_USER_ID`),
+  KEY `FK_fd_clinic_user_2` (`STATE_ID`),
+  CONSTRAINT `FK_fd_clinic_user_2` FOREIGN KEY (`STATE_ID`) REFERENCES `fd_dict_state` (`STATE_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=10123 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `fd_customer_user`
+--
+
+DROP TABLE IF EXISTS `fd_customer_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fd_customer_user` (
+  `CUSTOMER_USER_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `CUSTOMER_USER_PWD` varchar(50) NOT NULL,
+  `CUSTOMER_USER_MAIL` varchar(50) NOT NULL,
+  `CUSTOMER_FIRSTNAME` varchar(50) NOT NULL,
+  `CUSTOMER_LASTNAME` varchar(50) NOT NULL,
+  `TITLE_ID` int(11) NOT NULL,
+  `GENDER_ID` int(11) NOT NULL,
+  `CUSTOMER_BIRTHDAY` varchar(50) NOT NULL,
+  `CUSTOMER_ADDR` varchar(200) NOT NULL,
+  `CUSTOMER_POSTCODE` varchar(50) NOT NULL,
+  `CUSTOMER_SUBURB` varchar(50) NOT NULL,
+  `CUSTOMER_LAT` varchar(20) NOT NULL,
+  `CUSTOMER_LNG` varchar(20) NOT NULL,
+  `STATE_ID` int(11) NOT NULL,
+  `CUSTOMER_PHONE_NO` varchar(50) NOT NULL,
+  `MEDICAL_CARD_NO` varchar(50) NOT NULL,
+  `ACTIVE_STATUS` int(11) NOT NULL DEFAULT '1',
+  `NOTE` varchar(200) NOT NULL,
+  `ACTIVATE` int(11) NOT NULL DEFAULT '0',
+  `ACTIVATION_CODE` varchar(45) NOT NULL,
+  `CREATE_USER` varchar(50) NOT NULL,
+  `CREATE_DATE` datetime NOT NULL,
+  `UPDATE_USER` varchar(50) NOT NULL,
+  `UPDATE_DATE` datetime NOT NULL,
+  PRIMARY KEY (`CUSTOMER_USER_ID`),
+  KEY `FK_fd_customer_user_7` (`STATE_ID`),
+  CONSTRAINT `FK_fd_customer_user_7` FOREIGN KEY (`STATE_ID`) REFERENCES `fd_dict_state` (`STATE_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=258 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `fd_dict_appointment_status`
+--
+
+DROP TABLE IF EXISTS `fd_dict_appointment_status`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fd_dict_appointment_status` (
+  `APPOINTMENT_STATUS_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `APPOINTMENT_STATUS` varchar(50) NOT NULL,
+  PRIMARY KEY (`APPOINTMENT_STATUS_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `fd_dict_gender_ch`
+--
+
+DROP TABLE IF EXISTS `fd_dict_gender_ch`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fd_dict_gender_ch` (
+  `GENDER_ID` int(11) NOT NULL,
+  `GENDER_NAME` varchar(50) NOT NULL,
+  PRIMARY KEY (`GENDER_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `fd_dict_gender_en`
+--
+
+DROP TABLE IF EXISTS `fd_dict_gender_en`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fd_dict_gender_en` (
+  `GENDER_ID` int(11) NOT NULL,
+  `GENDER_NAME` varchar(50) NOT NULL,
+  PRIMARY KEY (`GENDER_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `fd_dict_interest`
+--
+
+DROP TABLE IF EXISTS `fd_dict_interest`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fd_dict_interest` (
+  `INTEREST_ID` int(11) NOT NULL,
+  `INTEREST_NAME` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`INTEREST_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `fd_dict_language`
+--
+
+DROP TABLE IF EXISTS `fd_dict_language`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fd_dict_language` (
+  `LANGUAGE_ID` int(11) NOT NULL,
+  `LANGUAGE_NAME` varchar(20) NOT NULL,
+  PRIMARY KEY (`LANGUAGE_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `fd_dict_log_type`
+--
+
+DROP TABLE IF EXISTS `fd_dict_log_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fd_dict_log_type` (
+  `LOG_TYPE_ID` int(11) NOT NULL,
+  `LOG_TYPE` varchar(50) NOT NULL,
+  PRIMARY KEY (`LOG_TYPE_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `fd_dict_search`
+--
+
+DROP TABLE IF EXISTS `fd_dict_search`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fd_dict_search` (
+  `SEARCH_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `SEARCH_CONTENT` varchar(50) NOT NULL,
+  PRIMARY KEY (`SEARCH_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `fd_dict_state`
+--
+
+DROP TABLE IF EXISTS `fd_dict_state`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fd_dict_state` (
+  `STATE_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `STATE_NAME` varchar(50) NOT NULL,
+  `STATE_POSTCODE` varchar(50) NOT NULL,
+  PRIMARY KEY (`STATE_ID`),
+  UNIQUE KEY `STATE_NAME` (`STATE_NAME`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `fd_dict_title`
+--
+
+DROP TABLE IF EXISTS `fd_dict_title`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fd_dict_title` (
+  `TITLE_ID` int(11) NOT NULL,
+  `TITLE_NAME` varchar(50) NOT NULL,
+  PRIMARY KEY (`TITLE_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `fd_doctor`
+--
+
+DROP TABLE IF EXISTS `fd_doctor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fd_doctor` (
+  `DOCTOR_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `DOCTOR_ID_IMPORT` int(11) NOT NULL,
+  `DOCTOR_TYPE` varchar(50) NOT NULL,
+  `DOCTOR_NAME` varchar(50) NOT NULL,
+  `DOCTOR_GENDER` varchar(50) NOT NULL,
+  `ACTIVE_STATUS` int(11) NOT NULL,
+  `DOCTOR_PHOTO` varchar(200) NOT NULL,
+  `DOCTOR_YEAR` varchar(45) DEFAULT NULL,
+  `DOCTOR_INFO` varchar(5000) NOT NULL,
+  `NOTE` varchar(200) NOT NULL,
+  `CREATE_USER` varchar(50) NOT NULL,
+  `CREATE_DATE` datetime NOT NULL,
+  `UPDATE_USER` varchar(50) NOT NULL,
+  `UPDATE_DATE` datetime NOT NULL,
+  PRIMARY KEY (`DOCTOR_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=10073 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `fd_function`
+--
+
+DROP TABLE IF EXISTS `fd_function`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fd_function` (
+  `FUNCTION_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `FUNCTION_CODE` varchar(50) NOT NULL,
+  `FUNCTION_NAME` varchar(50) NOT NULL,
+  `NOTE` varchar(200) NOT NULL,
+  `CREATE_USER` varchar(50) NOT NULL,
+  `CREATE_DATE` datetime NOT NULL,
+  `UPDATE_USER` varchar(50) NOT NULL,
+  `UPDATE_DATE` datetime NOT NULL,
+  PRIMARY KEY (`FUNCTION_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `fd_log`
+--
+
+DROP TABLE IF EXISTS `fd_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fd_log` (
+  `LOG_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `LOG_TYPE_ID` int(11) NOT NULL,
+  `FUNCTION_ID` varchar(50) NOT NULL,
+  `FUNCTION_NAME` varchar(50) NOT NULL,
+  `LOG_CONTENT` varchar(200) NOT NULL,
+  `CREATE_DATE` datetime NOT NULL,
+  `CREATE_USER` varchar(50) NOT NULL,
+  `UPDATE_USER` varchar(50) NOT NULL,
+  `UPDATE_DATE` datetime NOT NULL,
+  PRIMARY KEY (`LOG_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `fd_rel_clinic_doctor`
+--
+
+DROP TABLE IF EXISTS `fd_rel_clinic_doctor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fd_rel_clinic_doctor` (
+  `CLINIC_DOCTOR_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `CLINIC_USER_ID` int(11) NOT NULL,
+  `DOCTOR_ID` int(11) NOT NULL,
+  `CREATE_USER` varchar(50) NOT NULL,
+  `CREATE_DATE` datetime NOT NULL,
+  `UPDATE_USER` varchar(50) NOT NULL,
+  `UPDATE_DATE` datetime NOT NULL,
+  PRIMARY KEY (`CLINIC_DOCTOR_ID`),
+  KEY `FK_fd_rel_clinic_doctor_1` (`DOCTOR_ID`),
+  KEY `FK_fd_rel_clinic_doctor_2` (`CLINIC_USER_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=10319 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `fd_rel_customer_appointment`
+--
+
+DROP TABLE IF EXISTS `fd_rel_customer_appointment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fd_rel_customer_appointment` (
+  `CUSTOMER_APPOINTMENT_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `CUSTOMER_USER_ID` int(11) NOT NULL,
+  `DOCTOR_ID` int(11) NOT NULL,
+  `DOCTOR_APPOINTMENT_TIME_ID` int(11) NOT NULL,
+  `APPOINTMENT_STATUS_ID` int(11) NOT NULL,
+  `NOTE` varchar(200) NOT NULL,
+  `CREATE_USER` varchar(50) NOT NULL,
+  `CREATE_DATE` datetime NOT NULL,
+  `UPDATE_USER` varchar(50) NOT NULL,
+  `UPDATE_DATE` datetime NOT NULL,
+  PRIMARY KEY (`CUSTOMER_APPOINTMENT_ID`),
+  KEY `FK_fd_rel_customer_appointment_1` (`CUSTOMER_USER_ID`),
+  KEY `FK_fd_rel_customer_appointment_2` (`DOCTOR_ID`),
+  KEY `FK_fd_rel_customer_appointment_3` (`DOCTOR_APPOINTMENT_TIME_ID`),
+  KEY `FK_fd_rel_customer_appointment_4` (`APPOINTMENT_STATUS_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `fd_rel_customer_appointment_his`
+--
+
+DROP TABLE IF EXISTS `fd_rel_customer_appointment_his`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fd_rel_customer_appointment_his` (
+  `CUSTOMER_APPOINTMENT_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `CUSTOMER_USER_ID` int(11) NOT NULL,
+  `DOCTOR_ID` int(11) NOT NULL,
+  `DOCTOR_APPOINTMENT_TIME_ID` int(11) NOT NULL,
+  `APPOINTMENT_STATUS_ID` varchar(50) NOT NULL,
+  `OPERATOR_STATUS` varchar(50) NOT NULL,
+  `NOTE` varchar(200) NOT NULL,
+  `CREATE_USER` varchar(50) NOT NULL,
+  `CREATE_DATE` datetime NOT NULL,
+  `UPDATE_USER` varchar(50) NOT NULL,
+  `UPDATE_DATE` datetime NOT NULL,
+  PRIMARY KEY (`CUSTOMER_APPOINTMENT_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=165 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `fd_rel_customer_doctor`
+--
+
+DROP TABLE IF EXISTS `fd_rel_customer_doctor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fd_rel_customer_doctor` (
+  `CUSTOMER_DOCTOR_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `CUSTOMER_USER_ID` int(11) NOT NULL,
+  `DOCTOR_ID` int(11) NOT NULL,
+  `NOTE` varchar(200) NOT NULL,
+  `CREATE_USER` varchar(50) NOT NULL,
+  `CREATE_DATE` datetime NOT NULL,
+  `UPDATE_USER` varchar(50) NOT NULL,
+  `UPDATE_DATE` datetime NOT NULL,
+  PRIMARY KEY (`CUSTOMER_DOCTOR_ID`),
+  KEY `FK_fd_rel_customer_doctor_1` (`CUSTOMER_USER_ID`),
+  KEY `FK_fd_rel_customer_doctor_2` (`DOCTOR_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `fd_rel_doctor_appointment_time`
+--
+
+DROP TABLE IF EXISTS `fd_rel_doctor_appointment_time`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fd_rel_doctor_appointment_time` (
+  `DOCTOR_APPOINTMENT_TIME_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `DOCTOR_ID` int(11) NOT NULL DEFAULT '0',
+  `APPOINTMENT_DATE` date NOT NULL,
+  `APPOINTMENT_TIME` time NOT NULL,
+  `ACTIVE_STATUS` int(11) NOT NULL,
+  `NOTE` varchar(200) NOT NULL,
+  `REQUESTING_FLAG` int(11) NOT NULL DEFAULT '0',
+  `REQUESTING_USER_ID` int(11) NOT NULL DEFAULT '0',
+  `SUCCESSFUL_FLAG` int(11) NOT NULL DEFAULT '0',
+  `BP_APPOINTMENT_ID` int(11) NOT NULL DEFAULT '0',
+  `CREATE_USER` varchar(50) NOT NULL,
+  `CREATE_DATE` datetime NOT NULL,
+  `UPDATE_USER` varchar(50) NOT NULL,
+  `UPDATE_DATE` datetime NOT NULL,
+  PRIMARY KEY (`DOCTOR_APPOINTMENT_TIME_ID`),
+  KEY `FK_fd_rel_doctor_appointment_time_1` (`DOCTOR_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=481085 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `fd_rel_doctor_appointment_time_his`
+--
+
+DROP TABLE IF EXISTS `fd_rel_doctor_appointment_time_his`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fd_rel_doctor_appointment_time_his` (
+  `DOCTOR_APPOINTMENT_TIME_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `DOCTOR_ID` int(11) NOT NULL,
+  `APPOINTMENT_DATE` datetime NOT NULL,
+  `ACTIVE_STATUS` int(11) NOT NULL,
+  `NOTE` varchar(200) NOT NULL,
+  `OPERATOR_STATUS` varchar(50) NOT NULL,
+  `CREATE_USER` varchar(50) NOT NULL,
+  `CREATE_DATE` datetime NOT NULL,
+  `UPDATE_USER` varchar(50) NOT NULL,
+  `UPDATE_DATE` datetime NOT NULL,
+  PRIMARY KEY (`DOCTOR_APPOINTMENT_TIME_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `fd_rel_doctor_interest`
+--
+
+DROP TABLE IF EXISTS `fd_rel_doctor_interest`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fd_rel_doctor_interest` (
+  `DOCTOR_INTEREST_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `DOCTOR_ID` int(11) DEFAULT NULL,
+  `INTEREST_ID` int(11) DEFAULT NULL,
+  PRIMARY KEY (`DOCTOR_INTEREST_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `fd_rel_doctor_language`
+--
+
+DROP TABLE IF EXISTS `fd_rel_doctor_language`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fd_rel_doctor_language` (
+  `DOCTOR_LANGUAGE_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `DOCTOR_ID` int(11) NOT NULL,
+  `LANGUAGE_ID` int(11) NOT NULL,
+  PRIMARY KEY (`DOCTOR_LANGUAGE_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=196 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `fd_role`
+--
+
+DROP TABLE IF EXISTS `fd_role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fd_role` (
+  `ROLE_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `ROLE_NAME` varchar(50) NOT NULL,
+  `NOTE` varchar(200) DEFAULT NULL,
+  `CREATE_USER` varchar(50) NOT NULL,
+  `CREATE_DATE` datetime NOT NULL,
+  `UPDATE_USER` varchar(50) NOT NULL,
+  `UPDATE_DATE` datetime NOT NULL,
+  PRIMARY KEY (`ROLE_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `fd_save_search`
+--
+
+DROP TABLE IF EXISTS `fd_save_search`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fd_save_search` (
+  `CUSTOMER_SEARCH_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `CUSTOMER_USER_ID` int(11) NOT NULL,
+  `SEARCH_NAME` varchar(50) NOT NULL,
+  `CLINIC_SUBURB` varchar(50) NOT NULL,
+  `STATE_ID` varchar(50) NOT NULL,
+  `CLINIC_NAME` varchar(50) NOT NULL,
+  `DOCTOR_TYPE` varchar(50) NOT NULL,
+  `DOCTOR_NAME` varchar(50) NOT NULL,
+  `DISTANCE` varchar(50) NOT NULL,
+  `CREATE_USER` varchar(50) NOT NULL,
+  `CREATE_DATE` datetime NOT NULL,
+  `UPDATE_USER` varchar(50) NOT NULL,
+  `UPDATE_DATE` datetime NOT NULL,
+  PRIMARY KEY (`CUSTOMER_SEARCH_ID`),
+  KEY `FK_FD_SAVE_SEARCH_1` (`CUSTOMER_USER_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `fd_service`
+--
+
+DROP TABLE IF EXISTS `fd_service`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fd_service` (
+  `SERVICE_CODE` int(11) NOT NULL AUTO_INCREMENT,
+  `SERVICE_ID` varchar(50) NOT NULL,
+  `DES` varchar(50) NOT NULL,
+  `SERVICE_JS` varchar(50) NOT NULL,
+  `URL` varchar(50) NOT NULL,
+  `INPUT_PARA` varchar(300) NOT NULL,
+  `OUTPUT_PARA` varchar(50) NOT NULL,
+  `NOTE` varchar(50) NOT NULL,
+  `CREATE_USER` varchar(50) NOT NULL,
+  `CREATE_DATE` datetime NOT NULL,
+  `UPDATE_USER` varchar(50) NOT NULL,
+  `UPDATE_DATE` datetime NOT NULL,
+  PRIMARY KEY (`SERVICE_CODE`),
+  UNIQUE KEY `SERVICE_ID` (`SERVICE_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `fd_user`
+--
+
+DROP TABLE IF EXISTS `fd_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `fd_user` (
+  `USER_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `LOGIN_NAME` varchar(50) NOT NULL,
+  `LOGIN_PWD` varchar(50) NOT NULL,
+  `USER_NAME` varchar(50) NOT NULL,
+  `USER_GENDER` varchar(50) NOT NULL,
+  `USER_TEL` varchar(50) NOT NULL,
+  `ROLE_ID` varchar(50) NOT NULL,
+  `USER_ADDR` varchar(200) NOT NULL,
+  `NOTE` varchar(200) DEFAULT NULL,
+  `CONTAIN_USER` varchar(50) NOT NULL,
+  `CREATE_USER` varchar(50) NOT NULL,
+  `CREATE_DATE` datetime NOT NULL,
+  `UPDATE_USER` varchar(50) NOT NULL,
+  `UPDATE_DATE` datetime NOT NULL,
+  PRIMARY KEY (`USER_ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping routines for database 'focusdata'
+--
+/*!50003 DROP PROCEDURE IF EXISTS `sp_get7daysTimeslots` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_get7daysTimeslots`(
+        IN `dateIN` DATE,
+        IN `suburbIN` VARCHAR(50),
+        IN `postcodeIN` VARCHAR(50),
+        IN `stateIN` VARCHAR(50),
+        IN `doctorTypeIN` VARCHAR(50),
+        IN `clinicNameIN` VARCHAR(100),
+        IN `doctorNameIN` VARCHAR(100),
+        IN `doctorIDIN` VARCHAR(50),
+        IN `clinicIDIN` VARCHAR(50)
+    )
+    READS SQL DATA
 BEGIN 
   IF ( DATEIN >= DATE_ADD(CURRENT_DATE(),INTERVAL 4 DAY) ) THEN
     SELECT t1.APPOINTMENT_DATE, 
@@ -142,9 +746,34 @@ group by t6.DOCTOR_ID
               t1.APPOINTMENT_TIME asc; 
   END IF; 
   
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_get_7_days` (IN `dateIN` DATE, IN `suburbIN` VARCHAR(50), IN `postcodeIN` VARCHAR(50), IN `stateIN` VARCHAR(50), IN `doctorTypeIN` VARCHAR(50), IN `clinicNameIN` VARCHAR(100), IN `doctorNameIN` VARCHAR(100), IN `doctorIDIN` VARCHAR(50), IN `clinicIDIN` VARCHAR(50))  READS SQL DATA
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_get_7_days` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_get_7_days`(
+        IN `dateIN` DATE,
+        IN `suburbIN` VARCHAR(50),
+        IN `postcodeIN` VARCHAR(50),
+        IN `stateIN` VARCHAR(50),
+        IN `doctorTypeIN` VARCHAR(50),
+        IN `clinicNameIN` VARCHAR(100),
+        IN `doctorNameIN` VARCHAR(100),
+        IN `doctorIDIN` VARCHAR(50),
+        IN `clinicIDIN` VARCHAR(50)
+    )
+    READS SQL DATA
 BEGIN 
   IF ( DATEIN >= DATE_ADD(CURRENT_DATE(),INTERVAL 4 DAY) ) THEN
     SELECT distinct t1.APPOINTMENT_DATE
@@ -233,9 +862,36 @@ group by t6.DOCTOR_ID
               t1.APPOINTMENT_TIME asc; 
   END IF; 
   
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_get_all_clinic` (IN `dateIN` DATE, IN `suburbIN` VARCHAR(50), IN `postcodeIN` VARCHAR(50), IN `stateIN` VARCHAR(50), IN `doctorTypeIN` VARCHAR(50), IN `clinicNameIN` VARCHAR(100), IN `doctorNameIN` VARCHAR(100), IN `doctorIDIN` VARCHAR(50), IN `clinicIDIN` VARCHAR(50), IN `startPageIN` INT(50), IN `pageSizeIN` INT(50))  READS SQL DATA
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_get_all_clinic` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_get_all_clinic`(
+        IN `dateIN` DATE,
+        IN `suburbIN` VARCHAR(50),
+        IN `postcodeIN` VARCHAR(50),
+        IN `stateIN` VARCHAR(50),
+        IN `doctorTypeIN` VARCHAR(50),
+        IN `clinicNameIN` VARCHAR(100),
+        IN `doctorNameIN` VARCHAR(100),
+        IN `doctorIDIN` VARCHAR(50),
+        IN `clinicIDIN` VARCHAR(50),
+        IN `startPageIN` INT(50),
+        IN `pageSizeIN` INT(50)
+    )
+    READS SQL DATA
 BEGIN 
 SELECT * from (
     SELECT 
@@ -249,6 +905,16 @@ SELECT * from (
            t4.CLINIC_SUBURB, 
            t4.CLINIC_LAT,
            t4.CLINIC_LNG,
+           t4.BULK_BILLING,
+           t4.LATE_HOUR_SERVICES,
+           t4.FREE_PARKING,
+           t4.WHEELCHAIR_ACCESS,
+           t4.FEMALE_DOCTOR,
+           t4.HOME_VISIT,
+           t4.ONSITE_PATHOLOGY_COLLECTION,
+           t4.AGPAL,
+           t4.STANDARD_15_MINUTE_CONSULTATION,
+           t4.EXTEND_30_MINUTE_CONSULTATION,
            t4.CLINIC_OVERVIEW,
            t5.STATE_NAME, 
 		   GROUP_CONCAT(DISTINCT t1.APPOINTMENT_TIME ORDER BY t1.APPOINTMENT_TIME ASC) as APPOINTMENT_TIME
@@ -302,6 +968,16 @@ union
            t4.CLINIC_SUBURB, 
            t4.CLINIC_LAT,
            t4.CLINIC_LNG,
+           t4.BULK_BILLING,
+           t4.LATE_HOUR_SERVICES,
+           t4.FREE_PARKING,
+           t4.WHEELCHAIR_ACCESS,
+           t4.FEMALE_DOCTOR,
+           t4.HOME_VISIT,
+           t4.ONSITE_PATHOLOGY_COLLECTION,
+           t4.AGPAL,
+           t4.STANDARD_15_MINUTE_CONSULTATION,
+           t4.EXTEND_30_MINUTE_CONSULTATION,
            t4.CLINIC_OVERVIEW,
            t5.STATE_NAME,
 		   ''
@@ -331,9 +1007,34 @@ union
                   OR CLINICNAMEIN = '' )
 				) A limit startPageIN,pageSizeIN;
            
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_get_all_clinic_count` (IN `dateIN` DATE, IN `suburbIN` VARCHAR(50), IN `postcodeIN` VARCHAR(50), IN `stateIN` VARCHAR(50), IN `doctorTypeIN` VARCHAR(50), IN `clinicNameIN` VARCHAR(100), IN `doctorNameIN` VARCHAR(100), IN `doctorIDIN` VARCHAR(50), IN `clinicIDIN` VARCHAR(50))  READS SQL DATA
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_get_all_clinic_count` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_get_all_clinic_count`(
+        IN `dateIN` DATE,
+        IN `suburbIN` VARCHAR(50),
+        IN `postcodeIN` VARCHAR(50),
+        IN `stateIN` VARCHAR(50),
+        IN `doctorTypeIN` VARCHAR(50),
+        IN `clinicNameIN` VARCHAR(100),
+        IN `doctorNameIN` VARCHAR(100),
+        IN `doctorIDIN` VARCHAR(50),
+        IN `clinicIDIN` VARCHAR(50)
+    )
+    READS SQL DATA
 BEGIN 
 
 SELECT count(*) AS COUNT from (
@@ -348,6 +1049,16 @@ SELECT count(*) AS COUNT from (
            t4.CLINIC_SUBURB, 
            t4.CLINIC_LAT,
            t4.CLINIC_LNG,
+           t4.BULK_BILLING,
+           t4.LATE_HOUR_SERVICES,
+           t4.FREE_PARKING,
+           t4.WHEELCHAIR_ACCESS,
+           t4.FEMALE_DOCTOR,
+           t4.HOME_VISIT,
+           t4.ONSITE_PATHOLOGY_COLLECTION,
+           t4.AGPAL,
+           t4.STANDARD_15_MINUTE_CONSULTATION,
+           t4.EXTEND_30_MINUTE_CONSULTATION,
            t4.CLINIC_OVERVIEW,
            t5.STATE_NAME, 
 		   GROUP_CONCAT(DISTINCT t1.APPOINTMENT_TIME) as APPOINTMENT_TIME
@@ -401,6 +1112,16 @@ union
            t4.CLINIC_SUBURB, 
            t4.CLINIC_LAT,
            t4.CLINIC_LNG,
+           t4.BULK_BILLING,
+           t4.LATE_HOUR_SERVICES,
+           t4.FREE_PARKING,
+           t4.WHEELCHAIR_ACCESS,
+           t4.FEMALE_DOCTOR,
+           t4.HOME_VISIT,
+           t4.ONSITE_PATHOLOGY_COLLECTION,
+           t4.AGPAL,
+           t4.STANDARD_15_MINUTE_CONSULTATION,
+           t4.EXTEND_30_MINUTE_CONSULTATION,
            t4.CLINIC_OVERVIEW,
            t5.STATE_NAME,
 		   ''
@@ -429,9 +1150,36 @@ union
            AND ( t4.CLINIC_NAME like CONCAT('%', CLINICNAMEIN, '%') 
                   OR CLINICNAMEIN = '' )
                   ) A;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_get_doctor` (IN `dateIN` DATE, IN `suburbIN` VARCHAR(50), IN `postcodeIN` VARCHAR(50), IN `stateIN` VARCHAR(50), IN `doctorTypeIN` VARCHAR(50), IN `clinicNameIN` VARCHAR(100), IN `doctorNameIN` VARCHAR(100), IN `doctorIDIN` VARCHAR(50), IN `clinicIDIN` VARCHAR(50), IN `startPageIN` INT(50), IN `pageSizeIN` INT(50))  READS SQL DATA
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_get_doctor` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_get_doctor`(
+        IN `dateIN` DATE,
+        IN `suburbIN` VARCHAR(50),
+        IN `postcodeIN` VARCHAR(50),
+        IN `stateIN` VARCHAR(50),
+        IN `doctorTypeIN` VARCHAR(50),
+        IN `clinicNameIN` VARCHAR(100),
+        IN `doctorNameIN` VARCHAR(100),
+        IN `doctorIDIN` VARCHAR(50),
+        IN `clinicIDIN` VARCHAR(50),
+        IN `startPageIN` INT(50),
+        IN `pageSizeIN` INT(50)
+    )
+    READS SQL DATA
 BEGIN 
 SELECT * from (
     SELECT 
@@ -439,7 +1187,10 @@ SELECT * from (
            t2.DOCTOR_PHOTO, 
            t2.DOCTOR_NAME,
            t2.DOCTOR_INFO,
+           t2.DOCTOR_GENDER,
+           t2.DOCTOR_YEAR,
            GROUP_CONCAT(DISTINCT LANGUAGE_NAME) as LANGUAGE_NAME,
+           GROUP_CONCAT(DISTINCT INTEREST_NAME) as INTEREST_NAME,
            t3.CLINIC_USER_ID,
            t4.CLINIC_NAME,
            t4.CLINIC_PHONE,
@@ -464,6 +1215,14 @@ fd_rel_doctor_language as t6 left join fd_dict_language as t7 on t6.LANGUAGE_ID 
 group by t6.DOCTOR_ID
 		   ) t8
            ON t1.DOCTOR_ID = t8.DOCTOR_ID
+           
+           LEFT JOIN (
+		   select t60.DOCTOR_ID,GROUP_CONCAT(DISTINCT t70.INTEREST_NAME) as INTEREST_NAME from
+fd_rel_doctor_interest as t60 left join fd_dict_interest as t70 on t60.INTEREST_ID = t70.INTEREST_ID
+group by t60.DOCTOR_ID
+		   ) t9
+           ON t1.DOCTOR_ID = t9.DOCTOR_ID
+           
     WHERE  t1.ACTIVE_STATUS = 1
     AND t2.ACTIVE_STATUS = 1
 		   AND t4.IS_YELLOWPAGE=0
@@ -489,9 +1248,34 @@ group by t6.DOCTOR_ID
             order by APPOINTMENT_TIME desc
             ) A limit startPageIN,pageSizeIN;
            
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_get_doctor_count` (IN `dateIN` DATE, IN `suburbIN` VARCHAR(50), IN `postcodeIN` VARCHAR(50), IN `stateIN` VARCHAR(50), IN `doctorTypeIN` VARCHAR(50), IN `clinicNameIN` VARCHAR(100), IN `doctorNameIN` VARCHAR(100), IN `doctorIDIN` VARCHAR(50), IN `clinicIDIN` VARCHAR(50))  READS SQL DATA
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `sp_get_doctor_count` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_get_doctor_count`(
+        IN `dateIN` DATE,
+        IN `suburbIN` VARCHAR(50),
+        IN `postcodeIN` VARCHAR(50),
+        IN `stateIN` VARCHAR(50),
+        IN `doctorTypeIN` VARCHAR(50),
+        IN `clinicNameIN` VARCHAR(100),
+        IN `doctorNameIN` VARCHAR(100),
+        IN `doctorIDIN` VARCHAR(50),
+        IN `clinicIDIN` VARCHAR(50)
+    )
+    READS SQL DATA
 BEGIN 
 SELECT count(*) AS COUNT from (
     SELECT 
@@ -549,1516 +1333,20 @@ group by t6.DOCTOR_ID
             
             )A ;
            
-END$$
-
+END ;;
 DELIMITER ;
-
--- --------------------------------------------------------
-
---
--- 表的结构 `ap_patient`
---
-
-CREATE TABLE `ap_patient` (
-  `id` int(11) NOT NULL,
-  `CUSTOMER_USER_ID` int(11) NOT NULL,
-  `title` varchar(50) NOT NULL,
-  `first_name` varchar(50) NOT NULL,
-  `last_name` varchar(50) NOT NULL,
-  `gender` varchar(50) NOT NULL,
-  `dob` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `phone_mobile` varchar(50) NOT NULL,
-  `medicare_no` varchar(50) NOT NULL,
-  `medicare_ref` varchar(50) NOT NULL,
-  `CREATE_USER` varchar(50) NOT NULL,
-  `CREATE_DATE` datetime NOT NULL,
-  `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `ap_patient`
---
-
-INSERT INTO `ap_patient` (`id`, `CUSTOMER_USER_ID`, `title`, `first_name`, `last_name`, `gender`, `dob`, `email`, `phone_mobile`, `medicare_no`, `medicare_ref`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
-(22, 184, 'Mr', 'x', 'x', 'M', '11/11/1983', 'fudanyinxin@gmail.com', '0412341234', '1231231231', '1', 'fudanyinxin@gmail.com', '2016-10-03 18:42:22', '', '0000-00-00 00:00:00'),
-(23, 187, 'Mr', 'xin', 'yin', 'M', '11/11/1983', 'fudanyinxin@gmail.com', '0412341234', '1231231231', '1', 'fudanyinxin@gmail.com', '2016-12-02 09:59:13', '', '0000-00-00 00:00:00'),
-(24, 205, 'Miss', '1555', '1', 'F', '1999-11-11', '2@2.com', '0412341234', '1231231231', '1', '2@2.com', '2016-12-26 13:34:04', '2@2.com', '2016-12-26 13:41:26');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `fd_admin`
---
-
-CREATE TABLE `fd_admin` (
-  `ADMIN_ID` int(11) NOT NULL,
-  `ADMIN_NAME` varchar(50) NOT NULL,
-  `ADMIN_PWD` varchar(50) NOT NULL,
-  `CREATE_USER` varchar(50) NOT NULL,
-  `CREATE_DATE` datetime NOT NULL,
-  `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `fd_admin`
---
-
-INSERT INTO `fd_admin` (`ADMIN_ID`, `ADMIN_NAME`, `ADMIN_PWD`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '', '0000-00-00 00:00:00', 'admin', '2016-09-24 17:53:48');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `fd_clinic_user`
---
-
-CREATE TABLE `fd_clinic_user` (
-  `CLINIC_USER_ID` int(11) NOT NULL,
-  `CLINIC_USER_PWD` varchar(50) NOT NULL,
-  `CLINIC_USER_MAIL` varchar(50) NOT NULL,
-  `CLINIC_NAME` varchar(200) NOT NULL,
-  `CLINIC_PHONE` varchar(50) NOT NULL,
-  `CLINIC_PHOTO` varchar(200) NOT NULL,
-  `CLINIC_ADDR` varchar(200) NOT NULL,
-  `CLINIC_POSTCODE` varchar(50) NOT NULL,
-  `CLINIC_SUBURB` varchar(50) NOT NULL,
-  `CLINIC_LAT` varchar(20) NOT NULL,
-  `CLINIC_LNG` varchar(20) NOT NULL,
-  `STATE_ID` int(11) NOT NULL,
-  `ACTIVE_STATUS` int(11) DEFAULT '1',
-  `CLINIC_OVERVIEW` varchar(5000) DEFAULT NULL,
-  `IS_YELLOWPAGE` int(11) NOT NULL,
-  `CREATE_USER` varchar(50) NOT NULL,
-  `CREATE_DATE` datetime NOT NULL,
-  `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `fd_clinic_user`
---
-
-INSERT INTO `fd_clinic_user` (`CLINIC_USER_ID`, `CLINIC_USER_PWD`, `CLINIC_USER_MAIL`, `CLINIC_NAME`, `CLINIC_PHONE`, `CLINIC_PHOTO`, `CLINIC_ADDR`, `CLINIC_POSTCODE`, `CLINIC_SUBURB`, `CLINIC_LAT`, `CLINIC_LNG`, `STATE_ID`, `ACTIVE_STATUS`, `CLINIC_OVERVIEW`, `IS_YELLOWPAGE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
-(1, '89634c352f3a1dc151e8cd19a859f27a', 'bencaotang@gmail.com', 'Box Hill Superclinic', '', 'super.jpg', '810 Whitehorse Road', '3127', 'Box Hill', '', '', 7, 1, NULL, 0, 'bencaotang@gmail.com', '2017-01-23 08:37:39', 'bencaotang@gmail.com', '2017-01-23 08:37:39'),
-(2, '25ccd325869097a683e3466ffcaf31cf', 'baozhilin@gmail.com', 'Box Hill Medical Centre', '', 'medical.jpg', '528 Station Street', '3128', 'Box Hill', '', '', 7, 1, NULL, 0, 'baozhilin@gmail.com', '2017-01-20 13:16:46', 'baozhilin@gmail.com', '2017-01-20 13:16:46'),
-(3, 'fef7a0536578a077d04989b3c8f98dbd', 'jingwumen@gmail.com', 'Box Hill Mall Medical Centre', '', 'mall.jpg', '8 Market Street', '3128', 'Box Hill', '', '', 7, 1, NULL, 0, 'jingwumen@gmail.com', '2017-01-20 13:18:09', 'jingwumen@gmail.com', '2017-01-20 13:18:09'),
-(10001, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic1@gmail.com', 'Wong Robert', '(03) 9590 0147', 'DefaultClinic.jpg', '302 Springvale Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10002, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic2@gmail.com', 'Waverley Heart Clinic', '(03) 9561 9688', 'DefaultClinic.jpg', 'Ste 7/ 264 Springvale Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10003, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic3@gmail.com', 'Waverley General Practice', '(03) 9802 8155', 'DefaultClinic.jpg', '370 Blackburn Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10004, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic4@gmail.com', 'Waverley Eye Clinic', '(03) 9886 5522', 'DefaultClinic.jpg', '226 Springvale Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10005, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic5@gmail.com', 'Warburton Fiona Dr', '(03) 9802 8844', 'DefaultClinic.jpg', '1 Fairhills Parade', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10006, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic6@gmail.com', 'Walton Tony', '(03) 9426 6693', 'DefaultClinic.jpg', 'Suite 6 262- 264 Springvale Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10007, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic7@gmail.com', 'Wallis Ben Dr', '(03) 9814 9999', 'DefaultClinic.jpg', '244 Springvale Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10008, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic8@gmail.com', 'Vinci Angela Dr', '(03) 9814 9999', 'DefaultClinic.jpg', '244 Springvale Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10009, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic9@gmail.com', 'Veins Clinic', '(03) 9803 4800', 'DefaultClinic.jpg', '747 High Street Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10010, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic10@gmail.com', 'Vasta C S & Corrigan M L', '(03) 9560 1266', 'DefaultClinic.jpg', '17 Hampshire Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10011, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic11@gmail.com', 'Thomas Clayton Dr', '(03) 9566 2733', 'DefaultClinic.jpg', '499 Springvale Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10012, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic12@gmail.com', 'Thean Janice Dr', '(03) 9886 5522', 'DefaultClinic.jpg', '226 Springvale Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10013, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic13@gmail.com', 'Specialist Vein Care', '(03) 9561 5155', 'DefaultClinic.jpg', '258 Springvale Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10014, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic14@gmail.com', 'Skinner TG Dr', '(03) 9802 8844', 'DefaultClinic.jpg', '1 Fairhills Parade', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10015, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic15@gmail.com', 'Singh Harpreet', '(03) 9802 8155', 'DefaultClinic.jpg', '370 Blackburn Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10016, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic16@gmail.com', 'Robertson I E V', '(03) 9802 9101', 'DefaultClinic.jpg', '598 High Street Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10017, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic17@gmail.com', 'Robertson Dr. Ian', '(03) 9802 9101', 'DefaultClinic.jpg', '598 High Street Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10018, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic18@gmail.com', 'Riseley Judith Dr', '(03) 9814 9999', 'DefaultClinic.jpg', '244 Springvale Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10019, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic19@gmail.com', 'Riseley Judith', '(03) 9803 4800', 'DefaultClinic.jpg', '747 High Street Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10020, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic20@gmail.com', 'Reid John D.', 'Send Enquiry', 'DefaultClinic.jpg', '859 Waverley Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10021, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic21@gmail.com', 'Pippa Marsdland Dr.', '(03) 9802 8155', 'DefaultClinic.jpg', '370 Blackburn Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10022, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic22@gmail.com', 'A Wheelers Hill Clinic', '', 'DefaultClinic.jpg', '847 Ferntree Gully Rd', '3150', 'Wheelers Hill', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10023, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic23@gmail.com', 'AAA Waverley Medical Centre', '', 'DefaultClinic.jpg', '244 Springvale Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10024, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic24@gmail.com', 'Ah Sang Wendy', '(03) 9561 3200', 'DefaultClinic.jpg', '847 Ferntree Gully Rd', '3150', 'Wheelers Hill', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10025, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic25@gmail.com', 'Al-Souffi M Dr', '(03) 9562 2288', 'DefaultClinic.jpg', 'Cnr Springvale Rd and Magid Ave', '3150', 'Wheelers Hill', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10026, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic26@gmail.com', 'Appletree Hill Medical Centre', '(03) 9887 8223', 'DefaultClinic.jpg', '888 High Street Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10027, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic27@gmail.com', 'Arnold Carolyn Dr', '(03) 9566 2733', 'DefaultClinic.jpg', '499 Springvale Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10028, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic28@gmail.com', 'Banerjee Pramita Dr', '(03) 9814 9999', 'DefaultClinic.jpg', '244 Springvale Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10029, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic29@gmail.com', 'Bob Haran Dr', '(03) 9561 6102', 'DefaultClinic.jpg', '6 Ondine Dr', '3150', 'Wheelers Hill', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10030, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic30@gmail.com', 'Cheah S H DR', '(03) 9561 3999', 'DefaultClinic.jpg', '183 Jells Rd', '3150', 'Wheelers Hill', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10031, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic31@gmail.com', 'Chitra Haran, Dr', '(03) 9561 6102', 'DefaultClinic.jpg', '6 Ondine Dr', '3150', 'Wheelers Hill', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10032, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic32@gmail.com', 'Court D', '(03) 9561 3200', 'DefaultClinic.jpg', '847 Ferntree Gully Rd', '3150', 'Wheelers Hill', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10033, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic33@gmail.com', 'Court D B', '(03) 9561 3200', 'DefaultClinic.jpg', '847 Ferntree Gully Rd', '3150', 'Wheelers Hill', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10034, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic34@gmail.com', 'Courtney Peter Dr', '(03) 9566 2759', 'DefaultClinic.jpg', '499 Springvale Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10035, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic35@gmail.com', 'DeSouza Michael Dr', '(03) 9803 5494', 'DefaultClinic.jpg', '888 High Street Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10036, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic36@gmail.com', 'Diagnostic Medical Ultrasound Services Pty Ltd', '1300 693 246', 'DefaultClinic.jpg', 'Suite Ground Floor 24 202 Jells Rd', '3150', 'Wheelers Hill', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10037, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic37@gmail.com', 'Ebrahim E', '(03) 9560 9473', 'DefaultClinic.jpg', '705 Waverley Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10038, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic38@gmail.com', 'Edwards Christine Dr', '(03) 9803 5494', 'DefaultClinic.jpg', '888 High Street Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10039, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic39@gmail.com', 'Elderton Janette Dr', '(03) 9803 5494', 'DefaultClinic.jpg', '888 High Street Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10040, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic40@gmail.com', 'Fairhills Medical Clinic', '', 'DefaultClinic.jpg', '1 Fairhills Parade', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10041, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic41@gmail.com', 'Freeman Anne', '(03) 9562 2288', 'DefaultClinic.jpg', '2 Magid Ave', '3170', 'Mulgrave', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10042, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic42@gmail.com', 'Gregory Lee', '(03) 9562 2288', 'DefaultClinic.jpg', '2 Magid Ave', '3170', 'Mulgrave', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10043, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic43@gmail.com', 'Athari Dr.', '(03) 9748 9777', 'DefaultClinic.jpg', '241 Heaths Rd', '3030', 'Werribee', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10044, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic44@gmail.com', 'Barnetson W', '(03) 9749 2766', 'DefaultClinic.jpg', '233 Heaths Rd', '3030', 'Werribee', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10045, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic45@gmail.com', 'Bermudez R', '(03) 9749 2766', 'DefaultClinic.jpg', '233 Heaths Rd', '3030', 'Werribee', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10046, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic46@gmail.com', 'Bradley M F', '(03) 9741 9511', 'DefaultClinic.jpg', '1 Pine Ave', '3030', 'Werribee', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10047, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic47@gmail.com', 'Braude G', '(03) 9749 2766', 'DefaultClinic.jpg', '229 Heaths Rd', '3030', 'Werribee', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10048, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic48@gmail.com', 'Burke Dr', '(03) 9749 2766', 'DefaultClinic.jpg', '233 Heaths Rd', '3030', 'Werribee', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10049, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic49@gmail.com', 'Calder R T Dr', '(03) 9216 8633', 'DefaultClinic.jpg', '300 Princess Hwy', '3030', 'Werribee', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10050, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic50@gmail.com', 'Caric Vladimir Dr', '(03) 9395 6333', 'DefaultClinic.jpg', 'Shop 33/ 300 Point Cook Rd', '3030', 'Point Cook', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10051, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic51@gmail.com', 'Caroline Syme', '0432 023 416', 'DefaultClinic.jpg', '5 Huntington Ct', '3030', 'Werribee', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10052, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic52@gmail.com', 'Cox Dr', '(03) 9749 2766', 'DefaultClinic.jpg', '233 Heaths Rd', '3030', 'Werribee', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10053, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic53@gmail.com', 'Dalton Dr', '(03) 9749 2766', 'DefaultClinic.jpg', '233 Heaths Rd', '3030', 'Werribee', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10054, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic54@gmail.com', 'Dillane P', '(03) 9741 2033', 'DefaultClinic.jpg', '13 Synnot St', '3030', 'Werribee', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10055, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic55@gmail.com', 'Dr Jared Mee', '(03) 9749 7846', 'DefaultClinic.jpg', '297 Princess Hwy', '3030', 'Werribee', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10056, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic56@gmail.com', 'Dr. Chalam Kolli', '', 'DefaultClinic.jpg', '15 Princes Hwy', '3030', 'Werribee', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10057, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic57@gmail.com', 'Dr. Peter Pocock', '(03) 9395 3899', 'DefaultClinic.jpg', '69 Sanctuary Lakes South Blv', '3030', 'Point Cook', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10058, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic58@gmail.com', 'Dunne K', '(03) 9741 9191', 'DefaultClinic.jpg', '297 Princes Hwy', '3030', 'Werribee', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10059, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic59@gmail.com', 'Feekery Colin', '(03) 9749 2766', 'DefaultClinic.jpg', '229 Heaths Rd', '3030', 'Werribee', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10060, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic60@gmail.com', 'Fernando Dr', '(03) 9749 2766', 'DefaultClinic.jpg', '233 Heaths Rd', '3030', 'Werribee', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10061, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic61@gmail.com', 'Giam E', '(03) 9749 2766', 'DefaultClinic.jpg', '229 Heaths Rd', '3030', 'Werribee', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10062, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic62@gmail.com', 'Giam Edward', '(03) 9749 2766', 'DefaultClinic.jpg', '233 Heaths Rd', '3030', 'Werribee', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10063, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic63@gmail.com', 'Gilani M', '(03) 9749 2766', 'DefaultClinic.jpg', '233 Heaths Rd', '3030', 'Werribee', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10064, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic64@gmail.com', 'Grogan Helen Dr', '', 'DefaultClinic.jpg', '242 Hoppers Lane', '3030', 'Werribee', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10065, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic65@gmail.com', 'A M Monteith', '(03) 9830 7130', 'DefaultClinic.jpg', '524 Whitehorse Rd', '3127', 'Surrey Hills', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10066, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic66@gmail.com', 'A Whiter Smiley', '1300 661 159', 'DefaultClinic.jpg', '541 Elgar Rd', '3128', 'Box Hill', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10067, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic67@gmail.com', 'Alpha Dental Group', '(03) 9894 4479', 'DefaultClinic.jpg', '20C Blackburn Rd', '3130', 'Blackburn', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10068, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic68@gmail.com', 'An Eileen Dr', '(03) 9899 0288', 'DefaultClinic.jpg', 'Level 1 934 Whitehorse Rd', '3128', 'Box Hill', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10069, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic69@gmail.com', 'Australian Unity Dental Care', '(03) 9897 1038', 'DefaultClinic.jpg', '973 Whitehorse Rd', '3128', 'Box Hill', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10070, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic70@gmail.com', 'Bastian Kathryn Dr', '(03) 9808 1735', 'DefaultClinic.jpg', '204 Elgar Rd', '3128', 'Box Hill South', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10071, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic71@gmail.com', 'Blackburn Clinic Dental Centre', '(03) 9878 1597', 'DefaultClinic.jpg', '195 Whitehorse Rd', '3130', 'Blackburn', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10072, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic72@gmail.com', 'Blackburn Dental Group', '(03) 9878 1411', 'DefaultClinic.jpg', '23 Blackburn Rd', '3130', 'Blackburn', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10073, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic73@gmail.com', 'Box Hill Dental', '(03) 9890 7364', 'DefaultClinic.jpg', '106 Thames St', '3128', 'Box Hill', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10074, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic74@gmail.com', 'Box Hill Family Dentistry', '(03) 9899 3110', 'DefaultClinic.jpg', 'Level 2/ 43 Carrington Rd', '3128', 'Box Hill', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10075, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic75@gmail.com', 'Boyd Robyn', '(03) 9890 7364', 'DefaultClinic.jpg', '106 Thames St', '3128', 'Box Hill', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10076, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic76@gmail.com', 'Burwood Dental Centre', '(03) 9888 7534', 'DefaultClinic.jpg', '356 Burwood Hwy', '3125', 'Burwood', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10077, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic77@gmail.com', 'Chan Steven K W Dr', '(03) 9890 7100', 'DefaultClinic.jpg', 'Suite 8, Centro Box Hill North , 17 Market St', '3128', 'Box Hill', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10078, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic78@gmail.com', 'Chang Juliana Dr', '(03) 9899 0288', 'DefaultClinic.jpg', 'Level 1 934 Whitehorse Rd', '3128', 'Box Hill', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10079, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic79@gmail.com', 'Cheung D K S Dr', '(03) 9899 3415', 'DefaultClinic.jpg', '1st Floor 591 Station St', '3128', 'Box Hill', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10080, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic80@gmail.com', 'Chong Dental Surgery', '(03) 9899 2980', 'DefaultClinic.jpg', 'Level 1/587- 589 Station St', '3128', 'Box Hill', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10081, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic81@gmail.com', 'Chong Dental Surgery', '(03) 9899 2980', 'DefaultClinic.jpg', '1st Floor 587- 589 Station St', '3128', 'Box Hill', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10082, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic82@gmail.com', 'Crystal Dental Imaging', '(03) 9897 1569', 'DefaultClinic.jpg', '1029 Whitehorse Rd', '3128', 'Box Hill', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10083, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic83@gmail.com', 'Dental Care Today', '0448 832 867', 'DefaultClinic.jpg', '244 Canterbury Rd', '3131', 'Forest Hill', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10084, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic84@gmail.com', 'Dentalcare For All', '(03) 9897 1174', 'DefaultClinic.jpg', 'Suite 3/ 1A Carrington Rd', '3128', 'Box Hill', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10085, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic85@gmail.com', 'A. Pacella Dr', '(03) 9560 9573', 'DefaultClinic.jpg', '268 Springvale Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10086, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic86@gmail.com', 'AA Pacella Dr & Associates', '(03) 9560 9573', 'DefaultClinic.jpg', '268 Springvale Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10087, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic87@gmail.com', 'Agha Karim Dr', '(03) 9561 1118', 'DefaultClinic.jpg', '568 Blackburn Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10088, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic88@gmail.com', 'Bloom Jason Dr', '(03) 9803 0964', 'DefaultClinic.jpg', '312 Blackburn Rd', '3149', 'Mt Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10089, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic89@gmail.com', 'Borgula Luke Dr', '(03) 9574 7757', 'DefaultClinic.jpg', 'Suite 2 262- 264 Springvale Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10090, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic90@gmail.com', 'Chan Michelle', '(03) 9887 8787', 'DefaultClinic.jpg', '230 Springvale Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10091, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic91@gmail.com', 'Chong Kiang Dr.', '(03) 9561 5355', 'DefaultClinic.jpg', '686 Ferntree Gully Rd', '3150', 'Wheelers Hill', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10092, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic92@gmail.com', 'Chua Lawrence Dr', '(03) 9802 0198', 'DefaultClinic.jpg', '470 Blackburn Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10093, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic93@gmail.com', 'De Hoyos Miro Dr', '(03) 9561 1118', 'DefaultClinic.jpg', '568 Blackburn Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10094, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic94@gmail.com', 'Dentist @ 330', '(03) 9886 5318', 'DefaultClinic.jpg', '330 Highbury Rd', '3149', 'Mt Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10095, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic95@gmail.com', 'Dowling Lawrence G & Melissa', '(03) 9802 2899', 'DefaultClinic.jpg', '240 Springvale Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10096, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic96@gmail.com', 'Dr A Pacella Pty Ltd', '(03) 9560 9573', 'DefaultClinic.jpg', '268 Springvale Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10097, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic97@gmail.com', 'Dr Andreas Bechler & Associates', '(03) 9803 3998', 'DefaultClinic.jpg', '1C Hanover Rd', '3133', 'Vermont South', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10098, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic98@gmail.com', 'Dr Barry Kave', '(03) 9560 2702', 'DefaultClinic.jpg', '861A Waverley Rd', '3150', 'Wheelers Hill', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10099, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic99@gmail.com', 'Dr Kevin Prouse and Dr M. Timol', '(03) 9560 5581', 'DefaultClinic.jpg', '9 Collegium Ave', '3150', 'Wheelers Hill', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10100, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic100@gmail.com', 'EK Dental', '(03) 9887 8787', 'DefaultClinic.jpg', '230 Springvale Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10101, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic101@gmail.com', 'EK Dental Surgery', '(03) 9887 8787', 'DefaultClinic.jpg', '230 Springvale Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10102, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic102@gmail.com', 'Ek Lee C Dr', '(03) 9887 8787', 'DefaultClinic.jpg', '230 Springvale Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10103, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic103@gmail.com', 'Estioko Leora Dr', '(03) 9560 2177', 'DefaultClinic.jpg', 'Suite 5 Level 1 264 Springvale Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10104, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic104@gmail.com', 'Farmer Glenda', '(03) 9802 2899', 'DefaultClinic.jpg', '240 Springvale Rd', '3150', 'Glen Waverley', '', '', 7, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10105, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic105@gmail.com', 'Advanced Imaging Parramatta', '', 'DefaultClinic.jpg', '116 Macquarie St', '2150', 'Parramatta', '', '', 2, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10106, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic106@gmail.com', 'Agar Ashish Dr', '(02) 9635 7077', 'DefaultClinic.jpg', '152 Marsden St', '2150', 'Parramatta', '', '', 2, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10107, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic107@gmail.com', 'Andrew Malous', '(02) 9687 6395', 'DefaultClinic.jpg', '191 Church St', '2150', 'Parramatta', '', '', 2, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10108, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic108@gmail.com', 'Argyle Street Medical Centre', '(02) 9893 8733', 'DefaultClinic.jpg', 'Shop 13, Westfield Shopping Town, Cnr Marsden and Argyle Sreets', '2150', 'Parramatta', '', '', 2, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10109, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic109@gmail.com', 'Aroney Jim & Caraiscos Phillip', '(02) 9893 8733', 'DefaultClinic.jpg', '144- 146 Church St', '2150', 'Parramatta', '', '', 2, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10110, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic110@gmail.com', 'Banerjee Bharati Dr', '(02) 9635 7077', 'DefaultClinic.jpg', '152 Marsden St', '2150', 'Parramatta', '', '', 2, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10111, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic111@gmail.com', 'Chan Derek Dr', '(02) 9635 7077', 'DefaultClinic.jpg', '152 Marsden St', '2150', 'Parramatta', '', '', 2, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10112, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic112@gmail.com', 'Christopher', '(02) 8677 7043', 'DefaultClinic.jpg', '302 Church St', '2150', 'Parramatta', '', '', 2, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10113, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic113@gmail.com', 'Dr Dai Tran', '(02) 9687 7664', 'DefaultClinic.jpg', 'Level 2 Suite 6 154 Marsden St', '2150', 'Parramatta', '', '', 2, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10114, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic114@gmail.com', 'Dr Dai Tran', '(02) 9687 7664', 'DefaultClinic.jpg', 'Suite 6 Level 2 154 Marsden St', '2150', 'Parramatta', '', '', 2, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10115, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic115@gmail.com', 'Dr Stewart Precians', '(02) 9687 7664', 'DefaultClinic.jpg', 'Ste 6/ 154 Marsden St', '2150', 'Parramatta', '', '', 2, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10116, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic116@gmail.com', 'Fed Dept Health', '(02) 9865 9333', 'DefaultClinic.jpg', '20 Smith St', '2150', 'Parramatta', '', '', 2, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39'),
-(10117, 'b87fd559e522c3bf34deb1b3d68ff15d', 'ypclinic117@gmail.com', 'Fitzsimons Ross Dr', '(02) 9635 7077', 'DefaultClinic.jpg', '152 Marsden St', '2150', 'Parramatta', '', '', 2, 1, NULL, 1, 'admin', '2017-01-23 08:37:39', 'admin', '2017-01-23 08:37:39');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `fd_customer_user`
---
-
-CREATE TABLE `fd_customer_user` (
-  `CUSTOMER_USER_ID` int(11) NOT NULL,
-  `CUSTOMER_USER_PWD` varchar(50) NOT NULL,
-  `CUSTOMER_USER_MAIL` varchar(50) NOT NULL,
-  `CUSTOMER_FIRSTNAME` varchar(50) NOT NULL,
-  `CUSTOMER_LASTNAME` varchar(50) NOT NULL,
-  `TITLE_ID` int(11) NOT NULL,
-  `GENDER_ID` int(11) NOT NULL,
-  `CUSTOMER_BIRTHDAY` varchar(50) NOT NULL,
-  `CUSTOMER_ADDR` varchar(200) NOT NULL,
-  `CUSTOMER_POSTCODE` varchar(50) NOT NULL,
-  `CUSTOMER_SUBURB` varchar(50) NOT NULL,
-  `CUSTOMER_LAT` varchar(20) NOT NULL,
-  `CUSTOMER_LNG` varchar(20) NOT NULL,
-  `STATE_ID` int(11) NOT NULL,
-  `CUSTOMER_PHONE_NO` varchar(50) NOT NULL,
-  `MEDICAL_CARD_NO` varchar(50) NOT NULL,
-  `ACTIVE_STATUS` int(11) NOT NULL DEFAULT '1',
-  `NOTE` varchar(200) NOT NULL,
-  `CREATE_USER` varchar(50) NOT NULL,
-  `CREATE_DATE` datetime NOT NULL,
-  `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `fd_customer_user`
---
-
-INSERT INTO `fd_customer_user` (`CUSTOMER_USER_ID`, `CUSTOMER_USER_PWD`, `CUSTOMER_USER_MAIL`, `CUSTOMER_FIRSTNAME`, `CUSTOMER_LASTNAME`, `TITLE_ID`, `GENDER_ID`, `CUSTOMER_BIRTHDAY`, `CUSTOMER_ADDR`, `CUSTOMER_POSTCODE`, `CUSTOMER_SUBURB`, `CUSTOMER_LAT`, `CUSTOMER_LNG`, `STATE_ID`, `CUSTOMER_PHONE_NO`, `MEDICAL_CARD_NO`, `ACTIVE_STATUS`, `NOTE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
-(207, '098f6bcd4621d373cade4e832627b4f6', 'test@gmail.com', 'test', 'test', 0, 0, '23/02/1981', '1 Whitehorse Road', '3128', 'Box Hill', '-37.8192605', '145.13905020000004', 7, '0412341234', '1231231231', 1, '', 'test@gmail.com', '2017-01-23 09:51:38', 'test@gmail.com', '2017-05-01 04:33:23');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `fd_dict_appointment_status`
---
-
-CREATE TABLE `fd_dict_appointment_status` (
-  `APPOINTMENT_STATUS_ID` int(11) NOT NULL,
-  `APPOINTMENT_STATUS` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `fd_dict_appointment_status`
---
-
-INSERT INTO `fd_dict_appointment_status` (`APPOINTMENT_STATUS_ID`, `APPOINTMENT_STATUS`) VALUES
-(1, 'Booked'),
-(2, 'Cancelled'),
-(3, 'Check in'),
-(4, 'No show');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `fd_dict_gender_ch`
---
-
-CREATE TABLE `fd_dict_gender_ch` (
-  `GENDER_ID` int(11) NOT NULL,
-  `GENDER_NAME` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `fd_dict_gender_ch`
---
-
-INSERT INTO `fd_dict_gender_ch` (`GENDER_ID`, `GENDER_NAME`) VALUES
-(0, '女'),
-(1, '男');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `fd_dict_gender_en`
---
-
-CREATE TABLE `fd_dict_gender_en` (
-  `GENDER_ID` int(11) NOT NULL,
-  `GENDER_NAME` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `fd_dict_gender_en`
---
-
-INSERT INTO `fd_dict_gender_en` (`GENDER_ID`, `GENDER_NAME`) VALUES
-(0, 'Female'),
-(1, 'Male');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `fd_dict_language`
---
-
-CREATE TABLE `fd_dict_language` (
-  `LANGUAGE_ID` int(11) NOT NULL,
-  `LANGUAGE_NAME` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `fd_dict_language`
---
-
-INSERT INTO `fd_dict_language` (`LANGUAGE_ID`, `LANGUAGE_NAME`) VALUES
-(0, 'English'),
-(1, 'Chinese'),
-(2, 'Spanish'),
-(3, 'Arabic');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `fd_dict_log_type`
---
-
-CREATE TABLE `fd_dict_log_type` (
-  `LOG_TYPE_ID` int(11) NOT NULL,
-  `LOG_TYPE` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- 表的结构 `fd_dict_search`
---
-
-CREATE TABLE `fd_dict_search` (
-  `SEARCH_ID` int(11) NOT NULL,
-  `SEARCH_CONTENT` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `fd_dict_search`
---
-
-INSERT INTO `fd_dict_search` (`SEARCH_ID`, `SEARCH_CONTENT`) VALUES
-(1, '诊所区域'),
-(2, '诊所名称'),
-(3, '医生类别'),
-(4, '医生姓名'),
-(5, '预约时间'),
-(6, '医生距离');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `fd_dict_state`
---
-
-CREATE TABLE `fd_dict_state` (
-  `STATE_ID` int(11) NOT NULL,
-  `STATE_NAME` varchar(50) NOT NULL,
-  `STATE_POSTCODE` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `fd_dict_state`
---
-
-INSERT INTO `fd_dict_state` (`STATE_ID`, `STATE_NAME`, `STATE_POSTCODE`) VALUES
-(1, 'QLD', ''),
-(2, 'NSW', ''),
-(3, 'ACT', ''),
-(4, 'NT', ''),
-(5, 'SA', ''),
-(6, 'TAS', ''),
-(7, 'VIC', ''),
-(8, 'WA', '');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `fd_dict_title`
---
-
-CREATE TABLE `fd_dict_title` (
-  `TITLE_ID` int(11) NOT NULL,
-  `TITLE_NAME` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `fd_dict_title`
---
-
-INSERT INTO `fd_dict_title` (`TITLE_ID`, `TITLE_NAME`) VALUES
-(0, 'Mr'),
-(1, 'Mrs'),
-(2, 'Ms'),
-(3, 'Miss'),
-(4, 'Master'),
-(5, 'Dr');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `fd_doctor`
---
-
-CREATE TABLE `fd_doctor` (
-  `DOCTOR_ID` int(11) NOT NULL,
-  `DOCTOR_TYPE` varchar(50) NOT NULL,
-  `DOCTOR_NAME` varchar(50) NOT NULL,
-  `DOCTOR_GENDER` varchar(50) NOT NULL,
-  `ACTIVE_STATUS` int(11) NOT NULL,
-  `DOCTOR_PHOTO` varchar(200) NOT NULL,
-  `DOCTOR_INFO` varchar(5000) NOT NULL,
-  `NOTE` varchar(200) NOT NULL,
-  `DOCTOR_ID_IMPORT` int(11) NOT NULL,
-  `CREATE_USER` varchar(50) NOT NULL,
-  `CREATE_DATE` datetime NOT NULL,
-  `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `fd_doctor`
---
-
-INSERT INTO `fd_doctor` (`DOCTOR_ID`, `DOCTOR_TYPE`, `DOCTOR_NAME`, `DOCTOR_GENDER`, `ACTIVE_STATUS`, `DOCTOR_PHOTO`, `DOCTOR_INFO`, `NOTE`, `DOCTOR_ID_IMPORT`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
-(1, 'GP', 'John Doe', '', 1, 'test_huatuo.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(2, 'GP', 'Frank Underwood', '', 1, 'test_bianque.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(3, 'GP', 'Cal Lightman', '', 1, 'test_lishizhen.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(4, 'GP', 'Roy Brench', '', 1, 'test_huangfeihong.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(5, 'GP', 'Gillian Foster', '', 1, 'test_shisanyi.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(6, 'GP', 'Ria Torres', '', 1, 'test_linshirong.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(8, 'GP', 'Maurice Moss', '', 1, 'test_chenzhen.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(101, 'GP', 'John Doe', '', 1, 'test_doctor.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(102, 'GP', 'Frank Underwood', '', 1, 'test_doctor.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(103, 'GP', 'Cal Lightman', '', 1, 'test_doctor.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(104, 'GP', 'Roy Brench', '', 1, 'test_doctor.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(105, 'GP', 'Gillian Foster', '', 1, 'test_doctor.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(106, 'GP', 'Ria Torres', '', 1, 'test_doctor.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(108, 'GP', 'Maurice Moss', '', 1, 'test_doctor.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(111, 'GP', 'John Doe', '', 1, 'test_doctor.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(112, 'GP', 'Frank Underwood', '', 1, 'test_doctor.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(113, 'GP', 'Cal Lightman', '', 1, 'test_doctor.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(114, 'GP', 'Roy Brench', '', 1, 'test_doctor.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(115, 'GP', 'Gillian Foster', '', 1, 'test_doctor.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(116, 'GP', 'Ria Torres', '', 1, 'test_doctor.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(118, 'GP', 'Maurice Moss', '', 1, 'test_doctor.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(10001, 'GP', 'DummyDoctor', '', 1, 'DefaultDoctor.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(10002, 'Dentist', 'DummyDoctor', '', 1, 'DefaultDoctor.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(10003, 'Dietitian', 'DummyDoctor', '', 1, 'DefaultDoctor.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(10004, 'Physio', 'DummyDoctor', '', 1, 'DefaultDoctor.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(10005, 'Podiatrist', 'DummyDoctor', '', 1, 'DefaultDoctor.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(10006, 'Psychologist', 'DummyDoctor', '', 1, 'DefaultDoctor.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(10007, 'Chiropractor', 'DummyDoctor', '', 1, 'DefaultDoctor.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(10008, 'Audiologist', 'DummyDoctor', '', 1, 'DefaultDoctor.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(10009, 'Optometry', 'DummyDoctor', '', 1, 'DefaultDoctor.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(10010, 'Skin specialist', 'DummyDoctor', '', 1, 'DefaultDoctor.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(10011, 'Counsellor', 'DummyDoctor', '', 1, 'DefaultDoctor.jpg', '', '', 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(10058, '', 'xin yin', '1', 0, 'miaoyl.jpg', 'abc', '', 6, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(10059, '', 'xin yin', '', 0, '', '', '', 8, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(10060, '', 'cuishan zhang', '', 0, '', '', '', 15, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(10061, '', 'susu yin', '', 0, '', '', '', 16, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `fd_function`
---
-
-CREATE TABLE `fd_function` (
-  `FUNCTION_ID` int(11) NOT NULL,
-  `FUNCTION_CODE` varchar(50) NOT NULL,
-  `FUNCTION_NAME` varchar(50) NOT NULL,
-  `NOTE` varchar(200) NOT NULL,
-  `CREATE_USER` varchar(50) NOT NULL,
-  `CREATE_DATE` datetime NOT NULL,
-  `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- 表的结构 `fd_log`
---
-
-CREATE TABLE `fd_log` (
-  `LOG_ID` int(11) NOT NULL,
-  `LOG_TYPE_ID` int(11) NOT NULL,
-  `FUNCTION_ID` varchar(50) NOT NULL,
-  `FUNCTION_NAME` varchar(50) NOT NULL,
-  `LOG_CONTENT` varchar(200) NOT NULL,
-  `CREATE_DATE` datetime NOT NULL,
-  `CREATE_USER` varchar(50) NOT NULL,
-  `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- 表的结构 `fd_rel_clinic_doctor`
---
-
-CREATE TABLE `fd_rel_clinic_doctor` (
-  `CLINIC_DOCTOR_ID` int(11) NOT NULL,
-  `CLINIC_USER_ID` int(11) NOT NULL,
-  `DOCTOR_ID` int(11) NOT NULL,
-  `CREATE_USER` varchar(50) NOT NULL,
-  `CREATE_DATE` datetime NOT NULL,
-  `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `fd_rel_clinic_doctor`
---
-
-INSERT INTO `fd_rel_clinic_doctor` (`CLINIC_DOCTOR_ID`, `CLINIC_USER_ID`, `DOCTOR_ID`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
-(1, 1, 1, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(2, 1, 2, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(3, 1, 3, 'admin', '2016-08-22 00:00:00', 'admin', '2016-08-22 00:00:00'),
-(4, 2, 4, 'admin', '2016-08-22 00:00:00', 'admin', '2016-08-22 00:00:00'),
-(5, 2, 5, 'admin', '2016-08-22 00:00:00', 'admin', '2016-08-22 00:00:00'),
-(6, 2, 6, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(7, 3, 7, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(8, 3, 8, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(9, 3, 9, 'admin', '2016-08-22 00:00:00', 'admin', '2016-08-22 00:00:00'),
-(11, 1, 101, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(12, 1, 102, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(13, 1, 103, 'admin', '2016-08-22 00:00:00', 'admin', '2016-08-22 00:00:00'),
-(14, 1, 104, 'admin', '2016-08-22 00:00:00', 'admin', '2016-08-22 00:00:00'),
-(15, 1, 105, 'admin', '2016-08-22 00:00:00', 'admin', '2016-08-22 00:00:00'),
-(16, 1, 106, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(17, 1, 107, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(18, 1, 108, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(19, 1, 109, 'admin', '2016-08-22 00:00:00', 'admin', '2016-08-22 00:00:00'),
-(21, 1, 111, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(22, 1, 112, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(23, 1, 113, 'admin', '2016-08-22 00:00:00', 'admin', '2016-08-22 00:00:00'),
-(24, 1, 114, 'admin', '2016-08-22 00:00:00', 'admin', '2016-08-22 00:00:00'),
-(25, 1, 115, 'admin', '2016-08-22 00:00:00', 'admin', '2016-08-22 00:00:00'),
-(26, 1, 116, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(27, 1, 117, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(28, 1, 118, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(29, 1, 119, 'admin', '2016-08-22 00:00:00', 'admin', '2016-08-22 00:00:00'),
-(10001, 10001, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10002, 10002, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10003, 10003, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10004, 10004, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10005, 10005, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10006, 10006, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10007, 10007, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10008, 10008, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10009, 10009, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10010, 10010, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10011, 10011, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10012, 10012, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10013, 10013, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10014, 10014, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10015, 10015, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10016, 10016, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10017, 10017, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10018, 10018, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10019, 10019, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10020, 10020, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10021, 10021, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10022, 10022, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10023, 10023, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10024, 10024, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10025, 10025, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10026, 10026, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10027, 10027, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10028, 10028, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10029, 10029, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10030, 10030, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10031, 10031, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10032, 10032, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10033, 10033, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10034, 10034, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10035, 10035, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10036, 10036, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10037, 10037, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10038, 10038, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10039, 10039, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10040, 10040, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10041, 10041, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10042, 10042, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10043, 10043, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10044, 10044, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10045, 10045, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10046, 10046, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10047, 10047, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10048, 10048, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10049, 10049, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10050, 10050, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10051, 10051, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10052, 10052, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10053, 10053, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10054, 10054, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10055, 10055, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10056, 10056, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10057, 10057, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10058, 10058, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10059, 10059, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10060, 10060, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10061, 10061, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10062, 10062, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10063, 10063, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10064, 10064, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10065, 10065, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10066, 10066, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10067, 10067, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10068, 10068, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10069, 10069, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10070, 10070, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10071, 10071, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10072, 10072, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10073, 10073, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10074, 10074, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10075, 10075, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10076, 10076, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10077, 10077, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10078, 10078, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10079, 10079, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10080, 10080, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10081, 10081, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10082, 10082, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10083, 10083, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10084, 10084, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10085, 10085, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10086, 10086, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10087, 10087, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10088, 10088, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10089, 10089, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10090, 10090, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10091, 10091, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10092, 10092, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10093, 10093, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10094, 10094, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10095, 10095, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10096, 10096, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10097, 10097, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10098, 10098, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10099, 10099, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10100, 10100, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10101, 10101, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10102, 10102, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10103, 10103, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10104, 10104, 10002, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10105, 10105, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10106, 10106, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10107, 10107, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10108, 10108, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10109, 10109, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10110, 10110, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10111, 10111, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10112, 10112, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10113, 10113, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10114, 10114, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10115, 10115, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10116, 10116, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10117, 10117, 10001, 'admin', '2016-08-16 00:00:00', 'admin', '2016-08-16 00:00:00'),
-(10147, 1, 10058, 'bencaotang@gmail.com', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(10148, 1, 10059, 'bencaotang@gmail.com', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(10149, 1, 10060, 'bencaotang@gmail.com', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(10150, 1, 10061, 'bencaotang@gmail.com', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `fd_rel_customer_appointment`
---
-
-CREATE TABLE `fd_rel_customer_appointment` (
-  `CUSTOMER_APPOINTMENT_ID` int(11) NOT NULL,
-  `CUSTOMER_USER_ID` int(11) NOT NULL,
-  `DOCTOR_ID` int(11) NOT NULL,
-  `DOCTOR_APPOINTMENT_TIME_ID` int(11) NOT NULL,
-  `APPOINTMENT_STATUS_ID` int(11) NOT NULL,
-  `NOTE` varchar(200) NOT NULL,
-  `CREATE_USER` varchar(50) NOT NULL,
-  `CREATE_DATE` datetime NOT NULL,
-  `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `fd_rel_customer_appointment`
---
-
-INSERT INTO `fd_rel_customer_appointment` (`CUSTOMER_APPOINTMENT_ID`, `CUSTOMER_USER_ID`, `DOCTOR_ID`, `DOCTOR_APPOINTMENT_TIME_ID`, `APPOINTMENT_STATUS_ID`, `NOTE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
-(32, 207, 10035, 26820, 1, '', 'test@gmail.com', '2017-05-01 05:09:44', 'test@gmail.com', '2017-05-01 05:09:44'),
-(33, 207, 10035, 26824, 1, '', 'test@gmail.com', '2017-05-01 05:22:52', 'test@gmail.com', '2017-05-01 05:22:52');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `fd_rel_customer_appointment_his`
---
-
-CREATE TABLE `fd_rel_customer_appointment_his` (
-  `CUSTOMER_APPOINTMENT_ID` int(11) NOT NULL,
-  `CUSTOMER_USER_ID` int(11) NOT NULL,
-  `DOCTOR_ID` int(11) NOT NULL,
-  `DOCTOR_APPOINTMENT_TIME_ID` int(11) NOT NULL,
-  `APPOINTMENT_STATUS_ID` varchar(50) NOT NULL,
-  `OPERATOR_STATUS` varchar(50) NOT NULL,
-  `NOTE` varchar(200) NOT NULL,
-  `CREATE_USER` varchar(50) NOT NULL,
-  `CREATE_DATE` datetime NOT NULL,
-  `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `fd_rel_customer_appointment_his`
---
-
-INSERT INTO `fd_rel_customer_appointment_his` (`CUSTOMER_APPOINTMENT_ID`, `CUSTOMER_USER_ID`, `DOCTOR_ID`, `DOCTOR_APPOINTMENT_TIME_ID`, `APPOINTMENT_STATUS_ID`, `OPERATOR_STATUS`, `NOTE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
-(85, 184, 1, 36, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-10-03 18:42:45', 'fudanyinxin@gmail.com', '2016-10-03 18:42:45'),
-(86, 184, 1, 37, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-10-03 18:43:02', 'fudanyinxin@gmail.com', '2016-10-03 18:43:02'),
-(87, 185, 61337, 15068, '1', 'A', '', 'kitty', '2016-11-12 07:33:36', 'kitty', '2016-11-12 07:33:36'),
-(88, 186, 61337, 15130, '1', 'A', '', 'dodo', '2016-11-12 07:46:31', 'dodo', '2016-11-12 07:46:31'),
-(89, 187, 61337, 15132, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-11 06:29:43', 'fudanyinxin@gmail.com', '2016-12-11 06:29:43'),
-(90, 187, 0, 15132, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-11 06:32:26', 'fudanyinxin@gmail.com', '2016-12-11 06:32:26'),
-(91, 187, 61337, 15184, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-11 09:05:02', 'fudanyinxin@gmail.com', '2016-12-11 09:05:02'),
-(92, 187, 61337, 15190, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-11 09:06:26', 'fudanyinxin@gmail.com', '2016-12-11 09:06:26'),
-(93, 187, 61337, 15198, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-11 09:17:24', 'fudanyinxin@gmail.com', '2016-12-11 09:17:24'),
-(94, 187, 61337, 15191, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-11 09:46:33', 'fudanyinxin@gmail.com', '2016-12-11 09:46:33'),
-(95, 187, 61337, 15192, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-11 09:49:01', 'fudanyinxin@gmail.com', '2016-12-11 09:49:01'),
-(96, 187, 61337, 15193, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-11 09:49:14', 'fudanyinxin@gmail.com', '2016-12-11 09:49:14'),
-(97, 187, 61337, 15194, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-11 09:49:22', 'fudanyinxin@gmail.com', '2016-12-11 09:49:22'),
-(98, 187, 61337, 15195, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-11 09:49:33', 'fudanyinxin@gmail.com', '2016-12-11 09:49:33'),
-(99, 187, 61337, 15196, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-11 11:07:26', 'fudanyinxin@gmail.com', '2016-12-11 11:07:26'),
-(100, 189, 0, 15197, '1', 'A', '', 'qwe', '2016-12-11 12:49:48', 'qwe', '2016-12-11 12:49:48'),
-(101, 189, 61337, 15197, '1', 'A', '', 'qwe', '2016-12-11 12:49:51', 'qwe', '2016-12-11 12:49:51'),
-(102, 190, 61339, 15187, '1', 'A', '', 'lop', '2016-12-11 12:51:40', 'lop', '2016-12-11 12:51:40'),
-(103, 191, 61339, 15189, '1', 'A', '', 'dongfangbubai', '2016-12-11 12:53:36', 'dongfangbubai', '2016-12-11 12:53:36'),
-(104, 191, 61337, 15134, '1', 'A', '', 'dongfangbubai', '2016-12-11 12:53:54', 'dongfangbubai', '2016-12-11 12:53:54'),
-(105, 187, 61339, 15234, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-13 07:44:59', 'fudanyinxin@gmail.com', '2016-12-13 07:44:59'),
-(106, 187, 61339, 15210, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-13 07:50:18', 'fudanyinxin@gmail.com', '2016-12-13 07:50:18'),
-(107, 187, 61339, 15205, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-13 07:50:46', 'fudanyinxin@gmail.com', '2016-12-13 07:50:46'),
-(108, 187, 61339, 15209, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-13 07:51:29', 'fudanyinxin@gmail.com', '2016-12-13 07:51:29'),
-(109, 187, 61340, 15216, '1', 'A', '', 'fudanyinxin@gmail.com', '2016-12-13 07:55:02', 'fudanyinxin@gmail.com', '2016-12-13 07:55:02'),
-(110, 0, 61337, 15280, '1', 'A', '', 'shelleymyl@gmail.com', '2017-01-19 09:51:07', 'shelleymyl@gmail.com', '2017-01-19 09:51:07'),
-(111, 0, 61337, 15294, '1', 'A', '', 'shelleymyl@gmail.com', '2017-01-19 09:57:22', 'shelleymyl@gmail.com', '2017-01-19 09:57:22'),
-(112, 0, 9, 15800, '1', 'A', '', 'test@gmail.com', '2017-02-02 15:09:20', 'test@gmail.com', '2017-02-02 15:09:20'),
-(113, 0, 9, 15814, '1', 'A', '', 'test@gmail.com', '2017-02-02 15:10:07', 'test@gmail.com', '2017-02-02 15:10:07'),
-(114, 0, 9, 15804, '1', 'A', '', 'test@gmail.com', '2017-02-02 15:21:27', 'test@gmail.com', '2017-02-02 15:21:27'),
-(115, 0, 9, 15814, '1', 'A', '', 'test@gmail.com', '2017-02-02 15:35:40', 'test@gmail.com', '2017-02-02 15:35:40'),
-(116, 0, 9, 15801, '1', 'A', '', 'test@gmail.com', '2017-02-02 15:35:53', 'test@gmail.com', '2017-02-02 15:35:53'),
-(117, 207, 9, 15801, '1', 'A', '', 'test@gmail.com', '2017-02-02 15:37:17', 'test@gmail.com', '2017-02-02 15:37:17'),
-(118, 207, 9, 15800, '1', 'A', '', 'test@gmail.com', '2017-02-05 10:25:51', 'test@gmail.com', '2017-02-05 10:25:51'),
-(119, 207, 9, 15802, '1', 'A', '', 'test@gmail.com', '2017-02-05 10:26:34', 'test@gmail.com', '2017-02-05 10:26:34'),
-(120, 207, 1, 16295, '1', 'A', '', 'test@gmail.com', '2017-02-05 10:40:50', 'test@gmail.com', '2017-02-05 10:40:50'),
-(121, 207, 1, 15890, '1', 'A', '', 'test@gmail.com', '2017-02-05 10:41:26', 'test@gmail.com', '2017-02-05 10:41:26'),
-(122, 207, 2, 16296, '1', 'A', '', 'test@gmail.com', '2017-02-05 10:42:05', 'test@gmail.com', '2017-02-05 10:42:05'),
-(123, 207, 3, 16306, '1', 'A', '', 'test@gmail.com', '2017-02-06 17:32:04', 'test@gmail.com', '2017-02-06 17:32:04'),
-(124, 208, 1, 16564, '1', 'A', '', 't@gmail.com', '2017-02-16 21:41:57', 't@gmail.com', '2017-02-16 21:41:57'),
-(125, 209, 1, 16556, '1', 'A', '', 'er@gmail.com', '2017-02-16 21:43:42', 'er@gmail.com', '2017-02-16 21:43:42'),
-(126, 210, 1, 16558, '1', 'A', '', 'h@g.com', '2017-02-16 21:57:55', 'h@g.com', '2017-02-16 21:57:55'),
-(127, 207, 1, 17165, '1', 'A', '', 'test@gmail.com', '2017-03-03 08:34:56', 'test@gmail.com', '2017-03-03 08:34:56'),
-(128, 207, 11, 19429, '1', 'A', '', 'test@gmail.com', '2017-03-28 11:33:38', 'test@gmail.com', '2017-03-28 11:33:38'),
-(129, 207, 11, 19430, '1', 'A', '', 'test@gmail.com', '2017-03-28 11:34:16', 'test@gmail.com', '2017-03-28 11:34:16'),
-(130, 211, 1, 23771, '1', 'A', '', 'c@c.com', '2017-04-19 10:37:55', 'c@c.com', '2017-04-19 10:37:55'),
-(131, 207, 10035, 26701, '1', 'A', '', 'test@gmail.com', '2017-04-30 15:16:12', 'test@gmail.com', '2017-04-30 15:16:12'),
-(132, 207, 10035, 26702, '1', 'A', '', 'test@gmail.com', '2017-04-30 15:17:21', 'test@gmail.com', '2017-04-30 15:17:21'),
-(133, 207, 10035, 26704, '1', 'A', '', 'test@gmail.com', '2017-04-30 15:17:46', 'test@gmail.com', '2017-04-30 15:17:46'),
-(134, 207, 10035, 26712, '1', 'A', '', 'test@gmail.com', '2017-04-30 15:20:34', 'test@gmail.com', '2017-04-30 15:20:34'),
-(135, 207, 10035, 26698, '1', 'A', '', 'test@gmail.com', '2017-04-30 17:40:30', 'test@gmail.com', '2017-04-30 17:40:30'),
-(136, 207, 10035, 26820, '1', 'A', '', 'test@gmail.com', '2017-05-01 05:09:44', 'test@gmail.com', '2017-05-01 05:09:44'),
-(137, 207, 10035, 26824, '1', 'A', '', 'test@gmail.com', '2017-05-01 05:22:52', 'test@gmail.com', '2017-05-01 05:22:52');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `fd_rel_customer_doctor`
---
-
-CREATE TABLE `fd_rel_customer_doctor` (
-  `CUSTOMER_DOCTOR_ID` int(11) NOT NULL,
-  `CUSTOMER_USER_ID` int(11) NOT NULL,
-  `DOCTOR_ID` int(11) NOT NULL,
-  `NOTE` varchar(200) NOT NULL,
-  `CREATE_USER` varchar(50) NOT NULL,
-  `CREATE_DATE` datetime NOT NULL,
-  `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `fd_rel_customer_doctor`
---
-
-INSERT INTO `fd_rel_customer_doctor` (`CUSTOMER_DOCTOR_ID`, `CUSTOMER_USER_ID`, `DOCTOR_ID`, `NOTE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
-(1, 187, 61338, '', 'fudanyinxin@gmail.com', '2016-12-12 15:41:43', 'fudanyinxin@gmail.com', '2016-12-12 15:41:43'),
-(2, 187, 61339, '', 'fudanyinxin@gmail.com', '2016-12-12 17:49:43', 'fudanyinxin@gmail.com', '2016-12-12 17:49:43'),
-(3, 187, 61337, '', 'fudanyinxin@gmail.com', '2016-12-13 04:56:19', 'fudanyinxin@gmail.com', '2016-12-13 04:56:19'),
-(4, 187, 61340, '', 'fudanyinxin@gmail.com', '2016-12-13 06:03:32', 'fudanyinxin@gmail.com', '2016-12-13 06:03:32'),
-(5, 0, 61338, '', 'fudanyinxin@gmail.com', '2016-12-14 07:54:12', 'fudanyinxin@gmail.com', '2016-12-14 07:54:12'),
-(6, 0, 61338, '', 'fudanyinxin@gmail.com', '2016-12-14 07:54:19', 'fudanyinxin@gmail.com', '2016-12-14 07:54:19'),
-(7, 207, 4, '', 'test@gmail.com', '2017-04-04 10:20:28', 'test@gmail.com', '2017-04-04 10:20:28'),
-(8, 207, 1, '', 'test@gmail.com', '2017-04-04 10:34:54', 'test@gmail.com', '2017-04-04 10:34:54'),
-(9, 207, 2, '', 'test@gmail.com', '2017-04-04 10:34:57', 'test@gmail.com', '2017-04-04 10:34:57'),
-(10, 207, 5, '', 'test@gmail.com', '2017-04-25 03:22:03', 'test@gmail.com', '2017-04-25 03:22:03');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `fd_rel_doctor_appointment_time`
---
-
-CREATE TABLE `fd_rel_doctor_appointment_time` (
-  `DOCTOR_APPOINTMENT_TIME_ID` int(11) NOT NULL,
-  `DOCTOR_ID` int(11) NOT NULL,
-  `APPOINTMENT_DATE` date NOT NULL,
-  `APPOINTMENT_TIME` time NOT NULL,
-  `ACTIVE_STATUS` int(11) NOT NULL,
-  `NOTE` varchar(200) NOT NULL,
-  `REQUESTING_FLAG` int(11) NOT NULL,
-  `REQUESTING_USER_ID` int(11) NOT NULL,
-  `SUCCESSFUL_FLAG` int(11) NOT NULL,
-  `CREATE_USER` varchar(50) NOT NULL,
-  `CREATE_DATE` datetime NOT NULL,
-  `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `fd_rel_doctor_appointment_time`
---
-
-INSERT INTO `fd_rel_doctor_appointment_time` (`DOCTOR_APPOINTMENT_TIME_ID`, `DOCTOR_ID`, `APPOINTMENT_DATE`, `APPOINTMENT_TIME`, `ACTIVE_STATUS`, `NOTE`, `REQUESTING_FLAG`, `REQUESTING_USER_ID`, `SUCCESSFUL_FLAG`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
-(27118, 10058, '2017-05-04', '09:30:00', 0, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27119, 10058, '2017-05-04', '09:45:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27120, 10058, '2017-05-04', '10:00:00', 0, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27121, 10058, '2017-05-04', '10:15:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27122, 10058, '2017-05-04', '10:30:00', 0, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27123, 10058, '2017-05-04', '10:45:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27124, 10058, '2017-05-04', '11:00:00', 0, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27125, 10058, '2017-05-04', '11:15:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27126, 10058, '2017-05-04', '11:30:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27127, 10058, '2017-05-04', '11:45:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27128, 10058, '2017-05-04', '12:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27129, 10058, '2017-05-04', '12:15:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27130, 10058, '2017-05-04', '12:30:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27131, 10058, '2017-05-04', '12:45:00', 0, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27132, 10058, '2017-05-04', '13:00:00', 0, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27133, 10058, '2017-05-11', '09:30:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27134, 10058, '2017-05-11', '09:45:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27135, 10058, '2017-05-11', '10:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27136, 10058, '2017-05-11', '10:15:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27137, 10058, '2017-05-11', '10:30:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27138, 10058, '2017-05-11', '10:45:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27139, 10058, '2017-05-11', '11:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27140, 10058, '2017-05-11', '11:15:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27141, 10058, '2017-05-11', '11:30:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27142, 10058, '2017-05-11', '11:45:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27143, 10058, '2017-05-11', '12:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27144, 10058, '2017-05-11', '12:15:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27145, 10058, '2017-05-11', '12:30:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27146, 10058, '2017-05-11', '12:45:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27147, 10058, '2017-05-11', '13:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27148, 10058, '2017-05-18', '09:30:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27149, 10058, '2017-05-18', '09:45:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27150, 10058, '2017-05-18', '10:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27151, 10058, '2017-05-18', '10:15:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27152, 10058, '2017-05-18', '10:30:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27153, 10058, '2017-05-18', '10:45:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27154, 10058, '2017-05-18', '11:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27155, 10058, '2017-05-18', '11:15:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27156, 10058, '2017-05-18', '11:30:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27157, 10058, '2017-05-18', '11:45:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27158, 10058, '2017-05-18', '12:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27159, 10058, '2017-05-18', '12:15:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27160, 10058, '2017-05-18', '12:30:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27161, 10058, '2017-05-18', '12:45:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27162, 10058, '2017-05-18', '13:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27163, 10058, '2017-05-25', '09:30:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27164, 10058, '2017-05-25', '09:45:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27165, 10058, '2017-05-25', '10:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27166, 10058, '2017-05-25', '10:15:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27167, 10058, '2017-05-25', '10:30:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27168, 10058, '2017-05-25', '10:45:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27169, 10058, '2017-05-25', '11:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27170, 10058, '2017-05-25', '11:15:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27171, 10058, '2017-05-25', '11:30:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27172, 10058, '2017-05-25', '11:45:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27173, 10058, '2017-05-25', '12:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27174, 10058, '2017-05-25', '12:15:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27175, 10058, '2017-05-25', '12:30:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27176, 10058, '2017-05-25', '12:45:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(27177, 10058, '2017-05-25', '13:00:00', 1, '', 0, 0, 0, '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `fd_rel_doctor_appointment_time_his`
---
-
-CREATE TABLE `fd_rel_doctor_appointment_time_his` (
-  `DOCTOR_APPOINTMENT_TIME_ID` int(11) NOT NULL,
-  `DOCTOR_ID` int(11) NOT NULL,
-  `APPOINTMENT_DATE` datetime NOT NULL,
-  `ACTIVE_STATUS` int(11) NOT NULL,
-  `NOTE` varchar(200) NOT NULL,
-  `OPERATOR_STATUS` varchar(50) NOT NULL,
-  `CREATE_USER` varchar(50) NOT NULL,
-  `CREATE_DATE` datetime NOT NULL,
-  `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- 表的结构 `fd_rel_doctor_language`
---
-
-CREATE TABLE `fd_rel_doctor_language` (
-  `DOCTOR_LANGUAGE_ID` int(11) NOT NULL,
-  `DOCTOR_ID` int(11) NOT NULL,
-  `LANGUAGE_ID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- 转存表中的数据 `fd_rel_doctor_language`
---
-
-INSERT INTO `fd_rel_doctor_language` (`DOCTOR_LANGUAGE_ID`, `DOCTOR_ID`, `LANGUAGE_ID`) VALUES
-(72, 4, 1),
-(73, 5, 2),
-(74, 6, 3),
-(86, 2, 2),
-(87, 3, 3),
-(92, 1, 1),
-(93, 8, 2),
-(94, 8, 3),
-(95, 9, 2),
-(96, 9, 3),
-(97, 7, 2),
-(98, 1, 2),
-(118, 10058, 0),
-(119, 10058, 1),
-(120, 10058, 3);
-
--- --------------------------------------------------------
-
---
--- 表的结构 `fd_role`
---
-
-CREATE TABLE `fd_role` (
-  `ROLE_ID` int(11) NOT NULL,
-  `ROLE_NAME` varchar(50) NOT NULL,
-  `NOTE` varchar(200) DEFAULT NULL,
-  `CREATE_USER` varchar(50) NOT NULL,
-  `CREATE_DATE` datetime NOT NULL,
-  `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- 表的结构 `fd_save_search`
---
-
-CREATE TABLE `fd_save_search` (
-  `CUSTOMER_SEARCH_ID` int(11) NOT NULL,
-  `CUSTOMER_USER_ID` int(11) NOT NULL,
-  `SEARCH_NAME` varchar(50) NOT NULL,
-  `CLINIC_SUBURB` varchar(50) NOT NULL,
-  `STATE_ID` varchar(50) NOT NULL,
-  `CLINIC_NAME` varchar(50) NOT NULL,
-  `DOCTOR_TYPE` varchar(50) NOT NULL,
-  `DOCTOR_NAME` varchar(50) NOT NULL,
-  `DISTANCE` varchar(50) NOT NULL,
-  `CREATE_USER` varchar(50) NOT NULL,
-  `CREATE_DATE` datetime NOT NULL,
-  `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `fd_save_search`
---
-
-INSERT INTO `fd_save_search` (`CUSTOMER_SEARCH_ID`, `CUSTOMER_USER_ID`, `SEARCH_NAME`, `CLINIC_SUBURB`, `STATE_ID`, `CLINIC_NAME`, `DOCTOR_TYPE`, `DOCTOR_NAME`, `DISTANCE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
-(1, 0, '', '', '', '', '', '', '', 'fudanyinxin@gmail.com', '2016-12-14 07:24:18', 'fudanyinxin@gmail.com', '2016-12-14 07:24:18'),
-(2, 207, '', '', '', '', 'GP', '', '', 'test@gmail.com', '2017-04-11 05:21:53', 'test@gmail.com', '2017-04-11 05:21:53'),
-(3, 207, '', '', '', '', '', '', '20km', 'test@gmail.com', '2017-04-23 17:40:56', 'test@gmail.com', '2017-04-23 17:40:56'),
-(4, 207, '', '', '', '21', '', '', '20km', 'test@gmail.com', '2017-04-23 17:41:01', 'test@gmail.com', '2017-04-23 17:41:01'),
-(5, 207, '', '222', '', '21', '', '', '20km', 'test@gmail.com', '2017-04-23 17:41:04', 'test@gmail.com', '2017-04-23 17:41:04'),
-(6, 207, '', '222', '', '21', '', '444', '20km', 'test@gmail.com', '2017-04-23 17:41:08', 'test@gmail.com', '2017-04-23 17:41:08'),
-(7, 207, '', '222', '', '21', '', '444', '20km', 'test@gmail.com', '2017-04-23 17:41:14', 'test@gmail.com', '2017-04-23 17:41:14'),
-(8, 207, '', '222', '', 'eeeee', '', '444', '20km', 'test@gmail.com', '2017-04-23 17:41:20', 'test@gmail.com', '2017-04-23 17:41:20'),
-(9, 207, '', '222', '', 'eeeee', '', '444rrrrr', '20km', 'test@gmail.com', '2017-04-23 17:41:23', 'test@gmail.com', '2017-04-23 17:41:23'),
-(10, 207, '', '222', '', 'eeeeerrrrrrrrrrrrr', '', '444rrrrr', '20km', 'test@gmail.com', '2017-04-23 17:41:27', 'test@gmail.com', '2017-04-23 17:41:27'),
-(11, 207, '', '222', '', 'eeeeerrrrrrrrrrrrr', '', '444rrrrr4f', '20km', 'test@gmail.com', '2017-04-23 17:41:31', 'test@gmail.com', '2017-04-23 17:41:31'),
-(12, 207, '', '222', '', 'eeeeerrrrrrrrrrrrr', '', '444rrrrr4fe', '20km', 'test@gmail.com', '2017-04-23 17:41:33', 'test@gmail.com', '2017-04-23 17:41:33'),
-(13, 207, '', '222', '', 'eeeeerrrrrrrrrrrrr', '', '444rrrrr4ferr', '20km', 'test@gmail.com', '2017-04-23 17:41:36', 'test@gmail.com', '2017-04-23 17:41:36'),
-(14, 207, '', '222', '', 'eeeeerrrrrrrrrrrrr', '', '444rrrrr4ferr', '5km', 'test@gmail.com', '2017-04-23 17:41:39', 'test@gmail.com', '2017-04-23 17:41:39'),
-(15, 207, '', '222', '', 'eeeeerrrrrrrrrrrrrrr', '', '444rrrrr4ferr', '5km', 'test@gmail.com', '2017-04-23 17:41:43', 'test@gmail.com', '2017-04-23 17:41:43'),
-(16, 207, '', '222', '', 'eeeeerrrrrrrrrrrrrrrddd', '', '444rrrrr4ferr', '5km', 'test@gmail.com', '2017-04-23 17:41:47', 'test@gmail.com', '2017-04-23 17:41:47'),
-(17, 207, '', '222', '', 'eeeeerrrrrrrrrrrrrrrddd', '', '444rrrrr4ferrsss', '5km', 'test@gmail.com', '2017-04-23 17:41:52', 'test@gmail.com', '2017-04-23 17:41:52'),
-(18, 207, '', '222', '', 'eeeeerrrrrrrrrrrrrrrddd', '', '444rrrrr4ferrsss', '20km', 'test@gmail.com', '2017-04-23 17:41:55', 'test@gmail.com', '2017-04-23 17:41:55'),
-(19, 207, '', '222', '', 'eeeeerrrrrrrrrrrrrrrddd', '', '444rrrrr4ferrssswww', '20km', 'test@gmail.com', '2017-04-23 17:41:58', 'test@gmail.com', '2017-04-23 17:41:58'),
-(20, 207, '', '222', '', 'eeeeerrrrrrrrrrrrrrrddddddxe', '', '444rrrrr4ferrssswww', '20km', 'test@gmail.com', '2017-04-23 17:42:03', 'test@gmail.com', '2017-04-23 17:42:03'),
-(21, 0, '', '', '', '', '', '', '', 'fudanyinxin@gmail.com', '2016-12-14 07:24:18', 'fudanyinxin@gmail.com', '2016-12-14 07:24:18'),
-(22, 207, '', '', '', '', 'GP', '', '', 'test@gmail.com', '2017-04-11 05:21:53', 'test@gmail.com', '2017-04-11 05:21:53'),
-(23, 207, '', '', '', '', '', '', '20km', 'test@gmail.com', '2017-04-23 17:40:56', 'test@gmail.com', '2017-04-23 17:40:56'),
-(24, 207, '', '', '', '21', '', '', '20km', 'test@gmail.com', '2017-04-23 17:41:01', 'test@gmail.com', '2017-04-23 17:41:01'),
-(25, 207, '', '222', '', '21', '', '', '20km', 'test@gmail.com', '2017-04-23 17:41:04', 'test@gmail.com', '2017-04-23 17:41:04'),
-(26, 207, '', '222', '', '21', '', '444', '20km', 'test@gmail.com', '2017-04-23 17:41:08', 'test@gmail.com', '2017-04-23 17:41:08'),
-(27, 207, '', '222', '', '21', '', '444', '20km', 'test@gmail.com', '2017-04-23 17:41:14', 'test@gmail.com', '2017-04-23 17:41:14'),
-(28, 207, '', '222', '', 'eeeee', '', '444', '20km', 'test@gmail.com', '2017-04-23 17:41:20', 'test@gmail.com', '2017-04-23 17:41:20'),
-(29, 207, '', '222', '', 'eeeee', '', '444rrrrr', '20km', 'test@gmail.com', '2017-04-23 17:41:23', 'test@gmail.com', '2017-04-23 17:41:23'),
-(30, 207, '', '222', '', 'eeeeerrrrrrrrrrrrr', '', '444rrrrr', '20km', 'test@gmail.com', '2017-04-23 17:41:27', 'test@gmail.com', '2017-04-23 17:41:27'),
-(31, 207, '', '222', '', 'eeeeerrrrrrrrrrrrr', '', '444rrrrr4f', '20km', 'test@gmail.com', '2017-04-23 17:41:31', 'test@gmail.com', '2017-04-23 17:41:31'),
-(32, 207, '', '222', '', 'eeeeerrrrrrrrrrrrr', '', '444rrrrr4fe', '20km', 'test@gmail.com', '2017-04-23 17:41:33', 'test@gmail.com', '2017-04-23 17:41:33'),
-(33, 207, '', '222', '', 'eeeeerrrrrrrrrrrrr', '', '444rrrrr4ferr', '20km', 'test@gmail.com', '2017-04-23 17:41:36', 'test@gmail.com', '2017-04-23 17:41:36'),
-(34, 207, '', '222', '', 'eeeeerrrrrrrrrrrrr', '', '444rrrrr4ferr', '5km', 'test@gmail.com', '2017-04-23 17:41:39', 'test@gmail.com', '2017-04-23 17:41:39'),
-(35, 207, '', '222', '', 'eeeeerrrrrrrrrrrrrrr', '', '444rrrrr4ferr', '5km', 'test@gmail.com', '2017-04-23 17:41:43', 'test@gmail.com', '2017-04-23 17:41:43'),
-(36, 207, '', '222', '', 'eeeeerrrrrrrrrrrrrrrddd', '', '444rrrrr4ferr', '5km', 'test@gmail.com', '2017-04-23 17:41:47', 'test@gmail.com', '2017-04-23 17:41:47'),
-(37, 207, '', '222', '', 'eeeeerrrrrrrrrrrrrrrddd', '', '444rrrrr4ferrsss', '5km', 'test@gmail.com', '2017-04-23 17:41:52', 'test@gmail.com', '2017-04-23 17:41:52'),
-(38, 207, '', '222', '', 'eeeeerrrrrrrrrrrrrrrddd', '', '444rrrrr4ferrsss', '20km', 'test@gmail.com', '2017-04-23 17:41:55', 'test@gmail.com', '2017-04-23 17:41:55'),
-(39, 0, '', '', '', '', '', '', '', 'fudanyinxin@gmail.com', '2016-12-14 07:24:18', 'fudanyinxin@gmail.com', '2016-12-14 07:24:18'),
-(40, 207, '', '', '', '', 'GP', '', '', 'test@gmail.com', '2017-04-11 05:21:53', 'test@gmail.com', '2017-04-11 05:21:53'),
-(41, 207, '', '', '', '', '', '', '20km', 'test@gmail.com', '2017-04-23 17:40:56', 'test@gmail.com', '2017-04-23 17:40:56'),
-(42, 207, '', '', '', '21', '', '', '20km', 'test@gmail.com', '2017-04-23 17:41:01', 'test@gmail.com', '2017-04-23 17:41:01'),
-(43, 207, '', '222', '', '21', '', '', '20km', 'test@gmail.com', '2017-04-23 17:41:04', 'test@gmail.com', '2017-04-23 17:41:04'),
-(44, 207, '', '222', '', '21', '', '444', '20km', 'test@gmail.com', '2017-04-23 17:41:08', 'test@gmail.com', '2017-04-23 17:41:08'),
-(45, 207, '', '222', '', '21', '', '444', '20km', 'test@gmail.com', '2017-04-23 17:41:14', 'test@gmail.com', '2017-04-23 17:41:14'),
-(46, 207, '', '222', '', 'eeeee', '', '444', '20km', 'test@gmail.com', '2017-04-23 17:41:20', 'test@gmail.com', '2017-04-23 17:41:20'),
-(47, 207, '', '222', '', 'eeeee', '', '444rrrrr', '20km', 'test@gmail.com', '2017-04-23 17:41:23', 'test@gmail.com', '2017-04-23 17:41:23'),
-(48, 207, '', '222', '', 'eeeeerrrrrrrrrrrrr', '', '444rrrrr', '20km', 'test@gmail.com', '2017-04-23 17:41:27', 'test@gmail.com', '2017-04-23 17:41:27'),
-(49, 207, '', '222', '', 'eeeeerrrrrrrrrrrrr', '', '444rrrrr4f', '20km', 'test@gmail.com', '2017-04-23 17:41:31', 'test@gmail.com', '2017-04-23 17:41:31'),
-(50, 207, '', '222', '', 'eeeeerrrrrrrrrrrrr', '', '444rrrrr4fe', '20km', 'test@gmail.com', '2017-04-23 17:41:33', 'test@gmail.com', '2017-04-23 17:41:33'),
-(51, 207, '', '222', '', 'eeeeerrrrrrrrrrrrr', '', '444rrrrr4ferr', '20km', 'test@gmail.com', '2017-04-23 17:41:36', 'test@gmail.com', '2017-04-23 17:41:36'),
-(52, 207, '', '222', '', 'eeeeerrrrrrrrrrrrr', '', '444rrrrr4ferr', '5km', 'test@gmail.com', '2017-04-23 17:41:39', 'test@gmail.com', '2017-04-23 17:41:39'),
-(53, 207, '', '222', '', 'eeeeerrrrrrrrrrrrrrr', '', '444rrrrr4ferr', '5km', 'test@gmail.com', '2017-04-23 17:41:43', 'test@gmail.com', '2017-04-23 17:41:43'),
-(54, 207, '', '222', '', 'eeeeerrrrrrrrrrrrrrrddd', '', '444rrrrr4ferr', '5km', 'test@gmail.com', '2017-04-23 17:41:47', 'test@gmail.com', '2017-04-23 17:41:47'),
-(55, 207, '', '222', '', 'eeeeerrrrrrrrrrrrrrrddd', '', '444rrrrr4ferrsss', '5km', 'test@gmail.com', '2017-04-23 17:41:52', 'test@gmail.com', '2017-04-23 17:41:52'),
-(56, 207, '', '222', '', 'eeeeerrrrrrrrrrrrrrrddd', '', '444rrrrr4ferrsss', '20km', 'test@gmail.com', '2017-04-23 17:41:55', 'test@gmail.com', '2017-04-23 17:41:55'),
-(57, 0, '', '', '', '', '', '', '', 'fudanyinxin@gmail.com', '2016-12-14 07:24:18', 'fudanyinxin@gmail.com', '2016-12-14 07:24:18'),
-(58, 207, '', '', '', '', 'GP', '', '', 'test@gmail.com', '2017-04-11 05:21:53', 'test@gmail.com', '2017-04-11 05:21:53'),
-(59, 207, '', '', '', '', '', '', '20km', 'test@gmail.com', '2017-04-23 17:40:56', 'test@gmail.com', '2017-04-23 17:40:56'),
-(60, 207, '', '', '', '21', '', '', '20km', 'test@gmail.com', '2017-04-23 17:41:01', 'test@gmail.com', '2017-04-23 17:41:01'),
-(61, 207, '', '222', '', '21', '', '', '20km', 'test@gmail.com', '2017-04-23 17:41:04', 'test@gmail.com', '2017-04-23 17:41:04'),
-(62, 207, '', '222', '', '21', '', '444', '20km', 'test@gmail.com', '2017-04-23 17:41:08', 'test@gmail.com', '2017-04-23 17:41:08'),
-(63, 207, '', '222', '', '21', '', '444', '20km', 'test@gmail.com', '2017-04-23 17:41:14', 'test@gmail.com', '2017-04-23 17:41:14'),
-(64, 207, '', '222', '', 'eeeee', '', '444', '20km', 'test@gmail.com', '2017-04-23 17:41:20', 'test@gmail.com', '2017-04-23 17:41:20'),
-(65, 207, '', '222', '', 'eeeee', '', '444rrrrr', '20km', 'test@gmail.com', '2017-04-23 17:41:23', 'test@gmail.com', '2017-04-23 17:41:23'),
-(66, 207, '', '222', '', 'eeeeerrrrrrrrrrrrr', '', '444rrrrr', '20km', 'test@gmail.com', '2017-04-23 17:41:27', 'test@gmail.com', '2017-04-23 17:41:27'),
-(67, 207, '', '222', '', 'eeeeerrrrrrrrrrrrr', '', '444rrrrr4f', '20km', 'test@gmail.com', '2017-04-23 17:41:31', 'test@gmail.com', '2017-04-23 17:41:31'),
-(68, 207, '', '222', '', 'eeeeerrrrrrrrrrrrr', '', '444rrrrr4fe', '20km', 'test@gmail.com', '2017-04-23 17:41:33', 'test@gmail.com', '2017-04-23 17:41:33'),
-(69, 207, '', '222', '', 'eeeeerrrrrrrrrrrrr', '', '444rrrrr4ferr', '20km', 'test@gmail.com', '2017-04-23 17:41:36', 'test@gmail.com', '2017-04-23 17:41:36'),
-(70, 207, '', '222', '', 'eeeeerrrrrrrrrrrrr', '', '444rrrrr4ferr', '5km', 'test@gmail.com', '2017-04-23 17:41:39', 'test@gmail.com', '2017-04-23 17:41:39'),
-(71, 207, '', '222', '', 'eeeeerrrrrrrrrrrrrrr', '', '444rrrrr4ferr', '5km', 'test@gmail.com', '2017-04-23 17:41:43', 'test@gmail.com', '2017-04-23 17:41:43'),
-(72, 207, '', '222', '', 'eeeeerrrrrrrrrrrrrrrddd', '', '444rrrrr4ferr', '5km', 'test@gmail.com', '2017-04-23 17:41:47', 'test@gmail.com', '2017-04-23 17:41:47'),
-(73, 207, '', '222', '', 'eeeeerrrrrrrrrrrrrrrddd', '', '444rrrrr4ferrsss', '5km', 'test@gmail.com', '2017-04-23 17:41:52', 'test@gmail.com', '2017-04-23 17:41:52'),
-(74, 207, '', '222', '', 'eeeeerrrrrrrrrrrrrrrddd', '', '444rrrrr4ferrsss', '20km', 'test@gmail.com', '2017-04-23 17:41:55', 'test@gmail.com', '2017-04-23 17:41:55'),
-(75, 0, '', '', '', '', '', '', '', 'fudanyinxin@gmail.com', '2016-12-14 07:24:18', 'fudanyinxin@gmail.com', '2016-12-14 07:24:18'),
-(76, 207, '', '', '', '', 'GP', '', '', 'test@gmail.com', '2017-04-11 05:21:53', 'test@gmail.com', '2017-04-11 05:21:53'),
-(77, 207, '', '', '', '', '', '', '20km', 'test@gmail.com', '2017-04-23 17:40:56', 'test@gmail.com', '2017-04-23 17:40:56'),
-(78, 207, '', '', '', '21', '', '', '20km', 'test@gmail.com', '2017-04-23 17:41:01', 'test@gmail.com', '2017-04-23 17:41:01'),
-(79, 207, '', '222', '', '21', '', '', '20km', 'test@gmail.com', '2017-04-23 17:41:04', 'test@gmail.com', '2017-04-23 17:41:04'),
-(80, 207, '', '222', '', '21', '', '444', '20km', 'test@gmail.com', '2017-04-23 17:41:08', 'test@gmail.com', '2017-04-23 17:41:08'),
-(81, 207, '', '222', '', '21', '', '444', '20km', 'test@gmail.com', '2017-04-23 17:41:14', 'test@gmail.com', '2017-04-23 17:41:14'),
-(82, 207, '', '222', '', 'eeeee', '', '444', '20km', 'test@gmail.com', '2017-04-23 17:41:20', 'test@gmail.com', '2017-04-23 17:41:20'),
-(83, 207, '', '222', '', 'eeeee', '', '444rrrrr', '20km', 'test@gmail.com', '2017-04-23 17:41:23', 'test@gmail.com', '2017-04-23 17:41:23'),
-(84, 207, '', '222', '', 'eeeeerrrrrrrrrrrrr', '', '444rrrrr', '20km', 'test@gmail.com', '2017-04-23 17:41:27', 'test@gmail.com', '2017-04-23 17:41:27'),
-(85, 207, '', '222', '', 'eeeeerrrrrrrrrrrrr', '', '444rrrrr4f', '20km', 'test@gmail.com', '2017-04-23 17:41:31', 'test@gmail.com', '2017-04-23 17:41:31'),
-(86, 207, '', '222', '', 'eeeeerrrrrrrrrrrrr', '', '444rrrrr4fe', '20km', 'test@gmail.com', '2017-04-23 17:41:33', 'test@gmail.com', '2017-04-23 17:41:33'),
-(87, 207, '', '222', '', 'eeeeerrrrrrrrrrrrr', '', '444rrrrr4ferr', '20km', 'test@gmail.com', '2017-04-23 17:41:36', 'test@gmail.com', '2017-04-23 17:41:36'),
-(88, 207, '', '222', '', 'eeeeerrrrrrrrrrrrr', '', '444rrrrr4ferr', '5km', 'test@gmail.com', '2017-04-23 17:41:39', 'test@gmail.com', '2017-04-23 17:41:39'),
-(89, 207, '', '222', '', 'eeeeerrrrrrrrrrrrrrr', '', '444rrrrr4ferr', '5km', 'test@gmail.com', '2017-04-23 17:41:43', 'test@gmail.com', '2017-04-23 17:41:43'),
-(90, 207, '', '222', '', 'eeeeerrrrrrrrrrrrrrrddd', '', '444rrrrr4ferr', '5km', 'test@gmail.com', '2017-04-23 17:41:47', 'test@gmail.com', '2017-04-23 17:41:47'),
-(91, 207, '', '222', '', 'eeeeerrrrrrrrrrrrrrrddd', '', '444rrrrr4ferrsss', '5km', 'test@gmail.com', '2017-04-23 17:41:52', 'test@gmail.com', '2017-04-23 17:41:52'),
-(92, 207, '', '222', '', 'eeeeerrrrrrrrrrrrrrrddd', '', '444rrrrr4ferrsss', '20km', 'test@gmail.com', '2017-04-23 17:41:55', 'test@gmail.com', '2017-04-23 17:41:55'),
-(93, 207, '', 'Box Hill, VIC 3128', '', '', 'GP', '', '', 'test@gmail.com', '2017-04-25 03:23:46', 'test@gmail.com', '2017-04-25 03:23:46'),
-(94, 207, '', 'Box Hill, VIC 3128', '', '', 'Podiatrist', '', '', 'test@gmail.com', '2017-04-25 03:24:33', 'test@gmail.com', '2017-04-25 03:24:33'),
-(95, 207, '', 'Box Hill, VIC 3128', '', '', 'Podiatrist', '', '', 'test@gmail.com', '2017-04-25 03:27:01', 'test@gmail.com', '2017-04-25 03:27:01'),
-(96, 207, '', '', '', '', 'Physio', '', '', 'test@gmail.com', '2017-04-25 14:53:55', 'test@gmail.com', '2017-04-25 14:53:55'),
-(97, 207, '', 'bo', '', '', 'GP', '', '', 'test@gmail.com', '2017-04-25 14:54:23', 'test@gmail.com', '2017-04-25 14:54:23'),
-(98, 207, '', 'bo', '', 'xxx', 'GP', '', '', 'test@gmail.com', '2017-04-25 14:54:39', 'test@gmail.com', '2017-04-25 14:54:39'),
-(99, 207, '', 'bo', '', 'xxx', 'GP', '', '', 'test@gmail.com', '2017-04-25 14:54:46', 'test@gmail.com', '2017-04-25 14:54:46'),
-(100, 207, '', 'bo', '', 'xxx', 'GP', 'ggg', '20km', 'test@gmail.com', '2017-04-25 14:54:58', 'test@gmail.com', '2017-04-25 14:54:58'),
-(101, 207, '', 'bo', '', 'xxx', 'Chiropractor', 'ggg', '20km', 'test@gmail.com', '2017-04-25 14:55:03', 'test@gmail.com', '2017-04-25 14:55:03');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `fd_service`
---
-
-CREATE TABLE `fd_service` (
-  `SERVICE_CODE` int(11) NOT NULL,
-  `SERVICE_ID` varchar(50) NOT NULL,
-  `DES` varchar(50) NOT NULL,
-  `SERVICE_JS` varchar(50) NOT NULL,
-  `URL` varchar(50) NOT NULL,
-  `INPUT_PARA` varchar(300) NOT NULL,
-  `OUTPUT_PARA` varchar(50) NOT NULL,
-  `NOTE` varchar(50) NOT NULL,
-  `CREATE_USER` varchar(50) NOT NULL,
-  `CREATE_DATE` datetime NOT NULL,
-  `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `fd_service`
---
-
-INSERT INTO `fd_service` (`SERVICE_CODE`, `SERVICE_ID`, `DES`, `SERVICE_JS`, `URL`, `INPUT_PARA`, `OUTPUT_PARA`, `NOTE`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
-(4, 'UI01', '用户登录', 'sign_in.js', 'url: \"classes/class.sign_in.php\",', '页面所有输入框', '', '', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(5, 'UI02', '获取用户详细信息(条件用户名)', 'appointmentDoctor.js', 'url: \"classes/class.UserDetail.php\",', 'username: username', '用户详细信息', '', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(6, 'UI03', '获取用户详细信息(条件用户ID)', 'userUpdPersonInfo.js', 'url: \"classes/class.UserDetail.php\",', 'action_type: \"view\", CUSTOMER_USER_ID: fd_userid', '', '', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(7, 'UU01', '个人用户注册(游客通过预约,自动注册)', 'appointmentDoctor.js', 'url: \"classes/class.sign_up_person.php\",', '页面所有输入框', '', '', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(8, 'UU02', '个人用户注册(通过注册页面注册)', 'sign_up_person.js', 'url: \"classes/class.sign_up_person.php\",', '页面所有输入框', '', '', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(9, 'UU03', '修改个人用户信息', 'userUpdPersonInfo.j', 'url: \"classes/class.UserDetail.php\",', '页面所有输入框', '', '', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(10, 'UU04', '修改个人用户密码', 'userUpdPersonPwd.js', 'url: \"classes/class.UserDetail.php\",', 'action_type:\"update\", CUSTOMER_USER_ID:fd_userid, CUSTOMER_USER_PWD:$(\'#CUSTOMER_USER_NEWPWD\').val()', '', '', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(11, 'CU01', '诊所用户注册', 'sign_up_clinic.js', 'url: \"classes/class.signup_clinic.php\",', '页面所有输入框', '', '', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(12, 'CU02', '获取诊所用户详细信息', 'clinicUpdUserInfo.js', 'url: \"classes/class.ClinicDetail.php\",', 'action_type: \"view\",\r\nCLINIC_USER_ID: fd_userid', '', '', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(13, 'CU03', '修改诊所用户信息', 'clinicUpdUserInfo.js', 'url: \"classes/class.ClinicDetail.php\",', '页面所有输入框', '', '', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(16, 'CU04', '修改诊所用户密码', 'clinicUpdUserPwd.js', 'url: \"classes/class.ClinicDetail.php\",', 'action_type:\"update\",\r\nCLINIC_USER_ID:fd_userid,\r\nCLINIC_USER_PWD:$(\'#CUSTOMER_USER_NEWPWD\').val()', '', '', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(17, 'CU05', '诊所用户搜索医生', 'clinicQryDoctor.js', 'url: \"classes/class.ClinicOprDoctor.php\",', 'CLINIC_USER_ID: fd_userid,\r\n    DOCTOR_TYPE: $(\'#DOCTOR_TYPE\').val(),\r\n    DOCTOR_NAME: $(\'#DOCTOR_NAME\').val(),', '', '', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(18, 'CU06', '修改医生为inactive/active', 'clinicQryDoctor.js', 'url: \"classes/class.ClinicOprDoctor.php\",', 'action_type: \"update\",\r\n      ACTIVE_STATUS: 0|1,\r\n      DOCTOR_ID: DOCTOR_ID', '', '', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(19, 'CU07', '修改医生基本信息', 'clinicUpdDoctorDetail.js', 'url: \"classes/class.ClinicOprDoctor.php\",', '页面所有输入框', '', '', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(20, 'SD01', '搜索医生(主页全体条件 or)', 'searchDoctor.js', 'url: \"classes/class.searchDoctor.php\",', '见首页输入框', '诊所，医生，及预约时间（预约医生所需全部内容）', '入参requesttype = 0 查询条件or', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(21, 'SD02', '搜索医生(主页全体条件 and)', 'searchDoctor.js', 'url: \"classes/class.searchDoctor.php\",', '搜索医生也点击搜索按钮，全体输入框', '诊所，医生，及预约时间（预约医生所需全部内容）', '入参requesttype = 1 查询条件and', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(22, 'ST01', '搜索医生预约时间ID(条件医生ID,预约时间日期，时间)', 'appointmentDoctor.js', 'url: \"classes/class.searchAppTimeID.php\",', 'DOCTOR_ID: $(\'#DOCTOR_ID\').val(),\r\nAPPOINTMENT_DATE:\r\nAPPOINTMENT_TIME: radio_txt', '搜索医生预约时间ID', '', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(23, 'SP01', '搜索预约状态（填充下拉框）', 'userAppointmentRecoder.js', 'url: \"classes/class.getAppointmentStatus.php\",', 'para=\"\";', '', '', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(24, 'SP02', '搜索预约记录', 'userAppointmentRecoder.js', 'url: \"classes/class.AppointmentRecoder.php\",', 'CUSTOMER_USER_ID: userid,\r\nCREATE_DATE_BEGIN:  $(\'#begin_time\').val(),\r\nCREATE_DATE_END:  $(\'#end_time\').val(),\r\nAPPOINTMENT_STATUS_ID : $(\'#app_status\').val()', '', '', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(25, 'AD01', '预约医生', 'appointmentDoctor.js', 'url: \"classes/class.appointmentDoctor.php\",', 'action_type: \"\"create\"\",\r\nCUSTOMER_USER_NAME: $(\'#CUSTOMER_USER_NAME\').val(),\r\nCUSTOMER_USER_PWD: $(\'#CUSTOMER_USER_PWD\').val(),\r\nCUSTOMER_USER_ID: custom_user_id,\r\nDOCTOR_ID: $(\'#DOCTOR_ID\').val(),\r\nDOCTOR_APPOINTMENT_TIME_ID:time_id,\r\nAPPOINTMENT_STATUS_ID:1', '预约成功', '', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(26, 'AD02', '取消预约', 'userAppointmentRecoder.js', 'url: \"classes/class.AppointmentRecoder.php\",', 'action_type: \"\"update\"\",\r\nCUSTOMER_USER_ID: CUSTOMER_USER_ID,\r\nDOCTOR_ID: DOCTOR_ID,\r\nCREATE_DATE: CREATE_DATE', '', '', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(27, 'S001', '收藏医生', 'appointmentDoctor.js', 'url: \"classes/class.saveDoctor.php\",', 'action_type:\"\"create\"\",\r\nCUSTOMER_USER_ID:$(\'#CUSTOMER_USER_ID\').val(),\r\nDOCTOR_ID:$(\'#DOCTOR_ID\').val()', '', '', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(28, 'S002', '搜索收藏的医生', 'userSaveDoctor.js', 'url: \"classes/class.saveDoctor.php\",', '页面所有输入框', '', '', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(29, 'S003', '删除收藏医生', 'userSaveDoctor.js', 'url: \"classes/class.saveDoctor.php\",', 'action_type: \"\"remove\"\",\r\nCUSTOMER_USER_ID: CUSTOMER_USER_ID,\r\nDOCTOR_ID: DOCTOR_ID', '', '', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(30, 'SS01', '保存为常用搜索条件', 'searchDoctor.js', 'url: \"classes/class.saveSearch.php\",', '页面所有输入框', '', '', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(31, 'SS02', '搜索常用搜索条件', 'userSaveSearch.js', 'url: \"classes/class.saveSearch.php\",', 'CUSTOMER_USER_ID: fd_userid', '', '', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(32, 'SS03', '删除常用搜索条件', 'userSaveSearch.js', 'url: \"classes/class.saveSearch.php\",', 'action_type: \"remove\",\r\nCUSTOMER_USER_ID: CUSTOMER_USER_ID,\r\nCUSTOMER_SEARCH_ID: CUSTOMER_SEARCH_ID', '', '', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(36, 'AU01', '修改管理员密码', 'adminUpdPwd.js', 'url: \"classes/class.AdminDetail.php\",', 'action_type: \"update\",\r\nADMIN_ID:fd_userid,\r\nADMIN_PWD:$(\'#CUSTOMER_USER_NEWPWD\').val()', '', '', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(37, 'AU02', '查询诊所用户', 'adminQryClinic.js', 'url: \"classes/class.ClinicDetail.php\",', '页面输入条件', '', '', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(38, 'AU03', '查询个人用户', 'adminQryUser.js', 'url: \"classes/class.UserDetail.php\",', '页面所有输入框', '', '', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(39, 'AU06', '修改诊所用户为inactive/active', 'adminQryClinic.js', 'url: \"classes/class.ClinicDetail.php\",', 'action_type: \"update_active\",\r\nACTIVE_STATUS: 0,\r\nCLINIC_USER_ID: CLINIC_USER_ID', '', '', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(40, 'AU07', '修改个人用户为inactive/active', 'adminQryUser.js', 'url: \"classes/class.UserDetail.php\",', 'action_type: \"update_active\",\r\nACTIVE_STATUS: 1/0,\r\nCUSTOMER_USER_ID: CUSTOMER_USER_ID', '', '', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(41, 'SSTE', '填充州下拉列表', 'adminQryUser.js', 'url: \"classes/class.getState.php\",', '空', '州所有内容', '全部查询，无需条件', 'admin', '2016-09-09 00:00:00', 'admin', '2016-09-09 00:00:00'),
-(42, 'SDTY', '填充医生类别', 'adminQryDoctor.js', 'url: \"classes/class.getDoctorType.php\",', '无', '医生所有类别', '查询全部内容', 'admin', '2016-09-10 00:00:00', 'admin', '2016-09-10 00:00:00'),
-(43, 'SSUB', '填充区', 'userSaveDoctor.js', 'url: \"classes/class.getSuburb.php\",', '无', '全部诊所区', '查询全部，无条件', 'admin', '2016-09-13 00:00:00', 'admin', '2016-09-13 00:00:00');
-
--- --------------------------------------------------------
-
---
--- 表的结构 `fd_user`
---
-
-CREATE TABLE `fd_user` (
-  `USER_ID` int(11) NOT NULL,
-  `LOGIN_NAME` varchar(50) NOT NULL,
-  `LOGIN_PWD` varchar(50) NOT NULL,
-  `USER_NAME` varchar(50) NOT NULL,
-  `USER_GENDER` varchar(50) NOT NULL,
-  `USER_TEL` varchar(50) NOT NULL,
-  `ROLE_ID` varchar(50) NOT NULL,
-  `USER_ADDR` varchar(200) NOT NULL,
-  `NOTE` varchar(200) DEFAULT NULL,
-  `CONTAIN_USER` varchar(50) NOT NULL,
-  `CREATE_USER` varchar(50) NOT NULL,
-  `CREATE_DATE` datetime NOT NULL,
-  `UPDATE_USER` varchar(50) NOT NULL,
-  `UPDATE_DATE` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- 转存表中的数据 `fd_user`
---
-
-INSERT INTO `fd_user` (`USER_ID`, `LOGIN_NAME`, `LOGIN_PWD`, `USER_NAME`, `USER_GENDER`, `USER_TEL`, `ROLE_ID`, `USER_ADDR`, `NOTE`, `CONTAIN_USER`, `CREATE_USER`, `CREATE_DATE`, `UPDATE_USER`, `UPDATE_DATE`) VALUES
-(1, 'aa', 'bb', '', '', '', '', '', NULL, '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(2, 'aa', 'bb', '', '', '', '', '', NULL, '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(3, 'aa', 'bb', '', '', '', '', '', NULL, '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(4, 'aa', 'bb', '', '', '', '', '', NULL, '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(5, 'aa', 'bb', '', '', '', '', '', NULL, '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(6, 'aa', 'bb', '', '', '', '', '', NULL, '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(7, 'aa', 'bb', '', '', '', '', '', NULL, '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(8, 'aa', 'bb', '', '', '', '', '', NULL, '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(9, 'aa', 'bb', '', '', '', '', '', NULL, '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(10, 'aa', 'bb', '', '', '', '', '', NULL, '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(11, 'aa', 'bb', '', '', '', '', '', NULL, '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00'),
-(12, 'aa', 'bb', '', '', '', '', '', NULL, '', '', '0000-00-00 00:00:00', '', '0000-00-00 00:00:00');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `ap_patient`
---
-ALTER TABLE `ap_patient`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `fd_admin`
---
-ALTER TABLE `fd_admin`
-  ADD PRIMARY KEY (`ADMIN_ID`);
-
---
--- Indexes for table `fd_clinic_user`
---
-ALTER TABLE `fd_clinic_user`
-  ADD PRIMARY KEY (`CLINIC_USER_ID`),
-  ADD KEY `FK_fd_clinic_user_2` (`STATE_ID`);
-
---
--- Indexes for table `fd_customer_user`
---
-ALTER TABLE `fd_customer_user`
-  ADD PRIMARY KEY (`CUSTOMER_USER_ID`),
-  ADD KEY `FK_fd_customer_user_7` (`STATE_ID`);
-
---
--- Indexes for table `fd_dict_appointment_status`
---
-ALTER TABLE `fd_dict_appointment_status`
-  ADD PRIMARY KEY (`APPOINTMENT_STATUS_ID`);
-
---
--- Indexes for table `fd_dict_gender_ch`
---
-ALTER TABLE `fd_dict_gender_ch`
-  ADD PRIMARY KEY (`GENDER_ID`);
-
---
--- Indexes for table `fd_dict_gender_en`
---
-ALTER TABLE `fd_dict_gender_en`
-  ADD PRIMARY KEY (`GENDER_ID`);
-
---
--- Indexes for table `fd_dict_language`
---
-ALTER TABLE `fd_dict_language`
-  ADD PRIMARY KEY (`LANGUAGE_ID`);
-
---
--- Indexes for table `fd_dict_log_type`
---
-ALTER TABLE `fd_dict_log_type`
-  ADD PRIMARY KEY (`LOG_TYPE_ID`);
-
---
--- Indexes for table `fd_dict_search`
---
-ALTER TABLE `fd_dict_search`
-  ADD PRIMARY KEY (`SEARCH_ID`);
-
---
--- Indexes for table `fd_dict_state`
---
-ALTER TABLE `fd_dict_state`
-  ADD PRIMARY KEY (`STATE_ID`),
-  ADD UNIQUE KEY `STATE_NAME` (`STATE_NAME`);
-
---
--- Indexes for table `fd_dict_title`
---
-ALTER TABLE `fd_dict_title`
-  ADD PRIMARY KEY (`TITLE_ID`);
-
---
--- Indexes for table `fd_doctor`
---
-ALTER TABLE `fd_doctor`
-  ADD PRIMARY KEY (`DOCTOR_ID`);
-
---
--- Indexes for table `fd_function`
---
-ALTER TABLE `fd_function`
-  ADD PRIMARY KEY (`FUNCTION_ID`);
-
---
--- Indexes for table `fd_log`
---
-ALTER TABLE `fd_log`
-  ADD PRIMARY KEY (`LOG_ID`);
-
---
--- Indexes for table `fd_rel_clinic_doctor`
---
-ALTER TABLE `fd_rel_clinic_doctor`
-  ADD PRIMARY KEY (`CLINIC_DOCTOR_ID`),
-  ADD KEY `FK_fd_rel_clinic_doctor_1` (`DOCTOR_ID`),
-  ADD KEY `FK_fd_rel_clinic_doctor_2` (`CLINIC_USER_ID`);
-
---
--- Indexes for table `fd_rel_customer_appointment`
---
-ALTER TABLE `fd_rel_customer_appointment`
-  ADD PRIMARY KEY (`CUSTOMER_APPOINTMENT_ID`),
-  ADD KEY `FK_fd_rel_customer_appointment_1` (`CUSTOMER_USER_ID`),
-  ADD KEY `FK_fd_rel_customer_appointment_2` (`DOCTOR_ID`),
-  ADD KEY `FK_fd_rel_customer_appointment_3` (`DOCTOR_APPOINTMENT_TIME_ID`),
-  ADD KEY `FK_fd_rel_customer_appointment_4` (`APPOINTMENT_STATUS_ID`);
-
---
--- Indexes for table `fd_rel_customer_appointment_his`
---
-ALTER TABLE `fd_rel_customer_appointment_his`
-  ADD PRIMARY KEY (`CUSTOMER_APPOINTMENT_ID`);
-
---
--- Indexes for table `fd_rel_customer_doctor`
---
-ALTER TABLE `fd_rel_customer_doctor`
-  ADD PRIMARY KEY (`CUSTOMER_DOCTOR_ID`),
-  ADD KEY `FK_fd_rel_customer_doctor_1` (`CUSTOMER_USER_ID`),
-  ADD KEY `FK_fd_rel_customer_doctor_2` (`DOCTOR_ID`);
-
---
--- Indexes for table `fd_rel_doctor_appointment_time`
---
-ALTER TABLE `fd_rel_doctor_appointment_time`
-  ADD PRIMARY KEY (`DOCTOR_APPOINTMENT_TIME_ID`),
-  ADD KEY `FK_fd_rel_doctor_appointment_time_1` (`DOCTOR_ID`);
-
---
--- Indexes for table `fd_rel_doctor_appointment_time_his`
---
-ALTER TABLE `fd_rel_doctor_appointment_time_his`
-  ADD PRIMARY KEY (`DOCTOR_APPOINTMENT_TIME_ID`);
-
---
--- Indexes for table `fd_rel_doctor_language`
---
-ALTER TABLE `fd_rel_doctor_language`
-  ADD PRIMARY KEY (`DOCTOR_LANGUAGE_ID`);
-
---
--- Indexes for table `fd_role`
---
-ALTER TABLE `fd_role`
-  ADD PRIMARY KEY (`ROLE_ID`);
-
---
--- Indexes for table `fd_save_search`
---
-ALTER TABLE `fd_save_search`
-  ADD PRIMARY KEY (`CUSTOMER_SEARCH_ID`),
-  ADD KEY `FK_FD_SAVE_SEARCH_1` (`CUSTOMER_USER_ID`);
-
---
--- Indexes for table `fd_service`
---
-ALTER TABLE `fd_service`
-  ADD PRIMARY KEY (`SERVICE_CODE`),
-  ADD UNIQUE KEY `SERVICE_ID` (`SERVICE_ID`);
-
---
--- Indexes for table `fd_user`
---
-ALTER TABLE `fd_user`
-  ADD PRIMARY KEY (`USER_ID`);
-
---
--- 在导出的表使用AUTO_INCREMENT
---
-
---
--- 使用表AUTO_INCREMENT `ap_patient`
---
-ALTER TABLE `ap_patient`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
---
--- 使用表AUTO_INCREMENT `fd_admin`
---
-ALTER TABLE `fd_admin`
-  MODIFY `ADMIN_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- 使用表AUTO_INCREMENT `fd_clinic_user`
---
-ALTER TABLE `fd_clinic_user`
-  MODIFY `CLINIC_USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10118;
---
--- 使用表AUTO_INCREMENT `fd_customer_user`
---
-ALTER TABLE `fd_customer_user`
-  MODIFY `CUSTOMER_USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
---
--- 使用表AUTO_INCREMENT `fd_dict_appointment_status`
---
-ALTER TABLE `fd_dict_appointment_status`
-  MODIFY `APPOINTMENT_STATUS_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- 使用表AUTO_INCREMENT `fd_dict_search`
---
-ALTER TABLE `fd_dict_search`
-  MODIFY `SEARCH_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
---
--- 使用表AUTO_INCREMENT `fd_dict_state`
---
-ALTER TABLE `fd_dict_state`
-  MODIFY `STATE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
---
--- 使用表AUTO_INCREMENT `fd_doctor`
---
-ALTER TABLE `fd_doctor`
-  MODIFY `DOCTOR_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10062;
---
--- 使用表AUTO_INCREMENT `fd_function`
---
-ALTER TABLE `fd_function`
-  MODIFY `FUNCTION_ID` int(11) NOT NULL AUTO_INCREMENT;
---
--- 使用表AUTO_INCREMENT `fd_log`
---
-ALTER TABLE `fd_log`
-  MODIFY `LOG_ID` int(11) NOT NULL AUTO_INCREMENT;
---
--- 使用表AUTO_INCREMENT `fd_rel_clinic_doctor`
---
-ALTER TABLE `fd_rel_clinic_doctor`
-  MODIFY `CLINIC_DOCTOR_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10151;
---
--- 使用表AUTO_INCREMENT `fd_rel_customer_appointment`
---
-ALTER TABLE `fd_rel_customer_appointment`
-  MODIFY `CUSTOMER_APPOINTMENT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
---
--- 使用表AUTO_INCREMENT `fd_rel_customer_appointment_his`
---
-ALTER TABLE `fd_rel_customer_appointment_his`
-  MODIFY `CUSTOMER_APPOINTMENT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
---
--- 使用表AUTO_INCREMENT `fd_rel_customer_doctor`
---
-ALTER TABLE `fd_rel_customer_doctor`
-  MODIFY `CUSTOMER_DOCTOR_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
---
--- 使用表AUTO_INCREMENT `fd_rel_doctor_appointment_time`
---
-ALTER TABLE `fd_rel_doctor_appointment_time`
-  MODIFY `DOCTOR_APPOINTMENT_TIME_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27178;
---
--- 使用表AUTO_INCREMENT `fd_rel_doctor_appointment_time_his`
---
-ALTER TABLE `fd_rel_doctor_appointment_time_his`
-  MODIFY `DOCTOR_APPOINTMENT_TIME_ID` int(11) NOT NULL AUTO_INCREMENT;
---
--- 使用表AUTO_INCREMENT `fd_rel_doctor_language`
---
-ALTER TABLE `fd_rel_doctor_language`
-  MODIFY `DOCTOR_LANGUAGE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
---
--- 使用表AUTO_INCREMENT `fd_role`
---
-ALTER TABLE `fd_role`
-  MODIFY `ROLE_ID` int(11) NOT NULL AUTO_INCREMENT;
---
--- 使用表AUTO_INCREMENT `fd_save_search`
---
-ALTER TABLE `fd_save_search`
-  MODIFY `CUSTOMER_SEARCH_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
---
--- 使用表AUTO_INCREMENT `fd_service`
---
-ALTER TABLE `fd_service`
-  MODIFY `SERVICE_CODE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
---
--- 使用表AUTO_INCREMENT `fd_user`
---
-ALTER TABLE `fd_user`
-  MODIFY `USER_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
---
--- 限制导出的表
---
-
---
--- 限制表 `fd_clinic_user`
---
-ALTER TABLE `fd_clinic_user`
-  ADD CONSTRAINT `FK_fd_clinic_user_2` FOREIGN KEY (`STATE_ID`) REFERENCES `fd_dict_state` (`STATE_ID`);
-
---
--- 限制表 `fd_customer_user`
---
-ALTER TABLE `fd_customer_user`
-  ADD CONSTRAINT `FK_fd_customer_user_7` FOREIGN KEY (`STATE_ID`) REFERENCES `fd_dict_state` (`STATE_ID`);
-
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2017-05-23 21:27:43
