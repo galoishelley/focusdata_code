@@ -1487,64 +1487,64 @@ include_once 'classes/Language/language.common.php';
                         <div class="icons-unified-search icons-act icons-gp">
                             <input name="search-option-type" class="hide" type="radio" id="radio-gp" value="gp">
                             <span class="icons-image"></span>
-                            <label class="icons-text" for="radio-gp">GP</label>
+                            <label class="icons-text" for="radio-gp"><?php echo $lang['Lang0348']; ?></label>
                         </div>
                         <div class="icons-unified-search icons-act icons-dt">
                             <input name="search-option-type" class="hide" type="radio" id="radio-dentist" value="dentist">
                             <span class="icons-image"></span>
-                            <label class="icons-text" for="radio-dentist">Dentist</label>
+                            <label class="icons-text" for="radio-dentist"><?php echo $lang['Lang0349']; ?></label>
                         </div>
                         <div class="icons-unified-search icons-act icons-dietitian">
                             <input name="search-option-type" class="hide" type="radio" id="radio-dietitian" value="dietitian">
                             <span class="icons-image"></span>
-                            <label class="icons-text" for="radio-dietitian">Dietitian</label>
+                            <label class="icons-text" for="radio-dietitian"><?php echo $lang['Lang0350']; ?></label>
                         </div>
 
                         <div class="icons-unified-search icons-act icons-ph"><input name="search-option-type" class="hide" type="radio" id="radio-physio" value="physiotherapist">
                             <span class="icons-image"></span>
-                            <label class="icons-text" for="radio-physio">Physio</label>
+                            <label class="icons-text" for="radio-physio"><?php echo $lang['Lang0351']; ?></label>
                         </div>
                         <div class="icons-unified-search icons-act icons-Podiatrist"><input name="search-option-type" class="hide" type="radio" id="radio-podia" value="podiatrist">
                             <span class="icons-image"></span>
-                            <label class="icons-text" for="radio-podia">Podiatrist</label>
+                            <label class="icons-text" for="radio-podia"><?php echo $lang['Lang0352']; ?></label>
                         </div>
                         
                         <div class="icons-unified-search icons-act icons-sp icons-more">
                             <span class="icons-image icons-sp-icon" id=""></span>
-                            <label class="icons-text icons-sp-text">More</label>
+                            <label class="icons-text icons-sp-text"><?php echo $lang['Lang0353']; ?></label>
                             <div class="icons-sp-search">
                                 <span class="ius-act ius-mob">
                                         <input name="search-option-type" class="hide" type="radio" value="physio" id="radio-physio">
-                                        <label class="radio-physio" for="radio-physio">Physio</label>
+                                        <label class="radio-physio" for="radio-physio"><?php echo $lang['Lang0351']; ?></label>
                                 </span>
                                 <span class="ius-act ius-mob">
                                         <input name="search-option-type" class="hide" type="radio" value="podiatrist" id="radio-podia">
-                                        <label class="radio-podia" for="radio-podia">Podiatrist</label>
+                                        <label class="radio-podia" for="radio-podia"><?php echo $lang['Lang0352']; ?></label>
                                 </span>
 
                                 <span class="ius-act">
                                     <input name="search-option-type" class="hide" type="radio" value="psychologist" id="radio-psycho">
-                                    <label class="radio-psycho" for="radio-psycho">Psychologist</label>
+                                    <label class="radio-psycho" for="radio-psycho"><?php echo $lang['Lang0354']; ?></label>
                                 </span>
                                 <span class="ius-act">
                                     <input name="search-option-type" class="hide" type="radio" value="chiropractor" id="radio-chiro">
-                                    <label class="radio-chiro" for="radio-chiro">Chiropractor</label>
+                                    <label class="radio-chiro" for="radio-chiro"><?php echo $lang['Lang0355']; ?></label>
                                 </span>
                                 <span class="ius-act">
                                     <input name="search-option-type" class="hide" type="radio" value="audiologist" id="radio-audio">
-                                    <label class="radio-audio" for="radio-audio">Audiologist</label>
+                                    <label class="radio-audio" for="radio-audio"><?php echo $lang['Lang0356']; ?></label>
                                 </span>
                                 <span class="ius-act">
                                     <input name="search-option-type" class="hide" type="radio" value="optometry" id="radio-opto">
-                                    <label class="radio-opto" for="radio-opto">Optometry</label>
+                                    <label class="radio-opto" for="radio-opto"><?php echo $lang['Lang0357']; ?></label>
                                 </span>
                                 <span class="ius-act">
                                     <input name="search-option-type" class="hide" type="radio" value="skinchecks" id="radio-skin">
-                                    <label class="radio-skin" for="radio-skin">Skin Doctors</label>
+                                    <label class="radio-skin" for="radio-skin"><?php echo $lang['Lang0358']; ?></label>
                                 </span>
                                 <span class="ius-act">
                                     <input name="search-option-type" class="hide" type="radio" value="counsellor" id="radio-counse">
-                                    <label class="radio-counse" for="radio-counse">Counsellor</label>
+                                    <label class="radio-counse" for="radio-counse"><?php echo $lang['Lang0359']; ?></label>
                                 </span>
                             </div>
                         </div>
@@ -1559,10 +1559,10 @@ include_once 'classes/Language/language.common.php';
 
 
 
-                                <input id="location-unified-search" class="location-unified-search" placeholder="Suburb, State, Postcode" type="text" name="CLINIC_SUBURB">
+                                <input id="location-unified-search" class="location-unified-search" placeholder="<?php echo $lang['Lang0360']; ?>" type="text" name="CLINIC_SUBURB">
 
 
-                                <button tabindex="-1" id="btn_search" class="btn">Search</button>
+                                <button tabindex="-1" id="btn_search" class="btn"><?php echo $lang['Lang0361']; ?></button>
                             </form>
                         </div>
                     </div>

@@ -25,7 +25,7 @@ $lang['Lang0010'] = 'Language';
 $lang['Lang0011'] = 'About us';
 $lang['Lang0012'] = 'Staff';
 $lang['Lang0013'] = 'Contacts';
-$lang['Lang0014'] = 'Login';
+$lang['Lang0014'] = 'Sign in';
 $lang['Lang0015'] = 'Register';
 $lang['Lang0016'] = 'Guest';
 $lang['Lang0017'] = 'Sign out';
@@ -49,8 +49,8 @@ $lang['Lang0023'] = 'Please enter your email...';
 $lang['Lang0024'] = 'Password';
 $lang['Lang0025'] = 'Please enter password...';
 //$lang['Lang0024Error'] = 'Password can not be empty!';
-$lang['Lang0026'] = 'Clinic User';
-$lang['Lang0027'] = 'Personal User';
+$lang['Lang0026'] = 'Practice';
+$lang['Lang0027'] = 'Personal';
 $lang['Lang0028'] = 'Administrator';
 $lang['Lang0029'] = 'Remember me';
 $lang['Lang0030'] = 'Login';
@@ -443,4 +443,21 @@ $lang['Lang0345']='Unknown';
 
 $lang['Lang0346']='Commenced practice since';
 $lang['Lang0347']='Special interests';
+
+
+$lang['Lang0348']='GP';
+$lang['Lang0349']='Dentist';
+$lang['Lang0350']='Dietitian';
+$lang['Lang0351']='Physio';
+$lang['Lang0352']='Podiatrist';
+$lang['Lang0353']='More';
+$lang['Lang0354']='Psychologist';
+$lang['Lang0355']='Chiropractor';
+$lang['Lang0356']='Audiologist';
+$lang['Lang0357']='Optometrist';
+$lang['Lang0358']='Dermatologist';
+$lang['Lang0359']='Counsellor';
+$lang['Lang0360']='Suburb, state or postcode';
+$lang['Lang0361']='Search';
+
 ?>

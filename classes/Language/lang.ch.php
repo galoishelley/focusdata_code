@@ -7,7 +7,7 @@ Language: Chinese
 
 $lang = array();
 // Page Title
-$lang['Lang0001'] = 'FocusData-医生在线预约系统';
+$lang['Lang0001'] = 'DrPages百医网 – 澳洲医生专家网上预约挂号中文平台';
 $lang['Lang0002'] = '登陆';
 $lang['Lang0003']='诊所用户管理';
 // Logo
@@ -24,9 +24,9 @@ $lang['Lang0010'] = '多语言';
 $lang['Lang0011'] = '关于我们';
 $lang['Lang0012'] = '团队';
 $lang['Lang0013'] = '联系我们';
-$lang['Lang0014'] = '登陆';
-$lang['Lang0015'] = '注册';
-$lang['Lang0016'] = '游客';
+$lang['Lang0014'] = '请登录';
+$lang['Lang0015'] = '免费注册';
+$lang['Lang0016'] = 'Guest';
 $lang['Lang0017'] = '安全退出';
 
 
@@ -45,8 +45,8 @@ $lang['Lang0023'] = '请输入注册邮箱...';
 $lang['Lang0024'] = '密码';
 $lang['Lang0025'] = '请输入密码...';
 //$lang['Lang0024Error'] = '密码不能为空!';
-$lang['Lang0026'] = '诊所用户';
-$lang['Lang0027'] = '个人用户';
+$lang['Lang0026'] = '我是医生';
+$lang['Lang0027'] = '我是就诊人';
 $lang['Lang0028'] = '管理员';
 $lang['Lang0029'] = '记住我';
 $lang['Lang0030'] = '登陆';
@@ -390,7 +390,7 @@ $lang['Lang0313'] = '可预约日期';
 $lang['Lang0314'] = '注册|预约医生';
 
 //Menu
-$lang['Lang0315'] = '欢迎';
+$lang['Lang0315'] = '你好';
 
 $lang['Lang0316'] = '位置';
 
@@ -437,4 +437,19 @@ $lang['Lang0345']='请选择';
 
 $lang['Lang0346']='从医起始年份';
 $lang['Lang0347']='擅长领域';
+
+$lang['Lang0348']='家庭医生';
+$lang['Lang0349']='牙医';
+$lang['Lang0350']='营养师';
+$lang['Lang0351']='理疗师';
+$lang['Lang0352']='足疗师';
+$lang['Lang0353']='其它科室';
+$lang['Lang0354']='心理专家';
+$lang['Lang0355']='脊骨神经医生';
+$lang['Lang0356']='听力专家';
+$lang['Lang0357']='验光师';
+$lang['Lang0358']='皮肤科专家';
+$lang['Lang0359']='辅导顾问';
+$lang['Lang0360']='请输入地区的英文名字';
+$lang['Lang0361']='搜索';
 ?>
