@@ -26,7 +26,7 @@ $lang['Lang0012'] = '团队';
 $lang['Lang0013'] = '联系我们';
 $lang['Lang0014'] = '请登录';
 $lang['Lang0015'] = '免费注册';
-$lang['Lang0016'] = 'Guest';
+$lang['Lang0016'] = '过客';
 $lang['Lang0017'] = '安全退出';
 
 
