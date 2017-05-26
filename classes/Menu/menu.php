@@ -55,7 +55,7 @@
                     <?php echo $lang['Lang0010']; ?>
                 </a>
                 <ul class="submenu sub-menu-languang">
-                    <li><a href="?lang=en"><img src="img/lang/English.jpg">  English</a></li>
+                    <li><a href="?lang=en"><img src="img/lang/australia.png">  English</a></li>
                     <li><a href="?lang=ch"><img src="img/lang/china.png">  中文</a></li>
                 </ul>
             </li>
