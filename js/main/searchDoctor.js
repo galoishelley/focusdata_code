@@ -618,11 +618,13 @@ $(function () {
 		$('#DISTANCE').prop('disabled', false);
 		$('#btn_save_search_manage').show();
 		$('#btn_save_search').show();
+
 	}
 	else {
 		$('#DISTANCE').prop('disabled', true);
 		$('#btn_save_search_manage').hide();
 		$('#btn_save_search').hide();
+
 	}
 
 	/***
@@ -938,6 +940,8 @@ $(function () {
 								var data = ret.data[0];
 
 								$.cookie("fd_userid", data.CUSTOMER_USER_ID);
+								$.cookie("my_lat", data.CUSTOMER_LAT);
+								$.cookie("my_lng", data.CUSTOMER_LNG);
 
 							} else {
 								alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
@@ -1377,7 +1381,7 @@ $(function () {
 			blurBgRadius: '1px',
 			scaleBgValue: '0.98',
 			// Popup styling
-			popupWidth: '400px',
+			popupWidth: '425px',
 			popupHeight: '100%',
 			popupLocation: 'topRight',
 			popupAnimationDuration: '0.6',
@@ -1451,7 +1455,7 @@ $(function () {
 			blurBgRadius: '1px',
 			scaleBgValue: '0.98',
 			// Popup styling
-			popupWidth: '400px',
+			popupWidth: '425px',
 			popupHeight: '100%',
 			popupLocation: 'topRight',
 			popupAnimationDuration: '0.6',
@@ -1727,6 +1731,21 @@ $(function () {
 
 		$(".he-global-paginner").html(pageStr);
 	}
+
+	function distance(lat1, lon1, lat2, lon2, unit) {
+		var radlat1 = Math.PI * lat1 / 180
+		var radlat2 = Math.PI * lat2 / 180
+		var theta = lon1 - lon2
+		var radtheta = Math.PI * theta / 180
+		var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+		dist = Math.acos(dist)
+		dist = dist * 180 / Math.PI
+		dist = dist * 60 * 1.1515
+		if (unit == "K") { dist = dist * 1.609344 }
+		if (unit == "N") { dist = dist * 0.8684 }
+		return dist.toFixed(2);
+	}
+
 	//__________________________________________________________________________________________________________________Clinic Logic
 	function bind_clinic_content_per_day(json_str, page) {
 
@@ -1784,6 +1803,8 @@ $(function () {
 							clinicLat: item.CLINIC_LAT,
 							clinicLng: item.CLINIC_LNG,
 
+							distance: 0,
+
 
 							BULK_BILLING: item.BULK_BILLING,
 							LATE_HOUR_SERVICES: item.LATE_HOUR_SERVICES,
@@ -1805,6 +1826,15 @@ $(function () {
 							day: reformatDate(json_str.para.APPOINTMENT_DATE),
 							isYellowPage: item.IS_YELLOWPAGE
 						};
+
+
+
+						var my_lat = $.cookie("my_lat");
+						var my_lng = $.cookie("my_lng");
+						clinic.distance = distance(my_lat, my_lng, item.CLINIC_LAT, item.CLINIC_LNG, 'K');
+
+
+
 
 						if (item.LANGUAGE_NAME) {
 							//Step1.convert string to array
@@ -1867,6 +1897,14 @@ $(function () {
 						bind_clinic_content_per_day(json_str, rel);
 					}
 				});
+
+				if ($.cookie("ilogin") == 1) {
+
+					$('.clinic-distance').show();
+				}
+				else {
+					$('.clinic-distance').hide();
+				}
 			},
 			error: function (XMLHttpRequest, textStatus, errorThrown) {
 				//请求失败之后的操作
@@ -1950,10 +1988,12 @@ $(function () {
 				$('#clinicProfile').find('.clinic-mobile').text(clinic_phone);
 
 
-				var clinic_address = $(this).parent().find('.clinic-addr').text() + " , " + $(this).parent().find('.search-suburb').text();
+				var clinic_address = $(this).parent().find('.clinic-addr').text().trim() + ", " + $(this).parent().find('.search-suburb').text();
 				$('#clinicProfile').find('.clinic-address').text(clinic_address);
 
 				var clinic_lang = $(this).parent().find('.clinic-lang').text();
+
+				clinic_lang=clinic_lang.replace(/,/g,', ');
 				$('#clinicProfile').find('.clinic-language').text('We speak ' + clinic_lang + '.');
 
 				var clinic_BULK_BILLING = $(this).parent().find('.search-BULK_BILLING').text();
@@ -2118,7 +2158,7 @@ $(function () {
 							interest: "",
 							language: "",
 							clinicName: item.CLINIC_NAME,
-							clinicAddress: item.CLINIC_ADDR + ' , ' + item.CLINIC_SUBURB,
+							clinicAddress: item.CLINIC_ADDR + ', ' + item.CLINIC_SUBURB,
 							timeslot: [],
 							day: reformatDate(json_str.para.APPOINTMENT_DATE)
 
@@ -2239,6 +2279,8 @@ $(function () {
 
 
 				var doctor_lang = $(this).parent().find('.doctor-lang').text();
+
+				doctor_lang=doctor_lang.replace(/,/g,', ');
 				$('#doctorProfile').find('.doctor-language').text('Language spoken:' + doctor_lang + '.');
 
 
@@ -2262,16 +2304,15 @@ $(function () {
 					$('#doctorProfile').find('.doctor-interest').empty();
 					//Step1.convert string to array
 					var interestArr = doctor_interest.split(",");
-					
-					for(var i=0;i<interestArr.length;i++)
-					{
-						$('#doctorProfile').find('.doctor-interest').append("<li>"+interestArr[i]+"</li>");
+
+					for (var i = 0; i < interestArr.length; i++) {
+						$('#doctorProfile').find('.doctor-interest').append("<li>" + interestArr[i] + "</li>");
 					}
 				}
 				else
-					$('#doctorProfile').find('.doctor-feature').hide();	
+					$('#doctorProfile').find('.doctor-feature').hide();
 
-				
+
 
 
 				var doctor_overview = $(this).parent().find('.search-overview').text();

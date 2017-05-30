@@ -120,7 +120,7 @@ $(function () {
 
                 var ret = msg.response;
                 if (ret.success) {
-                    
+
                     if (ret.active) {
                         $.cookie("ilogin", 1);
                         Save();
@@ -154,7 +154,9 @@ $(function () {
                                     }
                                     var data = ret.data[0];
                                     $.cookie("fd_userid", data.CUSTOMER_USER_ID);
-                                    $.cookie("my_email",$("#USER_MAIL").val());
+                                    $.cookie("my_email", $("#USER_MAIL").val());
+                                    $.cookie("my_lat", data.CUSTOMER_LAT);
+                                    $.cookie("my_lng", data.CUSTOMER_LNG);
 
                                 } else {
                                     alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
@@ -229,7 +231,7 @@ $(function () {
             success: function (msg) {
                 if (msg) {
                     $.cookie("ilogin", 1);
-                    $.cookie("my_email",$("#USER_MAIL").val());
+                    $.cookie("my_email", $("#USER_MAIL").val());
                     Save();
 
                     var username = $.cookie("fd_username");
@@ -259,6 +261,8 @@ $(function () {
                                 }
                                 var data = ret.data[0];
                                 $.cookie("fd_userid", data.CUSTOMER_USER_ID);
+                                $.cookie("my_lat", data.CUSTOMER_LAT);
+                                $.cookie("my_lng", data.CUSTOMER_LNG);
 
                             } else {
                                 alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);

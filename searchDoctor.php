@@ -633,7 +633,7 @@
                         <div class="clinic-feature">
 
                             <ul>
-                                <li class="clinic-BULK_BILLING">bulk billing</li>
+                                <li class="clinic-BULK_BILLING">Bulk billing</li>
                                 <li class="clinic-LATE_HOUR_SERVICES">Late hour services (after 6pm)</li>
                                 <li class="clinic-FREE_PARKING">Free parking</li>
                                 <li class="clinic-WHEELCHAIR_ACCESS">Wheelchair access</li>
@@ -1083,10 +1083,14 @@
 
                                         <div class="search-suburb-contain clearfix">
                                             <h3 class="search-suburb">{{>clinicSuburb}}</h3>
+                                            
                                             <div class="search-map-dets">
 
                                                 <span class="search-map-link"><span class="search-map-ico"></span><span class="search-map-txt"><a class="showMap" street="{{>clinicAddress}}" suburb="{{>clinicSuburb}}" lat="{{>clinicLat}}" lng="{{>clinicLng}}">Map</a></span></span>
                                             </div>
+                                            <div class="search-map-dets clinic-distance">
+                                                ({{>distance}}km away)
+                                                </div>
                                         </div>
                                         <div class="search-images-dets">
                                             <div class="search-images-photo">

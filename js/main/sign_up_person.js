@@ -543,6 +543,9 @@ $(function () {
                                 } else {
 
                                 }
+
+                                $.cookie("my_lat", data.CUSTOMER_LAT);
+                                $.cookie("my_lng", data.CUSTOMER_LNG);
                             } else {
                                 alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
                                 result = false;
