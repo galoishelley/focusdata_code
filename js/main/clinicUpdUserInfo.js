@@ -76,7 +76,7 @@ $(document).ready(function () {
           $('#AGPAL').prop('checked', false);
         else
           $('#AGPAL').prop('checked', true);
-          
+
         $('#STANDARD_15_MINUTE_CONSULTATION').val(data.STANDARD_15_MINUTE_CONSULTATION);
         $('#EXTEND_30_MINUTE_CONSULTATION').val(data.EXTEND_30_MINUTE_CONSULTATION);
         state_id = data.STATE_ID;
@@ -237,17 +237,22 @@ $(document).ready(function () {
 
 
   $("#upload_file").change(function () {
-    if ($("#upload_file").val() != '') $("#submit_form").submit();
+    if ($("#upload_file").val() != '') {
+
+      $("#submit_form").submit();
+    }
+
+
 
   });
 
   $("#exec_target").load(function () {
 
     var data = $(window.frames['exec_target'].document.body).find("textarea").html();
+    var img_name = $(window.frames['exec_target'].document.body).find("p").html();
 
-    img_path = $("#upload_file").val();
-    var arr = img_path.split('\\');
-    $('#CLINIC_PHOTO').val(arr[2]);
+
+    $('#CLINIC_PHOTO').val(img_name);
 
     if (data != null) {
       $("#feedback").replaceWith(data.replace(/&lt;/g, '<').replace(/&gt;/g, '>'));

@@ -201,15 +201,20 @@ $(function () {
   });
 
   $("#exec_target").load(function () {
+    
+
     var data = $(window.frames['exec_target'].document.body).find("textarea").html();
-    img_path = $("#upload_file").val();
-    var arr = img_path.split('\\');
-    $('#DOCTOR_PHOTO').val(arr[2]);
+    var img_name = $(window.frames['exec_target'].document.body).find("p").html();
+
+
+    $('#DOCTOR_PHOTO').val(img_name);
 
     if (data != null) {
       $("#feedback").replaceWith(data.replace(/&lt;/g, '<').replace(/&gt;/g, '>'));
-      // $("#upload_file").val('');
+
     }
+
+
   });
 
 });
