@@ -1110,7 +1110,26 @@
                                             {{>clinicPhone}}
                                         </div>
                                         <div class="search-addie">
-                                            <div class="clinic-lang" style="display:inline">{{>language}}</div>
+                                        <div style="height:10px; margin-top:-10px" class="clinic-info">
+                                        {{if BULK_BILLING==1}}
+                                        Bulk billing&nbsp&nbsp&nbsp
+                                        {{else}}{{/if}}
+
+                                        {{if LATE_HOUR_SERVICES==1}}
+                                        Late Hour Services(after 6pm)&nbsp&nbsp&nbsp
+                                        {{else}}{{/if}}
+
+                                        {{if AGPAL==1}}
+                                        AGPAL&nbsp&nbsp&nbsp
+                                        {{else}}{{/if}}
+
+                                        {{if FEMALE_DOCTOR==1}}
+                                        Female Doctor
+                                        {{else}}{{/if}}
+
+
+                                        </div>
+                                            <div class="clinic-lang" style="display:inline;position:relative;top:10px;">{{>language}}</div>
                                             {{if isYellowPage==0}}
                                             <a class="showDoctors" keyClinicID="{{>clinicID}}">
                                                 <?php echo $lang['Lang0324']; ?>
