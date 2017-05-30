@@ -196,9 +196,9 @@ include_once 'classes/Language/language.common.php';
 											</label> <input type="text" class="form-control" name="CLINIC_POSTCODE" id="CLINIC_POSTCODE" value="1">
 												</div>
 
-
+												<div class="col-md-12" style="margin-bottom:20px">Special interests:</div>
 												<div class="form-group col-md-12">
-													<div class="col-md-5">
+													<div class="col-md-5 col-md-offset-1">
 														Bulk billing
 														<div class="material-switch pull-right">
 															<input id="BULK_BILLING" name="BULK_BILLING" type="checkbox" />
@@ -207,7 +207,7 @@ include_once 'classes/Language/language.common.php';
 													</div>
 												</div>
 												<div class="form-group col-md-12">
-													<div class="col-md-5">
+													<div class="col-md-5 col-md-offset-1">
 														Late hour services (after 6pm)
 														<div class="material-switch pull-right">
 															<input id="LATE_HOUR_SERVICES" name="LATE_HOUR_SERVICES" type="checkbox" />
@@ -216,7 +216,7 @@ include_once 'classes/Language/language.common.php';
 													</div>
 												</div>
 												<div class="form-group col-md-12">
-													<div class="col-md-5">
+													<div class="col-md-5 col-md-offset-1">
 														Free parking
 														<div class="material-switch pull-right">
 															<input id="FREE_PARKING" name="FREE_PARKING" type="checkbox" />
@@ -225,7 +225,7 @@ include_once 'classes/Language/language.common.php';
 													</div>
 												</div>
 												<div class="form-group col-md-12">
-													<div class="col-md-5">
+													<div class="col-md-5 col-md-offset-1">
 														Wheelchair access
 														<div class="material-switch pull-right">
 															<input id="WHEELCHAIR_ACCESS" name="WHEELCHAIR_ACCESS" type="checkbox" />
@@ -234,7 +234,7 @@ include_once 'classes/Language/language.common.php';
 													</div>
 												</div>
 												<div class="form-group col-md-12">
-													<div class="col-md-5">
+													<div class="col-md-5 col-md-offset-1">
 														Female Doctor
 														<div class="material-switch pull-right">
 															<input id="FEMALE_DOCTOR" name="FEMALE_DOCTOR" type="checkbox" />
@@ -243,7 +243,7 @@ include_once 'classes/Language/language.common.php';
 													</div>
 												</div>
 												<div class="form-group col-md-12">
-													<div class="col-md-5">
+													<div class="col-md-5 col-md-offset-1">
 														Home visit
 														<div class="material-switch pull-right">
 															<input id="HOME_VISIT" name="HOME_VISIT" type="checkbox" />
@@ -252,7 +252,7 @@ include_once 'classes/Language/language.common.php';
 													</div>
 												</div>
 												<div class="form-group col-md-12">
-													<div class="col-md-5">
+													<div class="col-md-5 col-md-offset-1">
 														Onsite pathology collection
 														<div class="material-switch pull-right">
 															<input id="ONSITE_PATHOLOGY_COLLECTION" name="ONSITE_PATHOLOGY_COLLECTION" type="checkbox" />
@@ -261,7 +261,7 @@ include_once 'classes/Language/language.common.php';
 													</div>
 												</div>
 												<div class="form-group col-md-12">
-													<div class="col-md-5">
+													<div class="col-md-5 col-md-offset-1">
 														AGPAL
 														<div class="material-switch pull-right">
 															<input id="AGPAL" name="AGPAL" type="checkbox" />
@@ -269,24 +269,101 @@ include_once 'classes/Language/language.common.php';
 														</div>
 													</div>
 												</div>
-												<div class="form-group col-md-12">
-													<label class="col-md-6 control-label">Standard 15 minute consultation</label>
-													<div class="input-group">
-														<span class="input-group-addon">$</span>
-														<input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' id="STANDARD_15_MINUTE_CONSULTATION" name="STANDARD_15_MINUTE_CONSULTATION" class="form-control" placeholder="Price" />
 
+												<div class="col-md-12" style="margin-bottom:20px">Fees:</div>
+												<div class="form-group col-md-12">
+													<div class="col-md-10 col-md-offset-1">
+														<label class="col-md-6 control-label">Standard 15 minute consultation</label>
+														<div class="input-group">
+															<span class="input-group-addon">$</span>
+
+
+															<input placeholder="0.00" type="number" name="STANDARD_15_MINUTE_CONSULTATION" id="STANDARD_15_MINUTE_CONSULTATION" value=""
+															 class="form-control" autocomplete="off" min="0" max="50000000" step="0.01">
+
+														</div>
 													</div>
 												</div>
 
-												<div class="form-group col-md-12">
-													<label class="col-md-6 control-label">Extended standard 30 minute consultation</label>
-													
-													<div class="input-group">
-														<span class="input-group-addon">$</span>
-														<input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' id="EXTEND_30_MINUTE_CONSULTATION" name="EXTEND_30_MINUTE_CONSULTATION" class="form-control" placeholder="Price" />
 
+
+												<div class="form-group col-md-12 col-md-offset-1">
+													<div class="col-md-10 col-md-offset-1">
+														<label class="col-md-6 control-label">Extended standard 30 minute consultation</label>
+
+														<div class="input-group">
+															<span class="input-group-addon">$</span>
+															<input placeholder="0.00" type="number" name="EXTEND_30_MINUTE_CONSULTATION" id="EXTEND_30_MINUTE_CONSULTATION" value=""
+															 class="form-control" autocomplete="off" min="0" max="50000000" step="0.01">
+
+														</div>
 													</div>
 												</div>
+
+
+
+												<div class="col-md-12" style="margin-bottom:20px">Opening hours:</div>
+												<div class="col-md-10 col-md-offset-1" style="margin-bottom:10px">
+													<label class="col-md-2 control-label">Monday:</label>
+													<input class="form-control" placeholder="Start time" name="MONDAY_START" id="Monday-start" type="text"/>
+													--&nbsp
+													<input class="form-control" placeholder="End time" name="MONDAY_END" id="Monday-end" type="text"/>
+												</div>
+
+												<div class="col-md-10 col-md-offset-1" style="margin-bottom:10px">
+													<label class="col-md-2 control-label">Tuesday:</label>
+													<input class="form-control" placeholder="Start time" name="TUESDAY_START" id="Tuesday-start" type="text"/>
+													--&nbsp
+													<input class="form-control" placeholder="End time" name="TUESDAY_END" id="Tuesday-end" type="text"/>
+												</div>
+
+												<div class="col-md-10 col-md-offset-1" style="margin-bottom:10px">
+													<label class="col-md-2 control-label">Wednesday:</label>
+													<input class="form-control" placeholder="Start time" name="WEDNESDAY_START" id="Wednesday-start" type="text"/>
+													--&nbsp
+													<input class="form-control" placeholder="End time" name="WEDNESDAY_END" id="Wednesday-end" type="text"/>
+												</div>
+
+												<div class="col-md-10 col-md-offset-1" style="margin-bottom:10px">
+													<label class="col-md-2 control-label">Thursday:</label>
+													<input class="form-control" placeholder="Start time" name="THURSDAY_START" id="Thursday-start" type="text"/>
+													--&nbsp
+													<input class="form-control" placeholder="End time" name="THURSDAY_END" id="Thursday-end" type="text"/>
+												</div>
+
+												<div class="col-md-10 col-md-offset-1" style="margin-bottom:10px">
+													<label class="col-md-2 control-label">Friday:</label>
+													<input class="form-control" placeholder="Start time" name="FRIDAY_START" id="Friday-start" type="text"/>
+													--&nbsp
+													<input class="form-control" placeholder="End time" name="FRIDAY_END" id="Friday-end" type="text"/>
+												</div>
+
+												<div class="col-md-10 col-md-offset-1" style="margin-bottom:10px">
+													<label class="col-md-2 control-label">Saturday:</label>
+													<input class="form-control" placeholder="Start time" name="SATURDAY_START" id="Saturday-start" type="text"/>
+													--&nbsp
+													<input class="form-control" placeholder="End time" name="SATURDAY_END" id="Saturday-end" type="text"/>
+												</div>
+
+												<div class="col-md-10 col-md-offset-1" style="margin-bottom:10px">
+													<label class="col-md-2 control-label">Sunday:</label>
+													<input class="form-control" placeholder="Start time" name="SUNDAY_START" id="Sunday-start" type="text"/>
+													--&nbsp
+													<input class="form-control" placeholder="End time" name="SUNDAY_END" id="Sunday-end" type="text"/>
+												</div>
+
+												<div class="col-md-10 col-md-offset-1" style="margin-bottom:10px">
+													<label class="col-md-2 control-label">Public holiday:</label>
+													<input class="form-control" placeholder="Start time" name="PUBLIC_START" id="Public-start" type="text"/>
+													--&nbsp
+													<input class="form-control" placeholder="End time" name="PUBLIC_END" id="Public-end" type="text"/>
+												</div>
+
+
+
+
+
+
 
 												<div class="form-group col-md-9">
 													<label for="CLINIC_OVERVIEW" class="col-md-2 control-label">
@@ -355,6 +432,9 @@ include_once 'classes/Language/For_JS_multi_lang.php';
 					<script type="text/javascript" src="js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
 					<script type="text/javascript" src="js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
 					<script src="js/bootstrap.min.js"></script>
+
+					<script type="text/javascript" src="js/vendor/jquery.timepicker.min.js"></script>
+					<link rel="stylesheet" type="text/css" href="css/vendor/jquery.timepicker.css" />
 					<!-- dialog -->
 					<script src="js/bootstrap-dialog.min.js"></script>
 					<script src="js/tm-scripts.js"></script>

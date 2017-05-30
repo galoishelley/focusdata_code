@@ -3,6 +3,54 @@ var result = true;
 var func_code;
 
 $(document).ready(function () {
+  $('#Monday-start').css("width","100px");
+  $('#Monday-start').timepicker();
+
+  $('#Monday-end').css("width","100px");
+  $('#Monday-end').timepicker();
+
+  $('#Tuesday-start').css("width","100px");
+  $('#Tuesday-start').timepicker();
+
+  $('#Tuesday-end').css("width","100px");
+  $('#Tuesday-end').timepicker();
+
+  $('#Wednesday-start').css("width","100px");
+  $('#Wednesday-start').timepicker();
+
+  $('#Wednesday-end').css("width","100px");
+  $('#Wednesday-end').timepicker();
+
+  $('#Thursday-start').css("width","100px");
+  $('#Thursday-start').timepicker();
+
+  $('#Thursday-end').css("width","100px");
+  $('#Thursday-end').timepicker();
+
+  $('#Friday-start').css("width","100px");
+  $('#Friday-start').timepicker();
+
+  $('#Friday-end').css("width","100px");
+  $('#Friday-end').timepicker();
+
+  $('#Saturday-start').css("width","100px");
+  $('#Saturday-start').timepicker();
+
+  $('#Saturday-end').css("width","100px");
+  $('#Saturday-end').timepicker();
+
+  $('#Sunday-start').css("width","100px");
+  $('#Sunday-start').timepicker();
+
+  $('#Sunday-end').css("width","100px");
+  $('#Sunday-end').timepicker();
+
+  $('#Public-start').css("width","100px");
+  $('#Public-start').timepicker();
+
+  $('#Public-end').css("width","100px");
+  $('#Public-end').timepicker();
+
 
   var state_id;
   func_code = "CU02";
