@@ -305,58 +305,58 @@ include_once 'classes/Language/language.common.php';
 												<div class="col-md-12" style="margin-bottom:20px">Opening hours:</div>
 												<div class="col-md-10 col-md-offset-1" style="margin-bottom:10px">
 													<label class="col-md-2 control-label">Monday:</label>
-													<input class="form-control" placeholder="Start time" name="MONDAY_START" id="Monday-start" type="text"/>
+													<input class="form-control" placeholder="Start time" name="MONDAY_START" id="MONDAY_START" type="text"/>
 													--&nbsp
-													<input class="form-control" placeholder="End time" name="MONDAY_END" id="Monday-end" type="text"/>
+													<input class="form-control" placeholder="End time" name="MONDAY_END" id="MONDAY_END" type="text"/>
 												</div>
 
 												<div class="col-md-10 col-md-offset-1" style="margin-bottom:10px">
 													<label class="col-md-2 control-label">Tuesday:</label>
-													<input class="form-control" placeholder="Start time" name="TUESDAY_START" id="Tuesday-start" type="text"/>
+													<input class="form-control" placeholder="Start time" name="TUESDAY_START" id="TUESDAY_START" type="text"/>
 													--&nbsp
-													<input class="form-control" placeholder="End time" name="TUESDAY_END" id="Tuesday-end" type="text"/>
+													<input class="form-control" placeholder="End time" name="TUESDAY_END" id="TUESDAY_END" type="text"/>
 												</div>
 
 												<div class="col-md-10 col-md-offset-1" style="margin-bottom:10px">
 													<label class="col-md-2 control-label">Wednesday:</label>
-													<input class="form-control" placeholder="Start time" name="WEDNESDAY_START" id="Wednesday-start" type="text"/>
+													<input class="form-control" placeholder="Start time" name="WEDNESDAY_START" id="WEDNESDAY_START" type="text"/>
 													--&nbsp
-													<input class="form-control" placeholder="End time" name="WEDNESDAY_END" id="Wednesday-end" type="text"/>
+													<input class="form-control" placeholder="End time" name="WEDNESDAY_END" id="WEDNESDAY_END" type="text"/>
 												</div>
 
 												<div class="col-md-10 col-md-offset-1" style="margin-bottom:10px">
 													<label class="col-md-2 control-label">Thursday:</label>
-													<input class="form-control" placeholder="Start time" name="THURSDAY_START" id="Thursday-start" type="text"/>
+													<input class="form-control" placeholder="Start time" name="THURSDAY_START" id="THURSDAY_START" type="text"/>
 													--&nbsp
-													<input class="form-control" placeholder="End time" name="THURSDAY_END" id="Thursday-end" type="text"/>
+													<input class="form-control" placeholder="End time" name="THURSDAY_END" id="THURSDAY_END" type="text"/>
 												</div>
 
 												<div class="col-md-10 col-md-offset-1" style="margin-bottom:10px">
 													<label class="col-md-2 control-label">Friday:</label>
-													<input class="form-control" placeholder="Start time" name="FRIDAY_START" id="Friday-start" type="text"/>
+													<input class="form-control" placeholder="Start time" name="FRIDAY_START" id="FRIDAY_START" type="text"/>
 													--&nbsp
-													<input class="form-control" placeholder="End time" name="FRIDAY_END" id="Friday-end" type="text"/>
+													<input class="form-control" placeholder="End time" name="FRIDAY_END" id="FRIDAY_END" type="text"/>
 												</div>
 
 												<div class="col-md-10 col-md-offset-1" style="margin-bottom:10px">
 													<label class="col-md-2 control-label">Saturday:</label>
-													<input class="form-control" placeholder="Start time" name="SATURDAY_START" id="Saturday-start" type="text"/>
+													<input class="form-control" placeholder="Start time" name="SATURDAY_START" id="SATURDAY_START" type="text"/>
 													--&nbsp
-													<input class="form-control" placeholder="End time" name="SATURDAY_END" id="Saturday-end" type="text"/>
+													<input class="form-control" placeholder="End time" name="SATURDAY_END" id="SATURDAY_END" type="text"/>
 												</div>
 
 												<div class="col-md-10 col-md-offset-1" style="margin-bottom:10px">
 													<label class="col-md-2 control-label">Sunday:</label>
-													<input class="form-control" placeholder="Start time" name="SUNDAY_START" id="Sunday-start" type="text"/>
+													<input class="form-control" placeholder="Start time" name="SUNDAY_START" id="SUNDAY_START" type="text"/>
 													--&nbsp
-													<input class="form-control" placeholder="End time" name="SUNDAY_END" id="Sunday-end" type="text"/>
+													<input class="form-control" placeholder="End time" name="SUNDAY_END" id="SUNDAY_END" type="text"/>
 												</div>
 
 												<div class="col-md-10 col-md-offset-1" style="margin-bottom:10px">
 													<label class="col-md-2 control-label">Public holiday:</label>
-													<input class="form-control" placeholder="Start time" name="PUBLIC_START" id="Public-start" type="text"/>
+													<input class="form-control" placeholder="Start time" name="PUBLIC_START" id="PUBLIC_START" type="text"/>
 													--&nbsp
-													<input class="form-control" placeholder="End time" name="PUBLIC_END" id="Public-end" type="text"/>
+													<input class="form-control" placeholder="End time" name="PUBLIC_END" id="PUBLIC_END" type="text"/>
 												</div>
 
 

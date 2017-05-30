@@ -3,53 +3,53 @@ var result = true;
 var func_code;
 
 $(document).ready(function () {
-  $('#Monday-start').css("width","100px");
-  $('#Monday-start').timepicker();
+  $('#MONDAY_START').css("width","100px");
+  $('#MONDAY_START').timepicker();
 
-  $('#Monday-end').css("width","100px");
-  $('#Monday-end').timepicker();
+  $('#MONDAY_END').css("width","100px");
+  $('#MONDAY_END').timepicker();
 
-  $('#Tuesday-start').css("width","100px");
-  $('#Tuesday-start').timepicker();
+  $('#TUESDAY_START').css("width","100px");
+  $('#TUESDAY_START').timepicker();
 
-  $('#Tuesday-end').css("width","100px");
-  $('#Tuesday-end').timepicker();
+  $('#TUESDAY_END').css("width","100px");
+  $('#TUESDAY_END').timepicker();
 
-  $('#Wednesday-start').css("width","100px");
-  $('#Wednesday-start').timepicker();
+  $('#WEDNESDAY_START').css("width","100px");
+  $('#WEDNESDAY_START').timepicker();
 
-  $('#Wednesday-end').css("width","100px");
-  $('#Wednesday-end').timepicker();
+  $('#WEDNESDAY_END').css("width","100px");
+  $('#WEDNESDAY_END').timepicker();
 
-  $('#Thursday-start').css("width","100px");
-  $('#Thursday-start').timepicker();
+  $('#THURSDAY_START').css("width","100px");
+  $('#THURSDAY_START').timepicker();
 
-  $('#Thursday-end').css("width","100px");
-  $('#Thursday-end').timepicker();
+  $('#THURSDAY_END').css("width","100px");
+  $('#THURSDAY_END').timepicker();
 
-  $('#Friday-start').css("width","100px");
-  $('#Friday-start').timepicker();
+  $('#FRIDAY_START').css("width","100px");
+  $('#FRIDAY_START').timepicker();
 
-  $('#Friday-end').css("width","100px");
-  $('#Friday-end').timepicker();
+  $('#FRIDAY_END').css("width","100px");
+  $('#FRIDAY_END').timepicker();
 
-  $('#Saturday-start').css("width","100px");
-  $('#Saturday-start').timepicker();
+  $('#SATURDAY_START').css("width","100px");
+  $('#SATURDAY_START').timepicker();
 
-  $('#Saturday-end').css("width","100px");
-  $('#Saturday-end').timepicker();
+  $('#SATURDAY_END').css("width","100px");
+  $('#SATURDAY_END').timepicker();
 
-  $('#Sunday-start').css("width","100px");
-  $('#Sunday-start').timepicker();
+  $('#SUNDAY_START').css("width","100px");
+  $('#SUNDAY_START').timepicker();
 
-  $('#Sunday-end').css("width","100px");
-  $('#Sunday-end').timepicker();
+  $('#SUNDAY_END').css("width","100px");
+  $('#SUNDAY_END').timepicker();
 
-  $('#Public-start').css("width","100px");
-  $('#Public-start').timepicker();
+  $('#PUBLIC_START').css("width","100px");
+  $('#PUBLIC_START').timepicker();
 
-  $('#Public-end').css("width","100px");
-  $('#Public-end').timepicker();
+  $('#PUBLIC_END').css("width","100px");
+  $('#PUBLIC_END').timepicker();
 
 
   var state_id;
@@ -127,6 +127,31 @@ $(document).ready(function () {
 
         $('#STANDARD_15_MINUTE_CONSULTATION').val(data.STANDARD_15_MINUTE_CONSULTATION);
         $('#EXTEND_30_MINUTE_CONSULTATION').val(data.EXTEND_30_MINUTE_CONSULTATION);
+
+
+        $('#MONDAY_START').val(data.MONDAY_START);
+        $('#MONDAY_END').val(data.MONDAY_END);
+
+        $('#TUESDAY_START').val(data.TUESDAY_START);
+        $('#TUESDAY_END').val(data.TUESDAY_END);
+
+        $('#WEDNESDAY_START').val(data.WEDNESDAY_START);
+        $('#WEDNESDAY_END').val(data.WEDNESDAY_END);
+
+        $('#THURSDAY_START').val(data.THURSDAY_START);
+        $('#THURSDAY_END').val(data.THURSDAY_END);
+
+        $('#FRIDAY_START').val(data.FRIDAY_START);
+        $('#FRIDAY_END').val(data.FRIDAY_END);
+
+        $('#SATURDAY_START').val(data.SATURDAY_START);
+        $('#SATURDAY_END').val(data.SATURDAY_END);
+
+        $('#SUNDAY_START').val(data.SUNDAY_START);
+        $('#SUNDAY_END').val(data.SUNDAY_END);
+
+        $('#PUBLIC_START').val(data.PUBLIC_START);
+        $('#PUBLIC_END').val(data.PUBLIC_END);
         state_id = data.STATE_ID;
       } else {
         alert(func_code + " " + ret.status.ret_code + " " + ret.status.ret_msg);
