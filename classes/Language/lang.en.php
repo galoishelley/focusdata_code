@@ -460,4 +460,6 @@ $lang['Lang0359']='Counsellor';
 $lang['Lang0360']='Suburb, state or postcode';
 $lang['Lang0361']='Search';
 
+
+$lang['Lang0362'] = 'Choose at least one interest';
 ?>

@@ -306,7 +306,7 @@
                 font-weight: 400
             }
 
-            #clinicProfile .slickWindow .cartItems .clinic-feature {
+            #clinicProfile .slickWindow .cartItems .clinic-feature, .clinic-interest, .clinic-hours, .clinic-fees {
                 margin: 1px 0 14px 15px;
                 padding: 0 90px 0 10px;
                 font-size: 13px;
@@ -629,10 +629,20 @@
                         <div class="clinic-title"></div>
                         <div class="clinic-mobile"></div>
                         <div class="clinic-address"></div>
-                        <div class="clinic-language"></div>
-                        <div class="clinic-feature">
 
-                            <ul>
+                        <div class="clinic-interest">
+                        <div style="font-size:15px;margin-left:-14px;margin-bottom:14px">We specialise in</div>
+                         <ul style="margin-left:18px;" class="interest-content">
+                                
+                            </ul>
+                        </div>
+
+                        <div class="clinic-language" style="font-size:15px;margin-left:0px;margin-bottom:14px"></div>
+
+                        <div class="clinic-feature">
+                            <div style="font-size:15px;margin-left:-14px;margin-bottom:14px">Special interests</div>
+
+                            <ul style="margin-left:18px;">
                                 <li class="clinic-BULK_BILLING">Bulk billing</li>
                                 <li class="clinic-LATE_HOUR_SERVICES">Late hour services (after 6pm)</li>
                                 <li class="clinic-FREE_PARKING">Free parking</li>
@@ -641,22 +651,37 @@
                                 <li class="clinic-HOME_VISIT">Home visit</li>
                                 <li class="clinic-ONSITE_PATHOLOGY_COLLECTION">Onsite pathology collection</li>
                                 <li class="clinic-AGPAL">AGPAL</li>
-                                <li class="clinic-charge">Charge:</li>
-                                <ul>
-                                    <li class="clinic-STANDARD_15_MINUTE_CONSULTATION" style="margin-left:5px;">
+
+                            </ul>
+                        </div>
+
+
+                        <div class="clinic-hours">
+                        <div style="font-size:15px;margin-left:-14px;margin-bottom:14px">Opening hours</div>
+                         <ul style="margin-left:18px;" class="hours-content">
+                                
+                            </ul>
+                        </div>
+
+
+                        <div class="clinic-fees">
+                        <div style="font-size:15px;margin-left:-14px;margin-bottom:14px">Fees</div>
+                         <ul style="margin-left:18px;" class="fees-content">
+                                <li class="clinic-STANDARD_15_MINUTE_CONSULTATION" style="margin-left:5px;">
 
                                     </li>
                                     <li class="clinic-EXTEND_30_MINUTE_CONSULTATION" style="margin-left:5px;">
 
                                     </li>
-                                </ul>
-
-
-
                             </ul>
                         </div>
 
+
+
                         <p class="clinic-overview"></p>
+
+
+                        <div id="clinic-map" style="height:300px"></div>
                     </div>
 
 
@@ -1138,6 +1163,10 @@
                                             {{else}}{{/if}}
                                         </div>
 
+                                        <div class="clinic-interest" style="display:none;">
+                                            {{>interest}}
+                                        </div>
+
                                         <div class="search-BULK_BILLING" style="display:none;">
                                             {{>BULK_BILLING}}
                                         </div>
@@ -1169,6 +1198,63 @@
 
                                         <div class="search-EXTEND_30_MINUTE_CONSULTATION" style="display:none;">
                                             {{>EXTEND_30_MINUTE_CONSULTATION}}
+                                        </div>
+
+
+                                        <div class="MONDAY_START" style="display:none;">
+                                            {{>MONDAY_START}}
+                                        </div>
+                                        <div class="MONDAY_END" style="display:none;">
+                                            {{>MONDAY_END}}
+                                        </div>
+
+                                        <div class="TUESDAY_START" style="display:none;">
+                                            {{>TUESDAY_START}}
+                                        </div>
+                                        <div class="TUESDAY_END" style="display:none;">
+                                            {{>TUESDAY_END}}
+                                        </div>
+
+                                        <div class="WEDNESDAY_START" style="display:none;">
+                                            {{>WEDNESDAY_START}}
+                                        </div>
+                                        <div class="WEDNESDAY_END" style="display:none;">
+                                            {{>WEDNESDAY_END}}
+                                        </div>
+
+                                        <div class="THURSDAY_START" style="display:none;">
+                                            {{>THURSDAY_START}}
+                                        </div>
+                                        <div class="THURSDAY_END" style="display:none;">
+                                            {{>THURSDAY_END}}
+                                        </div>
+
+                                        <div class="FRIDAY_START" style="display:none;">
+                                            {{>FRIDAY_START}}
+                                        </div>
+                                        <div class="FRIDAY_END" style="display:none;">
+                                            {{>FRIDAY_END}}
+                                        </div>
+
+                                        <div class="SATURDAY_START" style="display:none;">
+                                            {{>SATURDAY_START}}
+                                        </div>
+                                        <div class="SATURDAY_END" style="display:none;">
+                                            {{>SATURDAY_END}}
+                                        </div>
+
+                                        <div class="SUNDAY_START" style="display:none;">
+                                            {{>SUNDAY_START}}
+                                        </div>
+                                        <div class="SUNDAY_END" style="display:none;">
+                                            {{>SUNDAY_END}}
+                                        </div>
+
+                                        <div class="PUBLIC_START" style="display:none;">
+                                            {{>PUBLIC_START}}
+                                        </div>
+                                        <div class="PUBLIC_END" style="display:none;">
+                                            {{>PUBLIC_END}}
                                         </div>
 
 

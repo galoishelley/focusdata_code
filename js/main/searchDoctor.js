@@ -1818,9 +1818,38 @@ $(function () {
 							STANDARD_15_MINUTE_CONSULTATION: item.STANDARD_15_MINUTE_CONSULTATION,
 
 							EXTEND_30_MINUTE_CONSULTATION: item.EXTEND_30_MINUTE_CONSULTATION,
+
+
+							MONDAY_START:item.MONDAY_START,
+							MONDAY_END:item.MONDAY_END,
+
+							TUESDAY_START:item.TUESDAY_START,
+							TUESDAY_END:item.TUESDAY_END,
+
+							WEDNESDAY_START:item.WEDNESDAY_START,
+							WEDNESDAY_END:item.WEDNESDAY_END,
+
+							THURSDAY_START:item.THURSDAY_START,
+							THURSDAY_END:item.THURSDAY_END,
+
+							FRIDAY_START:item.FRIDAY_START,
+							FRIDAY_END:item.FRIDAY_END,
+
+							SATURDAY_START:item.SATURDAY_START,
+							SATURDAY_END:item.SATURDAY_END,
+
+							SUNDAY_START:item.SUNDAY_START,
+							SUNDAY_END:item.SUNDAY_END,
+
+							PUBLIC_START:item.PUBLIC_START,
+							PUBLIC_END:item.PUBLIC_END,
+
+
+
 							overview: item.CLINIC_OVERVIEW,
 
 							language: "",
+							interest: "",
 							timeslot: [],
 
 							day: reformatDate(json_str.para.APPOINTMENT_DATE),
@@ -1844,6 +1873,16 @@ $(function () {
 							//Step3.convert array to string
 							clinic.language = langArrUni.join();
 						}
+
+						if (item.INTEREST_NAME) {
+							//Step1.convert string to array
+							var inArr = item.INTEREST_NAME.split(",");
+							//Step2.identify the unique
+							var inArrUni = _.uniq(inArr);
+							//Step3.convert array to string
+							clinic.interest = inArrUni.join();
+						}
+
 						if (item.APPOINTMENT_TIME) {
 							var timeslotArr = item.APPOINTMENT_TIME.split(",");
 							var timeslotArrUni = _.uniq(timeslotArr);
@@ -1994,7 +2033,141 @@ $(function () {
 				var clinic_lang = $(this).parent().find('.clinic-lang').text();
 
 				clinic_lang=clinic_lang.replace(/,/g,', ');
-				$('#clinicProfile').find('.clinic-language').text('We speak ' + clinic_lang + '.');
+				$('#clinicProfile').find('.clinic-language').text('Doctors at this practice speak ' + clinic_lang + '.');
+
+
+
+
+
+
+
+
+
+				//___________________________________________________________interest
+
+				var clinic_interest = $(this).parent().find('.clinic-interest').text();
+
+				var interestArr = clinic_interest.split(",");
+				$('#clinicProfile').find('.interest-content').empty();
+				for(var i=0;i<interestArr.length;i++)
+				{
+					$('#clinicProfile').find('.interest-content').append("<li>"+interestArr[i]+"</li>");
+				}
+
+				//___________________________________________________________hours
+
+				var MONDAY_START = $(this).parent().find('.MONDAY_START').text();
+				var MONDAY_END = $(this).parent().find('.MONDAY_END').text();
+
+				var TUESDAY_START = $(this).parent().find('.TUESDAY_START').text();
+				var TUESDAY_END = $(this).parent().find('.TUESDAY_END').text();
+
+				var WEDNESDAY_START = $(this).parent().find('.WEDNESDAY_START').text();
+				var WEDNESDAY_END = $(this).parent().find('.WEDNESDAY_END').text();
+
+				var THURSDAY_START = $(this).parent().find('.THURSDAY_START').text();
+				var THURSDAY_END = $(this).parent().find('.THURSDAY_END').text();
+
+				var FRIDAY_START = $(this).parent().find('.FRIDAY_START').text();
+				var FRIDAY_END = $(this).parent().find('.FRIDAY_END').text();
+
+				var SATURDAY_START = $(this).parent().find('.SATURDAY_START').text();
+				var SATURDAY_END = $(this).parent().find('.SATURDAY_END').text();
+
+				var SUNDAY_START = $(this).parent().find('.SUNDAY_START').text();
+				var SUNDAY_END = $(this).parent().find('.SUNDAY_END').text();
+
+				var PUBLIC_START = $(this).parent().find('.PUBLIC_START').text();
+				var PUBLIC_END = $(this).parent().find('.PUBLIC_END').text();
+				$('#clinicProfile').find('.hours-content').empty();
+				$('#clinicProfile').find('.hours-content').append("<li>Monday:"+MONDAY_START+"-"+MONDAY_END+"</li>");
+				$('#clinicProfile').find('.hours-content').append("<li>Tuesday:"+TUESDAY_START+"-"+TUESDAY_END+"</li>");
+				$('#clinicProfile').find('.hours-content').append("<li>Wednesday:"+WEDNESDAY_START+"-"+WEDNESDAY_END+"</li>");
+				$('#clinicProfile').find('.hours-content').append("<li>Thursday:"+THURSDAY_START+"-"+THURSDAY_END+"</li>");
+				$('#clinicProfile').find('.hours-content').append("<li>Friday:"+FRIDAY_START+"-"+FRIDAY_END+"</li>");
+				$('#clinicProfile').find('.hours-content').append("<li>Saturday:"+SATURDAY_START+"-"+SATURDAY_END+"</li>");
+				$('#clinicProfile').find('.hours-content').append("<li>Sunday:"+SUNDAY_START+"-"+SUNDAY_END+"</li>");
+				$('#clinicProfile').find('.hours-content').append("<li>Public holiday:"+PUBLIC_START+"-"+PUBLIC_END+"</li>");
+
+
+
+				//_____________________________________________________fees
+
+
+
+
+
+				var clinic_STANDARD_15_MINUTE_CONSULTATION = $(this).parent().find('.search-STANDARD_15_MINUTE_CONSULTATION').text();
+				if (clinic_STANDARD_15_MINUTE_CONSULTATION != 0) {
+					$('#clinicProfile').find('.clinic-STANDARD_15_MINUTE_CONSULTATION').show();
+					$('#clinicProfile').find('.clinic-STANDARD_15_MINUTE_CONSULTATION').text('Standard 15 minute consultation - $' + clinic_STANDARD_15_MINUTE_CONSULTATION);
+				}
+				else
+					$('#clinicProfile').find('.clinic-STANDARD_15_MINUTE_CONSULTATION').hide();
+
+				var clinic_EXTEND_30_MINUTE_CONSULTATION = $(this).parent().find('.search-EXTEND_30_MINUTE_CONSULTATION').text();
+				if (clinic_EXTEND_30_MINUTE_CONSULTATION != 0) {
+					$('#clinicProfile').find('.clinic-EXTEND_30_MINUTE_CONSULTATION').show();
+					$('#clinicProfile').find('.clinic-EXTEND_30_MINUTE_CONSULTATION').text('Extended standard 30 minute consultation - $' + clinic_EXTEND_30_MINUTE_CONSULTATION);
+				}
+				else
+					$('#clinicProfile').find('.clinic-EXTEND_30_MINUTE_CONSULTATION').hide();
+
+
+
+				//_________________________________________________________________map
+
+
+				
+
+				var lat = $(this).parent().find('.showMap').attr("lat");
+				var lng = $(this).parent().find('.showMap').attr("lng");
+				var street = $(this).parent().find('.showMap').attr("street");
+				var suburb = $(this).parent().find('.showMap').attr("suburb");
+
+				var address = street + "," + suburb + ",Australia";
+				var mylocation = new google.maps.LatLng(lat, lng);
+				var mapCanvas = document.getElementById('clinic-map');
+				var mapOptions = {
+					center: new google.maps.LatLng(lat, lng),
+					zoom: 12,
+					styles: [{ "featureType": "administrative", "elementType": "all", "stylers": [{ "visibility": "on" }, { "lightness": 33 }] }, { "featureType": "landscape", "elementType": "all", "stylers": [{ "color": "#f2e5d4" }] }, { "featureType": "poi.park", "elementType": "geometry", "stylers": [{ "color": "#c5dac6" }] }, { "featureType": "poi.park", "elementType": "labels", "stylers": [{ "visibility": "on" }, { "lightness": 20 }] }, { "featureType": "road", "elementType": "all", "stylers": [{ "lightness": 20 }] }, { "featureType": "road.highway", "elementType": "geometry", "stylers": [{ "color": "#c5c6c6" }] }, { "featureType": "road.arterial", "elementType": "geometry", "stylers": [{ "color": "#e4d7c6" }] }, { "featureType": "road.local", "elementType": "geometry", "stylers": [{ "color": "#fbfaf7" }] }, { "featureType": "water", "elementType": "all", "stylers": [{ "visibility": "on" }, { "color": "#acbcc9" }] }]
+				}
+
+
+				map = new google.maps.Map(mapCanvas, mapOptions)
+
+				var infowindow = new google.maps.InfoWindow(
+					{
+						content: '<b>' + address + '</b>',
+						size: new google.maps.Size(150, 50)
+					});
+
+				var marker = new google.maps.Marker({
+					position: new google.maps.LatLng(lat, lng),
+					map: map,
+					title: address
+				});
+				google.maps.event.addListener(marker, 'click', function () {
+					infowindow.open(map, marker);
+				});
+
+
+				
+
+
+
+
+
+
+
+
+
+
+			
+
+
+
 
 				var clinic_BULK_BILLING = $(this).parent().find('.search-BULK_BILLING').text();
 				if (clinic_BULK_BILLING != 0)
@@ -2048,30 +2221,6 @@ $(function () {
 
 
 
-
-
-
-				var clinic_STANDARD_15_MINUTE_CONSULTATION = $(this).parent().find('.search-STANDARD_15_MINUTE_CONSULTATION').text();
-				if (clinic_STANDARD_15_MINUTE_CONSULTATION != 0) {
-					$('#clinicProfile').find('.clinic-STANDARD_15_MINUTE_CONSULTATION').show();
-					$('#clinicProfile').find('.clinic-STANDARD_15_MINUTE_CONSULTATION').text('Standard 15 minute consultation - $' + clinic_STANDARD_15_MINUTE_CONSULTATION);
-				}
-				else
-					$('#clinicProfile').find('.clinic-STANDARD_15_MINUTE_CONSULTATION').hide();
-
-				var clinic_EXTEND_30_MINUTE_CONSULTATION = $(this).parent().find('.search-EXTEND_30_MINUTE_CONSULTATION').text();
-				if (clinic_EXTEND_30_MINUTE_CONSULTATION != 0) {
-					$('#clinicProfile').find('.clinic-EXTEND_30_MINUTE_CONSULTATION').show();
-					$('#clinicProfile').find('.clinic-EXTEND_30_MINUTE_CONSULTATION').text('Extended standard 30 minute consultation - $' + clinic_EXTEND_30_MINUTE_CONSULTATION);
-				}
-				else
-					$('#clinicProfile').find('.clinic-EXTEND_30_MINUTE_CONSULTATION').hide();
-
-
-				if (clinic_STANDARD_15_MINUTE_CONSULTATION == 0 && clinic_EXTEND_30_MINUTE_CONSULTATION == 0)
-					$('#clinicProfile').find('.clinic-charge').hide();
-				else
-					$('#clinicProfile').find('.clinic-charge').show();
 
 
 				var clinic_overview = $(this).parent().find('.search-overview').text();

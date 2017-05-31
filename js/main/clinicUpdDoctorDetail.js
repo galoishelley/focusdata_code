@@ -126,7 +126,6 @@ $(function () {
 
   $('#btn_submit').click(function () {
 
-    console.log($('#ddlLanguage').val());
 
     if ($('#ddlLanguage').val() == null) {
       alert($("#Lang0327").html());
@@ -136,8 +135,8 @@ $(function () {
     $('#LANGUAGE_NAME').val($('#ddlLanguage').val());
 
 
-    if ($('#ddlLanguage').val() == null) {
-      alert($("#Lang0327").html());
+    if ($('#ddlInterests').val() == null) {
+      alert($("#Lang0362").html());
       return;
     }
 
