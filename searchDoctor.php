@@ -143,11 +143,23 @@
                 color: #313436;
                 font-weight: 400;
                 text-overflow: ellipsis;
-                white-space: nowrap;
+                
                 overflow: hidden
             }
 
-            #doctorProfile .slickWindow .cartItems .doctor-address {
+            #doctorProfile .slickWindow .cartItems .doctor-language,.doctor-year {
+                margin: 1px 0 14px;
+                padding: 0 90px 0 10px;
+                font-size: 15px;
+                width: 100%;
+                color: #313436;
+                font-weight: 400;
+                text-overflow: ellipsis;
+                
+                overflow: hidden
+            }
+
+            #doctorProfile .slickWindow .cartItems .doctor-address,.doctor-title12345,.doctor-fees {
                 margin: 1px 0 14px;
                 padding: 0 90px 0 10px;
                 font-size: 13px;
@@ -155,9 +167,9 @@
                 font-weight: 400
             }
 
-            #doctorProfile .slickWindow .cartItems .doctor-language,
+            #doctorProfile .slickWindow .cartItems 
             .doctor-sex,
-            .doctor-year,
+            
             .doctor-feature {
                 margin: 1px 0 14px;
                 padding: 0 90px 0 10px;
@@ -701,15 +713,30 @@
                     <div class="cartItems">
                         <img class="doctor-img" />
                         <div class="doctor-title"></div>
-                        <div class="doctor-mobile"></div>
-                        <div class="doctor-address"></div>
-                        <div class="doctor-language"></div>
+
+                        <div class="doctor-title12345"></div>
                         <div class="doctor-sex"></div>
+                        <div class="doctor-address"></div>
+
+                        <div class="doctor-language"></div>
+                        
                         <div class="doctor-year"></div>
                         <div class="doctor-feature">
-                            Special interests in:
+                            
                             <ul class="doctor-interest">
 
+                            </ul>
+                        </div>
+
+                        <div class="doctor-fees">
+                        <div style="font-size:15px;margin-bottom:14px">Fees</div>
+                         <ul style="margin-left:18px;" class="fees-content">
+                                <li class="doctor-STANDARD_15_MINUTE_CONSULTATION" style="margin-left:5px;">
+
+                                    </li>
+                                    <li class="doctor-EXTEND_30_MINUTE_CONSULTATION" style="margin-left:5px;">
+
+                                    </li>
                             </ul>
                         </div>
                         
@@ -1312,6 +1339,29 @@
 
                                     <div class="doctor-year" style="display:none;">
                                         {{>doctorYear}}
+                                    </div>
+
+                                    <div class="DOCTOR_TITLE_1" style="display:none;">
+                                        {{>DOCTOR_TITLE_1}}
+                                    </div>
+                                    <div class="DOCTOR_TITLE_2" style="display:none;">
+                                        {{>DOCTOR_TITLE_2}}
+                                    </div>
+                                    <div class="DOCTOR_TITLE_3" style="display:none;">
+                                        {{>DOCTOR_TITLE_3}}
+                                    </div>
+                                    <div class="DOCTOR_TITLE_4" style="display:none;">
+                                        {{>DOCTOR_TITLE_4}}
+                                    </div>
+                                    <div class="DOCTOR_TITLE_5" style="display:none;">
+                                        {{>DOCTOR_TITLE_5}}
+                                    </div>
+
+                                    <div class="STANDARD_15_MINUTE_CONSULTATION" style="display:none;">
+                                        {{>STANDARD_15_MINUTE_CONSULTATION}}
+                                    </div>
+                                    <div class="EXTEND_30_MINUTE_CONSULTATION" style="display:none;">
+                                        {{>EXTEND_30_MINUTE_CONSULTATION}}
                                     </div>
 
                                     <div class="doctor-interest" style="display:none;">

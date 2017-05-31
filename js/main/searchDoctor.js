@@ -1820,29 +1820,29 @@ $(function () {
 							EXTEND_30_MINUTE_CONSULTATION: item.EXTEND_30_MINUTE_CONSULTATION,
 
 
-							MONDAY_START:item.MONDAY_START,
-							MONDAY_END:item.MONDAY_END,
+							MONDAY_START: item.MONDAY_START,
+							MONDAY_END: item.MONDAY_END,
 
-							TUESDAY_START:item.TUESDAY_START,
-							TUESDAY_END:item.TUESDAY_END,
+							TUESDAY_START: item.TUESDAY_START,
+							TUESDAY_END: item.TUESDAY_END,
 
-							WEDNESDAY_START:item.WEDNESDAY_START,
-							WEDNESDAY_END:item.WEDNESDAY_END,
+							WEDNESDAY_START: item.WEDNESDAY_START,
+							WEDNESDAY_END: item.WEDNESDAY_END,
 
-							THURSDAY_START:item.THURSDAY_START,
-							THURSDAY_END:item.THURSDAY_END,
+							THURSDAY_START: item.THURSDAY_START,
+							THURSDAY_END: item.THURSDAY_END,
 
-							FRIDAY_START:item.FRIDAY_START,
-							FRIDAY_END:item.FRIDAY_END,
+							FRIDAY_START: item.FRIDAY_START,
+							FRIDAY_END: item.FRIDAY_END,
 
-							SATURDAY_START:item.SATURDAY_START,
-							SATURDAY_END:item.SATURDAY_END,
+							SATURDAY_START: item.SATURDAY_START,
+							SATURDAY_END: item.SATURDAY_END,
 
-							SUNDAY_START:item.SUNDAY_START,
-							SUNDAY_END:item.SUNDAY_END,
+							SUNDAY_START: item.SUNDAY_START,
+							SUNDAY_END: item.SUNDAY_END,
 
-							PUBLIC_START:item.PUBLIC_START,
-							PUBLIC_END:item.PUBLIC_END,
+							PUBLIC_START: item.PUBLIC_START,
+							PUBLIC_END: item.PUBLIC_END,
 
 
 
@@ -2032,7 +2032,7 @@ $(function () {
 
 				var clinic_lang = $(this).parent().find('.clinic-lang').text();
 
-				clinic_lang=clinic_lang.replace(/,/g,', ');
+				clinic_lang = clinic_lang.replace(/,/g, ', ');
 				$('#clinicProfile').find('.clinic-language').text('Doctors at this practice speak ' + clinic_lang + '.');
 
 
@@ -2049,9 +2049,8 @@ $(function () {
 
 				var interestArr = clinic_interest.split(",");
 				$('#clinicProfile').find('.interest-content').empty();
-				for(var i=0;i<interestArr.length;i++)
-				{
-					$('#clinicProfile').find('.interest-content').append("<li>"+interestArr[i]+"</li>");
+				for (var i = 0; i < interestArr.length; i++) {
+					$('#clinicProfile').find('.interest-content').append("<li>" + interestArr[i] + "</li>");
 				}
 
 				//___________________________________________________________hours
@@ -2080,14 +2079,14 @@ $(function () {
 				var PUBLIC_START = $(this).parent().find('.PUBLIC_START').text();
 				var PUBLIC_END = $(this).parent().find('.PUBLIC_END').text();
 				$('#clinicProfile').find('.hours-content').empty();
-				$('#clinicProfile').find('.hours-content').append("<li>Monday:"+MONDAY_START+"-"+MONDAY_END+"</li>");
-				$('#clinicProfile').find('.hours-content').append("<li>Tuesday:"+TUESDAY_START+"-"+TUESDAY_END+"</li>");
-				$('#clinicProfile').find('.hours-content').append("<li>Wednesday:"+WEDNESDAY_START+"-"+WEDNESDAY_END+"</li>");
-				$('#clinicProfile').find('.hours-content').append("<li>Thursday:"+THURSDAY_START+"-"+THURSDAY_END+"</li>");
-				$('#clinicProfile').find('.hours-content').append("<li>Friday:"+FRIDAY_START+"-"+FRIDAY_END+"</li>");
-				$('#clinicProfile').find('.hours-content').append("<li>Saturday:"+SATURDAY_START+"-"+SATURDAY_END+"</li>");
-				$('#clinicProfile').find('.hours-content').append("<li>Sunday:"+SUNDAY_START+"-"+SUNDAY_END+"</li>");
-				$('#clinicProfile').find('.hours-content').append("<li>Public holiday:"+PUBLIC_START+"-"+PUBLIC_END+"</li>");
+				$('#clinicProfile').find('.hours-content').append("<li>Monday:" + MONDAY_START + "-" + MONDAY_END + "</li>");
+				$('#clinicProfile').find('.hours-content').append("<li>Tuesday:" + TUESDAY_START + "-" + TUESDAY_END + "</li>");
+				$('#clinicProfile').find('.hours-content').append("<li>Wednesday:" + WEDNESDAY_START + "-" + WEDNESDAY_END + "</li>");
+				$('#clinicProfile').find('.hours-content').append("<li>Thursday:" + THURSDAY_START + "-" + THURSDAY_END + "</li>");
+				$('#clinicProfile').find('.hours-content').append("<li>Friday:" + FRIDAY_START + "-" + FRIDAY_END + "</li>");
+				$('#clinicProfile').find('.hours-content').append("<li>Saturday:" + SATURDAY_START + "-" + SATURDAY_END + "</li>");
+				$('#clinicProfile').find('.hours-content').append("<li>Sunday:" + SUNDAY_START + "-" + SUNDAY_END + "</li>");
+				$('#clinicProfile').find('.hours-content').append("<li>Public holiday:" + PUBLIC_START + "-" + PUBLIC_END + "</li>");
 
 
 
@@ -2118,7 +2117,7 @@ $(function () {
 				//_________________________________________________________________map
 
 
-				
+
 
 				var lat = $(this).parent().find('.showMap').attr("lat");
 				var lng = $(this).parent().find('.showMap').attr("lng");
@@ -2153,7 +2152,6 @@ $(function () {
 				});
 
 
-				
 
 
 
@@ -2164,7 +2162,8 @@ $(function () {
 
 
 
-			
+
+
 
 
 
@@ -2304,6 +2303,15 @@ $(function () {
 							overview: item.DOCTOR_INFO,
 							doctorSex: item.DOCTOR_GENDER,
 							doctorYear: item.DOCTOR_YEAR,
+							DOCTOR_TITLE_1: item.DOCTOR_TITLE_1,
+							DOCTOR_TITLE_2: item.DOCTOR_TITLE_2,
+							DOCTOR_TITLE_3: item.DOCTOR_TITLE_3,
+							DOCTOR_TITLE_4: item.DOCTOR_TITLE_4,
+							DOCTOR_TITLE_5: item.DOCTOR_TITLE_5,
+
+							STANDARD_15_MINUTE_CONSULTATION: item.STANDARD_15_MINUTE_CONSULTATION,
+							EXTEND_30_MINUTE_CONSULTATION: item.EXTEND_30_MINUTE_CONSULTATION,
+
 							interest: "",
 							language: "",
 							clinicName: item.CLINIC_NAME,
@@ -2422,15 +2430,30 @@ $(function () {
 				var doctor_img = $(this).parent().find('.lazy').attr('src');
 				$('#doctorProfile').find('.doctor-img').attr('src', doctor_img);
 				var doctor_title = $(this).text();
-				$('#doctorProfile').find('.doctor-title').text(doctor_title);
+				$('#doctorProfile').find('.doctor-title').text('Dr ' + doctor_title);
+
+
+				var doctor_title1 = $(this).parent().find('.DOCTOR_TITLE_1').text();
+				var doctor_title2 = $(this).parent().find('.DOCTOR_TITLE_2').text();
+				var doctor_title3 = $(this).parent().find('.DOCTOR_TITLE_3').text();
+				var doctor_title4 = $(this).parent().find('.DOCTOR_TITLE_4').text();
+				var doctor_title5 = $(this).parent().find('.DOCTOR_TITLE_5').text();
+				$('#doctorProfile').find('.doctor-title12345').text(doctor_title1 +
+					', ' + doctor_title2 + ', ' + doctor_title3 + ', ' + doctor_title4 + ', ' + doctor_title5);
+
+
+
+
 				var doctor_address = $(this).parent().find('.doctor-addr').text();
 				$('#doctorProfile').find('.doctor-address').text(doctor_address);
 
 
 				var doctor_lang = $(this).parent().find('.doctor-lang').text();
 
-				doctor_lang=doctor_lang.replace(/,/g,', ');
-				$('#doctorProfile').find('.doctor-language').text('Language spoken:' + doctor_lang + '.');
+
+				doctor_lang = doctor_lang.replace(/,/g, ', ');
+				$('#doctorProfile').find('.doctor-language').text('Dr ' + doctor_title + ' speaks ' + doctor_lang + '.');
+
 
 
 
@@ -2442,8 +2465,10 @@ $(function () {
 				$('#doctorProfile').find('.doctor-sex').text(doctor_sex);
 
 
+
+
 				var doctor_year = $(this).parent().find('.doctor-year').text();
-				$('#doctorProfile').find('.doctor-year').text('Commenced practice since ' + doctor_year);
+				$('#doctorProfile').find('.doctor-year').text('Dr ' + doctor_title + ' commenced practice since ' + doctor_year + ', has an interest in');
 
 				var doctor_interest = $(this).parent().find('.doctor-interest').text();
 				//spilt doctor_interest.
@@ -2462,6 +2487,26 @@ $(function () {
 					$('#doctorProfile').find('.doctor-feature').hide();
 
 
+
+				//_____________________________________________________fees
+
+
+
+				var doctor_STANDARD_15_MINUTE_CONSULTATION = $(this).parent().find('.STANDARD_15_MINUTE_CONSULTATION').text();
+				if (doctor_STANDARD_15_MINUTE_CONSULTATION != 0) {
+					$('#doctorProfile').find('.doctor-STANDARD_15_MINUTE_CONSULTATION').show();
+					$('#doctorProfile').find('.doctor-STANDARD_15_MINUTE_CONSULTATION').text('Standard 15 minute consultation - $' + doctor_STANDARD_15_MINUTE_CONSULTATION);
+				}
+				else
+					$('#doctorProfile').find('.doctor-STANDARD_15_MINUTE_CONSULTATION').hide();
+
+				var doctor_EXTEND_30_MINUTE_CONSULTATION = $(this).parent().find('.EXTEND_30_MINUTE_CONSULTATION').text();
+				if (doctor_EXTEND_30_MINUTE_CONSULTATION != 0) {
+					$('#doctorProfile').find('.doctor-EXTEND_30_MINUTE_CONSULTATION').show();
+					$('#doctorProfile').find('.doctor-EXTEND_30_MINUTE_CONSULTATION').text('Extended standard 30 minute consultation - $' + doctor_EXTEND_30_MINUTE_CONSULTATION);
+				}
+				else
+					$('#doctorProfile').find('.doctor-EXTEND_30_MINUTE_CONSULTATION').hide();
 
 
 				var doctor_overview = $(this).parent().find('.search-overview').text();
