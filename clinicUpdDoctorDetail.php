@@ -66,7 +66,7 @@ include_once 'classes/Menu/menu.php';
 
 
 									<div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
-										<form class="form-horizontal wow fadeInLeft" role="form" id="clinicUpdDoctorDetail">
+										<form class="form-horizontal" role="form" id="clinicUpdDoctorDetail">
 											<fieldset>
 												<input type="hidden" class="form-control" name="action_type" id="action_type" value="update_doctor_info">
 												<input type="hidden" class="form-control" name="DOCTOR_ID" id="DOCTOR_ID">
@@ -111,6 +111,51 @@ include_once 'classes/Menu/menu.php';
 														<input type="text" readonly="true" class="form-control" name="DOCTOR_NAME" id="DOCTOR_NAME">
 													</div>
 												</div>
+
+												<div class="form-group">
+													<label for="DOCTOR_TITLE" class="col-sm-2 control-label"><!-- title--><?php echo $lang['Lang0322']; ?></label>
+													<div class="col-sm-10">
+														<input type="text" class="form-control" name="DOCTOR_TITLE_1" id="DOCTOR_TITLE_1">
+														<input type="text" class="form-control" name="DOCTOR_TITLE_2" id="DOCTOR_TITLE_2">
+														<input type="text" class="form-control" name="DOCTOR_TITLE_3" id="DOCTOR_TITLE_3">
+														<input type="text" class="form-control" name="DOCTOR_TITLE_4" id="DOCTOR_TITLE_4">
+														<input type="text" class="form-control" name="DOCTOR_TITLE_5" id="DOCTOR_TITLE_5">
+													</div>
+												</div>
+
+
+												
+												<div class="form-group">
+													
+														<label class="col-sm-2 control-label">Standard 15 minute consultation</label>
+														<div class="input-group">
+															<span class="input-group-addon">$</span>
+
+
+															<input placeholder="0.00" type="number" name="STANDARD_15_MINUTE_CONSULTATION" id="STANDARD_15_MINUTE_CONSULTATION" value=""
+															 class="form-control" autocomplete="off" min="0" max="50000000" step="0.01">
+
+														</div>
+													
+												</div>
+
+
+
+												<div class="form-group">
+													
+														<label class="col-sm-2 control-label">Extended standard 30 minute consultation</label>
+
+														<div class="input-group">
+															<span class="input-group-addon">$</span>
+															<input placeholder="0.00" type="number" name="EXTEND_30_MINUTE_CONSULTATION" id="EXTEND_30_MINUTE_CONSULTATION" value=""
+															 class="form-control" autocomplete="off" min="0" max="50000000" step="0.01">
+
+														</div>
+													
+												</div>
+
+
+
 
 												<div class="form-group">
 													<label for="DOCTOR_YEAR" class="col-sm-2 control-label"><?php echo $lang['Lang0346']; ?></label>

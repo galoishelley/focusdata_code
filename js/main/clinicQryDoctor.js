@@ -396,6 +396,13 @@ $(document).ready(function() {
           DOCTOR_PHOTO: obj_data.DOCTOR_PHOTO,
           DOCTOR_INFO: obj_data.DOCTOR_INFO,
           DOCTOR_YEAR: obj_data.DOCTOR_YEAR,
+          DOCTOR_TITLE_1: obj_data.DOCTOR_TITLE_1,
+          DOCTOR_TITLE_2: obj_data.DOCTOR_TITLE_2,
+          DOCTOR_TITLE_3: obj_data.DOCTOR_TITLE_3,
+          DOCTOR_TITLE_4: obj_data.DOCTOR_TITLE_4,
+          DOCTOR_TITLE_5: obj_data.DOCTOR_TITLE_5,
+          STANDARD_15_MINUTE_CONSULTATION: obj_data.STANDARD_15_MINUTE_CONSULTATION,
+          EXTEND_30_MINUTE_CONSULTATION: obj_data.EXTEND_30_MINUTE_CONSULTATION,
           STATE_NAME: obj_data.STATE_NAME,
           CLINIC_POSTCODE:obj_data.CLINIC_POSTCODE,
           CLINIC_SUBURB:obj_data.CLINIC_SUBURB

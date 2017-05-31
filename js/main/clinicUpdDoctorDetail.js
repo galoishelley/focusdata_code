@@ -1,7 +1,30 @@
 $(function () {
 
-  ddlInterests
+  if($(window).width()>768)
+    {
+      $('#DOCTOR_TITLE_1').css('width',150);
+      $('#DOCTOR_TITLE_1').css('display','inline');
 
+      $('#DOCTOR_TITLE_2').css('width',150);
+      $('#DOCTOR_TITLE_2').css('display','inline');
+
+
+      $('#DOCTOR_TITLE_3').css('width',150);
+      $('#DOCTOR_TITLE_3').css('display','inline');
+
+      $('#DOCTOR_TITLE_4').css('width',150);
+      $('#DOCTOR_TITLE_4').css('display','inline');
+
+      $('#DOCTOR_TITLE_5').css('width',150);
+      $('#DOCTOR_TITLE_5').css('display','inline');
+
+
+    }
+
+
+
+
+  
 
   //_________________________________handle Commenced practice since
   $('#DOCTOR_YEAR').datepicker({
@@ -97,6 +120,15 @@ $(function () {
       $('#DOCTOR_NAME').val(json_value.DOCTOR_NAME);
       // $('#DOCTOR_GENDER').val(json_value.DOCTOR_GENDER);
       $('#DOCTOR_INFO').val(json_value.DOCTOR_INFO);
+
+      $('#DOCTOR_TITLE_1').val(json_value.DOCTOR_TITLE_1);
+      $('#DOCTOR_TITLE_2').val(json_value.DOCTOR_TITLE_2);
+      $('#DOCTOR_TITLE_3').val(json_value.DOCTOR_TITLE_3);
+      $('#DOCTOR_TITLE_4').val(json_value.DOCTOR_TITLE_4);
+      $('#DOCTOR_TITLE_5').val(json_value.DOCTOR_TITLE_5);
+
+      $('#STANDARD_15_MINUTE_CONSULTATION').val(json_value.STANDARD_15_MINUTE_CONSULTATION);
+      $('#EXTEND_30_MINUTE_CONSULTATION').val(json_value.EXTEND_30_MINUTE_CONSULTATION);
 
       $('#DOCTOR_YEAR').val(json_value.DOCTOR_YEAR);
       $('#DOCTOR_ID').val(json_value.DOCTOR_ID);
