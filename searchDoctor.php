@@ -163,7 +163,7 @@
                 margin: 1px 0 14px;
                 padding: 0 90px 0 10px;
                 font-size: 13px;
-                color: #63707b;
+                color: #000000;
                 font-weight: 400
             }
 
@@ -174,7 +174,7 @@
                 margin: 1px 0 14px;
                 padding: 0 90px 0 10px;
                 font-size: 13px;
-                color: #63707b;
+                color: #000000;
                 font-weight: 400
             }
 
@@ -182,7 +182,7 @@
                 margin: 1px 0 14px 15px;
                 padding: 0 90px 0 10px;
                 font-size: 13px;
-                color: #63707b;
+                color: #000000;
                 font-weight: 400
             }
 
@@ -191,7 +191,7 @@
                 margin: 1px 0 14px;
                 padding: 0 90px 0 10px;
                 font-size: 13px;
-                color: #63707b;
+                color: #000000;
                 font-weight: 400
             }
 
@@ -306,7 +306,7 @@
                 margin: 1px 0 14px;
                 padding: 0 90px 0 10px;
                 font-size: 13px;
-                color: #63707b;
+                color: #000000;
                 font-weight: 400
             }
 
@@ -314,7 +314,7 @@
                 margin: 1px 0 14px;
                 padding: 0 90px 0 10px;
                 font-size: 13px;
-                color: #63707b;
+                color: #000000;
                 font-weight: 400
             }
 
@@ -322,7 +322,7 @@
                 margin: 1px 0 14px 15px;
                 padding: 0 90px 0 10px;
                 font-size: 13px;
-                color: #63707b;
+                color: #000000;
                 font-weight: 400
             }
 
@@ -331,7 +331,7 @@
                 margin: 1px 0 14px;
                 padding: 0 90px 0 10px;
                 font-size: 13px;
-                color: #63707b;
+                color: #000000;
                 font-weight: 400
             }
 
@@ -417,7 +417,7 @@
             .he-global-pagination .he-global-paginner .he-global-pagtext {
                 display: inline-block;
                 font-size: 12px;
-                color: #63707b;
+                color: #000000;
                 padding: 0 30px
             }
 
@@ -649,7 +649,7 @@
                             </ul>
                         </div>
 
-                        <div class="clinic-language" style="font-size:15px;margin-left:0px;margin-bottom:14px"></div>
+                        <div class="clinic-language" style="font-size:15px;margin-left:0px;margin-bottom:14px;width:500px"></div>
 
                         <div class="clinic-feature">
                             <div style="font-size:15px;margin-left:-14px;margin-bottom:14px">Special interests</div>
@@ -678,7 +678,7 @@
 
                         <div class="clinic-fees">
                         <div style="font-size:15px;margin-left:-14px;margin-bottom:14px">Fees</div>
-                         <ul style="margin-left:18px;" class="fees-content">
+                         <ul style="margin-left:18px;width:400px" class="fees-content">
                                 <li class="clinic-STANDARD_15_MINUTE_CONSULTATION" style="margin-left:5px;">
 
                                     </li>
@@ -1161,8 +1161,8 @@
                                         <div class="clinic-phone" style="display:none">
                                             {{>clinicPhone}}
                                         </div>
-                                        <div class="search-addie">
-                                        <div style="height:10px; margin-top:-10px" class="clinic-info">
+                                        <div class="search-addie" style="height:50px">
+                                        <div style="height:10px;" class="clinic-info">
                                         {{if BULK_BILLING==1}}
                                         Bulk billing&nbsp&nbsp&nbsp
                                         {{else}}{{/if}}

@@ -2079,14 +2079,45 @@ $(function () {
 				var PUBLIC_START = $(this).parent().find('.PUBLIC_START').text();
 				var PUBLIC_END = $(this).parent().find('.PUBLIC_END').text();
 				$('#clinicProfile').find('.hours-content').empty();
-				$('#clinicProfile').find('.hours-content').append("<li>Monday:" + MONDAY_START + "-" + MONDAY_END + "</li>");
-				$('#clinicProfile').find('.hours-content').append("<li>Tuesday:" + TUESDAY_START + "-" + TUESDAY_END + "</li>");
-				$('#clinicProfile').find('.hours-content').append("<li>Wednesday:" + WEDNESDAY_START + "-" + WEDNESDAY_END + "</li>");
-				$('#clinicProfile').find('.hours-content').append("<li>Thursday:" + THURSDAY_START + "-" + THURSDAY_END + "</li>");
-				$('#clinicProfile').find('.hours-content').append("<li>Friday:" + FRIDAY_START + "-" + FRIDAY_END + "</li>");
-				$('#clinicProfile').find('.hours-content').append("<li>Saturday:" + SATURDAY_START + "-" + SATURDAY_END + "</li>");
-				$('#clinicProfile').find('.hours-content').append("<li>Sunday:" + SUNDAY_START + "-" + SUNDAY_END + "</li>");
-				$('#clinicProfile').find('.hours-content').append("<li>Public holiday:" + PUBLIC_START + "-" + PUBLIC_END + "</li>");
+				if (MONDAY_START.trim() == '' && MONDAY_END.trim() == '')
+					$('#clinicProfile').find('.hours-content').append("<li>Monday:Closed</li>");
+				else
+					$('#clinicProfile').find('.hours-content').append("<li>Monday:" + MONDAY_START + "-" + MONDAY_END + "</li>");
+
+				if (TUESDAY_START.trim() == '' && TUESDAY_END.trim() == '')
+					$('#clinicProfile').find('.hours-content').append("<li>Tuesday:Closed</li>");
+				else
+					$('#clinicProfile').find('.hours-content').append("<li>Tuesday:" + TUESDAY_START + "-" + TUESDAY_END + "</li>");
+
+				if (WEDNESDAY_START.trim() == '' && WEDNESDAY_END.trim() == '')
+					$('#clinicProfile').find('.hours-content').append("<li>Wednesday:Closed</li>");
+				else
+					$('#clinicProfile').find('.hours-content').append("<li>Wednesday:" + WEDNESDAY_START + "-" + WEDNESDAY_END + "</li>");
+
+				if (THURSDAY_START.trim() == '' && THURSDAY_END.trim() == '')
+					$('#clinicProfile').find('.hours-content').append("<li>Thursday:Closed</li>");
+				else
+					$('#clinicProfile').find('.hours-content').append("<li>Thursday:" + THURSDAY_START + "-" + THURSDAY_END + "</li>");
+
+				if (FRIDAY_START.trim() == '' && FRIDAY_END.trim() == '')
+					$('#clinicProfile').find('.hours-content').append("<li>Friday:Closed</li>");
+				else
+					$('#clinicProfile').find('.hours-content').append("<li>Friday:" + FRIDAY_START + "-" + FRIDAY_END + "</li>");
+
+				if (SATURDAY_START.trim() == '' && SATURDAY_END.trim() == '')
+					$('#clinicProfile').find('.hours-content').append("<li>Saturday:Closed</li>");
+				else
+					$('#clinicProfile').find('.hours-content').append("<li>Saturday:" + SATURDAY_START + "-" + SATURDAY_END + "</li>");
+
+				if (SUNDAY_START.trim() == '' && SUNDAY_END.trim() == '')
+					$('#clinicProfile').find('.hours-content').append("<li>Sunday:Closed</li>");
+				else
+					$('#clinicProfile').find('.hours-content').append("<li>Sunday:" + SUNDAY_START + "-" + SUNDAY_END + "</li>");
+
+				if (PUBLIC_START.trim() == '' && PUBLIC_END.trim() == '')
+					$('#clinicProfile').find('.hours-content').append("<li>Public holiday:Closed</li>");
+				else
+					$('#clinicProfile').find('.hours-content').append("<li>Public holiday:" + PUBLIC_START + "-" + PUBLIC_END + "</li>");
 
 
 
@@ -2438,8 +2469,27 @@ $(function () {
 				var doctor_title3 = $(this).parent().find('.DOCTOR_TITLE_3').text();
 				var doctor_title4 = $(this).parent().find('.DOCTOR_TITLE_4').text();
 				var doctor_title5 = $(this).parent().find('.DOCTOR_TITLE_5').text();
-				$('#doctorProfile').find('.doctor-title12345').text(doctor_title1 +
-					', ' + doctor_title2 + ', ' + doctor_title3 + ', ' + doctor_title4 + ', ' + doctor_title5);
+
+
+				var docArray = [];
+
+				if (doctor_title1.trim() != '')
+					docArray.push(doctor_title1);
+
+				if (doctor_title2.trim() != '')
+					docArray.push(doctor_title2);
+
+				if (doctor_title3.trim() != '')
+					docArray.push(doctor_title3);
+
+				if (doctor_title4.trim() != '')
+					docArray.push(doctor_title4);
+
+				if (doctor_title5.trim() != '')
+					docArray.push(doctor_title5);
+
+
+				$('#doctorProfile').find('.doctor-title12345').text(docArray.join());
 
 
 
