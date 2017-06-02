@@ -599,7 +599,7 @@
     <body>
         <!--header-->
         <div class="container bars">
-            <em class="bars_"></em>
+            <div></div>
         </div>
 
         <?php

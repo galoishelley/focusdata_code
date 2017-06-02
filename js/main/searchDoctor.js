@@ -2960,10 +2960,25 @@ $(function () {
 			$('select option:contains("' + json_value.DOCTOR_TYPE + '")').prop('selected', true);
 
 
+
+
+
 		requesttype = 0;
 		func_code = "FROM_INDEX";
 		json_form = $("#modal_form_search").serializeObject();
 		json_str = request_const(json_form, func_code, requesttype);
+
+		if (json_value.LANGUAGE) {
+			json_str.para.LANGUAGE = json_value.LANGUAGE;
+			if (!Array.isArray(json_str.para.LANGUAGE)) {
+				json_str.para.LANGUAGE = [json_str.para.LANGUAGE];
+			}
+
+		}
+
+
+
+
 		ajaxSearchClinic(json_str);
 
 		sessionStorage.searchRestriction = "";

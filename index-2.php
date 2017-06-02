@@ -51,7 +51,7 @@ include_once 'classes/Language/language.common.php';
 </head>
 <body>
 <!--header-->
-<div class="container bars"><em class="bars_"></em></div>
+<div class="container bars"><div></div></div>
 
 <header>
     <?php

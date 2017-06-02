@@ -1,6 +1,72 @@
-// $("input").attr("maxlength","50");
-// var serviceid = "UI01";
-// var json_str = request_const(json_func_form,serviceid,0);
+
+$('#sign_in').click(function(e){
+		
+		if($('#sign_sub').css('display') === 'none'){
+			$('#sign_sub').show();
+      $('#sub_register').hide();
+      $('#sub_language').hide();	
+      $('#sub_userinfo').hide();
+		}else{
+			$('#sign_sub').hide();
+    
+    }
+							
+							
+	});
+
+
+  $('#sign_up').click(function(e){
+		
+		if($('#sub_register').css('display') === 'none'){
+			$('#sub_register').show();
+      $('#sign_sub').hide();
+      $('#sub_language').hide();	
+      $('#sub_userinfo').hide();
+		}else{
+			$('#sub_register').hide();
+
+		}		
+		
+				
+	});
+
+
+  $('#langlang').click(function(e){
+		
+		if($('#sub_language').css('display') === 'none'){
+			$('#sub_language').show();
+      $('#sub_register').hide();
+      $('#sign_sub').hide();
+      $('#sub_userinfo').hide();
+		}else{
+			$('#sub_language').hide();
+
+		}		
+		
+		
+	});
+
+
+
+$('#userinfo').click(function(e){
+		
+		if($('#sub_userinfo').css('display') === 'none'){
+			$('#sub_userinfo').show();
+      $('#sub_language').hide()
+      $('#sub_register').hide();
+      $('#sign_sub').hide();
+   
+		}else{
+			$('#sub_userinfo').hide();
+
+		}		
+		
+		
+	});
+
+  
+
+
 var request_const = function (para, serviceid, requesttype) {
   var sequ = Math.floor(Math.random() * 1000);
   var systemid = "WEB001";

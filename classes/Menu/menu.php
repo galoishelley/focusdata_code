@@ -14,19 +14,7 @@
                 <a href="#">
                     <?php echo $lang['Lang0014']; ?>
                 </a>
-                <ul class="submenu sub-menu-login">
-                    <li>
-                        <a href="sign_in.php">
-                            <?php echo $lang['Lang0027']; ?>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="sign_in_clinic.php">
-                            <?php echo $lang['Lang0026']; ?>
-                        </a>
-                    </li>
-                    
-                </ul>
+                
             </li>
 
 
@@ -34,46 +22,69 @@
                 <a href="#">
                     <?php echo $lang['Lang0015']; ?>
                 </a>
-                <ul class="submenu sub-menu-register">
-                    <li>
-                        <a href="sign_up_person.php">
-                            <?php echo $lang['Lang0027']; ?>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="sign_up_clinic.php">
-                            <?php echo $lang['Lang0026']; ?>
-                        </a>
-                    </li>
-                    
-                </ul>
+                
             </li>
 
 
-            <li class="sub-menu">
+            <li class="sub-menu" id="langlang">
                 <a href="#">
                     <?php echo $lang['Lang0010']; ?>
                 </a>
-                <ul class="submenu sub-menu-languang">
-                    <li><a href="?lang=en"><img src="img/lang/australia.png">  English</a></li>
-                    <li><a href="?lang=ch"><img src="img/lang/china.png">  中文</a></li>
-                </ul>
+                
             </li>
 
 
             <li id="userinfoGuest" style="left:250px">
                 <a href="#">
-                    <!-- Home -->
+             
                     <?php echo $lang['Lang0016']; ?>
                 </a>
             </li>
 
-            <li class="sub-menu tourist" style="left:200px">
-                <a href="#" id="userinfo">
+            <li class="sub-menu tourist" style="left:200px" id="userinfo">
+                <a href="#">
                     <!-- 游客 -->
                     <?php echo $lang['Lang0016']; ?>
                 </a>
-                <ul class="submenu" id="sub_userinfo">
+                
+            </li>
+        </ul>
+
+
+        <ul id="sign_sub" class="submenu sub-menu-login sub-menu" style="display:none; position: absolute ; left:20px">
+            <li class="">
+                <a href="sign_in.php" style="text-transform: none">
+								<?php echo $lang['Lang0027']; ?>                     </a>
+            </li>
+            <li>
+                <a href="sign_in_clinic.php" style="text-transform: none">
+								<?php echo $lang['Lang0026']; ?>                     </a>
+            </li>
+
+        </ul>
+
+        <ul id="sub_register" class="submenu sub-menu-login sub-menu" style="display:none; position: absolute ; left:20px">
+            <li class="">
+                <a href="sign_up_person.php" style="text-transform: none">
+								<?php echo $lang['Lang0027']; ?>                     </a>
+            </li>
+            <li>
+                <a href="sign_up_clinic.php" style="text-transform: none">
+								<?php echo $lang['Lang0026']; ?>                     </a>
+            </li>
+
+        </ul>
+
+        <ul id="sub_language" class="submenu sub-menu-login sub-menu" style="display:none; position: absolute ; left:20px">
+            <li><a href="?lang=en"><img src="img/lang/australia.png">  English</a></li>
+                    <li><a href="?lang=ch"><img src="img/lang/china.png">  中文</a></li>
+
+        </ul>
+
+
+
+
+        <ul class="submenu sub-menu-login sub-menu" id="sub_userinfo" style="display:none; position: absolute ; left:20px">
                     <li>
                         <a href="#" id="usertype"></a>
                     </li>
@@ -107,7 +118,11 @@
     padding-top: 0px;
     padding-bottom: 0px;font-size:12px;"><!-- 安全退出 --><?php echo $lang['Lang0017']; ?></button></li>
                 </ul>
-            </li>
-        </ul>
+
+
+     
+
+
+
     </div>
 </nav>

@@ -24,9 +24,13 @@ include_once 'classes/Language/language.common.php';
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/animate.css">
         <link rel="stylesheet" href="fonts/font-awesome.css">
+
+        
         <!-- User CSS -->
         <link rel="stylesheet" href="css/user.css">
         <link rel="stylesheet" href="css/focusdata.css">
+
+        <link rel="stylesheet" href="css/bootstrap-multiselect-index.css">
         
         <link href="css/jquery-ui.css" rel="stylesheet">
 
@@ -61,7 +65,7 @@ include_once 'classes/Language/language.common.php';
                 display: inline-block;
                 height: 24px;
                 width: 24px;
-                margin: 0 0 0 2px;
+                margin: 4 0 0 2px;
                 vertical-align: middle;
                 z-index: 99;
                 background-position: -18px -2008px;
@@ -69,12 +73,12 @@ include_once 'classes/Language/language.common.php';
                 left: 7px;
             }
             
-            input[type="text"].location-unified-search {
-                width: 100%;
-                height: 36px;
+            select.location-unified-search {
+                width: 20%;
+                height: 46px;
                 border: none;
                 margin: 0;
-                padding: 0 95px 0 46px;
+                padding: 0 15px 0 6px;
                 -webkit-box-sizing: border-box;
                 -moz-box-sizing: border-box;
                 box-sizing: border-box;
@@ -82,12 +86,37 @@ include_once 'classes/Language/language.common.php';
                 line-height: normal;
                 color: #313436;
                 font-weight: 400;
-                border: 1px solid #dddddd;
+                border: 2px solid #2B268F;
+               /* -webkit-border-radius: 4px 10px 10px 4px !important;
+                -moz-border-radius: 4px 10px 10px 4px !important;
+                -ms-border-radius: 4px 10px 10px 4px !important;*/
+               /* border-radius: 4px 10px 10px 4px !important;*/
+                background-clip: padding-box;
+				position: relative;
+				left:-50px;
+            }
+			
+			input[type="text"].location-unified-search {
+                width: 40%;
+                height: 46px;
+                border: none;
+                margin: 0;
+                padding: 0 55px 0 40px;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                text-indent: 0;
+                line-height: normal;
+                color: #313436;
+                font-weight: 400;
+                border: 2px solid #2b268f;
                 -webkit-border-radius: 4px 10px 10px 4px !important;
                 -moz-border-radius: 4px 10px 10px 4px !important;
                 -ms-border-radius: 4px 10px 10px 4px !important;
                 border-radius: 4px 10px 10px 4px !important;
                 background-clip: padding-box;
+				position:relative;
+				left:-50px;
             }
             
             input[type="text"].location-unified-search::-ms-clear {
@@ -124,7 +153,7 @@ include_once 'classes/Language/language.common.php';
             
             
             
-            .btn {
+            .btnSearch {
                 position: absolute;
                 top: 0;
                 right: 0;
@@ -157,47 +186,47 @@ include_once 'classes/Language/language.common.php';
                 background-color: #4f798c;
             }
             
-            .btn a {
+            .btnSearch a {
                 color: #fff;
                 text-decoration: none
             }
             
-            .btn a:hover,
-            .btn a:focus,
-            .btn a:active {
+            .btnSearch a:hover,
+            .btnSearch a:focus,
+            .btnSearch a:active {
                 text-decoration: underline
             }
             
-            .btn:hover,
-            .btn:focus,
-            .btn:active {
+            .btnSearch:hover,
+            .btnSearch:focus,
+            .btnSearch:active {
                 color: #fff;
                 background-color: #2386c8;
                 *background-color: #1f77b2
             }
             
-            .btn:active {
+            .btnSearch:active {
                 background-color: #1b699d \9
             }
             
-            .btn:first-child {
+            .btnSearch:first-child {
                 *margin-left: 0
             }
             
-            .btn:hover,
-            .btn:focus {
+            .btnSearch:hover,
+            .btnSearch:focus {
                 color: #fff;
                 background-color: #2386c8;
                 text-decoration: none
             }
             
-            .btn:focus {
+            .btnSearch:focus {
                 outline: thin dotted #333;
                 outline: 5px auto -webkit-focus-ring-color;
                 outline-offset: -2px
             }
             
-            .btn:active {
+            .btnSearch:active {
                 background-image: none;
                 outline: 0
             }
@@ -207,13 +236,68 @@ include_once 'classes/Language/language.common.php';
                 background: #005182 url(img/bg_pic_new.jpg) center 0 no-repeat;
                 background-size: cover;
                 text-align: center;
-                height: 780px;
+                height: 650px;
                 overflow: hidden;
+            }
+			
+			 .index-second-box {
+                padding: 60px 50px 25px 50px;
+                text-align: left;
+                height: 750px;
+                overflow: hidden;
+				color:#ffffff !important;
+				background-color: #1a824D 
+				
+            }
+			
+			.index-second-content {
+				height:300px;
+				padding-top: 40px;
+			}
+			
+			.index-second-heading {
+				padding-top: 20px;
+				
+			}
+			
+			.index-second-list{
+				font-size: 18;
+			}
+			
+			.footer-box {
+				height:240px;
+			}
+			.footer-info{
+				height:120px;
+			}
+			
+			.footer-text-title{
+				color:#ffffff;
+			}
+			
+			footer  a {
+				color : #ffffff;
+				display: block;
+				margin-top:4px;
+			}
+			
+			.footer-follow{
+				display: inline;
+			}
+			
+			.index-second-image{
+				height: 184px;
+				width: 278px;
+			}
+			div.index-second-box h2 {
+                color:#ffffff;
+				font-size:38;
+				
             }
             
             .box-unified-search {
                 height: auto;
-                width: 615px;
+                width: 655px;
                 margin: 0 auto;
                 padding: 0;
             }
@@ -1462,28 +1546,53 @@ include_once 'classes/Language/language.common.php';
         <script src="js/jquery.equalheights.js"></script>
 
         <style>
-
+            .dropdown-toggle {
+                font:inherit;
+                height: 46px;
+                border: none;
+                margin: 0;
+                padding: 0 15px 0 6px;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+                text-indent: 0;
+                line-height: normal;
+                color: #313436;
+                font-weight: 400;
+                border: 2px solid #2B268F;
+               /* -webkit-border-radius: 4px 10px 10px 4px !important;
+                -moz-border-radius: 4px 10px 10px 4px !important;
+                -ms-border-radius: 4px 10px 10px 4px !important;*/
+               /* border-radius: 4px 10px 10px 4px !important;*/
+                background-clip: padding-box;
+				position: relative;
+				left:-50px;
+                width:145px;
+            }
+            .btn .caret {
+    margin-left: 40px;
+}
         </style>
 
     </head>
 
     <body>
         <!--header-->
-        <div class="container bars"><em class="bars_"></em></div>
+        <div class="container bars"></div>
         <?php
     include_once 'classes/Menu/menu.php';
     ?>
             <header>
 
-                <h1 class="navbar-brand navbar-brand_"><a href="index.php"><img src="img/<?php echo $lang['Lang0344']; ?>" alt="logo"></a></h1>
+                <h1 class="navbar-brand navbar-brand_"  style="top:45px"><a href="index.php"><img src="img/<?php echo $lang['Lang0344']; ?>" alt="logo"></a></h1>
             </header>
 
             <div class="index-main-box">
 
-
+				<h3 style="text-align: center; position: relative;top:-70px; color: #0F4F40 ; font-size:30px !important; "  >Your doctor's appointment just a click away</h2>
                 <div class="box-unified-search">
 
-                    <div class="type-unified-search">
+                    <div class="type-unified-search" style="display: none">
                         <div class="icons-unified-search icons-act icons-gp">
                             <input name="search-option-type" class="hide" type="radio" id="radio-gp" value="gp">
                             <span class="icons-image"></span>
@@ -1554,15 +1663,42 @@ include_once 'classes/Language/language.common.php';
                         <div class="input-contain-unified-search">
 
                             <form id="unified-search-form-inline">
-                                <input type="hidden" class="form-control" name="action_type" id="action_type" value="index_search">
+                               <input type="hidden" class="form-control" name="action_type" id="action_type" value="index_search">
                                 <input type="hidden" class="form-control" name="from_index" id="from_index" value="1">
+                              
+                                <input id="location-unified-search" class="location-unified-search ui-autocomplete-input" placeholder="<?php echo $lang['Lang0360']; ?>" type="text" name="CLINIC_SUBURB">
+                                
+                                 
+                                 <select name="DOCTOR_TYPE" id="DOCTOR_TYPE" class="location-unified-search">
+                                                <option value="">Any Doctor</option>
+                                                <option value="GP"><?php echo $lang['Lang0333']; ?></option>
+                                                <option value="Dentist"><?php echo $lang['Lang0334']; ?></option>
+                                                <option value="Dietitian"><?php echo $lang['Lang0335']; ?></option>
+                                                <option value="Physio"><?php echo $lang['Lang0336']; ?></option>
+                                                <option value="Podiatrist"><?php echo $lang['Lang0337']; ?></option>
+                                                <option value="Pschologist"><?php echo $lang['Lang0338']; ?></option>
+                                                <option value="Chiropractor"><?php echo $lang['Lang0339']; ?></option>
+                                                <option value="Audiologist"><?php echo $lang['Lang0340']; ?></option>
+                                                <option value="Optometry"><?php echo $lang['Lang0341']; ?></option>
+                                                <option value="Skin Doctors"><?php echo $lang['Lang0342']; ?></option>
+                                                <option value="Counsellor"><?php echo $lang['Lang0343']; ?></option>
+                                            
+                                        </select>
 
 
 
-                                <input id="location-unified-search" class="location-unified-search" placeholder="<?php echo $lang['Lang0360']; ?>" type="text" name="CLINIC_SUBURB">
+                             
 
 
-                                <button tabindex="-1" id="btn_search" class="btn"><?php echo $lang['Lang0361']; ?></button>
+
+                                  <select name="LANGUAGE" id="ddlLanguage" class="location-unified-search" multiple="multiple">
+                                
+
+                    
+                                 </select>
+
+
+                                <button tabindex="-1" id="btn_search" style="height: 46px; width:100px; " class="btnSearch "><?php echo $lang['Lang0361']; ?></button>
                             </form>
                         </div>
                     </div>
@@ -1574,6 +1710,59 @@ include_once 'classes/Language/language.common.php';
 
 
             </div>
+            
+            <div class="index-second-box">
+            
+            <h1 >Our Work:</h1>
+            
+            
+            <h2 class="col-sm-12 index-second-heading">
+            	we are working so hard to build an online medicare community for patients and practices. At here, medicare services are easy to reach, clients and doctors always keep in touch.  
+            </h2>
+            	<div class="col-sm-12 index-second-content">            		
+            		
+            		
+            		
+            	
+					<div class="col-sm-3">
+					
+					<ul class="index-second-list">
+						<li>Easy: can make an appointment 24*7 from our website</li>
+						<li>Confortable: talk to your paractice with your mother language</li>
+						<li>Ready: contact with practice and other patients easily </li>
+						<li>Convenience: automatic check in with mobile</li>
+					</ul>
+
+					</div>
+          	
+          			
+           	
+           			<div class="col-sm-3" >
+            			<img src="images/see-a-doctor.jpg" class="index-second-image">
+            		</div>
+            	
+					<div class="col-sm-3 " >
+						<img src="images/gp-1.jpg" class="index-second-image">
+					</div>
+          		
+          		<div class="col-sm-3">					
+					<ul class="index-second-list" style="margin-left: -20px;">
+						<li>Simple: let your patients find you just a few clicks</li>
+						<li>Effective: reduce the time your staff and patients spend on the phone</li>
+						<li>Ready: your patients can book with you 24*7</li>
+						<li>Engage: following and contact with your patients in the community</li>
+					</ul>
+
+					</div>
+           		
+					
+            		
+            	</div> 
+            	
+            	
+            </div>
+            
+            
 
             <!--footer-->
             <?php
@@ -1583,11 +1772,14 @@ include_once 'classes/Footer/Footer.php';
 include_once 'classes/Language/For_JS_multi_lang.php';
 ?>
                     
-                    
+                    <script src="js/bootstrap.min.js"></script>
 
                     <script src="js/tm-scripts.js"></script>
                     <script src="js/jquery.cookie.js"></script>
+                    <script src="js/bootstrap-multiselect-index.js"></script>
                     <script src="js/jquery-ui.js"></script>
+
+                    
 
 
                     <script src="js/main/pub.js"></script>

@@ -5,6 +5,41 @@ var func_code, result;
 
 $(function () {
 
+	
+
+
+	//fill lang
+
+	var ajax_get_lang = $.ajax({
+
+		type: "POST",
+		url: 'classes/class.get_lang.php',
+		dataType: 'json',
+	});
+
+
+
+	ajax_get_lang.done(function (data) {
+		var r = [];
+		for (var i = 0; i < data.length; i++) {
+			var item = { label: data[i].LANGUAGE_NAME, value: data[i].LANGUAGE_NAME };
+			r.push(item);
+		}
+
+		$('#ddlLanguage').multiselect('dataprovider', r);
+
+		
+	});
+
+
+
+	$('#ddlLanguage').multiselect({
+		maxHeight: 200
+	});
+
+
+
+
 
 	var localSuburb = localStorage.getItem('suburb');
 	if (localSuburb == null) {
@@ -50,7 +85,7 @@ $(function () {
 
 
 
-	$('#li_home').addClass("active");
+	//$('#li_home').addClass("active");
 
 	//游客隐藏距离选择
 	if ($.cookie("ilogin") == 1) {
@@ -73,12 +108,12 @@ $(function () {
 		var mainIcon = $('.type-unified-search').find('.active .icons-text').text();
 		var subIcon = $('.icons-sp-search').find('.active label').text();
 
-		json_form.DOCTOR_TYPE = "";
-		if (mainIcon != "")
-			json_form.DOCTOR_TYPE = mainIcon;
+		// json_form.DOCTOR_TYPE = "";
+		// if (mainIcon != "")
+		// 	json_form.DOCTOR_TYPE = mainIcon;
 
-		if (subIcon != "")
-			json_form.DOCTOR_TYPE = subIcon;
+		// if (subIcon != "")
+		// 	json_form.DOCTOR_TYPE = subIcon;
 
 
 
@@ -185,9 +220,9 @@ $(function () {
 					result = false;
 				}
 				// var data = ret.data[0];
-				$.each(ret.data, function (i, item) {
-					$("#DOCTOR_TYPE").append("<option value='" + item.DOCTOR_TYPE + "'>" + item.DOCTOR_TYPE + "</option>");
-				});
+				// $.each(ret.data, function (i, item) {
+				// 	$("#DOCTOR_TYPE").append("<option value='" + item.DOCTOR_TYPE + "'>" + item.DOCTOR_TYPE + "</option>");
+				// });
 				// console.log(data);
 			} else {
 				alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);

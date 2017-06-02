@@ -134,7 +134,7 @@ include_once 'classes/Language/language.common.php';
 	<body>
 		<!--header-->
 		<div class="container bars">
-			<em class="bars_"></em>
+			<div></div>
 		</div>
 		<?php
 				include_once 'classes/Menu/menu.php';

@@ -48,7 +48,7 @@
   <![endif]-->
 </head>
 <body>
-<div class="container bars"><em class="bars_"></em></div>
+<div class="container bars"><div></div></div>
 <header>
     <nav class="navbar navbar-default navbar-static-top tm_navbar clearfix" role="navigation">
         <div class="container">
