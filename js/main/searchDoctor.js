@@ -2518,7 +2518,9 @@ $(function () {
 					}
 				});
 
-				if ($.cookie("ilogin") == 1) {
+				if ($.cookie("ilogin") == 1&&$.cookie("fd_usertype") != 0) {
+					
+					
 					//显示收藏医生
 					$('.save2favBtn').show();
 					$('.jumptouserSaveDoctor').show();
