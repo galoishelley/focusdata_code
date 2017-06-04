@@ -116,4 +116,16 @@
 <!-- 至少选择一种领域 -->
 <div id="Lang0362" style="display: none;"><?php echo $lang['Lang0362']; ?></div>
 
+
+
+<div id="Lang0369" style="display: none;"><?php echo $lang['Lang0369']; ?></div>
+
+<div id="Lang0382" style="display: none;"><?php echo $lang['Lang0382']; ?></div>
+<div id="Lang0383" style="display: none;"><?php echo $lang['Lang0383']; ?></div>
+
+<div id="Lang0384" style="display: none;"><?php echo $lang['Lang0384']; ?></div>
+<div id="Lang0385" style="display: none;"><?php echo $lang['Lang0385']; ?></div>
+
+<div id="Lang0387" style="display: none;"><?php echo $lang['Lang0387']; ?></div>
+
 <!-- 为了实现js多语言 end -->

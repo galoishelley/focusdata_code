@@ -462,4 +462,45 @@ $lang['Lang0361']='Search';
 
 
 $lang['Lang0362'] = 'Choose at least one interest';
+
+$lang['Lang0363'] = '';
+
+$lang['Lang0364'] = 'km away';
+
+$lang['Lang0365'] = 'AGPAL';
+$lang['Lang0366'] = 'Bulk billing';
+$lang['Lang0367'] = 'Late Hour Services(after 6pm)';
+
+$lang['Lang0368'] = 'We specialise in';
+
+$lang['Lang0369'] = 'Doctors at this practice speak';
+
+$lang['Lang0370'] = 'Special interests';
+
+$lang['Lang0371'] = 'Bulk billing';
+$lang['Lang0372'] = 'Late hour services (after 6pm)';
+$lang['Lang0373'] = 'Free parking';
+$lang['Lang0374'] = 'Wheelchair access';
+$lang['Lang0375'] = 'Female Doctor';
+$lang['Lang0376'] = 'Home visit';
+$lang['Lang0377'] = 'Onsite pathology collection';
+$lang['Lang0378'] = 'AGPAL';
+$lang['Lang0379'] = 'Map';
+$lang['Lang0380'] = 'Opening hours';
+$lang['Lang0381'] = 'Fees';
+
+$lang['Lang0382'] = 'Standard 15 minute consultation ';
+$lang['Lang0383'] = 'Extended standard 30 minute consultation';
+$lang['Lang0384'] = ' commenced practice since ';
+$lang['Lang0385'] = ', has an interest in';
+$lang['Lang0386'] = 'xxx';
+$lang['Lang0387'] = 'speaks';
+$lang['Lang0388'] = 'xxx';
+$lang['Lang0389'] = 'xxx';
+$lang['Lang0390'] = 'xxx';
+$lang['Lang0391'] = 'xxx';
+$lang['Lang0392'] = 'xxx';
+$lang['Lang0393'] = 'xxx';
+$lang['Lang0394'] = 'xxx';
+
 ?>

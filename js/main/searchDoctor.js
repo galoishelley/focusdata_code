@@ -341,6 +341,13 @@ var waitingDialog = waitingDialog || (function ($) {
 // _______________________________________________________________________________________ $(document).ready
 $(function () {
 
+
+	function arraymove(arr, fromIndex, toIndex) {
+		var element = arr[fromIndex];
+		arr.splice(fromIndex, 1);
+		arr.splice(toIndex, 0, element);
+	}
+
 	$('#popup-1').slickModals({
 		overlayBg: true,
 		overlayClosesModal: true,
@@ -1870,6 +1877,11 @@ $(function () {
 							var langArr = item.LANGUAGE_NAME.split(",");
 							//Step2.identify the unique
 							var langArrUni = _.uniq(langArr);
+
+							if (langArrUni.indexOf("English") > -1) {
+								//move 'English' to the first place
+								arraymove(langArrUni, langArrUni.indexOf("English"), 0);
+							}
 							//Step3.convert array to string
 							clinic.language = langArrUni.join();
 						}
@@ -2033,7 +2045,7 @@ $(function () {
 				var clinic_lang = $(this).parent().find('.clinic-lang').text();
 
 				clinic_lang = clinic_lang.replace(/,/g, ', ');
-				$('#clinicProfile').find('.clinic-language').text('Doctors at this practice speak ' + clinic_lang + '.');
+				$('#clinicProfile').find('.clinic-language').text($("#Lang0369").html() + ' ' + clinic_lang + '.');
 
 
 
@@ -2046,10 +2058,80 @@ $(function () {
 				//___________________________________________________________interest
 
 				var clinic_interest = $(this).parent().find('.clinic-interest').text();
+				clinic_interest = clinic_interest.trim();
 
 				var interestArr = clinic_interest.split(",");
 				$('#clinicProfile').find('.interest-content').empty();
 				for (var i = 0; i < interestArr.length; i++) {
+
+					if ($.cookie("lang") == 'ch') {
+						if (interestArr[i] == 'Family medicine') {
+							interestArr[i] = '家庭医药健康';
+						}
+						else if (interestArr[i] == 'General Check-ups for the Family') {
+							interestArr[i] = '体检';
+						}
+						else if (interestArr[i] == 'Care planning and advice') {
+							interestArr[i] = '保健计划指导';
+						}
+						else if (interestArr[i] == 'Travel medicine and vaccinations') {
+							interestArr[i] = '旅行医药指导和疫苗接种';
+						}
+						else if (interestArr[i] == 'Onsite Allied Health Services') {
+							interestArr[i] = '综合健康辅导';
+						}
+						else if (interestArr[i] == 'General consultations') {
+							interestArr[i] = '全科问诊';
+						}
+						else if (interestArr[i] == 'Men’s health issues') {
+							interestArr[i] = '男子健康';
+						}
+						else if (interestArr[i] == 'Women’s health issues') {
+							interestArr[i] = '妇科健康';
+						}
+						else if (interestArr[i] == 'Children’s health issues') {
+							interestArr[i] = '儿童健康';
+						}
+						else if (interestArr[i] == 'Skin checks') {
+							interestArr[i] = '皮肤问题检查';
+						}
+						else if (interestArr[i] == 'Travel medicine - advice and vaccinations') {
+							interestArr[i] = '旅行医药指导和疫苗接种';
+						}
+						else if (interestArr[i] == 'Children’s immunisations') {
+							interestArr[i] = '儿童疫苗接种';
+						}
+						else if (interestArr[i] == 'Pregnancy care') {
+							interestArr[i] = '孕期体检';
+						}
+						else if (interestArr[i] == 'Work cover') {
+							interestArr[i] = '工伤医疗';
+						}
+						else if (interestArr[i] == 'Driving and pre-employment medicals') {
+							interestArr[i] = '驾驶及职前健康检查';
+						}
+						else if (interestArr[i] == 'Cosmetic medicine') {
+							interestArr[i] = '美容医疗';
+						}
+						else if (interestArr[i] == 'Psychology') {
+							interestArr[i] = '心理辅导';
+						}
+						else if (interestArr[i] == 'Physiotherapy') {
+							interestArr[i] = '理疗';
+						}
+						else if (interestArr[i] == 'Dietetics') {
+							interestArr[i] = '营养指导';
+						}
+						else if (interestArr[i] == 'Diabetes education') {
+							interestArr[i] = '糖尿病预防指导';
+						}
+						else if (interestArr[i] == 'Podiatry') {
+							interestArr[i] = '足疗服务';
+						}
+						else if (interestArr[i] == 'Pathology collection') {
+							interestArr[i] = '接收体检化验血／尿样';
+						}
+					}
 					$('#clinicProfile').find('.interest-content').append("<li>" + interestArr[i] + "</li>");
 				}
 
@@ -2130,7 +2212,7 @@ $(function () {
 				var clinic_STANDARD_15_MINUTE_CONSULTATION = $(this).parent().find('.search-STANDARD_15_MINUTE_CONSULTATION').text();
 				if (clinic_STANDARD_15_MINUTE_CONSULTATION != 0) {
 					$('#clinicProfile').find('.clinic-STANDARD_15_MINUTE_CONSULTATION').show();
-					$('#clinicProfile').find('.clinic-STANDARD_15_MINUTE_CONSULTATION').text('Standard 15 minute consultation - $' + clinic_STANDARD_15_MINUTE_CONSULTATION);
+					$('#clinicProfile').find('.clinic-STANDARD_15_MINUTE_CONSULTATION').text($('#Lang0382').html() + ' - $' + clinic_STANDARD_15_MINUTE_CONSULTATION);
 				}
 				else
 					$('#clinicProfile').find('.clinic-STANDARD_15_MINUTE_CONSULTATION').hide();
@@ -2138,7 +2220,7 @@ $(function () {
 				var clinic_EXTEND_30_MINUTE_CONSULTATION = $(this).parent().find('.search-EXTEND_30_MINUTE_CONSULTATION').text();
 				if (clinic_EXTEND_30_MINUTE_CONSULTATION != 0) {
 					$('#clinicProfile').find('.clinic-EXTEND_30_MINUTE_CONSULTATION').show();
-					$('#clinicProfile').find('.clinic-EXTEND_30_MINUTE_CONSULTATION').text('Extended standard 30 minute consultation - $' + clinic_EXTEND_30_MINUTE_CONSULTATION);
+					$('#clinicProfile').find('.clinic-EXTEND_30_MINUTE_CONSULTATION').text($('#Lang0383').html() + ' - $' + clinic_EXTEND_30_MINUTE_CONSULTATION);
 				}
 				else
 					$('#clinicProfile').find('.clinic-EXTEND_30_MINUTE_CONSULTATION').hide();
@@ -2367,6 +2449,12 @@ $(function () {
 							var langArr = item.LANGUAGE_NAME.split(",");
 							//Step2.identify the unique
 							var langArrUni = _.uniq(langArr);
+
+							if (langArrUni.indexOf("English") > -1) {
+								//move 'English' to the first place
+								arraymove(langArrUni, langArrUni.indexOf("English"), 0);
+							}
+
 							//Step3.convert array to string
 							doctor.language = langArrUni.join();
 						}
@@ -2502,16 +2590,17 @@ $(function () {
 
 
 				doctor_lang = doctor_lang.replace(/,/g, ', ');
-				$('#doctorProfile').find('.doctor-language').text('Dr ' + doctor_title + ' speaks ' + doctor_lang + '.');
+
+				$('#doctorProfile').find('.doctor-language').text('Dr ' + doctor_title + ' ' + $('#Lang0387').html() + ' ' + doctor_lang + '.');
 
 
 
 
 				var doctor_sex = $(this).parent().find('.doctor-sex').text();
 				if (doctor_sex == 0)
-					doctor_sex = 'Male';
+					doctor_sex = $('#Lang0132').html();
 				else
-					doctor_sex = 'Female';
+					doctor_sex = $('#Lang0133').html();
 				$('#doctorProfile').find('.doctor-sex').text(doctor_sex);
 
 
@@ -2520,8 +2609,12 @@ $(function () {
 				var doctor_year = $(this).parent().find('.doctor-year').text();
 				$('#doctorProfile').find('.doctor-year').text('Dr ' + doctor_title + ' commenced practice since ' + doctor_year + ', has an interest in');
 
+				$('#doctorProfile').find('.doctor-year').text('Dr ' + doctor_title + $('#Lang0384').html() + doctor_year + $('#Lang0385').html());
+
 				var doctor_interest = $(this).parent().find('.doctor-interest').text();
 				//spilt doctor_interest.
+
+				doctor_interest = doctor_interest.trim();
 
 				if (doctor_interest) {
 					$('#doctorProfile').find('.doctor-feature').show();
@@ -2530,6 +2623,75 @@ $(function () {
 					var interestArr = doctor_interest.split(",");
 
 					for (var i = 0; i < interestArr.length; i++) {
+						if ($.cookie("lang") == 'ch') {
+							if (interestArr[i] == 'Family medicine') {
+								interestArr[i] = '家庭医药健康';
+							}
+							else if (interestArr[i] == 'General Check-ups for the Family') {
+								interestArr[i] = '体检';
+							}
+							else if (interestArr[i] == 'Care planning and advice') {
+								interestArr[i] = '保健计划指导';
+							}
+							else if (interestArr[i] == 'Travel medicine and vaccinations') {
+								interestArr[i] = '旅行医药指导和疫苗接种';
+							}
+							else if (interestArr[i] == 'Onsite Allied Health Services') {
+								interestArr[i] = '综合健康辅导';
+							}
+							else if (interestArr[i] == 'General consultations') {
+								interestArr[i] = '全科问诊';
+							}
+							else if (interestArr[i] == 'Men’s health issues') {
+								interestArr[i] = '男子健康';
+							}
+							else if (interestArr[i] == 'Women’s health issues') {
+								interestArr[i] = '妇科健康';
+							}
+							else if (interestArr[i] == 'Children’s health issues') {
+								interestArr[i] = '儿童健康';
+							}
+							else if (interestArr[i] == 'Skin checks') {
+								interestArr[i] = '皮肤问题检查';
+							}
+							else if (interestArr[i] == 'Travel medicine - advice and vaccinations') {
+								interestArr[i] = '旅行医药指导和疫苗接种';
+							}
+							else if (interestArr[i] == 'Children’s immunisations') {
+								interestArr[i] = '儿童疫苗接种';
+							}
+							else if (interestArr[i] == 'Pregnancy care') {
+								interestArr[i] = '孕期体检';
+							}
+							else if (interestArr[i] == 'Work cover') {
+								interestArr[i] = '工伤医疗';
+							}
+							else if (interestArr[i] == 'Driving and pre-employment medicals') {
+								interestArr[i] = '驾驶及职前健康检查';
+							}
+							else if (interestArr[i] == 'Cosmetic medicine') {
+								interestArr[i] = '美容医疗';
+							}
+							else if (interestArr[i] == 'Psychology') {
+								interestArr[i] = '心理辅导';
+							}
+							else if (interestArr[i] == 'Physiotherapy') {
+								interestArr[i] = '理疗';
+							}
+							else if (interestArr[i] == 'Dietetics') {
+								interestArr[i] = '营养指导';
+							}
+							else if (interestArr[i] == 'Diabetes education') {
+								interestArr[i] = '糖尿病预防指导';
+							}
+							else if (interestArr[i] == 'Podiatry') {
+								interestArr[i] = '足疗服务';
+							}
+							else if (interestArr[i] == 'Pathology collection') {
+								interestArr[i] = '接收体检化验血／尿样';
+							}
+						}
+
 						$('#doctorProfile').find('.doctor-interest').append("<li>" + interestArr[i] + "</li>");
 					}
 				}
@@ -2545,7 +2707,8 @@ $(function () {
 				var doctor_STANDARD_15_MINUTE_CONSULTATION = $(this).parent().find('.STANDARD_15_MINUTE_CONSULTATION').text();
 				if (doctor_STANDARD_15_MINUTE_CONSULTATION != 0) {
 					$('#doctorProfile').find('.doctor-STANDARD_15_MINUTE_CONSULTATION').show();
-					$('#doctorProfile').find('.doctor-STANDARD_15_MINUTE_CONSULTATION').text('Standard 15 minute consultation - $' + doctor_STANDARD_15_MINUTE_CONSULTATION);
+					$('#doctorProfile').find('.doctor-STANDARD_15_MINUTE_CONSULTATION').text($('#Lang0382').html() + ' - $' + doctor_STANDARD_15_MINUTE_CONSULTATION);
+					
 				}
 				else
 					$('#doctorProfile').find('.doctor-STANDARD_15_MINUTE_CONSULTATION').hide();
@@ -2553,7 +2716,8 @@ $(function () {
 				var doctor_EXTEND_30_MINUTE_CONSULTATION = $(this).parent().find('.EXTEND_30_MINUTE_CONSULTATION').text();
 				if (doctor_EXTEND_30_MINUTE_CONSULTATION != 0) {
 					$('#doctorProfile').find('.doctor-EXTEND_30_MINUTE_CONSULTATION').show();
-					$('#doctorProfile').find('.doctor-EXTEND_30_MINUTE_CONSULTATION').text('Extended standard 30 minute consultation - $' + doctor_EXTEND_30_MINUTE_CONSULTATION);
+					
+					$('#doctorProfile').find('.doctor-EXTEND_30_MINUTE_CONSULTATION').text($('#Lang0383').html() + ' - $' + doctor_EXTEND_30_MINUTE_CONSULTATION);
 				}
 				else
 					$('#doctorProfile').find('.doctor-EXTEND_30_MINUTE_CONSULTATION').hide();

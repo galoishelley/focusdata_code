@@ -213,7 +213,7 @@ $lang['Lang0167'] = '住址';
 $lang['Lang0168'] = '手机号';
 $lang['Lang0169'] = '医疗卡号';
 $lang['Lang0170'] = '预约医生';
-$lang['Lang0171'] = '收藏医生';
+$lang['Lang0171'] = '收藏该医生为贴心医生';
 $lang['Lang0172'] = '搜索医生';
 
 $lang['Lang0173'] = '请选择预约时间段';
@@ -337,7 +337,7 @@ $lang['Lang0274'] = '确定';
 $lang['Lang0275'] = '预约记录';
 $lang['Lang0276'] = '修改个人用户信息';
 $lang['Lang0277'] = '修改个人用户密码';
-$lang['Lang0278'] = '收藏医生管理';
+$lang['Lang0278'] = '管理你的贴心医生';
 $lang['Lang0279'] = '常用搜索条件管理';
 $lang['Lang0280'] = '开始时间';
 $lang['Lang0281'] = '结束时间';
@@ -454,4 +454,44 @@ $lang['Lang0360']='请输入地区的英文名字';
 $lang['Lang0361']='搜索';
 
 $lang['Lang0362'] = '至少选择一种研究领域';
+
+$lang['Lang0363'] = '距离你的位置：';
+$lang['Lang0364'] = '公里';
+
+$lang['Lang0365'] = '澳洲GP协会成员';
+$lang['Lang0366'] = '无额外诊费';
+
+$lang['Lang0367'] = '晚间门诊(6pm以后)';
+
+$lang['Lang0368'] = '本诊所医生擅长';
+
+$lang['Lang0369'] = '本诊所医生能说';
+
+$lang['Lang0370'] = '服务';
+
+$lang['Lang0371'] = '无额外诊费';
+$lang['Lang0372'] = '晚间门诊(6pm以后)';
+$lang['Lang0373'] = '免费停车';
+$lang['Lang0374'] = '轮椅通道';
+$lang['Lang0375'] = '女性医生';
+$lang['Lang0376'] = '上门出诊';
+$lang['Lang0377'] = '血样尿样采集';
+$lang['Lang0378'] = '澳洲GP协会认证会员';
+$lang['Lang0379'] = '地图';
+$lang['Lang0380'] = '门诊时间';
+$lang['Lang0381'] = '门诊费';
+
+$lang['Lang0382'] = '15分钟标准问诊';
+$lang['Lang0383'] = '30分钟加时问诊';
+$lang['Lang0384'] = '自';
+$lang['Lang0385'] = '年开始行医,擅长';
+$lang['Lang0386'] = '擅长';
+$lang['Lang0387'] = '能说';
+$lang['Lang0388'] = 'xxx';
+$lang['Lang0389'] = 'xxx';
+$lang['Lang0390'] = 'xxx';
+$lang['Lang0391'] = 'xxx';
+$lang['Lang0392'] = 'xxx';
+$lang['Lang0393'] = 'xxx';
+$lang['Lang0394'] = 'xxx';
 ?>
