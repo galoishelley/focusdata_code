@@ -1,70 +1,81 @@
-
-$('#sign_in').click(function(e){
-		
-		if($('#sign_sub').css('display') === 'none'){
-			$('#sign_sub').show();
-      $('#sub_register').hide();
-      $('#sub_language').hide();	
-      $('#sub_userinfo').hide();
-		}else{
-			$('#sign_sub').hide();
-    
-    }
-							
-							
-	});
-
-
-  $('#sign_up').click(function(e){
-		
-		if($('#sub_register').css('display') === 'none'){
-			$('#sub_register').show();
-      $('#sign_sub').hide();
-      $('#sub_language').hide();	
-      $('#sub_userinfo').hide();
-		}else{
-			$('#sub_register').hide();
-
-		}		
-		
-				
-	});
-
-
-  $('#langlang').click(function(e){
-		
-		if($('#sub_language').css('display') === 'none'){
-			$('#sub_language').show();
-      $('#sub_register').hide();
-      $('#sign_sub').hide();
-      $('#sub_userinfo').hide();
-		}else{
-			$('#sub_language').hide();
-
-		}		
-		
-		
-	});
+if ($.cookie("lang") == 'ch') {
+  $('#aus').hide();
+  $('#china').show();
+}
+else
+{
+  $('#china').hide();
+  $('#aus').show();
+}
 
 
 
-$('#userinfo').click(function(e){
-		
-		if($('#sub_userinfo').css('display') === 'none'){
-			$('#sub_userinfo').show();
-      $('#sub_language').hide()
-      $('#sub_register').hide();
-      $('#sign_sub').hide();
-   
-		}else{
-			$('#sub_userinfo').hide();
+$('#sign_in').click(function (e) {
 
-		}		
-		
-		
-	});
+  if ($('#sign_sub').css('display') === 'none') {
+    $('#sign_sub').show();
+    $('#sub_register').hide();
+    $('#sub_language').hide();
+    $('#sub_userinfo').hide();
+  } else {
+    $('#sign_sub').hide();
 
-  
+  }
+
+
+});
+
+
+$('#sign_up').click(function (e) {
+
+  if ($('#sub_register').css('display') === 'none') {
+    $('#sub_register').show();
+    $('#sign_sub').hide();
+    $('#sub_language').hide();
+    $('#sub_userinfo').hide();
+  } else {
+    $('#sub_register').hide();
+
+  }
+
+
+});
+
+
+$('#langlang').click(function (e) {
+
+  if ($('#sub_language').css('display') === 'none') {
+    $('#sub_language').show();
+    $('#sub_register').hide();
+    $('#sign_sub').hide();
+    $('#sub_userinfo').hide();
+  } else {
+    $('#sub_language').hide();
+
+  }
+
+
+});
+
+
+
+$('#userinfo').click(function (e) {
+
+  if ($('#sub_userinfo').css('display') === 'none') {
+    $('#sub_userinfo').show();
+    $('#sub_language').hide()
+    $('#sub_register').hide();
+    $('#sign_sub').hide();
+
+  } else {
+    $('#sub_userinfo').hide();
+
+  }
+
+
+});
+
+
 
 
 var request_const = function (para, serviceid, requesttype) {
@@ -135,6 +146,19 @@ if (ilogin == 1) {
   $('#userinfoGuest').hide();
   var fd_usertype = $.cookie("fd_usertype");
   var fd_usertypename = $.cookie("fd_usertypename");
+  if ($.cookie("lang") == 'ch') {
+    if (fd_usertypename == 'Clinic user')
+      fd_usertypename = '诊所用户';
+    else if (fd_usertypename == 'Personal user')
+      fd_usertypename = '个人用户';
+    else
+      fd_usertypename = '管理员';
+  }
+
+
+
+
+
   username = $.cookie("fd_username");
   fd_userid = $.cookie("fd_userid");
 

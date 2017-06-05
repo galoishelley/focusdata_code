@@ -29,7 +29,10 @@
             <li class="sub-menu" id="langlang">
                 <a href="#">
                     <?php echo $lang['Lang0010']; ?>
+                    <img id="aus" src="img/lang/australia.png">
+                    <img id="china" src="img/lang/china.png">
                 </a>
+                
                 
             </li>
 
