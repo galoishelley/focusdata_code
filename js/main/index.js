@@ -28,6 +28,12 @@ $(function () {
 
 		$('#ddlLanguage').multiselect('dataprovider', r);
 
+
+
+		$('#location-unified-search').show();
+		$('#DOCTOR_TYPE').show();
+
+
 		
 	});
 
@@ -36,6 +42,8 @@ $(function () {
 	$('#ddlLanguage').multiselect({
 		maxHeight: 200
 	});
+
+
 
 
 

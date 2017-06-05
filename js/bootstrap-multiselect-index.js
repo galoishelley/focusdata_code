@@ -243,6 +243,9 @@
                     return this.disabledText;
                 }
                 else if (options.length === 0) {
+                    if ($.cookie("lang") == 'ch') 
+                    return '任何语言';
+                    else
                     return this.nonSelectedText;
                 }
                 else if (this.allSelectedText
@@ -281,6 +284,9 @@
              */
             buttonTitle: function(options, select) {
                 if (options.length === 0) {
+                    if ($.cookie("lang") == 'ch') 
+                    return '任何语言';
+                    else
                     return this.nonSelectedText;
                 }
                 else {

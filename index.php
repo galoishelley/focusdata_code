@@ -1568,6 +1568,7 @@ include_once 'classes/Language/language.common.php';
 				position: relative;
 				left:-50px;
                 width:145px;
+                top:-1px;
             }
             .btn .caret {
     margin-left: 40px;
@@ -1589,7 +1590,7 @@ include_once 'classes/Language/language.common.php';
 
             <div class="index-main-box">
 
-				<h3 style="text-align: center; position: relative;top:-70px; color: #0F4F40 ; font-size:30px !important; "  >Your doctor's appointment just a click away</h2>
+				<h3 style="text-align: center; position: relative;top:-70px; color: #0F4F40 ; font-size:30px !important; "  ><?php echo $lang['Lang0386']; ?></h2>
                 <div class="box-unified-search">
 
                     <div class="type-unified-search" style="display: none">
@@ -1666,11 +1667,11 @@ include_once 'classes/Language/language.common.php';
                                <input type="hidden" class="form-control" name="action_type" id="action_type" value="index_search">
                                 <input type="hidden" class="form-control" name="from_index" id="from_index" value="1">
                               
-                                <input id="location-unified-search" class="location-unified-search ui-autocomplete-input" placeholder="<?php echo $lang['Lang0360']; ?>" type="text" name="CLINIC_SUBURB">
+                                <input id="location-unified-search" style="display: none" class="location-unified-search ui-autocomplete-input" placeholder="<?php echo $lang['Lang0360']; ?>" type="text" name="CLINIC_SUBURB">
                                 
                                  
-                                 <select name="DOCTOR_TYPE" id="DOCTOR_TYPE" class="location-unified-search">
-                                                <option value="">Any Doctor</option>
+                                 <select name="DOCTOR_TYPE" id="DOCTOR_TYPE" style="display: none;border-radius: 4px 4px 4px 4px !important;" class="location-unified-search">
+                                                <option value=""><?php echo $lang['Lang0388']; ?></option>
                                                 <option value="GP"><?php echo $lang['Lang0333']; ?></option>
                                                 <option value="Dentist"><?php echo $lang['Lang0334']; ?></option>
                                                 <option value="Dietitian"><?php echo $lang['Lang0335']; ?></option>
