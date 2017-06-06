@@ -157,6 +157,11 @@ $(function () {
                                     $.cookie("my_email", $("#USER_MAIL").val());
                                     $.cookie("my_lat", data.CUSTOMER_LAT);
                                     $.cookie("my_lng", data.CUSTOMER_LNG);
+                                    $.cookie("my_firstname", data.CUSTOMER_FIRSTNAME);
+                                    $.cookie("my_lastname", data.CUSTOMER_LASTNAME);
+                                    $.cookie("my_address", data.CUSTOMER_ADDR + ',' + data.CUSTOMER_SUBURB);
+                                    $.cookie("my_phone", data.CUSTOMER_PHONE_NO);
+
 
                                 } else {
                                     alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);

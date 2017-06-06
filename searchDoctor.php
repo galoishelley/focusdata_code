@@ -1388,9 +1388,16 @@
                             </div>
                             <div class="search-time-container clearfix closed">
                                 <div class="search-time-scroll doctor-time-scroll">
-                                    <span class="search-time-booknow">{{>day}}</span> {{for timeslot ~pdoctorid=doctorID
-                                    ~day=day}}
-                                    <a class="apptTimeBtn" keyDoctorID="{{>~pdoctorid}}" keyDate="{{>~day}}" keyTime="{{>originalTime}}">{{>time}}</a>                                    {{/for}}
+                                    <span class="search-time-booknow">{{>day}}</span> {{for timeslot ~pdoctorid=doctorID ~pdoctorname=doctorName ~pclinicname=clinicName
+                                    ~day=day ~pclinicaddress=clinicAddress 
+                                    ~pSTANDARD_15_MINUTE_CONSULTATION=STANDARD_15_MINUTE_CONSULTATION
+                                    ~pClinicSTANDARD_15_MINUTE_CONSULTATION=CLINIC_STANDARD_15_MINUTE_CONSULTATION}}
+                                    <a class="apptTimeBtn" keyDoctorID="{{>~pdoctorid}}" keyDate="{{>~day}}" keyTime="{{>originalTime}}" 
+                                    keyClinicAddress="{{>~pclinicaddress}}"
+                                    keyClinicName="{{>~pclinicname}}" 
+                                    keyDoctorName="{{>~pdoctorname}}"
+                                    keySTANDARD_15_MINUTE_CONSULTATION="{{>~pSTANDARD_15_MINUTE_CONSULTATION}}"
+                                    keyClinicSTANDARD_15_MINUTE_CONSULTATION="{{>~pClinicSTANDARD_15_MINUTE_CONSULTATION}}">{{>time}}</a>                                    {{/for}}
 
                                     <span class="search-more apptTimeMore">More</span>
                                     <a href="#" class="search-more-mob apptTimeMore">More</a>

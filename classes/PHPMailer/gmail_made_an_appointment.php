@@ -11,8 +11,18 @@ require 'PHPMailerAutoload.php';
 
 
 $email=$_POST ['email'];
-$pwd=$_POST ['pwd'];
-$name =$_POST ['name'];
+$appID=$_POST ['appID'];
+$drName =$_POST ['drName'];
+
+$clinicName =$_POST ['clinicName'];
+$firstName =$_POST ['firstName'];
+$date =$_POST ['date'];
+$time =$_POST ['time'];
+$addr =$_POST ['addr'];
+$docFee =$_POST ['docFee'];
+$clinicFee =$_POST ['clinicFee'];
+
+
 //Create a new PHPMailer instance
 $mail = new PHPMailer;
 
@@ -47,7 +57,7 @@ $mail->SMTPAuth = true;
 $mail->Username = "info@drpages.com.au";
 
 //Password to use for SMTP authentication
-$mail->Password = "drpages@FD";
+$mail->Password = "Zaq!Xsw2Cde3";
 
 //Set who the message is to be sent from
 $mail->setFrom('info@drpages.com.au', 'Focusdata');
@@ -56,20 +66,48 @@ $mail->setFrom('info@drpages.com.au', 'Focusdata');
 $mail->addReplyTo('info@drpages.com.au', 'Focusdata');
 
 //Set who the message is to be sent to
-$mail->addAddress($email, $name);
+$mail->addAddress($email, $firstName);
+
+
+
 
 //Set the subject line
-$mail->Subject = 'Congratulations';
+$mail->Subject = 'DrPages Appointment #'.$appID.' with Dr '.$drName.' at '.$clinicName.' Practice - CONFIRMED';
 
 //$mail->AllowEmpty=true;
 
 //Read an HTML message body from an external file, convert referenced images to embedded,
 //convert HTML into a basic plain-text alternative body
 
-$content=file_get_contents('made_an_appointment.html');
-$content=str_replace("{{name}}",$name,$content);
 
-$content=str_replace("{{pwd}}",$pwd,$content);
+
+
+if($docFee==0&&$clinicFee==0)
+$fee='';
+
+if($docFee==0&&$clinicFee!=0)
+$fee='Please note that Dr ABC charges a fee of $'.$clinicFee.' for a 15 minute consultation.';
+
+if($docFee!=0)
+$fee='Please note that Dr ABC charges a fee of $'.$docFee.' for a 15 minute consultation.';
+
+
+$addrURL="https://www.google.com.au/maps/place/".$addr;
+
+
+$content=file_get_contents('made_an_appointment.html');
+$content=str_replace("{{firstname}}",$firstName,$content);
+
+$content=str_replace("{{clinicname}}",$clinicName,$content);
+$content=str_replace("{{drname}}",$drName,$content);
+
+$content=str_replace("{{date}}",$date,$content);
+
+$content=str_replace("{{time}}",$time,$content);
+
+$content=str_replace("{{addr}}",$addrURL,$content);
+
+$content=str_replace("{{fee}}",$fee,$content);
 $mail->msgHTML($content, dirname(__FILE__));
 
 //Replace the plain text body with one created manually

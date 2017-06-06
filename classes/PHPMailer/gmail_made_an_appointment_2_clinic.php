@@ -10,9 +10,21 @@ date_default_timezone_set('Etc/UTC');
 require 'PHPMailerAutoload.php';
 
 
-$email=$_POST ['email'];
-$pwd=$_POST ['pwd'];
-$name =$_POST ['name'];
+$email=$_POST ['clinic_mail'];
+$appID=$_POST ['appID'];
+$drName =$_POST ['drName'];
+
+$clinicName =$_POST ['clinicName'];
+$firstName =$_POST ['firstName'];
+$lastName =$_POST ['lastName'];
+$date =$_POST ['date'];
+$time =$_POST ['time'];
+$addr =$_POST ['addr'];
+$contactNumber =$_POST ['contactNumber'];
+$contactEmail =$_POST ['contactEmail'];
+
+
+
 //Create a new PHPMailer instance
 $mail = new PHPMailer;
 
@@ -56,20 +68,30 @@ $mail->setFrom('info@drpages.com.au', 'Focusdata');
 $mail->addReplyTo('info@drpages.com.au', 'Focusdata');
 
 //Set who the message is to be sent to
-$mail->addAddress($email, $name);
+$mail->addAddress($email, $firstName);
+
+
+
 
 //Set the subject line
-$mail->Subject = 'Your DrPages account has been activated';
+$mail->Subject = 'DrPages Appointment #'.$appID.' with Dr '.$drName.' at '.$clinicName.' Practice - CONFIRMED';
 
-//$mail->AllowEmpty=true;
 
-//Read an HTML message body from an external file, convert referenced images to embedded,
-//convert HTML into a basic plain-text alternative body
 
-$content=file_get_contents('register_succeed.html');
-$content=str_replace("{{name}}",$name,$content);
+$content=file_get_contents('made_an_appointment_to_clinic.html');
+$content=str_replace("{{firstname}}",$firstName,$content);
+$content=str_replace("{{lastname}}",$lastName,$content);
+$content=str_replace("{{clinicname}}",$clinicName,$content);
+$content=str_replace("{{drname}}",$drName,$content);
 
-$content=str_replace("{{pwd}}",$pwd,$content);
+$content=str_replace("{{date}}",$date,$content);
+
+$content=str_replace("{{time}}",$time,$content);
+
+$content=str_replace("{{addr}}",$addr,$content);
+
+$content=str_replace("{{contactNumber}}",$contactNumber,$content);
+$content=str_replace("{{contactEmail}}",$contactEmail,$content);
 $mail->msgHTML($content, dirname(__FILE__));
 
 //Replace the plain text body with one created manually

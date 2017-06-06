@@ -47,7 +47,7 @@ $mail->SMTPAuth = true;
 $mail->Username = "info@drpages.com.au";
 
 //Password to use for SMTP authentication
-$mail->Password = "drpages@FD";
+$mail->Password = "Zaq!Xsw2Cde3";
 
 //Set who the message is to be sent from
 $mail->setFrom('info@drpages.com.au', 'Focusdata');
@@ -59,7 +59,7 @@ $mail->addReplyTo('info@drpages.com.au', 'Focusdata');
 $mail->addAddress($email, $name);
 
 //Set the subject line
-$mail->Subject = 'Activate your focusdata ID';
+$mail->Subject = 'Please activate your DrPages account';
 
 //$mail->AllowEmpty=true;
 

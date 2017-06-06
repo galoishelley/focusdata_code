@@ -949,6 +949,10 @@ $(function () {
 								$.cookie("fd_userid", data.CUSTOMER_USER_ID);
 								$.cookie("my_lat", data.CUSTOMER_LAT);
 								$.cookie("my_lng", data.CUSTOMER_LNG);
+								$.cookie("my_firstname", data.CUSTOMER_FIRSTNAME);
+								$.cookie("my_lastname", data.CUSTOMER_LASTNAME);
+								$.cookie("my_address", data.CUSTOMER_ADDR + ',' + data.CUSTOMER_SUBURB);
+								$.cookie("my_phone", data.CUSTOMER_PHONE_NO);
 
 							} else {
 								alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
@@ -2425,6 +2429,8 @@ $(function () {
 							STANDARD_15_MINUTE_CONSULTATION: item.STANDARD_15_MINUTE_CONSULTATION,
 							EXTEND_30_MINUTE_CONSULTATION: item.EXTEND_30_MINUTE_CONSULTATION,
 
+							CLINIC_STANDARD_15_MINUTE_CONSULTATION: item.CLINIC_STANDARD_15_MINUTE_CONSULTATION,
+
 							interest: "",
 							language: "",
 							clinicName: item.CLINIC_NAME,
@@ -2518,9 +2524,9 @@ $(function () {
 					}
 				});
 
-				if ($.cookie("ilogin") == 1&&$.cookie("fd_usertype") != 0) {
-					
-					
+				if ($.cookie("ilogin") == 1 && $.cookie("fd_usertype") != 0) {
+
+
 					//显示收藏医生
 					$('.save2favBtn').show();
 					$('.jumptouserSaveDoctor').show();
@@ -2710,7 +2716,7 @@ $(function () {
 				if (doctor_STANDARD_15_MINUTE_CONSULTATION != 0) {
 					$('#doctorProfile').find('.doctor-STANDARD_15_MINUTE_CONSULTATION').show();
 					$('#doctorProfile').find('.doctor-STANDARD_15_MINUTE_CONSULTATION').text($('#Lang0382').html() + ' - $' + doctor_STANDARD_15_MINUTE_CONSULTATION);
-					
+
 				}
 				else
 					$('#doctorProfile').find('.doctor-STANDARD_15_MINUTE_CONSULTATION').hide();
@@ -2718,7 +2724,7 @@ $(function () {
 				var doctor_EXTEND_30_MINUTE_CONSULTATION = $(this).parent().find('.EXTEND_30_MINUTE_CONSULTATION').text();
 				if (doctor_EXTEND_30_MINUTE_CONSULTATION != 0) {
 					$('#doctorProfile').find('.doctor-EXTEND_30_MINUTE_CONSULTATION').show();
-					
+
 					$('#doctorProfile').find('.doctor-EXTEND_30_MINUTE_CONSULTATION').text($('#Lang0383').html() + ' - $' + doctor_EXTEND_30_MINUTE_CONSULTATION);
 				}
 				else
@@ -2805,6 +2811,20 @@ $(function () {
 				keyDoctorID = $(this).attr('keyDoctorID');
 				keyDate = reformatDate($(this).attr('keyDate'));
 				keyTime = $(this).attr('keyTime');
+
+				var keyAppointmentID;
+				var keyClinicAddress = $(this).attr('keyClinicAddress');
+				var keyClinicName = $(this).attr('keyClinicName');
+				var keyDoctorName = $(this).attr('keyDoctorName');
+				var keySTANDARD_15_MINUTE_CONSULTATION = $(this).attr('keySTANDARD_15_MINUTE_CONSULTATION');
+				var keyClinicSTANDARD_15_MINUTE_CONSULTATION = $(this).attr('keyClinicSTANDARD_15_MINUTE_CONSULTATION');
+				var keyfirstname = $.cookie("my_firstname");
+				var keylastname = $.cookie("my_lastname");
+
+				var keyAddress = $.cookie("my_address");
+				var keyPhone = $.cookie("my_phone");
+
+
 
 
 				//Clinic user
@@ -2997,6 +3017,7 @@ $(function () {
 						success: function (msg) {
 							// console.log(msg);
 							var ret = msg.response;
+							keyAppointmentID = ret.data;
 							if (ret.success) {
 								if (json_str.sequ != ret.sequ) {
 									alert(func_code + ":时序号错误,请联系管理员ret.sequ" + ret.sequ + " json_str.sequ:" + json_str.sequ);
@@ -3079,8 +3100,16 @@ $(function () {
 						async: false,
 						data: {
 							email: EMAIL,
-							pwd: '',
-							name: EMAIL
+							appID: keyAppointmentID,
+							drName: keyDoctorName,
+							clinicName: keyClinicName,
+							firstName: keyfirstname,
+							date: keyDate,
+							time: keyTime,
+							addr: keyClinicAddress,
+							docFee: keySTANDARD_15_MINUTE_CONSULTATION,
+							clinicFee: keyClinicSTANDARD_15_MINUTE_CONSULTATION
+
 						}
 					});
 
@@ -3098,11 +3127,21 @@ $(function () {
 
 						return $.ajax({
 							type: "POST",
-							url: "classes/PHPMailer/gmail_made_an_appointment.php",
+							url: "classes/PHPMailer/gmail_made_an_appointment_2_clinic.php",
 							dataType: "json",
 							async: false,
 							data: {
-								clinic_mail: clinic_mail
+								clinic_mail: clinic_mail,
+								appID: keyAppointmentID,
+								drName: keyDoctorName,
+								clinicName: keyClinicName,
+								firstName: keyfirstname,
+								lastName: keylastname,
+								date: keyDate,
+								time: keyTime,
+								addr: keyAddress,
+								contactNumber: keyPhone,
+								contactEmail: EMAIL
 							}
 						});
 					});
