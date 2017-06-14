@@ -1,3 +1,6 @@
+$.cookie("lang", $('#for_cookie_lang').html());
+
+
 if ($.cookie("lang") == 'ch') {
   $('#aus').hide();
   $('#china').show();
