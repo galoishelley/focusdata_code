@@ -122,7 +122,7 @@ $.fn.serializeObject = function () {
 };
 
 //导航条退出
-$('#btn_out').click(function () {
+$('.btn_out').click(function () {
   $.cookie("ilogin", "");
   // $('#userinfo').html();
   window.location.href = "index.php";

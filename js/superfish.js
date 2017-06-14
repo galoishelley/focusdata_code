@@ -93,7 +93,7 @@
 				var $this = $(this),
 					o = getOptions($this);
 				clearTimeout(o.sfTimer);
-				$this.siblings().superfish('hide').end().superfish('show');
+				//$this.siblings().superfish('hide').end().superfish('show');
 			},
 			out = function () {
 				var $this = $(this),

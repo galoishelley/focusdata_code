@@ -5,7 +5,27 @@ var func_code, result;
 
 $(function () {
 
-	
+	if ($(window).width() > 768) {
+		$(".navbar-brand_").css("top", "45px");
+	}
+	else {
+		$(".navbar-brand_").css("top", "5px");
+		$(".index-second-box").hide();
+		$(".index_slogan").hide();
+		$('#ddlLanguage').hide();
+
+
+		$("#location-unified-search").css("width", "185px");
+
+
+
+	}
+
+
+
+
+
+
 
 
 	//fill lang
@@ -25,24 +45,27 @@ $(function () {
 			var item = { label: data[i].LANGUAGE_NAME, value: data[i].LANGUAGE_NAME };
 			r.push(item);
 		}
-
-		$('#ddlLanguage').multiselect('dataprovider', r);
-
+		if ($(window).width() > 768) {
+			$('#ddlLanguage').multiselect('dataprovider', r);
+		}
 
 
 		$('#location-unified-search').show();
-		$('#DOCTOR_TYPE').show();
+		if ($(window).width() > 768)
+			$('#DOCTOR_TYPE').show();
 
 
-		
+
+
+
 	});
 
 
-
-	$('#ddlLanguage').multiselect({
-		maxHeight: 200
-	});
-
+	if ($(window).width() > 768) {
+		$('#ddlLanguage').multiselect({
+			maxHeight: 200
+		});
+	}
 
 
 
@@ -105,9 +128,7 @@ $(function () {
 		$('#DISTANCE').prop('disabled', true);
 
 
-	$(document).on('click', '#btn_search', function (e) {
-
-		e.preventDefault();
+	$('#btn_search').click(function () {
 		requesttype = 1;
 		func_code = "SD02";
 		//form序列化成json
@@ -131,6 +152,13 @@ $(function () {
 		sessionStorage.setItem("searchRestriction", str);
 
 		window.location.href = "searchDoctor.php";
+	});
+
+
+	$(document).on('click', '#btn_search', function (e) {
+
+		//e.preventDefault();
+
 
 
 	});

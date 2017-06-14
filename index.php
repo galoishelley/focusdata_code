@@ -172,11 +172,11 @@ include_once 'classes/Language/language.common.php';
                 display: inline-block;
                 *display: inline;
                 *zoom: 1;
-                padding: 9px 12px;
+                padding: 12px 12px;
                 margin-bottom: 0;
                 font-size: 15px;
                 font-weight: 500;
-                line-height: 10px;
+               
                 text-align: center;
                 text-decoration: none;
                 vertical-align: middle;
@@ -1585,12 +1585,12 @@ include_once 'classes/Language/language.common.php';
     ?>
             <header>
 
-                <h1 class="navbar-brand navbar-brand_"  style="top:45px"><a href="index.php"><img src="img/<?php echo $lang['Lang0344']; ?>" alt="logo"></a></h1>
+                <h1 class="navbar-brand navbar-brand_"  ><a href="index.php"><img src="img/<?php echo $lang['Lang0344']; ?>" alt="logo"></a></h1>
             </header>
 
             <div class="index-main-box">
 
-				<h3 style="text-align: center; position: relative;top:-70px; color: #0F4F40 ; font-size:30px !important; "  ><?php echo $lang['Lang0386']; ?></h2>
+				<h3 style="text-align: center; position: relative;top:-70px; color: #0F4F40 ; font-size:30px !important; " class="index_slogan"><?php echo $lang['Lang0386']; ?></h3>
                 <div class="box-unified-search">
 
                     <div class="type-unified-search" style="display: none">
@@ -1699,7 +1699,7 @@ include_once 'classes/Language/language.common.php';
                                  </select>
 
 
-                                <button tabindex="-1" id="btn_search" style="height: 46px; width:100px; " class="btnSearch "><?php echo $lang['Lang0361']; ?></button>
+                                <div tabindex="-1" id="btn_search" style="height: 46px; width:100px; " class="btnSearch"><?php echo $lang['Lang0361']; ?></div>
                             </form>
                         </div>
                     </div>
