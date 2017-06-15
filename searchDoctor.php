@@ -143,11 +143,12 @@
                 color: #313436;
                 font-weight: 400;
                 text-overflow: ellipsis;
-                
+
                 overflow: hidden
             }
 
-            #doctorProfile .slickWindow .cartItems .doctor-language,.doctor-year {
+            #doctorProfile .slickWindow .cartItems .doctor-language,
+            .doctor-year {
                 margin: 1px 0 14px;
                 padding: 0 90px 0 10px;
                 font-size: 15px;
@@ -155,11 +156,13 @@
                 color: #313436;
                 font-weight: 400;
                 text-overflow: ellipsis;
-                
+
                 overflow: hidden
             }
 
-            #doctorProfile .slickWindow .cartItems .doctor-address,.doctor-title12345,.doctor-fees {
+            #doctorProfile .slickWindow .cartItems .doctor-address,
+            .doctor-title12345,
+            .doctor-fees {
                 margin: 1px 0 14px;
                 padding: 0 90px 0 10px;
                 font-size: 13px;
@@ -167,9 +170,8 @@
                 font-weight: 400
             }
 
-            #doctorProfile .slickWindow .cartItems 
-            .doctor-sex,
-            
+            #doctorProfile .slickWindow .cartItems .doctor-sex,
+
             .doctor-feature {
                 margin: 1px 0 14px;
                 padding: 0 90px 0 10px;
@@ -318,7 +320,10 @@
                 font-weight: 400
             }
 
-            #clinicProfile .slickWindow .cartItems .clinic-feature, .clinic-interest, .clinic-hours, .clinic-fees {
+            #clinicProfile .slickWindow .cartItems .clinic-feature,
+            .clinic-interest,
+            .clinic-hours,
+            .clinic-fees {
                 margin: 1px 0 14px 15px;
                 padding: 0 90px 0 10px;
                 font-size: 13px;
@@ -591,6 +596,43 @@
                     position: fixed;
                 }
             }
+
+
+
+            .clinic-list {
+                display: inline;
+            }
+
+            @media screen and (max-width: 767px) {
+                .clinic-list {
+                    display: block;
+                }
+            }
+
+            .clinic-addie {
+                height: 50px
+            }
+
+            @media (max-width: 767px) {
+
+                .clinic-addie {
+                    height: 250px
+                }
+            }
+            .clinic-lang {
+                display:inline;
+                position:relative;
+                top:10px;
+            }
+            @media (max-width: 767px) {
+
+                .clinic-lang {
+                    display:block;
+                    position:relative;
+                    top:150px;
+
+                }
+            }
         </style>
 
 
@@ -643,48 +685,72 @@
                         <div class="clinic-address"></div>
 
                         <div class="clinic-interest">
-                        <div style="font-size:15px;margin-left:-14px;margin-bottom:14px"><?php echo $lang['Lang0368']; ?></div>
-                         <ul style="margin-left:18px;" class="interest-content">
-                                
+                            <div style="font-size:15px;margin-left:-14px;margin-bottom:14px">
+                                <?php echo $lang['Lang0368']; ?>
+                            </div>
+                            <ul style="margin-left:18px;" class="interest-content">
+
                             </ul>
                         </div>
 
                         <div class="clinic-language" style="font-size:15px;margin-left:0px;margin-bottom:14px;width:500px"></div>
 
                         <div class="clinic-feature">
-                            <div style="font-size:15px;margin-left:-14px;margin-bottom:14px"><?php echo $lang['Lang0370']; ?></div>
+                            <div style="font-size:15px;margin-left:-14px;margin-bottom:14px">
+                                <?php echo $lang['Lang0370']; ?>
+                            </div>
 
                             <ul style="margin-left:18px;">
-                                <li class="clinic-BULK_BILLING"><?php echo $lang['Lang0371']; ?></li>
-                                <li class="clinic-LATE_HOUR_SERVICES"><?php echo $lang['Lang0372']; ?></li>
-                                <li class="clinic-FREE_PARKING"><?php echo $lang['Lang0373']; ?></li>
-                                <li class="clinic-WHEELCHAIR_ACCESS"><?php echo $lang['Lang0374']; ?></li>
-                                <li class="clinic-FEMALE_DOCTOR"><?php echo $lang['Lang0375']; ?></li>
-                                <li class="clinic-HOME_VISIT"><?php echo $lang['Lang0376']; ?></li>
-                                <li class="clinic-ONSITE_PATHOLOGY_COLLECTION"><?php echo $lang['Lang0377']; ?></li>
-                                <li class="clinic-AGPAL"><?php echo $lang['Lang0378']; ?></li>
+                                <li class="clinic-BULK_BILLING">
+                                    <?php echo $lang['Lang0371']; ?>
+                                </li>
+                                <li class="clinic-LATE_HOUR_SERVICES">
+                                    <?php echo $lang['Lang0372']; ?>
+                                </li>
+                                <li class="clinic-FREE_PARKING">
+                                    <?php echo $lang['Lang0373']; ?>
+                                </li>
+                                <li class="clinic-WHEELCHAIR_ACCESS">
+                                    <?php echo $lang['Lang0374']; ?>
+                                </li>
+                                <li class="clinic-FEMALE_DOCTOR">
+                                    <?php echo $lang['Lang0375']; ?>
+                                </li>
+                                <li class="clinic-HOME_VISIT">
+                                    <?php echo $lang['Lang0376']; ?>
+                                </li>
+                                <li class="clinic-ONSITE_PATHOLOGY_COLLECTION">
+                                    <?php echo $lang['Lang0377']; ?>
+                                </li>
+                                <li class="clinic-AGPAL">
+                                    <?php echo $lang['Lang0378']; ?>
+                                </li>
 
                             </ul>
                         </div>
 
 
                         <div class="clinic-hours">
-                        <div style="font-size:15px;margin-left:-14px;margin-bottom:14px"><?php echo $lang['Lang0380']; ?></div>
-                         <ul style="margin-left:18px;" class="hours-content">
-                                
+                            <div style="font-size:15px;margin-left:-14px;margin-bottom:14px">
+                                <?php echo $lang['Lang0380']; ?>
+                            </div>
+                            <ul style="margin-left:18px;" class="hours-content">
+
                             </ul>
                         </div>
 
 
                         <div class="clinic-fees">
-                        <div style="font-size:15px;margin-left:-14px;margin-bottom:14px"><?php echo $lang['Lang0381']; ?></div>
-                         <ul style="margin-left:18px;width:400px" class="fees-content">
+                            <div style="font-size:15px;margin-left:-14px;margin-bottom:14px">
+                                <?php echo $lang['Lang0381']; ?>
+                            </div>
+                            <ul style="margin-left:18px;width:400px" class="fees-content">
                                 <li class="clinic-STANDARD_15_MINUTE_CONSULTATION" style="margin-left:5px;">
 
-                                    </li>
-                                    <li class="clinic-EXTEND_30_MINUTE_CONSULTATION" style="margin-left:5px;">
+                                </li>
+                                <li class="clinic-EXTEND_30_MINUTE_CONSULTATION" style="margin-left:5px;">
 
-                                    </li>
+                                </li>
                             </ul>
                         </div>
 
@@ -719,27 +785,29 @@
                         <div class="doctor-address"></div>
 
                         <div class="doctor-language" style="width:500px;"></div>
-                        
+
                         <div class="doctor-year" style="width:500px;"></div>
                         <div class="doctor-feature">
-                            
+
                             <ul class="doctor-interest">
 
                             </ul>
                         </div>
 
                         <div class="doctor-fees">
-                        <div style="font-size:15px;margin-bottom:14px"><?php echo $lang['Lang0381']; ?></div>
-                         <ul style="margin-left:18px;width:400px" class="fees-content">
+                            <div style="font-size:15px;margin-bottom:14px">
+                                <?php echo $lang['Lang0381']; ?>
+                            </div>
+                            <ul style="margin-left:18px;width:400px" class="fees-content">
                                 <li class="doctor-STANDARD_15_MINUTE_CONSULTATION" style="margin-left:5px;">
 
-                                    </li>
-                                    <li class="doctor-EXTEND_30_MINUTE_CONSULTATION" style="margin-left:5px;">
+                                </li>
+                                <li class="doctor-EXTEND_30_MINUTE_CONSULTATION" style="margin-left:5px;">
 
-                                    </li>
+                                </li>
                             </ul>
                         </div>
-                        
+
 
 
                         <p class="doctor-overview"></p>
@@ -1135,14 +1203,16 @@
 
                                         <div class="search-suburb-contain clearfix">
                                             <h3 class="search-suburb">{{>clinicSuburb}}</h3>
-                                            
+
                                             <div class="search-map-dets">
 
                                                 <span class="search-map-link"><span class="search-map-ico"></span><span class="search-map-txt"><a class="showMap" street="{{>clinicAddress}}" suburb="{{>clinicSuburb}}" lat="{{>clinicLat}}" lng="{{>clinicLng}}"><?php echo $lang['Lang0379']; ?></a></span></span>
                                             </div>
                                             <div class="search-map-dets clinic-distance">
-                                                (<?php echo $lang['Lang0363']; ?>{{>distance}}<?php echo $lang['Lang0364']; ?>)
-                                                </div>
+                                                (
+                                                <?php echo $lang['Lang0363']; ?>{{>distance}}
+                                                <?php echo $lang['Lang0364']; ?>)
+                                            </div>
                                         </div>
                                         <div class="search-images-dets">
                                             <div class="search-images-photo">
@@ -1161,27 +1231,24 @@
                                         <div class="clinic-phone" style="display:none">
                                             {{>clinicPhone}}
                                         </div>
-                                        <div class="search-addie" style="height:50px">
-                                        <div style="height:10px;" class="clinic-info">
-                                        {{if BULK_BILLING==1}}
-                                        <?php echo $lang['Lang0366']; ?>&nbsp&nbsp&nbsp
-                                        {{else}}{{/if}}
-
-                                        {{if LATE_HOUR_SERVICES==1}}
-                                        <?php echo $lang['Lang0367']; ?>&nbsp&nbsp&nbsp
-                                        {{else}}{{/if}}
-
-                                        {{if AGPAL==1}}
-                                        <?php echo $lang['Lang0365']; ?>&nbsp&nbsp&nbsp
-                                        {{else}}{{/if}}
-
-                                        {{if FEMALE_DOCTOR==1}}
-                                        Female Doctor
-                                        {{else}}{{/if}}
+                                        <div class="clinic-addie search-addie">
+                                            <div style="height:10px;" class="clinic-info">
+                                                {{if BULK_BILLING==1}}
+                                                <div class="clinic-list">
+                                                    <?php echo $lang['Lang0366']; ?>&nbsp&nbsp&nbsp</div>
+                                                {{else}}{{/if}} {{if LATE_HOUR_SERVICES==1}}
+                                                <div class="clinic-list">
+                                                    <?php echo $lang['Lang0367']; ?>&nbsp&nbsp&nbsp</div>
+                                                {{else}}{{/if}} {{if AGPAL==1}}
+                                                <div class="clinic-list">
+                                                    <?php echo $lang['Lang0365']; ?>&nbsp&nbsp&nbsp</div>
+                                                {{else}}{{/if}} {{if FEMALE_DOCTOR==1}}
+                                                <div class="clinic-list">Female Doctor</div>
+                                                {{else}}{{/if}}
 
 
-                                        </div>
-                                            <div class="clinic-lang" style="display:inline;position:relative;top:10px;">{{>language}}</div>
+                                            </div>
+                                            <div class="clinic-lang">{{>language}}</div>
                                             {{if isYellowPage==0}}
                                             <a class="showDoctors" keyClinicID="{{>clinicID}}">
                                                 <?php echo $lang['Lang0324']; ?>
@@ -1388,16 +1455,12 @@
                             </div>
                             <div class="search-time-container clearfix closed">
                                 <div class="search-time-scroll doctor-time-scroll">
-                                    <span class="search-time-booknow">{{>day}}</span> {{for timeslot ~pdoctorid=doctorID ~pdoctorname=doctorName ~pclinicname=clinicName
-                                    ~day=day ~pclinicaddress=clinicAddress 
-                                    ~pSTANDARD_15_MINUTE_CONSULTATION=STANDARD_15_MINUTE_CONSULTATION
-                                    ~pClinicSTANDARD_15_MINUTE_CONSULTATION=CLINIC_STANDARD_15_MINUTE_CONSULTATION}}
-                                    <a class="apptTimeBtn" keyDoctorID="{{>~pdoctorid}}" keyDate="{{>~day}}" keyTime="{{>originalTime}}" 
-                                    keyClinicAddress="{{>~pclinicaddress}}"
-                                    keyClinicName="{{>~pclinicname}}" 
-                                    keyDoctorName="{{>~pdoctorname}}"
-                                    keySTANDARD_15_MINUTE_CONSULTATION="{{>~pSTANDARD_15_MINUTE_CONSULTATION}}"
-                                    keyClinicSTANDARD_15_MINUTE_CONSULTATION="{{>~pClinicSTANDARD_15_MINUTE_CONSULTATION}}">{{>time}}</a>                                    {{/for}}
+                                    <span class="search-time-booknow">{{>day}}</span> {{for timeslot ~pdoctorid=doctorID
+                                    ~pdoctorname=doctorName ~pclinicname=clinicName ~day=day ~pclinicaddress=clinicAddress
+                                    ~pSTANDARD_15_MINUTE_CONSULTATION=STANDARD_15_MINUTE_CONSULTATION ~pClinicSTANDARD_15_MINUTE_CONSULTATION=CLINIC_STANDARD_15_MINUTE_CONSULTATION}}
+                                    <a class="apptTimeBtn" keyDoctorID="{{>~pdoctorid}}" keyDate="{{>~day}}" keyTime="{{>originalTime}}" keyClinicAddress="{{>~pclinicaddress}}"
+                                        keyClinicName="{{>~pclinicname}}" keyDoctorName="{{>~pdoctorname}}" keySTANDARD_15_MINUTE_CONSULTATION="{{>~pSTANDARD_15_MINUTE_CONSULTATION}}"
+                                        keyClinicSTANDARD_15_MINUTE_CONSULTATION="{{>~pClinicSTANDARD_15_MINUTE_CONSULTATION}}">{{>time}}</a>                                    {{/for}}
 
                                     <span class="search-more apptTimeMore">More</span>
                                     <a href="#" class="search-more-mob apptTimeMore">More</a>

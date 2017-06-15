@@ -5102,7 +5102,7 @@ h2.search-imd-header {
     padding-left: 10px;
     color: #63707b;
     margin: 3px 0 3px;
-    height: 40px;
+   
     line-height: 40px;
     border-top: 1px solid #ecedee;
 
@@ -5535,6 +5535,35 @@ h2.search-imd-header {
     color: #008ec8;
     background-color: #e0edf3
 }
+
+
+@media (max-width: 767px) {
+    .search-addie > a
+{
+    display: block;
+    float: left;
+    width: auto;
+    margin-top: 155px;
+    margin-left: 0px;
+    padding-left: 5px;
+    padding-right:5px;
+    text-align: center;
+    font-size: 12px;
+    height: 30px;
+    line-height: 31px;
+    color: #313436;
+    background-color: #fff;
+    cursor: pointer;
+    font-weight: 400;
+    border: 1px solid #d0d4d7;
+    -webkit-border-radius: 2px !important;
+    -moz-border-radius: 2px !important;
+    -ms-border-radius: 2px !important;
+    border-radius: 2px !important;
+    background-clip: padding-box
+}
+}
+
 
 .search-card-contain .search-time-container .search-time-scroll > span,
 .search-card-contain .search-time-container .search-time-scroll > div,

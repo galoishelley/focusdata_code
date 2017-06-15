@@ -40,6 +40,13 @@ var keyTime;
 			}
 
 			function k() {
+				if (c.popupWidth == '425px') {
+					if ($(window).width() < 425) {
+						c.popupWidth = '320px'
+						$('.clinic-language').css("width", "400px");
+						$('.clinic-EXTEND_30_MINUTE_CONSULTATION').css("width", "250px");
+					}
+				}
 				c.breakPoint = parseInt(c.breakPoint), a(b).children(".slickWindow").addClass("animated").css({
 					"box-shadow": c.popupShadowOffsetX + " " + c.popupShadowOffsetY + " " + c.popupShadowBlurRadius + " " + c.popupShadowSpreadRadius + " " + c.popupShadowColor,
 					background: c.popupBackground,
@@ -3285,6 +3292,8 @@ $(function () {
 		$('.multiselect-native-select').css("margin-left", "37px");
 		$('#DOCTOR_TYPE').css("margin-left", "37px");
 	}
+
+
 
 
 
