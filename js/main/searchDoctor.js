@@ -44,6 +44,11 @@ var keyTime;
 					if ($(window).width() < 425) {
 						c.popupWidth = '320px'
 						$('.clinic-language').css("width", "400px");
+						$('.doctor-language').css("width", "400px");
+						$('.doctor-year').css("width", "400px");
+						
+
+						$('.doctor-EXTEND_30_MINUTE_CONSULTATION').css("width", "250px");
 						$('.clinic-EXTEND_30_MINUTE_CONSULTATION').css("width", "250px");
 					}
 				}
