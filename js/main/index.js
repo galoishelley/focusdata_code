@@ -5,6 +5,18 @@ var func_code, result;
 
 $(function () {
 
+
+	
+
+
+	$("#btn_patient_login").click(function () {
+		window.location.href = "sign_in.php";
+	});
+
+	$("#btn_practics_login").click(function () {
+		window.location.href = "sign_in_clinic.php";
+	});
+
 	if ($(window).width() > 768) {
 		$(".navbar-brand_").css("top", "45px");
 	}
@@ -16,6 +28,9 @@ $(function () {
 
 
 		$("#location-unified-search").css("width", "185px");
+
+		$('#lookingfor').hide();
+		$('#prefer2speak').hide();
 
 
 

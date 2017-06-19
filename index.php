@@ -246,7 +246,7 @@ include_once 'classes/Language/language.common.php';
                 height: 750px;
                 overflow: hidden;
 				color:#ffffff !important;
-				background-color: #1a824D 
+				background-color: #07889B
 				
             }
 			
@@ -1659,6 +1659,11 @@ include_once 'classes/Language/language.common.php';
                             </div>
                         </div>
                     </div>
+                    <div style="text-align: left;margin-bottom: 6px;color:#e37222 ; "> 
+                    	 <span style="position: relative;left:10px;">I seek at:</span> 
+                    	<span style="position: relative;left:232px" id="lookingfor">looking for:</span>  
+                    	<span style="position: relative;left:300px" id="prefer2speak">prefer to speak:</span> 
+                     </div>
 
                     <div class="input-unified-search">
                         <div class="input-contain-unified-search">
@@ -1714,11 +1719,12 @@ include_once 'classes/Language/language.common.php';
             
             <div class="index-second-box">
             
-            <h1 >Our Work:</h1>
+            <!-- <h1 >Our Work:</h1> -->
             
             
-            <h2 class="col-sm-12 index-second-heading">
-            	we are working so hard to build an online medicare community for patients and practices. At here, medicare services are easy to reach, clients and doctors always keep in touch.  
+            <h2 class="col-sm-12 index-second-heading" style="text-align:center">
+            	Where patients meet practices  
+  
             </h2>
             	<div class="col-sm-12 index-second-content">            		
             		
@@ -1727,12 +1733,14 @@ include_once 'classes/Language/language.common.php';
             	
 					<div class="col-sm-3">
 					
-					<ul class="index-second-list">
-						<li>Easy: can make an appointment 24*7 from our website</li>
-						<li>Confortable: talk to your paractice with your mother language</li>
-						<li>Ready: contact with practice and other patients easily </li>
-						<li>Convenience: automatic check in with mobile</li>
-					</ul>
+					<!-- <ul class="index-second-list"> -->
+						<!-- <li>Easy: make an appointment 24*7 </li> -->
+						<!-- <li>Confortable: talk to your paractice with your perfered language</li> -->
+						
+						<!-- <li>Convenient: automatic check in </li> -->
+					<!-- </ul> -->
+					
+					<button tabindex="-1" id="btn_patient_login" style="height: 46px; width:112px; margin-top:20px;line-height: 10px;padding: 9px 12px;" class="btnSearch" >Patient Login</button>
 
 					</div>
           	
@@ -1747,12 +1755,16 @@ include_once 'classes/Language/language.common.php';
 					</div>
           		
           		<div class="col-sm-3">					
-					<ul class="index-second-list" style="margin-left: -20px;">
-						<li>Simple: let your patients find you just a few clicks</li>
-						<li>Effective: reduce the time your staff and patients spend on the phone</li>
-						<li>Ready: your patients can book with you 24*7</li>
-						<li>Engage: following and contact with your patients in the community</li>
-					</ul>
+					<!-- <ul class="index-second-list" style="margin-left: -20px;"> -->
+						<!-- <li>simple: let your patients find you just a few clicks</li> -->
+						<!-- <li>effective: reduce the time your staff and patients spend on the phone</li> -->
+					
+						<!-- <li>engage: following and contact with your patients in the community</li> -->
+					<!-- </ul> -->
+					<h4>Sign up before February for a free 6-month trail.</h4>	
+					
+					<button tabindex="-1" id="btn_practics_login"  class="btnSearch" style="position:relative ; width:200px; margin-top:20px;line-height: 10px;">Practice Login</button>
+
 
 					</div>
            		
