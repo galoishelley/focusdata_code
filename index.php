@@ -249,6 +249,14 @@ include_once 'classes/Language/language.common.php';
 				background-color: #07889B
 				
             }
+
+            @media (max-width: 900px) {
+                .index-second-box {
+                display:none;
+				
+            }
+
+            }
 			
 			.index-second-content {
 				height:300px;
@@ -289,6 +297,17 @@ include_once 'classes/Language/language.common.php';
 				height: 184px;
 				width: 278px;
 			}
+
+            @media (max-width: 1024px) {
+                .index-second-image{
+				height: 132px;
+				width: 200px;
+			}
+
+            }
+
+
+
 			div.index-second-box h2 {
                 color:#ffffff;
 				font-size:38;

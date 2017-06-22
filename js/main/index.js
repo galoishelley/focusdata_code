@@ -6,7 +6,7 @@ var func_code, result;
 $(function () {
 
 
-	
+
 
 
 	$("#btn_patient_login").click(function () {
@@ -17,17 +17,20 @@ $(function () {
 		window.location.href = "sign_in_clinic.php";
 	});
 
+
+
 	if ($(window).width() > 768) {
 		$(".navbar-brand_").css("top", "45px");
 	}
 	else {
 		$(".navbar-brand_").css("top", "5px");
-		$(".index-second-box").hide();
+
 		$(".index_slogan").hide();
 		$('#ddlLanguage').hide();
 
 
-		$("#location-unified-search").css("width", "185px");
+		$("#location-unified-search").css("width", ($(window).width()-150)+"px");
+
 
 		$('#lookingfor').hide();
 		$('#prefer2speak').hide();
@@ -35,6 +38,33 @@ $(function () {
 
 
 	}
+	$(window).resize(function () {
+		
+			
+		
+
+
+		if ($(window).width() > 768) {
+			$(".navbar-brand_").css("top", "45px");
+		}
+		else {
+			$(".navbar-brand_").css("top", "5px");
+	
+			$(".index_slogan").hide();
+			$('#ddlLanguage').hide();
+
+
+			$("#location-unified-search").css("width", "185px");
+
+			$('#lookingfor').hide();
+			$('#prefer2speak').hide();
+
+
+
+		}
+		$("#location-unified-search").css("width", ($(window).width()-150)+"px");
+	});
+
 
 
 
