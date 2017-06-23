@@ -19,61 +19,12 @@ $(function () {
 
 
 
-	if ($(window).width() > 768) {
-		$(".navbar-brand_").css("top", "45px");
-	}
-	else {
-		$(".navbar-brand_").css("top", "5px");
-
-		$(".index_slogan").hide();
-		$('#ddlLanguage').hide();
-
-
-		$("#location-unified-search").css("width", ($(window).width()-150)+"px");
-
-
-		$('#lookingfor').hide();
-		$('#prefer2speak').hide();
-
-
-
-	}
-	$(window).resize(function () {
-		
-			
-		
-
-
-		if ($(window).width() > 768) {
-			$(".navbar-brand_").css("top", "45px");
-		}
-		else {
-			$(".navbar-brand_").css("top", "5px");
-	
-			$(".index_slogan").hide();
-			$('#ddlLanguage').hide();
-
-
-			$("#location-unified-search").css("width", "185px");
-
-			$('#lookingfor').hide();
-			$('#prefer2speak').hide();
-
-
-
-		}
-		$("#location-unified-search").css("width", ($(window).width()-150)+"px");
-	});
-
-
-
-
-
-
-
 
 
 	//fill lang
+	$('#ddlLanguage').multiselect({
+		maxHeight: 200
+	});
 
 	var ajax_get_lang = $.ajax({
 
@@ -82,35 +33,24 @@ $(function () {
 		dataType: 'json',
 	});
 
-
-
 	ajax_get_lang.done(function (data) {
 		var r = [];
 		for (var i = 0; i < data.length; i++) {
 			var item = { label: data[i].LANGUAGE_NAME, value: data[i].LANGUAGE_NAME };
 			r.push(item);
 		}
-		if ($(window).width() > 768) {
-			$('#ddlLanguage').multiselect('dataprovider', r);
-		}
 
-
-		$('#location-unified-search').show();
-		if ($(window).width() > 768)
-			$('#DOCTOR_TYPE').show();
+		$('#ddlLanguage').multiselect('dataprovider', r);
 
 
 
-
-
+		// $('#index_input_location').show();
+		// $('#index_select_doctor_type').show();
 	});
 
 
-	if ($(window).width() > 768) {
-		$('#ddlLanguage').multiselect({
-			maxHeight: 200
-		});
-	}
+
+
 
 
 
@@ -139,7 +79,7 @@ $(function () {
 	}
 
 
-	$("#location-unified-search").autocomplete({
+	$("#index_input_location").autocomplete({
 
 		//only match with the beginning of terms
 		source: function (request, response) {
@@ -157,11 +97,6 @@ $(function () {
 
 
 
-
-
-
-
-	//$('#li_home').addClass("active");
 
 	//游客隐藏距离选择
 	if ($.cookie("ilogin") == 1) {
@@ -182,12 +117,6 @@ $(function () {
 		var mainIcon = $('.type-unified-search').find('.active .icons-text').text();
 		var subIcon = $('.icons-sp-search').find('.active label').text();
 
-		// json_form.DOCTOR_TYPE = "";
-		// if (mainIcon != "")
-		// 	json_form.DOCTOR_TYPE = mainIcon;
-
-		// if (subIcon != "")
-		// 	json_form.DOCTOR_TYPE = subIcon;
 
 
 
@@ -197,15 +126,6 @@ $(function () {
 		sessionStorage.setItem("searchRestriction", str);
 
 		window.location.href = "searchDoctor.php";
-	});
-
-
-	$(document).on('click', '#btn_search', function (e) {
-
-		//e.preventDefault();
-
-
-
 	});
 
 
@@ -300,11 +220,7 @@ $(function () {
 					alert(func_code + ":时序号错误,请联系管理员ret.sequ" + ret.sequ + " json_str.sequ:" + json_str.sequ);
 					result = false;
 				}
-				// var data = ret.data[0];
-				// $.each(ret.data, function (i, item) {
-				// 	$("#DOCTOR_TYPE").append("<option value='" + item.DOCTOR_TYPE + "'>" + item.DOCTOR_TYPE + "</option>");
-				// });
-				// console.log(data);
+
 			} else {
 				alert(func_code + ":" + ret.status.ret_code + " " + ret.status.ret_msg);
 				result = false;
