@@ -1578,6 +1578,9 @@ include_once 'classes/Language/language.common.php';
                 left: -50px;
 
                 border-radius: 4px 4px 4px 4px !important;
+                -webkit-appearance: none;
+                /*background: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0Ljk1IDEwIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6I2ZmZjt9LmNscy0ye2ZpbGw6IzQ0NDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmFycm93czwvdGl0bGU+PHJlY3QgY2xhc3M9ImNscy0xIiB3aWR0aD0iNC45NSIgaGVpZ2h0PSIxMCIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIxLjQxIDQuNjcgMi40OCAzLjE4IDMuNTQgNC42NyAxLjQxIDQuNjciLz48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iMy41NCA1LjMzIDIuNDggNi44MiAxLjQxIDUuMzMgMy41NCA1LjMzIi8+PC9zdmc+) no-repeat 95% 50%;*/
+                background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAEAgMAAADOo5ZjAAAAA3NCSVQICAjb4U/gAAAACVBMVEUxNDb///+ZmZlbKgPDAAAACXBIWXMAAAsSAAALEgHS3X78AAAAH3RFWHRTb2Z0d2FyZQBNYWNyb21lZGlhIEZpcmV3b3JrcyA4tWjSeAAAABZ0RVh0Q3JlYXRpb24gVGltZQAwNi8yNi8xN6XZegQAAAAUSURBVAiZY2hgYkjgZIhQZQibCgAMbAJUfcamagAAAABJRU5ErkJggg==") no-repeat 95% 55%;
             }
 
             @media (max-width: 1023px) {
@@ -1597,7 +1600,7 @@ include_once 'classes/Language/language.common.php';
             }
 
             h1.navbar-brand_ {
-                top: 45px;s
+                top: 45px;
             }
 
             @media (max-width: 1023px) {
@@ -1620,8 +1623,7 @@ include_once 'classes/Language/language.common.php';
                 border: none;
                 margin: 0;
                 padding: 0 15px 0 6px;
-                -webkit-box-sizing: border-box;
-                -moz-box-sizing: border-box;
+
                 box-sizing: border-box;
                 text-indent: 0;
                 line-height: normal;
@@ -1637,6 +1639,32 @@ include_once 'classes/Language/language.common.php';
                 left: -50px;
                 width: 145px;
                 top: -1px;
+            }
+            
+            /* iPad Landscape */
+
+            @media screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+                .dropdown-toggle {
+                    font: inherit;
+                    height: 46px;
+                    border: none;
+                    margin: 0;
+                    padding: 0 15px 0 6px;
+
+                    box-sizing: border-box;
+                    text-indent: 0;
+                    line-height: normal;
+                    color: #313436;
+                    font-weight: 400;
+                    border: 2px solid #2B268F;
+                    
+                    background-clip: padding-box;
+                    position: relative;
+                    
+                    left: -49px;
+                    width: 145px;
+                    top: -2px;
+                }
             }
 
             .btn .caret {
@@ -1756,7 +1784,7 @@ include_once 'classes/Language/language.common.php';
                                                 <option value="Optometry"><?php echo $lang['Lang0341']; ?></option>
                                                 <option value="Skin Doctors"><?php echo $lang['Lang0342']; ?></option>
                                                 <option value="Counsellor"><?php echo $lang['Lang0343']; ?></option>
-                                            
+                                           
                                 </select>
 
                                 <select name="LANGUAGE" id="ddlLanguage" class="index_select_language" multiple="multiple">
