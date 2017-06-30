@@ -163,6 +163,16 @@ include_once 'classes/Language/language.common.php';
                 height: 650px;
                 overflow: hidden;
             }
+            @media (max-width: 900px) {
+                .index-main-box {
+                padding: 155px 0 45px 0;
+                background: #ffffff;
+                background-size: cover;
+                text-align: center;
+                height: 650px;
+                overflow: hidden;
+            }
+            }
 
             .index-second-box {
                 padding: 60px 50px 25px 50px;
@@ -1496,10 +1506,10 @@ include_once 'classes/Language/language.common.php';
                 color: #313436;
                 font-weight: 400;
                 border: 2px solid #2b268f;
-                -webkit-border-radius: 4px 10px 10px 4px !important;
-                -moz-border-radius: 4px 10px 10px 4px !important;
-                -ms-border-radius: 4px 10px 10px 4px !important;
-                border-radius: 4px 10px 10px 4px !important;
+                -webkit-border-radius: 4px 4px 4px 4px !important;
+                -moz-border-radius: 4px 4px 4px 4px !important;
+                -ms-border-radius: 4px 4px 4px 4px !important;
+                border-radius: 4px 4px 4px 4px !important;
                 background-clip: padding-box;
                 position: relative;
                 left: -50px;
@@ -1507,55 +1517,48 @@ include_once 'classes/Language/language.common.php';
 
             @media (max-width: 1023px) {
                 #index_input_location {
-                    width: 85%;
+                    width: 40%;
                 }
             }
 
-            @media (max-width: 750px) {
-                #index_input_location {
-                    width: 84%;
-                }
-            }
-
-            @media (max-width: 700px) {
-                #index_input_location {
-                    width: 83%;
-                }
-            }
-
-            @media (max-width: 650px) {
+            @media (max-width: 767px) {
                 #index_input_location {
                     width: 82%;
                 }
             }
 
-            @media (max-width: 600px) {
+            @media (max-width: 700px) {
                 #index_input_location {
-                    width: 79%;
+                    width: 81%;
+                }
+            }
+
+            @media (max-width: 650px) {
+                #index_input_location {
+                    width: 80%;
                 }
             }
 
             @media (max-width: 550px) {
                 #index_input_location {
-                    width: 77%;
+                    width: 75%;
                 }
             }
+
+        
+         
 
             @media (max-width: 500px) {
-                #index_input_location {
-                    width: 74%;
-                }
-            }
-
-            @media (max-width: 450px) {
                 #index_input_location {
                     width: 70%;
                 }
             }
 
+           
+
             @media (max-width: 350px) {
                 #index_input_location {
-                    width: 65%;
+                    width: 63%;
                 }
             }
 
@@ -1583,7 +1586,47 @@ include_once 'classes/Language/language.common.php';
                 background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAEAgMAAADOo5ZjAAAAA3NCSVQICAjb4U/gAAAACVBMVEUxNDb///+ZmZlbKgPDAAAACXBIWXMAAAsSAAALEgHS3X78AAAAH3RFWHRTb2Z0d2FyZQBNYWNyb21lZGlhIEZpcmV3b3JrcyA4tWjSeAAAABZ0RVh0Q3JlYXRpb24gVGltZQAwNi8yNi8xN6XZegQAAAAUSURBVAiZY2hgYkjgZIhQZQibCgAMbAJUfcamagAAAABJRU5ErkJggg==") no-repeat 95% 55%;
             }
 
+            #index_label_lookingfor {
+                    position: relative;
+                    left:220px;
+                }
+
+            #index_label_prefer2speak {
+                    position: relative;
+                    left:288px;
+                }
+
             @media (max-width: 1023px) {
+
+                #index_label_lookingfor {
+                    position: relative;
+                    left:217px;
+                }
+
+            #index_label_prefer2speak {
+                    position: relative;
+                    left:285px;
+                }
+
+            }
+
+            @media (max-width: 1023px) {
+                #index_select_doctor_type {
+                    width: 20%;
+                }
+                .index_select_language,
+                .multiselect {
+                    
+                }
+                /*#index_label_lookingfor {
+                    display: none;
+                }
+                #index_label_prefer2speak {
+                    display: none;
+                }*/
+            }
+
+            @media (max-width: 767px) {
                 #index_select_doctor_type {
                     display: none;
                 }
@@ -1598,6 +1641,7 @@ include_once 'classes/Language/language.common.php';
                     display: none;
                 }
             }
+
 
             h1.navbar-brand_ {
                 top: 45px;
@@ -1643,7 +1687,7 @@ include_once 'classes/Language/language.common.php';
             
             /* iPad Landscape */
 
-            @media screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+            @media screen and (min-device-width: 481px) and (max-device-width: 1024px) {
                 .dropdown-toggle {
                     font: inherit;
                     height: 46px;
@@ -1760,8 +1804,8 @@ include_once 'classes/Language/language.common.php';
                     </div>
                     <div style="text-align: left;margin-bottom: 6px;color:#e37222 ; ">
                         <span style="position: relative;left:10px;">I seek at:</span>
-                        <span style="position: relative;left:232px" id="index_label_lookingfor">looking for:</span>
-                        <span style="position: relative;left:300px" id="index_label_prefer2speak">prefer to speak:</span>
+                        <span id="index_label_lookingfor">looking for:</span>
+                        <span id="index_label_prefer2speak">prefer to speak:</span>
                     </div>
 
                     <div class="input-unified-search">
