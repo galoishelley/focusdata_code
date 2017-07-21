@@ -156,7 +156,11 @@ class AppointmentRecoder
 		// echo "-------start:".$this->start;
 		// echo "-------length:".$this->length;
 
+		$this->AppointmentRecoder->updateCANCEL_TRIGGER_FLAG($this->arr_values);
 		$ret = $this->AppointmentRecoder->update ($this->arr_values);
+
+
+		
 		
 		if($ret==1){
 			$success = true;

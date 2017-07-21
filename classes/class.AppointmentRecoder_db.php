@@ -68,14 +68,34 @@ class AppointmentRecoder_DB{
             $values["APPOINTMENT_STATUS_ID"] = 2;
 
             $ret = $this->db->updateData('fd_rel_customer_appointment', $values, $where);
+
+
         }
 
         return $ret;
-        // $this->db->updateData('qr_role',array('role_name'=>$role_name,
-        //                                         'funcion_id'=>$funcion_id,
-        //                                         'note'=>$note,
-        //                                       ),'func_code='.$func_code);
+  
     }
+
+
+    public function updateCANCEL_TRIGGER_FLAG($arr_values){
+
+
+        $result = array_unique($arr_values["DOCTOR_APPOINTMENT_TIME_ID"]);
+
+        $arrlength=count($result);
+        for($i = 0; $i < $arrlength; $i++)
+        {
+            $where = " DOCTOR_APPOINTMENT_TIME_ID = ".$result[$i];
+            // echo $where;
+
+            $values["CANCEL_TRIGGER_FLAG"] = 1;
+
+            $ret = $this->db->updateData('fd_rel_doctor_appointment_time', $values, $where);
+        }
+ 
+    }
+
+
      
 
     public function view(){
@@ -115,7 +135,7 @@ class AppointmentRecoder_DB{
     }
         // 
     public function viewAll($arr_values,$requesttype=0,$start=0,$lenght=10){
-        $sql = "select t5.CLINIC_NAME, t5.CLINIC_ADDR,t5.CLINIC_SUBURB,t5.CLINIC_POSTCODE,t2.DOCTOR_TYPE, t2.DOCTOR_NAME, t1.CREATE_DATE,t3.APPOINTMENT_STATUS, t1.CUSTOMER_USER_ID, t1.DOCTOR_ID, t6.STATE_NAME, t7.APPOINTMENT_DATE, t7.APPOINTMENT_TIME
+        $sql = "select t1.DOCTOR_APPOINTMENT_TIME_ID as DOCTOR_APPOINTMENT_TIME_ID,t5.CLINIC_NAME, t5.CLINIC_ADDR,t5.CLINIC_SUBURB,t5.CLINIC_POSTCODE,t2.DOCTOR_TYPE, t2.DOCTOR_NAME, t1.CREATE_DATE,t3.APPOINTMENT_STATUS, t1.CUSTOMER_USER_ID, t1.DOCTOR_ID, t6.STATE_NAME, t7.APPOINTMENT_DATE, t7.APPOINTMENT_TIME
             from fd_rel_customer_appointment t1
             left join fd_doctor t2 
             on t2.DOCTOR_ID = t1.DOCTOR_ID

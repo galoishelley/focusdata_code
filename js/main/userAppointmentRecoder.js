@@ -575,11 +575,14 @@ $(document).ready(function() {
         	  var CUSTOMER_USER_ID = [];
         	    var DOCTOR_ID = [];
         	    var CREATE_DATE= [];
+              var DOCTOR_APPOINTMENT_TIME_ID= [];
 
         	    $.each(rowData,function(key,value){
         	      CUSTOMER_USER_ID.push(value.CUSTOMER_USER_ID); 
         	      DOCTOR_ID.push(value.DOCTOR_ID); 
         	      CREATE_DATE.push(value.CREATE_DATE); 
+
+                DOCTOR_APPOINTMENT_TIME_ID.push(value.DOCTOR_APPOINTMENT_TIME_ID);
         	    });
 
 
@@ -588,7 +591,8 @@ $(document).ready(function() {
         	      action_type: "update",
         	      CUSTOMER_USER_ID: CUSTOMER_USER_ID,
         	      DOCTOR_ID: DOCTOR_ID,
-        	      CREATE_DATE: CREATE_DATE
+        	      CREATE_DATE: CREATE_DATE,
+                DOCTOR_APPOINTMENT_TIME_ID:DOCTOR_APPOINTMENT_TIME_ID
         	    }
 
         	    json_str = request_const(para,func_code,0);

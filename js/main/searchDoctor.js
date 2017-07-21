@@ -2854,10 +2854,59 @@ $(function () {
 				}
 
 
+				//Step0.检查REQUESTING_FLAG，如果已经为1，说明其他用户已经点击预约，直接跳出
+
+				var AppointmentSuc = false;
+
+				func_code = "ST01";
+				para = {
+					DOCTOR_ID: keyDoctorID,
+					APPOINTMENT_DATE: keyDate,
+					APPOINTMENT_TIME: keyTime
+				};
+				json_str = request_const(para, func_code, 0);
+
+				
+				$.ajax({
+					type: "POST",
+					url: "classes/class.CHECK_REQUESTING_FLAG.php",
+					dataType: "json",
+					async: false,
+					data: {
+						request: json_str
+					},
+					
+
+					success: function (succeed) {
+
+							if (succeed) {
+								AppointmentSuc = true;
+							} else {
+								AppointmentSuc = false;
+							}
+						},
+
+
+					error: function (XMLHttpRequest, textStatus, errorThrown) {
+						//请求失败之后的操作
+						var ret_code = "999906";
+						var ret_msg = "Sorry, your appointment can't be done because of some issue. Please try later.";
+						alert(func_code + ":" + ret_code + ":" + ret_msg + " textStatus:" + textStatus);
+						AppointmentSuc = false;
+					}
+				});
+
+				if (!AppointmentSuc) {
+						alert("Sorry, this time has been occupied by someone else");
+						return false;
+					}
+
+
+
 
 				//Step1.弹出进度条，设置REQUESTING_USER_ID，REQUESTING_FLAG
 				waitingDialog.show('Please wait for 10s...');
-				var AppointmentSuc = false;
+				
 
 				func_code = "ST01";
 				para = {
