@@ -26,7 +26,7 @@ include_once 'classes/Language/language.common.php';
 		<!--User CSS-->
 		<link rel="stylesheet" href="css/user.css">
 		<link rel="stylesheet" href="css/bootstrapValidator.css" />
-		<link rel="stylesheet" type="text/css" href="css/sm.css@ver-3" />
+		<link rel="stylesheet" type="text/css" href="css/sm.css" />
 		<!--JS-->
 		<script src="js/jquery.js"></script>
 		<script src="js/jquery-migrate-1.2.1.min.js"></script>

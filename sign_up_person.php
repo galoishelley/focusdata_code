@@ -25,7 +25,7 @@ include_once 'classes/Language/language.common.php';
 		<link rel="stylesheet" href="css/user.css">
 		<link rel="stylesheet" href="css/focusdata.css">
 		<link rel="stylesheet" href="css/bootstrapValidator.css" />
-		<link rel="stylesheet" type="text/css" href="css/sm.css@ver-3" />
+		<link rel="stylesheet" type="text/css" href="css/sm.css" />
 
 		<style>
 			/* Contact form */

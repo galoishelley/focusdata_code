@@ -30,7 +30,7 @@
         <link rel="stylesheet" href="css/bootstrap-multiselect.css">
 
 
-        <link rel="stylesheet" type="text/css" href="css/sm.css@ver-3" />
+        <link rel="stylesheet" type="text/css" href="css/sm.css" />
         <link rel="stylesheet" type="text/css" href="css/searchDoctor.css" />
 
         <style>

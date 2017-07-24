@@ -8,7 +8,10 @@ body {
   color: #9fdbf3;
   overflow-x:hidden;
 }
-a {
+select::-ms-expand {
+    display: none;
+}
+a { 
   text-decoration: none;
   outline: none;
 }
