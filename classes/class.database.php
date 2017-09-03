@@ -28,14 +28,7 @@ class Database {
     }
     
     
-    /**
-     * Function fetchData
-     *
-     * Fetch data from the database, depends on the parameters.
-     *
-     * @param (table,where,limit) about this param
-     * @return array
-     */
+   
     public function fetchAll($table,$where = null,$limit = null){
         $select = 'SELECT * FROM '.$table;
         if($where != null){

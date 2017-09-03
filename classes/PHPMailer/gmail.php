@@ -47,7 +47,7 @@ $mail->SMTPAuth = true;
 $mail->Username = "info@drpages.com.au";
 
 //Password to use for SMTP authentication
-$mail->Password = "drpages@FD";
+$mail->Password = "Focus\$Data2017";
 
 //Set who the message is to be sent from
 $mail->setFrom('info@drpages.com.au', 'Focusdata');
